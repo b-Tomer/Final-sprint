@@ -13,7 +13,7 @@ const routes = [
         label: 'Home 🏠',
     },
     {
-        path: 'board',
+        path: 'board/:boardId',
         component: <BoardIndex />,
         label: 'Board'
     },
