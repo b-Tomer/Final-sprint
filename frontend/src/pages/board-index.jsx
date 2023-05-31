@@ -56,20 +56,6 @@ export function GroupIndex() {
             <main>
                 <button onClick={onAddGroup}>Add Group ⛐</button>
                 <div className="group-group">
-                    {groups.map(group =>
-
-
-                        //    <GroupDetails group={group} />
-
-
-                        // <div>
-                        //     <button onClick={() => { onRemoveGroup(group._id) }}>x</button>
-                        //     <button onClick={() => { onUpdateGroup(group) }}>Edit</button>
-                        // </div>
-
-                        // <button onClick={() => { onAddGroupMsg(group) }}>Add group msg</button>
-
-                    )}
 
                 </div>
             </main>

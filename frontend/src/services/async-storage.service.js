@@ -1,4 +1,4 @@
-const gBoard = {
+const gBoards = [{
     _id: "b101",
     title: "Robot dev proj",
     isStarred: false,
@@ -122,7 +122,7 @@ const gBoard = {
     ],
 
     cmpsOrder: ["status-picker", "member-picker", "date-picker"]
-}
+}]
 
 
 const user = {
@@ -149,7 +149,7 @@ export const storageService = {
 }
 
 function query(entityType, delay = 500) {
-    var entities = JSON.parse(localStorage.getItem(entityType)) || gBoard
+    var entities = JSON.parse(localStorage.getItem(entityType)) || gBoards
     return new Promise(resolve => setTimeout(() => resolve(entities), delay))
 }
 
