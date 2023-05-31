@@ -1,80 +1,73 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { loadLists, addList, updateList, removeList, addToListt } from '../store/list.actions.js'
+import { loadGroups, addGroup, updateGroup, removeGroup, addToGroupt } from '../store/group.actions.js'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { listService } from '../services/list.service.js'
+import { groupService } from '../services/group.service.js'
 
-export function ListIndex() {
+export function GroupIndex() {
 
-    const lists = useSelector(storeState => storeState.listModule.lists)
+    const groups = useSelector(storeState => storeState.groupModule.groups)
 
     useEffect(() => {
-        loadLists()
+        loadGroups()
     }, [])
 
-    async function onRemoveList(listId) {
+    async function onRemoveGroup(groupId) {
         try {
-            await removeList(listId)
-            showSuccessMsg('List removed')
+            await removeGroup(groupId)
+            showSuccessMsg('Group removed')
         } catch (err) {
-            showErrorMsg('Cannot remove list')
+            showErrorMsg('Cannot remove group')
         }
     }
 
-    async function onAddList() {
-        const list = listService.getEmptyList()
-        list.vendor = prompt('Vendor?')
+    async function onAddGroup() {
+        const group = groupService.getEmptyGroup()
+        group.vendor = prompt('Vendor?')
         try {
-            const savedList = await addList(list)
-            showSuccessMsg(`List added (id: ${savedList._id})`)
+            const savedGroup = await addGroup(group)
+            showSuccessMsg(`Group added (id: ${savedGroup._id})`)
         } catch (err) {
-            showErrorMsg('Cannot add list')
+            showErrorMsg('Cannot add group')
         }
     }
 
-    async function onUpdateList(list) {
+    async function onUpdateGroup(group) {
         const price = +prompt('New price?')
-        const listToSave = { ...list, price }
+        const groupToSave = { ...group, price }
         try {
-            const savedList = await updateList(listToSave)
-            showSuccessMsg(`List updated, new price: ${savedList.price}`)
+            const savedGroup = await updateGroup(groupToSave)
+            showSuccessMsg(`Group updated, new price: ${savedGroup.price}`)
         } catch (err) {
-            showErrorMsg('Cannot update list')
+            showErrorMsg('Cannot update group')
         }
     }
 
 
 
-    function onAddListMsg(list) {
-        console.log(`TODO Adding msg to list`)
+    function onAddGroupMsg(group) {
+        console.log(`TODO Adding msg to group`)
     }
 
     return (
         <div>
-            <h3>Lists App</h3>
+            <h3>Groups App</h3>
             <main>
-                <button onClick={onAddList}>Add List ⛐</button>
-                <ul className="list-list">
-                    {lists.map(list =>
-                        <li className="list-preview" key={list._id}>
-                            <h4>{list.title}</h4>
-                            {cards.map(card =>
-                                <ul>
-                                    <li className="card-preview" key={card._id}>
-                                        <h4>{card.title}</h4>
-                                    </li>
-                                </ul>
-                            )}
+                <button onClick={onAddGroup}>Add Group ⛐</button>
+                <ul className="group-group">
+                    {groups.map(group =>
+                       <GroupDetails group={group} />
+
 
                             <div>
-                                <button onClick={() => { onRemoveList(list._id) }}>x</button>
-                                <button onClick={() => { onUpdateList(list) }}>Edit</button>
+                                <button onClick={() => { onRemoveGroup(group._id) }}>x</button>
+                                <button onClick={() => { onUpdateGroup(group) }}>Edit</button>
                             </div>
 
-                            <button onClick={() => { onAddListMsg(list) }}>Add list msg</button>
+                            <button onClick={() => { onAddGroupMsg(group) }}>Add group msg</button>
 
-                        </li>)
+                    )
                     }
                 </ul>
             </main>
