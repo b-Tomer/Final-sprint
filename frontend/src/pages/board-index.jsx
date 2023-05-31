@@ -1,76 +1,58 @@
 import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import { loadGroups, addGroup, updateGroup, removeGroup, addToGroupt } from '../store/group.actions.js'
+import { useDispatch, useSelector } from 'react-redux'
+import { loadBoards, addBoard, removeBoard, loadBoard } from '../store/board.actions.js'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { groupService } from '../services/group.service.js'
+import { boardService } from '../services/board.service.local.js'
+import { useParams } from 'react-router-dom'
 
-export function GroupIndex() {
+export function BoardIndex() {
 
-    const groups = useSelector(storeState => storeState.groupModule.groups)
+    // const boards = useSelector(storeState => storeState.boardModule.boards)
+    const dispatch = useDispatch()
+    const { boardId } = useParams()
+    const { board } = useSelector((storeState) => storeState.boardModule)
+
 
     useEffect(() => {
-        loadGroups()
+        onLoadBoard()
     }, [])
 
-    async function onRemoveGroup(groupId) {
+
+    function onLoadBoard() {
+        dispatch(loadBoard(boardId))
+    }
+
+    async function onRemoveBoard(boardId) {
         try {
-            await removeGroup(groupId)
-            showSuccessMsg('Group removed')
+            await removeBoard(boardId)
+            showSuccessMsg('Board removed')
         } catch (err) {
-            showErrorMsg('Cannot remove group')
+            showErrorMsg('Cannot remove board')
         }
     }
 
-    async function onAddGroup() {
-        const group = groupService.getEmptyGroup()
-        group.vendor = prompt('Vendor?')
+    async function onAddBoard() {
+        const board = boardService.getEmptyBoard()
+        board.vendor = prompt('Vendor?')
         try {
-            const savedGroup = await addGroup(group)
-            showSuccessMsg(`Group added (id: ${savedGroup._id})`)
+            const savedBoard = await addBoard(board)
+            showSuccessMsg(`Board added (id: ${savedBoard._id})`)
         } catch (err) {
-            showErrorMsg('Cannot add group')
+            showErrorMsg('Cannot add board')
         }
     }
 
-    async function onUpdateGroup(group) {
-        const price = +prompt('New price?')
-        const groupToSave = { ...group, price }
-        try {
-            const savedGroup = await updateGroup(groupToSave)
-            showSuccessMsg(`Group updated, new price: ${savedGroup.price}`)
-        } catch (err) {
-            showErrorMsg('Cannot update group')
-        }
-    }
-
-
-
-    function onAddGroupMsg(group) {
-        console.log(`TODO Adding msg to group`)
-    }
 
     return (
-        <div>
-            <h3>Groups App</h3>
+        <section className='board-container'>
+            <h3>Board {board.title}</h3>
             <main>
-                <button onClick={onAddGroup}>Add Group ⛐</button>
-                <ul className="group-group">
-                    {groups.map(group =>
-                       <GroupDetails group={group} />
+                
+              
 
-
-                            <div>
-                                <button onClick={() => { onRemoveGroup(group._id) }}>x</button>
-                                <button onClick={() => { onUpdateGroup(group) }}>Edit</button>
-                            </div>
-
-                            <button onClick={() => { onAddGroupMsg(group) }}>Add group msg</button>
-
-                    )
-                    }
-                </ul>
+                   
             </main>
-        </div>
+        </section>
     )
 }
