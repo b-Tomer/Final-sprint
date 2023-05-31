@@ -1,23 +1,25 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { loadBoards, addBoard, removeBoard, loadBoard } from '../store/board.actions.js'
+import {
+    loadBoards,
+    addBoard,
+    removeBoard,
+    loadBoard,
+} from '../store/board.actions.js'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { boardService } from '../services/board.service.local.js'
 import { useParams } from 'react-router-dom'
 
 export function BoardIndex() {
-
     // const boards = useSelector(storeState => storeState.boardModule.boards)
     const dispatch = useDispatch()
     const { boardId } = useParams()
     const { board } = useSelector((storeState) => storeState.boardModule)
 
-
     useEffect(() => {
         onLoadBoard()
     }, [])
-
 
     function onLoadBoard() {
         dispatch(loadBoard(boardId))
@@ -43,16 +45,10 @@ export function BoardIndex() {
         }
     }
 
-
     return (
-        <section className='board-container'>
-            <h3>Board {board.title}</h3>
-            <main>
-                
-              
-
-                   
-            </main>
+        <section className="board-container">
+            {/* <h3>Board {board.title}</h3> */}
+            <main></main>
         </section>
     )
 }
