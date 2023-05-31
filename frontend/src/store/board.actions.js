@@ -1,46 +1,55 @@
-import { boardService } from "../services/board.service.local.js";
-import { userService } from "../services/user.service.js";
+import { boardService } from '../services/board.service.local.js'
+import { userService } from '../services/user.service.js'
 import { store } from './store.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { ADD_BOARD, REMOVE_BOARD, SET_BOARDS, UPDATE_BOARD } from "./board.reducer.js";
-
+import {
+    ADD_BOARD,
+    REMOVE_BOARD,
+    SET_BOARDS,
+    UPDATE_BOARD,
+    SET_BOARD,
+} from './board.reducer.js'
 
 // Action Creators:
 export function getActionRemoveBoard(boardId) {
     return {
         type: REMOVE_BOARD,
-        boardId
+        boardId,
     }
 }
 export function getActionAddBoard(board) {
     return {
         type: ADD_BOARD,
-        board
+        board,
     }
 }
 export function getActionUpdateBoard(board) {
     return {
         type: UPDATE_BOARD,
-        board
+        board,
     }
 }
 
 export function getActionSetBoard(board) {
     return {
-        type: 'SET_BOARD',
-        board
+        type: SET_BOARD,
+        board,
     }
 }
 
 export async function loadBoard(boardId) {
     // return async (dispatch) => {
-        try {
-            const boardFromDb = await boardService.getById(boardId)
-            console.log('boardFromDb: ', boardFromDb )
-            store.dispatch(getActionSetBoard(boardFromDb))
-        } catch (err) {
-            console.log('Cannot load board', err)
-        }
+    try {
+        const boardFromDb = await boardService.getById(boardId)
+        console.log('boardFromDb: ', boardFromDb)
+        // store.dispatch(getActionSetBoard(boardFromDb))
+        store.dispatch({
+            type: SET_BOARD,
+            boardFromDb,
+        })
+    } catch (err) {
+        console.log('Cannot load board', err)
+    }
     // }
 }
 
@@ -50,14 +59,12 @@ export async function loadBoards() {
         console.log('Boards from DB:', boards)
         store.dispatch({
             type: SET_BOARDS,
-            boards
+            boards,
         })
-
     } catch (err) {
         console.log('Cannot load boards', err)
         throw err
     }
-
 }
 
 export async function removeBoard(boardId) {
@@ -83,20 +90,20 @@ export async function addBoard(board) {
 }
 
 export function updateBoard(board) {
-    return boardService.save(board)
-        .then(savedBoard => {
+    return boardService
+        .save(board)
+        .then((savedBoard) => {
             console.log('Updated Board:', savedBoard)
             store.dispatch(getActionUpdateBoard(savedBoard))
             return savedBoard
         })
-        .catch(err => {
+        .catch((err) => {
             console.log('Cannot save board', err)
             throw err
         })
 }
 
-
-// Demo for Optimistic Mutation 
+// Demo for Optimistic Mutation
 // (IOW - Assuming the server call will work, so updating the UI first)
 // export function onRemoveBoardOptimistic(boardId) {
 //     store.dispatch({
