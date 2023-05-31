@@ -32,15 +32,16 @@ export function getActionSetBoard(board) {
     }
 }
 
-export function loadBoard(boardId) {
-    return async (dispatch) => {
+export async function loadBoard(boardId) {
+    // return async (dispatch) => {
         try {
             const boardFromDb = await boardService.getById(boardId)
-            dispatch(getActionSetBoard(boardFromDb))
+            console.log('boardFromDb: ', boardFromDb )
+            store.dispatch(getActionSetBoard(boardFromDb))
         } catch (err) {
             console.log('Cannot load board', err)
         }
-    }
+    // }
 }
 
 export async function loadBoards() {

@@ -8,8 +8,7 @@ import {
 } from '../store/board.actions.js'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { boardService } from '../services/board.service.local.js'
-import { useParams } from 'react-router-dom'
+import { groupService } from '../services/group.service.js'
 
 export function BoardIndex() {
     // const boards = useSelector(storeState => storeState.boardModule.boards)
@@ -18,7 +17,7 @@ export function BoardIndex() {
     const { board } = useSelector((storeState) => storeState.boardModule)
 
     useEffect(() => {
-        onLoadBoard()
+        loadGroups()
     }, [])
 
     function onLoadBoard() {
@@ -27,21 +26,21 @@ export function BoardIndex() {
 
     async function onRemoveBoard(boardId) {
         try {
-            await removeBoard(boardId)
-            showSuccessMsg('Board removed')
+            await removeGroup(groupId)
+            showSuccessMsg('Group removed')
         } catch (err) {
-            showErrorMsg('Cannot remove board')
+            showErrorMsg('Cannot remove group')
         }
     }
 
-    async function onAddBoard() {
-        const board = boardService.getEmptyBoard()
-        board.vendor = prompt('Vendor?')
+    async function onAddGroup() {
+        const group = groupService.getEmptyGroup()
+        group.vendor = prompt('Vendor?')
         try {
-            const savedBoard = await addBoard(board)
-            showSuccessMsg(`Board added (id: ${savedBoard._id})`)
+            const savedGroup = await addGroup(group)
+            showSuccessMsg(`Group added (id: ${savedGroup._id})`)
         } catch (err) {
-            showErrorMsg('Cannot add board')
+            showErrorMsg('Cannot add group')
         }
     }
 
