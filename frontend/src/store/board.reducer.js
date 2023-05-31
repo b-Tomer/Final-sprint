@@ -11,17 +11,20 @@ const initialState = {
     boards: [],
     filterBy: {
         txt: '',
-    }
+    },
+    board: null
 }
 
 export function boardReducer(state = initialState, action) {
     var newState = state
     var boards
+    var currBoard
     switch (action.type) {
         case SET_BOARD:
-            boards = state.boards.map(board => {
-                return (board._id === action.board._id) ? action.board : board
-            })
+            console.log('heYYYYY');
+            currBoard = state.boards.find(b =>  b._id === action.board._id)
+            newState = { ...state, board: currBoard }
+            break
         case SET_BOARDS:
             newState = { ...state, boards: action.boards }
             break
