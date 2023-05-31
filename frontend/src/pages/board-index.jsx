@@ -42,11 +42,11 @@ export function BoardIndex() {
             showErrorMsg('Cannot add board')
         }
     }
-
+ if (board) console.log(board);
 
     return (
         <section className='board-container'>
-            <h3>Board {board.title}</h3>
+            {/* <h3>Board {board.title}</h3> */}
             <main>
                 
               
