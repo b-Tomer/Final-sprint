@@ -1,6 +1,6 @@
 .homepage-header-container {
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     align-content: center;
     align-items: center;
     width: 100%;
@@ -24,6 +24,9 @@
             background-color: transparent;
             font-size: 1rem;
             color: $clr7;
+            &:hover {
+                color: $clrBTN;
+            }
             .homepage-header-icon {
                 width: 15px;
                 height: 10px;
@@ -32,6 +35,23 @@
                     fill: $clr7;
                 }
             }
+        }
+    }
+    .homepage-header-actions {
+        display: flex;
+        justify-content: end;
+        justify-items: end;
+        flex-grow: 2;
+        .homepage-header-btn {
+            font-size: 19px;
+            background-color: transparent;
+            padding-inline: 24px;
+            padding-block: 8px;
+        }
+        .try {
+            background-color: $clrBTN;
+            color: $clr1;
+            padding-block: 19px;
         }
     }
 }
