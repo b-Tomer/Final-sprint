@@ -10,6 +10,7 @@ export function RootCmp() {
     return (
         <div>
             <Provider store={store}>
+        
                 <main>
                     <Routes>
                         {routes.map((route) => (
