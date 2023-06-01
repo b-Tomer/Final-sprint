@@ -1,10 +1,17 @@
+.workspace-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .muilty-boards-container {
     margin-top: 30px;
-    width: 100vw;
+    width: 90vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    // justify-content: center;
+    align-items: center;
+    // margin: 30px 44px;
 
 }
 
@@ -20,18 +27,19 @@
     }
 }
 
-// .starred-btn {
-//     path {
-//         fill: black
-//     }
-// }
+.starred-board-title,
+.recently-viewed-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: start;
+}
 
 .starred-boards-container,
 .recently-viewed-container {
     display: flex;
-    gap: 20px;
+    gap: 15px;
     flex-wrap: wrap;
-
 }
 
 .starred-boards {
@@ -44,43 +52,51 @@
 
 }
 
-
 .board-preview {
-    overflow: hidden;
     position: relative;
     border-radius: 3px;
     color: #fff;
-    font-size: .8547em;
+    font-size: 0.8547em;
     height: 96px;
     width: 194px;
-
-
-    h1 {
-        margin-top: 5px;
-        margin-left: 5px;
-        position: absolute;
-        margin-left: 10px;
-    }
-
-    &:hover {
-
-        background-color: rgba(0, 0, 0, .27);
-        border-radius: 3px;
-        cursor: pointer;
-        // bottom: 0;
-        // left: 0;
-        // position: absolute;
-        // right: 0;
-        // top: 0;
-    }
 }
 
-.background-img {
-    width: 100%;
-    height: auto;
+.board-preview h1 {
+    margin-top: 5px;
+    margin-left: 5px;
+    position: absolute;
+    margin-left: 10px;
+    z-index: 2;
 }
 
-a:-webkit-any-link {
-    color: -webkit-link;
-    cursor: pointer;
+.board-preview img {
+    width: 194px;
+    height: 96px;
+    transition: filter 0.3s ease-in-out;
+}
+
+.board-preview:hover img {
+    filter: brightness(50%);
+}
+
+.starred-btn {
+    // path {
+    //     fill: white;
+    // }
+
+}
+
+.board-preview .starred-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    fill: white
+}
+
+.board-preview:hover .starred-btn {
+    opacity: 1;
+
 }

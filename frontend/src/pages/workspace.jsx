@@ -5,6 +5,8 @@ import {
     loadBoards,
 } from '../store/board.actions.js'
 import { useEffect } from 'react'
+import { ReactComponent as Starred } from '../assets/img/icons/starred.svg'
+import { ReactComponent as Clock } from '../assets/img/icons/clock.svg'
 
 
 export function Workspace() {
@@ -23,29 +25,30 @@ export function Workspace() {
         <section>
             <AppHeader />
             <section className='muilty-boards-container'>
-                <div className='starred-board-title'>
-                    <h3>Starred board</h3>
+                <div>
+                    <div className='starred-board-title'>
+                        <Starred className='starred-btn' />
+                        <span>Starred board</span>
+                    </div>
+                    <div className='starred-boards-container'>
+                        {boards
+                            .filter((board) => board.isStarred)
+                            .map((board) => <BoardPreview board={board} key={board._id} />)
+                        }
+                    </div>
                 </div>
-                <div className='starred-boards-container'>
-                    {boards
-                        .filter((board) => board.isStarred)
-                        .map((board) => <BoardPreview board={board} key={board._id} />)
-                    }
+                <div>
+                    <div className='recently-viewed-title'>
+                        <Clock className='starred-btn' />
+                        <span>Recently viewed</span>
+                    </div>
+                    <div className='recently-viewed-container'>
+                        {boards
+                            .filter((board) => !board.isStarred)
+                            .map((board) => <BoardPreview board={board} key={board._id} />)
+                        }
+                    </div>
                 </div>
-                <div className='recently-viewed-title'>
-                    <h3>Recently viewed</h3>
-                </div>
-                <div className='recently-viewed-container'>
-                    {boards
-                        .filter((board) => !board.isStarred)
-                        .map((board) => <BoardPreview board={board} key={board._id} />)
-                    }
-                </div>
-
-
-
-
-
             </section>
         </section>
     )
