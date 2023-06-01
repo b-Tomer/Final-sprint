@@ -11,6 +11,7 @@ import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { boardService } from '../services/board.service.local.js'
 import { useParams } from 'react-router-dom'
 import { GroupDetails } from '../cmps/group-details.jsx'
+import { BoardHeader } from '../cmps/board-header.jsx'
 
 export function BoardIndex() {
     const boards = useSelector((storeState) => storeState.boardModule.boards)
@@ -22,13 +23,11 @@ export function BoardIndex() {
         onLoadBoard()
     }, [])
 
-
     async function onLoadBoards() {
         loadBoards()
     }
-    
-    async function onLoadBoard() {
 
+    async function onLoadBoard() {
         loadBoard(boardId)
         // const boardFromDb = await boardService.getById(boardId)
         // setBoard(boardFromDb)
@@ -57,11 +56,11 @@ export function BoardIndex() {
     if (!board) return
     return (
         <section className="board-container">
-
-            <main className='board-content'>
-            {board.groups.map(group =>
-                <GroupDetails group={group} key={group.id} />
-            )}
+            <BoardHeader />
+            <main className="board-content">
+                {board.groups.map((group) => (
+                    <GroupDetails group={group} key={group.id} />
+                ))}
             </main>
         </section>
     )

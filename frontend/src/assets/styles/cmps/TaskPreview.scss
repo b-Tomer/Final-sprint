@@ -1,11 +1,9 @@
 .task-container {
     display: flex;
-
-    .task-title {
-    }
-
     .btn-task-show-details {
         img {
+            width: 1em;
+            height: 1em;
         }
     }
 }
