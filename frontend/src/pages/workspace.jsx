@@ -1,16 +1,22 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { BoardPreview } from '../cmps/board-preview'
 import { AppHeader } from '../cmps/app-header'
 import {
-    loadBoards,
+    loadBoards, updateBoard,
 } from '../store/board.actions.js'
 import { useEffect } from 'react'
 import { ReactComponent as Starred } from '../assets/img/icons/starred.svg'
 import { ReactComponent as Clock } from '../assets/img/icons/clock.svg'
+import { SET_BOARD } from '../store/board.reducer'
+
 
 
 export function Workspace() {
     const boards = useSelector((storeState) => storeState.boardModule.boards)
+    const dispatch = useDispatch();
+
+
+
 
     useEffect(() => {
         onLoadBoards()
@@ -20,6 +26,13 @@ export function Workspace() {
         await loadBoards()
     }
 
+    function toggleStarredStatus(board) {
+        board.isStarred = !board.isStarred
+        updateBoard(board)
+            .then(console.log)
+    }
+
+
     if (!boards) return
     return (
         <section>
@@ -27,25 +40,25 @@ export function Workspace() {
             <section className='muilty-boards-container'>
                 <div>
                     <div className='starred-board-title'>
-                        <Starred className='starred-btn' />
+                        <Starred />
                         <span>Starred board</span>
                     </div>
                     <div className='starred-boards-container'>
                         {boards
                             .filter((board) => board.isStarred)
-                            .map((board) => <BoardPreview board={board} key={board._id} />)
+                            .map((board) => <BoardPreview board={board} key={board._id} toggleStarredStatus={toggleStarredStatus} />)
                         }
                     </div>
                 </div>
                 <div>
                     <div className='recently-viewed-title'>
-                        <Clock className='starred-btn' />
+                        <Clock />
                         <span>Recently viewed</span>
                     </div>
                     <div className='recently-viewed-container'>
                         {boards
                             .filter((board) => !board.isStarred)
-                            .map((board) => <BoardPreview board={board} key={board._id} />)
+                            .map((board) => <BoardPreview board={board} key={board._id} toggleStarredStatus={toggleStarredStatus} />)
                         }
                     </div>
                 </div>

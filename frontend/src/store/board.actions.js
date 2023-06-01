@@ -40,7 +40,7 @@ export async function loadBoard(boardId) {
     // return async (dispatch) => {
     try {
         const board = await boardService.getById(boardId)
-        console.log('boardFromDb: ', board)
+        // console.log('boardFromDb: ', board)
         // store.dispatch(getActionSetBoard(boardFromDb))
         store.dispatch({
             type: SET_BOARD,
