@@ -20,11 +20,9 @@ export function boardReducer(state = initialState, action) {
     var currBoard
     switch (action.type) {
         case SET_BOARD:
-            console.log('action: ', action )
-            currBoard = state.boards.find(
-                (b) => b._id === action.board._id
-            )
-            console.log(currBoard)
+            // console.log('action: ', action )
+            currBoard = state.boards.find((b) => b._id === action.board._id)
+            // console.log(currBoard)
             newState = { ...state, board: currBoard }
             break
         case SET_BOARDS:

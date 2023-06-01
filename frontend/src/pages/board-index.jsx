@@ -16,31 +16,33 @@ import { AppHeader } from '../cmps/app-header.jsx'
 import { AddGroup } from '../cmps/add-group.jsx'
 import { groupService } from '../services/group.service.local.js'
 import { SET_BOARD } from '../store/board.reducer.js'
+import { saveGroup } from '../store/group.actions.js'
 
 export function BoardIndex() {
-    const boards = useSelector((storeState) => storeState.boardModule.boards)
+    // const boards = useSelector((storeState) => storeState.boardModule.boards)
     const { boardId } = useParams()
     const { board } = useSelector((storeState) => storeState.boardModule)
     const dispatch = useDispatch()
-    const [isEditing, setIsEditing] = useState(false)
+    // const [isEditing, setIsEditing] = useState(false)
+
     useEffect(() => {
-        onLoadBoards()
-        onLoadBoard()
+        loadBoards()
+        loadBoard(boardId)
     }, [])
 
     // useEffect(() => {
     //     onLoadBoard()
-    // }, [])
+    // }, [isEditing])
 
-    async function onLoadBoards() {
-        loadBoards()
-    }
+    // async function onLoadBoards() {
+    //     loadBoards()
+    // }
 
-    async function onLoadBoard() {
-        loadBoard(boardId)
-        // const boardFromDb = await boardService.getById(boardId)
-        // setBoard(boardFromDb)
-    }
+    // async function onLoadBoard() {
+    //     loadBoard(boardId)
+    //     // const boardFromDb = await boardService.getById(boardId)
+    //     // setBoard(boardFromDb)
+    // }
 
     async function onRemoveBoard(boardId) {
         try {
@@ -62,28 +64,26 @@ export function BoardIndex() {
         }
     }
 
-
-
     async function addList(group) {
+        console.log(group)
         try {
-            const updatedBoard = await groupService.saveGroup(group, boardId)
-            dispatch({ type: SET_BOARD, board: updatedBoard })
+            await saveGroup(group, boardId)
+            // setIsEditing(!isEditing)
 
+            // dispatch({ type: SET_BOARD, board: updatedBoard })
         } catch (err) {
-            console.log(err);
-        } finally {
-            onLoadBoards()
-            onLoadBoard()
-            console.log('dsfgdfgdfgdf');
+            console.log(err)
         }
+        //  finally {
+        //     loadBoards()
+        //     loadBoard(boardId)
+        // }
     }
 
     async function removeGroup(group) {
         const updatedBoard = await groupService.removeGroup(group.id, boardId)
         dispatch({ type: SET_BOARD, board: updatedBoard })
     }
-
-
 
     if (!board) return
     return (
@@ -93,7 +93,12 @@ export function BoardIndex() {
                 <BoardHeader />
                 <main className="board-content">
                     {board.groups.map((group) => (
-                        <GroupDetails boardId={boardId} removeGroup={removeGroup} group={group} key={group.id} />
+                        <GroupDetails
+                            boardId={boardId}
+                            removeGroup={removeGroup}
+                            group={group}
+                            key={group.id}
+                        />
                     ))}
                     <AddGroup addList={addList} />
                 </main>
