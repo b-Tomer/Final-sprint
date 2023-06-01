@@ -4,8 +4,8 @@
     border-radius: $radius;
     background-color: $clr2;
     width: $groupWidth ;
+ 
 
-    // padding: ;
     .group-header {
         padding: 14px 8px;
         display: flex;
@@ -34,6 +34,7 @@
         }
 
     }
+
 
     .group-content {
         display: flex;
@@ -67,6 +68,11 @@
 
 }
 
+.task-container {
+    display: flex;
+    flex-direction: column;
+}
+
 .add-group-container {
     display: flex;
     // align-content: center ;
@@ -80,43 +86,13 @@
 
     .add-list-content-closed {
         cursor: pointer;
-
-
     }
 
     .add-list-content-opened {
-        width: 100%;
-        .add-item {
-            background-color: #0079bf;
-            color: #fff;
-            margin-right: 4px;
-            border: none;
-            border-radius: 3px;
-            font-size: 14px;
-            height: 32px;
-            padding: 6px 12px;
-        }
-
-            .svg-holder {
-                align-items: center;
-                display: inline-flex;
-                height: 2rem;
-                justify-content: center;
-                width: 2rem;
-                background-color: inherit;
-                padding: 0;
-            }
-
-            .icon-big{
-                width: 2rem;
-                height: 2rem;
-            }
-            .add-btns{
-                display: flex;
-                
-            }
-
+        width: 100%;    
     }
+
+    
 
     .add-list-input {
         background-color: #fff;
@@ -140,4 +116,47 @@
     path {
         fill: $clr5;
     }
+}
+
+.add-item-btn {
+    background-color: $clrBTN;
+    color: #fff;
+    margin-right: 4px;
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+    height: 32px;
+    padding: 6px 12px;
+
+    &:hover {
+        background-color: $clrBtnH;
+    }
+}
+.icon-big {
+    width: 2rem;
+    height: 2rem;
+}
+
+.add-btns {
+    display: flex;
+    .svg-holder {
+        align-items: center;
+        display: inline-flex;
+        height: 2rem;
+        justify-content: center;
+        width: 2rem;
+        background-color: inherit;
+        padding: 0;
+    }
+}
+
+   
+.txt-container{
+    padding: 8px 8px 4px 12px;
+    text-decoration: none;
+    color: $clr7;
+    border-radius: 3px;
+    border: none;
+    box-shadow: 0px 1px 1px #091E4240, 0px 0px 1px #091E424F, none;
+    margin-bottom:8px ;
 }

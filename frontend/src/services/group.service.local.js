@@ -1,81 +1,47 @@
-
-import { storageService } from './async-storage.service.js'
-import { utilService } from './util.service.js'
-import { userService } from './user.service.js'
-
-const STORAGE_KEY = 'group'
+import { boardService } from "./board.service.local";
+import { utilService } from "./util.service";
 
 export const groupService = {
-    query,
-    getById,
-    save,
-    remove,
-    getEmptyGroup,
-    addGroupMsg
-}
-window.cs = groupService
-
-
-async function query(filterBy = { txt: '', price: 0 }) {
-    var groups = await storageService.query(STORAGE_KEY)
-    if (filterBy.txt) {
-        const regex = new RegExp(filterBy.txt, 'i')
-        groups = groups.filter(group => regex.test(group.vendor) || regex.test(group.description))
-    }
-    if (filterBy.price) {
-        groups = groups.filter(group => group.price <= filterBy.price)
-    }
-    return groups
+    saveGroup,
+    removeGroup,
+    setGroups
 }
 
-function getById(groupId) {
-    return storageService.get(STORAGE_KEY, groupId)
-}
 
-async function remove(groupId) {
-    // throw new Error('Nope')
-    await storageService.remove(STORAGE_KEY, groupId)
-}
 
-async function save(group) {
-    var savedGroup
-    if (group._id) {
-        savedGroup = await storageService.put(STORAGE_KEY, group)
+async function saveGroup(groupTitle, boardId, groupId) {
+    if (groupId) {
+        let board = await boardService.getById(boardId)
+        const idx = board.groups.findIndex(group => groupId === group.id)
+        board.groups[idx].title = groupTitle
+        boardService.save(board)
+        return board
     } else {
-        // Later, owner is set by the backend
-        group.owner = userService.getLoggedinUser()
-        savedGroup = await storageService.post(STORAGE_KEY, group)
-    }
-    return savedGroup
-}
-
-async function addGroupMsg(groupId, txt) {
-    // Later, this is all done by the backend
-    const group = await getById(groupId)
-    if (!group.msgs) group.msgs = []
-
-    const msg = {
-        id: utilService.makeId(),
-        by: userService.getLoggedinUser(),
-        txt
-    }
-    group.msgs.push(msg)
-    await storageService.put(STORAGE_KEY, group)
-
-    return msg
-}
-
-function getEmptyGroup() {
-    return {
-        vendor: 'Susita-' + (Date.now() % 1000),
-        price: utilService.getRandomIntInclusive(1000, 9000),
+        const group = {title: groupTitle}
+        group.id = utilService.makeId()
+        group.tasks = []
+        const board = await boardService.getById(boardId)
+        board.groups.push(group)
+        boardService.save(board)
+        return board
     }
 }
 
+async function removeGroup(groupId, boardId) {
+    const board = await boardService.getById(boardId)
+    const idx = board.groups.findIndex(group => group.id === groupId)
+    board.groups.splice(idx, 1)
+    boardService.save(board)
+    return board
+}
 
-// TEST DATA
-// storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 2', price: 980}).then(x => console.log(x))
-
-
-
-
+async function setGroups(boardId, groups) {
+    try {
+        const board = await boardService.getById(boardId)
+        board.groups = groups
+        boardService.save(board)
+        return board
+    } catch (err) {
+        console.log('err', err);
+    }
+}
