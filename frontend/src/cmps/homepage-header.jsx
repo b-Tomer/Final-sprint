@@ -1,7 +1,7 @@
 import { ReactComponent as Logo } from '../assets/img/hompageLogo.svg'
 import { ReactComponent as Down } from '../assets/img/icons/down.svg'
 
-export function HomepageHeader() {
+export function HomepageHeader({ handleclick }) {
     return (
         <div className="homepage-header-container">
             <div className="homepage-header-logo">
@@ -29,8 +29,15 @@ export function HomepageHeader() {
                     <Down className="homepage-header-icon" />
                 </button>
             </nav>
-            <nav className="homepage-header-actions"></nav>
-            <div className="homepage-header-actions"></div>
+            <nav className="homepage-header-actions">
+                <button className="homepage-header-btn">Log in</button>
+                <button
+                    onClick={handleclick}
+                    className="homepage-header-btn try"
+                >
+                    Try the demo!
+                </button>
+            </nav>
         </div>
     )
 }
