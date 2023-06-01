@@ -12,8 +12,8 @@ import { boardService } from '../services/board.service.local.js'
 import { useParams } from 'react-router-dom'
 
 export function BoardIndex() {
-    // const boards = useSelector(storeState => storeState.boardModule.boards)
-    const dispatch = useDispatch()
+    const boards = useSelector((storeState) => storeState.boardModule.boards)
+    // const dispatch = useDispatch()
     const { boardId } = useParams()
     const { board } = useSelector((storeState) => storeState.boardModule)
 
@@ -22,7 +22,7 @@ export function BoardIndex() {
     }, [])
 
     function onLoadBoard() {
-        dispatch(loadBoard(boardId))
+        loadBoard(boardId)
     }
 
     async function onRemoveBoard(boardId) {
@@ -48,6 +48,7 @@ export function BoardIndex() {
 
     return (
         <section className="board-container">
+            {JSON.stringify(board)}
             {/* <h3>Board {board.title}</h3> */}
             <main></main>
         </section>

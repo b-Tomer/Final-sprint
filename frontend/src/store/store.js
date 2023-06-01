@@ -1,4 +1,4 @@
-import { createStore, combineReducers } from 'redux'
+import { legacy_createStore as createStore, combineReducers } from 'redux'
 
 import { boardReducer } from './board.reducer.js'
 import { userReducer } from './user.reducer.js'
