@@ -1,0 +1,37 @@
+.homepage-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    line-height: 30px;
+    position: fixed;
+    background-color: $clr1;
+    color: $clrHTXT;
+    z-index: 1;
+    color: $clr7;
+    .homepage-header-logo {
+        line-height: 30px;
+        padding: 16px;
+        padding-block-start: 25px;
+    }
+    .homepage-header-nav {
+        display: flex;
+        .homepage-header-btn {
+            display: flex;
+            align-content: center;
+            background-color: transparent;
+            font-size: 1rem;
+            color: $clr7;
+            .homepage-header-icon {
+                width: 15px;
+                height: 10px;
+                font-size: 1rem;
+                path {
+                    fill: $clr7;
+                }
+            }
+        }
+    }
+}
