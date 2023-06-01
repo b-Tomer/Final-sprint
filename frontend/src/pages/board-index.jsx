@@ -14,16 +14,24 @@ import { GroupDetails } from '../cmps/group-details.jsx'
 
 export function BoardIndex() {
     const boards = useSelector((storeState) => storeState.boardModule.boards)
-    // const dispatch = useDispatch()
     const { boardId } = useParams()
-    // const { board } = useSelector((storeState) => storeState.boardModule)
-    const [board, setBoard] = useState(null)
+    const { board } = useSelector((storeState) => storeState.boardModule)
+
     useEffect(() => {
+        onLoadBoards()
         onLoadBoard()
     }, [])
 
-    function onLoadBoard() {
+
+    async function onLoadBoards() {
+        loadBoards()
+    }
+    
+    async function onLoadBoard() {
+
         loadBoard(boardId)
+        // const boardFromDb = await boardService.getById(boardId)
+        // setBoard(boardFromDb)
     }
 
     async function onRemoveBoard(boardId) {
@@ -49,9 +57,12 @@ export function BoardIndex() {
     if (!board) return
     return (
         <section className="board-container">
-            {JSON.stringify(board)}
-            {/* <h3>Board {board.title}</h3> */}
-            <main></main>
+
+            <main className='board-content'>
+            {board.groups.map(group =>
+                <GroupDetails group={group} key={group.id} />
+            )}
+            </main>
         </section>
     )
 }
