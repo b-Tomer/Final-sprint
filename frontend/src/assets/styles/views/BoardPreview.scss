@@ -1,0 +1,86 @@
+.muilty-boards-container {
+    margin-top: 30px;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+
+}
+
+.starred-board-title {
+    h3 {
+        display: block;
+        font-size: 1.17em;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        font-weight: bold;
+    }
+}
+
+// .starred-btn {
+//     path {
+//         fill: black
+//     }
+// }
+
+.starred-boards-container,
+.recently-viewed-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+
+}
+
+.starred-boards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+
+
+    // flex-wrap: wrap;
+
+}
+
+
+.board-preview {
+    overflow: hidden;
+    position: relative;
+    border-radius: 3px;
+    color: #fff;
+    font-size: .8547em;
+    height: 96px;
+    width: 194px;
+
+
+    h1 {
+        margin-top: 5px;
+        margin-left: 5px;
+        position: absolute;
+        margin-left: 10px;
+    }
+
+    &:hover {
+
+        background-color: rgba(0, 0, 0, .27);
+        border-radius: 3px;
+        cursor: pointer;
+        // bottom: 0;
+        // left: 0;
+        // position: absolute;
+        // right: 0;
+        // top: 0;
+    }
+}
+
+.background-img {
+    width: 100%;
+    height: auto;
+}
+
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+}

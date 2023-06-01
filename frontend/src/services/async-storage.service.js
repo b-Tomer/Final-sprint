@@ -1,142 +1,1396 @@
-const gBoards = [{
-    _id: "b101",
-    title: "Robot dev proj",
-    isStarred: false,
-    archivedAt: 1589983468418,
-    createdBy: {
-        "_id": "u101",
-        "fullname": "Abi Abambi",
-        "imgUrl": "http://some-img"
-    },
-    style: {
-        backgroundImage: ""
-    },
-    labels: [
-        {
-            "id": "l101",
-            "title": "Done",
-            "color": "#61bd4f"
-        },
-        {
-            "id": "l102",
-            "title": "Progress",
-            "color": "#61bd33"
-        }
-    ],
-    members: [
-        {
+const gBoards = [
+    {
+        _id: "b101",
+        title: "Robot dev proj",
+        isStarred: true,
+        archivedAt: 1589983468418,
+        createdBy: {
             "_id": "u101",
-            "fullname": "Tal Tarablus",
-            "imgUrl": "https://www.google.com"
-        }
-    ],
-    groups: [
-        {
-            "id": "g101",
-            "title": "Group 1",
-            "archivedAt": 1589983468418,
-            "tasks": [
-                {
-                    "id": "c101",
-                    "title": "Replace logo"
-                },
-                {
-                    "id": "c102",
-                    "title": "Add Samples"
-                }
-            ],
-            "style": {}
+            "fullname": "Abi Abambi",
+            "imgUrl": "http://some-img"
         },
-        {
-            "id": "g102",
-            "title": "Group 2",
-            "tasks": [
-                {
-                    "id": "c103",
-                    "title": "Do that",
-                    "archivedAt": 1589983468418,
-                },
-                {
-                    "id": "c104",
-                    "title": "Help me",
-                    "status": "in-progress", // monday
-                    "priority": "high",
-                    "description": "description",
-                    "members": [
-                        {
-                            "_id": "u101",
-                            "username": "Santa",
-                            "fullname": "Santa Tarablus",
-                            "imgUrl": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fpng.pngtree.com%2Fpng-vector%2F20220119%2Fourmid%2Fpngtree-penguin-animal-small-avatar-illustration-design-png-image_4323463.png&tbnid=K-Aa9mf_l2LAiM&vet=12ahUKEwjJ8Ir2zaH_AhXppycCHa4nA2QQMygIegUIARDeAQ..i&imgrefurl=https%3A%2F%2Fpngtree.com%2Fso%2Fsmall-avatar&docid=K-MkTSAPyY_nLM&w=360&h=360&q=avatar%20small%20img&ved=2ahUKEwjJ8Ir2zaH_AhXppycCHa4nA2QQMygIegUIARDeAQ"
-                        },
-                        {
-                            "_id": "u102",
-                            "fullname": "Adi Alamdi",
-                            "imgUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpngtree.com%2Fso%2Fsmall-avatar&psig=AOvVaw1iSnZ2a4a8Q1lScVk8B20w&ust=1685692982567000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCLimuu7Nof8CFQAAAAAdAAAAABAE"
-                        }
-                    ]
-                    ,
-                    "comments": [
-                        {
-                            "id": "ZdPnm",
-                            "txt": "also @yaronb please CR this",
-                            "createdAt": 1590999817436,
-                            "byMember": {
-                                "_id": "u101",
-                                "fullname": "Tal Tarablus",
-                                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                            }
-                        }
-                    ],
-                    "checklists": [
-                        {
-                            "id": "YEhmF",
-                            "title": "Checklist",
-                            "todos": [
-                                {
-                                    "id": "212jX",
-                                    "title": "To Do 1",
-                                    "isDone": false
-                                }
-                            ]
-                        }
-                    ],
-                    "memberIds": ["u101"],
-                    "labelIds": ["l101", "l102"],
-                    "dueDate": 16156215211,
-                    "byMember": {
-                        "_id": "u101",
-                        "username": "Tal",
-                        "fullname": "Tal Tarablus",
-                        "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                    },
-                    "style": {
-                        "bgColor": "#26de81"
-                    }
-                }
-            ],
-            "style": {}
-        }
-    ],
-    activities: [
-        {
-            "id": "a101",
-            "txt": "Changed Color",
-            "createdAt": 154514,
-            "byMember": {
-                "_id": "u101",
-                "fullname": "Abi Abambi",
-                "imgUrl": "http://some-img"
+        style: {
+            backgroundImage: ""
+        },
+        labels: [
+            {
+                "id": "l101",
+                "title": "Done",
+                "color": "#61bd4f"
             },
-            "task": {
-                "id": "c101",
-                "title": "Replace Logo"
+            {
+                "id": "l102",
+                "title": "Progress",
+                "color": "#61bd33"
             }
-        }
-    ],
+        ],
+        members: [
+            {
+                "_id": "u101",
+                "fullname": "Tal Tarablus",
+                "imgUrl": "https://www.google.com"
+            }
+        ],
+        groups: [
+            {
+                "id": "g101",
+                "title": "Group 1",
+                "archivedAt": 1589983468418,
+                "tasks": [
+                    {
+                        "id": "c101",
+                        "title": "Replace logo"
+                    },
+                    {
+                        "id": "c102",
+                        "title": "Add Samples"
+                    }
+                ],
+                "style": {}
+            },
+            {
+                "id": "g102",
+                "title": "Group 2",
+                "tasks": [
+                    {
+                        "id": "c103",
+                        "title": "Do that",
+                        "archivedAt": 1589983468418,
+                    },
+                    {
+                        "id": "c104",
+                        "title": "Help me",
+                        "status": "in-progress", // monday
+                        "priority": "high",
+                        "description": "description",
+                        "members": [
+                            {
+                                "_id": "u101",
+                                "username": "Santa",
+                                "fullname": "Santa Tarablus",
+                                "imgUrl": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fpng.pngtree.com%2Fpng-vector%2F20220119%2Fourmid%2Fpngtree-penguin-animal-small-avatar-illustration-design-png-image_4323463.png&tbnid=K-Aa9mf_l2LAiM&vet=12ahUKEwjJ8Ir2zaH_AhXppycCHa4nA2QQMygIegUIARDeAQ..i&imgrefurl=https%3A%2F%2Fpngtree.com%2Fso%2Fsmall-avatar&docid=K-MkTSAPyY_nLM&w=360&h=360&q=avatar%20small%20img&ved=2ahUKEwjJ8Ir2zaH_AhXppycCHa4nA2QQMygIegUIARDeAQ"
+                            },
+                            {
+                                "_id": "u102",
+                                "fullname": "Adi Alamdi",
+                                "imgUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpngtree.com%2Fso%2Fsmall-avatar&psig=AOvVaw1iSnZ2a4a8Q1lScVk8B20w&ust=1685692982567000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCLimuu7Nof8CFQAAAAAdAAAAABAE"
+                            }
+                        ]
+                        ,
+                        "comments": [
+                            {
+                                "id": "ZdPnm",
+                                "txt": "also @yaronb please CR this",
+                                "createdAt": 1590999817436,
+                                "byMember": {
+                                    "_id": "u101",
+                                    "fullname": "Tal Tarablus",
+                                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                                }
+                            }
+                        ],
+                        "checklists": [
+                            {
+                                "id": "YEhmF",
+                                "title": "Checklist",
+                                "todos": [
+                                    {
+                                        "id": "212jX",
+                                        "title": "To Do 1",
+                                        "isDone": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "memberIds": ["u101"],
+                        "labelIds": ["l101", "l102"],
+                        "dueDate": 16156215211,
+                        "byMember": {
+                            "_id": "u101",
+                            "username": "Tal",
+                            "fullname": "Tal Tarablus",
+                            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                        },
+                        "style": {
+                            "bgColor": "#26de81"
+                        }
+                    }
+                ],
+                "style": {}
+            }
+        ],
+        activities: [
+            {
+                "id": "a101",
+                "txt": "Changed Color",
+                "createdAt": 154514,
+                "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "http://some-img"
+                },
+                "task": {
+                    "id": "c101",
+                    "title": "Replace Logo"
+                }
+            }
+        ],
 
-    cmpsOrder: ["status-picker", "member-picker", "date-picker"]
-}]
+        cmpsOrder: ["status-picker", "member-picker", "date-picker"]
+    },
+    {
+        _id: "b102",
+        title: "2022's Goals",
+        isStarred: true,
+        archivedAt: 1589983468418,
+        createdBy: {
+            "_id": "u101",
+            "fullname": "Abi Abambi",
+            "imgUrl": "http://some-img"
+        },
+        style: {
+            backgroundImage: ""
+        },
+        labels: [
+            {
+                "id": "l101",
+                "title": "Done",
+                "color": "#61bd4f"
+            },
+            {
+                "id": "l102",
+                "title": "Progress",
+                "color": "#61bd33"
+            }
+        ],
+        members: [
+            {
+                "_id": "u101",
+                "fullname": "Tal Tarablus",
+                "imgUrl": "https://www.google.com"
+            }
+        ],
+        groups: [
+            {
+                "id": "g101",
+                "title": "Group 1",
+                "archivedAt": 1589983468418,
+                "tasks": [
+                    {
+                        "id": "c101",
+                        "title": "Replace logo"
+                    },
+                    {
+                        "id": "c102",
+                        "title": "Add Samples"
+                    }
+                ],
+                "style": {}
+            },
+            {
+                "id": "g102",
+                "title": "Group 2",
+                "tasks": [
+                    {
+                        "id": "c103",
+                        "title": "Do that",
+                        "archivedAt": 1589983468418,
+                    },
+                    {
+                        "id": "c104",
+                        "title": "Help me",
+                        "status": "in-progress", // monday
+                        "priority": "high",
+                        "description": "description",
+                        "members": [
+                            {
+                                "_id": "u101",
+                                "username": "Santa",
+                                "fullname": "Santa Tarablus",
+                                "imgUrl": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fpng.pngtree.com%2Fpng-vector%2F20220119%2Fourmid%2Fpngtree-penguin-animal-small-avatar-illustration-design-png-image_4323463.png&tbnid=K-Aa9mf_l2LAiM&vet=12ahUKEwjJ8Ir2zaH_AhXppycCHa4nA2QQMygIegUIARDeAQ..i&imgrefurl=https%3A%2F%2Fpngtree.com%2Fso%2Fsmall-avatar&docid=K-MkTSAPyY_nLM&w=360&h=360&q=avatar%20small%20img&ved=2ahUKEwjJ8Ir2zaH_AhXppycCHa4nA2QQMygIegUIARDeAQ"
+                            },
+                            {
+                                "_id": "u102",
+                                "fullname": "Adi Alamdi",
+                                "imgUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpngtree.com%2Fso%2Fsmall-avatar&psig=AOvVaw1iSnZ2a4a8Q1lScVk8B20w&ust=1685692982567000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCLimuu7Nof8CFQAAAAAdAAAAABAE"
+                            }
+                        ]
+                        ,
+                        "comments": [
+                            {
+                                "id": "ZdPnm",
+                                "txt": "also @yaronb please CR this",
+                                "createdAt": 1590999817436,
+                                "byMember": {
+                                    "_id": "u101",
+                                    "fullname": "Tal Tarablus",
+                                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                                }
+                            }
+                        ],
+                        "checklists": [
+                            {
+                                "id": "YEhmF",
+                                "title": "Checklist",
+                                "todos": [
+                                    {
+                                        "id": "212jX",
+                                        "title": "To Do 1",
+                                        "isDone": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "memberIds": ["u101"],
+                        "labelIds": ["l101", "l102"],
+                        "dueDate": 16156215211,
+                        "byMember": {
+                            "_id": "u101",
+                            "username": "Tal",
+                            "fullname": "Tal Tarablus",
+                            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                        },
+                        "style": {
+                            "bgColor": "#26de81"
+                        }
+                    }
+                ],
+                "style": {}
+            }
+        ],
+        activities: [
+            {
+                "id": "a101",
+                "txt": "Changed Color",
+                "createdAt": 154514,
+                "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "http://some-img"
+                },
+                "task": {
+                    "id": "c101",
+                    "title": "Replace Logo"
+                }
+            }
+        ],
+
+        cmpsOrder: ["status-picker", "member-picker", "date-picker"]
+    },
+    {
+        _id: "b103",
+        title: "Upcoming Week",
+        isStarred: false,
+        archivedAt: 1589983468418,
+        createdBy: {
+            "_id": "u101",
+            "fullname": "Abi Abambi",
+            "imgUrl": "http://some-img"
+        },
+        style: {
+            backgroundImage: ""
+        },
+        labels: [
+            {
+                "id": "l101",
+                "title": "Done",
+                "color": "#61bd4f"
+            },
+            {
+                "id": "l102",
+                "title": "Progress",
+                "color": "#61bd33"
+            }
+        ],
+        members: [
+            {
+                "_id": "u101",
+                "fullname": "Tal Tarablus",
+                "imgUrl": "https://www.google.com"
+            }
+        ],
+        groups: [
+            {
+                "id": "g101",
+                "title": "Group 1",
+                "archivedAt": 1589983468418,
+                "tasks": [
+                    {
+                        "id": "c101",
+                        "title": "Replace logo"
+                    },
+                    {
+                        "id": "c102",
+                        "title": "Add Samples"
+                    }
+                ],
+                "style": {}
+            },
+            {
+                "id": "g102",
+                "title": "Group 2",
+                "tasks": [
+                    {
+                        "id": "c103",
+                        "title": "Do that",
+                        "archivedAt": 1589983468418,
+                    },
+                    {
+                        "id": "c104",
+                        "title": "Help me",
+                        "status": "in-progress", // monday
+                        "priority": "high",
+                        "description": "description",
+                        "members": [
+                            {
+                                "_id": "u101",
+                                "username": "Santa",
+                                "fullname": "Santa Tarablus",
+                                "imgUrl": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fpng.pngtree.com%2Fpng-vector%2F20220119%2Fourmid%2Fpngtree-penguin-animal-small-avatar-illustration-design-png-image_4323463.png&tbnid=K-Aa9mf_l2LAiM&vet=12ahUKEwjJ8Ir2zaH_AhXppycCHa4nA2QQMygIegUIARDeAQ..i&imgrefurl=https%3A%2F%2Fpngtree.com%2Fso%2Fsmall-avatar&docid=K-MkTSAPyY_nLM&w=360&h=360&q=avatar%20small%20img&ved=2ahUKEwjJ8Ir2zaH_AhXppycCHa4nA2QQMygIegUIARDeAQ"
+                            },
+                            {
+                                "_id": "u102",
+                                "fullname": "Adi Alamdi",
+                                "imgUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpngtree.com%2Fso%2Fsmall-avatar&psig=AOvVaw1iSnZ2a4a8Q1lScVk8B20w&ust=1685692982567000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCLimuu7Nof8CFQAAAAAdAAAAABAE"
+                            }
+                        ]
+                        ,
+                        "comments": [
+                            {
+                                "id": "ZdPnm",
+                                "txt": "also @yaronb please CR this",
+                                "createdAt": 1590999817436,
+                                "byMember": {
+                                    "_id": "u101",
+                                    "fullname": "Tal Tarablus",
+                                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                                }
+                            }
+                        ],
+                        "checklists": [
+                            {
+                                "id": "YEhmF",
+                                "title": "Checklist",
+                                "todos": [
+                                    {
+                                        "id": "212jX",
+                                        "title": "To Do 1",
+                                        "isDone": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "memberIds": ["u101"],
+                        "labelIds": ["l101", "l102"],
+                        "dueDate": 16156215211,
+                        "byMember": {
+                            "_id": "u101",
+                            "username": "Tal",
+                            "fullname": "Tal Tarablus",
+                            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                        },
+                        "style": {
+                            "bgColor": "#26de81"
+                        }
+                    }
+                ],
+                "style": {}
+            }
+        ],
+        activities: [
+            {
+                "id": "a101",
+                "txt": "Changed Color",
+                "createdAt": 154514,
+                "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "http://some-img"
+                },
+                "task": {
+                    "id": "c101",
+                    "title": "Replace Logo"
+                }
+            }
+        ],
+
+        cmpsOrder: ["status-picker", "member-picker", "date-picker"]
+    },
+    {
+        _id: "b104",
+        title: "Project X",
+        isStarred: false,
+        archivedAt: 1589983468418,
+        createdBy: {
+            "_id": "u101",
+            "fullname": "Abi Abambi",
+            "imgUrl": "http://some-img"
+        },
+        style: {
+            backgroundImage: ""
+        },
+        labels: [
+            {
+                "id": "l101",
+                "title": "Done",
+                "color": "#61bd4f"
+            },
+            {
+                "id": "l102",
+                "title": "Progress",
+                "color": "#61bd33"
+            }
+        ],
+        members: [
+            {
+                "_id": "u101",
+                "fullname": "Tal Tarablus",
+                "imgUrl": "https://www.google.com"
+            }
+        ],
+        groups: [
+            {
+                "id": "g101",
+                "title": "Group 1",
+                "archivedAt": 1589983468418,
+                "tasks": [
+                    {
+                        "id": "c101",
+                        "title": "Replace logo"
+                    },
+                    {
+                        "id": "c102",
+                        "title": "Add Samples"
+                    }
+                ],
+                "style": {}
+            },
+            {
+                "id": "g102",
+                "title": "Group 2",
+                "tasks": [
+                    {
+                        "id": "c103",
+                        "title": "Do that",
+                        "archivedAt": 1589983468418,
+                    },
+                    {
+                        "id": "c104",
+                        "title": "Help me",
+                        "status": "in-progress", // monday
+                        "priority": "high",
+                        "description": "description",
+                        "members": [
+                            {
+                                "_id": "u101",
+                                "username": "Santa",
+                                "fullname": "Santa Tarablus",
+                                "imgUrl": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fpng.pngtree.com%2Fpng-vector%2F20220119%2Fourmid%2Fpngtree-penguin-animal-small-avatar-illustration-design-png-image_4323463.png&tbnid=K-Aa9mf_l2LAiM&vet=12ahUKEwjJ8Ir2zaH_AhXppycCHa4nA2QQMygIegUIARDeAQ..i&imgrefurl=https%3A%2F%2Fpngtree.com%2Fso%2Fsmall-avatar&docid=K-MkTSAPyY_nLM&w=360&h=360&q=avatar%20small%20img&ved=2ahUKEwjJ8Ir2zaH_AhXppycCHa4nA2QQMygIegUIARDeAQ"
+                            },
+                            {
+                                "_id": "u102",
+                                "fullname": "Adi Alamdi",
+                                "imgUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpngtree.com%2Fso%2Fsmall-avatar&psig=AOvVaw1iSnZ2a4a8Q1lScVk8B20w&ust=1685692982567000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCLimuu7Nof8CFQAAAAAdAAAAABAE"
+                            }
+                        ]
+                        ,
+                        "comments": [
+                            {
+                                "id": "ZdPnm",
+                                "txt": "also @yaronb please CR this",
+                                "createdAt": 1590999817436,
+                                "byMember": {
+                                    "_id": "u101",
+                                    "fullname": "Tal Tarablus",
+                                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                                }
+                            }
+                        ],
+                        "checklists": [
+                            {
+                                "id": "YEhmF",
+                                "title": "Checklist",
+                                "todos": [
+                                    {
+                                        "id": "212jX",
+                                        "title": "To Do 1",
+                                        "isDone": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "memberIds": ["u101"],
+                        "labelIds": ["l101", "l102"],
+                        "dueDate": 16156215211,
+                        "byMember": {
+                            "_id": "u101",
+                            "username": "Tal",
+                            "fullname": "Tal Tarablus",
+                            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                        },
+                        "style": {
+                            "bgColor": "#26de81"
+                        }
+                    }
+                ],
+                "style": {}
+            }
+        ],
+        activities: [
+            {
+                "id": "a101",
+                "txt": "Changed Color",
+                "createdAt": 154514,
+                "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "http://some-img"
+                },
+                "task": {
+                    "id": "c101",
+                    "title": "Replace Logo"
+                }
+            }
+        ],
+
+        cmpsOrder: ["status-picker", "member-picker", "date-picker"]
+    },
+    {
+        _id: "b105",
+        title: "Fun Stuff",
+        isStarred: false,
+        archivedAt: 1589983468418,
+        createdBy: {
+            "_id": "u101",
+            "fullname": "Abi Abambi",
+            "imgUrl": "http://some-img"
+        },
+        style: {
+            backgroundImage: ""
+        },
+        labels: [
+            {
+                "id": "l101",
+                "title": "Done",
+                "color": "#61bd4f"
+            },
+            {
+                "id": "l102",
+                "title": "Progress",
+                "color": "#61bd33"
+            }
+        ],
+        members: [
+            {
+                "_id": "u101",
+                "fullname": "Tal Tarablus",
+                "imgUrl": "https://www.google.com"
+            }
+        ],
+        groups: [
+            {
+                "id": "g101",
+                "title": "Group 1",
+                "archivedAt": 1589983468418,
+                "tasks": [
+                    {
+                        "id": "c101",
+                        "title": "Replace logo"
+                    },
+                    {
+                        "id": "c102",
+                        "title": "Add Samples"
+                    }
+                ],
+                "style": {}
+            },
+            {
+                "id": "g102",
+                "title": "Group 2",
+                "tasks": [
+                    {
+                        "id": "c103",
+                        "title": "Do that",
+                        "archivedAt": 1589983468418,
+                    },
+                    {
+                        "id": "c104",
+                        "title": "Help me",
+                        "status": "in-progress", // monday
+                        "priority": "high",
+                        "description": "description",
+                        "members": [
+                            {
+                                "_id": "u101",
+                                "username": "Santa",
+                                "fullname": "Santa Tarablus",
+                                "imgUrl": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fpng.pngtree.com%2Fpng-vector%2F20220119%2Fourmid%2Fpngtree-penguin-animal-small-avatar-illustration-design-png-image_4323463.png&tbnid=K-Aa9mf_l2LAiM&vet=12ahUKEwjJ8Ir2zaH_AhXppycCHa4nA2QQMygIegUIARDeAQ..i&imgrefurl=https%3A%2F%2Fpngtree.com%2Fso%2Fsmall-avatar&docid=K-MkTSAPyY_nLM&w=360&h=360&q=avatar%20small%20img&ved=2ahUKEwjJ8Ir2zaH_AhXppycCHa4nA2QQMygIegUIARDeAQ"
+                            },
+                            {
+                                "_id": "u102",
+                                "fullname": "Adi Alamdi",
+                                "imgUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpngtree.com%2Fso%2Fsmall-avatar&psig=AOvVaw1iSnZ2a4a8Q1lScVk8B20w&ust=1685692982567000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCLimuu7Nof8CFQAAAAAdAAAAABAE"
+                            }
+                        ]
+                        ,
+                        "comments": [
+                            {
+                                "id": "ZdPnm",
+                                "txt": "also @yaronb please CR this",
+                                "createdAt": 1590999817436,
+                                "byMember": {
+                                    "_id": "u101",
+                                    "fullname": "Tal Tarablus",
+                                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                                }
+                            }
+                        ],
+                        "checklists": [
+                            {
+                                "id": "YEhmF",
+                                "title": "Checklist",
+                                "todos": [
+                                    {
+                                        "id": "212jX",
+                                        "title": "To Do 1",
+                                        "isDone": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "memberIds": ["u101"],
+                        "labelIds": ["l101", "l102"],
+                        "dueDate": 16156215211,
+                        "byMember": {
+                            "_id": "u101",
+                            "username": "Tal",
+                            "fullname": "Tal Tarablus",
+                            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                        },
+                        "style": {
+                            "bgColor": "#26de81"
+                        }
+                    }
+                ],
+                "style": {}
+            }
+        ],
+        activities: [
+            {
+                "id": "a101",
+                "txt": "Changed Color",
+                "createdAt": 154514,
+                "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "http://some-img"
+                },
+                "task": {
+                    "id": "c101",
+                    "title": "Replace Logo"
+                }
+            }
+        ],
+
+        cmpsOrder: ["status-picker", "member-picker", "date-picker"]
+    },
+    {
+        _id: "b106",
+        title: "Wish List",
+        isStarred: true,
+        archivedAt: 1589983468418,
+        createdBy: {
+            "_id": "u101",
+            "fullname": "Abi Abambi",
+            "imgUrl": "http://some-img"
+        },
+        style: {
+            backgroundImage: ""
+        },
+        labels: [
+            {
+                "id": "l101",
+                "title": "Done",
+                "color": "#61bd4f"
+            },
+            {
+                "id": "l102",
+                "title": "Progress",
+                "color": "#61bd33"
+            }
+        ],
+        members: [
+            {
+                "_id": "u101",
+                "fullname": "Tal Tarablus",
+                "imgUrl": "https://www.google.com"
+            }
+        ],
+        groups: [
+            {
+                "id": "g101",
+                "title": "Group 1",
+                "archivedAt": 1589983468418,
+                "tasks": [
+                    {
+                        "id": "c101",
+                        "title": "Replace logo"
+                    },
+                    {
+                        "id": "c102",
+                        "title": "Add Samples"
+                    }
+                ],
+                "style": {}
+            },
+            {
+                "id": "g102",
+                "title": "Group 2",
+                "tasks": [
+                    {
+                        "id": "c103",
+                        "title": "Do that",
+                        "archivedAt": 1589983468418,
+                    },
+                    {
+                        "id": "c104",
+                        "title": "Help me",
+                        "status": "in-progress", // monday
+                        "priority": "high",
+                        "description": "description",
+                        "members": [
+                            {
+                                "_id": "u101",
+                                "username": "Santa",
+                                "fullname": "Santa Tarablus",
+                                "imgUrl": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fpng.pngtree.com%2Fpng-vector%2F20220119%2Fourmid%2Fpngtree-penguin-animal-small-avatar-illustration-design-png-image_4323463.png&tbnid=K-Aa9mf_l2LAiM&vet=12ahUKEwjJ8Ir2zaH_AhXppycCHa4nA2QQMygIegUIARDeAQ..i&imgrefurl=https%3A%2F%2Fpngtree.com%2Fso%2Fsmall-avatar&docid=K-MkTSAPyY_nLM&w=360&h=360&q=avatar%20small%20img&ved=2ahUKEwjJ8Ir2zaH_AhXppycCHa4nA2QQMygIegUIARDeAQ"
+                            },
+                            {
+                                "_id": "u102",
+                                "fullname": "Adi Alamdi",
+                                "imgUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpngtree.com%2Fso%2Fsmall-avatar&psig=AOvVaw1iSnZ2a4a8Q1lScVk8B20w&ust=1685692982567000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCLimuu7Nof8CFQAAAAAdAAAAABAE"
+                            }
+                        ]
+                        ,
+                        "comments": [
+                            {
+                                "id": "ZdPnm",
+                                "txt": "also @yaronb please CR this",
+                                "createdAt": 1590999817436,
+                                "byMember": {
+                                    "_id": "u101",
+                                    "fullname": "Tal Tarablus",
+                                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                                }
+                            }
+                        ],
+                        "checklists": [
+                            {
+                                "id": "YEhmF",
+                                "title": "Checklist",
+                                "todos": [
+                                    {
+                                        "id": "212jX",
+                                        "title": "To Do 1",
+                                        "isDone": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "memberIds": ["u101"],
+                        "labelIds": ["l101", "l102"],
+                        "dueDate": 16156215211,
+                        "byMember": {
+                            "_id": "u101",
+                            "username": "Tal",
+                            "fullname": "Tal Tarablus",
+                            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                        },
+                        "style": {
+                            "bgColor": "#26de81"
+                        }
+                    }
+                ],
+                "style": {}
+            }
+        ],
+        activities: [
+            {
+                "id": "a101",
+                "txt": "Changed Color",
+                "createdAt": 154514,
+                "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "http://some-img"
+                },
+                "task": {
+                    "id": "c101",
+                    "title": "Replace Logo"
+                }
+            }
+        ],
+
+        cmpsOrder: ["status-picker", "member-picker", "date-picker"]
+    },
+    {
+        _id: "b107",
+        title: "React Seminar",
+        isStarred: false,
+        archivedAt: 1589983468418,
+        createdBy: {
+            "_id": "u101",
+            "fullname": "Abi Abambi",
+            "imgUrl": "http://some-img"
+        },
+        style: {
+            backgroundImage: ""
+        },
+        labels: [
+            {
+                "id": "l101",
+                "title": "Done",
+                "color": "#61bd4f"
+            },
+            {
+                "id": "l102",
+                "title": "Progress",
+                "color": "#61bd33"
+            }
+        ],
+        members: [
+            {
+                "_id": "u101",
+                "fullname": "Tal Tarablus",
+                "imgUrl": "https://www.google.com"
+            }
+        ],
+        groups: [
+            {
+                "id": "g101",
+                "title": "Group 1",
+                "archivedAt": 1589983468418,
+                "tasks": [
+                    {
+                        "id": "c101",
+                        "title": "Replace logo"
+                    },
+                    {
+                        "id": "c102",
+                        "title": "Add Samples"
+                    }
+                ],
+                "style": {}
+            },
+            {
+                "id": "g102",
+                "title": "Group 2",
+                "tasks": [
+                    {
+                        "id": "c103",
+                        "title": "Do that",
+                        "archivedAt": 1589983468418,
+                    },
+                    {
+                        "id": "c104",
+                        "title": "Help me",
+                        "status": "in-progress", // monday
+                        "priority": "high",
+                        "description": "description",
+                        "members": [
+                            {
+                                "_id": "u101",
+                                "username": "Santa",
+                                "fullname": "Santa Tarablus",
+                                "imgUrl": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fpng.pngtree.com%2Fpng-vector%2F20220119%2Fourmid%2Fpngtree-penguin-animal-small-avatar-illustration-design-png-image_4323463.png&tbnid=K-Aa9mf_l2LAiM&vet=12ahUKEwjJ8Ir2zaH_AhXppycCHa4nA2QQMygIegUIARDeAQ..i&imgrefurl=https%3A%2F%2Fpngtree.com%2Fso%2Fsmall-avatar&docid=K-MkTSAPyY_nLM&w=360&h=360&q=avatar%20small%20img&ved=2ahUKEwjJ8Ir2zaH_AhXppycCHa4nA2QQMygIegUIARDeAQ"
+                            },
+                            {
+                                "_id": "u102",
+                                "fullname": "Adi Alamdi",
+                                "imgUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpngtree.com%2Fso%2Fsmall-avatar&psig=AOvVaw1iSnZ2a4a8Q1lScVk8B20w&ust=1685692982567000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCLimuu7Nof8CFQAAAAAdAAAAABAE"
+                            }
+                        ]
+                        ,
+                        "comments": [
+                            {
+                                "id": "ZdPnm",
+                                "txt": "also @yaronb please CR this",
+                                "createdAt": 1590999817436,
+                                "byMember": {
+                                    "_id": "u101",
+                                    "fullname": "Tal Tarablus",
+                                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                                }
+                            }
+                        ],
+                        "checklists": [
+                            {
+                                "id": "YEhmF",
+                                "title": "Checklist",
+                                "todos": [
+                                    {
+                                        "id": "212jX",
+                                        "title": "To Do 1",
+                                        "isDone": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "memberIds": ["u101"],
+                        "labelIds": ["l101", "l102"],
+                        "dueDate": 16156215211,
+                        "byMember": {
+                            "_id": "u101",
+                            "username": "Tal",
+                            "fullname": "Tal Tarablus",
+                            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                        },
+                        "style": {
+                            "bgColor": "#26de81"
+                        }
+                    }
+                ],
+                "style": {}
+            }
+        ],
+        activities: [
+            {
+                "id": "a101",
+                "txt": "Changed Color",
+                "createdAt": 154514,
+                "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "http://some-img"
+                },
+                "task": {
+                    "id": "c101",
+                    "title": "Replace Logo"
+                }
+            }
+        ],
+
+        cmpsOrder: ["status-picker", "member-picker", "date-picker"]
+    },
+    {
+        _id: "b108",
+        title: "Sprint 4",
+        isStarred: true,
+        archivedAt: 1589983468418,
+        createdBy: {
+            "_id": "u101",
+            "fullname": "Abi Abambi",
+            "imgUrl": "http://some-img"
+        },
+        style: {
+            backgroundImage: ""
+        },
+        labels: [
+            {
+                "id": "l101",
+                "title": "Done",
+                "color": "#61bd4f"
+            },
+            {
+                "id": "l102",
+                "title": "Progress",
+                "color": "#61bd33"
+            }
+        ],
+        members: [
+            {
+                "_id": "u101",
+                "fullname": "Tal Tarablus",
+                "imgUrl": "https://www.google.com"
+            }
+        ],
+        groups: [
+            {
+                "id": "g101",
+                "title": "Group 1",
+                "archivedAt": 1589983468418,
+                "tasks": [
+                    {
+                        "id": "c101",
+                        "title": "Replace logo"
+                    },
+                    {
+                        "id": "c102",
+                        "title": "Add Samples"
+                    }
+                ],
+                "style": {}
+            },
+            {
+                "id": "g102",
+                "title": "Group 2",
+                "tasks": [
+                    {
+                        "id": "c103",
+                        "title": "Do that",
+                        "archivedAt": 1589983468418,
+                    },
+                    {
+                        "id": "c104",
+                        "title": "Help me",
+                        "status": "in-progress", // monday
+                        "priority": "high",
+                        "description": "description",
+                        "members": [
+                            {
+                                "_id": "u101",
+                                "username": "Santa",
+                                "fullname": "Santa Tarablus",
+                                "imgUrl": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fpng.pngtree.com%2Fpng-vector%2F20220119%2Fourmid%2Fpngtree-penguin-animal-small-avatar-illustration-design-png-image_4323463.png&tbnid=K-Aa9mf_l2LAiM&vet=12ahUKEwjJ8Ir2zaH_AhXppycCHa4nA2QQMygIegUIARDeAQ..i&imgrefurl=https%3A%2F%2Fpngtree.com%2Fso%2Fsmall-avatar&docid=K-MkTSAPyY_nLM&w=360&h=360&q=avatar%20small%20img&ved=2ahUKEwjJ8Ir2zaH_AhXppycCHa4nA2QQMygIegUIARDeAQ"
+                            },
+                            {
+                                "_id": "u102",
+                                "fullname": "Adi Alamdi",
+                                "imgUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpngtree.com%2Fso%2Fsmall-avatar&psig=AOvVaw1iSnZ2a4a8Q1lScVk8B20w&ust=1685692982567000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCLimuu7Nof8CFQAAAAAdAAAAABAE"
+                            }
+                        ]
+                        ,
+                        "comments": [
+                            {
+                                "id": "ZdPnm",
+                                "txt": "also @yaronb please CR this",
+                                "createdAt": 1590999817436,
+                                "byMember": {
+                                    "_id": "u101",
+                                    "fullname": "Tal Tarablus",
+                                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                                }
+                            }
+                        ],
+                        "checklists": [
+                            {
+                                "id": "YEhmF",
+                                "title": "Checklist",
+                                "todos": [
+                                    {
+                                        "id": "212jX",
+                                        "title": "To Do 1",
+                                        "isDone": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "memberIds": ["u101"],
+                        "labelIds": ["l101", "l102"],
+                        "dueDate": 16156215211,
+                        "byMember": {
+                            "_id": "u101",
+                            "username": "Tal",
+                            "fullname": "Tal Tarablus",
+                            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                        },
+                        "style": {
+                            "bgColor": "#26de81"
+                        }
+                    }
+                ],
+                "style": {}
+            }
+        ],
+        activities: [
+            {
+                "id": "a101",
+                "txt": "Changed Color",
+                "createdAt": 154514,
+                "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "http://some-img"
+                },
+                "task": {
+                    "id": "c101",
+                    "title": "Replace Logo"
+                }
+            }
+        ],
+
+        cmpsOrder: ["status-picker", "member-picker", "date-picker"]
+    },
+    {
+        _id: "b109",
+        title: "Code Review",
+        isStarred: false,
+        archivedAt: 1589983468418,
+        createdBy: {
+            "_id": "u101",
+            "fullname": "Abi Abambi",
+            "imgUrl": "http://some-img"
+        },
+        style: {
+            backgroundImage: ""
+        },
+        labels: [
+            {
+                "id": "l101",
+                "title": "Done",
+                "color": "#61bd4f"
+            },
+            {
+                "id": "l102",
+                "title": "Progress",
+                "color": "#61bd33"
+            }
+        ],
+        members: [
+            {
+                "_id": "u101",
+                "fullname": "Tal Tarablus",
+                "imgUrl": "https://www.google.com"
+            }
+        ],
+        groups: [
+            {
+                "id": "g101",
+                "title": "Group 1",
+                "archivedAt": 1589983468418,
+                "tasks": [
+                    {
+                        "id": "c101",
+                        "title": "Replace logo"
+                    },
+                    {
+                        "id": "c102",
+                        "title": "Add Samples"
+                    }
+                ],
+                "style": {}
+            },
+            {
+                "id": "g102",
+                "title": "Group 2",
+                "tasks": [
+                    {
+                        "id": "c103",
+                        "title": "Do that",
+                        "archivedAt": 1589983468418,
+                    },
+                    {
+                        "id": "c104",
+                        "title": "Help me",
+                        "status": "in-progress", // monday
+                        "priority": "high",
+                        "description": "description",
+                        "members": [
+                            {
+                                "_id": "u101",
+                                "username": "Santa",
+                                "fullname": "Santa Tarablus",
+                                "imgUrl": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fpng.pngtree.com%2Fpng-vector%2F20220119%2Fourmid%2Fpngtree-penguin-animal-small-avatar-illustration-design-png-image_4323463.png&tbnid=K-Aa9mf_l2LAiM&vet=12ahUKEwjJ8Ir2zaH_AhXppycCHa4nA2QQMygIegUIARDeAQ..i&imgrefurl=https%3A%2F%2Fpngtree.com%2Fso%2Fsmall-avatar&docid=K-MkTSAPyY_nLM&w=360&h=360&q=avatar%20small%20img&ved=2ahUKEwjJ8Ir2zaH_AhXppycCHa4nA2QQMygIegUIARDeAQ"
+                            },
+                            {
+                                "_id": "u102",
+                                "fullname": "Adi Alamdi",
+                                "imgUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpngtree.com%2Fso%2Fsmall-avatar&psig=AOvVaw1iSnZ2a4a8Q1lScVk8B20w&ust=1685692982567000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCLimuu7Nof8CFQAAAAAdAAAAABAE"
+                            }
+                        ]
+                        ,
+                        "comments": [
+                            {
+                                "id": "ZdPnm",
+                                "txt": "also @yaronb please CR this",
+                                "createdAt": 1590999817436,
+                                "byMember": {
+                                    "_id": "u101",
+                                    "fullname": "Tal Tarablus",
+                                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                                }
+                            }
+                        ],
+                        "checklists": [
+                            {
+                                "id": "YEhmF",
+                                "title": "Checklist",
+                                "todos": [
+                                    {
+                                        "id": "212jX",
+                                        "title": "To Do 1",
+                                        "isDone": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "memberIds": ["u101"],
+                        "labelIds": ["l101", "l102"],
+                        "dueDate": 16156215211,
+                        "byMember": {
+                            "_id": "u101",
+                            "username": "Tal",
+                            "fullname": "Tal Tarablus",
+                            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                        },
+                        "style": {
+                            "bgColor": "#26de81"
+                        }
+                    }
+                ],
+                "style": {}
+            }
+        ],
+        activities: [
+            {
+                "id": "a101",
+                "txt": "Changed Color",
+                "createdAt": 154514,
+                "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "http://some-img"
+                },
+                "task": {
+                    "id": "c101",
+                    "title": "Replace Logo"
+                }
+            }
+        ],
+
+        cmpsOrder: ["status-picker", "member-picker", "date-picker"]
+    },
+    {
+        _id: "b110",
+        title: "A Day with the Team",
+        isStarred: true,
+        archivedAt: 1589983468418,
+        createdBy: {
+            "_id": "u101",
+            "fullname": "Abi Abambi",
+            "imgUrl": "http://some-img"
+        },
+        style: {
+            backgroundImage: ""
+        },
+        labels: [
+            {
+                "id": "l101",
+                "title": "Done",
+                "color": "#61bd4f"
+            },
+            {
+                "id": "l102",
+                "title": "Progress",
+                "color": "#61bd33"
+            }
+        ],
+        members: [
+            {
+                "_id": "u101",
+                "fullname": "Tal Tarablus",
+                "imgUrl": "https://www.google.com"
+            }
+        ],
+        groups: [
+            {
+                "id": "g101",
+                "title": "Group 1",
+                "archivedAt": 1589983468418,
+                "tasks": [
+                    {
+                        "id": "c101",
+                        "title": "Replace logo"
+                    },
+                    {
+                        "id": "c102",
+                        "title": "Add Samples"
+                    }
+                ],
+                "style": {}
+            },
+            {
+                "id": "g102",
+                "title": "Group 2",
+                "tasks": [
+                    {
+                        "id": "c103",
+                        "title": "Do that",
+                        "archivedAt": 1589983468418,
+                    },
+                    {
+                        "id": "c104",
+                        "title": "Help me",
+                        "status": "in-progress", // monday
+                        "priority": "high",
+                        "description": "description",
+                        "members": [
+                            {
+                                "_id": "u101",
+                                "username": "Santa",
+                                "fullname": "Santa Tarablus",
+                                "imgUrl": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fpng.pngtree.com%2Fpng-vector%2F20220119%2Fourmid%2Fpngtree-penguin-animal-small-avatar-illustration-design-png-image_4323463.png&tbnid=K-Aa9mf_l2LAiM&vet=12ahUKEwjJ8Ir2zaH_AhXppycCHa4nA2QQMygIegUIARDeAQ..i&imgrefurl=https%3A%2F%2Fpngtree.com%2Fso%2Fsmall-avatar&docid=K-MkTSAPyY_nLM&w=360&h=360&q=avatar%20small%20img&ved=2ahUKEwjJ8Ir2zaH_AhXppycCHa4nA2QQMygIegUIARDeAQ"
+                            },
+                            {
+                                "_id": "u102",
+                                "fullname": "Adi Alamdi",
+                                "imgUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpngtree.com%2Fso%2Fsmall-avatar&psig=AOvVaw1iSnZ2a4a8Q1lScVk8B20w&ust=1685692982567000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCLimuu7Nof8CFQAAAAAdAAAAABAE"
+                            }
+                        ]
+                        ,
+                        "comments": [
+                            {
+                                "id": "ZdPnm",
+                                "txt": "also @yaronb please CR this",
+                                "createdAt": 1590999817436,
+                                "byMember": {
+                                    "_id": "u101",
+                                    "fullname": "Tal Tarablus",
+                                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                                }
+                            }
+                        ],
+                        "checklists": [
+                            {
+                                "id": "YEhmF",
+                                "title": "Checklist",
+                                "todos": [
+                                    {
+                                        "id": "212jX",
+                                        "title": "To Do 1",
+                                        "isDone": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "memberIds": ["u101"],
+                        "labelIds": ["l101", "l102"],
+                        "dueDate": 16156215211,
+                        "byMember": {
+                            "_id": "u101",
+                            "username": "Tal",
+                            "fullname": "Tal Tarablus",
+                            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                        },
+                        "style": {
+                            "bgColor": "#26de81"
+                        }
+                    }
+                ],
+                "style": {}
+            }
+        ],
+        activities: [
+            {
+                "id": "a101",
+                "txt": "Changed Color",
+                "createdAt": 154514,
+                "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "http://some-img"
+                },
+                "task": {
+                    "id": "c101",
+                    "title": "Replace Logo"
+                }
+            }
+        ],
+
+        cmpsOrder: ["status-picker", "member-picker", "date-picker"]
+    },
+
+]
 
 
 const user = {
