@@ -1,0 +1,36 @@
+.board-header-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: $clrBH;
+    backdrop-filter: blur(4px);
+    line-height: 20px;
+    padding-block-end: 12px;
+    padding-inline-start: 16px;
+    padding-inline-end: 10px;
+    padding-block-start: 12px;
+    height: 56px;
+    margin: 0;
+    align-content: center;
+    align-items: center;
+    color: $clr7;
+    button {
+        background-color: transparent;
+    }
+    svg {
+        width: 16px;
+        height: 16px;
+        fill: black;
+    }
+    .board-header-left {
+        display: flex;
+
+        .board-title {
+            margin: 0;
+            // margin-block-end: 12px;
+            font-size: 1.125rem;
+            line-height: 2rem;
+            font-weight: 700;
+            padding-inline: 10px;
+        }
+    }
+}

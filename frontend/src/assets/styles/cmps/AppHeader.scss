@@ -1,24 +1,25 @@
 .app-header {
     background-color: $clr2;
+    margin: 0;
     padding: 8px;
     height: 48px;
     display: flex;
     gap: 5px;
-    .cube-img{
+    .cube-img {
         width: 1.2rem;
         height: 1.2rem;
     }
-.app-logo{
-    display: flex;
-}
+    .app-logo {
+        display: flex;
+    }
 
     .main-nav {
-        font-size: .8em;
+        font-size: 0.8em;
         display: flex;
         padding: 9px;
-        color:$clr4;
-       a {    
-            color:$clr4;
+        color: $clr4;
+        a {
+            color: $clr4;
             display: flex;
             align-items: end;
             padding: 3px;
@@ -38,5 +39,4 @@
     // nav .active {
     //     color: $clr1;
     // }
-
 }
