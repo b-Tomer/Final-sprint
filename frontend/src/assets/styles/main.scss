@@ -17,12 +17,13 @@
 @import 'views/CarIndex';
 @import 'views/ReviewIndex';
 @import 'views/UserDetails';
-@import 'views/board.scss';
+@import 'views/board';
 
 // Components
 @import 'cmps/AppHeader';
 @import 'cmps/UserMsg';
 @import 'cmps/ShoppingCart';
-@import 'cmps/TaskPreview.scss';
-@import 'cmps/group.scss';
-@import 'cmps/task-preview.scss';
+@import 'cmps/TaskPreview';
+@import 'cmps/group';
+@import 'cmps/TaskPreview';
+// @import 'cmps/';
