@@ -1,9 +1,7 @@
 import { HomePage } from './pages/home-page.jsx'
-import { AboutUs } from './pages/about-us.jsx'
 import { BoardIndex } from './pages/board-index.jsx'
-import { ReviewIndex } from './pages/review-index.jsx'
-import { ChatApp } from './pages/chat-app.jsx'
-import { AdminApp } from './pages/admin-app.jsx'
+import { Workspace } from './pages/workspace.jsx'
+import { TaskDetails } from './cmps/task/task-details.jsx'
 
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
@@ -13,30 +11,20 @@ const routes = [
         label: 'Home 🏠',
     },
     {
+        path: '/workspace',
+        component: <Workspace />,
+        label: 'Workspace',
+    },
+    {
         path: 'board/:boardId',
         component: <BoardIndex />,
-        label: 'Board'
+        label: 'Board',
     },
     {
         path: 'task/:taskId/:groupId',
-        component: <ReviewIndex />,
-        label: 'Reviews'
+        component: <TaskDetails />,
+        label: 'Reviews',
     },
-    {
-        path: 'chat',
-        component: <ChatApp />,
-        label: 'Chat'
-    },
-    {
-        path: 'about',
-        component: <AboutUs />,
-        label: 'About us'
-    },
-    {
-        path: 'admin',
-        component: <AdminApp />,
-        label: 'Admin Only'
-    }
 ]
 
 export default routes
