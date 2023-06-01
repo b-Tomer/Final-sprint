@@ -14,16 +14,23 @@ import { GroupDetails } from '../cmps/group-details.jsx'
 import { BoardHeader } from '../cmps/board-header.jsx'
 import { AppHeader } from '../cmps/app-header.jsx'
 import { AddGroup } from '../cmps/add-group.jsx'
+import { groupService } from '../services/group.service.local.js'
+import { SET_BOARD } from '../store/board.reducer.js'
 
 export function BoardIndex() {
     const boards = useSelector((storeState) => storeState.boardModule.boards)
     const { boardId } = useParams()
     const { board } = useSelector((storeState) => storeState.boardModule)
-
+    const dispatch = useDispatch()
+    const [isEditing, setIsEditing] = useState(false)
     useEffect(() => {
         onLoadBoards()
         onLoadBoard()
     }, [])
+
+    // useEffect(() => {
+    //     onLoadBoard()
+    // }, [])
 
     async function onLoadBoards() {
         loadBoards()
@@ -54,7 +61,30 @@ export function BoardIndex() {
             showErrorMsg('Cannot add board')
         }
     }
-    // if (board) console.log(board)
+
+
+
+    async function addList(group) {
+        try {
+            const updatedBoard = await groupService.saveGroup(group, boardId)
+            dispatch({ type: SET_BOARD, board: updatedBoard })
+
+        } catch (err) {
+            console.log(err);
+        } finally {
+            onLoadBoards()
+            onLoadBoard()
+            console.log('dsfgdfgdfgdf');
+        }
+    }
+
+    async function removeGroup(group) {
+        const updatedBoard = await groupService.removeGroup(group.id, boardId)
+        dispatch({ type: SET_BOARD, board: updatedBoard })
+    }
+
+
+
     if (!board) return
     return (
         <div>
@@ -63,9 +93,9 @@ export function BoardIndex() {
                 <BoardHeader />
                 <main className="board-content">
                     {board.groups.map((group) => (
-                        <GroupDetails group={group} key={group.id} />
+                        <GroupDetails boardId={boardId} removeGroup={removeGroup} group={group} key={group.id} />
                     ))}
-                    <AddGroup />
+                    <AddGroup addList={addList} />
                 </main>
             </section>
         </div>

@@ -5,11 +5,11 @@ import { useState } from "react";
 
 
 
-export function AddGroup() {
+export function AddGroup({ addList }) {
 
     const [isAddOpen, setIsAddOpen] = useState(false)
     const [currStyle, setCurrStyle] = useState({})
-
+    const [groupTitle, setGroupTitle] = useState('')
 
 
     function onOpenAddContainer() {
@@ -20,7 +20,15 @@ export function AddGroup() {
 
     function onAddClose() {
         setIsAddOpen(false)
+    }
 
+    function handleChange(ev) {
+        const { value } = ev.target
+        setGroupTitle(value)
+    }
+
+    function onAddList(){
+        addList(groupTitle)
     }
 
 
@@ -30,16 +38,14 @@ export function AddGroup() {
                 <Plus className="list-icon" />  Add another list
             </div>}
             {isAddOpen && <div className="add-list-content-opened">
-                <input type="text" className="add-list-input" />
+                <input onChange={handleChange} type="text" className="add-list-input" />
                 <div className="add-btns">
-                    <button className="add-item">Add list</button>
+                    <button onClick={onAddList} className="add-item-btn">Add list</button>
                     <button onClick={onAddClose} className="svg-holder">
                         <X className="list-icon icon-big" />
                     </button>
                 </div>
-
             </div>}
-
         </section>
     )
 }

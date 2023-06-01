@@ -1,7 +1,6 @@
 import { boardService } from '../services/board.service.local.js'
-import { userService } from '../services/user.service.js'
 import { store } from './store.js'
-import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
+
 import {
     ADD_BOARD,
     REMOVE_BOARD,
@@ -40,12 +39,12 @@ export function getActionSetBoard(board) {
 export async function loadBoard(boardId) {
     // return async (dispatch) => {
     try {
-        const boardFromDb = await boardService.getById(boardId)
-        console.log('boardFromDb: ', boardFromDb)
+        const board = await boardService.getById(boardId)
+        console.log('boardFromDb: ', board)
         // store.dispatch(getActionSetBoard(boardFromDb))
         store.dispatch({
             type: SET_BOARD,
-            boardFromDb,
+            board,
         })
     } catch (err) {
         console.log('Cannot load board', err)

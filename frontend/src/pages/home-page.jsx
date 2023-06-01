@@ -1,10 +1,15 @@
+import { useNavigate } from 'react-router-dom'
 import { HomepageHeader } from '../cmps/homepage-header'
 import homepageImg from '../assets/img/homepageImg.png'
 
 export function HomePage() {
+    const navigate = useNavigate()
+    function handleclick() {
+        navigate('/workspace')
+    }
     return (
         <div className="homepage-container">
-            <HomepageHeader />
+            <HomepageHeader handleclick={handleclick} />
             <section className="homepage-gradiant">
                 <div className="homepage-content">
                     <div className="content-left">
@@ -16,7 +21,7 @@ export function HomePage() {
                             Keep everything in the same place, even if your team
                             isn’t.
                         </p>
-                        <button>Try the demo!</button>
+                        <button onClick={handleclick}>Try the demo!</button>
                     </div>
                     <div className="content-right">
                         <img src={homepageImg} alt="" />
