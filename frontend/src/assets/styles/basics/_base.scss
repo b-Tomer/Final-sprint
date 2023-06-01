@@ -4,7 +4,7 @@
 
 ::selection {
     background-color: $clr1;
-    color: $clr6;
+    color: $clr5;
 }
 
 html {
@@ -12,7 +12,7 @@ html {
         Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
         sans-serif;
     line-height: 1.6;
-    color: $clr2;
+    color: $clr4;
 }
 
 body {
@@ -51,4 +51,17 @@ a {
 }
 a:hover {
     text-decoration: underline;
+}
+
+.txt-input {
+    // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border: 0;
+    border-radius: 0.5em;
+    background-color: inherit;
+    margin: 5px;
+    height: 40px;
+}
+
+input:focus{
+    outline: none;
 }

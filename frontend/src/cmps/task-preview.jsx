@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import edit from '../assets/img/edit-task.png'
+import edit from '../assets/img/icons/edit-task.png'
 
 export function TaskPreview({ task }) {
     function handleClick() {

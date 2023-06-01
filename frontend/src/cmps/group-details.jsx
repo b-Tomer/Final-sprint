@@ -1,29 +1,33 @@
-<<<<<<< HEAD
 import { TaskPreview } from "./task-preview";
+import dots from '../assets/img/icons/dots.svg'
+import plus from '../assets/img/icons/plus.svg'
 
-=======
->>>>>>> 92a62fda305e60bb92ad54ecca8525cc0e46ecd4
+
 export function GroupDetails({ group }) {
 
 
-
+    function onChangegroupTitle(ev){
+        const val = ev.target.value
+        console.log(val);
+    }
 
 
     return (
-        <div>
-            <div>
-                <h1>{group.title}</h1>
-                <button>...</button>
+        <section className="group-container">
+            <div className="group-header">
+                <input className="txt-input" type="text" value={group.title} onChange={onChangegroupTitle} />
+                <button><img className="" src={dots} alt="more" /></button>
             </div>
+            <section className="group-content">
+
             {group.tasks.map(task =>
-                <div className="task-preview" key={task.id}>
-                    <TaskPreview task={task} />
-                </div>
+                    <TaskPreview task={task} key={task.id} />
             )}
-            <div>
-                <button>+ Add a card</button>
-                <button>%</button>
+            </section>
+            <div className="group-footer">
+                <button> <img src={plus} alt="" /> Add a card</button>
+                {/* <button>%</button> */}
             </div>
-        </div>
+        </section>
     )
 }
