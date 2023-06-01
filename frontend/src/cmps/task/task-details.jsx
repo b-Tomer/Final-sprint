@@ -13,10 +13,10 @@ export function TaskDetails() {
     // const [fields, handleChange, setFields] = useForm(null)
 
     useEffect(() => {
-        const group = board?.groups.find((group) => group.id === groupId)
+        const currGroup = board?.groups.find((group) => group.id === groupId)
         const task = board?.groups?.find((task) => task.id === taskId)
         setTask(task)
-        setGroup(group)
+        setGroup(currGroup)
     }, [board])
 
     return (

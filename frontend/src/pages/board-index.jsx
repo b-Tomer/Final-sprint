@@ -13,6 +13,7 @@ import { useParams } from 'react-router-dom'
 import { GroupDetails } from '../cmps/group-details.jsx'
 import { BoardHeader } from '../cmps/board-header.jsx'
 import { AppHeader } from '../cmps/app-header.jsx'
+import { AddGroup } from '../cmps/add-group.jsx'
 
 export function BoardIndex() {
     const boards = useSelector((storeState) => storeState.boardModule.boards)
@@ -64,6 +65,7 @@ export function BoardIndex() {
                     {board.groups.map((group) => (
                         <GroupDetails group={group} key={group.id} />
                     ))}
+                    <AddGroup />
                 </main>
             </section>
         </div>
