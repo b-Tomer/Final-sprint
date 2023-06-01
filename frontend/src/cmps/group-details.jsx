@@ -1,6 +1,7 @@
 import { TaskPreview } from "./task/task-preview";
 import dots from '../assets/img/icons/dots.svg'
-import plus from '../assets/img/icons/plus.svg'
+import { ReactComponent as Plus } from '../assets/img/icons/plus.svg'
+
 
 
 export function GroupDetails({ group }) {
@@ -25,9 +26,11 @@ export function GroupDetails({ group }) {
             )}
             </section>
             <div className="group-footer">
-                <button> <img src={plus} alt="" /> Add a card</button>
+                <button><Plus className="list-icon" /> Add a card</button>
                 {/* <button>%</button> */}
             </div>
         </section>
     )
 }
+
+// .list-icon
