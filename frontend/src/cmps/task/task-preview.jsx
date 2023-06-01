@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import edit from '../../assets/img/icons/edit-task.png'
-import { TaskEditor } from './../task-editor'
+import { TaskEditor } from '../task-editor'
 
 export function TaskPreview({ task }) {
     function handleClick() {
