@@ -18,7 +18,7 @@ const routes = [
         label: 'Board'
     },
     {
-        path: 'review',
+        path: 'task/:taskId/:groupId',
         component: <ReviewIndex />,
         label: 'Reviews'
     },

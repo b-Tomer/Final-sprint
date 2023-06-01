@@ -1,4 +1,4 @@
-import { TaskPreview } from "./task-preview";
+import { TaskPreview } from "./task/task-preview";
 import dots from '../assets/img/icons/dots.svg'
 import plus from '../assets/img/icons/plus.svg'
 

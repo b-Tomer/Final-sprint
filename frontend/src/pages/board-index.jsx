@@ -27,6 +27,7 @@ export function BoardIndex() {
         loadBoards()
     }
     
+    
     async function onLoadBoard() {
 
         loadBoard(boardId)
