@@ -26,6 +26,11 @@
             color: $clr7;
             &:hover {
                 color: $clrBTN;
+                .homepage-header-icon {
+                    path {
+                        fill: $clrBTN;
+                    }
+                }
             }
             .homepage-header-icon {
                 width: 15px;
