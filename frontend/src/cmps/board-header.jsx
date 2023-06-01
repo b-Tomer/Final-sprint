@@ -8,6 +8,10 @@ import { ReactComponent as Visability } from '../assets/img/icons/members.svg'
 import { ReactComponent as EmptyLogo } from '../assets/img/icons/emptyLogo.svg'
 import { ReactComponent as Down } from '../assets/img/icons/down.svg'
 import { ReactComponent as PowerUps } from '../assets/img/icons/rocket.svg'
+import { ReactComponent as Automation } from '../assets/img/icons/bolt.svg'
+import { ReactComponent as Filter } from '../assets/img/icons/filter.svg'
+import { ReactComponent as Share } from '../assets/img/icons/Share.svg'
+import { ReactComponent as More } from '../assets/img/icons/dots.svg'
 
 export function BoardHeader() {
     const { boardId } = useParams()
@@ -31,12 +35,27 @@ export function BoardHeader() {
                     <span>Board</span>
                     <Down className="board-header-icon" />
                 </button>
-                <button></button>
             </div>
             <div className="board-header-right">
-                <button className="btn-board-select">
+                <button className="btn-board-right">
                     <PowerUps className="board-header-icon" />
                     <span>Power-Ups</span>
+                </button>
+                <button className="btn-board-right">
+                    <Automation className="board-header-icon" />
+                    <span>Automation</span>
+                </button>
+                <button className="btn-board-right">
+                    <Filter className="board-header-icon" />
+                    <span>Filter</span>
+                </button>
+                <span className="separator"></span>
+                <button className="btn-board-right">
+                    <Share className="board-header-icon" />
+                    <span>Share</span>
+                </button>
+                <button className="btn-board-right">
+                    <More className="board-header-icon" />
                 </button>
             </div>
         </div>
