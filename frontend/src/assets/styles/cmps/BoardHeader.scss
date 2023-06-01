@@ -27,6 +27,14 @@
             background-color: $clrH;
         }
     }
+    .separator {
+        width: 0.5px;
+        height: 18px;
+        background-color: $clr7;
+        opacity: 0.16;
+        margin: 0;
+        margin-block-start: 6px;
+    }
 
     .board-header-icon {
         width: 16px;
@@ -53,6 +61,18 @@
             line-height: 2rem;
             font-weight: 700;
             padding-inline: 10px;
+        }
+    }
+
+    .board-header-right {
+        display: flex;
+        justify-content: space-between;
+        .btn-board-right {
+            display: flex;
+            width: auto;
+        }
+        .board-header-icon {
+            margin-inline-end: 5px;
         }
     }
 }
