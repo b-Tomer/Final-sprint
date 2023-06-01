@@ -60,8 +60,22 @@ const gBoards = [{
                     "id": "c104",
                     "title": "Help me",
                     "status": "in-progress", // monday
-                    "priority": "high", 
+                    "priority": "high",
                     "description": "description",
+                    "members": [
+                        {
+                            "_id": "u101",
+                            "username": "Santa",
+                            "fullname": "Santa Tarablus",
+                            "imgUrl": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fpng.pngtree.com%2Fpng-vector%2F20220119%2Fourmid%2Fpngtree-penguin-animal-small-avatar-illustration-design-png-image_4323463.png&tbnid=K-Aa9mf_l2LAiM&vet=12ahUKEwjJ8Ir2zaH_AhXppycCHa4nA2QQMygIegUIARDeAQ..i&imgrefurl=https%3A%2F%2Fpngtree.com%2Fso%2Fsmall-avatar&docid=K-MkTSAPyY_nLM&w=360&h=360&q=avatar%20small%20img&ved=2ahUKEwjJ8Ir2zaH_AhXppycCHa4nA2QQMygIegUIARDeAQ"
+                        },
+                        {
+                            "_id": "u102",
+                            "fullname": "Adi Alamdi",
+                            "imgUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpngtree.com%2Fso%2Fsmall-avatar&psig=AOvVaw1iSnZ2a4a8Q1lScVk8B20w&ust=1685692982567000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCLimuu7Nof8CFQAAAAAdAAAAABAE"
+                        }
+                    ]
+                    ,
                     "comments": [
                         {
                             "id": "ZdPnm",
@@ -162,7 +176,7 @@ function get(entityType, entityId) {
 }
 
 function post(entityType, newEntity) {
-    newEntity = JSON.parse(JSON.stringify(newEntity))    
+    newEntity = JSON.parse(JSON.stringify(newEntity))
     newEntity._id = _makeId()
     return query(entityType).then(entities => {
         entities.push(newEntity)
@@ -172,7 +186,7 @@ function post(entityType, newEntity) {
 }
 
 function put(entityType, updatedEntity) {
-    updatedEntity = JSON.parse(JSON.stringify(updatedEntity))    
+    updatedEntity = JSON.parse(JSON.stringify(updatedEntity))
     return query(entityType).then(entities => {
         const idx = entities.findIndex(entity => entity._id === updatedEntity._id)
         if (idx < 0) throw new Error(`Update failed, cannot find entity with id: ${updatedEntity._id} in: ${entityType}`)
