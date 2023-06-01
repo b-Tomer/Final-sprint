@@ -1,4 +1,7 @@
-// import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
+import cube from '../assets/img/icons/cube.svg'
+import down from '../assets/img/icons/down.svg'
+
 // import {useSelector} from 'react-redux'
 // import routes from '../routes'
 // import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
@@ -33,58 +36,46 @@ export function AppHeader() {
     //     }
     // }
 
+
+
     return (
         <header className="app-header">
-            <div className="app-logo"></div>
+            <img className='cube-img' src={cube} alt="" />
+            <div className="app-logo">
+                <h3>Trello</h3>
+                </div>
             <nav className="main-nav">
-                <ul>
-                    <li>
-                        <a href="#">Workspaces</a>
-                    </li>
-                    <li>
-                        <a href="#">Recent</a>
-                    </li>
-                    <li>
-                        <a href="#">Starred</a>
-                    </li>
-                </ul>
+                <NavLink className='links' to="/">
+                    Work spaces
+                    <img className='cube-img' src={down} alt="" />
+                </NavLink>
+                {/* <svg  ></svg> */}
+                <NavLink to="/about">
+                    Recent
+                    <img className='cube-img' src={down} alt="" />
+                </NavLink>
+                <NavLink to="/bookApp">
+                    Starred
+                    <img className='cube-img' src={down} alt="" />
+                </NavLink>
+
             </nav>
-            <button>Create</button>
-            <div className="header-actions">
-                <input
+            {/* <button>Create</button> */}
+            {/* <div className="header-actions"> */}
+                {/* <input
                     className="header-search"
                     type="text"
                     placeholder="Search"
-                />
-                <ul>
+                /> */}
+
+                {/* <ul>
                     <li className="notifications"></li>
                     <li className="Information"></li>
                     <li className="Theme"></li>
                     <li className="Account"></li>
-                </ul>
-            </div>
+                </ul> */}
+            {/* </div> */}
         </header>
-        // <header className="app-header">
-        //     <nav>
-        //         {routes.map(route => <NavLink key={route.path} to={route.path}>{route.label}</NavLink>)}
 
-        //         {user &&
-        //             <span className="user-info">
-        //                 <Link to={`user/${user._id}`}>
-        //                     {user.imgUrl && <img src={user.imgUrl} />}
-        //                     {user.fullname}
-        //                 </Link>
-        //                 <span className="score">{user.score?.toLocaleString()}</span>
-        //                 <button onClick={onLogout}>Logout</button>
-        //             </span>
-        //         }
-        //         {!user &&
-        //             <section className="user-info">
-        //                 <LoginSignup onLogin={onLogin} onSignup={onSignup} />
-        //             </section>
-        //         }
-        //     </nav>
-        //     <h1>My App</h1>
-        // </header>
     )
 }

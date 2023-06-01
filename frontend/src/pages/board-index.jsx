@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
     loadBoards,
@@ -10,13 +10,14 @@ import {
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { boardService } from '../services/board.service.local.js'
 import { useParams } from 'react-router-dom'
+import { GroupDetails } from '../cmps/group-details.jsx'
 
 export function BoardIndex() {
     const boards = useSelector((storeState) => storeState.boardModule.boards)
     // const dispatch = useDispatch()
     const { boardId } = useParams()
-    const { board } = useSelector((storeState) => storeState.boardModule)
-
+    // const { board } = useSelector((storeState) => storeState.boardModule)
+    const [board, setBoard] = useState(null)
     useEffect(() => {
         onLoadBoard()
     }, [])
@@ -44,8 +45,8 @@ export function BoardIndex() {
             showErrorMsg('Cannot add board')
         }
     }
-    if (board) console.log(board)
-
+    // if (board) console.log(board)
+    if (!board) return
     return (
         <section className="board-container">
             {JSON.stringify(board)}
