@@ -14,19 +14,41 @@
     align-items: center;
     color: $clr7;
     button {
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
         background-color: transparent;
+        padding: 6px;
+        border-radius: 3px;
+        &:hover {
+            background-color: $clrH;
+        }
     }
-    svg {
+
+    .board-header-icon {
         width: 16px;
         height: 16px;
-        fill: black;
+        path {
+            fill: $clr7;
+        }
     }
     .board-header-left {
         display: flex;
+        justify-content: space-between;
+
+        .btn-board-select {
+            width: 112.5px;
+            display: flex;
+            justify-content: space-between;
+            padding-inline: 12px;
+            padding-block: 6px;
+        }
 
         .board-title {
             margin: 0;
-            // margin-block-end: 12px;
             font-size: 1.125rem;
             line-height: 2rem;
             font-weight: 700;

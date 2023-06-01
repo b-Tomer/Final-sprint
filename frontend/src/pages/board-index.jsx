@@ -12,6 +12,7 @@ import { boardService } from '../services/board.service.local.js'
 import { useParams } from 'react-router-dom'
 import { GroupDetails } from '../cmps/group-details.jsx'
 import { BoardHeader } from '../cmps/board-header.jsx'
+import { AppHeader } from '../cmps/app-header.jsx'
 
 export function BoardIndex() {
     const boards = useSelector((storeState) => storeState.boardModule.boards)
@@ -55,13 +56,16 @@ export function BoardIndex() {
     // if (board) console.log(board)
     if (!board) return
     return (
-        <section className="board-container">
-            <BoardHeader />
-            <main className="board-content">
-                {board.groups.map((group) => (
-                    <GroupDetails group={group} key={group.id} />
-                ))}
-            </main>
-        </section>
+        <div>
+            <AppHeader />
+            <section className="board-container">
+                <BoardHeader />
+                <main className="board-content">
+                    {board.groups.map((group) => (
+                        <GroupDetails group={group} key={group.id} />
+                    ))}
+                </main>
+            </section>
+        </div>
     )
 }
