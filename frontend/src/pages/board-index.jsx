@@ -5,6 +5,7 @@ import {
     addBoard,
     removeBoard,
     loadBoard,
+    updateBoard,
 } from '../store/board.actions.js'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
@@ -27,6 +28,7 @@ export function BoardIndex() {
         onLoadBoards()
         onLoadBoard()
     }, [])
+
 
     // useEffect(() => {
     //     onLoadBoard()
@@ -65,17 +67,17 @@ export function BoardIndex() {
 
 
     async function addList(group) {
-        try {
+        // try {
             const updatedBoard = await groupService.saveGroup(group, boardId)
             dispatch({ type: SET_BOARD, board: updatedBoard })
-
-        } catch (err) {
-            console.log(err);
-        } finally {
-            onLoadBoards()
-            onLoadBoard()
-            console.log('dsfgdfgdfgdf');
-        }
+            // updateBoard(board)
+        // } catch (err) {
+        //     console.log(err);
+        // } finally {
+        //     onLoadBoards()
+        //     onLoadBoard()
+        //     console.log('dsfgdfgdfgdf')
+        // }
     }
 
     async function removeGroup(group) {
