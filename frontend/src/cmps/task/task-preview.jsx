@@ -12,6 +12,7 @@ export function TaskPreview({ task }) {
             <button className="btn-task-show-details" onClick={handleClick}>
                 <img src={edit} alt="Edit" />
             </button>
+            <TaskEditor />
         </div>
     )
 }
