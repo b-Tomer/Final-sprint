@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import edit from '../assets/img/icons/edit-task.png'
+import { TaskEditor } from './task-editor'
 
 export function TaskPreview({ task }) {
     function handleClick() {
@@ -12,6 +13,7 @@ export function TaskPreview({ task }) {
             <button className="btn-task-show-details" onClick={handleClick}>
                 <img src={edit} alt="Edit" />
             </button>
+            <TaskEditor />
         </div>
     )
 }
