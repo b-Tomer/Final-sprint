@@ -7,6 +7,8 @@ export function TaskHeader({ task, group, boardId }) {
     if (!task) return ''
     return (
         <section className="task-header">
+
+            
             <div className="task-header-title">
                 <GrCreditCard className="header-icon" />
                 <textarea className="task-header-title">{task.title}</textarea>
