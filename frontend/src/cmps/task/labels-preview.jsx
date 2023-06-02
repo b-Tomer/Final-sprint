@@ -1,7 +1,7 @@
 
 
 export function LabelsPreview ({ task }) {
-    if (!task.labelIds || !task.labelIds.length) return
+    // if (!task.labelIds || !task.labelIds.length) return
     
     return (
       <section className="label-preview">

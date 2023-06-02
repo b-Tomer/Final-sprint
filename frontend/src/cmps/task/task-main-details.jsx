@@ -9,7 +9,7 @@ export function TaskMainDetails({ task, groupId }) {
         <section className="task-main-detiails">
             <TaskData />
             <TaskMainContent task={task} />
-            <TaskMenu />
+            {/* <TaskMenu /> */}
 
         </section>
     )
