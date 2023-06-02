@@ -15,12 +15,31 @@ export function Workspace() {
     const boards = useSelector((storeState) => storeState.boardModule.boards)
     const dispatch = useDispatch();
 
-
-
-
     useEffect(() => {
         onLoadBoards()
     }, [])
+
+
+    // async function onAddBoard() {
+    //     const board = boardService.getEmptyBoard()
+    //     board.vendor = prompt('Vendor?')
+    //     try {
+    //         const savedBoard = await addBoard(board)
+    //         showSuccessMsg(`Board added (id: ${savedBoard._id})`)
+    //     } catch (err) {
+    //         showErrorMsg('Cannot add board')
+    //     }
+    // }
+
+    // async function onRemoveBoard(boardId) {
+    //     try {
+    //         await removeBoard(boardId)
+    //         showSuccessMsg('Board removed')
+    //     } catch (err) {
+    //         showErrorMsg('Cannot remove board')
+    //     }
+    // }
+
 
     async function onLoadBoards() {
         await loadBoards()

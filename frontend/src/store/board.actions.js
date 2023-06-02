@@ -37,7 +37,6 @@ export function getActionSetBoard(board) {
 }
 
 export async function loadBoard(boardId) {
-    // return async (dispatch) => {
     try {
         const board = await boardService.getById(boardId)
         // console.log('boardFromDb: ', board)
@@ -49,7 +48,7 @@ export async function loadBoard(boardId) {
     } catch (err) {
         console.log('Cannot load board', err)
     }
-    // }
+  
 }
 
 export async function loadBoards() {

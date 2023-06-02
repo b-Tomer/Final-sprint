@@ -24,12 +24,12 @@ export function BoardIndex() {
     const { boardId } = useParams()
     const { board } = useSelector((storeState) => storeState.boardModule)
     const dispatch = useDispatch()
-    const [isEditing, setIsEditing] = useState(false)
+    // const [isEditing, setIsEditing] = useState(false)
 
     useEffect(() => {
         loadBoards()
         loadBoard(boardId)
-    }, [])
+    }, [updateBoard])
 
     useEffect(() => {
         loadBoards()
@@ -70,10 +70,11 @@ export function BoardIndex() {
         }
     }
 
-    async function addList(group) {
+    async function addGroup(group) {
         console.log(group)
         try {
-            await saveGroup(group, boardId)
+            const currBoard = await saveGroup(group, boardId)
+            updateBoard(currBoard)
             // setIsEditing(!isEditing)
 
             // dispatch({ type: SET_BOARD, board: updatedBoard })
@@ -115,7 +116,7 @@ export function BoardIndex() {
                             key={group.id}
                         />
                     ))}
-                    <AddGroup addList={addList} />
+                    <AddGroup addGroup={addGroup} />
                 </main>
             </section>
         </div>
