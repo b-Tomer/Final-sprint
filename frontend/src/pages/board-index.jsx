@@ -24,13 +24,17 @@ export function BoardIndex() {
     const { boardId } = useParams()
     const { board } = useSelector((storeState) => storeState.boardModule)
     const dispatch = useDispatch()
-    // const [isEditing, setIsEditing] = useState(false)
+    const [isEditing, setIsEditing] = useState(false)
 
     useEffect(() => {
         loadBoards()
         loadBoard(boardId)
     }, [])
 
+    useEffect(() => {
+        loadBoards()
+        loadBoard(boardId)
+    }, [isEditing])
 
     // useEffect(() => {
     //     onLoadBoard()
@@ -75,16 +79,25 @@ export function BoardIndex() {
             // dispatch({ type: SET_BOARD, board: updatedBoard })
         } catch (err) {
             console.log(err)
+        } finally {
+            loadBoards()
+            loadBoard(boardId)
         }
-        //  finally {
-        //     loadBoards()
-        //     loadBoard(boardId)
-        // }
     }
 
     async function removeGroup(group) {
-        const updatedBoard = await groupService.removeGroup(group.id, boardId)
-        dispatch({ type: SET_BOARD, board: updatedBoard })
+        try {
+            const updatedBoard = await groupService.removeGroup(
+                group.id,
+                boardId
+            )
+            dispatch({ type: SET_BOARD, board: updatedBoard })
+        } catch (err) {
+            console.log(err)
+        } finally {
+            loadBoards()
+            loadBoard(boardId)
+        }
     }
 
     if (!board) return
