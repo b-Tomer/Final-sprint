@@ -22,8 +22,8 @@ export function TaskDetails() {
     return (
         <section className="task-details-container">
             {/* <TaskHeader task={task} />
-            <TaskMainDetails task={task} groupId={groupId} />
-            <TaskMenu /> */}
+            <TaskMainDetails task={task} groupId={groupId} /> */}
+            <TaskMenu />
         </section>
     )
 }
