@@ -1,10 +1,9 @@
 import { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
 import edit from '../../assets/img/icons/edit-task.png'
 import { TaskEditor } from './task-editor'
 import { useClickOutside } from '../../customHooks/useClickOutside'
-import { TaskEditor } from './task-editor'
+
 
 export function TaskPreview({ task, onRemoveTask, boardId, groupId }) {
     const navigate = useNavigate()
@@ -23,8 +22,8 @@ export function TaskPreview({ task, onRemoveTask, boardId, groupId }) {
     }
 
     return (
-        <div className="task-container" onClick={openTaskDetails}>
-            <span className="task-title">{task.title}</span>
+        <div className="task-container" >
+            <span className="task-title" onClick={openTaskDetails}>{task.title}</span>
             <button className="btn-task-show-details" onClick={onOpenMenu}>
                 <img src={edit} alt="Edit" />
             </button>
