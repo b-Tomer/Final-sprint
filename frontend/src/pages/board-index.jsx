@@ -29,47 +29,13 @@ export function BoardIndex() {
     useEffect(() => {
         loadBoards()
         loadBoard(boardId)
-    }, [])
+    }, [updateBoard])
 
-
-    // useEffect(() => {
-    //     onLoadBoard()
-    // }, [isEditing])
-
-    // async function onLoadBoards() {
-    //     loadBoards()
-    // }
-
-    // async function onLoadBoard() {
-    //     loadBoard(boardId)
-    //     // const boardFromDb = await boardService.getById(boardId)
-    //     // setBoard(boardFromDb)
-    // }
-
-    async function onRemoveBoard(boardId) {
-        try {
-            await removeBoard(boardId)
-            showSuccessMsg('Board removed')
-        } catch (err) {
-            showErrorMsg('Cannot remove board')
-        }
-    }
-
-    async function onAddBoard() {
-        const board = boardService.getEmptyBoard()
-        board.vendor = prompt('Vendor?')
-        try {
-            const savedBoard = await addBoard(board)
-            showSuccessMsg(`Board added (id: ${savedBoard._id})`)
-        } catch (err) {
-            showErrorMsg('Cannot add board')
-        }
-    }
-
-    async function addList(group) {
+    async function addGroup(group) {
         console.log(group)
         try {
-            await saveGroup(group, boardId)
+          const currBoard =  await saveGroup(group, boardId)
+            updateBoard(currBoard)
             // setIsEditing(!isEditing)
 
             // dispatch({ type: SET_BOARD, board: updatedBoard })
@@ -102,7 +68,7 @@ export function BoardIndex() {
                             key={group.id}
                         />
                     ))}
-                    <AddGroup addList={addList} />
+                    <AddGroup addGroup={addGroup} />
                 </main>
             </section>
         </div>
