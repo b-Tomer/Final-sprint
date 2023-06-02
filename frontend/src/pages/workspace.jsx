@@ -7,16 +7,13 @@ import {
 import { useEffect } from 'react'
 import { ReactComponent as Starred } from '../assets/img/icons/starred.svg'
 import { ReactComponent as Clock } from '../assets/img/icons/clock.svg'
-import { SET_BOARD } from '../store/board.reducer'
+// import { SET_BOARD } from '../store/board.reducer'
 
 
 
 export function Workspace() {
     const boards = useSelector((storeState) => storeState.boardModule.boards)
-    const dispatch = useDispatch();
-
-
-
+    // const dispatch = useDispatch();
 
     useEffect(() => {
         onLoadBoards()
@@ -38,7 +35,7 @@ export function Workspace() {
         <section>
             <AppHeader />
             <section className='muilty-boards-container'>
-                <div>
+                <div className='section-container'>
                     <div className='starred-board-title'>
                         <Starred />
                         <span>Starred board</span>
@@ -50,14 +47,13 @@ export function Workspace() {
                         }
                     </div>
                 </div>
-                <div>
+                <div className='section-container'>
                     <div className='recently-viewed-title'>
                         <Clock />
                         <span>Recently viewed</span>
                     </div>
                     <div className='recently-viewed-container'>
                         {boards
-                            .filter((board) => !board.isStarred)
                             .map((board) => <BoardPreview board={board} key={board._id} toggleStarredStatus={toggleStarredStatus} />)
                         }
                     </div>

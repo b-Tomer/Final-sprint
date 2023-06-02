@@ -2,44 +2,60 @@
     background-color: $clr2;
     margin: 0;
     padding: 8px;
-    height: 48px;
+    height: 42px;
     display: flex;
+    flex-direction: row;
     gap: 5px;
-    .cube-img {
+    align-items: center;
+
+    .cube-img,
+    .logo-img {
         width: 1.2rem;
         height: 1.2rem;
+        margin-left: 2px;
     }
-    .app-logo {
-        display: flex;
-        h3 {
-            margin: 0;
-        }
+
+    .down-img {
+        width: 0.9rem;
+        height: 0.9rem;
+        margin-left: 5px;
     }
+
+    // .links {
+    //     path {
+    //         fill: rgb(7, 176, 15);
+    //     }
+
+
+    // }
+
+    // .app-logo {
+    //     // display: flex;
+
+    //     h3 {
+    //         margin: 0;
+    //     }
+    // }
 
     .main-nav {
         font-size: 0.8em;
         display: flex;
-        padding: 9px;
+        padding: 12px;
         color: $clr4;
-        a {
-            color: $clr4;
-            display: flex;
-            align-items: end;
-            padding: 3px;
+
+        .link-section {
+            a {
+                color: $clr4;
+                display: flex;
+                align-items: end;
+                padding-right: 24px;
+            }
+
+            // .down-img {
+            //     path {
+            //         fill: green
+            //     }
+            // }
         }
     }
-
-    // nav a:first-child {
-    //     margin-right: 30px;
-    // }
-
-    // nav a:not(:first-child) {
-    //     border-top: 1px solid $clr1;
-    //     padding: 0 5px;
-    //     margin: 10px;
-    // }
-
-    // nav .active {
-    //     color: $clr1;
-    // }
 }

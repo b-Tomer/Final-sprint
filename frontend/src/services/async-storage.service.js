@@ -1416,7 +1416,7 @@ export const storageService = {
     remove,
 }
 
-function query(entityType, delay = 500) {
+function query(entityType, delay = 50) {
     var entities = JSON.parse(localStorage.getItem(entityType)) || gBoards
     return new Promise(resolve => setTimeout(() => resolve(entities), delay))
 }
