@@ -49,7 +49,8 @@ export function GroupDetails({ group, removeGroup, boardId }) {
 
 
 
-   async function onAddTask() { 
+   async function onAddTask(ev) { 
+    ev.preventDefault()
        try{
            await saveTask(task, boardId, group.id)
         }catch(err){
