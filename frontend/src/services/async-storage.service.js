@@ -56,6 +56,8 @@ const gBoards = [
                         id: 'c103',
                         title: 'Do that',
                         archivedAt: 1589983468418,
+                        dueDate: Date.now() + 1000000000,
+                        description: 'description',
                         attachments: [
                             {
                                 id: 'ZdPfm',
@@ -66,16 +68,37 @@ const gBoards = [
                     },
                     {
                         id: 'c107',
-                        title: 'Do that',
+                        title: 'Do tha7t',
                         archivedAt: 1589983468418,
+                        isDone: true,
                         style: {
                             bgColor: '#22de81',
                         },
+                        checklists: [
+                            {
+                                id: 'YEhmF',
+                                title: 'Checklist',
+                                todos: [
+                                    {
+                                        id: '212jX',
+                                        title: 'To Do 1',
+                                        isDone: true,
+                                    },
+                                    {
+                                        id: '216jX',
+                                        title: 'To Do 4',
+                                        isDone: true,
+                                    },
+                                ],
+                            },
+                        ],
                     },
                     {
                         id: 'c117',
-                        title: 'Do that',
+                        title: 'Do that55',
                         archivedAt: 1589983468418,
+                        dueDate: Date.now() + 1000000,
+                        description: 'description',
                         style: {
                             backgroundImage:
                                 'https://img.freepik.com/free-vector/sticker-template-cat-cartoon-character_1308-73786.jpg?w=2000',
@@ -95,13 +118,44 @@ const gBoards = [
                     },
                     {
                         id: 'c118',
-                        title: 'Do that',
+                        title: 'Do that6',
                         archivedAt: 1589983468418,
+                        dueDate: 16756215211,
+                        isDone: true,
                         style: {
                             bgColor: '#f2de81',
                             backgroundImage:
                                 'https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*',
                         },
+                        checklists: [
+                            {
+                                id: 'YEhmF',
+                                title: 'Checklist',
+                                todos: [
+                                    {
+                                        id: '212jX',
+                                        title: 'To Do 1',
+                                        isDone: false,
+                                    },
+                                    {
+                                        id: '216jX',
+                                        title: 'To Do 4',
+                                        isDone: false,
+                                    },
+                                ],
+                            },
+                            {
+                                id: 'YEhmF',
+                                title: 'Checklist2',
+                                todos: [
+                                    {
+                                        id: '212jX',
+                                        title: 'To Do 1',
+                                        isDone: true,
+                                    },
+                                ],
+                            },
+                        ],
                     },
                     {
                         id: 'c104',

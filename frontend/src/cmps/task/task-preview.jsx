@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { ReactComponent as Stylus } from '../../assets/img/icons/stylus.svg'
 import { TaskEditor } from './task-editor'
 import { useClickOutside } from '../../customHooks/useClickOutside'
+import { TaskIcons } from './task-icons'
 
 export function TaskPreview({ task, onRemoveTask, boardId, groupId }) {
     const navigate = useNavigate()
@@ -50,9 +51,7 @@ export function TaskPreview({ task, onRemoveTask, boardId, groupId }) {
                 <span className="task-title" onClick={openTaskDetails}>
                     {task.title}
                 </span>
-                <section className="task-icons">
-                    <div className="task-attachments"></div>
-                </section>
+                <TaskIcons task={task} groupId={groupId} boardId={boardId} />
             </div>
         </div>
     )
