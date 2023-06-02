@@ -1,30 +1,27 @@
-import { TaskPreview } from "./task/task-preview";
+import { TaskPreview } from './task/task-preview'
 import dots from '../assets/img/icons/dots.svg'
 import { ReactComponent as Plus } from '../assets/img/icons/plus.svg'
-import { useEffect, useState } from "react";
-import { groupService } from "../services/group.service.local";
+import { useEffect, useState } from 'react'
+import { groupService } from '../services/group.service.local'
 import { ReactComponent as X } from '../assets/img/icons/x.svg'
-import { taskService } from "../services/task.service.local";
-import { removeTask, saveTask } from "../store/task.actions";
-
-
+import { taskService } from '../services/task.service.local'
+import { removeTask, saveTask } from '../store/task.actions'
 
 export function GroupDetails({ group, removeGroup, boardId }) {
-
     const [groupToUpdate, setGroupToUpdate] = useState(group)
     const [isAddTaskOpen, setIsAddTaskOpen] = useState(false)
     const [task, setTask] = useState(null)
     const [taskTitle, setTaskTitle] = useState('')
 
-    useEffect(()=>{
+    useEffect(() => {
         setTask(taskService.getDefaultTask())
-    },[])
+    }, [])
 
     function onChangegroupTitle(ev) {
         const val = ev.target.value
         setGroupToUpdate((prevGroup) => ({
             ...prevGroup,
-            title: val
+            title: val,
         }))
         groupService.saveGroup(val, boardId, group.id)
     }
@@ -39,31 +36,29 @@ export function GroupDetails({ group, removeGroup, boardId }) {
 
     function handleTaskTitle(ev) {
         const { value } = ev.target
-      setTaskTitle(value)
-       setTask((prevTask) => ({
-        ...prevTask,
-        title: value
-    }))
+        setTaskTitle(value)
+        setTask((prevTask) => ({
+            ...prevTask,
+            title: value,
+        }))
     }
     // console.log('task from details: ', task )
 
-
-
-   async function onAddTask(ev) { 
-    ev.preventDefault()
-       try{
-           await saveTask(task, boardId, group.id)
-        }catch(err){
-            console.log(err);
-        }finally{
+    async function onAddTask(ev) {
+        ev.preventDefault()
+        try {
+            await saveTask(task, boardId, group.id)
+        } catch (err) {
+            console.log(err)
+        } finally {
             setTask(taskService.getDefaultTask())
             setTaskTitle('')
             onAddClose()
         }
     }
 
-    async function onRemoveTask(taskId){
-        removeTask(boardId,  group.id, taskId)
+    async function onRemoveTask(taskId) {
+        removeTask(boardId, group.id, taskId)
     }
 
     function onAddClose() {
@@ -73,29 +68,58 @@ export function GroupDetails({ group, removeGroup, boardId }) {
     return (
         <section className="group-container">
             <div className="group-header">
-                <input className="txt-input" type="text" value={groupToUpdate.title} onChange={onChangegroupTitle} />
-                <button><img onClick={onRemoveGroup} src={dots} alt="more" /></button>
+                <input
+                    className="txt-input"
+                    type="text"
+                    value={groupToUpdate.title}
+                    onChange={onChangegroupTitle}
+                />
+                <button>
+                    <img onClick={onRemoveGroup} src={dots} alt="more" />
+                </button>
             </div>
             <section className="group-content">
-
-                {group.tasks.map(task =>
-                    <TaskPreview onRemoveTask={onRemoveTask} task={task} key={task.id} />
-                )}
-                {isAddTaskOpen && <div className="task-container">
-                    <form onSubmit={onAddTask}>
-                    <input className="add-list-input" value={taskTitle}  onChange={handleTaskTitle} />
-                    <div className="add-btns">
-                        <button onClick={onAddTask} className="add-item-btn">Add card</button>
-                        <button onClick={onAddClose} className="svg-holder">
-                            <X className="list-icon icon-big" />
-                        </button>
+                {group.tasks.map((task) => (
+                    <TaskPreview
+                        onRemoveTask={onRemoveTask}
+                        task={task}
+                        key={task.id}
+                        boardId={boardId}
+                        groupId={group.id}
+                    />
+                ))}
+                {isAddTaskOpen && (
+                    <div className="task-container">
+                        <form onSubmit={onAddTask}>
+                            <input
+                                className="add-list-input"
+                                value={taskTitle}
+                                onChange={handleTaskTitle}
+                            />
+                            <div className="add-btns">
+                                <button
+                                    onClick={onAddTask}
+                                    className="add-item-btn"
+                                >
+                                    Add card
+                                </button>
+                                <button
+                                    onClick={onAddClose}
+                                    className="svg-holder"
+                                >
+                                    <X className="list-icon icon-big" />
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                    </form>
-                </div>}
+                )}
             </section>
             <div className="group-footer">
-                {!isAddTaskOpen && <button onClick={onOpenAddTask} ><Plus className="list-icon" /> Add a card</button>}
-
+                {!isAddTaskOpen && (
+                    <button onClick={onOpenAddTask}>
+                        <Plus className="list-icon" /> Add a card
+                    </button>
+                )}
             </div>
         </section>
     )
