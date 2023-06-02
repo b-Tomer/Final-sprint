@@ -22,9 +22,9 @@ const routes = [
         label: 'Board',
     },
     {
-        path: 'task/:taskId/:groupId',
+        path: 'task/:boardId/:groupId/:taskId',
         component: <TaskDetails />,
-        label: 'Reviews',
+        label: 'Task Details',
     },
     {
         path: '/notfound',

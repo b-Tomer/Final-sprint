@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import edit from '../../assets/img/icons/edit-task.png'
-import { TaskEditor } from '../task-editor'
 import { useClickOutside } from '../../customHooks/useClickOutside'
+import { TaskEditor } from './task-editor'
 
 export function TaskPreview({ task, onRemoveTask }) {
 
@@ -16,7 +16,7 @@ export function TaskPreview({ task, onRemoveTask }) {
     }
 
     return (
-        <div className="task-container">
+        <div className="task-container" onClick={(openTaskDetails)}>
             <span className="task-title">{task.title}</span>
             <button className="btn-task-show-details" onClick={onOpenMenu}>
                 <img src={edit} alt="Edit" />
