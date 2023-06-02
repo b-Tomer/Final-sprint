@@ -21,21 +21,7 @@
         margin-left: 5px;
     }
 
-    // .links {
-    //     path {
-    //         fill: rgb(7, 176, 15);
-    //     }
 
-
-    // }
-
-    // .app-logo {
-    //     // display: flex;
-
-    //     h3 {
-    //         margin: 0;
-    //     }
-    // }
 
     .main-nav {
         font-size: 0.8em;
@@ -50,12 +36,78 @@
                 align-items: end;
                 padding-right: 24px;
             }
-
-            // .down-img {
-            //     path {
-            //         fill: green
-            //     }
-            // }
         }
     }
+
+    .header-search {
+        height: 2rem;
+        width: 100%;
+
+
+    }
+
+    .header-actions {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        flex-grow: 1;
+        align-items: center;
+
+        ul {
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+            padding: 0px;
+
+            .app-header-icon {
+                width: 32px;
+                height: 32px;
+                padding-left: 10px;
+            }
+        }
+
+        .search-bar {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background-color: $clr3;
+            border-radius: 6px;
+            min-width: 200px;
+
+            height: 1.75rem;
+
+
+            input {
+                font-size: 0.75rem;
+                height: 1.2rem;
+                width: 100%;
+                border: none;
+                background-color: $clr3;
+                max-width: 500px;
+                transition: width 0.2s ease;
+            }
+
+            input:focus {
+                width: 400px;
+            }
+
+            .search-img {
+                width: 0.9rem;
+                height: 0.9rem;
+                margin-left: 5px;
+            }
+
+            // .app-header-icons {
+
+
+
+            // }
+
+
+        }
+    }
+
+
+
+
 }

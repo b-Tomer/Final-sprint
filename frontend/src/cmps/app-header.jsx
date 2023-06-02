@@ -2,10 +2,13 @@ import React from 'react';
 
 import { Link, NavLink } from 'react-router-dom'
 import cube from '../assets/img/icons/cube.svg'
-// import down from '../assets/img/icons/down.svg'
 import Logo from '../assets/img/icons/logo.svg'
 
 import { ReactComponent as Down } from '../assets/img/icons/down.svg'
+import { ReactComponent as Notifications } from '../assets/img/icons/notifications.svg'
+import { ReactComponent as Info } from '../assets/img/icons/info.svg'
+import { ReactComponent as Theme } from '../assets/img/icons/theme.svg'
+import { ReactComponent as Search } from '../assets/img/icons/search.svg'
 
 
 
@@ -60,37 +63,47 @@ export function AppHeader() {
                 <div className='link-section'>
                     <NavLink className='links' to="/">
                         Workspaces
-                        <img className='down-img' src={Down} alt="" />
+                        <Down className='down-img' src={Down} alt="" />
                     </NavLink>
                 </div>
                 <div className="link-section">
                     <NavLink to="/about">
                         Recent
-                        <img className='down-img' src={Down} alt="" />
+                        <Down className='down-img' src={Down} alt="" />
                     </NavLink>
                 </div>
                 <div className="link-section">
                     <NavLink to="/bookApp">
                         Starred
-                        <img className='down-img' src={Down} alt="" />
+                        <Down className='down-img' src={Down} alt="" />
                     </NavLink>
                 </div>
             </nav>
-            {/* <button>Create</button> */}
-            {/* <div className="header-actions"> */}
-            {/* <input
-                    className="header-search"
-                    type="text"
-                    placeholder="Search"
-                /> */}
+            <button>Create</button>
+            <div className="header-actions">
+                <div className='search-bar'>
+                    <span>
+                        <Search className="search-img" src={Search} />
+                    </span>
+                    <input
+                        className="header-search"
+                        type="text"
+                        placeholder="Search"
+                    />
+                </div>
 
-            {/* <ul>
-                    <li className="notifications"></li>
-                    <li className="Information"></li>
-                    <li className="Theme"></li>
-                    <li className="Account"></li>
-                </ul> */}
-            {/* </div> */}
+                <ul>
+                    <li >
+                        <Notifications className="app-header-icon" src={Notifications} />
+                    </li>
+                    <li >
+                        <Info className="app-header-icon" src={Info} />
+                    </li>
+                    <li >
+                        <Theme className="app-header-icon" src={Theme} />
+                    </li>
+                </ul>
+            </div>
         </header>
 
     )
