@@ -10,20 +10,22 @@ export function TaskDetails() {
     const { taskId, groupId, boardId } = useParams()
     const [task, setTask] = useState(null)
     const [group, setGroup] = useState(null)
-    // const [fields, handleChange, setFields] = useForm(null)
-
+    const groupIdx = board?.groups.findIndex((group) => group.id === groupId)
+    const currTask = board.groups[groupIdx].tasks.find(task => task.id === taskId)
     useEffect(() => {
-        const currGroup = board?.groups.find((group) => group.id === groupId)
-        const task = board?.groups?.find((task) => task.id === taskId)
-        setTask(task)
-        setGroup(currGroup)
+        setTask(currTask)
+        setGroup(board.groups[groupIdx])
     }, [board])
+
+
+
+
 
     return (
         <section className="task-details-container">
-            {/* <TaskHeader task={task} />
+            <TaskHeader task={task} group={group} boardId={boardId} />
             <TaskMainDetails task={task} groupId={groupId} />
-            <TaskMenu /> */}
+            {/* <TaskMenu /> */}
         </section>
     )
 }
