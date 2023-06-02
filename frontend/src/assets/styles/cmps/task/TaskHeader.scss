@@ -1,0 +1,60 @@
+.task-header {
+    .task-header-title {
+        color: $clr7;
+        width: 100%;
+        overflow: hidden;
+        overflow-wrap: break-word;
+        height: 33.3333px;
+        border-radius: 3px;
+        box-shadow: none;
+        font-size: 20px;
+        font-weight: 600;
+        height: 32px;
+        line-height: 24px;
+        margin: -4px -8px;
+        min-height: 24px;
+        padding: 4px 8px;
+        resize: none;
+        -webkit-appearance: none;
+        line-height: 24px;
+        font-size: 20px;
+        appearance: none;
+        border: none;
+        outline: none;
+    }
+
+
+    p {
+        color: $clr6;
+        margin: 0;
+        line-height: 20px;
+        font-size: 14px;
+
+        a {
+            color: $clr6;
+            margin-left: 5px;
+            text-decoration: none;
+            text-decoration: underline;
+        }
+    }
+
+    .task-header-title {
+        display: flex;
+    }
+
+
+    .header-icon {
+        width: 45px;
+        height: 20px;
+        padding-top: 2px;
+    }
+
+}
+
+.data-item {
+
+    .data-preview-title {
+        font-size: 12px;
+    }
+
+}

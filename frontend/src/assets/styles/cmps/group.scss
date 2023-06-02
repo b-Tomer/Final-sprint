@@ -3,9 +3,7 @@
     grid-template-rows: 47px 1fr 43px;
     border-radius: $radius;
     background-color: $clr2;
-    width: $groupWidth ;
- 
-
+    width: $groupWidth;
     .group-header {
         padding: 14px 8px;
         display: flex;
@@ -32,9 +30,7 @@
                 background-color: $clrH;
             }
         }
-
     }
-
 
     .group-content {
         display: flex;
@@ -61,24 +57,20 @@
                 background: $clrH;
             }
         }
-
-
-
     }
-
 }
 
-.task-container {
-    display: flex;
-    flex-direction: column;
-}
+// .task-container {
+//     display: flex;
+//     flex-direction: column;
+// }
 
 .add-group-container {
     display: flex;
     // align-content: center ;
     align-items: center;
     background-color: hsla(0, 0%, 80%, 0.391);
-    width: $groupWidth ;
+    width: $groupWidth;
     height: 48px;
     border-radius: $radius;
     padding: 8px;
@@ -89,24 +81,19 @@
     }
 
     .add-list-content-opened {
-        width: 100%;    
+        width: 100%;
     }
-
-    
-
-    
 }
 
 .add-list-input {
     background-color: #fff;
     border: none;
     border-radius: 3px;
-    box-shadow: 0 1px 0 rgba(9, 30, 66, .251);
+    box-shadow: 0 1px 0 rgba(9, 30, 66, 0.251);
     height: 34px;
     margin-bottom: 8px;
     padding: 9px 8px;
     width: 100%;
-
 }
 .list-icon {
     width: 16px;
@@ -150,13 +137,12 @@
     }
 }
 
-   
-.txt-container{
+.txt-container {
     padding: 8px 8px 4px 12px;
     text-decoration: none;
     color: $clr7;
     border-radius: 3px;
     border: none;
-    box-shadow: 0px 1px 1px #091E4240, 0px 0px 1px #091E424F, none;
-    margin-bottom:8px ;
+    box-shadow: 0px 1px 1px #091e4240, 0px 0px 1px #091e424f, none;
+    margin-bottom: 8px;
 }
