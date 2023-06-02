@@ -5,7 +5,7 @@ import { useState } from "react";
 
 
 
-export function AddGroup({ addList }) {
+export function AddGroup({ addGroup }) {
 
     const [isAddOpen, setIsAddOpen] = useState(false)
     const [currStyle, setCurrStyle] = useState({})
@@ -27,8 +27,11 @@ export function AddGroup({ addList }) {
         setGroupTitle(value)
     }
 
-    function onAddList(){
-        addList(groupTitle)
+    function onAddGroup(ev){
+        ev.preventDefault()
+        addGroup(groupTitle)
+        setGroupTitle('')
+        onAddClose()
     }
 
 
@@ -38,13 +41,15 @@ export function AddGroup({ addList }) {
                 <Plus className="list-icon" />  Add another list
             </div>}
             {isAddOpen && <div className="add-list-content-opened">
-                <input onChange={handleChange} type="text" className="add-list-input" />
+                <form onSubmit={onAddGroup} >
+                <input value={groupTitle} onChange={handleChange} type="text" className="add-list-input" />
                 <div className="add-btns">
-                    <button onClick={onAddList} className="add-item-btn">Add list</button>
+                    <button onClick={onAddGroup} className="add-item-btn">Add list</button>
                     <button onClick={onAddClose} className="svg-holder">
                         <X className="list-icon icon-big" />
                     </button>
                 </div>
+                </form>
             </div>}
         </section>
     )
