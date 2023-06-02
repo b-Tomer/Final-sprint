@@ -3,13 +3,13 @@ import { utilService } from "./util.service"
 
 
 export const taskService = {
-    // removeTask,
+    removeTask,
     getDefaultTask,
     saveTask,
 }
 
-function getDefaultTask(){
-    const task ={}
+function getDefaultTask() {
+    const task = {}
     task.id = utilService.makeId()
     task.attachments = []
     task.labelIds = []
@@ -35,4 +35,14 @@ async function saveTask(task, boardId, groupId) {
         boardService.save(board)
         return board
     }
+}
+
+
+async function removeTask(boardId, groupId, taskId) {
+    const board = await boardService.getById(boardId)
+    const groupIdx = board.groups.findIndex(group => groupId === group.id)
+    const taskIdx = board.groups[groupIdx].tasks.findIndex(task => taskId === task.id)
+    board.groups[groupIdx].tasks.splice(taskIdx, 1)
+    await boardService.save(board)
+    return board
 }

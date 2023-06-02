@@ -15,3 +15,12 @@ export async function saveTask(task, boardId, groupId) {
     }
 }
 
+
+export async function removeTask(boardId ,groupId, taskId) {
+    try {
+        const board = await taskService.removeTask(boardId ,groupId,taskId )
+        store.dispatch(getActionSetBoard(board))
+    } catch (err) {
+        console.log('Cannot remove task', err)
+    }
+}
