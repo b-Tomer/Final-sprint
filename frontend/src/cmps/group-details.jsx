@@ -43,7 +43,7 @@ export function GroupDetails({ group, removeGroup, boardId }) {
    async function onAddTask(task) {
         console.log(task);
        try{
-           await saveTask(task, boardId, groupId)
+           await saveTask(task, boardId, group.id)
         }catch(err){
             console.log(err);
         }

@@ -34,7 +34,7 @@ export function BoardIndex() {
     useEffect(() => {
         loadBoards()
         loadBoard(boardId)
-    }, [isEditing])
+    }, [])
 
     // useEffect(() => {
     //     onLoadBoard()
