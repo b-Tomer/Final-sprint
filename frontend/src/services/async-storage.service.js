@@ -10,7 +10,7 @@ const gBoards = [
             imgUrl: 'http://some-img',
         },
         style: {
-            backgroundImage: '',
+            backgroundImage: '/assets/img/background.jpg',
         },
         labels: [
             {

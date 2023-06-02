@@ -4,6 +4,8 @@
     border-radius: $radius;
     background-color: $clr2;
     width: $groupWidth;
+    max-height: 569px;
+    overflow: hidden;
     .group-header {
         padding: 14px 8px;
         display: flex;
@@ -37,6 +39,7 @@
         flex-direction: column;
         padding: 0 4px;
         margin: 0 4px;
+        overflow: auto;
     }
 
     .group-footer {
