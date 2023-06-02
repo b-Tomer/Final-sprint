@@ -13,7 +13,6 @@ import { ReactComponent as Clock } from '../assets/img/icons/clock.svg'
 
 export function Workspace() {
     const boards = useSelector((storeState) => storeState.boardModule.boards)
-    const dispatch = useDispatch();
 
     useEffect(() => {
         onLoadBoards()
