@@ -1,8 +1,11 @@
+import { useDispatch } from "react-redux";
 import { taskService } from "../services/task.service.local";
 import { getActionSetBoard } from "./board.actions";
 
 
 export async function saveTask(task, boardId, groupId) {
+    const dispatch = useDispatch()
+
 
     try {
         const board = await taskService.saveTask(task, boardId, groupId)
