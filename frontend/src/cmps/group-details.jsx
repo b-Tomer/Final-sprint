@@ -1,7 +1,7 @@
 import { TaskPreview } from "./task/task-preview";
 import dots from '../assets/img/icons/dots.svg'
 import { ReactComponent as Plus } from '../assets/img/icons/plus.svg'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { groupService } from "../services/group.service.local";
 import { ReactComponent as X } from '../assets/img/icons/x.svg'
 import { taskService } from "../services/task.service.local";
@@ -13,7 +13,12 @@ export function GroupDetails({ group, removeGroup, boardId }) {
 
     const [groupToUpdate, setGroupToUpdate] = useState(group)
     const [isAddTaskOpen, setIsAddTaskOpen] = useState(false)
-    const [task, setTask] = useState(taskService.getDefaultTask())
+    const [task, setTask] = useState(null)
+    const [taskTitle, setTaskTitle] = useState('')
+
+    useEffect(()=>{
+        setTask(taskService.getDefaultTask())
+    },[])
 
     function onChangegroupTitle(ev) {
         const val = ev.target.value
@@ -34,18 +39,24 @@ export function GroupDetails({ group, removeGroup, boardId }) {
 
     function handleTaskTitle(ev) {
         const { value } = ev.target
-        let newTask = task
-        newTask.title = value
-        setTask(newTask)
-
+      setTaskTitle(value)
+       setTask((prevTask) => ({
+        ...prevTask,
+        title: value
+    }))
     }
+    console.log('task from details: ', task )
 
-   async function onAddTask(task) {
-        console.log(task);
+
+
+   async function onAddTask() { 
+
        try{
            await saveTask(task, boardId, group.id)
         }catch(err){
             console.log(err);
+        }finally{
+            // setTask(taskService.getDefaultTask())
         }
 
     }
@@ -66,7 +77,7 @@ export function GroupDetails({ group, removeGroup, boardId }) {
                     <TaskPreview task={task} key={task.id} />
                 )}
                 {isAddTaskOpen && <div className="task-container">
-                    <textarea className="txt-container " onChange={handleTaskTitle} name="" id="" cols="30" rows="2s"></textarea>
+                    <textarea className="txt-container "value={taskTitle}  onChange={handleTaskTitle} name="" id="" cols="30" rows="2s"></textarea>
                     <div className="add-btns">
                         <button onClick={onAddTask} className="add-item-btn">Add card</button>
                         <button onClick={onAddClose} className="svg-holder">

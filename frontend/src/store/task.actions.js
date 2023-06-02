@@ -1,15 +1,17 @@
 import { useDispatch } from "react-redux";
 import { taskService } from "../services/task.service.local";
 import { getActionSetBoard } from "./board.actions";
+import { store } from "./store";
 
 
 export async function saveTask(task, boardId, groupId) {
-    const dispatch = useDispatch()
-
-
+  
     try {
+        console.log('task from action: ', task )
+
         const board = await taskService.saveTask(task, boardId, groupId)
-        dispatch(getActionSetBoard(board))
+        store.dispatch(getActionSetBoard(board))
+        return board
     } catch (err) {
         console.log('err in saving task');
     }
