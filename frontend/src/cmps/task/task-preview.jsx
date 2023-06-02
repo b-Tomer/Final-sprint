@@ -3,7 +3,7 @@ import edit from '../../assets/img/icons/edit-task.png'
 import { TaskEditor } from '../task-editor'
 import { useClickOutside } from '../../customHooks/useClickOutside'
 
-export function TaskPreview({ task }) {
+export function TaskPreview({ task, onRemoveTask }) {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const menuRef = useRef(null)
@@ -21,7 +21,7 @@ export function TaskPreview({ task }) {
             <button className="btn-task-show-details" onClick={onOpenMenu}>
                 <img src={edit} alt="Edit" />
             </button>
-            {isMenuOpen && <TaskEditor />}
+            {isMenuOpen && <TaskEditor taskId={task.id} onRemoveTask={onRemoveTask} />}
         </div>
     )
 }

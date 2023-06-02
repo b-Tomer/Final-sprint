@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { groupService } from "../services/group.service.local";
 import { ReactComponent as X } from '../assets/img/icons/x.svg'
 import { taskService } from "../services/task.service.local";
-import { saveTask } from "../store/task.actions";
+import { removeTask, saveTask } from "../store/task.actions";
 
 
 
@@ -45,20 +45,23 @@ export function GroupDetails({ group, removeGroup, boardId }) {
         title: value
     }))
     }
-    console.log('task from details: ', task )
+    // console.log('task from details: ', task )
 
 
 
    async function onAddTask() { 
-
        try{
            await saveTask(task, boardId, group.id)
         }catch(err){
             console.log(err);
         }finally{
-            // setTask(taskService.getDefaultTask())
+            setTask(taskService.getDefaultTask())
+            setTaskTitle('')
         }
+    }
 
+    async function onRemoveTask(taskId){
+        removeTask(boardId,  group.id, taskId)
     }
 
     function onAddClose() {
@@ -74,7 +77,7 @@ export function GroupDetails({ group, removeGroup, boardId }) {
             <section className="group-content">
 
                 {group.tasks.map(task =>
-                    <TaskPreview task={task} key={task.id} />
+                    <TaskPreview onRemoveTask={onRemoveTask} task={task} key={task.id} />
                 )}
                 {isAddTaskOpen && <div className="task-container">
                     <textarea className="txt-container "value={taskTitle}  onChange={handleTaskTitle} name="" id="" cols="30" rows="2s"></textarea>
