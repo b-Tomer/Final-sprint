@@ -1,5 +1,5 @@
 
-export function TaskEditor() {
+export function TaskEditor({onRemoveTask , taskId}) {
 
 
     return (
@@ -11,7 +11,7 @@ export function TaskEditor() {
             <a className="quick-card-editor-buttons-item js-move-card" href="#" data-testid="card-quick-edit-menu-move"><span className="icon-sm icon-move light"></span><span className="quick-card-editor-buttons-item-text">Move</span></a>
             <a className="quick-card-editor-buttons-item js-copy-card" href="#" data-testid="card-quick-edit-menu-copy"><span className="icon-sm icon-card light"></span><span className="quick-card-editor-buttons-item-text">Copy</span></a>
             <a className="quick-card-editor-buttons-item js-edit-due-date" href="#" data-testid="card-quick-edit-menu-edit-dates"><span className="icon-sm icon-clock light"></span><span className="quick-card-editor-buttons-item-text">Edit dates</span></a>
-            <a className="quick-card-editor-buttons-item js-archive" href="#" data-testid="card-quick-edit-menu-archive"><span className="icon-sm icon-archive light"></span><span className="quick-card-editor-buttons-item-text">Archive</span></a>
+            <a onClick={()=>{onRemoveTask(taskId)}} className="quick-card-editor-buttons-item js-archive" href="#" data-testid="card-quick-edit-menu-archive"><span className="icon-sm icon-archive light"></span><span className="quick-card-editor-buttons-item-text">Archive</span></a>
 
         </div>
 

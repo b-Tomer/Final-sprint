@@ -11,8 +11,7 @@ export const taskService = {
 function getDefaultTask() {
     const task = {}
 
-    task.id = utilService.makeId()
-    task.title =''
+    task.title = ''
     task.attachments = []
     task.labelIds = []
     task.checklists = []
@@ -24,20 +23,18 @@ function getDefaultTask() {
 
 
 async function saveTask(task, boardId, groupId) {
+    const board = await boardService.getById(boardId)
     if (task.id) {
-        let board = await boardService.getById(boardId)
         const groupIdx = board.groups.findIndex(group => groupId === group.id)
         const taskIdx = board.groups[groupIdx].tasks.findIndex(currTask => currTask.id === task.id)
         board.groups[groupIdx].tasks[taskIdx] = task
         board = await boardService.save(board)
         return board
     } else {
-        console.log('task from service: ', task )
-        const board = await boardService.getById(boardId)
+        task.id = utilService.makeId()
         const idx = board.groups.findIndex(group => groupId === group.id)
         board.groups[idx].tasks.push(task)
-       await boardService.save(board)
-       console.log('board.groups[idx]: ', board.groups[idx] )
+        await boardService.save(board)
         return board
     }
 }
