@@ -35,7 +35,7 @@ const [isAddTaskOpen,setIsAddTaskOpen] = useState(false)
     }
 
     function onAddTask(){
-        
+        console.log('task add');
     }
 
     function onAddClose() {
