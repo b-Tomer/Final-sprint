@@ -56,6 +56,52 @@ const gBoards = [
                         id: 'c103',
                         title: 'Do that',
                         archivedAt: 1589983468418,
+                        attachments: [
+                            {
+                                id: 'ZdPfm',
+                                createdAt: 1590999817436,
+                                url: 'https://img.freepik.com/free-vector/sticker-template-cat-cartoon-character_1308-73786.jpg?w=2000',
+                            },
+                        ],
+                    },
+                    {
+                        id: 'c107',
+                        title: 'Do that',
+                        archivedAt: 1589983468418,
+                        style: {
+                            bgColor: '#22de81',
+                        },
+                    },
+                    {
+                        id: 'c117',
+                        title: 'Do that',
+                        archivedAt: 1589983468418,
+                        style: {
+                            backgroundImage:
+                                'https://img.freepik.com/free-vector/sticker-template-cat-cartoon-character_1308-73786.jpg?w=2000',
+                        },
+                        attachments: [
+                            {
+                                id: 'ZdPnm',
+                                createdAt: 1590999817436,
+                                url: 'https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*',
+                            },
+                            {
+                                id: 'ZdPfm',
+                                createdAt: 1590999817436,
+                                url: 'https://img.freepik.com/free-vector/sticker-template-cat-cartoon-character_1308-73786.jpg?w=2000',
+                            },
+                        ],
+                    },
+                    {
+                        id: 'c118',
+                        title: 'Do that',
+                        archivedAt: 1589983468418,
+                        style: {
+                            bgColor: '#f2de81',
+                            backgroundImage:
+                                'https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*',
+                        },
                     },
                     {
                         id: 'c104',
@@ -86,6 +132,18 @@ const gBoards = [
                                     fullname: 'Tal Tarablus',
                                     imgUrl: 'http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg',
                                 },
+                            },
+                        ],
+                        attachments: [
+                            {
+                                id: 'ZdPnm',
+                                createdAt: 1590999817436,
+                                url: 'https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*',
+                            },
+                            {
+                                id: 'ZdPfm',
+                                createdAt: 1590999817436,
+                                url: 'https://img.freepik.com/free-vector/sticker-template-cat-cartoon-character_1308-73786.jpg?w=2000',
                             },
                         ],
                         checklists: [
@@ -664,6 +722,8 @@ const gBoards = [
                         },
                         style: {
                             bgColor: '#26de81',
+                            backgroundImage:
+                                'https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*',
                         },
                     },
                 ],
@@ -700,7 +760,8 @@ const gBoards = [
             imgUrl: 'http://some-img',
         },
         style: {
-            backgroundImage: '',
+            backgroundImage:
+                'https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*',
         },
         labels: [
             {
@@ -736,7 +797,9 @@ const gBoards = [
                         title: 'Add Samples',
                     },
                 ],
-                style: {},
+                style: {
+                    bgColor: '#26de81',
+                },
             },
             {
                 id: 'g102',
