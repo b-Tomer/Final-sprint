@@ -24,31 +24,11 @@ export function BoardIndex() {
     const { boardId } = useParams()
     const { board } = useSelector((storeState) => storeState.boardModule)
     const dispatch = useDispatch()
-    // const [isEditing, setIsEditing] = useState(false)
 
     useEffect(() => {
         loadBoards()
         loadBoard(boardId)
     }, [updateBoard])
-
-    useEffect(() => {
-        loadBoards()
-        loadBoard(boardId)
-    }, [])
-
-    // useEffect(() => {
-    //     onLoadBoard()
-    // }, [isEditing])
-
-    // async function onLoadBoards() {
-    //     loadBoards()
-    // }
-
-    // async function onLoadBoard() {
-    //     loadBoard(boardId)
-    //     // const boardFromDb = await boardService.getById(boardId)
-    //     // setBoard(boardFromDb)
-    // }
 
     async function onRemoveBoard(boardId) {
         try {
@@ -75,8 +55,6 @@ export function BoardIndex() {
         try {
             const currBoard = await saveGroup(group, boardId)
             updateBoard(currBoard)
-            // setIsEditing(!isEditing)
-
             // dispatch({ type: SET_BOARD, board: updatedBoard })
         } catch (err) {
             console.log(err)
