@@ -1,16 +1,42 @@
 .board-container {
+    // position: fixed;
+    display: flex;
+    flex-direction: column;
     background-image: url('../../img/background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: calc(100vh - 48px);
-    // height: 100vh;
+    // height: calc(100vh - 48px);
+    height: 100vh;
+    // width: 100vw;
+    overflow: hidden;
+    ::-webkit-scrollbar {
+        width: 8px; /* Adjust the width as desired */
+        border-radius: 8px; /* Adjust the radius as desired */
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: $clrScrollTrans; /* Adjust the color as desired */
+        border-radius: 8px; /* Adjust the radius to match the scrollbar's border-radius */
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: $clrScrollTrans; /* Adjust the color when hovered */
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: $clrRailTrans; /* Adjust the background color as desired */
+        border-radius: 8px; /* Adjust the radius to match the scrollbar's border-radius */
+    }
 }
 
 .board-content {
+    overflow: auto;
     display: flex;
+    flex-grow: 1;
+    position: relative;
     gap: 10px;
-    margin-block-start: 12px;
+    margin-block-start: 118px;
     margin-block-end: 8px;
     margin-inline-start: 15px;
     ::-webkit-scrollbar {

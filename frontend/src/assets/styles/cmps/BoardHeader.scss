@@ -1,5 +1,7 @@
 .board-header-container {
     display: flex;
+    position: fixed;
+    width: 100vw;
     justify-content: space-between;
     background-color: $clrBH;
     backdrop-filter: blur(4px);
@@ -10,6 +12,7 @@
     padding-block-start: 12px;
     height: 56px;
     margin: 0;
+    margin-block-start: 48px;
     align-content: center;
     align-items: center;
     color: $clr7;
