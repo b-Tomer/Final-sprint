@@ -2,6 +2,7 @@ import { HomePage } from './pages/home-page.jsx'
 import { BoardIndex } from './pages/board-index.jsx'
 import { Workspace } from './pages/workspace.jsx'
 import { TaskDetails } from './cmps/task/task-details.jsx'
+import { NotFound } from './pages/not-found.jsx'
 
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
@@ -24,6 +25,11 @@ const routes = [
         path: 'task/:taskId/:groupId',
         component: <TaskDetails />,
         label: 'Reviews',
+    },
+    {
+        path: '/notfound',
+        component: <NotFound />,
+        label: 'Notfound',
     },
 ]
 
