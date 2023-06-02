@@ -1,6 +1,17 @@
+import React from 'react';
+
 import { Link, NavLink } from 'react-router-dom'
 import cube from '../assets/img/icons/cube.svg'
-import down from '../assets/img/icons/down.svg'
+// import down from '../assets/img/icons/down.svg'
+import Logo from '../assets/img/icons/logo.svg'
+
+import { ReactComponent as Down } from '../assets/img/icons/down.svg'
+
+
+
+
+
+
 
 // import {useSelector} from 'react-redux'
 // import routes from '../routes'
@@ -41,34 +52,39 @@ export function AppHeader() {
     return (
         <header className="app-header">
             <img className='cube-img' src={cube} alt="" />
+            <img className='logo-img' src={Logo} alt="Logo" />
             <div className="app-logo">
                 <h3>Trello</h3>
-                </div>
+            </div>
             <nav className="main-nav">
-                <NavLink className='links' to="/">
-                    Work spaces
-                    <img className='cube-img' src={down} alt="" />
-                </NavLink>
-                {/* <svg  ></svg> */}
-                <NavLink to="/about">
-                    Recent
-                    <img className='cube-img' src={down} alt="" />
-                </NavLink>
-                <NavLink to="/bookApp">
-                    Starred
-                    <img className='cube-img' src={down} alt="" />
-                </NavLink>
-
+                <div className='link-section'>
+                    <NavLink className='links' to="/">
+                        Workspaces
+                        <img className='down-img' src={Down} alt="" />
+                    </NavLink>
+                </div>
+                <div className="link-section">
+                    <NavLink to="/about">
+                        Recent
+                        <img className='down-img' src={down} alt="" />
+                    </NavLink>
+                </div>
+                <div className="link-section">
+                    <NavLink to="/bookApp">
+                        Starred
+                        <img className='down-img' src={down} alt="" />
+                    </NavLink>
+                </div>
             </nav>
             {/* <button>Create</button> */}
             {/* <div className="header-actions"> */}
-                {/* <input
+            {/* <input
                     className="header-search"
                     type="text"
                     placeholder="Search"
                 /> */}
 
-                {/* <ul>
+            {/* <ul>
                     <li className="notifications"></li>
                     <li className="Information"></li>
                     <li className="Theme"></li>
