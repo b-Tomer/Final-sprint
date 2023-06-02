@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 
 export function TaskDetails() {
     const { board } = useSelector((storeState) => storeState.boardModule)
-    const { taskId, groupId } = useParams()
+    const { taskId, groupId, boardId } = useParams()
     const [task, setTask] = useState(null)
     const [group, setGroup] = useState(null)
     // const [fields, handleChange, setFields] = useForm(null)

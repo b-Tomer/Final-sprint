@@ -24,7 +24,7 @@ const routes = [
     {
         path: 'task/:boardId/:groupId/:taskId',
         component: <TaskDetails />,
-        label: 'Task Details',
+        label: 'Taks details',
     },
     {
         path: '/notfound',
