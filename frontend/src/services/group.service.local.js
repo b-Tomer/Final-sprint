@@ -8,8 +8,8 @@ export const groupService = {
 }
 
 async function saveGroup(groupTitle, boardId, groupId) {
+    let board = await boardService.getById(boardId)
     if (groupId) {
-        let board = await boardService.getById(boardId)
         const idx = board.groups.findIndex((group) => groupId === group.id)
         board.groups[idx].title = groupTitle
         await boardService.save(board)
@@ -18,7 +18,7 @@ async function saveGroup(groupTitle, boardId, groupId) {
         const group = { title: groupTitle }
         group.id = utilService.makeId()
         group.tasks = []
-        const board = await boardService.getById(boardId)
+        // const board = await boardService.getById(boardId)
         board.groups.push(group)
         await boardService.save(board)
         return board

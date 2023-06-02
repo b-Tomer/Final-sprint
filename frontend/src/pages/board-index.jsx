@@ -31,26 +31,74 @@ export function BoardIndex() {
         loadBoard(boardId)
     }, [updateBoard])
 
+    useEffect(() => {
+        loadBoards()
+        loadBoard(boardId)
+    }, [isEditing])
+
+    // useEffect(() => {
+    //     onLoadBoard()
+    // }, [isEditing])
+
+    // async function onLoadBoards() {
+    //     loadBoards()
+    // }
+
+    // async function onLoadBoard() {
+    //     loadBoard(boardId)
+    //     // const boardFromDb = await boardService.getById(boardId)
+    //     // setBoard(boardFromDb)
+    // }
+
+    async function onRemoveBoard(boardId) {
+        try {
+            await removeBoard(boardId)
+            showSuccessMsg('Board removed')
+        } catch (err) {
+            showErrorMsg('Cannot remove board')
+        }
+    }
+
+    async function onAddBoard() {
+        const board = boardService.getEmptyBoard()
+        board.vendor = prompt('Vendor?')
+        try {
+            const savedBoard = await addBoard(board)
+            showSuccessMsg(`Board added (id: ${savedBoard._id})`)
+        } catch (err) {
+            showErrorMsg('Cannot add board')
+        }
+    }
+
     async function addGroup(group) {
         console.log(group)
         try {
-          const currBoard =  await saveGroup(group, boardId)
+            const currBoard = await saveGroup(group, boardId)
             updateBoard(currBoard)
             // setIsEditing(!isEditing)
 
             // dispatch({ type: SET_BOARD, board: updatedBoard })
         } catch (err) {
             console.log(err)
+        } finally {
+            loadBoards()
+            loadBoard(boardId)
         }
-        //  finally {
-        //     loadBoards()
-        //     loadBoard(boardId)
-        // }
     }
 
     async function removeGroup(group) {
-        const updatedBoard = await groupService.removeGroup(group.id, boardId)
-        dispatch({ type: SET_BOARD, board: updatedBoard })
+        try {
+            const updatedBoard = await groupService.removeGroup(
+                group.id,
+                boardId
+            )
+            dispatch({ type: SET_BOARD, board: updatedBoard })
+        } catch (err) {
+            console.log(err)
+        } finally {
+            loadBoards()
+            loadBoard(boardId)
+        }
     }
 
     if (!board) return
