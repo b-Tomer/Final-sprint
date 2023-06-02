@@ -25,7 +25,7 @@ export function TaskDetails() {
         <section className="task-details-container">
             <TaskHeader task={task} group={group} boardId={boardId} />
             <TaskMainDetails task={task} groupId={groupId} />
-            {/* <TaskMenu /> */}
+            <TaskMenu />
         </section>
     )
 }
