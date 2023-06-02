@@ -57,6 +57,7 @@ export function GroupDetails({ group, removeGroup, boardId }) {
         }finally{
             setTask(taskService.getDefaultTask())
             setTaskTitle('')
+            onAddClose()
         }
     }
 
@@ -80,13 +81,15 @@ export function GroupDetails({ group, removeGroup, boardId }) {
                     <TaskPreview onRemoveTask={onRemoveTask} task={task} key={task.id} />
                 )}
                 {isAddTaskOpen && <div className="task-container">
-                    <textarea className="txt-container "value={taskTitle}  onChange={handleTaskTitle} name="" id="" cols="30" rows="2s"></textarea>
+                    <form onSubmit={onAddTask}>
+                    <input className="add-list-input" value={taskTitle}  onChange={handleTaskTitle} />
                     <div className="add-btns">
                         <button onClick={onAddTask} className="add-item-btn">Add card</button>
                         <button onClick={onAddClose} className="svg-holder">
                             <X className="list-icon icon-big" />
                         </button>
                     </div>
+                    </form>
                 </div>}
             </section>
             <div className="group-footer">
