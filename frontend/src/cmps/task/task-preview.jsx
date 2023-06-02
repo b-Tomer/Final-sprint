@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import edit from '../../assets/img/icons/edit-task.png'
 import { TaskEditor } from './task-editor'
 import { useClickOutside } from '../../customHooks/useClickOutside'
+import { TaskEditor } from './task-editor'
 
 export function TaskPreview({ task, onRemoveTask, boardId, groupId }) {
     const navigate = useNavigate()
