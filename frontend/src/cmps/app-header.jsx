@@ -66,13 +66,13 @@ export function AppHeader() {
                 <div className="link-section">
                     <NavLink to="/about">
                         Recent
-                        <img className='down-img' src={down} alt="" />
+                        <img className='down-img' src={Down} alt="" />
                     </NavLink>
                 </div>
                 <div className="link-section">
                     <NavLink to="/bookApp">
                         Starred
-                        <img className='down-img' src={down} alt="" />
+                        <img className='down-img' src={Down} alt="" />
                     </NavLink>
                 </div>
             </nav>
