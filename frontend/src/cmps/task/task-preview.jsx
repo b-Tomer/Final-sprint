@@ -39,9 +39,6 @@ export function TaskPreview({
         setIsMenuOpen(!isMenuOpen)
         console.log(isMenuOpen)
     }
-    // function openTaskDetails() {
-    //     navigate(`/task/${boardId}/${groupId}/${task.id}`)
-    // }
 
     function onOpenTaskDetails() {
         setIsTaskDetailsOpen(true)
