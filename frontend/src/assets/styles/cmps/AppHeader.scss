@@ -42,6 +42,7 @@
     .header-search {
         height: 2rem;
         width: 100%;
+        border-radius: 6px;
 
 
     }
@@ -60,9 +61,9 @@
             padding: 0px;
 
             .app-header-icon {
-                width: 32px;
-                height: 32px;
-                padding-left: 10px;
+                width: 22px;
+                height: 22px;
+                margin-inline-start: 8px;
             }
         }
 
@@ -71,15 +72,14 @@
             flex-direction: row;
             align-items: center;
             background-color: $clr3;
+            min-width: 170px;
+            height: 1.85rem;
             border-radius: 6px;
-            min-width: 200px;
-
-            height: 1.75rem;
 
 
             input {
                 font-size: 0.75rem;
-                height: 1.2rem;
+                height: 1.85rem;
                 width: 100%;
                 border: none;
                 background-color: $clr3;
@@ -87,21 +87,18 @@
                 transition: width 0.2s ease;
             }
 
+
             input:focus {
                 width: 400px;
             }
 
             .search-img {
-                width: 0.9rem;
-                height: 0.9rem;
-                margin-left: 5px;
+                width: 0.8rem;
+                height: 0.8rem;
+                margin-left: 8px;
+                margin-right: 8px;
             }
 
-            // .app-header-icons {
-
-
-
-            // }
 
 
         }

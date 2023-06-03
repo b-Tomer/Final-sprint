@@ -35,8 +35,8 @@ export function TaskPreview({ task, onRemoveTask, boardId, groupId }) {
                     style={
                         !task.style?.backgroundImage
                             ? {
-                                  backgroundColor: task.style.bgColor,
-                              }
+                                backgroundColor: task.style.bgColor,
+                            }
                             : { backgroundColor: '' }
                     }
                 >

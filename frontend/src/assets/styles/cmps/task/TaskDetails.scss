@@ -1,21 +1,24 @@
-.task-details-container{
+.task-details-container {
     padding: 50px;
     border: 1px solid grey;
     border-radius: 2em;
     display: grid;
     grid-template-columns: 1fr 150px;
 
-    .data-preview{
+    .data-preview {
         display: flex;
         flex-wrap: wrap;
-        .data-item{
+
+        .data-item {
             margin-right: 20px;
         }
     }
-    .task-header{
+
+    .task-header {
         grid-column: 1/3;
     }
-    .window-sidebar{
+
+    .window-sidebar {
         grid-column: 2;
     }
 }
