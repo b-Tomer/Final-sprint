@@ -1,9 +1,11 @@
 import { ReactComponent as Description } from '../../assets/img/icons/description.svg'
 import { ReactComponent as Activity } from '../../assets/img/icons/activity.svg'
-import { TaskChecklist } from '../../cmps/task/task-checklist'
+import { TaskChecklist } from '../../cmps/task/task-checklist.jsx'
 
 
-export function TaskMainContent({ task, groupId }) {
+export function TaskMainContent({ task }) {
+    if (!task) return
+
     console.log('task in main constent', task)
 
 
