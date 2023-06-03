@@ -24,7 +24,7 @@ export function TaskPreview({
     //
     const navigate = useNavigate()
 
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
+    // const [isMenuOpen, setIsMenuOpen] = useState(false)
     const menuRef = useRef(null)
     const taskPreviewRef = useRef()
 
@@ -35,10 +35,10 @@ export function TaskPreview({
     //     console.log(isMenuOpen)
     // }
 
-    function onOpenMenu() {
-        setIsMenuOpen(!isMenuOpen)
-        console.log(isMenuOpen)
-    }
+    // function onOpenMenu() {
+    //     setIsMenuOpen(!isMenuOpen)
+    //     console.log(isMenuOpen)
+    // }
 
     function onOpenTaskDetails() {
         setIsTaskDetailsOpen(true)
@@ -77,9 +77,9 @@ export function TaskPreview({
             >
                 <Stylus className="edit-icon" />
             </button>
-            {isMenuOpen && (
+            {/* {isMenuOpen && (
                 <TaskEditor taskId={task.id} onRemoveTask={onRemoveTask} />
-            )}
+            )} */}
             {(task.style?.bgColor || task.style?.backgroundImage) && (
                 <div
                     className="task-header"
@@ -102,6 +102,7 @@ export function TaskPreview({
                 {/* <span className="task-title" onClick={openTaskDetails}>
                     {task.title}
                 </span> */}
+                <span className="task-labels"></span>
                 {
                     <span className="task-title" onClick={onOpenTaskDetails}>
                         {task.title}
