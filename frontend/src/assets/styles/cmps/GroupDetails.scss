@@ -86,7 +86,7 @@
     // align-content: center ;
     align-items: center;
     background-color: hsla(0, 0%, 80%, 0.391);
-    width: $groupWidth;
+    min-width: $groupWidth;
     height: 48px;
     border-radius: $radius;
     padding: 8px;
