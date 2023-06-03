@@ -8,6 +8,7 @@ import { ReactComponent as Move } from '../../assets/img/icons/arrow_right.svg'
 import { ReactComponent as Archive } from '../../assets/img/icons/archive.svg'
 import { ReactComponent as Cover } from '../../assets/img/icons/cover.svg'
 import { removeTask } from '../../store/task.actions'
+import { TaskPreview } from './task-preview'
 
 export function TaskEditor({ pos, task, groupId, setTaskEdit, boardId }) {
     const menuRef = useRef(null)
@@ -39,6 +40,7 @@ export function TaskEditor({ pos, task, groupId, setTaskEdit, boardId }) {
                 toggleEditModal(ev, taskPreviewRef)
             }}
         >
+            {/* <TaskPreview task={task} /> */}
             <section className="card-editor-container" style={modalStyle}>
                 <div className="card-editor-buttons">
                     <a
