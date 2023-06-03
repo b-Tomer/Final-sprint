@@ -18,11 +18,13 @@ export function TaskPreview({
     setTaskEdit,
     setIsTaskDetailsOpen,
     isTaskDetailsOpen,
+    onExpandLabels,
+    isLabelsExpand,
+    labelsFont
 }) {
     const navigate = useNavigate()
     const { board } = useSelector((storeState) => storeState.boardModule)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-    const [isExpand, setIsExpand] = useState(false)
     const menuRef = useRef(null)
     const taskPreviewRef = useRef()
 
@@ -58,26 +60,17 @@ export function TaskPreview({
         return matchedLabel.color
     }
 
-    // function getLabelTxtColor(id) {
-    //     console.log(board)
-    //     if (!board.labels) return
-    //     const txtColor = getLabelBgColor(id)
-    //     const darkerShade = getDarkerShade(txtColor, 20)
-    //     return darkerShade
-    // }
-
     function getLabelTitle(id) {
         console.log(board)
         if (!board.labels) return
         const matchedLabel = board.labels.find((label) => label.id === id)
-        // console.log(matchedLabel.color)
         return matchedLabel.title
     }
 
     function toggleLabelExpantion(ev, id) {
         ev.preventDefault()
-        setIsExpand(!isExpand)
-        if (isExpand) {
+        onExpandLabels()
+        if (isLabelsExpand) {
             ev.target.innerText = getLabelTitle(id)
         } else {
             ev.target.innerText = ''
@@ -103,8 +96,8 @@ export function TaskPreview({
                     style={
                         !task.style?.backgroundImage
                             ? {
-                                  backgroundColor: task.style.bgColor,
-                              }
+                                backgroundColor: task.style.bgColor,
+                            }
                             : { backgroundColor: '' }
                     }
                 >
@@ -118,18 +111,19 @@ export function TaskPreview({
             <div className="task-content">
                 {task?.labelIds && (
                     <span className="task-labels">
-                        {task.labelIds.map((label) => (
+                        {task.labelIds.map((labelId) => (
                             <button
                                 onClick={(ev) => {
-                                    toggleLabelExpantion(ev, label)
+                                    toggleLabelExpantion(ev, labelId)
                                 }}
-                                key={label}
+                                key={labelId}
                                 style={{
-                                    backgroundColor: getLabelBgColor(label),
+                                    backgroundColor: getLabelBgColor(labelId),
+                                    fontSize: labelsFont,
                                 }}
                                 className="task-labels-btn"
                             >
-                                {getLabelTitle(label)}
+                                {getLabelTitle(labelId)}
                             </button>
                         ))}
                     </span>

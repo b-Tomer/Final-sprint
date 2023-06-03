@@ -15,6 +15,9 @@ export function GroupDetails({
     isTaskDetailsOpen,
     setTaskEdit,
     taskEdit,
+    onExpandLabels,
+    isLabelsExpand,
+    labelsFont
 }) {
     const [groupToUpdate, setGroupToUpdate] = useState(group)
     const [isAddTaskOpen, setIsAddTaskOpen] = useState(false)
@@ -95,6 +98,9 @@ export function GroupDetails({
             <section className="group-content">
                 {group.tasks.map((task) => (
                     <TaskPreview
+                        labelsFont={labelsFont}
+                        isLabelsExpand={isLabelsExpand}
+                        onExpandLabels={onExpandLabels}
                         onRemoveTask={onRemoveTask}
                         task={task}
                         key={task.id}

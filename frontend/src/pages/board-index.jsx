@@ -33,6 +33,8 @@ export function BoardIndex() {
     const dispatch = useDispatch()
     const [taskEdit, setTaskEdit] = useState(null)
     const [isTaskDetailsOpen, setIsTaskDetailsOpen] = useState(false)
+    const [isLabelsExpand, setIsLabelsExpand] = useState(false)
+    const [labelsFont, setLabelsFont] = useState('0px')
 
     useEffect(() => {
         loadBoards()
@@ -98,6 +100,16 @@ export function BoardIndex() {
         }
     }
 
+    function onExpandLabels() {
+        setIsLabelsExpand(!isLabelsExpand)
+        if (isLabelsExpand) setLabelsFont('12px') 
+        else  setLabelsFont('0px')
+
+        // setTimeout(() => {
+        //     loadBoard(boardId)
+        // }, 5000)
+    }
+
     if (!board) return
     return (
         <Fragment>
@@ -105,21 +117,24 @@ export function BoardIndex() {
                 <AppHeader />
                 <section
                     className="board-container"
-                    // style={
-                    //     board.style?.backgroundImage
-                    //         ? {
-                    //               backgroundImage: `url(${board.style.backgroundImage})`,
-                    //               backgroundSize: 'cover',
-                    //               backgroundPosition: 'center',
-                    //               backgroundRepeat: 'no-repeat',
-                    //           }
-                    //         : { backgroundImage: `url('')` }
-                    // }
+                // style={
+                //     board.style?.backgroundImage
+                //         ? {
+                //               backgroundImage: `url(${board.style.backgroundImage})`,
+                //               backgroundSize: 'cover',
+                //               backgroundPosition: 'center',
+                //               backgroundRepeat: 'no-repeat',
+                //           }
+                //         : { backgroundImage: `url('')` }
+                // }
                 >
                     <BoardHeader />
                     <main className="board-content">
                         {board.groups.map((group) => (
                             <GroupDetails
+                                labelsFont={labelsFont}
+                                isLabelsExpand={isLabelsExpand}
+                                onExpandLabels={onExpandLabels}
                                 boardId={boardId}
                                 removeGroup={removeGroup}
                                 group={group}
