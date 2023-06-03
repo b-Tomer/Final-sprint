@@ -30,10 +30,10 @@ export function TaskPreview({
 
     useClickOutside(menuRef, toggleEditModal)
 
-    function onOpenMenu() {
-        setIsMenuOpen(!isMenuOpen)
-        console.log(isMenuOpen)
-    }
+    // function onOpenMenu() {
+    //     setIsMenuOpen(!isMenuOpen)
+    //     console.log(isMenuOpen)
+    // }
 
     function onOpenTaskDetails() {
         setIsTaskDetailsOpen(true)
@@ -87,9 +87,9 @@ export function TaskPreview({
             >
                 <Stylus className="edit-icon" />
             </button>
-            {isMenuOpen && (
-                <TaskEditor taskId={task.id} onRemoveTask={onRemoveTask} />
-            )}
+            {/* {isMenuOpen && (
+                <TaskEditor setIsTaskDetailsOpen={setIsTaskDetailsOpen} taskId={task.id} onRemoveTask={onRemoveTask} />
+            )} */}
             {(task.style?.bgColor || task.style?.backgroundImage) && (
                 <div
                     className="task-header"
