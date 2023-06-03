@@ -1,0 +1,68 @@
+.checklists-container {
+
+    .checklist-container {
+
+        .checklist-title {
+            display: flex;
+            flex-direction: row;
+
+            button {
+                margin-left: auto;
+                padding: 7px 7px;
+                color: $clr4;
+                margin-right: 10px;
+                border-radius: 5px;
+
+            }
+        }
+
+        .progress-bar {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 10px;
+
+            span {
+                font-size: 0.65rem;
+                margin-bottom: 2px;
+                margin-left: 3px;
+            }
+
+            .empty-bar {
+                background-color: $clr2;
+                min-width: 100px;
+                height: 5px;
+                margin-right: 10px;
+                margin-left: 3px;
+                width: 100%;
+
+                .fill-bar {
+                    // width: {progress};
+                    height: 100%;
+                    background-color: $clr8;
+                    border-radius: 20px;
+                }
+            }
+        }
+
+        .todo {
+            display: flex;
+            flex-direction: row;
+            margin: 0px;
+            align-items: center;
+
+            h3 {
+                font-size: 0.68rem;
+                margin: 5px;
+                color: $clr4;
+                font-weight: 500;
+            }
+
+            input {
+                margin-top: 5px;
+            }
+        }
+    }
+
+}
