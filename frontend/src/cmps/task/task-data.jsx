@@ -9,8 +9,8 @@ export function TaskData({ task }) {
     <div className="data-preview">
       {/* <div className="data-item">
         <MembersPreview task={task} />
-      </div>
-      <div className="data-item">
+      </div> */}
+      {/* <div className="data-item">
         <LabelsPreview task={task} />
       </div>
       <div className="data-item">

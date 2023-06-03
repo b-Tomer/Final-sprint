@@ -1,6 +1,6 @@
 import { ReactComponent as Description } from '../../assets/img/icons/description.svg'
-import { ReactComponent as Checklist } from '../../assets/img/icons/checklist.svg'
 import { ReactComponent as Activity } from '../../assets/img/icons/activity.svg'
+import { TaskChecklist } from '../../cmps/task/task-checklist'
 
 
 export function TaskMainContent({ task, groupId }) {
@@ -19,10 +19,7 @@ export function TaskMainContent({ task, groupId }) {
                 </div>
             </div>
             <div className="checklist">
-                <div className="checklist-title" >
-                    <Checklist className="task-content-icon" />
-                    <h3>Checklist</h3>
-                </div>
+                <TaskChecklist task={task} />
             </div>
 
             <div className="activities">
