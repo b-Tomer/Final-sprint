@@ -18,10 +18,6 @@ export function TaskPreview({
     setIsTaskDetailsOpen,
     isTaskDetailsOpen,
 }) {
-    // //
-    // const { groupId, taskId } = useParams();
-    // const [isTaskDetailsOpen, setIsTaskDetailsOpen] = useState(false);
-    //
     const navigate = useNavigate()
 
     // const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -35,6 +31,10 @@ export function TaskPreview({
     //     console.log(isMenuOpen)
     // }
 
+    // function onOpenMenu() {
+    //     setIsMenuOpen(!isMenuOpen)
+    //     console.log(isMenuOpen)
+    // }
     // function onOpenMenu() {
     //     setIsMenuOpen(!isMenuOpen)
     //     console.log(isMenuOpen)
@@ -99,24 +99,12 @@ export function TaskPreview({
                 </div>
             )}
             <div className="task-content">
-                {/* <span className="task-title" onClick={openTaskDetails}>
-                    {task.title}
-                </span> */}
                 <span className="task-labels"></span>
                 {
                     <span className="task-title" onClick={onOpenTaskDetails}>
                         {task.title}
                     </span>
                 }
-
-                {/* {isTaskDetailsOpen && ( */}
-                {/* <div className="modal-overlay">
-                    <div className="task-details-modal">
-                        <TaskDetails task={task} onClose={onCloseTaskDetails} />
-                    </div>
-                </div> */}
-                {/* )} */}
-
                 <TaskIcons task={task} groupId={groupId} boardId={boardId} />
             </div>
         </div>

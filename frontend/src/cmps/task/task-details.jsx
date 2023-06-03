@@ -23,15 +23,18 @@ export function TaskDetails({ taskId, groupId }) {
     console.log('group: ', group);
 
     return (
-        <section className="task-details-container">
 
-            <TaskHeader task={task} group={group} />
-            <TaskMainDetails task={task} group={group} />
-            <TaskMenu />
-            <button className="task-details-close" >
-                Close
-            </button>
-        </section>
+        <div className='modal-overlay'>
+            <section className="task-details-container">
+
+                <TaskHeader task={task} group={group} />
+                <TaskMainDetails task={task} group={group} />
+                <TaskMenu />
+                <button className="task-details-close" >
+                    Close
+                </button>
+            </section>
+        </div >
     )
 }
 
