@@ -2291,6 +2291,38 @@ export const gBoards = [
             {
                 "id": "g4002",
                 "title": "Marketing",
+                "labels": [
+                    {
+                        "id": "l101",
+                        "title": "Label 1",
+                        "color": "#4bce97"
+                    },
+                    {
+                        "id": "l102",
+                        "title": "Label 2",
+                        "color": "#e2b203"
+                    },
+                    {
+                        "id": "l103",
+                        "title": "Label 3",
+                        "color": "#faa53d"
+                    },
+                    {
+                        "id": "l104",
+                        "title": "Label 4",
+                        "color": "#f87462"
+                    },
+                    {
+                        "id": "l105",
+                        "title": "Label 5",
+                        "color": "#9f8fef"
+                    },
+                    {
+                        "id": "l106",
+                        "title": "Label 6",
+                        "color": "#579dff"
+                    }
+                ],
                 "tasks": [
                     {
                         "id": "t4004",
