@@ -1,18 +1,30 @@
 .group-container {
+    flex-shrink: 0;
     display: grid;
     grid-template-rows: 47px 1fr 43px;
     border-radius: $radius;
     background-color: $clr2;
     width: $groupWidth;
+    max-height: 559px;
+    height: fit-content;
+    overflow: hidden;
     .group-header {
         padding: 14px 8px;
         display: flex;
         justify-content: space-between;
-
-        span {
+        input {
+            height: fit-content;
+            padding-block: 5px;
+            margin: 0;
+            border-radius: 3px;
             color: $clr7;
             font-size: 14px;
             font-weight: 600;
+            padding-inline-start: 10px;
+            &:focus {
+                background-color: $clr1;
+                box-shadow: rgb(56, 139, 255) 0px 0px 0px 2px inset;
+            }
         }
 
         img {
@@ -37,6 +49,7 @@
         flex-direction: column;
         padding: 0 4px;
         margin: 0 4px;
+        overflow: auto;
     }
 
     .group-footer {

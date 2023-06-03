@@ -10,7 +10,7 @@ const gBoards = [
             imgUrl: 'http://some-img',
         },
         style: {
-            backgroundImage: '',
+            backgroundImage: '/assets/img/background.jpg',
         },
         labels: [
             {
@@ -21,7 +21,7 @@ const gBoards = [
             {
                 id: 'l102',
                 title: 'Progress',
-                color: '#61bd33',
+                color: '#a1bd33',
             },
         ],
         members: [

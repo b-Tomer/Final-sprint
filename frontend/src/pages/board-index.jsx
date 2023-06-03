@@ -18,6 +18,7 @@ import { AddGroup } from '../cmps/add-group.jsx'
 import { groupService } from '../services/group.service.local.js'
 import { SET_BOARD } from '../store/board.reducer.js'
 import { saveGroup } from '../store/group.actions.js'
+import img from '../assets/img/background.jpg'
 
 export function BoardIndex() {
     // const boards = useSelector((storeState) => storeState.boardModule.boards)
@@ -83,7 +84,19 @@ export function BoardIndex() {
     return (
         <div>
             <AppHeader />
-            <section className="board-container">
+            <section
+                className="board-container"
+                // style={
+                //     board.style?.backgroundImage
+                //         ? {
+                //               backgroundImage: `url(${board.style.backgroundImage})`,
+                //               backgroundSize: 'cover',
+                //               backgroundPosition: 'center',
+                //               backgroundRepeat: 'no-repeat',
+                //           }
+                //         : { backgroundImage: `url('')` }
+                // }
+            >
                 <BoardHeader />
                 <main className="board-content">
                     {board.groups.map((group) => (

@@ -17,7 +17,7 @@
 @import 'views/CarIndex';
 @import 'views/ReviewIndex';
 @import 'views/UserDetails';
-@import 'views/board';
+@import 'views/BoardIndex';
 @import 'views/NotFound.scss';
 
 // Components
@@ -25,7 +25,7 @@
 @import 'cmps/AppHeader';
 @import 'cmps/UserMsg';
 @import 'cmps/ShoppingCart';
-@import 'cmps/group.scss';
+@import 'cmps/GroupDetails.scss';
 @import 'cmps/TaskPreview.scss';
 @import 'cmps/TaskEditor';
 @import 'cmps/BoardHeader.scss';
