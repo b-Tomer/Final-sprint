@@ -65,6 +65,38 @@ export const gBoards = [
     {
         "_id": "b2001",
         "title": "Marketing Campaign",
+        "labels": [
+            {
+                "id": "l101",
+                "title": "Label 1",
+                "color": "#4bce97"
+            },
+            {
+                "id": "l102",
+                "title": "Label 2",
+                "color": "#e2b203"
+            },
+            {
+                "id": "l103",
+                "title": "Label 3",
+                "color": "#faa53d"
+            },
+            {
+                "id": "l104",
+                "title": "Label 4",
+                "color": "#f87462"
+            },
+            {
+                "id": "l105",
+                "title": "Label 5",
+                "color": "#9f8fef"
+            },
+            {
+                "id": "l106",
+                "title": "Label 6",
+                "color": "#579dff"
+            }
+        ],
         "members": [
             {
                 "_id": 'u101',
@@ -96,6 +128,7 @@ export const gBoards = [
                         "title": "Define campaign objectives",
                         "description": "In this task, the marketing team will define the objectives and goals of the marketing campaign, including target audience, desired outcomes, and key performance indicators.",
                         "dueDate": 1751886000,
+                        "labelIds": ["l103", "l102", "l105"],
                         "attachments": [
                             {
                                 "id": "a101",
@@ -153,6 +186,7 @@ export const gBoards = [
                         "title": "Research target market",
                         "description": "In this task, the marketing team will conduct research to gain insights into the target market, including demographics, preferences, and behaviors.",
                         "dueDate": 1764232400000,
+                        "labelIds": ["l104", "l101"],
                         "checklists": [
                             {
                                 "id": "cl2003",
@@ -196,6 +230,7 @@ export const gBoards = [
                 "tasks": [
                     {
                         "id": "t2005",
+                        "labelIds": ["l104", "l106"],
                         "attachments": [
                             {
                                 "id": "a102",
@@ -253,6 +288,7 @@ export const gBoards = [
                         "checklists": [
                             {
                                 "id": "cl2006",
+                                "labelIds": ["l103", "l102", "l105"],
                                 "title": "Checklist 1",
                                 "todos": [
                                     {
@@ -354,6 +390,7 @@ export const gBoards = [
                 "tasks": [
                     {
                         "id": "t2009",
+                        "labelIds": ["l101", "l106"],
                         "title": "Run social media ad campaigns",
                         "description": "This task involves creating and running targeted social media ad campaigns to reach a wider audience and generate awareness about the marketing campaign.",
                         "dueDate": 1801269200,
@@ -399,6 +436,7 @@ export const gBoards = [
                             {
                                 "id": "cl2011",
                                 "title": "Checklist 1",
+                                "labelIds": ["l103", "l102", "l105"],
                                 "todos": [
                                     {
                                         "id": "todo2031",
@@ -435,6 +473,7 @@ export const gBoards = [
                     {
                         "id": "t2010",
                         "title": "Email marketing",
+                        "labelIds": ["l104", "l106"],
                         "description": "In this task, the marketing team will create and send targeted email campaigns to engage with potential customers and drive them towards the desired action.",
                         "dueDate": 1807442000000,
                         "checklists": [
@@ -516,6 +555,7 @@ export const gBoards = [
                     },
                     {
                         "id": "t2013",
+                        "labelIds": ["l101", "l105"],
                         "title": "Monitor campaign performance",
                         "description": "This task involves regularly monitoring and analyzing the performance of the marketing campaign using the established tracking and analytics systems.",
                         "dueDate": 1825960000,
@@ -556,6 +596,7 @@ export const gBoards = [
                         "title": "Generate campaign reports",
                         "description": "In this task, the marketing team will compile and generate comprehensive reports that provide insights and analysis of the marketing campaign's performance and outcomes.",
                         "dueDate": 1832133200000,
+                        "labelIds": ["l103", "l102", "l105"],
                         "checklists": [
                             {
                                 "id": "cl2014",
@@ -621,6 +662,7 @@ export const gBoards = [
                         "title": "Optimize ad campaigns",
                         "description": "In this task, the marketing team will make data-driven optimizations to the ad campaigns, including adjusting targeting, ad creatives, and bidding strategies.",
                         "dueDate": 1844478800000,
+                        "labelIds": ["l101", "l102", "l103"],
                         "checklists": [
                             {
                                 "id": "cl2016",
@@ -1408,6 +1450,7 @@ export const gBoards = [
                         "description": "In this task, the team will brainstorm and generate various product ideas, considering market demand, user needs, and innovation.",
                         "dueDate": 1751886800000,
                         "attachments": ["https://example.com/attachment1.pdf"],
+                        "labelIds": ["l103", "l102", "l105"],
                         "checklists": [
                             {
                                 "id": "cl3001",
@@ -1492,6 +1535,7 @@ export const gBoards = [
                         "title": "Validate product concepts",
                         "description": "In this task, the team will validate the product concepts through user research, surveys, and feedback to ensure market fit and user satisfaction.",
                         "dueDate": 176400000,
+                        "labelIds": ["l102", "l101", "l105"],
                         "attachments": ["https://example.com/attachment3.xlsx"],
                         "checklists": [
                             {
@@ -1546,6 +1590,7 @@ export const gBoards = [
                     {
                         "id": "t3004",
                         "title": "Create wireframes",
+                        "labelIds": ["l101", "l102", "l104"],
                         "description": "This task involves creating wireframes to define the layout, structure, and interaction flow of the product's user interface.",
                         "attachments": ["https://example.com/attachment4.png"],
                         "dueDate": 1751886000,
@@ -1587,6 +1632,7 @@ export const gBoards = [
                         "title": "Create visual designs",
                         "dueDate": 1758868000,
                         "description": "In this task, the design team will create visual designs, including color schemes, typography, and graphical elements, to establish the product's visual identity.",
+                        "labelIds": ["l104", "l106"],
                         "checklists": [
                             {
                                 "id": "cl3007",
@@ -1701,6 +1747,7 @@ export const gBoards = [
                         "title": "Implement backend functionality",
                         "description": "In this task, the development team will implement the backend functionality of the product, including server-side logic, APIs, and database integration.",
                         "attachments": ["https://example.com/attachment6.docx"],
+                        "labelIds": [ "l101", "l104"],
                         "checklists": [
                             {
                                 "id": "cl3011",
@@ -1800,6 +1847,7 @@ export const gBoards = [
                         "id": "t3009",
                         "title": "Perform unit testing",
                         "description": "In this task, the development team will perform unit testing on individual components and modules to ensure their functionality and identify any bugs or issues.",
+                        "labelIds": ["l106", "l103"],
                         "checklists": [
                             {
                                 "id": "cl3015",
