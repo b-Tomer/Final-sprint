@@ -1344,6 +1344,38 @@ export const gBoards = [
     {
         "_id": "b3001",
         "title": "Product Development",
+        "labels": [
+            {
+                "id": "l101",
+                "title": "Label 1",
+                "color": "#4bce97"
+            },
+            {
+                "id": "l102",
+                "title": "Label 2",
+                "color": "#e2b203"
+            },
+            {
+                "id": "l103",
+                "title": "Label 3",
+                "color": "#faa53d"
+            },
+            {
+                "id": "l104",
+                "title": "Label 4",
+                "color": "#f87462"
+            },
+            {
+                "id": "l105",
+                "title": "Label 5",
+                "color": "#9f8fef"
+            },
+            {
+                "id": "l106",
+                "title": "Label 6",
+                "color": "#579dff"
+            }
+        ],
         "members": [
             {
                 "_id": 'u101',
@@ -2075,6 +2107,38 @@ export const gBoards = [
         "style": {
             "backgroundImage": "https://images.unsplash.com/photo-1590496794008-383c8070b257?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1091&q=80"
         },
+        "labels": [
+            {
+                "id": "l101",
+                "title": "Label 1",
+                "color": "#4bce97"
+            },
+            {
+                "id": "l102",
+                "title": "Label 2",
+                "color": "#e2b203"
+            },
+            {
+                "id": "l103",
+                "title": "Label 3",
+                "color": "#faa53d"
+            },
+            {
+                "id": "l104",
+                "title": "Label 4",
+                "color": "#f87462"
+            },
+            {
+                "id": "l105",
+                "title": "Label 5",
+                "color": "#9f8fef"
+            },
+            {
+                "id": "l106",
+                "title": "Label 6",
+                "color": "#579dff"
+            }
+        ],
         "members": [
             {
                 "_id": 'u101',
@@ -2849,6 +2913,38 @@ export const gBoards = [
                 "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04QSE7U9ED-77a50b06e29a-512",
             },
         ],
+        "labels": [
+            {
+                "id": "l101",
+                "title": "Label 1",
+                "color": "#4bce97"
+            },
+            {
+                "id": "l102",
+                "title": "Label 2",
+                "color": "#e2b203"
+            },
+            {
+                "id": "l103",
+                "title": "Label 3",
+                "color": "#faa53d"
+            },
+            {
+                "id": "l104",
+                "title": "Label 4",
+                "color": "#f87462"
+            },
+            {
+                "id": "l105",
+                "title": "Label 5",
+                "color": "#9f8fef"
+            },
+            {
+                "id": "l106",
+                "title": "Label 6",
+                "color": "#579dff"
+            }
+        ],
         "groups": [
             {
                 "id": "g5001",
@@ -3533,6 +3629,38 @@ export const gBoards = [
                 "fullname": "Ohad Mazza",
                 "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04QSE7U9ED-77a50b06e29a-512",
             },
+        ],
+        "labels": [
+            {
+                "id": "l101",
+                "title": "Label 1",
+                "color": "#4bce97"
+            },
+            {
+                "id": "l102",
+                "title": "Label 2",
+                "color": "#e2b203"
+            },
+            {
+                "id": "l103",
+                "title": "Label 3",
+                "color": "#faa53d"
+            },
+            {
+                "id": "l104",
+                "title": "Label 4",
+                "color": "#f87462"
+            },
+            {
+                "id": "l105",
+                "title": "Label 5",
+                "color": "#9f8fef"
+            },
+            {
+                "id": "l106",
+                "title": "Label 6",
+                "color": "#579dff"
+            }
         ],
         "groups": [
             {
