@@ -46,6 +46,13 @@
             margin-block-end: 4px;
             color: $clr7;
         }
+        .task-labels {
+            display: flex;
+            .task-labels-btn {
+                margin-inline-end: 5px;
+                border-radius: 3px;
+            }
+        }
     }
     &:hover {
         .btn-task-show-details {

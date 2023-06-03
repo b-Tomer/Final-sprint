@@ -7,6 +7,7 @@ import { TaskIcons } from './task-icons'
 import { utilService } from '../../services/util.service'
 import { TaskDetails } from './task-details'
 import { useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 
 export function TaskPreview({
     task,
@@ -19,7 +20,7 @@ export function TaskPreview({
     isTaskDetailsOpen,
 }) {
     const navigate = useNavigate()
-
+    const { board } = useSelector((storeState) => storeState.boardModule)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const menuRef = useRef(null)
     const taskPreviewRef = useRef()
@@ -47,6 +48,14 @@ export function TaskPreview({
         ev.preventDefault()
         const pos = utilService.getModalPositionOnTop(ref)
         setTaskEdit({ pos, task, groupId })
+    }
+
+    function getLabelColor(id) {
+        console.log(board)
+        if (!board.labels) return
+        const matchedLabel = board.labels.find((label) => label.id === id)
+        // console.log(matchedLabel.color)
+        return matchedLabel.color
     }
 
     return (
@@ -81,12 +90,24 @@ export function TaskPreview({
                 </div>
             )}
             <div className="task-content">
-                <span className="task-labels"></span>
-                {
-                    <span className="task-title" onClick={onOpenTaskDetails}>
-                        {task.title}
+                {task?.labelIds && (
+                    <span className="task-labels">
+                        {task.labelIds.map((label) => (
+                            <button
+                                key={label}
+                                style={{
+                                    backgroundColor: getLabelColor(label),
+                                }}
+                                className="task-labels-btn"
+                            >
+                                {label}
+                            </button>
+                        ))}
                     </span>
-                }
+                )}
+                <span className="task-title" onClick={onOpenTaskDetails}>
+                    {task.title}
+                </span>
                 <TaskIcons task={task} groupId={groupId} boardId={boardId} />
             </div>
         </div>
