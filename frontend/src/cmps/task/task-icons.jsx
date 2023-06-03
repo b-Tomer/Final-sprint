@@ -17,6 +17,10 @@ export function TaskIcons({ task, groupId, boardId }) {
     const [isHovered, setIsHovered] = useState(false)
     const { board } = useSelector((storeState) => storeState.boardModule)
 
+    // useEffect(() => {
+
+    // }, [task])
+
     const handleMouseEnter = () => {
         setIsHovered(true)
     }
@@ -71,12 +75,20 @@ export function TaskIcons({ task, groupId, boardId }) {
         }
     }
 
-    function getMemberImg(id) {
-        console.log(board)
+    function getMemberImg(memberId) {
         if (!board.members) return
-        const matchedLabel = board.members.find((member) => member._id === id)
+        const matchedMmbr = board.members.find(
+            (member) => member._id === memberId
+        )
         // console.log(matchedLabel.color)
-        return matchedLabel.imgUrl
+        if (matchedMmbr.imgUrl) {
+            // console.log(memberId + ' ' + task.id)
+            console.log(matchedMmbr.imgUrl)
+            return matchedMmbr.imgUrl
+        } else {
+            console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+            return 'https://i.pinimg.com/564x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg'
+        }
     }
 
     return (
@@ -120,15 +132,15 @@ export function TaskIcons({ task, groupId, boardId }) {
             </div>
             {task?.members && (
                 <div className="task-icons-members">
-                    {task.members.map((member) => (
+                    {task.members.map((memberId) => (
                         <button
-                            key={member}
+                            key={memberId}
                             // style={{
                             //     backgroundColor: getLabelBgColor(label),
                             // }}
                             className="task-members-btn"
                         >
-                            <img src={getMemberImg(member)} alt="" />
+                            <img src={getMemberImg(memberId)} alt="" />
                         </button>
                     ))}
                 </div>
