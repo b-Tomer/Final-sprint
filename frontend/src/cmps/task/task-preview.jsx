@@ -5,6 +5,8 @@ import { TaskEditor } from './task-editor'
 import { useClickOutside } from '../../customHooks/useClickOutside'
 import { TaskIcons } from './task-icons'
 import { utilService } from '../../services/util.service'
+import { TaskDetails } from './task-details'
+import { useParams } from 'react-router-dom'
 
 export function TaskPreview({
     task,
@@ -13,7 +15,13 @@ export function TaskPreview({
     groupId,
     taskEdit,
     setTaskEdit,
+    setIsTaskDetailsOpen,
+    isTaskDetailsOpen,
 }) {
+    // //
+    // const { groupId, taskId } = useParams();
+    // const [isTaskDetailsOpen, setIsTaskDetailsOpen] = useState(false);
+    //
     const navigate = useNavigate()
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -27,8 +35,30 @@ export function TaskPreview({
     //     console.log(isMenuOpen)
     // }
 
-    function openTaskDetails() {
-        navigate(`/task/${boardId}/${groupId}/${task.id}`)
+    function onOpenMenu() {
+        setIsMenuOpen(!isMenuOpen)
+        console.log(isMenuOpen)
+    }
+    // function openTaskDetails() {
+    //     navigate(`/task/${boardId}/${groupId}/${task.id}`)
+    // }
+
+    function onOpenTaskDetails() {
+        setIsTaskDetailsOpen(true)
+        navigate(`/board/${boardId}/${groupId}/${task.id}`)
+    }
+
+    function onCloseTaskDetails() {
+        setIsTaskDetailsOpen(false)
+    }
+
+    function toggleEditModal(ev, ref) {
+        console.log(ref)
+        if (taskEdit) return setTaskEdit(null)
+        ev.stopPropagation()
+        ev.preventDefault()
+        const pos = utilService.getModalPositionOnTop(ref)
+        setTaskEdit({ pos, task, groupId })
     }
 
     function toggleEditModal(ev, ref) {
@@ -72,9 +102,23 @@ export function TaskPreview({
                 </div>
             )}
             <div className="task-content">
-                <span className="task-title" onClick={openTaskDetails}>
+                {/* <span className="task-title" onClick={openTaskDetails}>
                     {task.title}
-                </span>
+                </span> */}
+                {
+                    <span className="task-title" onClick={onOpenTaskDetails}>
+                        {task.title}
+                    </span>
+                }
+
+                {/* {isTaskDetailsOpen && ( */}
+                {/* <div className="modal-overlay">
+                    <div className="task-details-modal">
+                        <TaskDetails task={task} onClose={onCloseTaskDetails} />
+                    </div>
+                </div> */}
+                {/* )} */}
+
                 <TaskIcons task={task} groupId={groupId} boardId={boardId} />
             </div>
         </div>

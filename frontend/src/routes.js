@@ -22,9 +22,14 @@ const routes = [
         label: 'Board',
     },
     {
-        path: 'task/:boardId/:groupId/:taskId',
-        component: <TaskDetails />,
-        label: 'Taks details',
+        // path: '/modal/:itemId',
+        // component: <TaskDetails />,
+        // label: 'Task details',
+
+
+        path: 'board/:boardId/:groupId/:taskId',
+        component: <BoardIndex />,
+        label: 'Task details',
     },
     {
         path: '/notfound',

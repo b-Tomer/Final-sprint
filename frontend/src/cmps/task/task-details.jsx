@@ -4,10 +4,11 @@ import { TaskMainDetails } from './task-main-details.jsx'
 import { TaskHeader } from './task-header.jsx'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
 
-export function TaskDetails() {
+
+export function TaskDetails({ taskId, groupId }) {
     const { board } = useSelector((storeState) => storeState.boardModule)
-    const { taskId, groupId, boardId } = useParams()
     const [task, setTask] = useState(null)
     const [group, setGroup] = useState(null)
     const groupIdx = board?.groups.findIndex((group) => group.id === groupId)
@@ -18,14 +19,19 @@ export function TaskDetails() {
     }, [board])
 
 
-
-
+    console.log('task: ', task);
+    console.log('group: ', group);
 
     return (
         <section className="task-details-container">
-            <TaskHeader task={task} group={group} boardId={boardId} />
-            <TaskMainDetails task={task} groupId={groupId} />
+
+            <TaskHeader task={task} group={group} />
+            <TaskMainDetails task={task} group={group} />
             <TaskMenu />
+            <button className="task-details-close" >
+                Close
+            </button>
         </section>
     )
 }
+

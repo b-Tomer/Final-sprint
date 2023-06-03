@@ -11,8 +11,10 @@ export function GroupDetails({
     group,
     removeGroup,
     boardId,
-    taskEdit,
+    setIsTaskDetailsOpen,
+    isTaskDetailsOpen,
     setTaskEdit,
+    taskEdit,
 }) {
     const [groupToUpdate, setGroupToUpdate] = useState(group)
     const [isAddTaskOpen, setIsAddTaskOpen] = useState(false)
@@ -94,6 +96,8 @@ export function GroupDetails({
                         groupId={group.id}
                         setTaskEdit={setTaskEdit}
                         taskEdit={taskEdit}
+                        setIsTaskDetailsOpen={setIsTaskDetailsOpen}
+                        isTaskDetailsOpen={isTaskDetailsOpen}
                     />
                 ))}
                 {isAddTaskOpen && (

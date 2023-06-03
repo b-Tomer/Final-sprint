@@ -22,18 +22,35 @@ import { SET_BOARD } from '../store/board.reducer.js'
 import { saveGroup } from '../store/group.actions.js'
 import img from '../assets/img/background.jpg'
 import { TaskEditor } from '../cmps/task/task-editor.jsx'
+import { TaskDetails } from '../cmps/task/task-details.jsx'
 
 export function BoardIndex() {
     // const boards = useSelector((storeState) => storeState.boardModule.boards)
     const { boardId } = useParams()
     const { board } = useSelector((storeState) => storeState.boardModule)
+    const { groupId } = useParams()
+    const { taskId } = useParams()
     const dispatch = useDispatch()
     const [taskEdit, setTaskEdit] = useState(null)
 
+    console.log(groupId, taskId)
+
+    console.log(groupId, taskId)
+
     useEffect(() => {
         loadBoards()
-        loadBoard(boardId)
+        onLoadBoard()
     }, [updateBoard])
+
+    function onLoadBoard() {
+        loadBoard(boardId)
+        // if (taskId) {
+        //     setIsTaskDetailsOpen(true)
+        //     console.log(taskId)
+        // }
+    }
+
+    // console.log(isTaskDetailsOpen)
 
     async function onRemoveBoard(boardId) {
         try {
@@ -112,6 +129,8 @@ export function BoardIndex() {
                                 key={group.id}
                                 setTaskEdit={setTaskEdit}
                                 taskEdit={taskEdit}
+                                setIsTaskDetailsOpen={setIsTaskDetailsOpen}
+                                isTaskDetailsOpen={isTaskDetailsOpen}
                             />
                         ))}
                         <AddGroup addGroup={addGroup} />

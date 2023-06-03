@@ -10,7 +10,7 @@ const gBoards = [
             imgUrl: 'http://some-img',
         },
         style: {
-            backgroundImage: '/assets/img/background.jpg',
+            backgroundImage: 'https://cdn.britannica.com/06/96306-050-DFE8AFDC/Khao-Tapu-Ao-Phang-na-Thailand-National-Park.jpg',
         },
         labels: [
             {
@@ -815,7 +815,7 @@ const gBoards = [
         },
         style: {
             backgroundImage:
-                'https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*',
+                'https://cdn.britannica.com/06/96306-050-DFE8AFDC/Khao-Tapu-Ao-Phang-na-Thailand-National-Park.jpg',
         },
         labels: [
             {

@@ -40,9 +40,9 @@ export function BoardPreview({ board, toggleStarredStatus }) {
     }
 
     return (
-        <div className="board-preview" onClick={onClickBoard}>
+        <div  className="board-preview" onClick={onClickBoard}>
             <h1>{board.title}</h1>
-            <img src={randomImage} alt="Logo" />
+            <img src={board.style?.backgroundImage} alt="Logo" />
             <button className={buttonClassName} onClick={onClickStarred}>
                 {board.isStarred ? <StarredYellow /> : <Starred />}
             </button>
