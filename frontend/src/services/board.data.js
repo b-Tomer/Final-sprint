@@ -35,14 +35,54 @@
 //     "#579dff", "#9f8fef", "#f87462", "#faa53d", "#e2b203", "#4bce97", "#e774bb", "#60c6d2"
 
 // ]
+
+
+// "members": [
+//     {
+//         "_id": 'u101',
+//         "username": "Tomer",
+//         "fullname": "Tomer Benaim",
+//         "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04QXHQH8HX-6df7fa122011-512",
+//     },
+//     {
+//         "_id": "u102",
+//         "fullname": "Eyal Avni",
+//         "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04T7JSSLKS-1f1786ae7473-512",
+//     },
+//     {
+//         "_id": "u103",
+//         "fullname": "Ohad Mazza",
+//         "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04QSE7U9ED-77a50b06e29a-512",
+//     },
+// ]
+
+
 export const gBoards = [
 
-  
+
     /***************************************************************************************************************/
 
     {
         "_id": "b2001",
         "title": "Marketing Campaign",
+        "members": [
+            {
+                "_id": 'u101',
+                "username": "Tomer",
+                "fullname": "Tomer Benaim",
+                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04QXHQH8HX-6df7fa122011-512",
+            },
+            {
+                "_id": "u102",
+                "fullname": "Eyal Avni",
+                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04T7JSSLKS-1f1786ae7473-512",
+            },
+            {
+                "_id": "u103",
+                "fullname": "Ohad Mazza",
+                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04QSE7U9ED-77a50b06e29a-512",
+            },
+        ],
         "style": {
             "backgroundImage": "https://images.unsplash.com/photo-1562577308-9e66f0c65ce5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
         },
@@ -55,7 +95,24 @@ export const gBoards = [
                         "id": "t2001",
                         "title": "Define campaign objectives",
                         "description": "In this task, the marketing team will define the objectives and goals of the marketing campaign, including target audience, desired outcomes, and key performance indicators.",
-                        "dueDate": 1751886800000,
+                        "dueDate": 1751886000,
+                        "attachments": [
+                            {
+                                "id": "a101",
+                                "createdAt": 159099981743,
+                                "url": "https://www.splashlearn.com/math-vocabulary/wp-content/uploads/2022/05/graphs-9-01-1.png",
+                            },
+                            {
+                                "id": "a102",
+                                "createdAt": 1590999817436,
+                                "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGp_q_OUhD19oRE-0xnBVgBrDcBq4vc69sMA&usqp=CAU",
+                            },
+                            {
+                                "id": "a103",
+                                "createdAt": 1590999817439,
+                                "url": "https://apexcharts.com/wp-content/uploads/2018/05/dashboard-modern.png",
+                            },
+                        ],
                         "checklists": [
                             {
                                 "id": "cl2001",
@@ -89,7 +146,7 @@ export const gBoards = [
                         "style": {
                             "backgroundImage": "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
                         },
-                        "isDone": false
+                        "isDone": true
                     },
                     {
                         "id": "t2003",
@@ -139,9 +196,28 @@ export const gBoards = [
                 "tasks": [
                     {
                         "id": "t2005",
+                        "attachments": [
+                            {
+                                "id": "a102",
+                                "createdAt": 1590999817436,
+                                "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGp_q_OUhD19oRE-0xnBVgBrDcBq4vc69sMA&usqp=CAU",
+                            },
+                            {
+                                "id": "a103",
+                                "createdAt": 1590999817439,
+                                "url": "https://apexcharts.com/wp-content/uploads/2018/05/dashboard-modern.png",
+                            },
+                        ],
                         "title": "Write blog articles",
                         "description": "In this task, the content team will create engaging and informative blog articles related to the marketing campaign's theme and target audience.",
                         "dueDate": 1776578000000,
+                        "attachments": [
+                            {
+                                "id": "a103",
+                                "createdAt": 1590999817439,
+                                "url": "https://apexcharts.com/wp-content/uploads/2018/05/dashboard-modern.png",
+                            },
+                        ],
                         "checklists": [
                             {
                                 "id": "cl2005",
@@ -167,7 +243,7 @@ export const gBoards = [
                         "style": {
                             "bgColor": ""
                         },
-                        "isDone": false
+                        "isDone": true
                     },
                     {
                         "id": "t2006",
@@ -196,6 +272,23 @@ export const gBoards = [
                         "title": "Produce video content",
                         "description": "In this task, the multimedia team will produce engaging video content, including promotional videos, tutorials, and product demonstrations.",
                         "dueDate": 1788923600000,
+                        "attachments": [
+                            {
+                                "id": "a101",
+                                "createdAt": 159099981743,
+                                "url": "https://www.splashlearn.com/math-vocabulary/wp-content/uploads/2022/05/graphs-9-01-1.png",
+                            },
+                            {
+                                "id": "a102",
+                                "createdAt": 1590999817436,
+                                "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGp_q_OUhD19oRE-0xnBVgBrDcBq4vc69sMA&usqp=CAU",
+                            },
+                            {
+                                "id": "a103",
+                                "createdAt": 1590999817439,
+                                "url": "https://apexcharts.com/wp-content/uploads/2018/05/dashboard-modern.png",
+                            },
+                        ],
                         "checklists": [
                             {
                                 "id": "cl2007",
@@ -221,13 +314,13 @@ export const gBoards = [
                         "style": {
                             "bgColor": "#51ff9b"
                         },
-                        "isDone": false
+                        "isDone": true
                     },
                     {
                         "id": "t2008",
                         "title": "Design marketing collaterals",
                         "description": "This task involves creating visually appealing marketing collaterals, such as brochures, flyers, and infographics, to support the marketing campaign.",
-                        "dueDate": 1795096400000,
+                        "dueDate": 1795090000,
                         "checklists": [
                             {
                                 "id": "cl2008",
@@ -263,7 +356,19 @@ export const gBoards = [
                         "id": "t2009",
                         "title": "Run social media ad campaigns",
                         "description": "This task involves creating and running targeted social media ad campaigns to reach a wider audience and generate awareness about the marketing campaign.",
-                        "dueDate": 1801269200000,
+                        "dueDate": 1801269200,
+                        "attachments": [
+                            {
+                                "id": "a102",
+                                "createdAt": 1590999817436,
+                                "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGp_q_OUhD19oRE-0xnBVgBrDcBq4vc69sMA&usqp=CAU",
+                            },
+                            {
+                                "id": "a103",
+                                "createdAt": 1590999817439,
+                                "url": "https://apexcharts.com/wp-content/uploads/2018/05/dashboard-modern.png",
+                            },
+                        ],
                         "checklists": [
                             {
                                 "id": "cl2009",
@@ -356,7 +461,7 @@ export const gBoards = [
                             "bgColor": "#ff51dd"
                         },
                         "isDone": false
-                    }                    
+                    }
                 ]
             },
             {
@@ -368,6 +473,23 @@ export const gBoards = [
                         "title": "Set up tracking and analytics",
                         "description": "In this task, the marketing team will set up tracking and analytics tools to monitor the performance and effectiveness of the marketing campaign.",
                         "dueDate": 1819787600000,
+                        "attachments": [
+                            {
+                                "id": "a101",
+                                "createdAt": 159099981743,
+                                "url": "https://www.splashlearn.com/math-vocabulary/wp-content/uploads/2022/05/graphs-9-01-1.png",
+                            },
+                            {
+                                "id": "a102",
+                                "createdAt": 1590999817436,
+                                "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGp_q_OUhD19oRE-0xnBVgBrDcBq4vc69sMA&usqp=CAU",
+                            },
+                            {
+                                "id": "a103",
+                                "createdAt": 1590999817439,
+                                "url": "https://apexcharts.com/wp-content/uploads/2018/05/dashboard-modern.png",
+                            },
+                        ],
                         "checklists": [
                             {
                                 "id": "cl2012",
@@ -396,7 +518,14 @@ export const gBoards = [
                         "id": "t2013",
                         "title": "Monitor campaign performance",
                         "description": "This task involves regularly monitoring and analyzing the performance of the marketing campaign using the established tracking and analytics systems.",
-                        "dueDate": 1825960400000,
+                        "dueDate": 1825960000,
+                        "attachments": [
+                            {
+                                "id": "a103",
+                                "createdAt": 1590999817439,
+                                "url": "https://apexcharts.com/wp-content/uploads/2018/05/dashboard-modern.png",
+                            },
+                        ],
                         "checklists": [
                             {
                                 "id": "cl2013",
@@ -572,6 +701,24 @@ export const gBoards = [
         "style": {
             "backgroundImage": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
         },
+        "members": [
+            {
+                "_id": 'u101',
+                "username": "Tomer",
+                "fullname": "Tomer Benaim",
+                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04QXHQH8HX-6df7fa122011-512",
+            },
+            {
+                "_id": "u102",
+                "fullname": "Eyal Avni",
+                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04T7JSSLKS-1f1786ae7473-512",
+            },
+            {
+                "_id": "u103",
+                "fullname": "Ohad Mazza",
+                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04QSE7U9ED-77a50b06e29a-512",
+            },
+        ],
         "labels": [
             {
                 "id": "l101",
@@ -614,6 +761,23 @@ export const gBoards = [
                         "title": "Prepare project proposal",
                         "description": "This task involves preparing a detailed project proposal for client review. It should include information about project scope, objectives, deliverables, timeline, and budget.",
                         "dueDate": 1675215600000,
+                        "attachments": [
+                            {
+                                "id": "a101",
+                                "createdAt": 159099981743,
+                                "url": "https://www.splashlearn.com/math-vocabulary/wp-content/uploads/2022/05/graphs-9-01-1.png",
+                            },
+                            {
+                                "id": "a102",
+                                "createdAt": 1590999817436,
+                                "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGp_q_OUhD19oRE-0xnBVgBrDcBq4vc69sMA&usqp=CAU",
+                            },
+                            {
+                                "id": "a103",
+                                "createdAt": 1590999817439,
+                                "url": "https://apexcharts.com/wp-content/uploads/2018/05/dashboard-modern.png",
+                            },
+                        ],
                         "checklists": [
                             {
                                 "id": "cl1001",
@@ -694,6 +858,13 @@ export const gBoards = [
                         "title": "Set up development environment",
                         "description": "This task involves setting up the development environment with the required tools and technologies. It includes installing necessary software, configuring development environments, and setting up version control systems.",
                         "dueDate": 1679670000000,
+                        "attachments": [
+                            {
+                                "id": "a101",
+                                "createdAt": 159099981743,
+                                "url": "https://www.splashlearn.com/math-vocabulary/wp-content/uploads/2022/05/graphs-9-01-1.png",
+                            },
+                        ],
                         "checklists": [
                             {
                                 "id": "cl1004",
@@ -776,7 +947,7 @@ export const gBoards = [
                         "style": {
                             "bgColor": "#f87462"
                         },
-                        "isDone": false
+                        "isDone": true
                     },
                     {
                         "id": "t1005",
@@ -833,6 +1004,18 @@ export const gBoards = [
                         "title": "Perform code review",
                         "description": "In this task, the team will conduct code reviews to ensure code quality, adherence to best practices, and identify any potential bugs or issues.",
                         "dueDate": 1694070000000,
+                        "attachments": [
+                            {
+                                "id": "a101",
+                                "createdAt": 159099981743,
+                                "url": "https://www.splashlearn.com/math-vocabulary/wp-content/uploads/2022/05/graphs-9-01-1.png",
+                            },
+                            {
+                                "id": "a102",
+                                "createdAt": 1590999817436,
+                                "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGp_q_OUhD19oRE-0xnBVgBrDcBq4vc69sMA&usqp=CAU",
+                            },
+                        ],
                         "checklists": [
                             {
                                 "id": "cl1010",
@@ -856,7 +1039,7 @@ export const gBoards = [
                         "style": {
                             "bgColor": "#e2b203"
                         },
-                        "isDone": false
+                        "isDone": true
                     },
                     {
                         "id": "t1007",
@@ -913,6 +1096,23 @@ export const gBoards = [
                         "title": "Perform unit testing",
                         "description": "In this task, the team will write and execute unit tests to verify the functionality of individual components, ensuring they work as expected and catch any bugs or errors.",
                         "dueDate": 1705654000000,
+                        "attachments": [
+                            {
+                                "id": "a101",
+                                "createdAt": 159099981743,
+                                "url": "https://www.splashlearn.com/math-vocabulary/wp-content/uploads/2022/05/graphs-9-01-1.png",
+                            },
+                            {
+                                "id": "a102",
+                                "createdAt": 1590999817436,
+                                "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGp_q_OUhD19oRE-0xnBVgBrDcBq4vc69sMA&usqp=CAU",
+                            },
+                            {
+                                "id": "a103",
+                                "createdAt": 1590999817439,
+                                "url": "https://apexcharts.com/wp-content/uploads/2018/05/dashboard-modern.png",
+                            },
+                        ],
                         "checklists": [
                             {
                                 "id": "cl1013",
@@ -936,7 +1136,7 @@ export const gBoards = [
                         "style": {
                             "bgColor": "#f87462"
                         },
-                        "isDone": false
+                        "isDone": true
                     },
                     {
                         "id": "t1009",
@@ -1144,6 +1344,24 @@ export const gBoards = [
     {
         "_id": "b3001",
         "title": "Product Development",
+        "members": [
+            {
+                "_id": 'u101',
+                "username": "Tomer",
+                "fullname": "Tomer Benaim",
+                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04QXHQH8HX-6df7fa122011-512",
+            },
+            {
+                "_id": "u102",
+                "fullname": "Eyal Avni",
+                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04T7JSSLKS-1f1786ae7473-512",
+            },
+            {
+                "_id": "u103",
+                "fullname": "Ohad Mazza",
+                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04QSE7U9ED-77a50b06e29a-512",
+            },
+        ],
         "style": {
             "backgroundImage": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
         },
@@ -1374,7 +1592,7 @@ export const gBoards = [
                             }
                         ],
                         "style": {
-                            "backgroundImage": "https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",                            "bgColor": "#673AB7"
+                            "backgroundImage": "https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80", "bgColor": "#673AB7"
                         },
                         "isDone": false
                     },
@@ -1741,17 +1959,22 @@ export const gBoards = [
                         status: 'in-progress', // monday
                         priority: 'high',
                         description: 'description',
-                        members: [
+                        "members": [
                             {
-                                _id: 'u101',
-                                username: 'Santa',
-                                fullname: 'Santa Tarablus',
-                                imgUrl: 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fpng.pngtree.com%2Fpng-vector%2F20220119%2Fourmid%2Fpngtree-penguin-animal-small-avatar-illustration-design-png-image_4323463.png&tbnid=K-Aa9mf_l2LAiM&vet=12ahUKEwjJ8Ir2zaH_AhXppycCHa4nA2QQMygIegUIARDeAQ..i&imgrefurl=https%3A%2F%2Fpngtree.com%2Fso%2Fsmall-avatar&docid=K-MkTSAPyY_nLM&w=360&h=360&q=avatar%20small%20img&ved=2ahUKEwjJ8Ir2zaH_AhXppycCHa4nA2QQMygIegUIARDeAQ',
+                                "_id": 'u101',
+                                "username": "Tomer",
+                                "fullname": "Tomer Benaim",
+                                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04QXHQH8HX-6df7fa122011-512",
                             },
                             {
-                                _id: 'u102',
-                                fullname: 'Adi Alamdi',
-                                imgUrl: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fpngtree.com%2Fso%2Fsmall-avatar&psig=AOvVaw1iSnZ2a4a8Q1lScVk8B20w&ust=1685692982567000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCLimuu7Nof8CFQAAAAAdAAAAABAE',
+                                "_id": "u102",
+                                "fullname": "Eyal Avni",
+                                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04T7JSSLKS-1f1786ae7473-512",
+                            },
+                            {
+                                "_id": "u103",
+                                "fullname": "Ohad Mazza",
+                                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04QSE7U9ED-77a50b06e29a-512",
                             },
                         ],
                         comments: [
@@ -1766,16 +1989,21 @@ export const gBoards = [
                                 },
                             },
                         ],
-                        attachments: [
+                        "attachments": [
                             {
-                                id: 'ZdPnm',
-                                createdAt: 1590999817436,
-                                url: 'https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*',
+                                "id": "a101",
+                                "createdAt": 159099981743,
+                                "url": "https://www.splashlearn.com/math-vocabulary/wp-content/uploads/2022/05/graphs-9-01-1.png",
                             },
                             {
-                                id: 'ZdPfm',
-                                createdAt: 1590999817436,
-                                url: 'https://img.freepik.com/free-vector/sticker-template-cat-cartoon-character_1308-73786.jpg?w=2000',
+                                "id": "a102",
+                                "createdAt": 1590999817436,
+                                "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGp_q_OUhD19oRE-0xnBVgBrDcBq4vc69sMA&usqp=CAU",
+                            },
+                            {
+                                "id": "a103",
+                                "createdAt": 1590999817439,
+                                "url": "https://apexcharts.com/wp-content/uploads/2018/05/dashboard-modern.png",
                             },
                         ],
                         checklists: [
@@ -1828,1853 +2056,1941 @@ export const gBoards = [
         cmpsOrder: ['status-picker', 'member-picker', 'date-picker'],
     },
 
-/********************************************************************************************************************* */
+    /********************************************************************************************************************* */
 
-{
-    "_id": "b4001",
-    "title": "Product Launch",
-    "style": {
-      "backgroundImage": "https://images.unsplash.com/photo-1590496794008-383c8070b257?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1091&q=80"
-    },
-    "groups": [
-      {
-        "id": "g4001",
-        "title": "Preparation",
-        "tasks": [
-          {
-            "id": "t4001",
-            "title": "Define product positioning",
-            "description": "In this task, the marketing team will define the unique selling proposition and positioning of the product in the market.",
-            "dueDate": 1675107600000,
-            "checklists": [
-              {
-                "id": "cl4001",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo4001",
-                    "title": "Identify target audience",
-                    "isDone": true
-                  },
-                  {
-                    "id": "todo4002",
-                    "title": "Analyze competitor positioning",
-                    "isDone": false
-                  },
-                  {
-                    "id": "todo4003",
-                    "title": "Craft unique value proposition",
-                    "isDone": true
-                  }
-                ]
-              },
-              {
-                "id": "cl4002",
-                "title": "Checklist 2",
-                "todos": [
-                  {
-                    "id": "todo4004",
-                    "title": "Define key messaging",
-                    "isDone": false
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": ""
+    {
+        "_id": "b4001",
+        "title": "Product Launch",
+        "style": {
+            "backgroundImage": "https://images.unsplash.com/photo-1590496794008-383c8070b257?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1091&q=80"
+        },
+        "members": [
+            {
+                "_id": 'u101',
+                "username": "Tomer",
+                "fullname": "Tomer Benaim",
+                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04QXHQH8HX-6df7fa122011-512",
             },
-            "isDone": true
-          },
-          {
-            "id": "t4002",
-            "title": "Create marketing collateral",
-            "description": "This task involves designing and creating marketing collateral such as brochures, product sheets, and presentation decks.",
-            "attachments": ["https://example.com/attachment1.pdf"],
-            "checklists": [
-              {
-                "id": "cl4003",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo4005",
-                    "title": "Design brochure",
-                    "isDone": true
-                  },
-                  {
-                    "id": "todo4006",
-                    "title": "Create product sheets",
-                    "isDone": true
-                  },
-                  {
-                    "id": "todo4007",
-                    "title": "Prepare presentation deck",
-                    "isDone": false
-                  }
-                ]
-              },
-              {
-                "id": "cl4004",
-                "title": "Checklist 2",
-                "todos": [
-                  {
-                    "id": "todo4008",
-                    "title": "Review and finalize collateral",
-                    "isDone": true
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#FF5722"
+            {
+                "_id": "u102",
+                "fullname": "Eyal Avni",
+                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04T7JSSLKS-1f1786ae7473-512",
             },
-            "isDone": false
-          },
-          {
-            "id": "t4003",
-            "title": "Prepare launch event",
-            "checklists": [
-              {
-                "id": "cl4005",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo4009",
-                    "title": "Select event venue",
-                    "isDone": false
-                  },
-                  {
-                    "id": "todo4010",
-                    "title": "Arrange catering services",
-                    "isDone": true
-                  },
-                  {
-                    "id": "todo4011",
-                    "title": "Invite guests and attendees",
-                    "isDone": true
-                  },
-                  {
-                    "id": "todo4012",
-                    "title": "Prepare event agenda",
-                    "isDone": false
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "backgroundImage": "https://media.giphy.com/media/VMO6qeIbr7JRLnLTGw/giphy.gif"
+            {
+                "_id": "u103",
+                "fullname": "Ohad Mazza",
+                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04QSE7U9ED-77a50b06e29a-512",
             },
-            "isDone": false
-          }
+        ],
+        "groups": [
+            {
+                "id": "g4001",
+                "title": "Preparation",
+                "tasks": [
+                    {
+                        "id": "t4001",
+                        "title": "Define product positioning",
+                        "description": "In this task, the marketing team will define the unique selling proposition and positioning of the product in the market.",
+                        "dueDate": 1675107600000,
+                        "checklists": [
+                            {
+                                "id": "cl4001",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo4001",
+                                        "title": "Identify target audience",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "todo4002",
+                                        "title": "Analyze competitor positioning",
+                                        "isDone": false
+                                    },
+                                    {
+                                        "id": "todo4003",
+                                        "title": "Craft unique value proposition",
+                                        "isDone": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "cl4002",
+                                "title": "Checklist 2",
+                                "todos": [
+                                    {
+                                        "id": "todo4004",
+                                        "title": "Define key messaging",
+                                        "isDone": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": ""
+                        },
+                        "isDone": true
+                    },
+                    {
+                        "id": "t4002",
+                        "title": "Create marketing collateral",
+                        "description": "This task involves designing and creating marketing collateral such as brochures, product sheets, and presentation decks.",
+                        "attachments": ["https://example.com/attachment1.pdf"],
+                        "checklists": [
+                            {
+                                "id": "cl4003",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo4005",
+                                        "title": "Design brochure",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "todo4006",
+                                        "title": "Create product sheets",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "todo4007",
+                                        "title": "Prepare presentation deck",
+                                        "isDone": false
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "cl4004",
+                                "title": "Checklist 2",
+                                "todos": [
+                                    {
+                                        "id": "todo4008",
+                                        "title": "Review and finalize collateral",
+                                        "isDone": true
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#FF5722"
+                        },
+                        "isDone": false
+                    },
+                    {
+                        "id": "t4003",
+                        "title": "Prepare launch event",
+                        "checklists": [
+                            {
+                                "id": "cl4005",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo4009",
+                                        "title": "Select event venue",
+                                        "isDone": false
+                                    },
+                                    {
+                                        "id": "todo4010",
+                                        "title": "Arrange catering services",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "todo4011",
+                                        "title": "Invite guests and attendees",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "todo4012",
+                                        "title": "Prepare event agenda",
+                                        "isDone": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "backgroundImage": "https://media.giphy.com/media/VMO6qeIbr7JRLnLTGw/giphy.gif"
+                        },
+                        "isDone": false
+                    }
+                ]
+            },
+            {
+                "id": "g4002",
+                "title": "Marketing",
+                "tasks": [
+                    {
+                        "id": "t4004",
+                        "title": "Develop marketing campaigns",
+                        "description": "In this task, the marketing team will create and execute various marketing campaigns to promote the product.",
+                        "dueDate": 1747534800000,
+                        "members": ["u101", "u102", "u103"],
+                        "labelIds": ['l101', 'l102'],
+                        "checklists": [
+                            {
+                                "id": "cl4006",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo4013",
+                                        "title": "Identify campaign goals",
+                                        "isDone": false
+                                    },
+                                    {
+                                        "id": "todo4014",
+                                        "title": "Create campaign messaging",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "todo4015",
+                                        "title": "Choose marketing channels",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "todo4016",
+                                        "title": "Set campaign budget",
+                                        "isDone": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#FF9800"
+                        },
+                        "isDone": false
+                    },
+                    {
+                        "id": "t4005",
+                        "title": "Execute digital advertising",
+                        "members": ["u101"],
+                        "checklists": [
+                            {
+                                "id": "cl4007",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo4017",
+                                        "title": "Create ad copy and visuals",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "todo4018",
+                                        "title": "Set up ad campaigns",
+                                        "isDone": false
+                                    },
+                                    {
+                                        "id": "todo4019",
+                                        "title": "Monitor ad performance",
+                                        "isDone": true
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": ""
+                        },
+                        "isDone": true
+                    },
+                    {
+                        "id": "t4006",
+                        "title": "Social media engagement",
+                        "checklists": [
+                            {
+                                "id": "cl4008",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo4020",
+                                        "title": "Create social media content",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "todo4021",
+                                        "title": "Schedule posts",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "todo4022",
+                                        "title": "Engage with followers",
+                                        "isDone": false
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "cl4009",
+                                "title": "Checklist 2",
+                                "todos": [
+                                    {
+                                        "id": "todo4023",
+                                        "title": "Monitor social media metrics",
+                                        "isDone": true
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#009688"
+                        },
+                        "isDone": false
+                    },
+                    {
+                        "id": "t4007",
+                        "title": "Email marketing",
+                        "members": ["u101", "u102"],
+                        "attachments": ["https://example.com/attachment2.pdf"],
+                        "checklists": [
+                            {
+                                "id": "cl4010",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo4024",
+                                        "title": "Build email subscriber list",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "todo4025",
+                                        "title": "Create email templates",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "todo4026",
+                                        "title": "Segment audience",
+                                        "isDone": false
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "cl4011",
+                                "title": "Checklist 2",
+                                "todos": [
+                                    {
+                                        "id": "todo4027",
+                                        "title": "Send targeted email campaigns",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "todo4028",
+                                        "title": "Analyze email performance",
+                                        "isDone": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": ""
+                        },
+                        "isDone": false
+                    }
+                ]
+            },
+            {
+                "id": "g4003",
+                "title": "Sales",
+                "tasks": [
+                    {
+                        "id": "t4008",
+                        "members": ["102", "u103"],
+                        "title": "Sales training",
+                        "description": "In this task, the sales team will undergo training sessions to familiarize themselves with the product features, benefits, and sales techniques.",
+                        "dueDate": 1754307600000,
+                        "labelIds": ["l103", "l102", "l105"],
+                        "checklists": [
+                            {
+                                "id": "cl4012",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo4029",
+                                        "title": "Organize product training sessions",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "todo4030",
+                                        "title": "Prepare sales training materials",
+                                        "isDone": false
+                                    },
+                                    {
+                                        "id": "todo4031",
+                                        "title": "Conduct role-playing exercises",
+                                        "isDone": true
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "backgroundImage": "https://plus.unsplash.com/premium_photo-1673502752899-04caa9541a5c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+                        },
+                        "isDone": false
+                    },
+                    {
+                        "id": "t4009",
+                        "title": "Lead generation",
+                        "checklists": [
+                            {
+                                "id": "cl4013",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo4032",
+                                        "title": "Identify target leads",
+                                        "isDone": false
+                                    },
+                                    {
+                                        "id": "todo4033",
+                                        "title": "Create lead generation campaigns",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "todo4034",
+                                        "title": "Track and qualify leads",
+                                        "isDone": true
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": ""
+                        },
+                        "isDone": true
+                    },
+                    {
+                        "id": "t4010",
+                        "members": ["u101", "u102", "u103"],
+                        "title": "Sales meetings",
+                        "labelIds": ["l104", "l102", "l101"],
+                        "checklists": [
+                            {
+                                "id": "cl4014",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo4035",
+                                        "title": "Schedule meetings with prospects",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "todo4036",
+                                        "title": "Prepare sales presentations",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "todo4037",
+                                        "title": "Follow up with meeting attendees",
+                                        "isDone": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#FFEB3B"
+                        },
+                        "isDone": false
+                    },
+                    {
+                        "id": "t4011",
+                        "title": "Negotiations and closing",
+                        "dueDate": 1808325200000,
+                        "checklists": [
+                            {
+                                "id": "cl4015",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo4038",
+                                        "title": "Negotiate terms and pricing",
+                                        "isDone": false
+                                    },
+                                    {
+                                        "id": "todo4039",
+                                        "title": "Address customer concerns",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "todo4040",
+                                        "title": "Finalize contract and close the sale",
+                                        "isDone": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#9E9E9E"
+                        },
+                        "isDone": false
+                    }
+                ]
+            },
+            {
+                "id": "g4004",
+                "title": "Product Development",
+                "tasks": [
+                    {
+                        "id": "t4012",
+                        "members": ["u101", "u102", "u103"],
+                        "title": "Gather user feedback",
+                        "labelIds": ["l104", "l106"],
+                        "checklists": [
+                            {
+                                "id": "cl4016",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo4041",
+                                        "title": "Conduct user surveys",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "todo4042",
+                                        "title": "Analyze user feedback",
+                                        "isDone": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#673AB7"
+                        },
+                        "isDone": false
+                    },
+                    {
+                        "id": "t4013",
+                        "title": "Implement product enhancements",
+                        "description": "Based on user feedback, the development team will implement improvements and new features to enhance the product.",
+                        "attachments": ["https://example.com/attachment3.pdf"],
+                        "checklists": [
+                            {
+                                "id": "cl4017",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo4043",
+                                        "title": "Prioritize enhancement requests",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "todo4044",
+                                        "title": "Plan and allocate development resources",
+                                        "isDone": false
+                                    },
+                                    {
+                                        "id": "todo4045",
+                                        "title": "Implement and test enhancements",
+                                        "isDone": true
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#795548"
+                        },
+                        "isDone": true
+                    },
+                    {
+                        "id": "t4014",
+                        "title": "Quality assurance",
+                        "labelIds": ["l101", "l104", "l106"],
+                        "checklists": [
+                            {
+                                "id": "cl4018",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo4046",
+                                        "title": "Create test cases",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "todo4047",
+                                        "title": "Perform system testing",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "todo4048",
+                                        "title": "Identify and fix bugs",
+                                        "isDone": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": ""
+                        },
+                        "isDone": false
+                    }
+                ]
+            },
+            {
+                "id": "g4005",
+                "title": "Post-Launch",
+                "tasks": [
+                    {
+                        "id": "t4015",
+                        "members": ["u103"],
+                        "title": "Monitor product performance",
+                        "checklists": [
+                            {
+                                "id": "cl4019",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo4049",
+                                        "title": "Track user adoption and engagement",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "todo4050",
+                                        "title": "Analyze key product metrics",
+                                        "isDone": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#3F51B5"
+                        },
+                        "isDone": true
+                    },
+                    {
+                        "id": "t4016",
+                        "title": "Customer support",
+                        "checklists": [
+                            {
+                                "id": "cl4020",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo4051",
+                                        "title": "Set up customer support channels",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "todo4052",
+                                        "title": "Train support team",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "todo4053",
+                                        "title": "Resolve customer issues",
+                                        "isDone": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": ""
+                        },
+                        "isDone": false
+                    },
+                    {
+                        "id": "t4017",
+                        "members": ["u101", "u103"],
+                        "title": "Collect testimonials and reviews",
+                        "labelIds": ["l104", "l106", "l101"],
+                        "checklists": [
+                            {
+                                "id": "cl4021",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo4054",
+                                        "title": "Reach out to satisfied customers",
+                                        "isDone": false
+                                    },
+                                    {
+                                        "id": "todo4055",
+                                        "title": "Request testimonials and reviews",
+                                        "isDone": true
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#4CAF50"
+                        },
+                        "isDone": false
+                    }
+                ]
+            },
+            {
+                "id": "g4006",
+                "title": "Analytics",
+                "tasks": [
+                    {
+                        "id": "t4018",
+                        "title": "Data collection and analysis",
+                        "members": ["u101", "u102", "u103"],
+                        "checklists": [
+                            {
+                                "id": "cl4022",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo4056",
+                                        "title": "Set up analytics tools",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "todo4057",
+                                        "title": "Collect relevant data",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "todo4058",
+                                        "title": "Analyze data and generate reports",
+                                        "isDone": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#2196F3"
+                        },
+                        "isDone": false
+                    },
+                    {
+                        "id": "t4019",
+                        "title": "User behavior tracking",
+                        "checklists": [
+                            {
+                                "id": "cl4023",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo4059",
+                                        "title": "Implement user tracking mechanisms",
+                                        "isDone": false
+                                    },
+                                    {
+                                        "id": "todo4060",
+                                        "title": "Analyze user behavior patterns",
+                                        "isDone": true
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#E91E63"
+                        },
+                        "isDone": true
+                    },
+                    {
+                        "id": "t4020",
+                        "title": "Reporting and insights",
+                        "labelIds": ["l101", "l104"],
+                        "checklists": [
+                            {
+                                "id": "cl4024",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo4061",
+                                        "title": "Create regular performance reports",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "todo4062",
+                                        "title": "Identify trends and opportunities",
+                                        "isDone": false
+                                    },
+                                    {
+                                        "id": "todo4063",
+                                        "title": "Present insights to stakeholders",
+                                        "isDone": true
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#009688"
+                        },
+                        "isDone": false
+                    }
+                ]
+            }
         ]
-      },
-      {
-        "id": "g4002",
-        "title": "Marketing",
-        "tasks": [
-          {
-            "id": "t4004",
-            "title": "Develop marketing campaigns",
-            "description": "In this task, the marketing team will create and execute various marketing campaigns to promote the product.",
-            "dueDate": 1747534800000,
-            "members": [
-                {
-                    "_id": "u101",
-                    "username": 'Santa',
-                    "fullname": 'Santa Tarablus',
-                    "imgUrl": 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fpng.pngtree.com%2Fpng-vector%2F20220119%2Fourmid%2Fpngtree-penguin-animal-small-avatar-illustration-design-png-image_4323463.png&tbnid=K-Aa9mf_l2LAiM&vet=12ahUKEwjJ8Ir2zaH_AhXppycCHa4nA2QQMygIegUIARDeAQ..i&imgrefurl=https%3A%2F%2Fpngtree.com%2Fso%2Fsmall-avatar&docid=K-MkTSAPyY_nLM&w=360&h=360&q=avatar%20small%20img&ved=2ahUKEwjJ8Ir2zaH_AhXppycCHa4nA2QQMygIegUIARDeAQ',
-                },
-                {
-                    "_id": 'u102',
-                    "fullname": 'Adi Alamdi',
-                    "imgUrl": 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fpngtree.com%2Fso%2Fsmall-avatar&psig=AOvVaw1iSnZ2a4a8Q1lScVk8B20w&ust=1685692982567000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCLimuu7Nof8CFQAAAAAdAAAAABAE',
-                },
-            ],
-            "labelIds": ['l101', 'l102'],
-            "checklists": [
-              {
-                "id": "cl4006",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo4013",
-                    "title": "Identify campaign goals",
-                    "isDone": false
-                  },
-                  {
-                    "id": "todo4014",
-                    "title": "Create campaign messaging",
-                    "isDone": true
-                  },
-                  {
-                    "id": "todo4015",
-                    "title": "Choose marketing channels",
-                    "isDone": true
-                  },
-                  {
-                    "id": "todo4016",
-                    "title": "Set campaign budget",
-                    "isDone": false
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#FF9800"
-            },
-            "isDone": false
-          },
-          {
-            "id": "t4005",
-            "title": "Execute digital advertising",
-            "checklists": [
-              {
-                "id": "cl4007",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo4017",
-                    "title": "Create ad copy and visuals",
-                    "isDone": true
-                  },
-                  {
-                    "id": "todo4018",
-                    "title": "Set up ad campaigns",
-                    "isDone": false
-                  },
-                  {
-                    "id": "todo4019",
-                    "title": "Monitor ad performance",
-                    "isDone": true
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": ""
-            },
-            "isDone": true
-          },
-          {
-            "id": "t4006",
-            "title": "Social media engagement",
-            "checklists": [
-              {
-                "id": "cl4008",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo4020",
-                    "title": "Create social media content",
-                    "isDone": true
-                  },
-                  {
-                    "id": "todo4021",
-                    "title": "Schedule posts",
-                    "isDone": true
-                  },
-                  {
-                    "id": "todo4022",
-                    "title": "Engage with followers",
-                    "isDone": false
-                  }
-                ]
-              },
-              {
-                "id": "cl4009",
-                "title": "Checklist 2",
-                "todos": [
-                  {
-                    "id": "todo4023",
-                    "title": "Monitor social media metrics",
-                    "isDone": true
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#009688"
-            },
-            "isDone": false
-          },
-          {
-            "id": "t4007",
-            "title": "Email marketing",
-            "attachments": ["https://example.com/attachment2.pdf"],
-            "checklists": [
-              {
-                "id": "cl4010",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo4024",
-                    "title": "Build email subscriber list",
-                    "isDone": true
-                  },
-                  {
-                    "id": "todo4025",
-                    "title": "Create email templates",
-                    "isDone": true
-                  },
-                  {
-                    "id": "todo4026",
-                    "title": "Segment audience",
-                    "isDone": false
-                  }
-                ]
-              },
-              {
-                "id": "cl4011",
-                "title": "Checklist 2",
-                "todos": [
-                  {
-                    "id": "todo4027",
-                    "title": "Send targeted email campaigns",
-                    "isDone": true
-                  },
-                  {
-                    "id": "todo4028",
-                    "title": "Analyze email performance",
-                    "isDone": false
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": ""
-            },
-            "isDone": false
-          }
-        ]
-      },
-      {
-        "id": "g4003",
-        "title": "Sales",
-        "tasks": [
-          {
-            "id": "t4008",
-            "title": "Sales training",
-            "description": "In this task, the sales team will undergo training sessions to familiarize themselves with the product features, benefits, and sales techniques.",
-            "dueDate": 1754307600000,
-            "checklists": [
-              {
-                "id": "cl4012",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo4029",
-                    "title": "Organize product training sessions",
-                    "isDone": true
-                  },
-                  {
-                    "id": "todo4030",
-                    "title": "Prepare sales training materials",
-                    "isDone": false
-                  },
-                  {
-                    "id": "todo4031",
-                    "title": "Conduct role-playing exercises",
-                    "isDone": true
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "backgroundImage": "https://plus.unsplash.com/premium_photo-1673502752899-04caa9541a5c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
-            },
-            "isDone": false
-          },
-          {
-            "id": "t4009",
-            "title": "Lead generation",
-            "checklists": [
-              {
-                "id": "cl4013",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo4032",
-                    "title": "Identify target leads",
-                    "isDone": false
-                  },
-                  {
-                    "id": "todo4033",
-                    "title": "Create lead generation campaigns",
-                    "isDone": true
-                  },
-                  {
-                    "id": "todo4034",
-                    "title": "Track and qualify leads",
-                    "isDone": true
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": ""
-            },
-            "isDone": true
-          },
-          {
-            "id": "t4010",
-            "title": "Sales meetings",
-            "checklists": [
-              {
-                "id": "cl4014",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo4035",
-                    "title": "Schedule meetings with prospects",
-                    "isDone": true
-                  },
-                  {
-                    "id": "todo4036",
-                    "title": "Prepare sales presentations",
-                    "isDone": true
-                  },
-                  {
-                    "id": "todo4037",
-                    "title": "Follow up with meeting attendees",
-                    "isDone": false
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#FFEB3B"
-            },
-            "isDone": false
-          },
-          {
-            "id": "t4011",
-            "title": "Negotiations and closing",
-            "dueDate": 1808325200000,
-            "checklists": [
-              {
-                "id": "cl4015",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo4038",
-                    "title": "Negotiate terms and pricing",
-                    "isDone": false
-                  },
-                  {
-                    "id": "todo4039",
-                    "title": "Address customer concerns",
-                    "isDone": true
-                  },
-                  {
-                    "id": "todo4040",
-                    "title": "Finalize contract and close the sale",
-                    "isDone": false
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#9E9E9E"
-            },
-            "isDone": false
-          }
-        ]
-      },
-      {
-        "id": "g4004",
-        "title": "Product Development",
-        "tasks": [
-          {
-            "id": "t4012",
-            "title": "Gather user feedback",
-            "checklists": [
-              {
-                "id": "cl4016",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo4041",
-                    "title": "Conduct user surveys",
-                    "isDone": true
-                  },
-                  {
-                    "id": "todo4042",
-                    "title": "Analyze user feedback",
-                    "isDone": false
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#673AB7"
-            },
-            "isDone": false
-          },
-          {
-            "id": "t4013",
-            "title": "Implement product enhancements",
-            "description": "Based on user feedback, the development team will implement improvements and new features to enhance the product.",
-            "attachments": ["https://example.com/attachment3.pdf"],
-            "checklists": [
-              {
-                "id": "cl4017",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo4043",
-                    "title": "Prioritize enhancement requests",
-                    "isDone": true
-                  },
-                  {
-                    "id": "todo4044",
-                    "title": "Plan and allocate development resources",
-                    "isDone": false
-                  },
-                  {
-                    "id": "todo4045",
-                    "title": "Implement and test enhancements",
-                    "isDone": true
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#795548"
-            },
-            "isDone": true
-          },
-          {
-            "id": "t4014",
-            "title": "Quality assurance",
-            "checklists": [
-              {
-                "id": "cl4018",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo4046",
-                    "title": "Create test cases",
-                    "isDone": true
-                  },
-                  {
-                    "id": "todo4047",
-                    "title": "Perform system testing",
-                    "isDone": true
-                  },
-                  {
-                    "id": "todo4048",
-                    "title": "Identify and fix bugs",
-                    "isDone": false
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": ""
-            },
-            "isDone": false
-          }
-        ]
-      },
-      {
-        "id": "g4005",
-        "title": "Post-Launch",
-        "tasks": [
-          {
-            "id": "t4015",
-            "title": "Monitor product performance",
-            "checklists": [
-              {
-                "id": "cl4019",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo4049",
-                    "title": "Track user adoption and engagement",
-                    "isDone": true
-                  },
-                  {
-                    "id": "todo4050",
-                    "title": "Analyze key product metrics",
-                    "isDone": false
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#3F51B5"
-            },
-            "isDone": true
-          },
-          {
-            "id": "t4016",
-            "title": "Customer support",
-            "checklists": [
-              {
-                "id": "cl4020",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo4051",
-                    "title": "Set up customer support channels",
-                    "isDone": true
-                  },
-                  {
-                    "id": "todo4052",
-                    "title": "Train support team",
-                    "isDone": true
-                  },
-                  {
-                    "id": "todo4053",
-                    "title": "Resolve customer issues",
-                    "isDone": false
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": ""
-            },
-            "isDone": false
-          },
-          {
-            "id": "t4017",
-            "title": "Collect testimonials and reviews",
-            "checklists": [
-              {
-                "id": "cl4021",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo4054",
-                    "title": "Reach out to satisfied customers",
-                    "isDone": false
-                  },
-                  {
-                    "id": "todo4055",
-                    "title": "Request testimonials and reviews",
-                    "isDone": true
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#4CAF50"
-            },
-            "isDone": false
-          }
-        ]
-      },
-      {
-        "id": "g4006",
-        "title": "Analytics",
-        "tasks": [
-          {
-            "id": "t4018",
-            "title": "Data collection and analysis",
-            "checklists": [
-              {
-                "id": "cl4022",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo4056",
-                    "title": "Set up analytics tools",
-                    "isDone": true
-                  },
-                  {
-                    "id": "todo4057",
-                    "title": "Collect relevant data",
-                    "isDone": true
-                  },
-                  {
-                    "id": "todo4058",
-                    "title": "Analyze data and generate reports",
-                    "isDone": false
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#2196F3"
-            },
-            "isDone": false
-          },
-          {
-            "id": "t4019",
-            "title": "User behavior tracking",
-            "checklists": [
-              {
-                "id": "cl4023",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo4059",
-                    "title": "Implement user tracking mechanisms",
-                    "isDone": false
-                  },
-                  {
-                    "id": "todo4060",
-                    "title": "Analyze user behavior patterns",
-                    "isDone": true
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#E91E63"
-            },
-            "isDone": true
-          },
-          {
-            "id": "t4020",
-            "title": "Reporting and insights",
-            "checklists": [
-              {
-                "id": "cl4024",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo4061",
-                    "title": "Create regular performance reports",
-                    "isDone": true
-                  },
-                  {
-                    "id": "todo4062",
-                    "title": "Identify trends and opportunities",
-                    "isDone": false
-                  },
-                  {
-                    "id": "todo4063",
-                    "title": "Present insights to stakeholders",
-                    "isDone": true
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#009688"
-            },
-            "isDone": false
-          }
-        ]
-      }
-    ]
-  }
-  ,
-  /************************************************************************************************************** */
+    }
+    ,
+    /************************************************************************************************************** */
 
-  {
-    "_id": "b5001",
-    "title": "Event Planning",
-    "style": {
-      "backgroundImage": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-    },
-    "groups": [
-      {
-        "id": "g5001",
-        "title": "Venue Selection",
-        "tasks": [
-          {
-            "id": "t5001",
-            "title": "Research potential venues",
-            "description": "In this task, the event planning team will research and identify potential venues that suit the event requirements, including capacity, location, and amenities.",
-            "dueDate": 1751886800000,
-            "checklists": [
-              {
-                "id": "cl5001",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo5001",
-                    "title": "Create venue shortlist"
-                  },
-                  {
-                    "id": "todo5002",
-                    "title": "Contact venue owners"
-                  },
-                  {
-                    "id": "todo5003",
-                    "title": "Schedule venue visits"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#FFEB3B"
+    {
+        "_id": "b5001",
+        "title": "Event Planning",
+        "style": {
+            "backgroundImage": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+        },
+        "members": [
+            {
+                "_id": 'u101',
+                "username": "Tomer",
+                "fullname": "Tomer Benaim",
+                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04QXHQH8HX-6df7fa122011-512",
             },
-            "isDone": false
-          },
-          {
-            "id": "t5002",
-            "title": "Visit and evaluate venues",
-            "checklists": [
-              {
-                "id": "cl5002",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo5004",
-                    "title": "Assess venue capacity"
-                  },
-                  {
-                    "id": "todo5005",
-                    "title": "Evaluate venue amenities"
-                  },
-                  {
-                    "id": "todo5006",
-                    "title": "Consider venue accessibility"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#9E9E9E"
+            {
+                "_id": "u102",
+                "fullname": "Eyal Avni",
+                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04T7JSSLKS-1f1786ae7473-512",
             },
-            "isDone": true
-          },
-          {
-            "id": "t5003",
-            "title": "Negotiate venue contract",
-            "checklists": [
-              {
-                "id": "cl5003",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo5007",
-                    "title": "Review contract terms"
-                  },
-                  {
-                    "id": "todo5008",
-                    "title": "Negotiate pricing and packages"
-                  },
-                  {
-                    "id": "todo5009",
-                    "title": "Finalize contract agreement"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#FFCDD2"
+            {
+                "_id": "u103",
+                "fullname": "Ohad Mazza",
+                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04QSE7U9ED-77a50b06e29a-512",
             },
-            "isDone": false
-          }
+        ],
+        "groups": [
+            {
+                "id": "g5001",
+                "title": "Venue Selection",
+                "tasks": [
+                    {
+                        "id": "t5001",
+                        "title": "Research potential venues",
+                        "description": "In this task, the event planning team will research and identify potential venues that suit the event requirements, including capacity, location, and amenities.",
+                        "dueDate": 175188680000,
+                        "checklists": [
+                            {
+                                "id": "cl5001",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo5001",
+                                        "title": "Create venue shortlist"
+                                    },
+                                    {
+                                        "id": "todo5002",
+                                        "title": "Contact venue owners"
+                                    },
+                                    {
+                                        "id": "todo5003",
+                                        "title": "Schedule venue visits"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#FFEB3B"
+                        },
+                        "isDone": true
+                    },
+                    {
+                        "id": "t5002",
+                        "title": "Visit and evaluate venues",
+                        "labelIds": ["l103", "l102", "l105"],
+                        "checklists": [
+                            {
+                                "id": "cl5002",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo5004",
+                                        "title": "Assess venue capacity"
+                                    },
+                                    {
+                                        "id": "todo5005",
+                                        "title": "Evaluate venue amenities"
+                                    },
+                                    {
+                                        "id": "todo5006",
+                                        "title": "Consider venue accessibility"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#9E9E9E"
+                        },
+                        "isDone": true
+                    },
+                    {
+                        "id": "t5003",
+                        "title": "Negotiate venue contract",
+                        "checklists": [
+                            {
+                                "id": "cl5003",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo5007",
+                                        "title": "Review contract terms"
+                                    },
+                                    {
+                                        "id": "todo5008",
+                                        "title": "Negotiate pricing and packages"
+                                    },
+                                    {
+                                        "id": "todo5009",
+                                        "title": "Finalize contract agreement"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#FFCDD2"
+                        },
+                        "isDone": true
+                    }
+                ]
+            },
+            {
+                "id": "g5002",
+                "title": "Budget Planning",
+                "tasks": [
+                    {
+                        "id": "t5004",
+                        "title": "Determine event budget",
+                        "description": "In this task, the event planning team will determine the overall budget for the event, considering various factors such as venue costs, catering expenses, marketing, and staffing.",
+                        "dueDate": 1758059600000,
+                        "members": ["u101", "u102", "u103"],
+                        "checklists": [
+                            {
+                                "id": "cl5004",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo5010",
+                                        "title": "Identify expense categories"
+                                    },
+                                    {
+                                        "id": "todo5011",
+                                        "title": "Estimate costs for each category"
+                                    },
+                                    {
+                                        "id": "todo5012",
+                                        "title": "Set overall event budget"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "backgroundImage": "https://plus.unsplash.com/premium_photo-1661775443983-33b3426fcb9b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1354&q=80"
+                        },
+                        "isDone": false
+                    },
+                    {
+                        "id": "t5005",
+                        "title": "Allocate budget to expenses",
+                        "members": ["u101"],
+                        "labelIds": ["l101", "l104", "l102"],
+                        "checklists": [
+                            {
+                                "id": "cl5005",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo5013",
+                                        "title": "Distribute budget across categories"
+                                    },
+                                    {
+                                        "id": "todo5014",
+                                        "title": "Monitor and adjust expenses"
+                                    },
+                                    {
+                                        "id": "todo5015",
+                                        "title": "Track budget utilization"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#607D8B"
+                        },
+                        "isDone": false
+                    },
+                    {
+                        "id": "t5006",
+                        "title": "Seek sponsorship opportunities",
+                        "labelIds": ["l106", "l101"],
+                        "checklists": [
+                            {
+                                "id": "cl5006",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo5016",
+                                        "title": "Identify potential sponsors"
+                                    },
+                                    {
+                                        "id": "todo5017",
+                                        "title": "Prepare sponsorship proposals"
+                                    },
+                                    {
+                                        "id": "todo5018",
+                                        "title": "Negotiate sponsorship agreements"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": ""
+                        },
+                        "isDone": true
+                    }
+                ]
+            },
+            {
+                "id": "g5003",
+                "title": "Marketing and Promotion",
+                "tasks": [
+                    {
+                        "id": "t5007",
+                        "title": "Develop marketing strategy",
+                        "members": ["u102", "u103"],
+                        "description": "In this task, the event planning team will develop a comprehensive marketing strategy to promote the event, including identifying target audience, selecting marketing channels, and planning promotional activities.",
+                        "dueDate": 1764232000,
+                        "checklists": [
+                            {
+                                "id": "cl5007",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo5019",
+                                        "title": "Define target audience"
+                                    },
+                                    {
+                                        "id": "todo5020",
+                                        "title": "Select marketing channels"
+                                    },
+                                    {
+                                        "id": "todo5021",
+                                        "title": "Plan promotional activities"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#FFEB3B"
+                        },
+                        "isDone": false
+                    },
+                    {
+                        "id": "t5008",
+                        "title": "Create event branding materials",
+                        "labelIds": ["l104", "l106", "l105"],
+                        "members": ["u102"],
+                        "checklists": [
+                            {
+                                "id": "cl5008",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo5022",
+                                        "title": "Design event logo"
+                                    },
+                                    {
+                                        "id": "todo5023",
+                                        "title": "Develop event tagline"
+                                    },
+                                    {
+                                        "id": "todo5024",
+                                        "title": "Create branded collateral"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#9E9E9E"
+                        },
+                        "isDone": false
+                    },
+                    {
+                        "id": "t5009",
+                        "title": "Execute marketing campaigns",
+                        "checklists": [
+                            {
+                                "id": "cl5009",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo5025",
+                                        "title": "Run social media ads"
+                                    },
+                                    {
+                                        "id": "todo5026",
+                                        "title": "Create content for email marketing"
+                                    },
+                                    {
+                                        "id": "todo5027",
+                                        "title": "Collaborate with influencers"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#FFCDD2"
+                        },
+                        "isDone": true
+                    }
+                ]
+            },
+            {
+                "id": "g5004",
+                "title": "Logistics",
+                "tasks": [
+                    {
+                        "id": "t5010",
+                        "title": "Arrange transportation",
+                        "description": "In this task, the event planning team will arrange transportation for attendees, including coordinating buses, shuttles, or taxis to and from the event venue.",
+                        "dueDate": 177040000,
+                        "labelIds": ["l103", "l104", "l106"],
+                        "checklists": [
+                            {
+                                "id": "cl5010",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo5028",
+                                        "title": "Determine transportation requirements"
+                                    },
+                                    {
+                                        "id": "todo5029",
+                                        "title": "Contact transportation providers"
+                                    },
+                                    {
+                                        "id": "todo5030",
+                                        "title": "Confirm transportation arrangements"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#FF5722"
+                        },
+                        "isDone": false
+                    },
+                    {
+                        "id": "t5011",
+                        "title": "Coordinate event setup",
+                        "dueDate": 1770400005454,
+                        "checklists": [
+                            {
+                                "id": "cl5011",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo5031",
+                                        "title": "Arrange seating layout"
+                                    },
+                                    {
+                                        "id": "todo5032",
+                                        "title": "Set up audiovisual equipment"
+                                    },
+                                    {
+                                        "id": "todo5033",
+                                        "title": "Prepare registration area"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#607D8B"
+                        },
+                        "isDone": true
+                    },
+                    {
+                        "id": "t5012",
+                        "title": "Manage event logistics",
+                        "labelIds": ["l101", "l104"],
+                        "checklists": [
+                            {
+                                "id": "cl5012",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo5034",
+                                        "title": "Coordinate catering services"
+                                    },
+                                    {
+                                        "id": "todo5035",
+                                        "title": "Handle audiovisual setup"
+                                    },
+                                    {
+                                        "id": "todo5036",
+                                        "title": "Manage on-site registration"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": ""
+                        },
+                        "isDone": true
+                    }
+                ]
+            },
+            {
+                "id": "g5005",
+                "title": "Program and Activities",
+                "members": ["u101", "u103"],
+                "tasks": [
+                    {
+                        "id": "t5013",
+                        "title": "Plan event program",
+                        "description": "In this task, the event planning team will develop the program flow, including scheduling keynote speeches, breakout sessions, and networking activities.",
+                        "dueDate": 1776578000000,
+                        "checklists": [
+                            {
+                                "id": "cl5013",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo5037",
+                                        "title": "Outline event schedule"
+                                    },
+                                    {
+                                        "id": "todo5038",
+                                        "title": "Determine session topics"
+                                    },
+                                    {
+                                        "id": "todo5039",
+                                        "title": "Assign speakers and presenters"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#FFEB3B"
+                        },
+                        "isDone": true
+                    },
+                    {
+                        "id": "t5014",
+                        "title": "Coordinate entertainment",
+                        "members": ["u103"],
+                        "labelIds": ["l101", "l102", "l106", "l103"],
+                        "checklists": [
+                            {
+                                "id": "cl5014",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo5040",
+                                        "title": "Book live band"
+                                    },
+                                    {
+                                        "id": "todo5041",
+                                        "title": "Hire event emcee"
+                                    },
+                                    {
+                                        "id": "todo5042",
+                                        "title": "Arrange interactive activities"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "backgroundImage": "https://images.unsplash.com/photo-1508979822114-db019a20d576?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+                        },
+                        "isDone": false
+                    },
+                    {
+                        "id": "t5015",
+                        "title": "Organize networking sessions",
+                        "checklists": [
+                            {
+                                "id": "cl5015",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo5043",
+                                        "title": "Set up designated networking areas"
+                                    },
+                                    {
+                                        "id": "todo5044",
+                                        "title": "Plan icebreaker activities"
+                                    },
+                                    {
+                                        "id": "todo5045",
+                                        "title": "Facilitate introductions"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#FFCDD2"
+                        },
+                        "isDone": true
+                    }
+                ]
+            },
+            {
+                "id": "g5006",
+                "title": "Evaluation and Follow-up",
+                "tasks": [
+                    {
+                        "id": "t5016",
+                        "title": "Collect attendee feedback",
+                        "members": ["u101", "u102", "u103"],
+                        "description": "In this task, the event planning team will collect feedback from event attendees to evaluate the success of the event and identify areas for improvement.",
+                        "dueDate": 1782750800000,
+                        "checklists": [
+                            {
+                                "id": "cl5016",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo5046",
+                                        "title": "Create post-event survey"
+                                    },
+                                    {
+                                        "id": "todo5047",
+                                        "title": "Distribute survey to attendees"
+                                    },
+                                    {
+                                        "id": "todo5048",
+                                        "title": "Analyze survey results"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#FF5722"
+                        },
+                        "isDone": true
+                    },
+                    {
+                        "id": "t5017",
+                        "title": "Send thank-you notes",
+                        "labelIds": ["l101", "l102", "l105"],
+                        "checklists": [
+                            {
+                                "id": "cl5017",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo5049",
+                                        "title": "Draft thank-you messages"
+                                    },
+                                    {
+                                        "id": "todo5050",
+                                        "title": "Personalize notes for speakers and sponsors"
+                                    },
+                                    {
+                                        "id": "todo5051",
+                                        "title": "Send out thank-you notes"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#607D8B"
+                        },
+                        "isDone": false
+                    },
+                    {
+                        "id": "t5018",
+                        "title": "Evaluate event success",
+                        "checklists": [
+                            {
+                                "id": "cl5018",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo5052",
+                                        "title": "Review event metrics"
+                                    },
+                                    {
+                                        "id": "todo5053",
+                                        "title": "Assess attendee satisfaction"
+                                    },
+                                    {
+                                        "id": "todo5054",
+                                        "title": "Identify areas for improvement"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": ""
+                        },
+                        "isDone": true
+                    }
+                ]
+            }
         ]
-      },
-      {
-        "id": "g5002",
-        "title": "Budget Planning",
-        "tasks": [
-          {
-            "id": "t5004",
-            "title": "Determine event budget",
-            "description": "In this task, the event planning team will determine the overall budget for the event, considering various factors such as venue costs, catering expenses, marketing, and staffing.",
-            "dueDate": 1758059600000,
-            "checklists": [
-              {
-                "id": "cl5004",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo5010",
-                    "title": "Identify expense categories"
-                  },
-                  {
-                    "id": "todo5011",
-                    "title": "Estimate costs for each category"
-                  },
-                  {
-                    "id": "todo5012",
-                    "title": "Set overall event budget"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "backgroundImage": "https://plus.unsplash.com/premium_photo-1661775443983-33b3426fcb9b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1354&q=80"
-            },
-            "isDone": false
-          },
-          {
-            "id": "t5005",
-            "title": "Allocate budget to expenses",
-            "checklists": [
-              {
-                "id": "cl5005",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo5013",
-                    "title": "Distribute budget across categories"
-                  },
-                  {
-                    "id": "todo5014",
-                    "title": "Monitor and adjust expenses"
-                  },
-                  {
-                    "id": "todo5015",
-                    "title": "Track budget utilization"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#607D8B"
-            },
-            "isDone": false
-          },
-          {
-            "id": "t5006",
-            "title": "Seek sponsorship opportunities",
-            "checklists": [
-              {
-                "id": "cl5006",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo5016",
-                    "title": "Identify potential sponsors"
-                  },
-                  {
-                    "id": "todo5017",
-                    "title": "Prepare sponsorship proposals"
-                  },
-                  {
-                    "id": "todo5018",
-                    "title": "Negotiate sponsorship agreements"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": ""
-            },
-            "isDone": true
-          }
-        ]
-      },
-      {
-        "id": "g5003",
-        "title": "Marketing and Promotion",
-        "tasks": [
-          {
-            "id": "t5007",
-            "title": "Develop marketing strategy",
-            "description": "In this task, the event planning team will develop a comprehensive marketing strategy to promote the event, including identifying target audience, selecting marketing channels, and planning promotional activities.",
-            "dueDate": 1764232400000,
-            "checklists": [
-              {
-                "id": "cl5007",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo5019",
-                    "title": "Define target audience"
-                  },
-                  {
-                    "id": "todo5020",
-                    "title": "Select marketing channels"
-                  },
-                  {
-                    "id": "todo5021",
-                    "title": "Plan promotional activities"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#FFEB3B"
-            },
-            "isDone": false
-          },
-          {
-            "id": "t5008",
-            "title": "Create event branding materials",
-            "checklists": [
-              {
-                "id": "cl5008",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo5022",
-                    "title": "Design event logo"
-                  },
-                  {
-                    "id": "todo5023",
-                    "title": "Develop event tagline"
-                  },
-                  {
-                    "id": "todo5024",
-                    "title": "Create branded collateral"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#9E9E9E"
-            },
-            "isDone": false
-          },
-          {
-            "id": "t5009",
-            "title": "Execute marketing campaigns",
-            "checklists": [
-              {
-                "id": "cl5009",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo5025",
-                    "title": "Run social media ads"
-                  },
-                  {
-                    "id": "todo5026",
-                    "title": "Create content for email marketing"
-                  },
-                  {
-                    "id": "todo5027",
-                    "title": "Collaborate with influencers"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#FFCDD2"
-            },
-            "isDone": true
-          }
-        ]
-      },
-      {
-        "id": "g5004",
-        "title": "Logistics",
-        "tasks": [
-          {
-            "id": "t5010",
-            "title": "Arrange transportation",
-            "description": "In this task, the event planning team will arrange transportation for attendees, including coordinating buses, shuttles, or taxis to and from the event venue.",
-            "dueDate": 1770405200000,
-            "checklists": [
-              {
-                "id": "cl5010",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo5028",
-                    "title": "Determine transportation requirements"
-                  },
-                  {
-                    "id": "todo5029",
-                    "title": "Contact transportation providers"
-                  },
-                  {
-                    "id": "todo5030",
-                    "title": "Confirm transportation arrangements"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#FF5722"
-            },
-            "isDone": false
-          },
-          {
-            "id": "t5011",
-            "title": "Coordinate event setup",
-            "checklists": [
-              {
-                "id": "cl5011",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo5031",
-                    "title": "Arrange seating layout"
-                  },
-                  {
-                    "id": "todo5032",
-                    "title": "Set up audiovisual equipment"
-                  },
-                  {
-                    "id": "todo5033",
-                    "title": "Prepare registration area"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#607D8B"
-            },
-            "isDone": false
-          },
-          {
-            "id": "t5012",
-            "title": "Manage event logistics",
-            "checklists": [
-              {
-                "id": "cl5012",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo5034",
-                    "title": "Coordinate catering services"
-                  },
-                  {
-                    "id": "todo5035",
-                    "title": "Handle audiovisual setup"
-                  },
-                  {
-                    "id": "todo5036",
-                    "title": "Manage on-site registration"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": ""
-            },
-            "isDone": true
-          }
-        ]
-      },
-      {
-        "id": "g5005",
-        "title": "Program and Activities",
-        "tasks": [
-          {
-            "id": "t5013",
-            "title": "Plan event program",
-            "description": "In this task, the event planning team will develop the program flow, including scheduling keynote speeches, breakout sessions, and networking activities.",
-            "dueDate": 1776578000000,
-            "checklists": [
-              {
-                "id": "cl5013",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo5037",
-                    "title": "Outline event schedule"
-                  },
-                  {
-                    "id": "todo5038",
-                    "title": "Determine session topics"
-                  },
-                  {
-                    "id": "todo5039",
-                    "title": "Assign speakers and presenters"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#FFEB3B"
-            },
-            "isDone": false
-          },
-          {
-            "id": "t5014",
-            "title": "Coordinate entertainment",
-            "checklists": [
-              {
-                "id": "cl5014",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo5040",
-                    "title": "Book live band"
-                  },
-                  {
-                    "id": "todo5041",
-                    "title": "Hire event emcee"
-                  },
-                  {
-                    "id": "todo5042",
-                    "title": "Arrange interactive activities"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "backgroundImage": "https://images.unsplash.com/photo-1508979822114-db019a20d576?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
-            },
-            "isDone": false
-          },
-          {
-            "id": "t5015",
-            "title": "Organize networking sessions",
-            "checklists": [
-              {
-                "id": "cl5015",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo5043",
-                    "title": "Set up designated networking areas"
-                  },
-                  {
-                    "id": "todo5044",
-                    "title": "Plan icebreaker activities"
-                  },
-                  {
-                    "id": "todo5045",
-                    "title": "Facilitate introductions"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#FFCDD2"
-            },
-            "isDone": true
-          }
-        ]
-      },
-      {
-        "id": "g5006",
-        "title": "Evaluation and Follow-up",
-        "tasks": [
-          {
-            "id": "t5016",
-            "title": "Collect attendee feedback",
-            "description": "In this task, the event planning team will collect feedback from event attendees to evaluate the success of the event and identify areas for improvement.",
-            "dueDate": 1782750800000,
-            "checklists": [
-              {
-                "id": "cl5016",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo5046",
-                    "title": "Create post-event survey"
-                  },
-                  {
-                    "id": "todo5047",
-                    "title": "Distribute survey to attendees"
-                  },
-                  {
-                    "id": "todo5048",
-                    "title": "Analyze survey results"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#FF5722"
-            },
-            "isDone": false
-          },
-          {
-            "id": "t5017",
-            "title": "Send thank-you notes",
-            "checklists": [
-              {
-                "id": "cl5017",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo5049",
-                    "title": "Draft thank-you messages"
-                  },
-                  {
-                    "id": "todo5050",
-                    "title": "Personalize notes for speakers and sponsors"
-                  },
-                  {
-                    "id": "todo5051",
-                    "title": "Send out thank-you notes"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#607D8B"
-            },
-            "isDone": false
-          },
-          {
-            "id": "t5018",
-            "title": "Evaluate event success",
-            "checklists": [
-              {
-                "id": "cl5018",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo5052",
-                    "title": "Review event metrics"
-                  },
-                  {
-                    "id": "todo5053",
-                    "title": "Assess attendee satisfaction"
-                  },
-                  {
-                    "id": "todo5054",
-                    "title": "Identify areas for improvement"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": ""
-            },
-            "isDone": true
-          }
-        ]
-      }
-    ]
-  }
-  ,
+    }
+    ,
 
 
-  /***************************************************************************************************************** */
+    /***************************************************************************************************************** */
 
 
-  {
-    "_id": "b6001",
-    "title": "Home Renovation",
-    "style": {
-      "backgroundImage": "https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80"
-    },
-    "groups": [
-      {
-        "id": "g6001",
-        "title": "Planning",
-        "tasks": [
-          {
-            "id": "t6001",
-            "title": "Create renovation plan",
-            "description": "In this task, develop a comprehensive plan for the home renovation project, including design ideas, budgeting, and project timeline.",
-            "dueDate": 1751886800000,
-            "checklists": [
-              {
-                "id": "cl6001",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo6001",
-                    "title": "Research design inspiration"
-                  },
-                  {
-                    "id": "todo6002",
-                    "title": "Determine project budget"
-                  },
-                  {
-                    "id": "todo6003",
-                    "title": "Create project timeline"
-                  }
-                ]
-              },
-              {
-                "id": "cl6002",
-                "title": "Checklist 2",
-                "todos": [
-                  {
-                    "id": "todo6004",
-                    "title": "Contact contractors for estimates"
-                  },
-                  {
-                    "id": "todo6005",
-                    "title": "Obtain necessary permits"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#4bce97"
+    {
+        "_id": "b6001",
+        "title": "Home Renovation",
+        "style": {
+            "backgroundImage": "https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80"
+        },
+        "members": [
+            {
+                "_id": 'u101',
+                "username": "Tomer",
+                "fullname": "Tomer Benaim",
+                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04QXHQH8HX-6df7fa122011-512",
             },
-            "isDone": false
-          },
-          {
-            "id": "t6002",
-            "title": "Select materials and finishes",
-            "description": "This task involves researching and selecting the materials and finishes to be used in the home renovation, such as flooring, paint colors, and fixtures.",
-            "dueDate": 1758059600000,
-            "checklists": [
-              {
-                "id": "cl6003",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo6006",
-                    "title": "Visit showrooms and browse catalogs"
-                  },
-                  {
-                    "id": "todo6007",
-                    "title": "Gather samples and swatches"
-                  },
-                  {
-                    "id": "todo6008",
-                    "title": "Consult with interior designer"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#e2b203"
+            {
+                "_id": "u102",
+                "fullname": "Eyal Avni",
+                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04T7JSSLKS-1f1786ae7473-512",
             },
-            "isDone": true
-          },
-          {
-            "id": "t6003",
-            "title": "Finalize project budget",
-            "description": "In this task, review the project budget, make any necessary adjustments, and ensure that all expenses are accounted for.",
-            "checklists": [
-              {
-                "id": "cl6004",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo6009",
-                    "title": "Review contractor estimates"
-                  },
-                  {
-                    "id": "todo6010",
-                    "title": "Factor in contingency budget"
-                  },
-                  {
-                    "id": "todo6011",
-                    "title": "Create detailed budget spreadsheet"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "backgroundImage": "https://cdn1.byjus.com/wp-content/uploads/2021/03/bar-graph.png"
+            {
+                "_id": "u103",
+                "fullname": "Ohad Mazza",
+                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04QSE7U9ED-77a50b06e29a-512",
             },
-            "isDone": false
-          }
+        ],
+        "groups": [
+            {
+                "id": "g6001",
+                "title": "Planning",
+                "tasks": [
+                    {
+                        "id": "t6001",
+                        "title": "Create renovation plan",
+                        "description": "In this task, develop a comprehensive plan for the home renovation project, including design ideas, budgeting, and project timeline.",
+                        "dueDate": 1751886800000,
+                        "checklists": [
+                            {
+                                "id": "cl6001",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo6001",
+                                        "title": "Research design inspiration"
+                                    },
+                                    {
+                                        "id": "todo6002",
+                                        "title": "Determine project budget"
+                                    },
+                                    {
+                                        "id": "todo6003",
+                                        "title": "Create project timeline"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "cl6002",
+                                "title": "Checklist 2",
+                                "todos": [
+                                    {
+                                        "id": "todo6004",
+                                        "title": "Contact contractors for estimates"
+                                    },
+                                    {
+                                        "id": "todo6005",
+                                        "title": "Obtain necessary permits"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#4bce97"
+                        },
+                        "isDone": false
+                    },
+                    {
+                        "id": "t6002",
+                        "title": "Select materials and finishes",
+                        "description": "This task involves researching and selecting the materials and finishes to be used in the home renovation, such as flooring, paint colors, and fixtures.",
+                        "dueDate": 1758059600000,
+                        "labelIds": ["l103", "l102", "l105"],
+                        "checklists": [
+                            {
+                                "id": "cl6003",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo6006",
+                                        "title": "Visit showrooms and browse catalogs"
+                                    },
+                                    {
+                                        "id": "todo6007",
+                                        "title": "Gather samples and swatches"
+                                    },
+                                    {
+                                        "id": "todo6008",
+                                        "title": "Consult with interior designer"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#e2b203"
+                        },
+                        "isDone": true
+                    },
+                    {
+                        "id": "t6003",
+                        "title": "Finalize project budget",
+                        "description": "In this task, review the project budget, make any necessary adjustments, and ensure that all expenses are accounted for.",
+                        "labelIds": ["l101", "l104", "l103"],
+                        "checklists": [
+                            {
+                                "id": "cl6004",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo6009",
+                                        "title": "Review contractor estimates"
+                                    },
+                                    {
+                                        "id": "todo6010",
+                                        "title": "Factor in contingency budget"
+                                    },
+                                    {
+                                        "id": "todo6011",
+                                        "title": "Create detailed budget spreadsheet"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "backgroundImage": "https://cdn1.byjus.com/wp-content/uploads/2021/03/bar-graph.png"
+                        },
+                        "isDone": false
+                    }
+                ]
+            },
+            {
+                "id": "g6002",
+                "title": "Preparation",
+                "tasks": [
+                    {
+                        "id": "t6004",
+                        "title": "Clear out and prepare the space",
+                        "checklists": [
+                            {
+                                "id": "cl6005",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo6012",
+                                        "title": "Declutter and remove furniture"
+                                    },
+                                    {
+                                        "id": "todo6013",
+                                        "title": "Protect flooring and surfaces"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#9f8fef"
+                        },
+                        "isDone": false
+                    },
+                    {
+                        "id": "t6005",
+                        "title": "Arrange temporary living arrangements",
+                        "members": ["u101", "u102", "u103"],
+                        "description": "This task involves making arrangements for temporary living during the renovation process, such as finding a rental or staying with family or friends.",
+                        "dueDate": 176420000,
+                        "checklists": [
+                            {
+                                "id": "cl6006",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo6014",
+                                        "title": "Research rental options"
+                                    },
+                                    {
+                                        "id": "todo6015",
+                                        "title": "Pack essential belongings"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": ""
+                        },
+                        "isDone": true
+                    },
+                    {
+                        "id": "t6006",
+                        "title": "Notify neighbors and building management",
+                        "labelIds": ["l106", "l101", "l102"],
+                        "checklists": [
+                            {
+                                "id": "cl6007",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo6016",
+                                        "title": "Inform neighbors about noise and disruptions"
+                                    },
+                                    {
+                                        "id": "todo6017",
+                                        "title": "Obtain necessary permits"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#F48FB1"
+                        },
+                        "isDone": false
+                    }
+                ]
+            },
+            {
+                "id": "g6003",
+                "title": "Construction",
+                "tasks": [
+                    {
+                        "id": "t6007",
+                        "title": "Demolition and removal",
+                        "members": ["u101", "u102", "u103"],
+                        "checklists": [
+                            {
+                                "id": "cl6008",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo6018",
+                                        "title": "Demolish walls and remove debris"
+                                    },
+                                    {
+                                        "id": "todo6019",
+                                        "title": "Dispose of materials properly"
+                                    },
+                                    {
+                                        "id": "todo6020",
+                                        "title": "Prepare for structural modifications"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#BDBDBD"
+                        },
+                        "isDone": true
+                    },
+                    {
+                        "id": "t6008",
+                        "title": "Electrical and plumbing work",
+                        "description": "This task involves hiring professionals to handle electrical and plumbing installations and ensure that all systems are up to code.",
+                        "labelIds": ["l103", "l102", "l101"],
+                        "checklists": [
+                            {
+                                "id": "cl6009",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo6021",
+                                        "title": "Create electrical layout plan"
+                                    },
+                                    {
+                                        "id": "todo6022",
+                                        "title": "Install new plumbing fixtures"
+                                    },
+                                    {
+                                        "id": "todo6023",
+                                        "title": "Test electrical and plumbing systems"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "backgroundImage": "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
+                        },
+                        "isDone": false
+                    },
+                    {
+                        "id": "t6009",
+                        "title": "Structural modifications",
+                        "members": ["u101", "u102"],
+                        "description": "In this task, structural changes will be made to the space, such as removing walls, adding support beams, or creating new openings.",
+                        "dueDate": 1770405200000,
+                        "checklists": [
+                            {
+                                "id": "cl6010",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo6024",
+                                        "title": "Consult with structural engineer"
+                                    },
+                                    {
+                                        "id": "todo6025",
+                                        "title": "Obtain necessary permits"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#90CAF9"
+                        },
+                        "isDone": false
+                    }
+                ]
+            },
+            {
+                "id": "g6004",
+                "title": "Finishing",
+                "tasks": [
+                    {
+                        "id": "t6010",
+                        "title": "Painting and wallpapering",
+                        "labelIds": ["l101", "l102", "l103"],
+                        "members": ["u101", "u103"],
+                        "checklists": [
+                            {
+                                "id": "cl6011",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo6026",
+                                        "title": "Choose paint colors and wallpaper"
+                                    },
+                                    {
+                                        "id": "todo6027",
+                                        "title": "Prepare surfaces for painting"
+                                    },
+                                    {
+                                        "id": "todo6028",
+                                        "title": "Apply paint and wallpaper"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#A5D6A7"
+                        },
+                        "isDone": true
+                    },
+                    {
+                        "id": "t6011",
+                        "title": "Install flooring",
+                        "description": "This task involves selecting and installing new flooring materials, such as hardwood, tiles, or carpet.",
+                        "labelIds": ["l102", "l101"],
+                        "checklists": [
+                            {
+                                "id": "cl6012",
+                                "title": "Checklist 1",
+                                "members": ["u102", "u103"],
+                                "todos": [
+                                    {
+                                        "id": "todo6029",
+                                        "title": "Choose flooring material"
+                                    },
+                                    {
+                                        "id": "todo6030",
+                                        "title": "Remove old flooring"
+                                    },
+                                    {
+                                        "id": "todo6031",
+                                        "title": "Install new flooring"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#B2EBF2"
+                        },
+                        "isDone": false
+                    },
+                    {
+                        "id": "t6012",
+                        "title": "Cabinetry and fixtures installation",
+                        "checklists": [
+                            {
+                                "id": "cl6013",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo6032",
+                                        "title": "Order custom cabinetry"
+                                    },
+                                    {
+                                        "id": "todo6033",
+                                        "title": "Install kitchen fixtures"
+                                    },
+                                    {
+                                        "id": "todo6034",
+                                        "title": "Mount bathroom vanities"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#FBC02D"
+                        },
+                        "isDone": false
+                    }
+                ]
+            },
+            {
+                "id": "g6005",
+                "title": "Final Touches",
+                "tasks": [
+                    {
+                        "id": "t6013",
+                        "title": "Lighting fixtures and electrical outlets",
+                        "members": ["u101", "u102", "u103"],
+                        "labelIds": ["l103"],
+                        "checklists": [
+                            {
+                                "id": "cl6014",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo6035",
+                                        "title": "Select and purchase lighting fixtures"
+                                    },
+                                    {
+                                        "id": "todo6036",
+                                        "title": "Install electrical outlets and switches"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#FFCDD2"
+                        },
+                        "isDone": true
+                    },
+                    {
+                        "id": "t6014",
+                        "title": "Window treatments",
+                        "description": "This task involves selecting and installing window treatments, such as curtains, blinds, or shutters.",
+                        "checklists": [
+                            {
+                                "id": "cl6015",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo6037",
+                                        "title": "Measure windows for treatments"
+                                    },
+                                    {
+                                        "id": "todo6038",
+                                        "title": "Select and purchase window treatments"
+                                    },
+                                    {
+                                        "id": "todo6039",
+                                        "title": "Install window treatments"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#F8BBD0"
+                        },
+                        "isDone": false
+                    },
+                    {
+                        "id": "t6015",
+                        "title": "Final inspection and cleanup",
+                        "checklists": [
+                            {
+                                "id": "cl6016",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo6040",
+                                        "title": "Inspect completed work"
+                                    },
+                                    {
+                                        "id": "todo6041",
+                                        "title": "Touch up paint and finishes"
+                                    },
+                                    {
+                                        "id": "todo6042",
+                                        "title": "Clean up construction debris"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#80CBC4"
+                        },
+                        "isDone": false
+                    }
+                ]
+            },
+            {
+                "id": "g6006",
+                "title": "Project Completion",
+                "tasks": [
+                    {
+                        "id": "t6016",
+                        "title": "Move back and settle in",
+                        "labelIds": ["l106", "l104", "l105"],
+                        "checklists": [
+                            {
+                                "id": "cl6017",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo6043",
+                                        "title": "Move belongings back into the renovated space"
+                                    },
+                                    {
+                                        "id": "todo6044",
+                                        "title": "Arrange furniture and decor"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#FFAB91"
+                        },
+                        "isDone": false
+                    },
+                    {
+                        "id": "t6017",
+                        "title": "Celebrate and enjoy",
+                        "description": "Congratulations! The home renovation project is complete. Take some time to celebrate and enjoy the newly renovated space.",
+                        "checklists": [
+                            {
+                                "id": "cl6018",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo6045",
+                                        "title": "Host a housewarming party"
+                                    },
+                                    {
+                                        "id": "todo6046",
+                                        "title": "Take photographs of the finished project"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#C5CAE9"
+                        },
+                        "isDone": false
+                    },
+                    {
+                        "id": "t6018",
+                        "title": "Review and document",
+                        "labelIds": ["l106", "l104", "l105"],
+                        "members": ["u102"],
+                        "checklists": [
+                            {
+                                "id": "cl6019",
+                                "title": "Checklist 1",
+                                "todos": [
+                                    {
+                                        "id": "todo6047",
+                                        "title": "Evaluate the renovation process"
+                                    },
+                                    {
+                                        "id": "todo6048",
+                                        "title": "Document changes made"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": {
+                            "bgColor": "#E6EE9C"
+                        },
+                        "isDone": false
+                    }
+                ]
+            }
         ]
-      },
-      {
-        "id": "g6002",
-        "title": "Preparation",
-        "tasks": [
-          {
-            "id": "t6004",
-            "title": "Clear out and prepare the space",
-            "checklists": [
-              {
-                "id": "cl6005",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo6012",
-                    "title": "Declutter and remove furniture"
-                  },
-                  {
-                    "id": "todo6013",
-                    "title": "Protect flooring and surfaces"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#9f8fef"
-            },
-            "isDone": false
-          },
-          {
-            "id": "t6005",
-            "title": "Arrange temporary living arrangements",
-            "description": "This task involves making arrangements for temporary living during the renovation process, such as finding a rental or staying with family or friends.",
-            "dueDate": 1764232400000,
-            "checklists": [
-              {
-                "id": "cl6006",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo6014",
-                    "title": "Research rental options"
-                  },
-                  {
-                    "id": "todo6015",
-                    "title": "Pack essential belongings"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": ""
-            },
-            "isDone": true
-          },
-          {
-            "id": "t6006",
-            "title": "Notify neighbors and building management",
-            "checklists": [
-              {
-                "id": "cl6007",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo6016",
-                    "title": "Inform neighbors about noise and disruptions"
-                  },
-                  {
-                    "id": "todo6017",
-                    "title": "Obtain necessary permits"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#F48FB1"
-            },
-            "isDone": false
-          }
-        ]
-      },
-      {
-        "id": "g6003",
-        "title": "Construction",
-        "tasks": [
-          {
-            "id": "t6007",
-            "title": "Demolition and removal",
-            "checklists": [
-              {
-                "id": "cl6008",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo6018",
-                    "title": "Demolish walls and remove debris"
-                  },
-                  {
-                    "id": "todo6019",
-                    "title": "Dispose of materials properly"
-                  },
-                  {
-                    "id": "todo6020",
-                    "title": "Prepare for structural modifications"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#BDBDBD"
-            },
-            "isDone": true
-          },
-          {
-            "id": "t6008",
-            "title": "Electrical and plumbing work",
-            "description": "This task involves hiring professionals to handle electrical and plumbing installations and ensure that all systems are up to code.",
-            "checklists": [
-              {
-                "id": "cl6009",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo6021",
-                    "title": "Create electrical layout plan"
-                  },
-                  {
-                    "id": "todo6022",
-                    "title": "Install new plumbing fixtures"
-                  },
-                  {
-                    "id": "todo6023",
-                    "title": "Test electrical and plumbing systems"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "backgroundImage": "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
-            },
-            "isDone": false
-          },
-          {
-            "id": "t6009",
-            "title": "Structural modifications",
-            "description": "In this task, structural changes will be made to the space, such as removing walls, adding support beams, or creating new openings.",
-            "dueDate": 1770405200000,
-            "checklists": [
-              {
-                "id": "cl6010",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo6024",
-                    "title": "Consult with structural engineer"
-                  },
-                  {
-                    "id": "todo6025",
-                    "title": "Obtain necessary permits"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#90CAF9"
-            },
-            "isDone": false
-          }
-        ]
-      },
-      {
-        "id": "g6004",
-        "title": "Finishing",
-        "tasks": [
-          {
-            "id": "t6010",
-            "title": "Painting and wallpapering",
-            "checklists": [
-              {
-                "id": "cl6011",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo6026",
-                    "title": "Choose paint colors and wallpaper"
-                  },
-                  {
-                    "id": "todo6027",
-                    "title": "Prepare surfaces for painting"
-                  },
-                  {
-                    "id": "todo6028",
-                    "title": "Apply paint and wallpaper"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#A5D6A7"
-            },
-            "isDone": true
-          },
-          {
-            "id": "t6011",
-            "title": "Install flooring",
-            "description": "This task involves selecting and installing new flooring materials, such as hardwood, tiles, or carpet.",
-            "checklists": [
-              {
-                "id": "cl6012",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo6029",
-                    "title": "Choose flooring material"
-                  },
-                  {
-                    "id": "todo6030",
-                    "title": "Remove old flooring"
-                  },
-                  {
-                    "id": "todo6031",
-                    "title": "Install new flooring"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#B2EBF2"
-            },
-            "isDone": false
-          },
-          {
-            "id": "t6012",
-            "title": "Cabinetry and fixtures installation",
-            "checklists": [
-              {
-                "id": "cl6013",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo6032",
-                    "title": "Order custom cabinetry"
-                  },
-                  {
-                    "id": "todo6033",
-                    "title": "Install kitchen fixtures"
-                  },
-                  {
-                    "id": "todo6034",
-                    "title": "Mount bathroom vanities"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#FBC02D"
-            },
-            "isDone": false
-          }
-        ]
-      },
-      {
-        "id": "g6005",
-        "title": "Final Touches",
-        "tasks": [
-          {
-            "id": "t6013",
-            "title": "Lighting fixtures and electrical outlets",
-            "checklists": [
-              {
-                "id": "cl6014",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo6035",
-                    "title": "Select and purchase lighting fixtures"
-                  },
-                  {
-                    "id": "todo6036",
-                    "title": "Install electrical outlets and switches"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#FFCDD2"
-            },
-            "isDone": true
-          },
-          {
-            "id": "t6014",
-            "title": "Window treatments",
-            "description": "This task involves selecting and installing window treatments, such as curtains, blinds, or shutters.",
-            "checklists": [
-              {
-                "id": "cl6015",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo6037",
-                    "title": "Measure windows for treatments"
-                  },
-                  {
-                    "id": "todo6038",
-                    "title": "Select and purchase window treatments"
-                  },
-                  {
-                    "id": "todo6039",
-                    "title": "Install window treatments"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#F8BBD0"
-            },
-            "isDone": false
-          },
-          {
-            "id": "t6015",
-            "title": "Final inspection and cleanup",
-            "checklists": [
-              {
-                "id": "cl6016",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo6040",
-                    "title": "Inspect completed work"
-                  },
-                  {
-                    "id": "todo6041",
-                    "title": "Touch up paint and finishes"
-                  },
-                  {
-                    "id": "todo6042",
-                    "title": "Clean up construction debris"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#80CBC4"
-            },
-            "isDone": false
-          }
-        ]
-      },
-      {
-        "id": "g6006",
-        "title": "Project Completion",
-        "tasks": [
-          {
-            "id": "t6016",
-            "title": "Move back and settle in",
-            "checklists": [
-              {
-                "id": "cl6017",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo6043",
-                    "title": "Move belongings back into the renovated space"
-                  },
-                  {
-                    "id": "todo6044",
-                    "title": "Arrange furniture and decor"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#FFAB91"
-            },
-            "isDone": false
-          },
-          {
-            "id": "t6017",
-            "title": "Celebrate and enjoy",
-            "description": "Congratulations! The home renovation project is complete. Take some time to celebrate and enjoy the newly renovated space.",
-            "checklists": [
-              {
-                "id": "cl6018",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo6045",
-                    "title": "Host a housewarming party"
-                  },
-                  {
-                    "id": "todo6046",
-                    "title": "Take photographs of the finished project"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#C5CAE9"
-            },
-            "isDone": false
-          },
-          {
-            "id": "t6018",
-            "title": "Review and document",
-            "checklists": [
-              {
-                "id": "cl6019",
-                "title": "Checklist 1",
-                "todos": [
-                  {
-                    "id": "todo6047",
-                    "title": "Evaluate the renovation process"
-                  },
-                  {
-                    "id": "todo6048",
-                    "title": "Document changes made"
-                  }
-                ]
-              }
-            ],
-            "style": {
-              "bgColor": "#E6EE9C"
-            },
-            "isDone": false
-          }
-        ]
-      }
-    ]
-  }
-  
+    }
+
 
 
 
