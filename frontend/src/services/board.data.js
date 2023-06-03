@@ -48,11 +48,11 @@ export const gBoards = [
         },
         "groups": [
             {
-                "_id": "g2001",
+                "id": "g2001",
                 "title": "Planning",
                 "tasks": [
                     {
-                        "_id": "t2001",
+                        "id": "t2001",
                         "title": "Define campaign objectives",
                         "description": "In this task, the marketing team will define the objectives and goals of the marketing campaign, including target audience, desired outcomes, and key performance indicators.",
                         "dueDate": 1751886800000,
@@ -82,7 +82,7 @@ export const gBoards = [
                         "isDone": false
                     },
                     {
-                        "_id": "t2002",
+                        "id": "t2002",
                         "title": "Create marketing strategy",
                         "description": "This task involves creating a comprehensive marketing strategy for the campaign, including messaging, channels, and tactics to reach the target audience effectively.",
                         "dueDate": 1758059600000,
@@ -92,7 +92,7 @@ export const gBoards = [
                         "isDone": false
                     },
                     {
-                        "_id": "t2003",
+                        "id": "t2003",
                         "title": "Research target market",
                         "description": "In this task, the marketing team will conduct research to gain insights into the target market, including demographics, preferences, and behaviors.",
                         "dueDate": 1764232400000,
@@ -122,7 +122,7 @@ export const gBoards = [
                         "isDone": false
                     },
                     {
-                        "_id": "t2004",
+                        "id": "t2004",
                         "title": "Set campaign budget",
                         "description": "This task involves determining the budget allocated for the marketing campaign, including expenses for advertising, content creation, and promotional activities.",
                         "dueDate": 1770405200000,
@@ -134,11 +134,11 @@ export const gBoards = [
                 ]
             },
             {
-                "_id": "g2002",
+                "id": "g2002",
                 "title": "Content Creation",
                 "tasks": [
                     {
-                        "_id": "t2005",
+                        "id": "t2005",
                         "title": "Write blog articles",
                         "description": "In this task, the content team will create engaging and informative blog articles related to the marketing campaign's theme and target audience.",
                         "dueDate": 1776578000000,
@@ -170,7 +170,7 @@ export const gBoards = [
                         "isDone": false
                     },
                     {
-                        "_id": "t2006",
+                        "id": "t2006",
                         "title": "Create social media graphics",
                         "description": "This task involves designing visually appealing graphics and images for social media posts to promote the marketing campaign effectively.",
                         "dueDate": 1782750800000,
@@ -192,7 +192,7 @@ export const gBoards = [
                         "isDone": false
                     },
                     {
-                        "_id": "t2007",
+                        "id": "t2007",
                         "title": "Produce video content",
                         "description": "In this task, the multimedia team will produce engaging video content, including promotional videos, tutorials, and product demonstrations.",
                         "dueDate": 1788923600000,
@@ -224,7 +224,7 @@ export const gBoards = [
                         "isDone": false
                     },
                     {
-                        "_id": "t2008",
+                        "id": "t2008",
                         "title": "Design marketing collaterals",
                         "description": "This task involves creating visually appealing marketing collaterals, such as brochures, flyers, and infographics, to support the marketing campaign.",
                         "dueDate": 1795096400000,
@@ -256,11 +256,11 @@ export const gBoards = [
                 ]
             },
             {
-                "_id": "g2003",
+                "id": "g2003",
                 "title": "Promotion",
                 "tasks": [
                     {
-                        "_id": "t2009",
+                        "id": "t2009",
                         "title": "Run social media ad campaigns",
                         "description": "This task involves creating and running targeted social media ad campaigns to reach a wider audience and generate awareness about the marketing campaign.",
                         "dueDate": 1801269200000,
@@ -286,7 +286,7 @@ export const gBoards = [
                         "isDone": false
                     },
                     {
-                        "_id": "t2011",
+                        "id": "t2011",
                         "title": "Collaborate with influencers",
                         "description": "This task involves identifying and collaborating with influencers who can promote the marketing campaign to their followers and increase brand visibility.",
                         "dueDate": 1813614800000,
@@ -328,7 +328,7 @@ export const gBoards = [
                         "isDone": false
                     },
                     {
-                        "_id": "t2010",
+                        "id": "t2010",
                         "title": "Email marketing",
                         "description": "In this task, the marketing team will create and send targeted email campaigns to engage with potential customers and drive them towards the desired action.",
                         "dueDate": 1807442000000,
@@ -360,11 +360,11 @@ export const gBoards = [
                 ]
             },
             {
-                "_id": "g2004",
+                "id": "g2004",
                 "title": "Measurement",
                 "tasks": [
                     {
-                        "_id": "t2012",
+                        "id": "t2012",
                         "title": "Set up tracking and analytics",
                         "description": "In this task, the marketing team will set up tracking and analytics tools to monitor the performance and effectiveness of the marketing campaign.",
                         "dueDate": 1819787600000,
@@ -393,7 +393,7 @@ export const gBoards = [
                         "isDone": false
                     },
                     {
-                        "_id": "t2013",
+                        "id": "t2013",
                         "title": "Monitor campaign performance",
                         "description": "This task involves regularly monitoring and analyzing the performance of the marketing campaign using the established tracking and analytics systems.",
                         "dueDate": 1825960400000,
@@ -423,7 +423,7 @@ export const gBoards = [
                         "isDone": false
                     },
                     {
-                        "_id": "t2014",
+                        "id": "t2014",
                         "title": "Generate campaign reports",
                         "description": "In this task, the marketing team will compile and generate comprehensive reports that provide insights and analysis of the marketing campaign's performance and outcomes.",
                         "dueDate": 1832133200000,
@@ -461,11 +461,11 @@ export const gBoards = [
                 ]
             },
             {
-                "_id": "g2005",
+                "id": "g2005",
                 "title": "Optimization",
                 "tasks": [
                     {
-                        "_id": "t2015",
+                        "id": "t2015",
                         "title": "Analyze campaign data",
                         "description": "This task involves analyzing the collected campaign data to identify areas of improvement and optimize the marketing campaign's performance.",
                         "dueDate": 1838306000000,
@@ -488,7 +488,7 @@ export const gBoards = [
                         "isDone": false
                     },
                     {
-                        "_id": "t2016",
+                        "id": "t2016",
                         "title": "Optimize ad campaigns",
                         "description": "In this task, the marketing team will make data-driven optimizations to the ad campaigns, including adjusting targeting, ad creatives, and bidding strategies.",
                         "dueDate": 1844478800000,
@@ -518,7 +518,7 @@ export const gBoards = [
                         "isDone": false
                     },
                     {
-                        "_id": "t2017",
+                        "id": "t2017",
                         "title": "Improve email campaigns",
                         "description": "This task involves analyzing email campaign metrics and making improvements to the email content, subject lines, and targeting to increase engagement and conversions.",
                         "dueDate": 1850651600000,
@@ -565,7 +565,7 @@ export const gBoards = [
         "isStarred": true,
         "archivedAt": 1653085267000,
         "createdBy": {
-            "_id": "u101",
+            "id": "u101",
             "fullname": "John Smith",
             "imgUrl": "https://example.com/user1.jpg"
         },
@@ -606,11 +606,11 @@ export const gBoards = [
         ],
         "groups": [
             {
-                "_id": "g1001",
+                "id": "g1001",
                 "title": "Backlog",
                 "tasks": [
                     {
-                        "_id": "t1001",
+                        "id": "t1001",
                         "title": "Prepare project proposal",
                         "description": "This task involves preparing a detailed project proposal for client review. It should include information about project scope, objectives, deliverables, timeline, and budget.",
                         "dueDate": 1675215600000,
@@ -654,7 +654,7 @@ export const gBoards = [
                         "isDone": false
                     },
                     {
-                        "_id": "t1002",
+                        "id": "t1002",
                         "title": "Design user interface",
                         "description": "In this task, the team will create a user-friendly interface design for the project. The design should be visually appealing, intuitive to use, and aligned with the project's branding guidelines.",
                         "dueDate": 1660086000000,
@@ -686,11 +686,11 @@ export const gBoards = [
                 ]
             },
             {
-                "_id": "g1002",
+                "id": "g1002",
                 "title": "In Progress",
                 "tasks": [
                     {
-                        "_id": "t1003",
+                        "id": "t1003",
                         "title": "Set up development environment",
                         "description": "This task involves setting up the development environment with the required tools and technologies. It includes installing necessary software, configuring development environments, and setting up version control systems.",
                         "dueDate": 1679670000000,
@@ -735,7 +735,7 @@ export const gBoards = [
                         "isDone": false
                     },
                     {
-                        "_id": "t1004",
+                        "id": "t1004",
                         "title": "Implement backend functionality",
                         "description": "This task involves developing the backend functionality of the project. It includes designing and implementing APIs, database models, and business logic.",
                         "dueDate": 1683010800000,
@@ -779,7 +779,7 @@ export const gBoards = [
                         "isDone": false
                     },
                     {
-                        "_id": "t1005",
+                        "id": "t1005",
                         "title": "Frontend development",
                         "description": "In this task, the team will work on the frontend development of the project. It includes implementing user interfaces, integrating with backend APIs, and handling user interactions.",
                         "dueDate": 1688540400000,
@@ -825,11 +825,11 @@ export const gBoards = [
                 ]
             },
             {
-                "_id": "g1003",
+                "id": "g1003",
                 "title": "Review",
                 "tasks": [
                     {
-                        "_id": "t1006",
+                        "id": "t1006",
                         "title": "Perform code review",
                         "description": "In this task, the team will conduct code reviews to ensure code quality, adherence to best practices, and identify any potential bugs or issues.",
                         "dueDate": 1694070000000,
@@ -859,7 +859,7 @@ export const gBoards = [
                         "isDone": false
                     },
                     {
-                        "_id": "t1007",
+                        "id": "t1007",
                         "title": "Conduct user testing",
                         "description": "This task involves conducting user testing sessions to gather feedback on the project's usability and identify any usability issues or areas for improvement.",
                         "dueDate": 1699983600000,
@@ -905,11 +905,11 @@ export const gBoards = [
                 ]
             },
             {
-                "_id": "g1004",
+                "id": "g1004",
                 "title": "Testing",
                 "tasks": [
                     {
-                        "_id": "t1008",
+                        "id": "t1008",
                         "title": "Perform unit testing",
                         "description": "In this task, the team will write and execute unit tests to verify the functionality of individual components, ensuring they work as expected and catch any bugs or errors.",
                         "dueDate": 1705654000000,
@@ -939,7 +939,7 @@ export const gBoards = [
                         "isDone": false
                     },
                     {
-                        "_id": "t1009",
+                        "id": "t1009",
                         "title": "Perform integration testing",
                         "description": "This task involves performing integration testing to validate the interaction between different components of the project and ensure they work together correctly.",
                         "dueDate": 1711724400000,
@@ -970,7 +970,7 @@ export const gBoards = [
                         "isDone": false
                     },
                     {
-                        "_id": "t1010",
+                        "id": "t1010",
                         "title": "Perform system testing",
                         "description": "In this task, the team will perform system testing to evaluate the overall functionality, performance, and reliability of the project as a whole.",
                         "dueDate": 1717897200000,
@@ -1002,11 +1002,11 @@ export const gBoards = [
                 ]
             },
             {
-                "_id": "g1005",
+                "id": "g1005",
                 "title": "Deployment",
                 "tasks": [
                     {
-                        "_id": "t1011",
+                        "id": "t1011",
                         "title": "Prepare production environment",
                         "description": "In this task, the team will set up the production environment for the project. It includes configuring servers, databases, and other necessary infrastructure components.",
                         "dueDate": 1724466800000,
@@ -1036,7 +1036,7 @@ export const gBoards = [
                         "isDone": false
                     },
                     {
-                        "_id": "t1012",
+                        "id": "t1012",
                         "title": "Deploy application",
                         "description": "This task involves deploying the application to the production environment. It includes packaging the application, deploying it to servers, and verifying its functionality.",
                         "dueDate": 1730639600000,
@@ -1068,11 +1068,11 @@ export const gBoards = [
                 ]
             },
             {
-                "_id": "g1006",
+                "id": "g1006",
                 "title": "Maintenance",
                 "tasks": [
                     {
-                        "_id": "t1013",
+                        "id": "t1013",
                         "title": "Monitor application performance",
                         "description": "In this task, the team will monitor the performance of the deployed application, track system metrics, and identify any performance issues or bottlenecks.",
                         "dueDate": 1737313200000,
@@ -1102,7 +1102,7 @@ export const gBoards = [
                         "isDone": false
                     },
                     {
-                        "_id": "t1014",
+                        "id": "t1014",
                         "title": "Address reported issues",
                         "description": "This task involves addressing reported issues and bugs that are identified by users or detected through monitoring systems.",
                         "dueDate": 1744806000000,
@@ -1149,11 +1149,11 @@ export const gBoards = [
         },
         "groups": [
             {
-                "_id": "g3001",
+                "id": "g3001",
                 "title": "Ideation",
                 "tasks": [
                     {
-                        "_id": "t3001",
+                        "id": "t3001",
                         "title": "Brainstorm product ideas",
                         "description": "In this task, the team will brainstorm and generate various product ideas, considering market demand, user needs, and innovation.",
                         "dueDate": 1751886800000,
@@ -1204,7 +1204,7 @@ export const gBoards = [
                         "isDone": false
                     },
                     {
-                        "_id": "t3002",
+                        "id": "t3002",
                         "title": "Create concept sketches",
                         "description": "This task involves creating rough concept sketches and visual representations of the product ideas to better visualize and communicate the concepts.",
                         "attachments": ["https://example.com/attachment2.jpg"],
@@ -1237,7 +1237,7 @@ export const gBoards = [
                         "isDone": true
                     },
                     {
-                        "_id": "t3003",
+                        "id": "t3003",
                         "title": "Validate product concepts",
                         "description": "In this task, the team will validate the product concepts through user research, surveys, and feedback to ensure market fit and user satisfaction.",
                         "dueDate": 1764232400000,
@@ -1289,11 +1289,11 @@ export const gBoards = [
                 ]
             },
             {
-                "_id": "g3002",
+                "id": "g3002",
                 "title": "Design",
                 "tasks": [
                     {
-                        "_id": "t3004",
+                        "id": "t3004",
                         "title": "Create wireframes",
                         "description": "This task involves creating wireframes to define the layout, structure, and interaction flow of the product's user interface.",
                         "attachments": ["https://example.com/attachment4.png"],
@@ -1331,7 +1331,7 @@ export const gBoards = [
                         "isDone": false
                     },
                     {
-                        "_id": "t3005",
+                        "id": "t3005",
                         "title": "Create visual designs",
                         "description": "In this task, the design team will create visual designs, including color schemes, typography, and graphical elements, to establish the product's visual identity.",
                         "checklists": [
@@ -1379,7 +1379,7 @@ export const gBoards = [
                         "isDone": false
                     },
                     {
-                        "_id": "t3006",
+                        "id": "t3006",
                         "title": "Develop prototypes",
                         "description": "This task involves creating interactive prototypes to test and validate the product's usability, user experience, and functionality.",
                         "attachments": ["https://example.com/attachment5.zip"],
@@ -1440,11 +1440,11 @@ export const gBoards = [
                 ]
             },
             {
-                "_id": "g3003",
+                "id": "g3003",
                 "title": "Development",
                 "tasks": [
                     {
-                        "_id": "t3007",
+                        "id": "t3007",
                         "title": "Implement backend functionality",
                         "description": "In this task, the development team will implement the backend functionality of the product, including server-side logic, APIs, and database integration.",
                         "attachments": ["https://example.com/attachment6.docx"],
@@ -1493,7 +1493,7 @@ export const gBoards = [
                         "isDone": false
                     },
                     {
-                        "_id": "t3008",
+                        "id": "t3008",
                         "title": "Develop frontend components",
                         "description": "This task involves developing frontend components and user interfaces based on the approved designs and prototypes.",
                         "checklists": [
@@ -1536,7 +1536,7 @@ export const gBoards = [
                         "isDone": false
                     },
                     {
-                        "_id": "t3009",
+                        "id": "t3009",
                         "title": "Perform unit testing",
                         "description": "In this task, the development team will perform unit testing on individual components and modules to ensure their functionality and identify any bugs or issues.",
                         "checklists": [
@@ -1580,7 +1580,7 @@ export const gBoards = [
         isStarred: true,
         archivedAt: 1589983468418,
         createdBy: {
-            _id: 'u101',
+            id: 'u101',
             fullname: 'Abi Abambi',
             imgUrl: 'http://some-img',
         },
@@ -1838,11 +1838,11 @@ export const gBoards = [
     },
     "groups": [
       {
-        "_id": "g4001",
+        "id": "g4001",
         "title": "Preparation",
         "tasks": [
           {
-            "_id": "t4001",
+            "id": "t4001",
             "title": "Define product positioning",
             "description": "In this task, the marketing team will define the unique selling proposition and positioning of the product in the market.",
             "dueDate": 1675107600000,
@@ -1886,7 +1886,7 @@ export const gBoards = [
             "isDone": true
           },
           {
-            "_id": "t4002",
+            "id": "t4002",
             "title": "Create marketing collateral",
             "description": "This task involves designing and creating marketing collateral such as brochures, product sheets, and presentation decks.",
             "attachments": ["https://example.com/attachment1.pdf"],
@@ -1930,7 +1930,7 @@ export const gBoards = [
             "isDone": false
           },
           {
-            "_id": "t4003",
+            "id": "t4003",
             "title": "Prepare launch event",
             "checklists": [
               {
@@ -1968,11 +1968,11 @@ export const gBoards = [
         ]
       },
       {
-        "_id": "g4002",
+        "id": "g4002",
         "title": "Marketing",
         "tasks": [
           {
-            "_id": "t4004",
+            "id": "t4004",
             "title": "Develop marketing campaigns",
             "description": "In this task, the marketing team will create and execute various marketing campaigns to promote the product.",
             "dueDate": 1747534800000,
@@ -2024,7 +2024,7 @@ export const gBoards = [
             "isDone": false
           },
           {
-            "_id": "t4005",
+            "id": "t4005",
             "title": "Execute digital advertising",
             "checklists": [
               {
@@ -2055,7 +2055,7 @@ export const gBoards = [
             "isDone": true
           },
           {
-            "_id": "t4006",
+            "id": "t4006",
             "title": "Social media engagement",
             "checklists": [
               {
@@ -2097,7 +2097,7 @@ export const gBoards = [
             "isDone": false
           },
           {
-            "_id": "t4007",
+            "id": "t4007",
             "title": "Email marketing",
             "attachments": ["https://example.com/attachment2.pdf"],
             "checklists": [
@@ -2147,11 +2147,11 @@ export const gBoards = [
         ]
       },
       {
-        "_id": "g4003",
+        "id": "g4003",
         "title": "Sales",
         "tasks": [
           {
-            "_id": "t4008",
+            "id": "t4008",
             "title": "Sales training",
             "description": "In this task, the sales team will undergo training sessions to familiarize themselves with the product features, benefits, and sales techniques.",
             "dueDate": 1754307600000,
@@ -2184,7 +2184,7 @@ export const gBoards = [
             "isDone": false
           },
           {
-            "_id": "t4009",
+            "id": "t4009",
             "title": "Lead generation",
             "checklists": [
               {
@@ -2215,7 +2215,7 @@ export const gBoards = [
             "isDone": true
           },
           {
-            "_id": "t4010",
+            "id": "t4010",
             "title": "Sales meetings",
             "checklists": [
               {
@@ -2246,7 +2246,7 @@ export const gBoards = [
             "isDone": false
           },
           {
-            "_id": "t4011",
+            "id": "t4011",
             "title": "Negotiations and closing",
             "dueDate": 1808325200000,
             "checklists": [
@@ -2280,11 +2280,11 @@ export const gBoards = [
         ]
       },
       {
-        "_id": "g4004",
+        "id": "g4004",
         "title": "Product Development",
         "tasks": [
           {
-            "_id": "t4012",
+            "id": "t4012",
             "title": "Gather user feedback",
             "checklists": [
               {
@@ -2310,7 +2310,7 @@ export const gBoards = [
             "isDone": false
           },
           {
-            "_id": "t4013",
+            "id": "t4013",
             "title": "Implement product enhancements",
             "description": "Based on user feedback, the development team will implement improvements and new features to enhance the product.",
             "attachments": ["https://example.com/attachment3.pdf"],
@@ -2343,7 +2343,7 @@ export const gBoards = [
             "isDone": true
           },
           {
-            "_id": "t4014",
+            "id": "t4014",
             "title": "Quality assurance",
             "checklists": [
               {
@@ -2376,11 +2376,11 @@ export const gBoards = [
         ]
       },
       {
-        "_id": "g4005",
+        "id": "g4005",
         "title": "Post-Launch",
         "tasks": [
           {
-            "_id": "t4015",
+            "id": "t4015",
             "title": "Monitor product performance",
             "checklists": [
               {
@@ -2406,7 +2406,7 @@ export const gBoards = [
             "isDone": true
           },
           {
-            "_id": "t4016",
+            "id": "t4016",
             "title": "Customer support",
             "checklists": [
               {
@@ -2437,7 +2437,7 @@ export const gBoards = [
             "isDone": false
           },
           {
-            "_id": "t4017",
+            "id": "t4017",
             "title": "Collect testimonials and reviews",
             "checklists": [
               {
@@ -2465,11 +2465,11 @@ export const gBoards = [
         ]
       },
       {
-        "_id": "g4006",
+        "id": "g4006",
         "title": "Analytics",
         "tasks": [
           {
-            "_id": "t4018",
+            "id": "t4018",
             "title": "Data collection and analysis",
             "checklists": [
               {
@@ -2500,7 +2500,7 @@ export const gBoards = [
             "isDone": false
           },
           {
-            "_id": "t4019",
+            "id": "t4019",
             "title": "User behavior tracking",
             "checklists": [
               {
@@ -2526,7 +2526,7 @@ export const gBoards = [
             "isDone": true
           },
           {
-            "_id": "t4020",
+            "id": "t4020",
             "title": "Reporting and insights",
             "checklists": [
               {
@@ -2571,11 +2571,11 @@ export const gBoards = [
     },
     "groups": [
       {
-        "_id": "g5001",
+        "id": "g5001",
         "title": "Venue Selection",
         "tasks": [
           {
-            "_id": "t5001",
+            "id": "t5001",
             "title": "Research potential venues",
             "description": "In this task, the event planning team will research and identify potential venues that suit the event requirements, including capacity, location, and amenities.",
             "dueDate": 1751886800000,
@@ -2605,7 +2605,7 @@ export const gBoards = [
             "isDone": false
           },
           {
-            "_id": "t5002",
+            "id": "t5002",
             "title": "Visit and evaluate venues",
             "checklists": [
               {
@@ -2633,7 +2633,7 @@ export const gBoards = [
             "isDone": true
           },
           {
-            "_id": "t5003",
+            "id": "t5003",
             "title": "Negotiate venue contract",
             "checklists": [
               {
@@ -2663,11 +2663,11 @@ export const gBoards = [
         ]
       },
       {
-        "_id": "g5002",
+        "id": "g5002",
         "title": "Budget Planning",
         "tasks": [
           {
-            "_id": "t5004",
+            "id": "t5004",
             "title": "Determine event budget",
             "description": "In this task, the event planning team will determine the overall budget for the event, considering various factors such as venue costs, catering expenses, marketing, and staffing.",
             "dueDate": 1758059600000,
@@ -2697,7 +2697,7 @@ export const gBoards = [
             "isDone": false
           },
           {
-            "_id": "t5005",
+            "id": "t5005",
             "title": "Allocate budget to expenses",
             "checklists": [
               {
@@ -2725,7 +2725,7 @@ export const gBoards = [
             "isDone": false
           },
           {
-            "_id": "t5006",
+            "id": "t5006",
             "title": "Seek sponsorship opportunities",
             "checklists": [
               {
@@ -2755,11 +2755,11 @@ export const gBoards = [
         ]
       },
       {
-        "_id": "g5003",
+        "id": "g5003",
         "title": "Marketing and Promotion",
         "tasks": [
           {
-            "_id": "t5007",
+            "id": "t5007",
             "title": "Develop marketing strategy",
             "description": "In this task, the event planning team will develop a comprehensive marketing strategy to promote the event, including identifying target audience, selecting marketing channels, and planning promotional activities.",
             "dueDate": 1764232400000,
@@ -2789,7 +2789,7 @@ export const gBoards = [
             "isDone": false
           },
           {
-            "_id": "t5008",
+            "id": "t5008",
             "title": "Create event branding materials",
             "checklists": [
               {
@@ -2817,7 +2817,7 @@ export const gBoards = [
             "isDone": false
           },
           {
-            "_id": "t5009",
+            "id": "t5009",
             "title": "Execute marketing campaigns",
             "checklists": [
               {
@@ -2847,11 +2847,11 @@ export const gBoards = [
         ]
       },
       {
-        "_id": "g5004",
+        "id": "g5004",
         "title": "Logistics",
         "tasks": [
           {
-            "_id": "t5010",
+            "id": "t5010",
             "title": "Arrange transportation",
             "description": "In this task, the event planning team will arrange transportation for attendees, including coordinating buses, shuttles, or taxis to and from the event venue.",
             "dueDate": 1770405200000,
@@ -2881,7 +2881,7 @@ export const gBoards = [
             "isDone": false
           },
           {
-            "_id": "t5011",
+            "id": "t5011",
             "title": "Coordinate event setup",
             "checklists": [
               {
@@ -2909,7 +2909,7 @@ export const gBoards = [
             "isDone": false
           },
           {
-            "_id": "t5012",
+            "id": "t5012",
             "title": "Manage event logistics",
             "checklists": [
               {
@@ -2939,11 +2939,11 @@ export const gBoards = [
         ]
       },
       {
-        "_id": "g5005",
+        "id": "g5005",
         "title": "Program and Activities",
         "tasks": [
           {
-            "_id": "t5013",
+            "id": "t5013",
             "title": "Plan event program",
             "description": "In this task, the event planning team will develop the program flow, including scheduling keynote speeches, breakout sessions, and networking activities.",
             "dueDate": 1776578000000,
@@ -2973,7 +2973,7 @@ export const gBoards = [
             "isDone": false
           },
           {
-            "_id": "t5014",
+            "id": "t5014",
             "title": "Coordinate entertainment",
             "checklists": [
               {
@@ -3001,7 +3001,7 @@ export const gBoards = [
             "isDone": false
           },
           {
-            "_id": "t5015",
+            "id": "t5015",
             "title": "Organize networking sessions",
             "checklists": [
               {
@@ -3031,11 +3031,11 @@ export const gBoards = [
         ]
       },
       {
-        "_id": "g5006",
+        "id": "g5006",
         "title": "Evaluation and Follow-up",
         "tasks": [
           {
-            "_id": "t5016",
+            "id": "t5016",
             "title": "Collect attendee feedback",
             "description": "In this task, the event planning team will collect feedback from event attendees to evaluate the success of the event and identify areas for improvement.",
             "dueDate": 1782750800000,
@@ -3065,7 +3065,7 @@ export const gBoards = [
             "isDone": false
           },
           {
-            "_id": "t5017",
+            "id": "t5017",
             "title": "Send thank-you notes",
             "checklists": [
               {
@@ -3093,7 +3093,7 @@ export const gBoards = [
             "isDone": false
           },
           {
-            "_id": "t5018",
+            "id": "t5018",
             "title": "Evaluate event success",
             "checklists": [
               {
@@ -3138,11 +3138,11 @@ export const gBoards = [
     },
     "groups": [
       {
-        "_id": "g6001",
+        "id": "g6001",
         "title": "Planning",
         "tasks": [
           {
-            "_id": "t6001",
+            "id": "t6001",
             "title": "Create renovation plan",
             "description": "In this task, develop a comprehensive plan for the home renovation project, including design ideas, budgeting, and project timeline.",
             "dueDate": 1751886800000,
@@ -3186,7 +3186,7 @@ export const gBoards = [
             "isDone": false
           },
           {
-            "_id": "t6002",
+            "id": "t6002",
             "title": "Select materials and finishes",
             "description": "This task involves researching and selecting the materials and finishes to be used in the home renovation, such as flooring, paint colors, and fixtures.",
             "dueDate": 1758059600000,
@@ -3216,7 +3216,7 @@ export const gBoards = [
             "isDone": true
           },
           {
-            "_id": "t6003",
+            "id": "t6003",
             "title": "Finalize project budget",
             "description": "In this task, review the project budget, make any necessary adjustments, and ensure that all expenses are accounted for.",
             "checklists": [
@@ -3247,11 +3247,11 @@ export const gBoards = [
         ]
       },
       {
-        "_id": "g6002",
+        "id": "g6002",
         "title": "Preparation",
         "tasks": [
           {
-            "_id": "t6004",
+            "id": "t6004",
             "title": "Clear out and prepare the space",
             "checklists": [
               {
@@ -3275,7 +3275,7 @@ export const gBoards = [
             "isDone": false
           },
           {
-            "_id": "t6005",
+            "id": "t6005",
             "title": "Arrange temporary living arrangements",
             "description": "This task involves making arrangements for temporary living during the renovation process, such as finding a rental or staying with family or friends.",
             "dueDate": 1764232400000,
@@ -3301,7 +3301,7 @@ export const gBoards = [
             "isDone": true
           },
           {
-            "_id": "t6006",
+            "id": "t6006",
             "title": "Notify neighbors and building management",
             "checklists": [
               {
@@ -3327,11 +3327,11 @@ export const gBoards = [
         ]
       },
       {
-        "_id": "g6003",
+        "id": "g6003",
         "title": "Construction",
         "tasks": [
           {
-            "_id": "t6007",
+            "id": "t6007",
             "title": "Demolition and removal",
             "checklists": [
               {
@@ -3359,7 +3359,7 @@ export const gBoards = [
             "isDone": true
           },
           {
-            "_id": "t6008",
+            "id": "t6008",
             "title": "Electrical and plumbing work",
             "description": "This task involves hiring professionals to handle electrical and plumbing installations and ensure that all systems are up to code.",
             "checklists": [
@@ -3388,7 +3388,7 @@ export const gBoards = [
             "isDone": false
           },
           {
-            "_id": "t6009",
+            "id": "t6009",
             "title": "Structural modifications",
             "description": "In this task, structural changes will be made to the space, such as removing walls, adding support beams, or creating new openings.",
             "dueDate": 1770405200000,
@@ -3416,11 +3416,11 @@ export const gBoards = [
         ]
       },
       {
-        "_id": "g6004",
+        "id": "g6004",
         "title": "Finishing",
         "tasks": [
           {
-            "_id": "t6010",
+            "id": "t6010",
             "title": "Painting and wallpapering",
             "checklists": [
               {
@@ -3448,7 +3448,7 @@ export const gBoards = [
             "isDone": true
           },
           {
-            "_id": "t6011",
+            "id": "t6011",
             "title": "Install flooring",
             "description": "This task involves selecting and installing new flooring materials, such as hardwood, tiles, or carpet.",
             "checklists": [
@@ -3477,7 +3477,7 @@ export const gBoards = [
             "isDone": false
           },
           {
-            "_id": "t6012",
+            "id": "t6012",
             "title": "Cabinetry and fixtures installation",
             "checklists": [
               {
@@ -3507,11 +3507,11 @@ export const gBoards = [
         ]
       },
       {
-        "_id": "g6005",
+        "id": "g6005",
         "title": "Final Touches",
         "tasks": [
           {
-            "_id": "t6013",
+            "id": "t6013",
             "title": "Lighting fixtures and electrical outlets",
             "checklists": [
               {
@@ -3535,7 +3535,7 @@ export const gBoards = [
             "isDone": true
           },
           {
-            "_id": "t6014",
+            "id": "t6014",
             "title": "Window treatments",
             "description": "This task involves selecting and installing window treatments, such as curtains, blinds, or shutters.",
             "checklists": [
@@ -3564,7 +3564,7 @@ export const gBoards = [
             "isDone": false
           },
           {
-            "_id": "t6015",
+            "id": "t6015",
             "title": "Final inspection and cleanup",
             "checklists": [
               {
@@ -3594,11 +3594,11 @@ export const gBoards = [
         ]
       },
       {
-        "_id": "g6006",
+        "id": "g6006",
         "title": "Project Completion",
         "tasks": [
           {
-            "_id": "t6016",
+            "id": "t6016",
             "title": "Move back and settle in",
             "checklists": [
               {
@@ -3622,7 +3622,7 @@ export const gBoards = [
             "isDone": false
           },
           {
-            "_id": "t6017",
+            "id": "t6017",
             "title": "Celebrate and enjoy",
             "description": "Congratulations! The home renovation project is complete. Take some time to celebrate and enjoy the newly renovated space.",
             "checklists": [
@@ -3647,7 +3647,7 @@ export const gBoards = [
             "isDone": false
           },
           {
-            "_id": "t6018",
+            "id": "t6018",
             "title": "Review and document",
             "checklists": [
               {
