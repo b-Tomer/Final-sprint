@@ -67,26 +67,9 @@ export function TaskPreview({ task, onRemoveTask, boardId, groupId, setIsTaskDet
                 </div>
             )}
             <div className="task-content">
-                {/* <span className="task-title" onClick={openTaskDetails}>
-                    {task.title}
-                </span> */}
                 {<span className="task-title" onClick={onOpenTaskDetails}>
                     {task.title}
                 </span>}
-
-
-
-                {/* {isTaskDetailsOpen && ( */}
-                {/* <div className="modal-overlay">
-                    <div className="task-details-modal">
-                        <TaskDetails task={task} onClose={onCloseTaskDetails} />
-                    </div>
-                </div> */}
-                {/* )} */}
-
-
-
-
                 <TaskIcons task={task} groupId={groupId} boardId={boardId} />
             </div>
         </div>

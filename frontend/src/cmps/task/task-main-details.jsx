@@ -4,13 +4,11 @@ import { TaskMenu } from "./task-menu.jsx";
 
 
 export function TaskMainDetails({ task, group }) {
-    console.log(task)
 
     return (
         <section className="task-main-detiails">
-            <TaskData />
+            <TaskData task={task} />
             <TaskMainContent task={task} />
-            {/* <TaskMenu /> */}
 
         </section>
     )

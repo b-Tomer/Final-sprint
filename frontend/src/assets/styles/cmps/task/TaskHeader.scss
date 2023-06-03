@@ -1,26 +1,28 @@
 .task-header {
     .task-header-title {
-        color: $clr7;
-        width: 100%;
-        overflow: hidden;
-        overflow-wrap: break-word;
-        height: 33.3333px;
-        border-radius: 3px;
-        box-shadow: none;
-        font-size: 20px;
+        // color: $clr7;
+        // width: 100%;
+        // overflow: hidden;
+        // overflow-wrap: break-word;
+        // height: 33.3333px;
+        // border-radius: 3px;
+        resize: none;
         font-weight: 600;
         height: 32px;
-        line-height: 24px;
-        margin: -4px -8px;
         min-height: 24px;
-        padding: 4px 8px;
-        resize: none;
-        -webkit-appearance: none;
         line-height: 24px;
-        font-size: 20px;
-        appearance: none;
+        font-size: 1rem;
         border: none;
         outline: none;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+        align-items: center;
+
+        .header-icon {
+            padding-top: 2px;
+            width: 14px;
+            height: 14px;
+            margin-right: 8px;
+        }
     }
 
 
@@ -28,7 +30,7 @@
         color: $clr6;
         margin: 0;
         line-height: 20px;
-        font-size: 14px;
+        font-size: 0.75rem;
 
         a {
             color: $clr6;
@@ -36,6 +38,19 @@
             text-decoration: none;
             text-decoration: underline;
         }
+
+        .eye-icon {
+            width: 16px;
+            padding-top: 7px;
+            margin-left: 10px;
+
+            path {
+                fill: $clr4;
+            }
+
+
+        }
+
     }
 
     .task-header-title {
@@ -43,11 +58,6 @@
     }
 
 
-    .header-icon {
-        width: 45px;
-        height: 20px;
-        padding-top: 2px;
-    }
 
 }
 
