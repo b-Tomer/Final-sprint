@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useRef } from 'react'
+
 import {
     loadBoards,
     addBoard,
@@ -19,19 +21,18 @@ import { groupService } from '../services/group.service.local.js'
 import { SET_BOARD } from '../store/board.reducer.js'
 import { saveGroup } from '../store/group.actions.js'
 import img from '../assets/img/background.jpg'
+import { TaskEditor } from '../cmps/task/task-editor.jsx'
 import { TaskDetails } from '../cmps/task/task-details.jsx'
 
 export function BoardIndex() {
-    const [isTaskDetailsOpen, setIsTaskDetailsOpen] = useState(false);
-
     // const boards = useSelector((storeState) => storeState.boardModule.boards)
     const { boardId } = useParams()
     const { board } = useSelector((storeState) => storeState.boardModule)
     const { groupId } = useParams()
     const { taskId } = useParams()
     const dispatch = useDispatch()
-
-    console.log(groupId, taskId);
+    const [taskEdit, setTaskEdit] = useState(null)
+    const [isTaskDetailsOpen, setIsTaskDetailsOpen] = useState(false)
 
     useEffect(() => {
         loadBoards()
@@ -99,39 +100,48 @@ export function BoardIndex() {
 
     if (!board) return
     return (
-        <div>
-            <AppHeader />
-
-            <section
-                className="board-container"
-            // style={
-            //     board.style?.backgroundImage
-            //         ? {
-            //               backgroundImage: `url(${board.style.backgroundImage})`,
-            //               backgroundSize: 'cover',
-            //               backgroundPosition: 'center',
-            //               backgroundRepeat: 'no-repeat',
-            //           }
-            //         : { backgroundImage: `url('')` }
-            // }
-            >
-                <BoardHeader />
-                <main className="board-content">
-                    {board.groups.map((group) => (
-                        <GroupDetails
-                            boardId={boardId}
-                            removeGroup={removeGroup}
-                            group={group}
-                            key={group.id}
-                            setIsTaskDetailsOpen={setIsTaskDetailsOpen}
-                            isTaskDetailsOpen={isTaskDetailsOpen}
-                        />
-                    ))}
-                    <AddGroup addGroup={addGroup} />
-                </main>
-
-                {isTaskDetailsOpen && <TaskDetails taskId={taskId} groupId={groupId} />}
-            </section>
-        </div>
+        <Fragment>
+            <div>
+                <AppHeader />
+                <section
+                    className="board-container"
+                    // style={
+                    //     board.style?.backgroundImage
+                    //         ? {
+                    //               backgroundImage: `url(${board.style.backgroundImage})`,
+                    //               backgroundSize: 'cover',
+                    //               backgroundPosition: 'center',
+                    //               backgroundRepeat: 'no-repeat',
+                    //           }
+                    //         : { backgroundImage: `url('')` }
+                    // }
+                >
+                    <BoardHeader />
+                    <main className="board-content">
+                        {board.groups.map((group) => (
+                            <GroupDetails
+                                boardId={boardId}
+                                removeGroup={removeGroup}
+                                group={group}
+                                key={group.id}
+                                setTaskEdit={setTaskEdit}
+                                taskEdit={taskEdit}
+                                setIsTaskDetailsOpen={setIsTaskDetailsOpen}
+                                isTaskDetailsOpen={isTaskDetailsOpen}
+                            />
+                        ))}
+                        <AddGroup addGroup={addGroup} />
+                    </main>
+                </section>
+            </div>
+            {taskEdit && (
+                <TaskEditor
+                    pos={taskEdit.pos}
+                    task={taskEdit.task}
+                    groupId={taskEdit.groupId}
+                    setTaskEdit={setTaskEdit}
+                />
+            )}
+        </Fragment>
     )
 }

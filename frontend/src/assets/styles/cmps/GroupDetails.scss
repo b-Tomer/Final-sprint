@@ -1,4 +1,5 @@
 .group-container {
+    position: relative;
     flex-shrink: 0;
     display: grid;
     grid-template-rows: 47px 1fr 43px;

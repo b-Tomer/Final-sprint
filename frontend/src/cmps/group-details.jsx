@@ -7,7 +7,15 @@ import { ReactComponent as X } from '../assets/img/icons/x.svg'
 import { taskService } from '../services/task.service.local'
 import { removeTask, saveTask } from '../store/task.actions'
 
-export function GroupDetails({ group, removeGroup, boardId, setIsTaskDetailsOpen, isTaskDetailsOpen }) {
+export function GroupDetails({
+    group,
+    removeGroup,
+    boardId,
+    setIsTaskDetailsOpen,
+    isTaskDetailsOpen,
+    setTaskEdit,
+    taskEdit,
+}) {
     const [groupToUpdate, setGroupToUpdate] = useState(group)
     const [isAddTaskOpen, setIsAddTaskOpen] = useState(false)
     const [task, setTask] = useState(null)
@@ -86,6 +94,8 @@ export function GroupDetails({ group, removeGroup, boardId, setIsTaskDetailsOpen
                         key={task.id}
                         boardId={boardId}
                         groupId={group.id}
+                        setTaskEdit={setTaskEdit}
+                        taskEdit={taskEdit}
                         setIsTaskDetailsOpen={setIsTaskDetailsOpen}
                         isTaskDetailsOpen={isTaskDetailsOpen}
                     />
