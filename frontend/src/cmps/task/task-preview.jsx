@@ -18,10 +18,7 @@ export function TaskPreview({
     setIsTaskDetailsOpen,
     isTaskDetailsOpen,
 }) {
-    // //
-    // const { groupId, taskId } = useParams();
-    // const [isTaskDetailsOpen, setIsTaskDetailsOpen] = useState(false);
-    //
+
     const navigate = useNavigate()
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -29,11 +26,6 @@ export function TaskPreview({
     const taskPreviewRef = useRef()
 
     useClickOutside(menuRef, toggleEditModal)
-
-    // function onOpenMenu() {
-    //     setIsMenuOpen(!isMenuOpen)
-    //     console.log(isMenuOpen)
-    // }
 
     function onOpenMenu() {
         setIsMenuOpen(!isMenuOpen)
