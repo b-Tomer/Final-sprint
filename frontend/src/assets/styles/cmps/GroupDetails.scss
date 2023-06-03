@@ -1,4 +1,5 @@
 .group-container {
+    position: relative;
     flex-shrink: 0;
     display: grid;
     grid-template-rows: 47px 1fr 43px;
@@ -55,6 +56,8 @@
     .group-footer {
         display: flex;
         margin: 8px;
+        align-items: center;
+        align-content: center;
 
         button {
             color: $clr6;
@@ -63,8 +66,8 @@
             align-content: end;
             width: 100%;
             border-radius: 8px;
-            padding: 4px 8px;
-            padding-left: 0;
+            padding: 10px;
+            margin-block-end: 5px;
 
             &:hover {
                 background: $clrH;
@@ -99,14 +102,20 @@
 }
 
 .add-list-input {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+        Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+        sans-serif;
     background-color: #fff;
     border: none;
     border-radius: 3px;
-    box-shadow: 0 1px 0 rgba(9, 30, 66, 0.251);
-    height: 34px;
+    // box-shadow: 0 1px 0 rgba(9, 30, 66, 0.251);
+    height: 40px;
     margin-bottom: 8px;
     padding: 9px 8px;
     width: 100%;
+    padding-inline: 10px;
+    font-size: 14px;
+    color: $clr7;
 }
 .list-icon {
     width: 16px;
@@ -139,6 +148,7 @@
 
 .add-btns {
     display: flex;
+    margin-inline-start: 8px;
     .svg-holder {
         align-items: center;
         display: inline-flex;

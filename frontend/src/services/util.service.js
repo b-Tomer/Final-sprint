@@ -7,6 +7,7 @@ export const utilService = {
     saveToStorage,
     loadFromStorage,
     dueDateFormat,
+    getModalPositionOnTop,
 }
 
 function makeId(length = 6) {
@@ -107,4 +108,10 @@ function saveToStorage(key, value) {
 function loadFromStorage(key) {
     const data = localStorage.getItem(key)
     return data ? JSON.parse(data) : undefined
+}
+
+function getModalPositionOnTop(ref) {
+    const rect = ref.current.getBoundingClientRect()
+    const pos = { top: rect.top - 8, left: rect.left - 2.5 }
+    return pos
 }

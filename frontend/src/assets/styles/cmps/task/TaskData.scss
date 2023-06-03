@@ -1,4 +1,8 @@
 .data-preview {
+    display: flex;
+    flex-wrap: wrap;
 
-    .data-item {}
+    .data-item {
+        margin-right: 20px;
+    }
 }

@@ -7,7 +7,15 @@ import { ReactComponent as X } from '../assets/img/icons/x.svg'
 import { taskService } from '../services/task.service.local'
 import { removeTask, saveTask } from '../store/task.actions'
 
-export function GroupDetails({ group, removeGroup, boardId, setIsTaskDetailsOpen, isTaskDetailsOpen }) {
+export function GroupDetails({
+    group,
+    removeGroup,
+    boardId,
+    setIsTaskDetailsOpen,
+    isTaskDetailsOpen,
+    setTaskEdit,
+    taskEdit,
+}) {
     const [groupToUpdate, setGroupToUpdate] = useState(group)
     const [isAddTaskOpen, setIsAddTaskOpen] = useState(false)
     const [task, setTask] = useState(null)
@@ -66,7 +74,13 @@ export function GroupDetails({ group, removeGroup, boardId, setIsTaskDetailsOpen
     }
 
     return (
-        <section className="group-container">
+        <section
+            className="group-container"
+            style={{
+                display: 'grid',
+                gridTemplateRows: isAddTaskOpen ? '47px 1fr' : '47px 1fr 43px',
+            }}
+        >
             <div className="group-header">
                 <input
                     className="txt-input"
@@ -86,6 +100,8 @@ export function GroupDetails({ group, removeGroup, boardId, setIsTaskDetailsOpen
                         key={task.id}
                         boardId={boardId}
                         groupId={group.id}
+                        setTaskEdit={setTaskEdit}
+                        taskEdit={taskEdit}
                         setIsTaskDetailsOpen={setIsTaskDetailsOpen}
                         isTaskDetailsOpen={isTaskDetailsOpen}
                     />
@@ -94,6 +110,7 @@ export function GroupDetails({ group, removeGroup, boardId, setIsTaskDetailsOpen
                     <div className="task-container">
                         <form onSubmit={onAddTask}>
                             <input
+                                placeholder="Enter a title for this card..."
                                 className="add-list-input"
                                 value={taskTitle}
                                 onChange={handleTaskTitle}
