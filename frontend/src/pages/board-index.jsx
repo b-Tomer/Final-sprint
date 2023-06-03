@@ -102,8 +102,8 @@ export function BoardIndex() {
 
     function onExpandLabels() {
         setIsLabelsExpand(!isLabelsExpand)
-        if (isLabelsExpand) setLabelsFont('12px') 
-        else  setLabelsFont('0px')
+        if (isLabelsExpand) setLabelsFont('12px')
+        else setLabelsFont('0px')
 
         // setTimeout(() => {
         //     loadBoard(boardId)
@@ -151,6 +151,7 @@ export function BoardIndex() {
             </div>
             {taskEdit && (
                 <TaskEditor
+                    setIsTaskDetailsOpen={setIsTaskDetailsOpen}
                     pos={taskEdit.pos}
                     task={taskEdit.task}
                     groupId={taskEdit.groupId}
