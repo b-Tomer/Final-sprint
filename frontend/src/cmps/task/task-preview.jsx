@@ -20,25 +20,16 @@ export function TaskPreview({
 }) {
     const navigate = useNavigate()
 
-    // const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
     const menuRef = useRef(null)
     const taskPreviewRef = useRef()
 
     useClickOutside(menuRef, toggleEditModal)
 
-    // function onOpenMenu() {
-    //     setIsMenuOpen(!isMenuOpen)
-    //     console.log(isMenuOpen)
-    // }
-
-    // function onOpenMenu() {
-    //     setIsMenuOpen(!isMenuOpen)
-    //     console.log(isMenuOpen)
-    // }
-    // function onOpenMenu() {
-    //     setIsMenuOpen(!isMenuOpen)
-    //     console.log(isMenuOpen)
-    // }
+    function onOpenMenu() {
+        setIsMenuOpen(!isMenuOpen)
+        console.log(isMenuOpen)
+    }
 
     function onOpenTaskDetails() {
         setIsTaskDetailsOpen(true)
@@ -47,15 +38,6 @@ export function TaskPreview({
 
     function onCloseTaskDetails() {
         setIsTaskDetailsOpen(false)
-    }
-
-    function toggleEditModal(ev, ref) {
-        console.log(ref)
-        if (taskEdit) return setTaskEdit(null)
-        ev.stopPropagation()
-        ev.preventDefault()
-        const pos = utilService.getModalPositionOnTop(ref)
-        setTaskEdit({ pos, task, groupId })
     }
 
     function toggleEditModal(ev, ref) {
@@ -77,9 +59,9 @@ export function TaskPreview({
             >
                 <Stylus className="edit-icon" />
             </button>
-            {/* {isMenuOpen && (
+            {isMenuOpen && (
                 <TaskEditor taskId={task.id} onRemoveTask={onRemoveTask} />
-            )} */}
+            )}
             {(task.style?.bgColor || task.style?.backgroundImage) && (
                 <div
                     className="task-header"

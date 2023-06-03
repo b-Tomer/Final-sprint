@@ -7,15 +7,9 @@ import { ReactComponent as Date } from '../../assets/img/icons/clock.svg'
 import { ReactComponent as Move } from '../../assets/img/icons/arrow_right.svg'
 import { ReactComponent as Archive } from '../../assets/img/icons/archive.svg'
 import { ReactComponent as Cover } from '../../assets/img/icons/cover.svg'
+import { removeTask } from '../../store/task.actions'
 
-export function TaskEditor({
-    onRemoveTask,
-    taskId,
-    pos,
-    task,
-    groupId,
-    setTaskEdit,
-}) {
+export function TaskEditor({ pos, task, groupId, setTaskEdit, boardId }) {
     const menuRef = useRef(null)
     const taskPreviewRef = useRef()
 
@@ -28,6 +22,11 @@ export function TaskEditor({
 
     function toggleEditModal() {
         setTaskEdit(false)
+    }
+
+    async function onRemoveTask(taskId) {
+        console.log(boardId + ' ' + groupId + ' ' + task.id)
+        removeTask(boardId, groupId, task.id)
     }
 
     const modalStyle = { top: 8 + pos.top + 'px', left: 259 + pos.left + 'px' }
@@ -114,7 +113,7 @@ export function TaskEditor({
                     </a>
                     <a
                         onClick={() => {
-                            onRemoveTask(taskId)
+                            onRemoveTask(task.id)
                         }}
                         className="quick-card-editor-buttons-item js-archive"
                         href="#"

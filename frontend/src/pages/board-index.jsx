@@ -105,16 +105,16 @@ export function BoardIndex() {
                 <AppHeader />
                 <section
                     className="board-container"
-                // style={
-                //     board.style?.backgroundImage
-                //         ? {
-                //               backgroundImage: `url(${board.style.backgroundImage})`,
-                //               backgroundSize: 'cover',
-                //               backgroundPosition: 'center',
-                //               backgroundRepeat: 'no-repeat',
-                //           }
-                //         : { backgroundImage: `url('')` }
-                // }
+                    // style={
+                    //     board.style?.backgroundImage
+                    //         ? {
+                    //               backgroundImage: `url(${board.style.backgroundImage})`,
+                    //               backgroundSize: 'cover',
+                    //               backgroundPosition: 'center',
+                    //               backgroundRepeat: 'no-repeat',
+                    //           }
+                    //         : { backgroundImage: `url('')` }
+                    // }
                 >
                     <BoardHeader />
                     <main className="board-content">
@@ -140,9 +140,18 @@ export function BoardIndex() {
                     task={taskEdit.task}
                     groupId={taskEdit.groupId}
                     setTaskEdit={setTaskEdit}
+                    boardId={boardId}
                 />
             )}
-            {isTaskDetailsOpen && <TaskDetails taskId={taskId} groupId={groupId} />}
+            {isTaskDetailsOpen && (
+                <TaskDetails
+                    isTaskDetailsOpen={isTaskDetailsOpen}
+                    setIsTaskDetailsOpen={setIsTaskDetailsOpen}
+                    taskId={taskId}
+                    groupId={groupId}
+                    boardId={boardId}
+                />
+            )}
         </Fragment>
     )
 }
