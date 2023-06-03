@@ -1134,7 +1134,7 @@ export const gBoards = [
                             }
                         ],
                         "style": {
-                            "bgColor": "#f87462"
+                            "bgColor": ""
                         },
                         "isDone": true
                     },
@@ -1195,7 +1195,7 @@ export const gBoards = [
                             }
                         ],
                         "style": {
-                            "bgColor": "#579dff"
+                            "bgColor": ""
                         },
                         "isDone": false
                     }
@@ -1263,7 +1263,7 @@ export const gBoards = [
                         "style": {
                             "bgColor": "#e2b203"
                         },
-                        "isDone": false
+                        "isDone": true
                     }
                 ]
             },
@@ -1275,7 +1275,7 @@ export const gBoards = [
                         "id": "t1013",
                         "title": "Monitor application performance",
                         "description": "In this task, the team will monitor the performance of the deployed application, track system metrics, and identify any performance issues or bottlenecks.",
-                        "dueDate": 1737313200000,
+                        "dueDate": 1737313000,
                         "checklists": [
                             {
                                 "id": "cl1018",
@@ -1426,6 +1426,7 @@ export const gBoards = [
                         "title": "Create concept sketches",
                         "description": "This task involves creating rough concept sketches and visual representations of the product ideas to better visualize and communicate the concepts.",
                         "attachments": ["https://example.com/attachment2.jpg"],
+                        "dueDate": 1751800000,
                         "checklists": [
                             {
                                 "id": "cl3003",
@@ -1458,7 +1459,7 @@ export const gBoards = [
                         "id": "t3003",
                         "title": "Validate product concepts",
                         "description": "In this task, the team will validate the product concepts through user research, surveys, and feedback to ensure market fit and user satisfaction.",
-                        "dueDate": 1764232400000,
+                        "dueDate": 176400000,
                         "attachments": ["https://example.com/attachment3.xlsx"],
                         "checklists": [
                             {
@@ -1515,6 +1516,7 @@ export const gBoards = [
                         "title": "Create wireframes",
                         "description": "This task involves creating wireframes to define the layout, structure, and interaction flow of the product's user interface.",
                         "attachments": ["https://example.com/attachment4.png"],
+                        "dueDate": 1751886000,
                         "checklists": [
                             {
                                 "id": "cl3006",
@@ -1551,6 +1553,7 @@ export const gBoards = [
                     {
                         "id": "t3005",
                         "title": "Create visual designs",
+                        "dueDate": 1758868000,
                         "description": "In this task, the design team will create visual designs, including color schemes, typography, and graphical elements, to establish the product's visual identity.",
                         "checklists": [
                             {
@@ -1594,7 +1597,7 @@ export const gBoards = [
                         "style": {
                             "backgroundImage": "https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80", "bgColor": "#673AB7"
                         },
-                        "isDone": false
+                        "isDone": true
                     },
                     {
                         "id": "t3006",
@@ -1713,6 +1716,14 @@ export const gBoards = [
                     {
                         "id": "t3008",
                         "title": "Develop frontend components",
+                        "attachments": [
+                            {
+                                id: 'ZdPfm',
+                                createdAt: 1590999817436,
+                                url: 'https://img.freepik.com/free-vector/sticker-template-cat-cartoon-character_1308-73786.jpg?w=2000',
+                            },
+                        ],
+                        "dueDate": 1751884000,
                         "description": "This task involves developing frontend components and user interfaces based on the approved designs and prototypes.",
                         "checklists": [
                             {
@@ -2292,6 +2303,7 @@ export const gBoards = [
                     {
                         "id": "t4006",
                         "title": "Social media engagement",
+                        "dueDate": 1751884000,
                         "checklists": [
                             {
                                 "id": "cl4008",
@@ -2515,7 +2527,7 @@ export const gBoards = [
                         "style": {
                             "bgColor": "#9E9E9E"
                         },
-                        "isDone": false
+                        "isDone": true
                     }
                 ]
             },
@@ -2527,6 +2539,7 @@ export const gBoards = [
                         "id": "t4012",
                         "members": ["u101", "u102", "u103"],
                         "title": "Gather user feedback",
+                        "dueDate": 17518844000,
                         "labelIds": ["l104", "l106"],
                         "checklists": [
                             {
@@ -2549,7 +2562,7 @@ export const gBoards = [
                         "style": {
                             "bgColor": "#673AB7"
                         },
-                        "isDone": false
+                        "isDone": true
                     },
                     {
                         "id": "t4013",
@@ -2652,6 +2665,7 @@ export const gBoards = [
                     {
                         "id": "t4016",
                         "title": "Customer support",
+                        "dueDate": 17518844000,
                         "checklists": [
                             {
                                 "id": "cl4020",
@@ -2845,6 +2859,23 @@ export const gBoards = [
                         "title": "Research potential venues",
                         "description": "In this task, the event planning team will research and identify potential venues that suit the event requirements, including capacity, location, and amenities.",
                         "dueDate": 175188680000,
+                        "attachments": [
+                            {
+                                "id": "a101",
+                                "createdAt": 159099981743,
+                                "url": "https://www.splashlearn.com/math-vocabulary/wp-content/uploads/2022/05/graphs-9-01-1.png",
+                            },
+                            {
+                                "id": "a102",
+                                "createdAt": 1590999817436,
+                                "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGp_q_OUhD19oRE-0xnBVgBrDcBq4vc69sMA&usqp=CAU",
+                            },
+                            {
+                                "id": "a103",
+                                "createdAt": 1590999817439,
+                                "url": "https://apexcharts.com/wp-content/uploads/2018/05/dashboard-modern.png",
+                            },
+                        ],
                         "checklists": [
                             {
                                 "id": "cl5001",
@@ -2902,6 +2933,19 @@ export const gBoards = [
                     {
                         "id": "t5003",
                         "title": "Negotiate venue contract",
+                        "dueDate": 17515488680000,
+                        "attachments": [
+                            {
+                                "id": "a101",
+                                "createdAt": 159099981743,
+                                "url": "https://www.splashlearn.com/math-vocabulary/wp-content/uploads/2022/05/graphs-9-01-1.png",
+                            },
+                            {
+                                "id": "a102",
+                                "createdAt": 1590999817436,
+                                "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGp_q_OUhD19oRE-0xnBVgBrDcBq4vc69sMA&usqp=CAU",
+                            },
+                        ],
                         "checklists": [
                             {
                                 "id": "cl5003",
@@ -2998,6 +3042,23 @@ export const gBoards = [
                         "id": "t5006",
                         "title": "Seek sponsorship opportunities",
                         "labelIds": ["l106", "l101"],
+                        "attachments": [
+                            {
+                                "id": "a101",
+                                "createdAt": 159099981743,
+                                "url": "https://www.splashlearn.com/math-vocabulary/wp-content/uploads/2022/05/graphs-9-01-1.png",
+                            },
+                            {
+                                "id": "a102",
+                                "createdAt": 1590999817436,
+                                "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGp_q_OUhD19oRE-0xnBVgBrDcBq4vc69sMA&usqp=CAU",
+                            },
+                            {
+                                "id": "a103",
+                                "createdAt": 1590999817439,
+                                "url": "https://apexcharts.com/wp-content/uploads/2018/05/dashboard-modern.png",
+                            },
+                        ],
                         "checklists": [
                             {
                                 "id": "cl5006",
@@ -3063,6 +3124,7 @@ export const gBoards = [
                     {
                         "id": "t5008",
                         "title": "Create event branding materials",
+                        "description": "In this task, the event planning team will develop a comprehensive marketing strategy to promote the event, including identifying target audience, selecting marketing channels, and planning promotional activities.",
                         "labelIds": ["l104", "l106", "l105"],
                         "members": ["u102"],
                         "checklists": [
@@ -3123,6 +3185,13 @@ export const gBoards = [
             {
                 "id": "g5004",
                 "title": "Logistics",
+                "attachments": [
+                    {
+                        "id": "a101",
+                        "createdAt": 159099981743,
+                        "url": "https://www.splashlearn.com/math-vocabulary/wp-content/uploads/2022/05/graphs-9-01-1.png",
+                    }
+                ],
                 "tasks": [
                     {
                         "id": "t5010",
@@ -3283,6 +3352,23 @@ export const gBoards = [
                     {
                         "id": "t5015",
                         "title": "Organize networking sessions",
+                        "attachments": [
+                            {
+                                "id": "a101",
+                                "createdAt": 159099981743,
+                                "url": "https://www.splashlearn.com/math-vocabulary/wp-content/uploads/2022/05/graphs-9-01-1.png",
+                            },
+                            {
+                                "id": "a102",
+                                "createdAt": 1590999817436,
+                                "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGp_q_OUhD19oRE-0xnBVgBrDcBq4vc69sMA&usqp=CAU",
+                            },
+                            {
+                                "id": "a103",
+                                "createdAt": 1590999817439,
+                                "url": "https://apexcharts.com/wp-content/uploads/2018/05/dashboard-modern.png",
+                            },
+                        ],
                         "checklists": [
                             {
                                 "id": "cl5015",
@@ -3377,6 +3463,18 @@ export const gBoards = [
                     {
                         "id": "t5018",
                         "title": "Evaluate event success",
+                        "attachments": [
+                            {
+                                "id": "a101",
+                                "createdAt": 159099981743,
+                                "url": "https://www.splashlearn.com/math-vocabulary/wp-content/uploads/2022/05/graphs-9-01-1.png",
+                            },
+                            {
+                                "id": "a102",
+                                "createdAt": 1590999817436,
+                                "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGp_q_OUhD19oRE-0xnBVgBrDcBq4vc69sMA&usqp=CAU",
+                            },
+                        ],
                         "checklists": [
                             {
                                 "id": "cl5018",
@@ -3491,6 +3589,13 @@ export const gBoards = [
                         "description": "This task involves researching and selecting the materials and finishes to be used in the home renovation, such as flooring, paint colors, and fixtures.",
                         "dueDate": 1758059600000,
                         "labelIds": ["l103", "l102", "l105"],
+                        "attachments": [
+                            {
+                                "id": "a103",
+                                "createdAt": 1590999817439,
+                                "url": "https://apexcharts.com/wp-content/uploads/2018/05/dashboard-modern.png",
+                            },
+                        ],
                         "checklists": [
                             {
                                 "id": "cl6003",
@@ -3582,6 +3687,23 @@ export const gBoards = [
                         "members": ["u101", "u102", "u103"],
                         "description": "This task involves making arrangements for temporary living during the renovation process, such as finding a rental or staying with family or friends.",
                         "dueDate": 176420000,
+                        "attachments": [
+                            {
+                                "id": "a101",
+                                "createdAt": 159099981743,
+                                "url": "https://www.splashlearn.com/math-vocabulary/wp-content/uploads/2022/05/graphs-9-01-1.png",
+                            },
+                            {
+                                "id": "a102",
+                                "createdAt": 1590999817436,
+                                "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGp_q_OUhD19oRE-0xnBVgBrDcBq4vc69sMA&usqp=CAU",
+                            },
+                            {
+                                "id": "a103",
+                                "createdAt": 1590999817439,
+                                "url": "https://apexcharts.com/wp-content/uploads/2018/05/dashboard-modern.png",
+                            },
+                        ],
                         "checklists": [
                             {
                                 "id": "cl6006",
@@ -3637,7 +3759,25 @@ export const gBoards = [
                     {
                         "id": "t6007",
                         "title": "Demolition and removal",
+                        "dueDate": 118000,
                         "members": ["u101", "u102", "u103"],
+                        "attachments": [
+                            {
+                                "id": "a101",
+                                "createdAt": 159099981743,
+                                "url": "https://www.splashlearn.com/math-vocabulary/wp-content/uploads/2022/05/graphs-9-01-1.png",
+                            },
+                            {
+                                "id": "a102",
+                                "createdAt": 1590999817436,
+                                "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGp_q_OUhD19oRE-0xnBVgBrDcBq4vc69sMA&usqp=CAU",
+                            },
+                            {
+                                "id": "a103",
+                                "createdAt": 1590999817439,
+                                "url": "https://apexcharts.com/wp-content/uploads/2018/05/dashboard-modern.png",
+                            },
+                        ],
                         "checklists": [
                             {
                                 "id": "cl6008",
@@ -3661,7 +3801,7 @@ export const gBoards = [
                         "style": {
                             "bgColor": "#BDBDBD"
                         },
-                        "isDone": true
+                        "isDone": false
                     },
                     {
                         "id": "t6008",
@@ -3759,6 +3899,7 @@ export const gBoards = [
                     {
                         "id": "t6011",
                         "title": "Install flooring",
+                        "dueDate": 123400000,
                         "description": "This task involves selecting and installing new flooring materials, such as hardwood, tiles, or carpet.",
                         "labelIds": ["l102", "l101"],
                         "checklists": [
@@ -3790,15 +3931,19 @@ export const gBoards = [
                     {
                         "id": "t6012",
                         "title": "Cabinetry and fixtures installation",
+                        "attachments": [
+                            {
+                                "id": "a101",
+                                "createdAt": 159099981743,
+                                "url": "https://www.splashlearn.com/math-vocabulary/wp-content/uploads/2022/05/graphs-9-01-1.png",
+                            },
+                        ],
+                        "dueDate": 1751886800000,
                         "checklists": [
                             {
                                 "id": "cl6013",
                                 "title": "Checklist 1",
                                 "todos": [
-                                    {
-                                        "id": "todo6032",
-                                        "title": "Order custom cabinetry"
-                                    },
                                     {
                                         "id": "todo6033",
                                         "title": "Install kitchen fixtures"
@@ -3850,6 +3995,7 @@ export const gBoards = [
                     {
                         "id": "t6014",
                         "title": "Window treatments",
+                        "dueDate": 1751886800000,
                         "description": "This task involves selecting and installing window treatments, such as curtains, blinds, or shutters.",
                         "checklists": [
                             {
@@ -3874,11 +4020,33 @@ export const gBoards = [
                         "style": {
                             "bgColor": "#F8BBD0"
                         },
-                        "isDone": false
+                        "isDone": true
                     },
                     {
                         "id": "t6015",
                         "title": "Final inspection and cleanup",
+                        "attachments": [
+                            {
+                                "id": "a101",
+                                "createdAt": 159099981743,
+                                "url": "https://www.splashlearn.com/math-vocabulary/wp-content/uploads/2022/05/graphs-9-01-1.png",
+                            },
+                            {
+                                "id": "a102",
+                                "createdAt": 1590999817436,
+                                "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGp_q_OUhD19oRE-0xnBVgBrDcBq4vc69sMA&usqp=CAU",
+                            },
+                            {
+                                "id": "a103",
+                                "createdAt": 1590999817439,
+                                "url": "https://apexcharts.com/wp-content/uploads/2018/05/dashboard-modern.png",
+                            },
+                            {
+                                "id": "a104",
+                                "createdAt": 1590999817439,
+                                "url": "https://apexcharts.com/wp-content/uploads/2018/05/dashboard-modern.png",
+                            },
+                        ],
                         "checklists": [
                             {
                                 "id": "cl6016",
