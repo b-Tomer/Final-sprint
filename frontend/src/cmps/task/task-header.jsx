@@ -8,10 +8,10 @@ export function TaskHeader({ task, group, boardId }) {
     return (
         <section className="task-header">
 
-            
+
             <div className="task-header-title">
                 <GrCreditCard className="header-icon" />
-                <textarea className="task-header-title">{task.title}</textarea>
+                <textarea defaultValue={task.title} className="task-header-title"></textarea>
             </div>
             <p>in list
                 <Link to={`board/${boardId}`}>

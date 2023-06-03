@@ -19,17 +19,34 @@ import { groupService } from '../services/group.service.local.js'
 import { SET_BOARD } from '../store/board.reducer.js'
 import { saveGroup } from '../store/group.actions.js'
 import img from '../assets/img/background.jpg'
+import { TaskDetails } from '../cmps/task/task-details.jsx'
 
 export function BoardIndex() {
+    const [isTaskDetailsOpen, setIsTaskDetailsOpen] = useState(false);
+
     // const boards = useSelector((storeState) => storeState.boardModule.boards)
     const { boardId } = useParams()
     const { board } = useSelector((storeState) => storeState.boardModule)
+    const { groupId } = useParams()
+    const { taskId } = useParams()
     const dispatch = useDispatch()
+
+    console.log(groupId, taskId);
 
     useEffect(() => {
         loadBoards()
-        loadBoard(boardId)
+        onLoadBoard()
     }, [updateBoard])
+
+    function onLoadBoard() {
+        loadBoard(boardId)
+        // if (taskId) {
+        //     setIsTaskDetailsOpen(true)
+        //     console.log(taskId)
+        // }
+    }
+
+    // console.log(isTaskDetailsOpen)
 
     async function onRemoveBoard(boardId) {
         try {
@@ -84,18 +101,19 @@ export function BoardIndex() {
     return (
         <div>
             <AppHeader />
+
             <section
                 className="board-container"
-                style={
-                    board.style?.backgroundImage
-                        ? {
-                              backgroundImage: `url(${board.style.backgroundImage})`,
-                              backgroundSize: 'cover',
-                              backgroundPosition: 'center',
-                              backgroundRepeat: 'no-repeat',
-                          }
-                        : { backgroundImage: `url('')` }
-                }
+            // style={
+            //     board.style?.backgroundImage
+            //         ? {
+            //               backgroundImage: `url(${board.style.backgroundImage})`,
+            //               backgroundSize: 'cover',
+            //               backgroundPosition: 'center',
+            //               backgroundRepeat: 'no-repeat',
+            //           }
+            //         : { backgroundImage: `url('')` }
+            // }
             >
                 <BoardHeader />
                 <main className="board-content">
@@ -105,10 +123,14 @@ export function BoardIndex() {
                             removeGroup={removeGroup}
                             group={group}
                             key={group.id}
+                            setIsTaskDetailsOpen={setIsTaskDetailsOpen}
+                            isTaskDetailsOpen={isTaskDetailsOpen}
                         />
                     ))}
                     <AddGroup addGroup={addGroup} />
                 </main>
+
+                {isTaskDetailsOpen && <TaskDetails taskId={taskId} groupId={groupId} />}
             </section>
         </div>
     )

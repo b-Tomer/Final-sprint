@@ -11,7 +11,7 @@ export function TaskMenu() {
 
     return (
         <div className="window-sidebar">
-            <h3 class="mod-no-top-margin js-sidebar-add-heading">Add to card</h3>
+            <h3 className="mod-no-top-margin js-sidebar-add-heading">Add to card</h3>
             <div className="add-to-card-menu">
                 <button className="button-link">
                     <Member className="sidebar-icon" />
