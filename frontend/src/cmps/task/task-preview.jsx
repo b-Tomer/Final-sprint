@@ -4,8 +4,15 @@ import { ReactComponent as Stylus } from '../../assets/img/icons/stylus.svg'
 import { TaskEditor } from './task-editor'
 import { useClickOutside } from '../../customHooks/useClickOutside'
 import { TaskIcons } from './task-icons'
+import { TaskDetails } from './task-details'
+import { useParams } from 'react-router-dom';
 
-export function TaskPreview({ task, onRemoveTask, boardId, groupId }) {
+export function TaskPreview({ task, onRemoveTask, boardId, groupId, setIsTaskDetailsOpen, isTaskDetailsOpen }) {
+
+    // //
+    // const { groupId, taskId } = useParams();
+    // const [isTaskDetailsOpen, setIsTaskDetailsOpen] = useState(false);
+    //
     const navigate = useNavigate()
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -17,8 +24,20 @@ export function TaskPreview({ task, onRemoveTask, boardId, groupId }) {
         setIsMenuOpen(!isMenuOpen)
         console.log(isMenuOpen)
     }
-    function openTaskDetails() {
-        navigate(`/task/${boardId}/${groupId}/${task.id}`)
+    // function openTaskDetails() {
+    //     navigate(`/task/${boardId}/${groupId}/${task.id}`)
+    // }
+
+
+    function onOpenTaskDetails() {
+        setIsTaskDetailsOpen(true);
+        navigate(`/board/${boardId}/${groupId}/${task.id}`)
+
+
+    }
+
+    function onCloseTaskDetails() {
+        setIsTaskDetailsOpen(false);
     }
 
     return (
@@ -48,9 +67,26 @@ export function TaskPreview({ task, onRemoveTask, boardId, groupId }) {
                 </div>
             )}
             <div className="task-content">
-                <span className="task-title" onClick={openTaskDetails}>
+                {/* <span className="task-title" onClick={openTaskDetails}>
                     {task.title}
-                </span>
+                </span> */}
+                {<span className="task-title" onClick={onOpenTaskDetails}>
+                    {task.title}
+                </span>}
+
+
+
+                {/* {isTaskDetailsOpen && ( */}
+                {/* <div className="modal-overlay">
+                    <div className="task-details-modal">
+                        <TaskDetails task={task} onClose={onCloseTaskDetails} />
+                    </div>
+                </div> */}
+                {/* )} */}
+
+
+
+
                 <TaskIcons task={task} groupId={groupId} boardId={boardId} />
             </div>
         </div>
