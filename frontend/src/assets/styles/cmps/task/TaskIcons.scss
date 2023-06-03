@@ -5,72 +5,98 @@
     margin-block-start: 6px;
     margin-block-end: 4px;
     font-size: 12px;
-    .task-icon {
-        margin-inline-end: 4px;
-        padding: 2px;
+    flex-wrap: wrap;
+    .task-icons-all {
         display: flex;
+        flex-grow: 1;
+        flex-direction: row;
+        // margin-block-end: 5px;
+        align-content: center;
         align-items: center;
-        justify-content: center;
-        height: 20px;
-        line-height: 20px;
-    }
-    .task-icon-img {
-        width: 14px;
-        height: 14px;
-    }
-    span {
-        padding-inline: 4px;
-    }
-    .task-due {
-        border-radius: 3px;
-        cursor: pointer;
-        &:hover:not(.completed, .overdue, .duesoon) {
-            background-color: $clrTaskPrvHvr;
-            color: $clr4;
+        .task-icon {
+            margin-inline-end: 4px;
+            padding: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 20px;
+            line-height: 20px;
+        }
+        .task-icon-img {
+            width: 14px;
+            height: 14px;
+        }
+        span {
+            padding-inline: 4px;
+        }
+        .task-due {
+            border-radius: 3px;
+            cursor: pointer;
+            &:hover:not(.completed, .overdue, .duesoon) {
+                background-color: $clrTaskPrvHvr;
+                color: $clr4;
+                .task-icon-img {
+                    path {
+                        fill: $clr4;
+                    }
+                }
+            }
             .task-icon-img {
                 path {
                     fill: $clr4;
                 }
             }
         }
-        .task-icon-img {
-            path {
-                fill: $clr4;
+        .completed {
+            background-color: $clrCMPLT;
+            color: $clr1;
+            .task-icon-img {
+                path {
+                    fill: $clr1;
+                }
+            }
+        }
+        .overdue {
+            background-color: $clrOVRDU;
+            color: $clr1;
+            .task-icon-img {
+                path {
+                    fill: $clr1;
+                }
+            }
+        }
+        .duesoon {
+            background-color: $clrSOON;
+            color: $clr7;
+            .task-icon-img {
+                path {
+                    fill: $clr7;
+                }
+            }
+        }
+        .task-checklists {
+            border-radius: 3px;
+            .task-icon-img {
+                path {
+                    fill: none;
+                }
             }
         }
     }
-    .completed {
-        background-color: $clrCMPLT;
-        color: $clr1;
-        .task-icon-img {
-            path {
-                fill: $clr1;
-            }
-        }
-    }
-    .overdue {
-        background-color: $clrOVRDU;
-        color: $clr1;
-        .task-icon-img {
-            path {
-                fill: $clr1;
-            }
-        }
-    }
-    .duesoon {
-        background-color: $clrSOON;
-        color: $clr7;
-        .task-icon-img {
-            path {
-                fill: $clr7;
-            }
-        }
-    }
-    .task-checklists {
-        border-radius: 3px;
-        .task-icon-img {
-            path {
-                fill: none;
+    .task-icons-members {
+        display: flex;
+        justify-content: end;
+        align-content: center;
+        align-items: center;
+        margin-block-start: 5px;
+        button {
+            margin-inline-end: 2px;
+            background-color: transparent;
+            padding: 0;
+            img {
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
             }
         }
     }
