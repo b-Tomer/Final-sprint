@@ -15,6 +15,7 @@ export function TaskIcons({ task, groupId, boardId }) {
     // const { board } = useSelector((storeState) => storeState.boardModule)
     const dispatch = useDispatch()
     const [isHovered, setIsHovered] = useState(false)
+    const { board } = useSelector((storeState) => storeState.boardModule)
 
     const handleMouseEnter = () => {
         setIsHovered(true)
@@ -70,41 +71,66 @@ export function TaskIcons({ task, groupId, boardId }) {
         }
     }
 
+    function getMemberImg(id) {
+        console.log(board)
+        if (!board.members) return
+        const matchedLabel = board.members.find((member) => member._id === id)
+        // console.log(matchedLabel.color)
+        return matchedLabel.imgUrl
+    }
+
     return (
         <section className="task-icons-container">
-            {task.dueDate && (
-                <div
-                    onClick={(ev) => onToggleIsDone(ev, task)}
-                    className={`task-icon task-due ${getDateClass(task)}`}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
-                >
-                    {isHovered && <DueCheck className="task-icon-img" />}
-                    {!isHovered && <Due className="task-icon-img" />}
-                    <span>{utilService.dueDateFormat(task.dueDate)}</span>
-                </div>
-            )}
-            {task.description && (
-                <div className="task-icon task-checklists">
-                    <Description className="task-icon-img" />
-                </div>
-            )}
-            {task.attachments && task.attachments.length && (
-                <div className="task-icon task-attachments">
-                    <Attachment className="task-icon-img" />
-                    <span>{task.attachments.length}</span>
-                </div>
-            )}
-            {task.checklists && task.checklists.length && (
-                <div
-                    className={`task-icon task-checklists ${areAllTodosDone(
-                        task
-                    )}`}
-                >
-                    <Checklists className="task-icon-img" />
-                    <span>
-                        {getDoneTodos(task)}/{getTotalTodos(task)}
-                    </span>
+            <div className="task-icons-all">
+                {task.dueDate && (
+                    <div
+                        onClick={(ev) => onToggleIsDone(ev, task)}
+                        className={`task-icon task-due ${getDateClass(task)}`}
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                    >
+                        {isHovered && <DueCheck className="task-icon-img" />}
+                        {!isHovered && <Due className="task-icon-img" />}
+                        <span>{utilService.dueDateFormat(task.dueDate)}</span>
+                    </div>
+                )}
+                {task.description && (
+                    <div className="task-icon task-checklists">
+                        <Description className="task-icon-img" />
+                    </div>
+                )}
+                {task.attachments && task.attachments.length && (
+                    <div className="task-icon task-attachments">
+                        <Attachment className="task-icon-img" />
+                        <span>{task.attachments.length}</span>
+                    </div>
+                )}
+                {task.checklists && task.checklists.length && (
+                    <div
+                        className={`task-icon task-checklists ${areAllTodosDone(
+                            task
+                        )}`}
+                    >
+                        <Checklists className="task-icon-img" />
+                        <span>
+                            {getDoneTodos(task)}/{getTotalTodos(task)}
+                        </span>
+                    </div>
+                )}
+            </div>
+            {task?.members && (
+                <div className="task-icons-members">
+                    {task.members.map((member) => (
+                        <button
+                            key={member}
+                            // style={{
+                            //     backgroundColor: getLabelBgColor(label),
+                            // }}
+                            className="task-members-btn"
+                        >
+                            <img src={getMemberImg(member)} alt="" />
+                        </button>
+                    ))}
                 </div>
             )}
         </section>
