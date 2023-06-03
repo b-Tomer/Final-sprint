@@ -7,6 +7,7 @@ import { TaskIcons } from './task-icons'
 import { utilService } from '../../services/util.service'
 import { TaskDetails } from './task-details'
 import { useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 
 export function TaskPreview({
     task,
@@ -18,10 +19,10 @@ export function TaskPreview({
     setIsTaskDetailsOpen,
     isTaskDetailsOpen,
 }) {
-
     const navigate = useNavigate()
-
+    const { board } = useSelector((storeState) => storeState.boardModule)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const [isExpand, setIsExpand] = useState(false)
     const menuRef = useRef(null)
     const taskPreviewRef = useRef()
 
@@ -50,13 +51,37 @@ export function TaskPreview({
         setTaskEdit({ pos, task, groupId })
     }
 
-    function toggleEditModal(ev, ref) {
-        console.log(ref)
-        if (taskEdit) return setTaskEdit(null)
-        ev.stopPropagation()
+    function getLabelBgColor(id) {
+        console.log(board)
+        if (!board.labels) return
+        const matchedLabel = board.labels.find((label) => label.id === id)
+        return matchedLabel.color
+    }
+
+    // function getLabelTxtColor(id) {
+    //     console.log(board)
+    //     if (!board.labels) return
+    //     const txtColor = getLabelBgColor(id)
+    //     const darkerShade = getDarkerShade(txtColor, 20)
+    //     return darkerShade
+    // }
+
+    function getLabelTitle(id) {
+        console.log(board)
+        if (!board.labels) return
+        const matchedLabel = board.labels.find((label) => label.id === id)
+        // console.log(matchedLabel.color)
+        return matchedLabel.title
+    }
+
+    function toggleLabelExpantion(ev, id) {
         ev.preventDefault()
-        const pos = utilService.getModalPositionOnTop(ref)
-        setTaskEdit({ pos, task, groupId })
+        setIsExpand(!isExpand)
+        if (isExpand) {
+            ev.target.innerText = getLabelTitle(id)
+        } else {
+            ev.target.innerText = ''
+        }
     }
 
     return (
@@ -78,8 +103,8 @@ export function TaskPreview({
                     style={
                         !task.style?.backgroundImage
                             ? {
-                                backgroundColor: task.style.bgColor,
-                            }
+                                  backgroundColor: task.style.bgColor,
+                              }
                             : { backgroundColor: '' }
                     }
                 >
@@ -91,9 +116,27 @@ export function TaskPreview({
                 </div>
             )}
             <div className="task-content">
-                {<span className="task-title" onClick={onOpenTaskDetails}>
+                {task?.labelIds && (
+                    <span className="task-labels">
+                        {task.labelIds.map((label) => (
+                            <button
+                                onClick={(ev) => {
+                                    toggleLabelExpantion(ev, label)
+                                }}
+                                key={label}
+                                style={{
+                                    backgroundColor: getLabelBgColor(label),
+                                }}
+                                className="task-labels-btn"
+                            >
+                                {getLabelTitle(label)}
+                            </button>
+                        ))}
+                    </span>
+                )}
+                <span className="task-title" onClick={onOpenTaskDetails}>
                     {task.title}
-                </span>}
+                </span>
                 <TaskIcons task={task} groupId={groupId} boardId={boardId} />
             </div>
         </div>

@@ -74,7 +74,13 @@ export function GroupDetails({
     }
 
     return (
-        <section className="group-container">
+        <section
+            className="group-container"
+            style={{
+                display: 'grid',
+                gridTemplateRows: isAddTaskOpen ? '47px 1fr' : '47px 1fr 43px',
+            }}
+        >
             <div className="group-header">
                 <input
                     className="txt-input"
@@ -104,6 +110,7 @@ export function GroupDetails({
                     <div className="task-container">
                         <form onSubmit={onAddTask}>
                             <input
+                                placeholder="Enter a title for this card..."
                                 className="add-list-input"
                                 value={taskTitle}
                                 onChange={handleTaskTitle}
