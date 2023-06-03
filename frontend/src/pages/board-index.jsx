@@ -32,10 +32,7 @@ export function BoardIndex() {
     const { taskId } = useParams()
     const dispatch = useDispatch()
     const [taskEdit, setTaskEdit] = useState(null)
-
-    console.log(groupId, taskId)
-
-    console.log(groupId, taskId)
+    const [isTaskDetailsOpen, setIsTaskDetailsOpen] = useState(false)
 
     useEffect(() => {
         loadBoards()

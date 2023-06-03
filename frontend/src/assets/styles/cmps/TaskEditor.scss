@@ -15,18 +15,20 @@
             z-index: 10;
 
             .quick-card-editor-buttons-item {
+                display: flex;
+                align-items: center;
+                align-content: center;
                 background: #0009;
                 border-radius: 3px;
                 clear: both;
                 color: $clrTskMnu;
-                display: block;
+                // display: block;
                 float: left;
                 margin: 0 0 4px 8px;
                 padding: 6px 12px 6px 8px;
                 text-decoration: none;
                 transition: transform 85ms ease-in;
                 right: 100px;
-
                 &:hover {
                     cursor: pointer;
                     transform: translateX(10px);
@@ -38,6 +40,21 @@
                 font-size: 14px;
                 font-weight: 400;
                 line-height: 20px;
+
+                .card-editor-icon {
+                    width: 17px;
+                    height: 17px;
+                    path {
+                        fill: $clrTskMnu;
+                    }
+                }
+                .large {
+                    width: 14px;
+                    height: 14px;
+                }
+                span {
+                    margin-inline-start: 10px;
+                }
             }
             // .body-dark-board-background {
             //     --board-header-background-color: #0000003d;

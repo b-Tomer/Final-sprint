@@ -1,5 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import { useClickOutside } from '../../customHooks/useClickOutside'
+import { ReactComponent as Open } from '../../assets/img/icons/window.svg'
+import { ReactComponent as Labels } from '../../assets/img/icons/label.svg'
+import { ReactComponent as Members } from '../../assets/img/icons/member.svg'
+import { ReactComponent as Date } from '../../assets/img/icons/clock.svg'
+import { ReactComponent as Move } from '../../assets/img/icons/arrow_right.svg'
+import { ReactComponent as Archive } from '../../assets/img/icons/archive.svg'
+import { ReactComponent as Cover } from '../../assets/img/icons/cover.svg'
 
 export function TaskEditor({
     onRemoveTask,
@@ -40,7 +47,7 @@ export function TaskEditor({
                         href="/c/SVVJv135/2-filter-toys-by-in-stock"
                         data-testid="card-quick-edit-menu-open-card"
                     >
-                        <span className="icon-sm icon-card light"></span>
+                        <Open className="card-editor-icon large" />
                         <span className="quick-card-editor-buttons-item-text">
                             Open card
                         </span>
@@ -50,7 +57,7 @@ export function TaskEditor({
                         href="#"
                         data-testid="card-quick-edit-menu-edit-labels"
                     >
-                        <span className="icon-sm icon-label light"></span>
+                        <Labels className="card-editor-icon" />
                         <span className="quick-card-editor-buttons-item-text">
                             Edit labels
                         </span>
@@ -60,7 +67,7 @@ export function TaskEditor({
                         href="#"
                         data-testid="card-quick-edit-menu-change-members"
                     >
-                        <span className="icon-sm icon-member light"></span>
+                        <Members className="card-editor-icon" />
                         <span className="quick-card-editor-buttons-item-text">
                             Change members
                         </span>
@@ -70,7 +77,7 @@ export function TaskEditor({
                         href="#"
                         data-testid="card-quick-edit-menu-change-cover"
                     >
-                        <span className="icon-sm icon-card-cover light"></span>
+                        <Cover className="card-editor-icon" />
                         <span className="quick-card-editor-buttons-item-text">
                             Change cover
                         </span>
@@ -80,7 +87,7 @@ export function TaskEditor({
                         href="#"
                         data-testid="card-quick-edit-menu-move"
                     >
-                        <span className="icon-sm icon-move light"></span>
+                        <Move className="card-editor-icon" />
                         <span className="quick-card-editor-buttons-item-text">
                             Move
                         </span>
@@ -90,7 +97,7 @@ export function TaskEditor({
                         href="#"
                         data-testid="card-quick-edit-menu-copy"
                     >
-                        <span className="icon-sm icon-card light"></span>
+                        <Open className="card-editor-icon large" />
                         <span className="quick-card-editor-buttons-item-text">
                             Copy
                         </span>
@@ -100,7 +107,7 @@ export function TaskEditor({
                         href="#"
                         data-testid="card-quick-edit-menu-edit-dates"
                     >
-                        <span className="icon-sm icon-clock light"></span>
+                        <Date className="card-editor-icon" />
                         <span className="quick-card-editor-buttons-item-text">
                             Edit dates
                         </span>
@@ -113,7 +120,7 @@ export function TaskEditor({
                         href="#"
                         data-testid="card-quick-edit-menu-archive"
                     >
-                        <span className="icon-sm icon-archive light"></span>
+                        <Archive className="card-editor-icon" />
                         <span className="quick-card-editor-buttons-item-text">
                             Archive
                         </span>
