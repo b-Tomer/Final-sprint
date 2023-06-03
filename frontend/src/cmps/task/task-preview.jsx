@@ -20,7 +20,7 @@ export function TaskPreview({
     isTaskDetailsOpen,
     onExpandLabels,
     isLabelsExpand,
-    labelsFont
+    labelsFont,
 }) {
     const navigate = useNavigate()
     const { board } = useSelector((storeState) => storeState.boardModule)
@@ -45,7 +45,6 @@ export function TaskPreview({
     }
 
     function toggleEditModal(ev, ref) {
-        console.log(ref)
         if (taskEdit) return setTaskEdit(null)
         ev.stopPropagation()
         ev.preventDefault()
@@ -54,14 +53,12 @@ export function TaskPreview({
     }
 
     function getLabelBgColor(id) {
-        console.log(board)
         if (!board.labels) return
         const matchedLabel = board.labels.find((label) => label.id === id)
         return matchedLabel.color
     }
 
     function getLabelTitle(id) {
-        console.log(board)
         if (!board.labels) return
         const matchedLabel = board.labels.find((label) => label.id === id)
         return matchedLabel.title
@@ -96,8 +93,8 @@ export function TaskPreview({
                     style={
                         !task.style?.backgroundImage
                             ? {
-                                backgroundColor: task.style.bgColor,
-                            }
+                                  backgroundColor: task.style.bgColor,
+                              }
                             : { backgroundColor: '' }
                     }
                 >
