@@ -22,6 +22,7 @@ export function TaskPreview({
     const navigate = useNavigate()
     const { board } = useSelector((storeState) => storeState.boardModule)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const [isExpand, setIsExpand] = useState(false)
     const menuRef = useRef(null)
     const taskPreviewRef = useRef()
 
@@ -50,12 +51,37 @@ export function TaskPreview({
         setTaskEdit({ pos, task, groupId })
     }
 
-    function getLabelColor(id) {
+    function getLabelBgColor(id) {
+        console.log(board)
+        if (!board.labels) return
+        const matchedLabel = board.labels.find((label) => label.id === id)
+        return matchedLabel.color
+    }
+
+    // function getLabelTxtColor(id) {
+    //     console.log(board)
+    //     if (!board.labels) return
+    //     const txtColor = getLabelBgColor(id)
+    //     const darkerShade = getDarkerShade(txtColor, 20)
+    //     return darkerShade
+    // }
+
+    function getLabelTitle(id) {
         console.log(board)
         if (!board.labels) return
         const matchedLabel = board.labels.find((label) => label.id === id)
         // console.log(matchedLabel.color)
-        return matchedLabel.color
+        return matchedLabel.title
+    }
+
+    function toggleLabelExpantion(ev, id) {
+        ev.preventDefault()
+        setIsExpand(!isExpand)
+        if (isExpand) {
+            ev.target.innerText = getLabelTitle(id)
+        } else {
+            ev.target.innerText = ''
+        }
     }
 
     return (
@@ -94,13 +120,16 @@ export function TaskPreview({
                     <span className="task-labels">
                         {task.labelIds.map((label) => (
                             <button
+                                onClick={(ev) => {
+                                    toggleLabelExpantion(ev, label)
+                                }}
                                 key={label}
                                 style={{
-                                    backgroundColor: getLabelColor(label),
+                                    backgroundColor: getLabelBgColor(label),
                                 }}
                                 className="task-labels-btn"
                             >
-                                {label}
+                                {getLabelTitle(label)}
                             </button>
                         ))}
                     </span>
