@@ -8,3 +8,10 @@
 @function em($pixels, $context: 16px) {
     @return calc(($pixels/$context) * 1em);
 }
+
+@function get-darker-shade($color, $percent) {
+    // Calculate the darker shade by blending with black
+    $darker-shade: mix(black, $color, $percent);
+
+    @return $darker-shade;
+}
