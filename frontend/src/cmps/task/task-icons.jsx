@@ -12,28 +12,24 @@ import { ReactComponent as Checklists } from '../../assets/img/icons/checklist.s
 import { ReactComponent as Description } from '../../assets/img/icons/description.svg'
 
 export function TaskIcons({ task, groupId, boardId }) {
-    // const { board } = useSelector((storeState) => storeState.boardModule)
     const dispatch = useDispatch()
     const [isHovered, setIsHovered] = useState(false)
     const { board } = useSelector((storeState) => storeState.boardModule)
 
-    // useEffect(() => {
+    useEffect(() => {}, [task])
 
-    // }, [task])
+    // const handleMouseEnter = () => {
+    //     setIsHovered(true)
+    // }
 
-    const handleMouseEnter = () => {
-        setIsHovered(true)
-    }
-
-    const handleMouseLeave = () => {
-        setIsHovered(false)
-    }
+    // const handleMouseLeave = () => {
+    //     setIsHovered(false)
+    // }
 
     function onToggleIsDone(ev, task) {
-        console.log(task)
         ev.preventDefault()
         task.isDone = !task.isDone
-        dispatch(saveTask(task, boardId, groupId))
+        saveTask(task, boardId, groupId)
     }
 
     function getDateClass(task) {
@@ -83,10 +79,10 @@ export function TaskIcons({ task, groupId, boardId }) {
         // console.log(matchedLabel.color)
         if (matchedMmbr.imgUrl) {
             // console.log(memberId + ' ' + task.id)
-            console.log(matchedMmbr.imgUrl)
+            // console.log(matchedMmbr.imgUrl)
             return matchedMmbr.imgUrl
         } else {
-            console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+            // console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
             return 'https://i.pinimg.com/564x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg'
         }
     }
@@ -98,8 +94,8 @@ export function TaskIcons({ task, groupId, boardId }) {
                     <div
                         onClick={(ev) => onToggleIsDone(ev, task)}
                         className={`task-icon task-due ${getDateClass(task)}`}
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}
+                        // onMouseEnter={handleMouseEnter}
+                        // onMouseLeave={handleMouseLeave}
                     >
                         {isHovered && <DueCheck className="task-icon-img" />}
                         {!isHovered && <Due className="task-icon-img" />}
