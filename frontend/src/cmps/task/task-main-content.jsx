@@ -5,7 +5,6 @@ import { TaskChecklist } from '../../cmps/task/task-checklist.jsx'
 export function TaskMainContent({ task }) {
     if (!task) return
 
-
     return (
         <section className="task-main-content">
             <div className="description">
@@ -23,7 +22,6 @@ export function TaskMainContent({ task }) {
             <div className="checklist">
                 <TaskChecklist task={task} />
             </div>
-
             <div className="activities">
                 <div className="activities-title">
                     <Activity className="task-content-icon" />
