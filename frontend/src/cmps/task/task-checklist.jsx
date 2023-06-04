@@ -12,7 +12,12 @@ export function TaskChecklist({ task }) {
 
     const handleCheckboxChange = (checklistId, todoId) => {
         const updatedTask = { ...currentTask };
-        const checklist = updatedTask.checklists.find(checklist => checklist.id === checklistId);
+        const checklist = updatedTask.checklists.find(
+            (checklist) => checklist.id === checklistId
+        );
+
+
+        // const checklist = updatedTask.checklists.find(checklist => checklist.id === checklistId);
         const todo = checklist.todos.find(todo => todo.id === todoId);
         todo.isDone = !todo.isDone;
         setCurrentTask(updatedTask);
@@ -43,7 +48,7 @@ export function TaskChecklist({ task }) {
                         </div>
                         <div className='todos'>
                             {checklist.todos.map(todo => (
-                                <div className='todo' key={todo.id}>
+                                <div className={`todo ${todo.isDone ? 'completed' : ''}`} key={todo.id}>
                                     <input
                                         type="checkbox"
                                         id="todo"

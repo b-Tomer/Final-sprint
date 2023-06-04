@@ -58,7 +58,7 @@ export function Workspace() {
             <section className='muilty-boards-container'>
                 <div className='section-container'>
                     <div className='starred-board-title'>
-                        <Starred />
+                        <Starred className='boards-icon' />
                         <span>Starred board</span>
                     </div>
                     <div className='starred-boards-container'>
@@ -70,7 +70,7 @@ export function Workspace() {
                 </div>
                 <div className='section-container'>
                     <div className='recently-viewed-title'>
-                        <Clock />
+                        <Clock className='boards-icon' />
                         <span>Recently viewed</span>
                     </div>
                     <div className='recently-viewed-container'>

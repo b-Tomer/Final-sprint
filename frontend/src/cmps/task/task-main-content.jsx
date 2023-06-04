@@ -6,9 +6,6 @@ import { TaskChecklist } from '../../cmps/task/task-checklist.jsx'
 export function TaskMainContent({ task }) {
     if (!task) return
 
-    console.log('task in main constent', task)
-
-
     return (
         <section className="task-main-content">
             <div className="description">

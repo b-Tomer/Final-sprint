@@ -44,7 +44,6 @@ export function TaskDetails({
         navigate(`/board/${boardId}`)
     }
 
-    console.log('ggggggggggggg', task)
     return (
         <div
             className="modal-overlay"
