@@ -29,8 +29,8 @@ export function TaskDetails({
 
     function closeModal(ev, ref) {
         if (ref.current !== ev.target) {
-            console.log(ev.target)
-            console.log(ref.current)
+            // console.log(ev.target)
+            // console.log(ref.current)
             return
         }
         ev.stopPropagation()
@@ -44,6 +44,10 @@ export function TaskDetails({
         navigate(`/board/${boardId}`)
     }
 
+<<<<<<< HEAD
+=======
+    // console.log('ggggggggggggg', task)
+>>>>>>> 8a3e73d0456581f4064cc02a7cb1b96af3a86add
     return (
         <div
             className="modal-overlay"

@@ -129,6 +129,7 @@ export const gBoards = [
                         "description": "In this task, the marketing team will define the objectives and goals of the marketing campaign, including target audience, desired outcomes, and key performance indicators.",
                         "dueDate": 1751886000,
                         "labelIds": ["l103", "l102", "l105"],
+                        "members": ["u101", "u102", "u103"],
                         "attachments": [
                             {
                                 "id": "a101",
@@ -183,6 +184,7 @@ export const gBoards = [
                     },
                     {
                         "id": "t2003",
+                        "members": ["u101", "u103"],
                         "title": "Research target market",
                         "description": "In this task, the marketing team will conduct research to gain insights into the target market, including demographics, preferences, and behaviors.",
                         "dueDate": 1764232400000,
@@ -231,6 +233,7 @@ export const gBoards = [
                     {
                         "id": "t2005",
                         "labelIds": ["l104", "l106"],
+                        "members": [ "u102", "u103"],
                         "attachments": [
                             {
                                 "id": "a102",
@@ -308,6 +311,7 @@ export const gBoards = [
                         "title": "Produce video content",
                         "description": "In this task, the multimedia team will produce engaging video content, including promotional videos, tutorials, and product demonstrations.",
                         "dueDate": 1788923600000,
+                        "members": ["u103"],
                         "attachments": [
                             {
                                 "id": "a101",
@@ -390,6 +394,7 @@ export const gBoards = [
                 "tasks": [
                     {
                         "id": "t2009",
+                        "members": ["u101", "u102", "u103"],
                         "labelIds": ["l101", "l106"],
                         "title": "Run social media ad campaigns",
                         "description": "This task involves creating and running targeted social media ad campaigns to reach a wider audience and generate awareness about the marketing campaign.",
@@ -474,6 +479,7 @@ export const gBoards = [
                         "id": "t2010",
                         "title": "Email marketing",
                         "labelIds": ["l104", "l106"],
+                        "members": [ "u102", "u103"],
                         "description": "In this task, the marketing team will create and send targeted email campaigns to engage with potential customers and drive them towards the desired action.",
                         "dueDate": 1807442000000,
                         "checklists": [
@@ -559,6 +565,7 @@ export const gBoards = [
                         "title": "Monitor campaign performance",
                         "description": "This task involves regularly monitoring and analyzing the performance of the marketing campaign using the established tracking and analytics systems.",
                         "dueDate": 1825960000,
+                        "members": ["u101", "u103"],
                         "attachments": [
                             {
                                 "id": "a103",
@@ -637,6 +644,7 @@ export const gBoards = [
                     {
                         "id": "t2015",
                         "title": "Analyze campaign data",
+                        "members": [ "u103"],
                         "description": "This task involves analyzing the collected campaign data to identify areas of improvement and optimize the marketing campaign's performance.",
                         "dueDate": 1838306000000,
                         "checklists": [
@@ -693,6 +701,7 @@ export const gBoards = [
                         "title": "Improve email campaigns",
                         "description": "This task involves analyzing email campaign metrics and making improvements to the email content, subject lines, and targeting to increase engagement and conversions.",
                         "dueDate": 1850651600000,
+                        "members": ["u101", "u102", "u103"],
                         "checklists": [
                             {
                                 "id": "cl2017",
@@ -4196,7 +4205,7 @@ export const gBoards = [
                             }
                         ],
                         "style": {
-                            "bgColor": "#FFCDD2"
+                            "backgroundImage": "https://images.unsplash.com/photo-1547393947-a6a221f74e59?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
                         },
                         "isDone": true
                     },

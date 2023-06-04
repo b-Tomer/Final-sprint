@@ -2,19 +2,26 @@ import { ReactComponent as Description } from '../../assets/img/icons/descriptio
 import { ReactComponent as Activity } from '../../assets/img/icons/activity.svg'
 import { TaskChecklist } from '../../cmps/task/task-checklist.jsx'
 
-
 export function TaskMainContent({ task }) {
     if (!task) return
 
+<<<<<<< HEAD
+=======
+    // console.log('task in main constent', task)
+
+>>>>>>> 8a3e73d0456581f4064cc02a7cb1b96af3a86add
     return (
         <section className="task-main-content">
             <div className="description">
-                <div className="description-title" >
+                <div className="description-title">
                     <Description className="task-content-icon" />
                     <h3>Description</h3>
                 </div>
                 <div>
-                    <textarea placeholder='Add a more detailed description..' className="main-content-text-area"></textarea>
+                    <textarea
+                        placeholder="Add a more detailed description.."
+                        className="main-content-text-area"
+                    ></textarea>
                 </div>
             </div>
             <div className="checklist">
@@ -22,13 +29,11 @@ export function TaskMainContent({ task }) {
             </div>
 
             <div className="activities">
-                <div className="activities-title" >
+                <div className="activities-title">
                     <Activity className="task-content-icon" />
                     <h3>Activity</h3>
                 </div>
             </div>
-
         </section>
     )
-
 }

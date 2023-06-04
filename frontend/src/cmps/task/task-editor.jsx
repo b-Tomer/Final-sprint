@@ -9,29 +9,35 @@ import { ReactComponent as Archive } from '../../assets/img/icons/archive.svg'
 import { ReactComponent as Cover } from '../../assets/img/icons/cover.svg'
 import { removeTask } from '../../store/task.actions'
 import { TaskPreview } from './task-preview'
+import { useNavigate } from 'react-router-dom'
 
-export function TaskEditor({ pos, task, groupId, setTaskEdit, boardId }) {
+export function TaskEditor({
+    pos,
+    task,
+    groupId,
+    setTaskEdit,
+    boardId,
+    setIsTaskDetailsOpen,
+}) {
     const menuRef = useRef(null)
     const taskPreviewRef = useRef()
-
+    const navigate = useNavigate()
+    const modalStyle = { top: 8 + pos.top + 'px', left: 259 + pos.left + 'px' }
     useClickOutside(menuRef, toggleEditModal)
-    useEffect(() => {
-        console.log(pos)
-        console.log(task)
-        console.log(groupId)
-    }, [])
 
     function toggleEditModal() {
         setTaskEdit(false)
     }
 
     async function onRemoveTask(taskId) {
-        console.log(boardId + ' ' + groupId + ' ' + task.id)
+        // console.log(boardId + ' ' + groupId + ' ' + task.id)
         removeTask(boardId, groupId, task.id)
     }
 
-    const modalStyle = { top: 8 + pos.top + 'px', left: 259 + pos.left + 'px' }
-
+    function onOpenCard() {
+        setIsTaskDetailsOpen(true)
+        navigate(`/board/${boardId}/${groupId}/${task.id}`)
+    }
     return (
         <section
             className="card-editor-background"
@@ -43,89 +49,62 @@ export function TaskEditor({ pos, task, groupId, setTaskEdit, boardId }) {
             {/* <TaskPreview task={task} /> */}
             <section className="card-editor-container" style={modalStyle}>
                 <div className="card-editor-buttons">
-                    <a
+                    <button
+                        onClick={onOpenCard}
                         className="quick-card-editor-buttons-item"
-                        href="/c/SVVJv135/2-filter-toys-by-in-stock"
-                        data-testid="card-quick-edit-menu-open-card"
                     >
                         <Open className="card-editor-icon large" />
                         <span className="quick-card-editor-buttons-item-text">
                             Open card
                         </span>
-                    </a>
-                    <a
-                        className="quick-card-editor-buttons-item js-edit-labels"
-                        href="#"
-                        data-testid="card-quick-edit-menu-edit-labels"
-                    >
+                    </button>
+                    <button className="quick-card-editor-buttons-item js-edit-labels">
                         <Labels className="card-editor-icon" />
                         <span className="quick-card-editor-buttons-item-text">
                             Edit labels
                         </span>
-                    </a>
-                    <a
-                        className="quick-card-editor-buttons-item js-edit-members"
-                        href="#"
-                        data-testid="card-quick-edit-menu-change-members"
-                    >
+                    </button>
+                    <button className="quick-card-editor-buttons-item js-edit-members">
                         <Members className="card-editor-icon" />
                         <span className="quick-card-editor-buttons-item-text">
                             Change members
                         </span>
-                    </a>
-                    <a
-                        className="quick-card-editor-buttons-item js-edit-cover"
-                        href="#"
-                        data-testid="card-quick-edit-menu-change-cover"
-                    >
+                    </button>
+                    <button className="quick-card-editor-buttons-item js-edit-cover">
                         <Cover className="card-editor-icon" />
                         <span className="quick-card-editor-buttons-item-text">
                             Change cover
                         </span>
-                    </a>
-                    <a
-                        className="quick-card-editor-buttons-item js-move-card"
-                        href="#"
-                        data-testid="card-quick-edit-menu-move"
-                    >
+                    </button>
+                    <button className="quick-card-editor-buttons-item js-move-card">
                         <Move className="card-editor-icon" />
                         <span className="quick-card-editor-buttons-item-text">
                             Move
                         </span>
-                    </a>
-                    <a
-                        className="quick-card-editor-buttons-item js-copy-card"
-                        href="#"
-                        data-testid="card-quick-edit-menu-copy"
-                    >
+                    </button>
+                    <button className="quick-card-editor-buttons-item js-copy-card">
                         <Open className="card-editor-icon large" />
                         <span className="quick-card-editor-buttons-item-text">
                             Copy
                         </span>
-                    </a>
-                    <a
-                        className="quick-card-editor-buttons-item js-edit-due-date"
-                        href="#"
-                        data-testid="card-quick-edit-menu-edit-dates"
-                    >
+                    </button>
+                    <button className="quick-card-editor-buttons-item js-edit-due-date">
                         <Date className="card-editor-icon" />
                         <span className="quick-card-editor-buttons-item-text">
                             Edit dates
                         </span>
-                    </a>
-                    <a
+                    </button>
+                    <button
                         onClick={() => {
                             onRemoveTask(task.id)
                         }}
                         className="quick-card-editor-buttons-item js-archive"
-                        href="#"
-                        data-testid="card-quick-edit-menu-archive"
                     >
                         <Archive className="card-editor-icon" />
                         <span className="quick-card-editor-buttons-item-text">
                             Archive
                         </span>
-                    </a>
+                    </button>
                 </div>
             </section>
         </section>

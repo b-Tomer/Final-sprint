@@ -72,7 +72,7 @@ export function BoardIndex() {
     }
 
     async function addGroup(group) {
-        console.log(group)
+        // console.log(group)
         try {
             const currBoard = await saveGroup(group, boardId)
             updateBoard(currBoard)
@@ -102,8 +102,8 @@ export function BoardIndex() {
 
     function onExpandLabels() {
         setIsLabelsExpand(!isLabelsExpand)
-        if (isLabelsExpand) setLabelsFont('12px') 
-        else  setLabelsFont('0px')
+        if (isLabelsExpand) setLabelsFont('12px')
+        else setLabelsFont('0px')
 
         // setTimeout(() => {
         //     loadBoard(boardId)
@@ -117,16 +117,16 @@ export function BoardIndex() {
                 <AppHeader />
                 <section
                     className="board-container"
-                // style={
-                //     board.style?.backgroundImage
-                //         ? {
-                //               backgroundImage: `url(${board.style.backgroundImage})`,
-                //               backgroundSize: 'cover',
-                //               backgroundPosition: 'center',
-                //               backgroundRepeat: 'no-repeat',
-                //           }
-                //         : { backgroundImage: `url('')` }
-                // }
+                    // style={
+                    //     board.style?.backgroundImage
+                    //         ? {
+                    //               backgroundImage: `url(${board.style.backgroundImage})`,
+                    //               backgroundSize: 'cover',
+                    //               backgroundPosition: 'center',
+                    //               backgroundRepeat: 'no-repeat',
+                    //           }
+                    //         : { backgroundImage: `url('')` }
+                    // }
                 >
                     <BoardHeader />
                     <main className="board-content">
@@ -151,6 +151,7 @@ export function BoardIndex() {
             </div>
             {taskEdit && (
                 <TaskEditor
+                    setIsTaskDetailsOpen={setIsTaskDetailsOpen}
                     pos={taskEdit.pos}
                     task={taskEdit.task}
                     groupId={taskEdit.groupId}
