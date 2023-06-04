@@ -1,4 +1,3 @@
-
 import { taskService } from '../services/task.service.local'
 import { getActionSetBoard } from './board.actions'
 import { store } from './store'
@@ -22,7 +21,4 @@ export async function removeTask(boardId, groupId, taskId) {
     }
 }
 
-
-export async function addTask(){
-
-}
+export async function addTask() {}
