@@ -8,6 +8,8 @@ export const utilService = {
     loadFromStorage,
     dueDateFormat,
     getModalPositionOnTop,
+    checkOutOfBoundY,
+    checkOutOfBoundX,
 }
 
 function makeId(length = 6) {
@@ -114,4 +116,18 @@ function getModalPositionOnTop(ref) {
     const rect = ref.current.getBoundingClientRect()
     const pos = { top: rect.top - 8, left: rect.left - 2.5 }
     return pos
+}
+
+function checkOutOfBoundY(windowPos, elePos) {
+    if (windowPos.y - elePos.y + 20 < 0) {
+        return true
+    } else return false
+}
+
+function checkOutOfBoundX(windowPos, elePos) {
+    // console.log(windowPos.x)
+    // console.log(elePos.x)
+    if (windowPos.x - elePos.x + 20 < 0) {
+        return true
+    } else return false
 }

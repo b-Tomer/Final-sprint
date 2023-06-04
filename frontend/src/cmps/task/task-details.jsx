@@ -57,7 +57,7 @@ export function TaskDetails({
                     <X className="task-icon-img" />
                 </button>
                 <TaskHeader task={task} group={group} />
-                <TaskMainDetails task={task} group={group} />
+                <TaskMainDetails boardId={boardId} task={task} groupId={groupId} />
                 <TaskMenu />
             </section>
         </div>
