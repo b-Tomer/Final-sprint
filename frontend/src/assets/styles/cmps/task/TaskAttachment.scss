@@ -39,12 +39,13 @@
 
         .small-dots {
             margin-left: 5px;
-            margin-right: 5px;
+            // margin-right: 5px;
             text-decoration: none;
             font-size: 14px;
         }
-
+        
         .attachment-btns {
+            margin-left: 5px;
             text-decoration: underline;
             color: $clr6;
             font-size: 14px;
