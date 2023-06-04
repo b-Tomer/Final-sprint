@@ -28,6 +28,26 @@
         justify-self: center;
         z-index: 2;
 
+        max-height: 600px;
+        overflow: auto;
+
+
+
+
+        .task-details-close {
+            position: absolute;
+            height: 2em;
+            width: 2em;
+            top: 10px;
+            right: 10px;
+            background-color: $clr1;
+
+            .task-icon-img {
+                height: 1.5em;
+                width: 1.5em;
+            }
+        }
+
 
         .task-header {
             grid-column: 1/3;
