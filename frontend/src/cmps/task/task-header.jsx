@@ -10,6 +10,7 @@ export function TaskHeader({ task, group, boardId }) {
             <div className="task-header-title">
                 <Window className="header-icon" />
                 <textarea defaultValue={task.title} className="task-header-title"></textarea>
+
             </div>
             <p>in list
                 <Link to={`board/${boardId}`}>

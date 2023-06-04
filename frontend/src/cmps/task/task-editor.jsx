@@ -10,6 +10,7 @@ import { ReactComponent as Cover } from '../../assets/img/icons/cover.svg'
 import { removeTask } from '../../store/task.actions'
 import { TaskPreview } from './task-preview'
 import { useNavigate } from 'react-router-dom'
+import { utilService } from '../../services/util.service'
 
 export function TaskEditor({
     pos,
@@ -21,9 +22,46 @@ export function TaskEditor({
 }) {
     const menuRef = useRef(null)
     const taskPreviewRef = useRef()
+    const container = useRef()
     const navigate = useNavigate()
-    const modalStyle = { top: 8 + pos.top + 'px', left: 259 + pos.left + 'px' }
+    const windowPos = {}
+    windowPos.x = window.innerWidth
+    windowPos.y = window.innerHeight
+    const [modalStyle, setModalStyle] = useState({})
+
+    useEffect(() => {
+        calcModalStyle()
+    }, [pos])
+
     useClickOutside(menuRef, toggleEditModal)
+
+    function calcModalStyle() {
+        if (container.current) {
+            const elePos = {
+                x: 240 + 270 + pos.left,
+                y: 288 + pos.top,
+            }
+            const isOutOfBoundX = utilService.checkOutOfBoundX(
+                windowPos,
+                elePos
+            )
+            const newModalStyle = isOutOfBoundX
+                ? {
+                      top: 8 + pos.top + 'px',
+                      left: pos.left - 248 + 'px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'flex-end',
+                  }
+                : {
+                      top: 8 + pos.top + 'px',
+                      left: 259 + pos.left + 'px',
+                      justifyContent: 'start',
+                  }
+
+            setModalStyle(newModalStyle)
+        }
+    }
 
     function toggleEditModal() {
         setTaskEdit(false)
@@ -47,8 +85,12 @@ export function TaskEditor({
             }}
         >
             {/* <TaskPreview task={task} /> */}
-            <section className="card-editor-container" style={modalStyle}>
-                <div className="card-editor-buttons">
+            <section className="card-editor-container">
+                <div
+                    className="card-editor-buttons"
+                    style={modalStyle}
+                    ref={container}
+                >
                     <button
                         onClick={onOpenCard}
                         className="quick-card-editor-buttons-item"

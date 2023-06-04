@@ -13,8 +13,11 @@
             width: 240px;
             position: absolute;
             z-index: 10;
-
+            // display: flex;
+            // flex-direction: column;
+            // align-items: flex-end;
             .quick-card-editor-buttons-item {
+                // align-self: flex-end;
                 display: flex;
                 align-items: center;
                 align-content: center;
