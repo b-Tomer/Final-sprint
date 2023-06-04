@@ -7,6 +7,7 @@ import {
     SET_BOARDS,
     UPDATE_BOARD,
     SET_BOARD,
+    FILTER_BY
 } from './board.reducer.js'
 
 // Action Creators:
@@ -39,8 +40,6 @@ export function getActionSetBoard(board) {
 export async function loadBoard(boardId) {
     try {
         const board = await boardService.getById(boardId)
-        // console.log('boardFromDb: ', board)
-        // store.dispatch(getActionSetBoard(boardFromDb))
         store.dispatch({
             type: SET_BOARD,
             board,
@@ -48,12 +47,12 @@ export async function loadBoard(boardId) {
     } catch (err) {
         console.log('Cannot load board', err)
     }
-  
+
 }
 
-export async function loadBoards() {
+export async function loadBoards(filterBy) {
     try {
-        const boards = await boardService.query()
+        const boards = await boardService.query(filterBy)
         console.log('Boards from DB:', boards)
         store.dispatch({
             type: SET_BOARDS,
@@ -101,24 +100,10 @@ export function updateBoard(board) {
         })
 }
 
-// Demo for Optimistic Mutation
-// (IOW - Assuming the server call will work, so updating the UI first)
-// export function onRemoveBoardOptimistic(boardId) {
-//     store.dispatch({
-//         type: REMOVE_BOARD,
-//         boardId
-//     })
-//     showSuccessMsg('Board removed')
+export function setFilterBy(filterBy) {
+    store.dispatch({
+        type: FILTER_BY,
+        filterBy,
+    })
+}
 
-//     boardService.remove(boardId)
-//         .then(() => {
-//             console.log('Server Reported - Deleted Succesfully');
-//         })
-//         .catch(err => {
-//             showErrorMsg('Cannot remove board')
-//             console.log('Cannot load boards', err)
-//             store.dispatch({
-//                 type: UNDO_REMOVE_BOARD,
-//             })
-//         })
-// }

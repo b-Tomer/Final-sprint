@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { BoardPreview } from '../cmps/board-preview'
 import { AppHeader } from '../cmps/app-header'
 import {
-    loadBoards, updateBoard,
+    loadBoards, setFilterBy, updateBoard,
 } from '../store/board.actions.js'
 import { useEffect } from 'react'
 import { ReactComponent as Starred } from '../assets/img/icons/starred.svg'
@@ -21,7 +21,6 @@ export function Workspace() {
 
     // async function onAddBoard() {
     //     const board = boardService.getEmptyBoard()
-    //     board.vendor = prompt('Vendor?')
     //     try {
     //         const savedBoard = await addBoard(board)
     //         showSuccessMsg(`Board added (id: ${savedBoard._id})`)
@@ -50,11 +49,15 @@ export function Workspace() {
             .then(console.log)
     }
 
+    function onSetfilter(filterByToUpdate){
+        setFilterBy(filterByToUpdate)
+    }
+
 
     if (!boards) return
     return (
         <section>
-            <AppHeader />
+            <AppHeader onSetfilter={onSetfilter} />
             <section className='muilty-boards-container'>
                 <div className='section-container'>
                     <div className='starred-board-title'>

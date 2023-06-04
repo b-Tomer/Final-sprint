@@ -22,7 +22,7 @@ import { ReactComponent as Search } from '../assets/img/icons/search.svg'
 // import { login, logout, signup } from '../store/user.actions.js'
 // import { LoginSignup } from './login-signup.jsx'
 
-export function AppHeader() {
+export function AppHeader({onSetfilter}) {
     // const user = useSelector(storeState => storeState.userModule.user)
 
     // async function onLogin(credentials) {
@@ -49,6 +49,11 @@ export function AppHeader() {
     //         showErrorMsg('Cannot logout')
     //     }
     // }
+
+    function onHandleSearch(ev){
+        const {value} = ev.target 
+        onSetfilter({search:value})
+    }
 
 
 
@@ -86,6 +91,7 @@ export function AppHeader() {
                         <Search className="search-img" src={Search} />
                     </span>
                     <input
+                    onChange={onHandleSearch}
                         className="header-search"
                         type="text"
                         placeholder="Search"
