@@ -10,7 +10,6 @@ export function TaskDetails({
     taskId,
     groupId,
     boardId,
-    isTaskDetailsOpen,
     setIsTaskDetailsOpen,
 }) {
     const navigate = useNavigate()
@@ -29,8 +28,6 @@ export function TaskDetails({
 
     function closeModal(ev, ref) {
         if (ref.current !== ev.target) {
-            // console.log(ev.target)
-            // console.log(ref.current)
             return
         }
         ev.stopPropagation()

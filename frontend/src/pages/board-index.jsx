@@ -22,7 +22,7 @@ import { SET_BOARD } from '../store/board.reducer.js'
 import { saveGroup } from '../store/group.actions.js'
 import { TaskEditor } from '../cmps/task/task-editor.jsx'
 import { TaskDetails } from '../cmps/task/task-details.jsx'
-import { store } from '../store/store.js'
+
 
 export function BoardIndex() {
 
@@ -38,18 +38,16 @@ export function BoardIndex() {
     const { filterBy } = useSelector((storeState) => storeState.boardModule)
 
     console.log(filterBy)
-
     useEffect(() => {
         loadBoards(filterBy)
         onLoadBoard()
-    }, [updateBoard])
+    }, [updateBoard, filterBy])
 
     function onLoadBoard() {
         loadBoard(boardId)
     }
 
     async function addGroup(group) {
-        // console.log(group)
         try {
             const currBoard = await saveGroup(group, boardId)
             updateBoard(currBoard)
@@ -79,7 +77,7 @@ export function BoardIndex() {
 
     function onExpandLabels() {
         setIsLabelsExpand(!isLabelsExpand)
-        if (isLabelsExpand) setLabelsFont('12px')
+        if (isLabelsExpand) setLabelsFont('0.75rem')
         else setLabelsFont('0px')
     }
 
@@ -94,16 +92,6 @@ export function BoardIndex() {
                 <AppHeader onSetfilter={onSetfilter} />
                 <section
                     className="board-container"
-                    // style={
-                    //     board.style?.backgroundImage
-                    //         ? {
-                    //               backgroundImage: `url(${board.style.backgroundImage})`,
-                    //               backgroundSize: 'cover',
-                    //               backgroundPosition: 'center',
-                    //               backgroundRepeat: 'no-repeat',
-                    //           }
-                    //         : { backgroundImage: `url('')` }
-                    // }
                 >
                     <BoardHeader />
                     <main className="board-content">

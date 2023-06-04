@@ -107,24 +107,3 @@ export function setFilterBy(filterBy) {
     })
 }
 
-// Demo for Optimistic Mutation
-// (IOW - Assuming the server call will work, so updating the UI first)
-// export function onRemoveBoardOptimistic(boardId) {
-//     store.dispatch({
-//         type: REMOVE_BOARD,
-//         boardId
-//     })
-//     showSuccessMsg('Board removed')
-
-//     boardService.remove(boardId)
-//         .then(() => {
-//             console.log('Server Reported - Deleted Succesfully');
-//         })
-//         .catch(err => {
-//             showErrorMsg('Cannot remove board')
-//             console.log('Cannot load boards', err)
-//             store.dispatch({
-//                 type: UNDO_REMOVE_BOARD,
-//             })
-//         })
-// }
