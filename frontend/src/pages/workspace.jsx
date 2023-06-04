@@ -13,10 +13,11 @@ import { ReactComponent as Clock } from '../assets/img/icons/clock.svg'
 
 export function Workspace() {
     const boards = useSelector((storeState) => storeState.boardModule.boards)
+    const { filterBy } = useSelector((storeState) => storeState.boardModule)
 
     useEffect(() => {
-        onLoadBoards()
-    }, [])
+        onLoadBoards(filterBy)
+    }, [filterBy])
 
 
     // async function onAddBoard() {
@@ -40,7 +41,7 @@ export function Workspace() {
 
 
     async function onLoadBoards() {
-        await loadBoards()
+        await loadBoards(filterBy)
     }
 
     function toggleStarredStatus(board) {

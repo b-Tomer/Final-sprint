@@ -40,6 +40,8 @@ async function saveTask(task, boardId, groupId) {
 }
 
 
+
+
 async function removeTask(boardId, groupId, taskId) {
     const board = await boardService.getById(boardId)
     const groupIdx = board.groups.findIndex(group => groupId === group.id)
