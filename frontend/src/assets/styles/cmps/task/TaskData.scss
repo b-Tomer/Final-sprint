@@ -1,8 +1,108 @@
 .data-preview {
     display: flex;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
+    flex-direction: row;
 
     .data-item {
         margin-right: 20px;
+
+        .member-data {
+            display: flex;
+            flex-direction: column;
+
+            .data-preview-title {
+                font-size: 0.625rem;
+                font-weight: 600;
+                color: $clr5;
+            }
+
+            .members {
+                display: flex;
+
+                .member-img {
+                    height: 1.75em;
+                    width: 1.75em;
+                    border-radius: 50%;
+                    margin-right: 3px;
+                }
+
+                .add-member-icon {
+                    height: 1.5em;
+                    width: 1.5em;
+                    border-radius: 50%;
+                    background-color: $clr2;
+                    inset: 0;
+                    margin: auto;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    .plus-icon {
+                        height: 1em;
+                        width: 1em
+                    }
+
+                }
+
+
+            }
+
+        }
+
+        .label-data {
+            .data-preview-title {
+                font-size: 0.625rem;
+                font-weight: 600;
+                color: $clr5;
+            }
+
+            .labels {
+                display: flex;
+                flex-wrap: wrap;
+
+
+
+                .add-label-icon {
+                    height: 1.5em;
+                    width: 1.5em;
+                    border-radius: 3%;
+                    background-color: $clr2;
+                    inset: 0;
+                    margin: auto;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    .plus-icon {
+                        height: 1em;
+                        width: 1em
+                    }
+                }
+
+                .label-button {
+                    display: inline-block;
+                    height: 2em;
+                    border-radius: 3px;
+                    padding: 5px 10px;
+                    margin: 2px;
+                    color: $clr7;
+                    font-size: 0.75rem;
+
+                }
+            }
+
+        }
     }
+
+
+
+
+
+
+
+
+
+
+
+
 }
