@@ -33,12 +33,25 @@ export function TaskEditor({
         calcModalStyle()
     }, [pos])
 
+    useEffect(() => {
+        function handleWindowResize() {
+            windowPos.x = window.innerWidth
+            windowPos.y = window.innerHeight
+            calcModalStyle()
+        }
+        handleWindowResize()
+        window.addEventListener('resize', handleWindowResize)
+        return () => {
+            window.removeEventListener('resize', handleWindowResize)
+        }
+    }, [])
+
     useClickOutside(menuRef, toggleEditModal)
 
     function calcModalStyle() {
         if (container.current) {
             const elePos = {
-                x: 240 + 270 + pos.left,
+                x: 430 + pos.left,
                 y: 288 + pos.top,
             }
             const isOutOfBoundX = utilService.checkOutOfBoundX(
