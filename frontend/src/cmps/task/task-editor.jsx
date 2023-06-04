@@ -38,7 +38,7 @@ export function TaskEditor({
     function calcModalStyle() {
         if (container.current) {
             const elePos = {
-                x: 240 + 270 + pos.left,
+                x: 430 + pos.left,
                 y: 288 + pos.top,
             }
             const isOutOfBoundX = utilService.checkOutOfBoundX(
