@@ -14,12 +14,12 @@ export function TaskData({ task }) {
       <div className="data-item">
         <LabelsPreview task={task} />
       </div>
-      {/* <div className="data-item">
+      <div className="data-item">
         <DatePreview task={task} />
       </div>
       <div className="data-item">
         <h3 className="data-preview-title">Notifications</h3>
-      </div> */}
+      </div>
     </div>
   )
 }
