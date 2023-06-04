@@ -7,6 +7,9 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { ReactComponent as X } from '../../assets/img/icons/x.svg'
 
+
+
+
 export function TaskDetails({
     taskId,
     groupId,
@@ -59,6 +62,7 @@ export function TaskDetails({
                 <TaskHeader task={task} group={group} />
                 <TaskMainDetails boardId={boardId} task={task} groupId={groupId} />
                 <TaskMenu />
+
             </section>
         </div>
     )
