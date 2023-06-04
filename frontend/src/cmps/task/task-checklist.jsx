@@ -7,7 +7,7 @@ export function TaskChecklist({ task }) {
 
     let progress
     useEffect(() => {
-        console.log('Progress changed:', progress);
+        // console.log('Progress changed:', progress);
     }, [progress]);
 
     const handleCheckboxChange = (checklistId, todoId) => {
@@ -19,7 +19,7 @@ export function TaskChecklist({ task }) {
     };
 
 
-    console.log('aaaa', task);
+    // console.log('aaaa', task);
     if (!task.checklists || !task.checklists.length) return null;
     return (
         <div className='checklists-container'>
