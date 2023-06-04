@@ -33,6 +33,19 @@ export function TaskEditor({
         calcModalStyle()
     }, [pos])
 
+    useEffect(() => {
+        function handleWindowResize() {
+            windowPos.x = window.innerWidth
+            windowPos.y = window.innerHeight
+            calcModalStyle()
+        }
+        handleWindowResize()
+        window.addEventListener('resize', handleWindowResize)
+        return () => {
+            window.removeEventListener('resize', handleWindowResize)
+        }
+    }, [])
+
     useClickOutside(menuRef, toggleEditModal)
 
     function calcModalStyle() {
