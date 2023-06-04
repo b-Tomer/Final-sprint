@@ -233,7 +233,7 @@ export const gBoards = [
                     {
                         "id": "t2005",
                         "labelIds": ["l104", "l106"],
-                        "members": [ "u102", "u103"],
+                        "members": ["u102", "u103"],
                         "attachments": [
                             {
                                 "id": "a102",
@@ -479,7 +479,7 @@ export const gBoards = [
                         "id": "t2010",
                         "title": "Email marketing",
                         "labelIds": ["l104", "l106"],
-                        "members": [ "u102", "u103"],
+                        "members": ["u102", "u103"],
                         "description": "In this task, the marketing team will create and send targeted email campaigns to engage with potential customers and drive them towards the desired action.",
                         "dueDate": 1807442000000,
                         "checklists": [
@@ -644,7 +644,7 @@ export const gBoards = [
                     {
                         "id": "t2015",
                         "title": "Analyze campaign data",
-                        "members": [ "u103"],
+                        "members": ["u103"],
                         "description": "This task involves analyzing the collected campaign data to identify areas of improvement and optimize the marketing campaign's performance.",
                         "dueDate": 1838306000000,
                         "checklists": [
@@ -1756,7 +1756,7 @@ export const gBoards = [
                         "title": "Implement backend functionality",
                         "description": "In this task, the development team will implement the backend functionality of the product, including server-side logic, APIs, and database integration.",
                         "attachments": ["https://example.com/attachment6.docx"],
-                        "labelIds": [ "l101", "l104"],
+                        "labelIds": ["l101", "l104"],
                         "checklists": [
                             {
                                 "id": "cl3011",
@@ -1892,269 +1892,269 @@ export const gBoards = [
 
     ,
     /****************************************************************************************************************** */
-    {
-        _id: 'b10002',
-        title: 'Robot dev proj',
-        isStarred: true,
-        archivedAt: 1589983468418,
-        createdBy: {
-            id: 'u101',
-            fullname: 'Abi Abambi',
-            imgUrl: 'http://some-img',
-        },
-        style: {
-            backgroundImage: 'https://cdn.britannica.com/06/96306-050-DFE8AFDC/Khao-Tapu-Ao-Phang-na-Thailand-National-Park.jpg',
-        },
-        labels: [
-            {
-                id: 'l101',
-                title: 'Done',
-                color: '#61bd4f',
-            },
-            {
-                id: 'l102',
-                title: 'Progress',
-                color: '#a1bd33',
-            },
-        ],
-        members: [
-            {
-                _id: 'u101',
-                fullname: 'Tal Tarablus',
-                imgUrl: 'https://www.google.com',
-            },
-        ],
-        groups: [
+    // {
+    //     _id: 'b10002',
+    //     title: 'Robot dev proj',
+    //     isStarred: true,
+    //     archivedAt: 1589983468418,
+    //     createdBy: {
+    //         id: 'u101',
+    //         fullname: 'Abi Abambi',
+    //         imgUrl: 'http://some-img',
+    //     },
+    //     style: {
+    //         backgroundImage: 'https://cdn.britannica.com/06/96306-050-DFE8AFDC/Khao-Tapu-Ao-Phang-na-Thailand-National-Park.jpg',
+    //     },
+    //     labels: [
+    //         {
+    //             id: 'l101',
+    //             title: 'Done',
+    //             color: '#61bd4f',
+    //         },
+    //         {
+    //             id: 'l102',
+    //             title: 'Progress',
+    //             color: '#a1bd33',
+    //         },
+    //     ],
+    //     members: [
+    //         {
+    //             _id: 'u101',
+    //             fullname: 'Tal Tarablus',
+    //             imgUrl: 'https://www.google.com',
+    //         },
+    //     ],
+    //     groups: [
 
-            ,
-            {
-                id: 'g101',
-                title: 'Group 1',
-                archivedAt: 1589983468418,
-                tasks: [
-                    {
-                        id: 'c101',
-                        title: 'Replace logo',
-                    },
-                    {
-                        id: 'c102',
-                        title: 'Add Samples',
-                    },
-                ],
-                style: {},
-            },
-            {
-                id: 'g102',
-                title: 'Group 2',
-                tasks: [
-                    {
-                        id: 'c103',
-                        title: 'Do that',
-                        archivedAt: 1589983468418,
-                        dueDate: Date.now() + 1000000000,
-                        description: 'description',
-                        attachments: [
-                            {
-                                id: 'ZdPfm',
-                                createdAt: 1590999817436,
-                                url: 'https://img.freepik.com/free-vector/sticker-template-cat-cartoon-character_1308-73786.jpg?w=2000',
-                            },
-                        ],
+    //         ,
+    //         {
+    //             id: 'g101',
+    //             title: 'Group 1',
+    //             archivedAt: 1589983468418,
+    //             tasks: [
+    //                 {
+    //                     id: 'c101',
+    //                     title: 'Replace logo',
+    //                 },
+    //                 {
+    //                     id: 'c102',
+    //                     title: 'Add Samples',
+    //                 },
+    //             ],
+    //             style: {},
+    //         },
+    //         {
+    //             id: 'g102',
+    //             title: 'Group 2',
+    //             tasks: [
+    //                 {
+    //                     id: 'c103',
+    //                     title: 'Do that',
+    //                     archivedAt: 1589983468418,
+    //                     dueDate: Date.now() + 1000000000,
+    //                     description: 'description',
+    //                     attachments: [
+    //                         {
+    //                             id: 'ZdPfm',
+    //                             createdAt: 1590999817436,
+    //                             url: 'https://img.freepik.com/free-vector/sticker-template-cat-cartoon-character_1308-73786.jpg?w=2000',
+    //                         },
+    //                     ],
 
-                    },
-                    {
-                        id: 'c107',
-                        title: 'Do tha7t',
-                        archivedAt: 1589983468418,
-                        isDone: true,
-                        style: {
-                            bgColor: '#22de81',
-                        },
-                        checklists: [
-                            {
-                                id: 'YEhmF',
-                                title: 'Checklist',
-                                todos: [
-                                    {
-                                        id: '212jX',
-                                        title: 'To Do 1',
-                                        isDone: true,
-                                    },
-                                    {
-                                        id: '216jX',
-                                        title: 'To Do 4',
-                                        isDone: true,
-                                    },
-                                ],
-                            },
-                        ],
-                    },
-                    {
-                        id: 'c117',
-                        title: 'Do that55',
-                        archivedAt: 1589983468418,
-                        dueDate: Date.now() + 1000000,
-                        description: 'description',
-                        style: {
-                            backgroundImage:
-                                'https://img.freepik.com/free-vector/sticker-template-cat-cartoon-character_1308-73786.jpg?w=2000',
-                        },
-                        attachments: [
-                            {
-                                id: 'ZdPnm',
-                                createdAt: 1590999817436,
-                                url: 'https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*',
-                            },
-                            {
-                                id: 'ZdPfm',
-                                createdAt: 1590999817436,
-                                url: 'https://img.freepik.com/free-vector/sticker-template-cat-cartoon-character_1308-73786.jpg?w=2000',
-                            },
-                        ],
-                    },
-                    {
-                        id: 'c118',
-                        title: 'Do that6',
-                        archivedAt: 1589983468418,
-                        dueDate: 16756215211,
-                        isDone: true,
-                        style: {
-                            bgColor: '#f2de81',
-                            backgroundImage:
-                                'https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*',
-                        },
-                        checklists: [
-                            {
-                                id: 'YEhmF',
-                                title: 'Checklist',
-                                todos: [
-                                    {
-                                        id: '212jX',
-                                        title: 'To Do 1',
-                                        isDone: false,
-                                    },
-                                    {
-                                        id: '216jX',
-                                        title: 'To Do 4',
-                                        isDone: false,
-                                    },
-                                ],
-                            },
-                            {
-                                id: 'YEhmF',
-                                title: 'Checklist2',
-                                todos: [
-                                    {
-                                        id: '212jX',
-                                        title: 'To Do 1',
-                                        isDone: true,
-                                    },
-                                ],
-                            },
-                        ],
-                    },
-                    {
-                        id: 'c104',
-                        title: 'Help me',
-                        status: 'in-progress', // monday
-                        priority: 'high',
-                        description: 'description',
-                        "members": [
-                            {
-                                "_id": 'u101',
-                                "username": "Tomer",
-                                "fullname": "Tomer Benaim",
-                                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04QXHQH8HX-6df7fa122011-512",
-                            },
-                            {
-                                "_id": "u102",
-                                "fullname": "Eyal Avni",
-                                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04T7JSSLKS-1f1786ae7473-512",
-                            },
-                            {
-                                "_id": "u103",
-                                "fullname": "Ohad Mazza",
-                                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04QSE7U9ED-77a50b06e29a-512",
-                            },
-                        ],
-                        comments: [
-                            {
-                                id: 'ZdPnm',
-                                txt: 'also @yaronb please CR this',
-                                createdAt: 1590999817436,
-                                byMember: {
-                                    _id: 'u101',
-                                    fullname: 'Tal Tarablus',
-                                    imgUrl: 'http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg',
-                                },
-                            },
-                        ],
-                        "attachments": [
-                            {
-                                "id": "a101",
-                                "createdAt": 159099981743,
-                                "url": "https://www.splashlearn.com/math-vocabulary/wp-content/uploads/2022/05/graphs-9-01-1.png",
-                            },
-                            {
-                                "id": "a102",
-                                "createdAt": 1590999817436,
-                                "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGp_q_OUhD19oRE-0xnBVgBrDcBq4vc69sMA&usqp=CAU",
-                            },
-                            {
-                                "id": "a103",
-                                "createdAt": 1590999817439,
-                                "url": "https://apexcharts.com/wp-content/uploads/2018/05/dashboard-modern.png",
-                            },
-                        ],
-                        checklists: [
-                            {
-                                id: 'YEhmF',
-                                title: 'Checklist',
-                                todos: [
-                                    {
-                                        id: '212jX',
-                                        title: 'To Do 1',
-                                        isDone: false,
-                                    },
-                                ],
-                            },
-                        ],
-                        memberIds: ['u101'],
-                        labelIds: ['l101', 'l102'],
-                        dueDate: 16156215211,
-                        byMember: {
-                            _id: 'u101',
-                            username: 'Tal',
-                            fullname: 'Tal Tarablus',
-                            imgUrl: 'http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg',
-                        },
-                        style: {
-                            bgColor: '#26de81',
-                        },
-                    },
-                ],
-                style: {},
-            },
-        ],
-        activities: [
-            {
-                id: 'a101',
-                txt: 'Changed Color',
-                createdAt: 154514,
-                byMember: {
-                    _id: 'u101',
-                    fullname: 'Abi Abambi',
-                    imgUrl: 'http://some-img',
-                },
-                task: {
-                    id: 'c101',
-                    title: 'Replace Logo',
-                },
-            },
-        ],
+    //                 },
+    //                 {
+    //                     id: 'c107',
+    //                     title: 'Do tha7t',
+    //                     archivedAt: 1589983468418,
+    //                     isDone: true,
+    //                     style: {
+    //                         bgColor: '#22de81',
+    //                     },
+    //                     checklists: [
+    //                         {
+    //                             id: 'YEhmF',
+    //                             title: 'Checklist',
+    //                             todos: [
+    //                                 {
+    //                                     id: '212jX',
+    //                                     title: 'To Do 1',
+    //                                     isDone: true,
+    //                                 },
+    //                                 {
+    //                                     id: '216jX',
+    //                                     title: 'To Do 4',
+    //                                     isDone: true,
+    //                                 },
+    //                             ],
+    //                         },
+    //                     ],
+    //                 },
+    //                 {
+    //                     id: 'c117',
+    //                     title: 'Do that55',
+    //                     archivedAt: 1589983468418,
+    //                     dueDate: Date.now() + 1000000,
+    //                     description: 'description',
+    //                     style: {
+    //                         backgroundImage:
+    //                             'https://img.freepik.com/free-vector/sticker-template-cat-cartoon-character_1308-73786.jpg?w=2000',
+    //                     },
+    //                     attachments: [
+    //                         {
+    //                             id: 'ZdPnm',
+    //                             createdAt: 1590999817436,
+    //                             url: 'https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*',
+    //                         },
+    //                         {
+    //                             id: 'ZdPfm',
+    //                             createdAt: 1590999817436,
+    //                             url: 'https://img.freepik.com/free-vector/sticker-template-cat-cartoon-character_1308-73786.jpg?w=2000',
+    //                         },
+    //                     ],
+    //                 },
+    //                 {
+    //                     id: 'c118',
+    //                     title: 'Do that6',
+    //                     archivedAt: 1589983468418,
+    //                     dueDate: 16756215211,
+    //                     isDone: true,
+    //                     style: {
+    //                         bgColor: '#f2de81',
+    //                         backgroundImage:
+    //                             'https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*',
+    //                     },
+    //                     checklists: [
+    //                         {
+    //                             id: 'YEhmF',
+    //                             title: 'Checklist',
+    //                             todos: [
+    //                                 {
+    //                                     id: '212jX',
+    //                                     title: 'To Do 1',
+    //                                     isDone: false,
+    //                                 },
+    //                                 {
+    //                                     id: '216jX',
+    //                                     title: 'To Do 4',
+    //                                     isDone: false,
+    //                                 },
+    //                             ],
+    //                         },
+    //                         {
+    //                             id: 'YEhmF',
+    //                             title: 'Checklist2',
+    //                             todos: [
+    //                                 {
+    //                                     id: '212jX',
+    //                                     title: 'To Do 1',
+    //                                     isDone: true,
+    //                                 },
+    //                             ],
+    //                         },
+    //                     ],
+    //                 },
+    //                 {
+    //                     id: 'c104',
+    //                     title: 'Help me',
+    //                     status: 'in-progress', // monday
+    //                     priority: 'high',
+    //                     description: 'description',
+    //                     "members": [
+    //                         {
+    //                             "_id": 'u101',
+    //                             "username": "Tomer",
+    //                             "fullname": "Tomer Benaim",
+    //                             "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04QXHQH8HX-6df7fa122011-512",
+    //                         },
+    //                         {
+    //                             "_id": "u102",
+    //                             "fullname": "Eyal Avni",
+    //                             "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04T7JSSLKS-1f1786ae7473-512",
+    //                         },
+    //                         {
+    //                             "_id": "u103",
+    //                             "fullname": "Ohad Mazza",
+    //                             "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04QSE7U9ED-77a50b06e29a-512",
+    //                         },
+    //                     ],
+    //                     comments: [
+    //                         {
+    //                             id: 'ZdPnm',
+    //                             txt: 'also @yaronb please CR this',
+    //                             createdAt: 1590999817436,
+    //                             byMember: {
+    //                                 _id: 'u101',
+    //                                 fullname: 'Tal Tarablus',
+    //                                 imgUrl: 'http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg',
+    //                             },
+    //                         },
+    //                     ],
+    //                     "attachments": [
+    //                         {
+    //                             "id": "a101",
+    //                             "createdAt": 159099981743,
+    //                             "url": "https://www.splashlearn.com/math-vocabulary/wp-content/uploads/2022/05/graphs-9-01-1.png",
+    //                         },
+    //                         {
+    //                             "id": "a102",
+    //                             "createdAt": 1590999817436,
+    //                             "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGp_q_OUhD19oRE-0xnBVgBrDcBq4vc69sMA&usqp=CAU",
+    //                         },
+    //                         {
+    //                             "id": "a103",
+    //                             "createdAt": 1590999817439,
+    //                             "url": "https://apexcharts.com/wp-content/uploads/2018/05/dashboard-modern.png",
+    //                         },
+    //                     ],
+    //                     checklists: [
+    //                         {
+    //                             id: 'YEhmF',
+    //                             title: 'Checklist',
+    //                             todos: [
+    //                                 {
+    //                                     id: '212jX',
+    //                                     title: 'To Do 1',
+    //                                     isDone: false,
+    //                                 },
+    //                             ],
+    //                         },
+    //                     ],
+    //                     memberIds: ['u101'],
+    //                     labelIds: ['l101', 'l102'],
+    //                     dueDate: 16156215211,
+    //                     byMember: {
+    //                         _id: 'u101',
+    //                         username: 'Tal',
+    //                         fullname: 'Tal Tarablus',
+    //                         imgUrl: 'http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg',
+    //                     },
+    //                     style: {
+    //                         bgColor: '#26de81',
+    //                     },
+    //                 },
+    //             ],
+    //             style: {},
+    //         },
+    //     ],
+    //     activities: [
+    //         {
+    //             id: 'a101',
+    //             txt: 'Changed Color',
+    //             createdAt: 154514,
+    //             byMember: {
+    //                 _id: 'u101',
+    //                 fullname: 'Abi Abambi',
+    //                 imgUrl: 'http://some-img',
+    //             },
+    //             task: {
+    //                 id: 'c101',
+    //                 title: 'Replace Logo',
+    //             },
+    //         },
+    //     ],
 
-        cmpsOrder: ['status-picker', 'member-picker', 'date-picker'],
-    },
+    //     cmpsOrder: ['status-picker', 'member-picker', 'date-picker'],
+    // },
 
     /********************************************************************************************************************* */
 
@@ -2164,6 +2164,24 @@ export const gBoards = [
         "style": {
             "backgroundImage": "https://images.unsplash.com/photo-1590496794008-383c8070b257?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1091&q=80"
         },
+        "members": [
+            {
+                "_id": 'u101',
+                "username": "Tomer",
+                "fullname": "Tomer Benaim",
+                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04QXHQH8HX-6df7fa122011-512",
+            },
+            {
+                "_id": "u102",
+                "fullname": "Eyal Avni",
+                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04T7JSSLKS-1f1786ae7473-512",
+            },
+            {
+                "_id": "u103",
+                "fullname": "Ohad Mazza",
+                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04QSE7U9ED-77a50b06e29a-512",
+            }
+        ],
         "labels": [
             {
                 "id": "l101",
@@ -2196,24 +2214,6 @@ export const gBoards = [
                 "color": "#579dff"
             }
         ],
-        "members": [
-            {
-                "_id": 'u101',
-                "username": "Tomer",
-                "fullname": "Tomer Benaim",
-                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04QXHQH8HX-6df7fa122011-512",
-            },
-            {
-                "_id": "u102",
-                "fullname": "Eyal Avni",
-                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04T7JSSLKS-1f1786ae7473-512",
-            },
-            {
-                "_id": "u103",
-                "fullname": "Ohad Mazza",
-                "imgUrl": "https://ca.slack-edge.com/T04KZK1LY91-U04QSE7U9ED-77a50b06e29a-512",
-            },
-        ],
         "groups": [
             {
                 "id": "g4001",
@@ -2224,6 +2224,7 @@ export const gBoards = [
                         "title": "Define product positioning",
                         "description": "In this task, the marketing team will define the unique selling proposition and positioning of the product in the market.",
                         "dueDate": 1675107600000,
+                        "members": ["u103"],
                         "checklists": [
                             {
                                 "id": "cl4001",
@@ -2268,6 +2269,7 @@ export const gBoards = [
                         "title": "Create marketing collateral",
                         "description": "This task involves designing and creating marketing collateral such as brochures, product sheets, and presentation decks.",
                         "attachments": ["https://example.com/attachment1.pdf"],
+                        "members": ["u102"],
                         "checklists": [
                             {
                                 "id": "cl4003",
@@ -2553,7 +2555,7 @@ export const gBoards = [
                 "tasks": [
                     {
                         "id": "t4008",
-                        "members": ["102", "u103"],
+                        "members": ["u102", "u103"],
                         "title": "Sales training",
                         "description": "In this task, the sales team will undergo training sessions to familiarize themselves with the product features, benefits, and sales techniques.",
                         "dueDate": 1754307600000,
@@ -2589,6 +2591,7 @@ export const gBoards = [
                     {
                         "id": "t4009",
                         "title": "Lead generation",
+                        "description": "This task involves designing and creating marketing ",
                         "checklists": [
                             {
                                 "id": "cl4013",
