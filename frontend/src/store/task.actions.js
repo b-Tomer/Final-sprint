@@ -22,3 +22,7 @@ export async function removeTask(boardId, groupId, taskId) {
 }
 
 export async function addTask() {}
+
+export async function updateTask(task) {
+    console.log('task: ', task)
+}
