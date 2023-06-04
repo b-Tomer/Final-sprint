@@ -27,13 +27,12 @@ export function MembersPreview({ task }) {
     <div className="member-data">
       <h3 className="data-preview-title">Members</h3>
       <div className="members">
-        {task.members.map((member) => {
-          return (
-            < div key={member._id} >
-              <img src={getMemberImg(member)} alt="Image" className='member-img' />
-            </div>
-          )
-        })}
+        {task.members.map(member => (
+          < div key={member._id} >
+            <img src={getMemberImg(member)} alt="Image" className='member-img' />
+          </div>
+        )
+        )}
         <div className='add-member-icon'><Plus className='plus-icon' /> </div>
       </div>
     </div >

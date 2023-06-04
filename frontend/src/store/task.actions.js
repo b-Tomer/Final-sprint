@@ -1,5 +1,6 @@
+import { boardService } from '../services/board.service.local'
 import { taskService } from '../services/task.service.local'
-import { getActionSetBoard } from './board.actions'
+import { getActionSetBoard, getActionUpdateBoard } from './board.actions'
 import { store } from './store'
 
 export async function saveTask(task, boardId, groupId) {
@@ -21,8 +22,15 @@ export async function removeTask(boardId, groupId, taskId) {
     }
 }
 
-export async function addTask() {}
+export async function addTask() { }
 
-export async function updateTask(task) {
-    console.log('task: ', task)
+export async function updateTask(boardId, groupId, task) {
+    try {
+        const updatedBoard = await taskService.updateTask(boardId, groupId, task)
+        store.dispatch(getActionSetBoard(updatedBoard))
+    } catch (err) {
+        console.log('Cannot update task', err)
+    }
 }
+
+

@@ -37,10 +37,6 @@ export function GroupDetails({
         groupService.saveGroup(val, boardId, group.id)
     }
 
-    // function onRemoveGroup() {
-    //     onRemoveGroup(group)
-    // }
-
     function onOpenAddTask() {
         setIsAddTaskOpen(!isAddTaskOpen)
     }
