@@ -125,8 +125,6 @@ function checkOutOfBoundY(windowPos, elePos) {
 }
 
 function checkOutOfBoundX(windowPos, elePos) {
-    // console.log(windowPos.x)
-    // console.log(elePos.x)
     if (windowPos.x - elePos.x + 20 < 0) {
         return true
     } else return false
