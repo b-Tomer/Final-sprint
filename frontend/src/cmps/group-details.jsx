@@ -9,7 +9,7 @@ import { removeTask, saveTask } from '../store/task.actions'
 
 export function GroupDetails({
     group,
-    removeGroup,
+    onRemoveGroup,
     boardId,
     setIsTaskDetailsOpen,
     isTaskDetailsOpen,
@@ -37,9 +37,9 @@ export function GroupDetails({
         groupService.saveGroup(val, boardId, group.id)
     }
 
-    function onRemoveGroup() {
-        removeGroup(group)
-    }
+    // function onRemoveGroup() {
+    //     onRemoveGroup(group)
+    // }
 
     function onOpenAddTask() {
         setIsAddTaskOpen(!isAddTaskOpen)
@@ -53,7 +53,7 @@ export function GroupDetails({
             title: value,
         }))
     }
-    // console.log('task from details: ', task )
+
 
     async function onAddTask(ev) {
         ev.preventDefault()
@@ -92,7 +92,7 @@ export function GroupDetails({
                     onChange={onChangegroupTitle}
                 />
                 <button>
-                    <img onClick={onRemoveGroup} src={dots} alt="more" />
+                    <img onClick={()=>onRemoveGroup(group)} src={dots} alt="more" />
                 </button>
             </div>
             <section className="group-content">

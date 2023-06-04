@@ -35,7 +35,7 @@ export function HomepageHeader({ handleclick }) {
                     onClick={handleclick}
                     className="homepage-header-btn try"
                 >
-                    Try the demo!
+                    Try demo!
                 </button>
             </nav>
         </div>

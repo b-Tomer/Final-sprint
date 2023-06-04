@@ -1,11 +1,10 @@
-import { useDispatch } from 'react-redux'
+
 import { taskService } from '../services/task.service.local'
 import { getActionSetBoard } from './board.actions'
 import { store } from './store'
 
 export async function saveTask(task, boardId, groupId) {
     try {
-        console.log('task from action: ', task)
         const board = await taskService.saveTask(task, boardId, groupId)
         store.dispatch(getActionSetBoard(board))
         return board
@@ -21,4 +20,9 @@ export async function removeTask(boardId, groupId, taskId) {
     } catch (err) {
         console.log('Cannot remove task', err)
     }
+}
+
+
+export async function addTask(){
+
 }

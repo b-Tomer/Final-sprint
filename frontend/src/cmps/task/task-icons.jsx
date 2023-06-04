@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { saveTask } from '../../store/task.actions'
@@ -73,16 +73,10 @@ export function TaskIcons({ task, groupId, boardId }) {
 
     function getMemberImg(memberId) {
         if (!board.members) return
-        const matchedMmbr = board.members.find(
-            (member) => member._id === memberId
-        )
-        // console.log(matchedLabel.color)
-        if (matchedMmbr.imgUrl) {
-            // console.log(memberId + ' ' + task.id)
-            // console.log(matchedMmbr.imgUrl)
-            return matchedMmbr.imgUrl
+        const currMember = board?.members.find(member => member._id === memberId)
+        if (currMember.imgUrl) {
+            return currMember.imgUrl
         } else {
-            // console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
             return 'https://i.pinimg.com/564x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg'
         }
     }
@@ -94,8 +88,6 @@ export function TaskIcons({ task, groupId, boardId }) {
                     <div
                         onClick={(ev) => onToggleIsDone(ev, task)}
                         className={`task-icon task-due ${getDateClass(task)}`}
-                    // onMouseEnter={handleMouseEnter}
-                    // onMouseLeave={handleMouseLeave}
                     >
                         {isHovered && <DueCheck className="task-icon-img" />}
                         {!isHovered && <Due className="task-icon-img" />}
@@ -107,13 +99,13 @@ export function TaskIcons({ task, groupId, boardId }) {
                         <Description className="task-icon-img" />
                     </div>
                 )}
-                {task.attachments && task.attachments.length && (
+                {task.attachments && task.attachments.length > 0 && (
                     <div className="task-icon task-attachments">
                         <Attachment className="task-icon-img" />
                         <span>{task.attachments.length}</span>
                     </div>
                 )}
-                {task.checklists && task.checklists.length && (
+                {task.checklists && task.checklists.length > 0 && (
                     <div
                         className={`task-icon task-checklists ${areAllTodosDone(
                             task
@@ -126,7 +118,7 @@ export function TaskIcons({ task, groupId, boardId }) {
                     </div>
                 )}
             </div>
-            {task?.members && (
+            {task.members && task.members.length > 0 && (
                 <div className="task-icons-members">
                     {task.members.map((memberId) => (
                         <button

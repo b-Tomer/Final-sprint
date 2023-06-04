@@ -19,9 +19,7 @@ export function TaskDetails({
     const [group, setGroup] = useState(null)
     const taskOverlayRef = useRef()
     const groupIdx = board?.groups.findIndex((group) => group.id === groupId)
-    const currTask = board.groups[groupIdx].tasks.find(
-        (task) => task.id === taskId
-    )
+    const currTask = board.groups[groupIdx].tasks.find((task) => task.id === taskId)
     useEffect(() => {
         setTask(currTask)
         setGroup(board.groups[groupIdx])

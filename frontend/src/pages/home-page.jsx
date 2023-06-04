@@ -21,7 +21,7 @@ export function HomePage() {
                             Keep everything in the same place, even if your team
                             isn’t.
                         </p>
-                        <button onClick={handleclick}>Try the demo!</button>
+                        <button onClick={handleclick}>Try demo!</button>
                     </div>
                     <div className="content-right">
                         <img src={homepageImg} alt="" />
