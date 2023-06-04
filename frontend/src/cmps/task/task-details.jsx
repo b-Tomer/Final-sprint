@@ -5,6 +5,7 @@ import { TaskHeader } from './task-header.jsx'
 import { useEffect, useState, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { ReactComponent as X } from '../../assets/img/icons/x.svg'
 
 export function TaskDetails({
     taskId,
@@ -50,15 +51,15 @@ export function TaskDetails({
             }}
         >
             <section className="task-details-container">
-                <TaskHeader task={task} group={group} />
-                <TaskMainDetails task={task} group={group} />
-                <TaskMenu />
                 <button
                     className="task-details-close"
                     onClick={simpleCloseModal}
                 >
-                    Close
+            <X className="task-icon-img" />
                 </button>
+                <TaskHeader task={task} group={group} />
+                <TaskMainDetails task={task} group={group} />
+                <TaskMenu />
             </section>
         </div>
     )

@@ -42,9 +42,10 @@ export function BoardIndex() {
         loadBoards(filterBy)
         onLoadBoard()
     }, [updateBoard, filterBy])
-
+    
     function onLoadBoard() {
         loadBoard(boardId)
+        if(taskId) setIsTaskDetailsOpen(true)
     }
 
     async function addGroup(group) {
