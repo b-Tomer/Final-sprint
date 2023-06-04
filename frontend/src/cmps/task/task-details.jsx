@@ -7,9 +7,6 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { ReactComponent as X } from '../../assets/img/icons/x.svg'
 
-
-
-
 export function TaskDetails({
     taskId,
     groupId,
@@ -25,6 +22,9 @@ export function TaskDetails({
     const currTask = board.groups[groupIdx].tasks.find(
         (task) => task.id === taskId
     )
+    const [layout, setLayout] = useState(undefined)
+    const [scroll, setScroll] = useState(true)
+
     useEffect(() => {
         setTask(currTask)
         setGroup(board.groups[groupIdx])
@@ -56,13 +56,17 @@ export function TaskDetails({
             <section className="task-details-container">
                 <button
                     className="task-details-close"
-                    onClick={simpleCloseModal}  >
+                    onClick={simpleCloseModal}
+                >
                     <X className="task-icon-img" />
                 </button>
                 <TaskHeader task={task} group={group} />
-                <TaskMainDetails boardId={boardId} task={task} groupId={groupId} />
+                <TaskMainDetails
+                    boardId={boardId}
+                    task={task}
+                    groupId={groupId}
+                />
                 <TaskMenu />
-
             </section>
         </div>
     )

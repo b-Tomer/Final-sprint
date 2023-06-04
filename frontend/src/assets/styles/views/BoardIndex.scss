@@ -31,7 +31,9 @@
 }
 
 .board-content {
-    overflow: auto;
+    // overflow: auto;
+    overflow-x: auto;
+    overflow-anchor: none;
     display: flex;
     flex-grow: 1;
     position: relative;

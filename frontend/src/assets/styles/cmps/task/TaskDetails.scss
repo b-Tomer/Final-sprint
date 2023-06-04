@@ -1,16 +1,16 @@
 .modal-overlay {
-    position: fixed;
+    // position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1;
-
-
+    z-index: 9999;
+    overflow-y: auto;
 
     .task-details-container {
         padding: 10px 10px;
@@ -21,17 +21,16 @@
         z-index: 1;
         background-color: $clr1;
         position: fixed;
-        top: 48px;
-        left: 30%;
+        top: 60px;
+        // left: 30%;
         width: 768px;
         align-self: center;
         justify-self: center;
-        z-index: 2;
-        max-height: 700px;
-        overflow: auto;
-
-
-
+        position: relative;
+        // z-index: 2;
+        // max-height: 700px;
+        overflow-y: auto;
+        margin-block: 200px;
 
         .task-details-close {
             position: absolute;
@@ -46,7 +45,6 @@
                 width: 1.5em;
             }
         }
-
 
         .task-header {
             grid-column: 1/3;
