@@ -20,11 +20,8 @@ export function boardReducer(state = initialState, action) {
     var currBoard
     switch (action.type) {
         case SET_BOARD:
-            // console.log('action: ', action )
             currBoard = state.boards.find((b) => b._id === action.board._id)
-            // console.log(currBoard)
             newState = { ...state, board: currBoard }
-            // console.log(newState)
             break
         case SET_BOARDS:
             newState = { ...state, boards: action.boards }
@@ -45,6 +42,7 @@ export function boardReducer(state = initialState, action) {
             break
         case FILTER_BY:
             newState = { ...state, filterBy: action.filterBy }
+            console.log('newState: ', newState )
             break
         case SET_IS_LOADING:
             newState = { ...state, isLoading: action.isLoading }

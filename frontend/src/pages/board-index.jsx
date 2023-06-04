@@ -8,10 +8,10 @@ import {
     removeBoard,
     loadBoard,
     updateBoard,
+    setFilterBy,
 } from '../store/board.actions.js'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { boardService } from '../services/board.service.local.js'
 import { useParams } from 'react-router-dom'
 import { GroupDetails } from '../cmps/group-details.jsx'
 import { BoardHeader } from '../cmps/board-header.jsx'
@@ -20,12 +20,12 @@ import { AddGroup } from '../cmps/add-group.jsx'
 import { groupService } from '../services/group.service.local.js'
 import { SET_BOARD } from '../store/board.reducer.js'
 import { saveGroup } from '../store/group.actions.js'
-import img from '../assets/img/background.jpg'
 import { TaskEditor } from '../cmps/task/task-editor.jsx'
 import { TaskDetails } from '../cmps/task/task-details.jsx'
+import { store } from '../store/store.js'
 
 export function BoardIndex() {
-    // const boards = useSelector((storeState) => storeState.boardModule.boards)
+
     const { boardId } = useParams()
     const { board } = useSelector((storeState) => storeState.boardModule)
     const { groupId } = useParams()
@@ -35,40 +35,17 @@ export function BoardIndex() {
     const [isTaskDetailsOpen, setIsTaskDetailsOpen] = useState(false)
     const [isLabelsExpand, setIsLabelsExpand] = useState(false)
     const [labelsFont, setLabelsFont] = useState('0px')
+    const { filterBy } = useSelector((storeState) => storeState.boardModule)
+
+    console.log(filterBy)
 
     useEffect(() => {
-        loadBoards()
+        loadBoards(filterBy)
         onLoadBoard()
     }, [updateBoard])
 
     function onLoadBoard() {
         loadBoard(boardId)
-        // if (taskId) {
-        //     setIsTaskDetailsOpen(true)
-        //     console.log(taskId)
-        // }
-    }
-
-    // console.log(isTaskDetailsOpen)
-
-    async function onRemoveBoard(boardId) {
-        try {
-            await removeBoard(boardId)
-            showSuccessMsg('Board removed')
-        } catch (err) {
-            showErrorMsg('Cannot remove board')
-        }
-    }
-
-    async function onAddBoard() {
-        const board = boardService.getEmptyBoard()
-        board.vendor = prompt('Vendor?')
-        try {
-            const savedBoard = await addBoard(board)
-            showSuccessMsg(`Board added (id: ${savedBoard._id})`)
-        } catch (err) {
-            showErrorMsg('Cannot add board')
-        }
     }
 
     async function addGroup(group) {
@@ -76,9 +53,9 @@ export function BoardIndex() {
         try {
             const currBoard = await saveGroup(group, boardId)
             updateBoard(currBoard)
-            // dispatch({ type: SET_BOARD, board: updatedBoard })
         } catch (err) {
             console.log(err)
+            showErrorMsg('Can not add a group')
         } finally {
             loadBoards()
             loadBoard(boardId)
@@ -104,17 +81,17 @@ export function BoardIndex() {
         setIsLabelsExpand(!isLabelsExpand)
         if (isLabelsExpand) setLabelsFont('12px')
         else setLabelsFont('0px')
+    }
 
-        // setTimeout(() => {
-        //     loadBoard(boardId)
-        // }, 5000)
+    function onSetfilter(filterByToUpdate){
+        setFilterBy(filterByToUpdate)
     }
 
     if (!board) return
     return (
         <Fragment>
             <div>
-                <AppHeader />
+                <AppHeader onSetfilter={onSetfilter} />
                 <section
                     className="board-container"
                 // style={
