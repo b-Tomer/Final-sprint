@@ -45,20 +45,26 @@ export function TaskEditor({
                 windowPos,
                 elePos
             )
-            const newModalStyle = isOutOfBoundX
+            const isOutOfBoundY = utilService.checkOutOfBoundY(
+                windowPos,
+                elePos
+            )
+            let newModalStyle = isOutOfBoundX
                 ? {
-                      top: 8 + pos.top + 'px',
                       left: pos.left - 248 + 'px',
                       display: 'flex',
                       flexDirection: 'column',
                       alignItems: 'flex-end',
                   }
                 : {
-                      top: 8 + pos.top + 'px',
                       left: 259 + pos.left + 'px',
                       justifyContent: 'start',
                   }
-
+            if (isOutOfBoundY) {
+                newModalStyle.top = pos.top - 210 + 'px'
+            } else {
+                newModalStyle.top = 8 + pos.top + 'px'
+            }
             setModalStyle(newModalStyle)
         }
     }
