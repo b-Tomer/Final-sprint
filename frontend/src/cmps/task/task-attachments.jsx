@@ -60,7 +60,7 @@ export function TaskAttachments({ task, boardId, groupId }) {
                 </div>
 
                 <div className='attachment-content'>
-                    <span className='attachment-title'>{atc.url.split('/').pop()}</span>
+                    <span className='attachment-title'>{atc.url?.split('/').pop()}</span>
                     <span>Added at {atc.createdAt}</span>
                     <span className='small-dots'>&#x2022;</span><span className='attachment-btns'>Comment</span>
                     <span className='small-dots'>&#x2022;</span><span onClick={() => onDeleteAttachment(atc)} className='attachment-btns'>Delete</span>
