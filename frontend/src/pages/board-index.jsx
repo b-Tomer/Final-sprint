@@ -37,7 +37,6 @@ export function BoardIndex() {
     const [labelsFont, setLabelsFont] = useState('0px')
     const { filterBy } = useSelector((storeState) => storeState.boardModule)
 
-    console.log(filterBy)
     useEffect(() => {
         loadBoards()
         onLoadBoard(filterBy)

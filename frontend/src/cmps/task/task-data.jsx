@@ -4,7 +4,6 @@ import { MembersPreview } from "./members-preview.jsx";
 
 
 export function TaskData({ task }) {
-  console.log('task in taskdata', task)
 
   return (
     <div className="data-preview">

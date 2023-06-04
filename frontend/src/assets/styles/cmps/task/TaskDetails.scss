@@ -13,40 +13,37 @@
 
 
     .task-details-container {
-        padding: 10px 10px;
-        border: 1px solid grey;
         border-radius: 0.75em;
-        display: grid;
-        grid-template-columns: 1fr 150px;
-        z-index: 1;
+        border-bottom-left-radius:0 ;
+        border-bottom-right-radius:0 ;
         background-color: $clr1;
+        z-index: 2;
+        overflow: auto;
+        padding: 0;
         position: fixed;
         top: 48px;
         left: 30%;
         width: 768px;
         align-self: center;
         justify-self: center;
-        z-index: 2;
         max-height: 700px;
-        overflow: auto;
-
-
-
-
-        .task-details-close {
-            position: absolute;
-            height: 2em;
-            width: 2em;
-            top: 10px;
-            right: 10px;
+        
+        .task-details-secondry-container {
+            padding: 10px 10px;
+            z-index: 3;
             background-color: $clr1;
+            display: grid;
+            grid-template-columns: 1fr 150px;
+            position: fixed;
+            top: 208px;
+            left: 30%;
+            width: 768px;
+            align-self: center;
+            justify-self: center;
+            max-height: 700px;
+    
 
-            .task-icon-img {
-                height: 1.5em;
-                width: 1.5em;
-            }
         }
-
 
         .task-header {
             grid-column: 1/3;
