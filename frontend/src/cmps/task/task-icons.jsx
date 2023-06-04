@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { saveTask } from '../../store/task.actions'
@@ -107,13 +107,13 @@ export function TaskIcons({ task, groupId, boardId }) {
                         <Description className="task-icon-img" />
                     </div>
                 )}
-                {task.attachments && task.attachments.length && (
+                {task.attachments && task.attachments.length > 0 && (
                     <div className="task-icon task-attachments">
                         <Attachment className="task-icon-img" />
                         <span>{task.attachments.length}</span>
                     </div>
                 )}
-                {task.checklists && task.checklists.length && (
+                {task.checklists && task.checklists.length > 0 && (
                     <div
                         className={`task-icon task-checklists ${areAllTodosDone(
                             task
@@ -126,7 +126,7 @@ export function TaskIcons({ task, groupId, boardId }) {
                     </div>
                 )}
             </div>
-            {task?.members && (
+            {task.members && task.members.length > 0 && (
                 <div className="task-icons-members">
                     {task.members.map((memberId) => (
                         <button
