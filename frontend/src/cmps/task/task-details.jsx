@@ -6,6 +6,7 @@ import { useEffect, useState, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { ReactComponent as X } from '../../assets/img/icons/x.svg'
+import { TaskCover } from './task-cover.jsx'
 
 export function TaskDetails({
     taskId,
@@ -54,19 +55,16 @@ export function TaskDetails({
             }}
         >
             <section className="task-details-container">
-                <button
-                    className="task-details-close"
-                    onClick={simpleCloseModal}
-                >
-                    <X className="task-icon-img" />
-                </button>
-                <TaskHeader task={task} group={group} />
-                <TaskMainDetails
-                    boardId={boardId}
-                    task={task}
-                    groupId={groupId}
-                />
-                <TaskMenu />
+                <TaskCover simpleCloseModal={simpleCloseModal} task={task} />
+                <div className="task-details-secondry-container">
+                    <TaskHeader task={task} group={group} />
+                    <TaskMainDetails
+                        boardId={boardId}
+                        task={task}
+                        groupId={groupId}
+                    />
+                    <TaskMenu />
+                </div>
             </section>
         </div>
     )

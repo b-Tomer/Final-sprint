@@ -59,7 +59,6 @@ export async function loadBoard(boardId, filterBy = {}) {
 export async function loadBoards(filterBy) {
     try {
         const boards = await boardService.query(filterBy)
-        console.log('Boards from DB:', boards)
         store.dispatch({
             type: SET_BOARDS,
             boards,
@@ -83,7 +82,6 @@ export async function removeBoard(boardId) {
 export async function addBoard(board) {
     try {
         const savedBoard = await boardService.save(board)
-        console.log('Added Board', savedBoard)
         store.dispatch(getActionAddBoard(savedBoard))
         return savedBoard
     } catch (err) {
@@ -96,7 +94,6 @@ export function updateBoard(board) {
     return boardService
         .save(board)
         .then((savedBoard) => {
-            console.log('Updated Board:', savedBoard)
             store.dispatch(getActionUpdateBoard(savedBoard))
             return savedBoard
         })
