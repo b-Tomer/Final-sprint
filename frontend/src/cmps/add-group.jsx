@@ -27,7 +27,7 @@ export function AddGroup({ addGroup }) {
         setGroupTitle(value)
     }
 
-    function onAddGroup(ev){
+    function onAddGroup(ev) {
         ev.preventDefault()
         addGroup(groupTitle)
         setGroupTitle('')
@@ -42,13 +42,13 @@ export function AddGroup({ addGroup }) {
             </div>}
             {isAddOpen && <div className="add-list-content-opened">
                 <form onSubmit={onAddGroup} >
-                <input value={groupTitle} onChange={handleChange} type="text" className="add-list-input" />
-                <div className="add-btns">
-                    <button onClick={onAddGroup} className="add-item-btn">Add list</button>
-                    <button onClick={onAddClose} className="svg-holder">
-                        <X className="list-icon icon-big" />
-                    </button>
-                </div>
+                    <input value={groupTitle} onChange={handleChange} type="text" placeholder="Enter list title..." className="add-list-input" />
+                    <div className="add-btns">
+                        <button onClick={onAddGroup} className="add-item-btn">Add list</button>
+                        <button onClick={onAddClose} className="svg-holder">
+                            <X className="list-icon icon-big" />
+                        </button>
+                    </div>
                 </form>
             </div>}
         </section>

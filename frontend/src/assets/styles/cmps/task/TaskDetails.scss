@@ -10,6 +10,8 @@
     justify-content: center;
     z-index: 0;
 
+
+
     .task-details-container {
         padding: 10px 10px;
         border: 1px solid grey;
@@ -27,14 +29,37 @@
         justify-self: center;
         z-index: 2;
 
-        // .data-preview {
-        //     display: flex;
-        //     flex-wrap: wrap;
 
-        //     .data-item {
-        //         margin-right: 20px;
-        //     }
-        // }
+        position: fixed;
+        // top: 50%;
+        // left: 50%;
+        // transform: translate(-50%, -50%);
+        width: 738px;
+        height: 300px;
+        overflow: auto;
+        // background-color: #fff;
+        // border: 1px solid #ccc;
+        // padding: 20px;
+        // z-index: 9999;
+
+
+
+
+
+        .task-details-close {
+            position: absolute;
+            right: 0.75em;
+            top: 0.75em;
+            background-color: $clr1;
+
+            .task-icon-img {
+                width: 1.375em;
+                height: 1.375em;
+                color: $clr5;
+            }
+        }
+
+
 
         .task-header {
             grid-column: 1/3;
