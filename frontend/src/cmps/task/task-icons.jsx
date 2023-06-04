@@ -16,7 +16,7 @@ export function TaskIcons({ task, groupId, boardId }) {
     const [isHovered, setIsHovered] = useState(false)
     const { board } = useSelector((storeState) => storeState.boardModule)
 
-    useEffect(() => {}, [task])
+    useEffect(() => { }, [task])
 
     // const handleMouseEnter = () => {
     //     setIsHovered(true)
@@ -94,8 +94,8 @@ export function TaskIcons({ task, groupId, boardId }) {
                     <div
                         onClick={(ev) => onToggleIsDone(ev, task)}
                         className={`task-icon task-due ${getDateClass(task)}`}
-                        // onMouseEnter={handleMouseEnter}
-                        // onMouseLeave={handleMouseLeave}
+                    // onMouseEnter={handleMouseEnter}
+                    // onMouseLeave={handleMouseLeave}
                     >
                         {isHovered && <DueCheck className="task-icon-img" />}
                         {!isHovered && <Due className="task-icon-img" />}
