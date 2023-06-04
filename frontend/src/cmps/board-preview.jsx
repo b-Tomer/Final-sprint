@@ -31,7 +31,7 @@ export function BoardPreview({ board, toggleStarredStatus }) {
 
     function onClickBoard() {
         navigate(`/board/${board._id}`)
-        console.log(board._id, 'board._id')
+        // console.log(board._id, 'board._id')
     }
 
     const onClickStarred = (event) => {

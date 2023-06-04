@@ -7,19 +7,24 @@ export function TaskChecklist({ task }) {
 
     let progress
     useEffect(() => {
-        console.log('Progress changed:', progress);
+        // console.log('Progress changed:', progress);
     }, [progress]);
 
     const handleCheckboxChange = (checklistId, todoId) => {
         const updatedTask = { ...currentTask };
-        const checklist = updatedTask.checklists.find(checklist => checklist.id === checklistId);
+        const checklist = updatedTask.checklists.find(
+            (checklist) => checklist.id === checklistId
+        );
+
+
+        // const checklist = updatedTask.checklists.find(checklist => checklist.id === checklistId);
         const todo = checklist.todos.find(todo => todo.id === todoId);
         todo.isDone = !todo.isDone;
         setCurrentTask(updatedTask);
     };
 
 
-    console.log('aaaa', task);
+    // console.log('aaaa', task);
     if (!task.checklists || !task.checklists.length) return null;
     return (
         <div className='checklists-container'>
@@ -43,7 +48,7 @@ export function TaskChecklist({ task }) {
                         </div>
                         <div className='todos'>
                             {checklist.todos.map(todo => (
-                                <div className='todo' key={todo.id}>
+                                <div className={`todo ${todo.isDone ? 'completed' : ''}`} key={todo.id}>
                                     <input
                                         type="checkbox"
                                         id="todo"

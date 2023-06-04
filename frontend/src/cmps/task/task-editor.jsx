@@ -11,24 +11,30 @@ import { removeTask } from '../../store/task.actions'
 import { TaskPreview } from './task-preview'
 import { useNavigate } from 'react-router-dom'
 
-export function TaskEditor({ pos, task, groupId, setTaskEdit, boardId ,setIsTaskDetailsOpen}) {
+export function TaskEditor({
+    pos,
+    task,
+    groupId,
+    setTaskEdit,
+    boardId,
+    setIsTaskDetailsOpen,
+}) {
     const menuRef = useRef(null)
     const taskPreviewRef = useRef()
     const navigate = useNavigate()
     const modalStyle = { top: 8 + pos.top + 'px', left: 259 + pos.left + 'px' }
     useClickOutside(menuRef, toggleEditModal)
-   
 
     function toggleEditModal() {
         setTaskEdit(false)
     }
 
     async function onRemoveTask(taskId) {
-        console.log(boardId + ' ' + groupId + ' ' + task.id)
+        // console.log(boardId + ' ' + groupId + ' ' + task.id)
         removeTask(boardId, groupId, task.id)
     }
 
-    function onOpenCard(){
+    function onOpenCard() {
         setIsTaskDetailsOpen(true)
         navigate(`/board/${boardId}/${groupId}/${task.id}`)
     }
@@ -52,49 +58,37 @@ export function TaskEditor({ pos, task, groupId, setTaskEdit, boardId ,setIsTask
                             Open card
                         </span>
                     </button>
-                    <button
-                        className="quick-card-editor-buttons-item js-edit-labels"
-                    >
+                    <button className="quick-card-editor-buttons-item js-edit-labels">
                         <Labels className="card-editor-icon" />
                         <span className="quick-card-editor-buttons-item-text">
                             Edit labels
                         </span>
                     </button>
-                    <button
-                        className="quick-card-editor-buttons-item js-edit-members"
-                    >
+                    <button className="quick-card-editor-buttons-item js-edit-members">
                         <Members className="card-editor-icon" />
                         <span className="quick-card-editor-buttons-item-text">
                             Change members
                         </span>
                     </button>
-                    <button
-                        className="quick-card-editor-buttons-item js-edit-cover"
-                    >
+                    <button className="quick-card-editor-buttons-item js-edit-cover">
                         <Cover className="card-editor-icon" />
                         <span className="quick-card-editor-buttons-item-text">
                             Change cover
                         </span>
                     </button>
-                    <button
-                        className="quick-card-editor-buttons-item js-move-card"
-                    >
+                    <button className="quick-card-editor-buttons-item js-move-card">
                         <Move className="card-editor-icon" />
                         <span className="quick-card-editor-buttons-item-text">
                             Move
                         </span>
                     </button>
-                    <button
-                        className="quick-card-editor-buttons-item js-copy-card"
-                    >
+                    <button className="quick-card-editor-buttons-item js-copy-card">
                         <Open className="card-editor-icon large" />
                         <span className="quick-card-editor-buttons-item-text">
                             Copy
                         </span>
                     </button>
-                    <button
-                        className="quick-card-editor-buttons-item js-edit-due-date"
-                    >
+                    <button className="quick-card-editor-buttons-item js-edit-due-date">
                         <Date className="card-editor-icon" />
                         <span className="quick-card-editor-buttons-item-text">
                             Edit dates

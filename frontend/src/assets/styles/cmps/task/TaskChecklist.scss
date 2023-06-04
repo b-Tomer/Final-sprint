@@ -67,6 +67,10 @@
                 margin-top: 5px;
             }
         }
+
+        .completed h3 {
+            text-decoration: line-through;
+        }
     }
 
 }

@@ -49,7 +49,7 @@ export function BoardIndex() {
     }
 
     async function addGroup(group) {
-        console.log(group)
+        // console.log(group)
         try {
             const currBoard = await saveGroup(group, boardId)
             updateBoard(currBoard)
@@ -94,16 +94,16 @@ export function BoardIndex() {
                 <AppHeader onSetfilter={onSetfilter} />
                 <section
                     className="board-container"
-                // style={
-                //     board.style?.backgroundImage
-                //         ? {
-                //               backgroundImage: `url(${board.style.backgroundImage})`,
-                //               backgroundSize: 'cover',
-                //               backgroundPosition: 'center',
-                //               backgroundRepeat: 'no-repeat',
-                //           }
-                //         : { backgroundImage: `url('')` }
-                // }
+                    // style={
+                    //     board.style?.backgroundImage
+                    //         ? {
+                    //               backgroundImage: `url(${board.style.backgroundImage})`,
+                    //               backgroundSize: 'cover',
+                    //               backgroundPosition: 'center',
+                    //               backgroundRepeat: 'no-repeat',
+                    //           }
+                    //         : { backgroundImage: `url('')` }
+                    // }
                 >
                     <BoardHeader />
                     <main className="board-content">
