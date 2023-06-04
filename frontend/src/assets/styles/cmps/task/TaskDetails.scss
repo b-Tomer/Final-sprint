@@ -1,48 +1,43 @@
 .modal-overlay {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1;
-
-
+    z-index: 9999;
+    overflow-y: auto;
 
     .task-details-container {
         border-radius: 0.75em;
-        border-bottom-left-radius:0 ;
-        border-bottom-right-radius:0 ;
         background-color: $clr1;
         z-index: 2;
         overflow: auto;
         padding: 0;
-        position: fixed;
-        top: 48px;
-        left: 30%;
+        top: 60px;
         width: 768px;
         align-self: center;
         justify-self: center;
-        max-height: 700px;
-        
+        position: relative;
+        // position: fixed;
+        // position: absolute;
+        overflow-y: auto;
+        margin-block: 500px;
+        min-height: 768px;
+
         .task-details-secondry-container {
             padding: 10px 10px;
             z-index: 3;
             background-color: $clr1;
             display: grid;
             grid-template-columns: 1fr 150px;
-            position: fixed;
-            top: 208px;
-            left: 30%;
-            width: 768px;
             align-self: center;
             justify-self: center;
-            max-height: 700px;
-    
-
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
         }
 
         .task-header {
@@ -59,5 +54,13 @@
         padding: 20px;
         border-radius: 4px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .task-details-close {
+        position: absolute;
+        height: 2em;
+        width: 2em;
+        top: 10px;
+        right: 10px;
+        max-height: 700px;
     }
 }

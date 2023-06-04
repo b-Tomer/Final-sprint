@@ -8,9 +8,6 @@ import { useNavigate } from 'react-router-dom'
 import { ReactComponent as X } from '../../assets/img/icons/x.svg'
 import { TaskCover } from './task-cover.jsx'
 
-
-
-
 export function TaskDetails({
     taskId,
     groupId,
@@ -26,6 +23,9 @@ export function TaskDetails({
     const currTask = board.groups[groupIdx].tasks.find(
         (task) => task.id === taskId
     )
+    const [layout, setLayout] = useState(undefined)
+    const [scroll, setScroll] = useState(true)
+
     useEffect(() => {
         setTask(currTask)
         setGroup(board.groups[groupIdx])
@@ -54,14 +54,17 @@ export function TaskDetails({
                 closeModal(ev, taskOverlayRef)
             }}
         >
-
             <section className="task-details-container">
-                    <TaskCover simpleCloseModal={simpleCloseModal} task={task} />
-                    <div className='task-details-secondry-container'>
-                <TaskHeader task={task} group={group} />
-                <TaskMainDetails boardId={boardId} task={task} groupId={groupId} />
-                <TaskMenu />
-                        </div>
+                <TaskCover simpleCloseModal={simpleCloseModal} task={task} />
+                <div className="task-details-secondry-container">
+                    <TaskHeader task={task} group={group} />
+                    <TaskMainDetails
+                        boardId={boardId}
+                        task={task}
+                        groupId={groupId}
+                    />
+                    <TaskMenu />
+                </div>
             </section>
         </div>
     )
