@@ -52,23 +52,25 @@ export function TaskAttachments({ task, boardId, groupId }) {
             </div>
             {task.attachments.map(atc => (<div className='attachment-container'>
                 <div className='attachment-image'>
-                    <img src={atc.url} alt="" />
+                    <img src={atc.url} />
                 </div>
 
                 <div className='attachment-content'>
-                    {atc.url.split('/').pop()}
-                </div>
-                <span>Comment</span>
-                <span>Delete</span>
-                <span>Edit</span>
-                <span className="attachment-options">
-                    <span onClick={onToggleTaskCover} className="toggle-attachment-cover">
-                        {task.style?.backgroundImg === atc.url
-                            ? 'Remove cover'
-                            : 'Make cover'}
+                    <span className='attachment-title'>{atc.url.split('/').pop()}</span>
+                    <span>Added at {atc.createdAt}</span>
+                    <span className='small-dots'>&#x2022;</span><span className='attachment-btns'>Comment</span>
+                    <span className='small-dots'>&#x2022;</span><span className='attachment-btns'>Delete</span>
+                    <span className='small-dots'>&#x2022;</span><span className='attachment-btns'>Edit</span>
+                    <span className="attachment-btns">
+                        <span onClick={onToggleTaskCover} className="toggle-attachment-cover">
+                            {task.style?.backgroundImg === atc.url
+                                ? 'Remove cover'
+                                : 'Make cover'}
+                        </span>
                     </span>
-                </span>
-            </div>))}
+                </div>
+            </div>
+            ))}
         </section>
     )
 }
