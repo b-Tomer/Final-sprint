@@ -52,7 +52,7 @@ export function AppHeader({onSetfilter}) {
 
     function onHandleSearch(ev){
         const {value} = ev.target 
-        onSetfilter({search:value})
+        onSetfilter({txt:value})
     }
 
 

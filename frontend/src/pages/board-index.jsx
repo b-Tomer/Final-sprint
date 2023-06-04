@@ -19,7 +19,7 @@ import { AppHeader } from '../cmps/app-header.jsx'
 import { AddGroup } from '../cmps/add-group.jsx'
 import { groupService } from '../services/group.service.local.js'
 import { SET_BOARD } from '../store/board.reducer.js'
-import { saveGroup } from '../store/group.actions.js'
+import { removeGroup, saveGroup } from '../store/group.actions.js'
 import { TaskEditor } from '../cmps/task/task-editor.jsx'
 import { TaskDetails } from '../cmps/task/task-details.jsx'
 
@@ -39,13 +39,14 @@ export function BoardIndex() {
 
     console.log(filterBy)
     useEffect(() => {
-        loadBoards(filterBy)
-        onLoadBoard()
-    }, [updateBoard, filterBy])
-    
-    function onLoadBoard() {
-        loadBoard(boardId)
-        if(taskId) setIsTaskDetailsOpen(true)
+        loadBoards()
+        onLoadBoard(filterBy)
+    }, [filterBy])
+
+
+    function onLoadBoard(filterBy) {
+        loadBoard(boardId , filterBy)
+        if (taskId) setIsTaskDetailsOpen(true)
     }
 
     async function addGroup(group) {
@@ -61,18 +62,11 @@ export function BoardIndex() {
         }
     }
 
-    async function removeGroup(group) {
+    async function onRemoveGroup(group) {
         try {
-            const updatedBoard = await groupService.removeGroup(
-                group.id,
-                boardId
-            )
-            dispatch({ type: SET_BOARD, board: updatedBoard })
+            await removeGroup(group.id, boardId)
         } catch (err) {
             console.log(err)
-        } finally {
-            loadBoards()
-            loadBoard(boardId)
         }
     }
 
@@ -82,13 +76,13 @@ export function BoardIndex() {
         else setLabelsFont('0px')
     }
 
-    function onSetfilter(filterByToUpdate){
+    function onSetfilter(filterByToUpdate) {
         setFilterBy(filterByToUpdate)
     }
 
     if (!board) return
     return (
-        <Fragment>
+        <>
             <div>
                 <AppHeader onSetfilter={onSetfilter} />
                 <section
@@ -102,7 +96,7 @@ export function BoardIndex() {
                                 isLabelsExpand={isLabelsExpand}
                                 onExpandLabels={onExpandLabels}
                                 boardId={boardId}
-                                removeGroup={removeGroup}
+                                onRemoveGroup={onRemoveGroup}
                                 group={group}
                                 key={group.id}
                                 setTaskEdit={setTaskEdit}
@@ -134,6 +128,6 @@ export function BoardIndex() {
                     boardId={boardId}
                 />
             )}
-        </Fragment>
+        </>
     )
 }

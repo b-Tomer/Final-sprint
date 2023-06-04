@@ -26,10 +26,11 @@ async function saveGroup(groupTitle, boardId, groupId) {
 }
 
 async function removeGroup(groupId, boardId) {
-    const board = await boardService.getById(boardId)
+    let board = await boardService.getById(boardId)
     const idx = board.groups.findIndex((group) => group.id === groupId)
     board.groups.splice(idx, 1)
-    await boardService.save(board)
+    console.log('board from service: ', board )
+    board = await boardService.save(board)
     return board
 }
 
