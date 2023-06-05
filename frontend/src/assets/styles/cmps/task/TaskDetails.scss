@@ -31,7 +31,7 @@
             .task-details-secondry-container {
                 padding: 10px 10px;
                 z-index: 3;
-                background-color: $clr1;
+                background-color: $clr2;
                 display: grid;
                 grid-template-columns: 1fr 150px;
                 align-self: center;
@@ -62,7 +62,7 @@
             width: 2em;
             top: 10px;
             right: 10px;
-            <<<<<<< HEAD background-color: $clr2;
+            background-color: $clr2;
 
             .task-icon-img {
                 height: 1.5em;
@@ -77,8 +77,7 @@
 
         .window-sidebar {
             grid-column: 2;
-            =======max-height: 700px;
-            >>>>>>>066b6e71965abc76a2904c59ca0db09a69feaa2c
+            max-height: 700px;
         }
     }
 }
