@@ -11,26 +11,26 @@ import { useEffect, useState } from 'react'
 
 export function DynamicCmp({ task, title }) {
 
-    const [isModalOpen,setIsModalOpen] = useState(true)
+    const [isModalOpen, setIsModalOpen] = useState(true)
 
-    function onCloseDynModal(){
+    function onCloseDynModal() {
         setIsModalOpen(false)
     }
 
-if(!isModalOpen) return ''
+    if (!isModalOpen) return ''
     return (
         <div className="dynamic-cmp">
             <div className="dynamic-cmp-header">
                 <div className="dynamic-cmp-header-title">{title}</div>
                 <button
                     className="dynamic-cmp-close"
-                onClick={onCloseDynModal}  
+                    onClick={onCloseDynModal}
                 > <X className="task-icon-img" />
                 </button>
             </div>
             <hr></hr>
 
-            {title === "Members" && <DynCmpMembers />}
+            {title === "Members" && <DynCmpMembers task={task} />}
             {title === "Labels" && <DynCmpLabels />}
             {title === "Checklist" && <DynCmpChecklist />}
             {title === "Dates" && <DynCmpDates />}

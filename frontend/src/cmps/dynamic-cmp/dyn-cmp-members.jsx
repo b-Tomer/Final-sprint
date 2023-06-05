@@ -4,6 +4,7 @@ import { updateTask } from '../../store/task.actions';
 
 
 export function DynCmpMembers({ task }) {
+
     const { board } = useSelector((storeState) => storeState.boardModule)
 
     function findGroupIdByTaskId(board, taskId) {
@@ -36,6 +37,9 @@ export function DynCmpMembers({ task }) {
         }
         updateTask(board._id, findGroupIdByTaskId(board, task.id), task)
     }
+
+
+    if (!task) return ''
 
     return (
         <div className='dyn-cmp-members-container'>
