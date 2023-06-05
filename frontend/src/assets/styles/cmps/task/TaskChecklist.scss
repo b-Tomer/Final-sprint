@@ -7,9 +7,14 @@
             button {
                 margin-left: auto;
                 padding: 7px 7px;
-                color: $clr4;
+                color: $clr5;
                 margin-right: 10px;
                 border-radius: 5px;
+                background-color: $clr3;
+
+                &:hover {
+                    background-color: $clrH;
+                }
             }
         }
 
@@ -27,10 +32,9 @@
             }
 
             .empty-bar {
-                background-color: $clr2;
+                background-color: $clr3;
                 min-width: 100px;
                 height: 7px;
-                margin-right: 10px;
                 margin-left: 3px;
                 width: 100%;
 
@@ -58,6 +62,7 @@
             width: 100%;
             .todo-content {
                 display: flex;
+
                 h3 {
                     font-size: 0.68rem;
                     margin: 5px;
@@ -75,6 +80,7 @@
                 transition: all 0.3s;
                 justify-content: space-between;
             }
+
             .delete-todo-btn {
                 border-radius: 3px;
                 display: flex;
@@ -87,9 +93,11 @@
                 background-color: transparent;
                 padding: 0;
                 margin-inline-end: 20px;
+
                 .delete-todo-icon {
                     width: 16px;
                     height: 16px;
+
                     path {
                         fill: $clr7;
                     }
@@ -109,6 +117,10 @@
             background-color: $clrTodoBg;
             margin-inline-start: 25px;
             margin-block: 8px;
+
+            &:hover {
+                background-color: $clrH;
+            }
         }
 
         .new-checklist-menu {
@@ -126,10 +138,12 @@
                     box-shadow: inset 0 0 0 2px $clrTodobtn;
                 }
             }
+
             .todo-btns {
                 .add-item-btn {
                     background-color: $clrTodobtn;
                 }
+
                 .cancel-btn {
                     color: $clr7;
                 }

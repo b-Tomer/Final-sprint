@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom"
 import { ReactComponent as Window } from '../../assets/img/icons/window.svg'
-import { ReactComponent as Eye } from '../../assets/img/icons/eye.svg'
 
 export function TaskHeader({ task, group, boardId }) {
     if (!task) return ''
@@ -8,14 +7,13 @@ export function TaskHeader({ task, group, boardId }) {
         <section className="task-header">
             <div className="task-header-title">
                 <Window className="header-icon" />
-                <textarea defaultValue={task.title} className="task-header-title"></textarea>
+                <textarea defaultValue={task.title} className="task-header-text"></textarea>
 
             </div>
             <p>in list
                 <Link to={`board/${boardId}`}>
                     {group.title}
                 </Link>
-                <Eye className="eye-icon" />
             </p>
         </section>
     )

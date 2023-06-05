@@ -10,8 +10,9 @@
     height: fit-content;
     overflow: hidden;
 
-
-
+    ::-webkit-scrollbar-track {
+        margin: 0.5em;
+    }
 
     .group-header {
         padding: 14px 8px;
@@ -57,7 +58,11 @@
         padding: 0 4px;
         margin: 0 4px;
         overflow: auto;
-        gap:3px
+        gap: 3px;
+
+
+
+
     }
 
     .group-footer {
@@ -93,11 +98,12 @@
     border-radius: $radius;
     padding: 8px;
     height: fit-content;
-    
-    &:hover{
-    cursor: pointer;
-    background-color: hsla(0, 0%, 95%, 0.887);
+
+    &:hover {
+        cursor: pointer;
+        background-color: hsla(0, 0%, 95%, 0.887);
     }
+
     .add-list-content-closed {
         cursor: pointer;
     }
