@@ -1,4 +1,3 @@
-import { TaskPreview } from "./task/task-preview";
 import { ReactComponent as Plus } from '../assets/img/icons/plus.svg'
 import { ReactComponent as X } from '../assets/img/icons/x.svg'
 import { useState } from "react";
