@@ -1,27 +1,35 @@
 .task-header {
+
+
     .task-header-title {
-        color: $clr7;
-        width: 100%;
-        overflow: hidden;
-        overflow-wrap: break-word;
-        resize: none;
-        font-weight: 600;
-        height: 32px;
-        min-height: 24px;
-        line-height: 24px;
-        font-size: 0.875rem; ////////////
-        border: none;
-        outline: none;
-        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
         align-items: center;
-        width: 100%;
-        background-color: $clr2;
+        margin: 0px;
+
+        .task-header-text {
+            color: $clr7;
+            width: 100%;
+            overflow: hidden;
+            overflow-wrap: break-word;
+            resize: none;
+            font-weight: 600;
+            height: 32px;
+            min-height: 24px;
+            line-height: 24px;
+            font-size: 0.875rem;
+            border: none;
+            outline: none;
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+            width: 100%;
+            background-color: $clr2;
+            padding: 0px;
+            margin: 0px;
+        }
 
         .header-icon {
-            padding-top: 2px;
-            width: 14px;
-            height: 14px;
+            width: 13px;
+            height: 13px;
             margin-right: 8px;
+            transform: translateY(-2.5px)
         }
     }
 
@@ -30,6 +38,7 @@
         margin: 0;
         line-height: 20px;
         font-size: 0.7rem;
+        margin-left: 20px;
 
         a {
             color: $clr6;
@@ -74,23 +83,24 @@
     overflow: hidden;
     background-position: top;
     background-repeat: no-repeat;
-        // object-fit: cover;
+    // object-fit: cover;
     // .task-cover-img {
     //     height: 160px;
     // }
-    
-.task-details-close {
-    position: absolute;
-    height: 2em;
-    width: 2em;
-    top: 10px;
-    right: 10px;
-    background-color: inherit;
-    color:$clr7;
-    .task-icon-img {
-        height: 1.5em;
-        width: 1.5em;
+
+    .task-details-close {
+        position: absolute;
+        height: 2em;
+        width: 2em;
+        top: 10px;
+        right: 10px;
+        background-color: inherit;
+        color: $clr7;
+
+        .task-icon-img {
+            height: 1.5em;
+            width: 1.5em;
+        }
     }
-}
 
 }
