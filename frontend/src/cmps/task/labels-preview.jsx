@@ -15,7 +15,6 @@ export function LabelsPreview({ task }) {
     const matchedLabel = board.labels.find(
       (label) => label.id === labelId
     )
-    console.log('hereeee', matchedLabel)
     return matchedLabel
   }
 

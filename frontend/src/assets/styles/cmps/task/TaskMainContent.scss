@@ -1,5 +1,6 @@
 .task-main-content {
     grid-column: 1;
+
     .description-title,
     .checklist-title,
     .activities-title {
@@ -27,7 +28,7 @@
             resize: none;
             border: none;
             border-radius: 3px;
-            background-color: $clr2;
+            background-color: $clr3;
             min-width: 250px;
             min-height: 60px;
             font-size: 0.75rem;

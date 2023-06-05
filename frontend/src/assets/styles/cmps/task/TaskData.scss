@@ -4,7 +4,6 @@
     flex-direction: row;
 
     .data-item {
-        margin-right: 20px;
 
         .member-data {
             margin-left: 20px;
@@ -51,6 +50,8 @@
         }
 
         .label-data {
+            margin-left: 20px;
+
             .data-preview-title {
                 font-size: 0.625rem;
                 font-weight: 600;
@@ -60,8 +61,6 @@
             .labels {
                 display: flex;
                 flex-wrap: wrap;
-
-
 
                 .add-label-icon {
                     height: 1.5em;
@@ -93,14 +92,65 @@
             }
 
         }
+
+        .date-data {
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+
+            .data-preview-title {
+                font-size: 0.625rem;
+                font-weight: 600;
+                color: $clr5;
+            }
+
+            .date-details {
+                display: flex;
+
+                .full-date {
+                    background-color: $clr2;
+                    height: 2rem;
+                    padding-top: 5px;
+                    padding-left: 5px;
+
+                    .date-picker {
+                        border: 4px solid gray;
+                        top: 5%;
+                        left: 40%;
+                        position: fixed;
+                        width: 350px;
+                        height: 550px;
+                        z-index: 3;
+                        background-color: $clr3;
+                        color: $clr4;
+                    }
+
+                    .time {
+                        font-size: 0.875rem;
+                        color: $clr6;
+                        font-weight: 500;
+                    }
+                }
+
+
+
+                .down-img {
+                    width: 1em;
+                    height: 1em;
+                    margin: 0px 5px 0px 5px;
+                    transform: translateY(20%);
+
+                    path {
+                        fill: $clr7
+                    }
+
+                }
+
+            }
+
+        }
+
     }
-
-
-
-
-
-
-
 
 
 

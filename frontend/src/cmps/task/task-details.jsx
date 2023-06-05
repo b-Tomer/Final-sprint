@@ -61,7 +61,8 @@ export function TaskDetails({
                 </button>
                 <TaskHeader task={task} group={group} />
                 <TaskMainDetails boardId={boardId} task={task} groupId={groupId} />
-                <TaskMenu />
+                <TaskMenu task={task} />
+
 
             </section>
         </div>

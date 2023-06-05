@@ -19,7 +19,7 @@
         display: grid;
         grid-template-columns: 1fr 150px;
         z-index: 1;
-        background-color: $clr1;
+        background-color: $clr2;
         position: fixed;
         top: 48px;
         left: 30%;
@@ -39,7 +39,7 @@
             width: 2em;
             top: 10px;
             right: 10px;
-            background-color: $clr1;
+            background-color: $clr2;
 
             .task-icon-img {
                 height: 1.5em;
