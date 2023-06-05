@@ -37,7 +37,6 @@ export function DynCmpMembers({ task }) {
         updateTask(board._id, findGroupIdByTaskId(board, task.id), task)
     }
 
-
     return (
         <div className='dyn-cmp-members-container'>
             <h3>Board members</h3>
