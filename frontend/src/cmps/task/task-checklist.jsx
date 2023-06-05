@@ -1,5 +1,5 @@
 import { ReactComponent as Checklist } from '../../assets/img/icons/checklist.svg'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useParams } from 'react-router-dom'
 import { updateTask } from '../../store/task.actions'
 import { ReactComponent as Trash } from '../../assets/img/icons/trash.svg'
@@ -12,6 +12,7 @@ export function TaskChecklist({ task }) {
     const { boardId } = useParams()
     const { groupId } = useParams()
     const [todoTitle, setTodoTitle] = useState('')
+    const textareaRef = useRef(null)
     let progress
     useEffect(() => {}, [progress])
 
@@ -38,8 +39,11 @@ export function TaskChecklist({ task }) {
         setEditing(false)
         setTodoTitle('')
     }
-    function openNewTodo() {
-        setEditing(true)
+    async function openNewTodo() {
+        await setEditing(true)
+        // console.log(textareaRef)
+
+        textareaRef.current.focus()
     }
 
     async function onAddTodo(ev, checklist) {
@@ -50,7 +54,9 @@ export function TaskChecklist({ task }) {
         } catch (err) {
             console.log(err)
         } finally {
-            closeNewTodo()
+            // closeNewTodo()
+            setTodoTitle('')
+            openNewTodo()
         }
     }
 
@@ -167,9 +173,11 @@ export function TaskChecklist({ task }) {
                                         onAddTodo(event, checklist)
                                     }
                                 >
-                                    <input
+                                    <textarea
+                                        ref={textareaRef}
                                         placeholder="Add an item"
                                         onChange={handleTodoTitle}
+                                        value={todoTitle}
                                     />
                                     <div className="todo-btns">
                                         <button className="add-item-btn">
