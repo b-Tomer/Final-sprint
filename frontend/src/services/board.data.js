@@ -68,32 +68,32 @@ export const gBoards = [
         "labels": [
             {
                 "id": "l101",
-                "title": "Label 1",
+                "title": "Marketing",
                 "color": "#4bce97"
             },
             {
                 "id": "l102",
-                "title": "Label 2",
+                "title": "Frontend",
                 "color": "#e2b203"
             },
             {
                 "id": "l103",
-                "title": "Label 3",
+                "title": "Backend",
                 "color": "#faa53d"
             },
             {
                 "id": "l104",
-                "title": "Label 4",
+                "title": "Finance",
                 "color": "#f87462"
             },
             {
                 "id": "l105",
-                "title": "Label 5",
+                "title": "Operations",
                 "color": "#9f8fef"
             },
             {
                 "id": "l106",
-                "title": "Label 6",
+                "title": "Manufacturing",
                 "color": "#579dff"
             }
         ],
@@ -773,32 +773,32 @@ export const gBoards = [
         "labels": [
             {
                 "id": "l101",
-                "title": "Label 1",
+                "title": "Marketing",
                 "color": "#4bce97"
             },
             {
                 "id": "l102",
-                "title": "Label 2",
+                "title": "Frontend",
                 "color": "#e2b203"
             },
             {
                 "id": "l103",
-                "title": "Label 3",
+                "title": "Backend",
                 "color": "#faa53d"
             },
             {
                 "id": "l104",
-                "title": "Label 4",
+                "title": "Finance",
                 "color": "#f87462"
             },
             {
                 "id": "l105",
-                "title": "Label 5",
+                "title": "Operations",
                 "color": "#9f8fef"
             },
             {
                 "id": "l106",
-                "title": "Label 6",
+                "title": "Manufacturing",
                 "color": "#579dff"
             }
         ],
@@ -1398,32 +1398,32 @@ export const gBoards = [
         "labels": [
             {
                 "id": "l101",
-                "title": "Label 1",
+                "title": "Marketing",
                 "color": "#4bce97"
             },
             {
                 "id": "l102",
-                "title": "Label 2",
+                "title": "Frontend",
                 "color": "#e2b203"
             },
             {
                 "id": "l103",
-                "title": "Label 3",
+                "title": "Backend",
                 "color": "#faa53d"
             },
             {
                 "id": "l104",
-                "title": "Label 4",
+                "title": "Finance",
                 "color": "#f87462"
             },
             {
                 "id": "l105",
-                "title": "Label 5",
+                "title": "Operations",
                 "color": "#9f8fef"
             },
             {
                 "id": "l106",
-                "title": "Label 6",
+                "title": "Manufacturing",
                 "color": "#579dff"
             }
         ],
@@ -2185,32 +2185,32 @@ export const gBoards = [
         "labels": [
             {
                 "id": "l101",
-                "title": "Label 1",
+                "title": "Marketing",
                 "color": "#4bce97"
             },
             {
                 "id": "l102",
-                "title": "Label 2",
+                "title": "Frontend",
                 "color": "#e2b203"
             },
             {
                 "id": "l103",
-                "title": "Label 3",
+                "title": "Backend",
                 "color": "#faa53d"
             },
             {
                 "id": "l104",
-                "title": "Label 4",
+                "title": "Finance",
                 "color": "#f87462"
             },
             {
                 "id": "l105",
-                "title": "Label 5",
+                "title": "Operations",
                 "color": "#9f8fef"
             },
             {
                 "id": "l106",
-                "title": "Label 6",
+                "title": "Manufacturing",
                 "color": "#579dff"
             }
         ],
@@ -2353,32 +2353,32 @@ export const gBoards = [
                 "labels": [
                     {
                         "id": "l101",
-                        "title": "Label 1",
+                        "title": "Marketing",
                         "color": "#4bce97"
                     },
                     {
                         "id": "l102",
-                        "title": "Label 2",
+                        "title": "Frontend",
                         "color": "#e2b203"
                     },
                     {
                         "id": "l103",
-                        "title": "Label 3",
+                        "title": "Backend",
                         "color": "#faa53d"
                     },
                     {
                         "id": "l104",
-                        "title": "Label 4",
+                        "title": "Finance",
                         "color": "#f87462"
                     },
                     {
                         "id": "l105",
-                        "title": "Label 5",
+                        "title": "Operations",
                         "color": "#9f8fef"
                     },
                     {
                         "id": "l106",
-                        "title": "Label 6",
+                        "title": "Manufacturing",
                         "color": "#579dff"
                     }
                 ],
@@ -3008,32 +3008,32 @@ export const gBoards = [
         "labels": [
             {
                 "id": "l101",
-                "title": "Label 1",
+                "title": "Marketing",
                 "color": "#4bce97"
             },
             {
                 "id": "l102",
-                "title": "Label 2",
+                "title": "Frontend",
                 "color": "#e2b203"
             },
             {
                 "id": "l103",
-                "title": "Label 3",
+                "title": "Backend",
                 "color": "#faa53d"
             },
             {
                 "id": "l104",
-                "title": "Label 4",
+                "title": "Finance",
                 "color": "#f87462"
             },
             {
                 "id": "l105",
-                "title": "Label 5",
+                "title": "Operations",
                 "color": "#9f8fef"
             },
             {
                 "id": "l106",
-                "title": "Label 6",
+                "title": "Manufacturing",
                 "color": "#579dff"
             }
         ],
@@ -3725,32 +3725,32 @@ export const gBoards = [
         "labels": [
             {
                 "id": "l101",
-                "title": "Label 1",
+                "title": "Marketing",
                 "color": "#4bce97"
             },
             {
                 "id": "l102",
-                "title": "Label 2",
+                "title": "Frontend",
                 "color": "#e2b203"
             },
             {
                 "id": "l103",
-                "title": "Label 3",
+                "title": "Backend",
                 "color": "#faa53d"
             },
             {
                 "id": "l104",
-                "title": "Label 4",
+                "title": "Finance",
                 "color": "#f87462"
             },
             {
                 "id": "l105",
-                "title": "Label 5",
+                "title": "Operations",
                 "color": "#9f8fef"
             },
             {
                 "id": "l106",
-                "title": "Label 6",
+                "title": "Manufacturing",
                 "color": "#579dff"
             }
         ],
