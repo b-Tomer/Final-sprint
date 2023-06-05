@@ -54,21 +54,24 @@
             margin: 0px;
             align-items: center;
             border-radius: 3px;
-            // justify-content: end;
-            h3 {
-                font-size: 0.68rem;
-                margin: 5px;
-                color: $clr4;
-                font-weight: 500;
-            }
+            .todo-content {
+                display: flex;
+                h3 {
+                    font-size: 0.68rem;
+                    margin: 5px;
+                    color: $clr4;
+                    font-weight: 500;
+                }
 
-            input {
-                margin-top: 5px;
+                input {
+                    margin-top: 5px;
+                }
             }
 
             &:hover {
                 background-color: $clrTodoBg;
                 transition: all 0.3s;
+                justify-content: space-between;
             }
             .delete-todo-btn {
                 border-radius: 3px;
@@ -81,8 +84,7 @@
                 height: 20px;
                 background-color: transparent;
                 padding: 0;
-                // padding-inline-end: 20px;
-                margin-inline-start: 500px;
+                margin-inline-end: 20px;
                 .delete-todo-icon {
                     width: 16px;
                     height: 16px;

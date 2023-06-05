@@ -1,82 +1,90 @@
 import { useEffect, useState } from 'react'
 import { ReactComponent as Attachments } from '../../assets/img/icons/attachment.svg'
 import { updateTask } from '../../store/task.actions'
+import { DynamicCmp } from '../dynamic-cmp/dynamic-cmp'
 
 export function TaskAttachments({ task, boardId, groupId }) {
 
-    const [currTask, setCurrTask] = useState(task)
+  const [currTask, setCurrTask] = useState(task)
+  const [isEditOpen, setIsEditOpen] = useState(false)
 
 
-    useEffect(() => {
-        setCurrTask(task)
-    }, [task])
+  useEffect(() => {
+    setCurrTask(task)
+  }, [task])
 
-    async function onDeleteAttachment(attachment) {
-        const updatedStyle = { ...task.style };
-        if (updatedStyle?.backgroundImg === attachment.url) {
-          updatedStyle.backgroundImg = null;
-        }
-      
-        const updatedAttachments = task.attachments.filter(
-          (att) => att.id !== attachment.id
-        )
-      
-        const updatedTask = {
-          ...task,
-          style: updatedStyle,
-          attachments: updatedAttachments,
-        }
-      
-        setCurrTask(updatedTask);
-        await updateTask(boardId, groupId, updatedTask);
-      }
+  async function onDeleteAttachment(attachment) {
+    const updatedStyle = { ...task.style };
+    if (updatedStyle?.backgroundImg === attachment.url) {
+      updatedStyle.backgroundImg = null;
+    }
 
-      function onToggleTaskCover(attachment) {
-        const updatedStyle = { ...task.style };
-      
-        if (updatedStyle?.backgroundImg === attachment.url) {
-          updatedStyle.backgroundImg = null;
-        } else {
-          updatedStyle.backgroundImg = attachment.url;
-          updatedStyle.bgColor = null;
-        }
-      
-        const updatedTask = { ...task, style: updatedStyle };
-      
-        updateTask(boardId, groupId, updatedTask);
-      }
-    
-    if (!task.attachments) return ''
-
-    return (
-        <section className='attachments'>
-            <div className="description-title">
-                <Attachments className="task-content-icon" />
-                <h3>Attachments</h3>
-            </div>
-            {currTask.attachments.map(atc => (<div key={atc.id} className='attachment-container'>
-                <div className='attachment-image'>
-                    <img src={atc.url} />
-                </div>
-
-                <div className='attachment-content'>
-                    <span className='attachment-title'>{atc.url?.split('/').pop()}</span>
-                    <span>Added at {atc.createdAt}</span>
-                    <span className='small-dots'>&#x2022;</span><span className='attachment-btns'>Comment</span>
-                    <span className='small-dots'>&#x2022;</span><span onClick={() => onDeleteAttachment(atc)} className='attachment-btns'>Delete</span>
-                    <span className='small-dots'>&#x2022;</span><span className='attachment-btns'>Edit</span>
-                    <span className="attachment-btns">
-                        <span onClick={onToggleTaskCover} className="toggle-attachment-cover">
-                            {task.style?.backgroundImg === atc.url
-                                ? 'Remove cover'
-                                : 'Make cover'}
-                        </span>
-                    </span>
-                </div>
-            </div>
-            ))}
-        </section>
+    const updatedAttachments = task.attachments.filter(
+      (att) => att.id !== attachment.id
     )
+
+    const updatedTask = {
+      ...task,
+      style: updatedStyle,
+      attachments: updatedAttachments,
+    }
+
+    setCurrTask(updatedTask);
+    await updateTask(boardId, groupId, updatedTask);
+  }
+
+  function onToggleTaskCover(attachment) {
+    const updatedStyle = { ...task.style };
+    if (updatedStyle?.backgroundImage === attachment.url) {
+      updatedStyle.backgroundImage = null;
+    } else {
+      updatedStyle.backgroundImage = attachment.url;
+      // updatedStyle.bgColor = null;
+    }
+    const updatedTask = { ...task, style: updatedStyle };
+    setCurrTask(updatedTask);
+    console.log("task from cpm: ", updatedTask);
+    updateTask(boardId, groupId, updatedTask);
+  }
+
+
+  function onEditAttachment(atc) {
+    console.log(atc)
+    setIsEditOpen(true)
+  }
+
+  if (!task.attachments) return ''
+
+  return (
+    <section className='attachments'>
+      <div className="description-title">
+        <Attachments className="task-content-icon" />
+        <h3>Attachments</h3>
+      </div>
+      {currTask.attachments.map(atc => (<div key={atc.id} className='attachment-container'>
+        <div className='attachment-image'>
+          <img src={atc.url} />
+        </div>
+
+        <div className='attachment-content'>
+          <span className='attachment-title'>{atc.url?.split('/').pop()}</span>
+          <span>Added at {atc.createdAt}</span>
+          <span className='small-dots'>&#x2022;</span><span className='attachment-btns'>Comment</span>
+          <span className='small-dots'>&#x2022;</span><span onClick={() => onDeleteAttachment(atc)} className='attachment-btns'>Delete</span>
+          <span className='small-dots'>&#x2022;</span><span onClick={() => onEditAttachment(atc)} className='attachment-btns'>Edit</span>
+          <span className="attachment-btns">
+            <span onClick={() => onToggleTaskCover(atc)} className="toggle-attachment-cover">
+              {task.style?.backgroundImg === atc.url
+                ? 'Remove cover'
+                : 'Make cover'}
+            </span>
+          </span>
+        </div>
+      </div>
+      ))}
+      {isEditOpen && <DynamicCmp  task={task} title={"Edit attachment"} />}
+    </section>
+  )
 }
 
 
