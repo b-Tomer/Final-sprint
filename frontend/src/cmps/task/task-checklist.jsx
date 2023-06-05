@@ -119,19 +119,22 @@ export function TaskChecklist({ task }) {
                                     }`}
                                     key={todo.id}
                                 >
-                                    <input
-                                        type="checkbox"
-                                        id="todo"
-                                        name="todo"
-                                        checked={todo.isDone}
-                                        onChange={() =>
-                                            handleCheckboxChange(
-                                                checklist.id,
-                                                todo.id
-                                            )
-                                        }
-                                    />
-                                    <h3>{todo.title}</h3>
+                                    <div className="todo-content">
+                                        <input
+                                            type="checkbox"
+                                            id="todo"
+                                            name="todo"
+                                            checked={todo.isDone}
+                                            onChange={() =>
+                                                handleCheckboxChange(
+                                                    checklist.id,
+                                                    todo.id
+                                                )
+                                            }
+                                        />
+                                        <h3>{todo.title}</h3>
+                                    </div>
+
                                     {isHovered === todo.id && (
                                         <button
                                             onClick={(event) =>
