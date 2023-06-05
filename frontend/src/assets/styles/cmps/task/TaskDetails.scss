@@ -82,6 +82,9 @@
         .window-sidebar {
             grid-column: 2;
             max-height: 700px;
+            .card-menu-title{
+                font-size: 12px;
+            }
         }
     }
 }

@@ -23,7 +23,7 @@ export function TaskMenu({ task }) {
 
     return (
         <div className="window-sidebar">
-            <h3 className="mod-no-top-margin js-sidebar-add-heading">Add to card</h3>
+            <h3 className="card-menu-title">Add to card</h3>
             <div className="add-to-card-menu">
                 <button className="button-link" onClick={() => openDynamicCmp('Members')}>
                     <Member className="sidebar-icon" />
