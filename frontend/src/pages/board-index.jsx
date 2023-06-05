@@ -39,22 +39,13 @@ export function BoardIndex() {
     useEffect(() => {
         loadBoards()
         onLoadBoard(filterBy)
-    }, [filterBy])
+    }, [filterBy, boardId])
 
     async function onLoadBoard(filterBy) {
         await loadBoard(boardId, filterBy)
         if (taskId) setIsTaskDetailsOpen(true)
         console.log(boardId)
-        // if (board.style.backgroundImage) {
-        //     setIsLoaded(true)
-        // }
     }
-
-    // useEffect(() => {
-    //     if (board.style.backgroundImage) {
-    //         setIsLoaded(true)
-    //     }
-    // }, [board.style.backgroundImage])
 
     async function addGroup(group) {
         try {
@@ -87,8 +78,6 @@ export function BoardIndex() {
         setFilterBy(filterByToUpdate)
     }
 
-    // console.log(board.style.backgroundImage)
-
     if (!board) return
     return (
         <>
@@ -96,12 +85,9 @@ export function BoardIndex() {
                 <AppHeader onSetfilter={onSetfilter} />
                 <section
                     className="board-container"
-                    // style={
-                    //     isLoaded && {
-                    //         // backgroundImage: `url(${board.style.backgroundImage})`,
-                    //         color: 'red',
-                    //     }
-                    // }
+                    style={{
+                        backgroundImage: `url(${board.style?.backgroundImage})`,
+                    }}
                 >
                     <BoardHeader />
                     <main className="board-content">
