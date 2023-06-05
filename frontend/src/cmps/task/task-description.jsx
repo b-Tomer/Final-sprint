@@ -54,7 +54,7 @@ export function TaskDescription({ boardId, groupId, task }) {
             <div className="description-title">
                 <Description className="task-content-icon" />
                 <h3>Description</h3>
-                {(!task.description || !isEditing) && <button onClick={onOpenTextArea} className="edit-desc-btn">Edit</button>}
+                {!task.description || !isEditing && <button onClick={onOpenTextArea} className="edit-desc-btn">Edit</button>}
             </div>
             {(!task.description || isEditing) && <div className='description-container'>
                 <textarea
@@ -66,6 +66,7 @@ export function TaskDescription({ boardId, groupId, task }) {
                     onFocus={(e) => {
                         e.target.selectionStart = e.target.selectionEnd = e.target.value.length
                         adjustTextareaHeight()
+                        setIsEditing(true)
                       }}
                 ></textarea>
             </div>}
