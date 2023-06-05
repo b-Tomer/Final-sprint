@@ -1,40 +1,38 @@
 import { ReactComponent as Checklist } from '../../assets/img/icons/checklist.svg'
-import { useEffect, useState } from 'react';
-
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { updateTask } from '../../store/task.actions'
 
 export function TaskChecklist({ task }) {
-    const [currentTask, setCurrentTask] = useState(task);
+    const [currentTask, setCurrentTask] = useState(task)
+    const { boardId } = useParams()
+    const { groupId } = useParams()
 
     let progress
-    useEffect(() => {
-        // console.log('Progress changed:', progress);
-    }, [progress]);
+    useEffect(() => {}, [progress])
 
-    const handleCheckboxChange = (checklistId, todoId) => {
-        const updatedTask = { ...currentTask };
+    const handleCheckboxChange = async (checklistId, todoId) => {
+        const updatedTask = { ...currentTask }
         const checklist = updatedTask.checklists.find(
             (checklist) => checklist.id === checklistId
-        );
+        )
+        const todo = checklist.todos.find((todo) => todo.id === todoId)
+        todo.isDone = !todo.isDone
+        setCurrentTask(updatedTask)
+        await updateTask(boardId, groupId, updatedTask)
+    }
 
-
-        // const checklist = updatedTask.checklists.find(checklist => checklist.id === checklistId);
-        const todo = checklist.todos.find(todo => todo.id === todoId);
-        todo.isDone = !todo.isDone;
-        setCurrentTask(updatedTask);
-    };
-
-
-    // console.log('aaaa', task);
-    if (!task.checklists || !task.checklists.length) return null;
+    if (!task.checklists || !task.checklists.length) return null
     return (
-        <div className='checklists-container'>
-            {task.checklists.map(checklist => {
-                const doneTodos = checklist.todos.filter(todo => todo.isDone);
-                const progress = (doneTodos.length / checklist.todos.length) * 100;
-                const isCompleted = progress === 100;
+        <div className="checklists-container">
+            {task.checklists.map((checklist) => {
+                const doneTodos = checklist.todos.filter((todo) => todo.isDone)
+                const progress =
+                    (doneTodos.length / checklist.todos.length) * 100
+                const isCompleted = progress === 100
 
                 return (
-                    <div className='checklist-container' key={checklist.id}>
+                    <div className="checklist-container" key={checklist.id}>
                         <div className="checklist-title">
                             <Checklist className="task-content-icon" />
                             <h3>{checklist.title}</h3>
@@ -42,30 +40,46 @@ export function TaskChecklist({ task }) {
                         </div>
                         <div className="progress-bar">
                             <span>{progress.toFixed(0)}%</span>
-                            <div className={`empty-bar ${isCompleted ? 'completed' : ''}`}>
-                                <div className={`fill-bar ${progress === 100 ? 'completed' : ''}`} style={{ width: `${progress}%` }}></div>
+                            <div
+                                className={`empty-bar ${
+                                    isCompleted ? 'completed' : ''
+                                }`}
+                            >
+                                <div
+                                    className={`fill-bar ${
+                                        progress === 100 ? 'completed' : ''
+                                    }`}
+                                    style={{ width: `${progress}%` }}
+                                ></div>
                             </div>
                         </div>
-                        <div className='todos'>
-                            {checklist.todos.map(todo => (
-                                <div className={`todo ${todo.isDone ? 'completed' : ''}`} key={todo.id}>
+                        <div className="todos">
+                            {checklist.todos.map((todo) => (
+                                <div
+                                    className={`todo ${
+                                        todo.isDone ? 'completed' : ''
+                                    }`}
+                                    key={todo.id}
+                                >
                                     <input
                                         type="checkbox"
                                         id="todo"
                                         name="todo"
                                         checked={todo.isDone}
-                                        onChange={() => handleCheckboxChange(checklist.id, todo.id)}
+                                        onChange={() =>
+                                            handleCheckboxChange(
+                                                checklist.id,
+                                                todo.id
+                                            )
+                                        }
                                     />
                                     <h3>{todo.title}</h3>
                                 </div>
                             ))}
                         </div>
                     </div>
-                );
+                )
             })}
         </div>
-    );
+    )
 }
-
-
-
