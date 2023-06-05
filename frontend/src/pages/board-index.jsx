@@ -32,6 +32,7 @@ export function BoardIndex() {
     const [taskEdit, setTaskEdit] = useState(null)
     const [isTaskDetailsOpen, setIsTaskDetailsOpen] = useState(false)
     const [isLabelsExpand, setIsLabelsExpand] = useState(false)
+    const [isLoaded, setIsLoaded] = useState(false)
     const [labelsFont, setLabelsFont] = useState('0px')
     const { filterBy } = useSelector((storeState) => storeState.boardModule)
 
@@ -40,10 +41,20 @@ export function BoardIndex() {
         onLoadBoard(filterBy)
     }, [filterBy])
 
-    function onLoadBoard(filterBy) {
-        loadBoard(boardId, filterBy)
+    async function onLoadBoard(filterBy) {
+        await loadBoard(boardId, filterBy)
         if (taskId) setIsTaskDetailsOpen(true)
+        console.log(boardId)
+        // if (board.style.backgroundImage) {
+        //     setIsLoaded(true)
+        // }
     }
+
+    // useEffect(() => {
+    //     if (board.style.backgroundImage) {
+    //         setIsLoaded(true)
+    //     }
+    // }, [board.style.backgroundImage])
 
     async function addGroup(group) {
         try {
@@ -76,12 +87,22 @@ export function BoardIndex() {
         setFilterBy(filterByToUpdate)
     }
 
+    // console.log(board.style.backgroundImage)
+
     if (!board) return
     return (
         <>
             <div>
                 <AppHeader onSetfilter={onSetfilter} />
-                <section className="board-container">
+                <section
+                    className="board-container"
+                    // style={
+                    //     isLoaded && {
+                    //         // backgroundImage: `url(${board.style.backgroundImage})`,
+                    //         color: 'red',
+                    //     }
+                    // }
+                >
                     <BoardHeader />
                     <main className="board-content">
                         {board?.groups &&
