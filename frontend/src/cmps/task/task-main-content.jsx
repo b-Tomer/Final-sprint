@@ -14,7 +14,7 @@ export function TaskMainContent({ task, boardId, groupId }) {
                     <h3>Description</h3>
                 </div>
                 {!task.description && (
-                    <div>
+                    <div className='description-container'>
                         <textarea
                             placeholder="Add a more detailed description.."
                             className="main-content-text-area"

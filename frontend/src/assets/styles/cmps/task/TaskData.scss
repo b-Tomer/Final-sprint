@@ -27,15 +27,16 @@
                 }
 
                 .add-member-icon {
-                    height: 1.5em;
-                    width: 1.5em;
+                    height: 1.75rem;
+                    width: 1.75rem;
                     border-radius: 50%;
-                    background-color: $clr2;
+                    background-color: $clr3;
                     inset: 0;
                     margin: auto;
                     display: flex;
                     justify-content: center;
                     align-items: center;
+
 
                     .plus-icon {
                         height: 1em;
@@ -66,7 +67,7 @@
                     height: 1.5em;
                     width: 1.5em;
                     border-radius: 3%;
-                    background-color: $clr2;
+                    background-color: $clr3;
                     inset: 0;
                     margin: auto;
                     display: flex;
