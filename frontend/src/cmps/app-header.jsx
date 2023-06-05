@@ -1,7 +1,8 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { addBoard } from '../store/board.actions.js'
 
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, Navigate } from 'react-router-dom'
 import cube from '../assets/img/icons/cube.svg'
 import Logo from '../assets/img/icons/logo.svg'
 
@@ -19,6 +20,7 @@ import { boardService } from '../services/board.service.local.js'
 // import { LoginSignup } from './login-signup.jsx'
 
 export function AppHeader({ onSetfilter }) {
+    const navigate = useNavigate()
     // const user = useSelector(storeState => storeState.userModule.user)
 
     // async function onLogin(credentials) {
@@ -57,18 +59,23 @@ export function AppHeader({ onSetfilter }) {
             const title = prompt('Enter board title')
             const newBoard = boardService.getEmptyBoard()
             newBoard.title = title
-            await addBoard(newBoard)
+            const currBoard = await addBoard(newBoard)
+            navigate(`/board/${currBoard._id}`)
         } catch (error) {
             console.log('cannot add new board')
             console.log(error)
         }
     }
 
+    function goHome() {
+        navigate(`/`)
+    }
+
     return (
         <header className="app-header">
             <img className="cube-img" src={cube} alt="" />
-            <img className="logo-img" src={Logo} alt="Logo" />
-            <div className="app-logo">
+            <img className="logo-img" src={Logo} alt="Logo" onClick={goHome} />
+            <div className="app-logo" onClick={goHome}>
                 <h3>Trello</h3>
             </div>
             <nav className="main-nav">
