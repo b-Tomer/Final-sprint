@@ -65,8 +65,9 @@ export function TaskPreview({
     }
 
     function toggleLabelExpantion(ev, id) {
+        ev.stopPropagation()
         ev.preventDefault()
-        onExpandLabels()
+        onExpandLabels(ev)
         if (isLabelsExpand) {
             ev.target.innerText = getLabelTitle(id)
         } else {
