@@ -13,11 +13,11 @@ import { DynamicCmp } from '../dynamic-cmp/dynamic-cmp'
 
 export function TaskMenu({ task }) {
 
-    const [dynamicCmpName, setDynamicCmpName] = useState(null);
+    const [dynamicCmpName, setDynamicCmpName] = useState(null)
 
     const openDynamicCmp = (name) => {
-        setDynamicCmpName(name);
-    };
+        setDynamicCmpName(name)
+    }
 
 
 
