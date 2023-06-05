@@ -2,12 +2,15 @@ import { ReactComponent as Checklist } from '../../assets/img/icons/checklist.sv
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { updateTask } from '../../store/task.actions'
+import { ReactComponent as X } from '../../assets/img/icons/x.svg'
+import { utilService } from '../../services/util.service'
 
 export function TaskChecklist({ task }) {
     const [currentTask, setCurrentTask] = useState(task)
+    const [editing, setEditing] = useState(false)
     const { boardId } = useParams()
     const { groupId } = useParams()
-
+    const [todoTitle, setTodoTitle] = useState('')
     let progress
     useEffect(() => {}, [progress])
 
@@ -20,6 +23,33 @@ export function TaskChecklist({ task }) {
         todo.isDone = !todo.isDone
         setCurrentTask(updatedTask)
         await updateTask(boardId, groupId, updatedTask)
+    }
+
+    function closeNewTodo() {
+        setEditing(false)
+        setTodoTitle('')
+    }
+    function openNewTodo() {
+        setEditing(true)
+    }
+
+    async function onAddTodo(ev, checklist) {
+        ev.preventDefault()
+        console.log(todoTitle)
+        console.log(checklist)
+        checklist.todos.push({ id: utilService.makeId(), title: todoTitle })
+        try {
+            await updateTask(boardId, groupId, task)
+        } catch (err) {
+            console.log(err)
+        } finally {
+            closeNewTodo()
+        }
+    }
+
+    function handleTodoTitle(ev) {
+        const { value } = ev.target
+        setTodoTitle(value)
     }
 
     if (!task.checklists || !task.checklists.length) return null
@@ -77,6 +107,39 @@ export function TaskChecklist({ task }) {
                                 </div>
                             ))}
                         </div>
+                        {!editing && (
+                            <button
+                                onClick={openNewTodo}
+                                className="new-checklist-btn"
+                            >
+                                Add an item
+                            </button>
+                        )}
+                        {editing && (
+                            <div className="new-checklist-menu">
+                                <form
+                                    onSubmit={(event) =>
+                                        onAddTodo(event, checklist)
+                                    }
+                                >
+                                    <input
+                                        placeholder="Add an item"
+                                        onChange={handleTodoTitle}
+                                    />
+                                    <div className="todo-btns">
+                                        <button className="add-item-btn">
+                                            Add
+                                        </button>
+                                        <button
+                                            className="cancel-btn"
+                                            onClick={closeNewTodo}
+                                        >
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        )}
                     </div>
                 )
             })}

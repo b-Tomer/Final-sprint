@@ -1,7 +1,5 @@
 .checklists-container {
-
     .checklist-container {
-
         .checklist-title {
             display: flex;
             flex-direction: row;
@@ -71,6 +69,36 @@
         .completed h3 {
             text-decoration: line-through;
         }
-    }
 
+        .new-checklist-btn {
+            color: $clr7;
+            border-radius: 3px;
+            padding-inline: 12px;
+            padding-block: 6px;
+            background-color: $clrTodoBg;
+            margin-inline-start: 25px;
+            margin-block: 8px;
+        }
+
+        .new-checklist-menu {
+            margin-inline-start: 25px;
+            input {
+                border: 0;
+                padding-block: 10px;
+                padding-inline-start: 10px;
+                border-radius: 3px;
+                &:focus {
+                    box-shadow: inset 0 0 0 2px $clrTodobtn;
+                }
+            }
+            .todo-btns {
+                .add-item-btn {
+                    background-color: $clrTodobtn;
+                }
+                .cancel-btn {
+                    color: $clr7;
+                }
+            }
+        }
+    }
 }
