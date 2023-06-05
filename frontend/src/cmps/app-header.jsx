@@ -76,7 +76,7 @@ export function AppHeader({ onSetfilter }) {
             <img className="cube-img" src={cube} alt="" />
             <img className="logo-img" src={Logo} alt="Logo" onClick={goHome} />
             <div className="app-logo" onClick={goHome}>
-                <h3>Trello</h3>
+                <h3>Trellax</h3>
             </div>
             <nav className="main-nav">
                 <div className="link-section">
