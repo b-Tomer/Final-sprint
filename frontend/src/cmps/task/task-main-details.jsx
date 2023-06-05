@@ -4,7 +4,7 @@ import { TaskMenu } from './task-menu.jsx'
 
 export function TaskMainDetails({ task, groupId, boardId }) {
     return (
-        <section className="task-main-detiails">
+        <section className="task-main-details">
             <TaskData task={task} />
             <TaskMainContent boardId={boardId} groupId={groupId} task={task} />
         </section>
