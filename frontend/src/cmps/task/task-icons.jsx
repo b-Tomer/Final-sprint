@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { saveTask } from '../../store/task.actions'
-import { taskService } from '../../services/task.service.local'
+import { saveTask, updateTask } from '../../store/task.actions'
+
 
 import { utilService } from '../../services/util.service'
 import { ReactComponent as Attachment } from '../../assets/img/icons/paperclip.svg'
@@ -12,24 +12,21 @@ import { ReactComponent as Checklists } from '../../assets/img/icons/checklist.s
 import { ReactComponent as Description } from '../../assets/img/icons/description.svg'
 
 export function TaskIcons({ task, groupId, boardId }) {
-    const dispatch = useDispatch()
-    const [isHovered, setIsHovered] = useState(false)
+
     const { board } = useSelector((storeState) => storeState.boardModule)
+    const [currTask, setCurrTask] = useState(task)
+    const [isHovered, setIsHovered] = useState(false)
 
-    useEffect(() => { }, [task])
 
-    // const handleMouseEnter = () => {
-    //     setIsHovered(true)
-    // }
+    useEffect(() => {
+        setCurrTask(task)
+    }, [task])
 
-    // const handleMouseLeave = () => {
-    //     setIsHovered(false)
-    // }
 
     function onToggleIsDone(ev, task) {
         ev.preventDefault()
         task.isDone = !task.isDone
-        saveTask(task, boardId, groupId)
+        updateTask(boardId, groupId, task)
     }
 
     function getDateClass(task) {
@@ -84,7 +81,7 @@ export function TaskIcons({ task, groupId, boardId }) {
     return (
         <section className="task-icons-container">
             <div className="task-icons-all">
-                {task.dueDate && (
+                {currTask.dueDate && (
                     <div
                         onClick={(ev) => onToggleIsDone(ev, task)}
                         className={`task-icon task-due ${getDateClass(task)}`}

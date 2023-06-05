@@ -6,6 +6,7 @@ export const taskService = {
     removeTask,
     getDefaultTask,
     saveTask,
+    updateTask,
 }
 
 function getDefaultTask() {
@@ -39,8 +40,16 @@ async function saveTask(task, boardId, groupId) {
     }
 }
 
-
-
+async function updateTask(boardId, groupId, task) {
+    console.log('task from service: ', task )
+    const board = await boardService.getById(boardId)
+    const groupIdx = board.groups.findIndex((group) => group.id === groupId)
+    const taskIdx = board.groups[groupIdx].tasks.findIndex(currTask => currTask.id === task.id)
+    board.groups[groupIdx].tasks.splice(taskIdx, 1, task)
+    await boardService.save(board)
+    console.log('board from service: ', board )
+    return board
+  }
 
 async function removeTask(boardId, groupId, taskId) {
     const board = await boardService.getById(boardId)

@@ -2,46 +2,50 @@ import { useEffect, useState } from 'react'
 import { ReactComponent as Attachments } from '../../assets/img/icons/attachment.svg'
 import { updateTask } from '../../store/task.actions'
 
-
 export function TaskAttachments({ task, boardId, groupId }) {
 
-    // const [attachments, setAttachments] = useState(null)
+    const [currTask, setCurrTask] = useState(task)
+
 
     useEffect(() => {
-        // setAttachments(task.attachments)
-    }, [])
+        setCurrTask(task)
+    }, [task])
 
-
-    function onDeleteAttachment(attachment) {
-        if (task.style?.backgroundImg === attachment.url) task.style.backgroundImg = null
-        const { id } = attachment
-        const taskToUpdate = {
-            ...task,
-            attachments: task.attachments.filter(
-                (attachment) => attachment.id !== id
-            ),
+    async function onDeleteAttachment(attachment) {
+        const updatedStyle = { ...task.style };
+        if (updatedStyle?.backgroundImg === attachment.url) {
+          updatedStyle.backgroundImg = null;
         }
-        updateTask(taskToUpdate, boardId, groupId)
-    }
-
-    function onToggleTaskCover(attachment) {
-        const taskStyle = task.style
-        if (taskStyle) {
-            if (taskStyle.backgroundImg === attachment.url) {
-                taskStyle.backgroundImg = null
-            } else {
-                taskStyle.backgroundImg = attachment.url
-                taskStyle.bgColor = null
-            }
-        } else task.style = { backgroundImg: attachment.url }
-        const taskToUpdate = {
-            ...task,
-            style: taskStyle
+      
+        const updatedAttachments = task.attachments.filter(
+          (att) => att.id !== attachment.id
+        )
+      
+        const updatedTask = {
+          ...task,
+          style: updatedStyle,
+          attachments: updatedAttachments,
         }
-        updateTask(taskToUpdate, boardId, groupId)
+      
+        setCurrTask(updatedTask);
+        await updateTask(boardId, groupId, updatedTask);
+      }
 
-    }
-
+      function onToggleTaskCover(attachment) {
+        const updatedStyle = { ...task.style };
+      
+        if (updatedStyle?.backgroundImg === attachment.url) {
+          updatedStyle.backgroundImg = null;
+        } else {
+          updatedStyle.backgroundImg = attachment.url;
+          updatedStyle.bgColor = null;
+        }
+      
+        const updatedTask = { ...task, style: updatedStyle };
+      
+        updateTask(boardId, groupId, updatedTask);
+      }
+    
     if (!task.attachments) return ''
 
     return (
@@ -50,16 +54,16 @@ export function TaskAttachments({ task, boardId, groupId }) {
                 <Attachments className="task-content-icon" />
                 <h3>Attachments</h3>
             </div>
-            {task.attachments.map(atc => (<div className='attachment-container'>
+            {currTask.attachments.map(atc => (<div key={atc.id} className='attachment-container'>
                 <div className='attachment-image'>
                     <img src={atc.url} />
                 </div>
 
                 <div className='attachment-content'>
-                    <span className='attachment-title'>{atc.url.split('/').pop()}</span>
+                    <span className='attachment-title'>{atc.url?.split('/').pop()}</span>
                     <span>Added at {atc.createdAt}</span>
                     <span className='small-dots'>&#x2022;</span><span className='attachment-btns'>Comment</span>
-                    <span className='small-dots'>&#x2022;</span><span className='attachment-btns'>Delete</span>
+                    <span className='small-dots'>&#x2022;</span><span onClick={() => onDeleteAttachment(atc)} className='attachment-btns'>Delete</span>
                     <span className='small-dots'>&#x2022;</span><span className='attachment-btns'>Edit</span>
                     <span className="attachment-btns">
                         <span onClick={onToggleTaskCover} className="toggle-attachment-cover">

@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+import { addBoard } from '../store/board.actions.js'
 
 import { Link, NavLink } from 'react-router-dom'
 import cube from '../assets/img/icons/cube.svg'
@@ -9,12 +10,7 @@ import { ReactComponent as Notifications } from '../assets/img/icons/notificatio
 import { ReactComponent as Info } from '../assets/img/icons/info.svg'
 import { ReactComponent as Theme } from '../assets/img/icons/theme.svg'
 import { ReactComponent as Search } from '../assets/img/icons/search.svg'
-
-
-
-
-
-
+import { boardService } from '../services/board.service.local.js'
 
 // import {useSelector} from 'react-redux'
 // import routes from '../routes'
@@ -22,7 +18,7 @@ import { ReactComponent as Search } from '../assets/img/icons/search.svg'
 // import { login, logout, signup } from '../store/user.actions.js'
 // import { LoginSignup } from './login-signup.jsx'
 
-export function AppHeader({onSetfilter}) {
+export function AppHeader({ onSetfilter }) {
     // const user = useSelector(storeState => storeState.userModule.user)
 
     // async function onLogin(credentials) {
@@ -50,48 +46,62 @@ export function AppHeader({onSetfilter}) {
     //     }
     // }
 
-    function onHandleSearch(ev){
-        const {value} = ev.target 
-        onSetfilter({txt:value})
+    function onHandleSearch(ev) {
+        const { value } = ev.target
+        onSetfilter({ txt: value })
     }
 
-
+    async function onNewBoard(ev) {
+        ev.preventDefault()
+        try {
+            const title = prompt('Enter board title')
+            const newBoard = boardService.getEmptyBoard()
+            newBoard.title = title
+            await addBoard(newBoard)
+        } catch (error) {
+            console.log('cannot add new board')
+            console.log(error)
+        }
+    }
 
     return (
         <header className="app-header">
-            <img className='cube-img' src={cube} alt="" />
-            <img className='logo-img' src={Logo} alt="Logo" />
+            <img className="cube-img" src={cube} alt="" />
+            <img className="logo-img" src={Logo} alt="Logo" />
             <div className="app-logo">
                 <h3>Trello</h3>
             </div>
             <nav className="main-nav">
-                <div className='link-section'>
-                    <NavLink className='links' to="/">
+                <div className="link-section">
+                    <NavLink className="links" to="/">
                         Workspaces
-                        <Down className='down-img' src={Down} alt="" />
+                        <Down className="down-img" src={Down} alt="" />
                     </NavLink>
                 </div>
                 <div className="link-section">
                     <NavLink to="/about">
                         Recent
-                        <Down className='down-img' src={Down} alt="" />
+                        <Down className="down-img" src={Down} alt="" />
                     </NavLink>
                 </div>
                 <div className="link-section">
                     <NavLink to="/bookApp">
                         Starred
-                        <Down className='down-img' src={Down} alt="" />
+                        <Down className="down-img" src={Down} alt="" />
                     </NavLink>
                 </div>
+                <button className="new-board" onClick={onNewBoard}>
+                    Create
+                </button>
             </nav>
             {/* <button>Create</button> */}
             <div className="header-actions">
-                <div className='search-bar'>
+                <div className="search-bar">
                     <span>
                         <Search className="search-img" src={Search} />
                     </span>
                     <input
-                    onChange={onHandleSearch}
+                        onChange={onHandleSearch}
                         className="header-search"
                         type="text"
                         placeholder="Search"
@@ -99,18 +109,20 @@ export function AppHeader({onSetfilter}) {
                 </div>
 
                 <ul>
-                    <li >
-                        <Notifications className="app-header-icon" src={Notifications} />
+                    <li>
+                        <Notifications
+                            className="app-header-icon"
+                            src={Notifications}
+                        />
                     </li>
-                    <li >
+                    <li>
                         <Info className="app-header-icon" src={Info} />
                     </li>
-                    <li >
+                    <li>
                         <Theme className="app-header-icon" src={Theme} />
                     </li>
                 </ul>
             </div>
         </header>
-
     )
 }

@@ -3,7 +3,6 @@ import { ReactComponent as Window } from '../../assets/img/icons/window.svg'
 import { ReactComponent as Eye } from '../../assets/img/icons/eye.svg'
 
 export function TaskHeader({ task, group, boardId }) {
-    // console.log(task);
     if (!task) return ''
     return (
         <section className="task-header">

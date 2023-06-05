@@ -23,9 +23,7 @@ import { removeGroup, saveGroup } from '../store/group.actions.js'
 import { TaskEditor } from '../cmps/task/task-editor.jsx'
 import { TaskDetails } from '../cmps/task/task-details.jsx'
 
-
 export function BoardIndex() {
-
     const { boardId } = useParams()
     const { board } = useSelector((storeState) => storeState.boardModule)
     const { groupId } = useParams()
@@ -37,15 +35,13 @@ export function BoardIndex() {
     const [labelsFont, setLabelsFont] = useState('0px')
     const { filterBy } = useSelector((storeState) => storeState.boardModule)
 
-    console.log(filterBy)
     useEffect(() => {
         loadBoards()
         onLoadBoard(filterBy)
     }, [filterBy])
 
-
     function onLoadBoard(filterBy) {
-        loadBoard(boardId , filterBy)
+        loadBoard(boardId, filterBy)
         if (taskId) setIsTaskDetailsOpen(true)
     }
 
@@ -85,26 +81,25 @@ export function BoardIndex() {
         <>
             <div>
                 <AppHeader onSetfilter={onSetfilter} />
-                <section
-                    className="board-container"
-                >
+                <section className="board-container">
                     <BoardHeader />
                     <main className="board-content">
-                        {board.groups.map((group) => (
-                            <GroupDetails
-                                labelsFont={labelsFont}
-                                isLabelsExpand={isLabelsExpand}
-                                onExpandLabels={onExpandLabels}
-                                boardId={boardId}
-                                onRemoveGroup={onRemoveGroup}
-                                group={group}
-                                key={group.id}
-                                setTaskEdit={setTaskEdit}
-                                taskEdit={taskEdit}
-                                setIsTaskDetailsOpen={setIsTaskDetailsOpen}
-                                isTaskDetailsOpen={isTaskDetailsOpen}
-                            />
-                        ))}
+                        {board?.groups &&
+                            board.groups.map((group) => (
+                                <GroupDetails
+                                    labelsFont={labelsFont}
+                                    isLabelsExpand={isLabelsExpand}
+                                    onExpandLabels={onExpandLabels}
+                                    boardId={boardId}
+                                    onRemoveGroup={onRemoveGroup}
+                                    group={group}
+                                    key={group.id}
+                                    setTaskEdit={setTaskEdit}
+                                    taskEdit={taskEdit}
+                                    setIsTaskDetailsOpen={setIsTaskDetailsOpen}
+                                    isTaskDetailsOpen={isTaskDetailsOpen}
+                                />
+                            ))}
                         <AddGroup addGroup={addGroup} />
                     </main>
                 </section>
