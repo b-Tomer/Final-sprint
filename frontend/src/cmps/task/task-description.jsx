@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ReactComponent as Description } from '../../assets/img/icons/description.svg'
 import { useClickOutside } from '../../customHooks/useClickOutside'
 import { updateTask } from '../../store/task.actions'
@@ -12,12 +12,17 @@ export function TaskDescription({ boardId, groupId, task }) {
     const menuRef = useRef(null)
     useClickOutside(menuRef, onCancelEditing)
 
+    useEffect(() => {
+        if (textRef.current) {
+          textRef.current.selectionStart = textRef.current.selectionEnd = textRef.current.value.length;
+        }
+      }, [])
 
     function onSaveDescription() {
         setIsEditing(false)
         const taskToUpdate = { ...task, description }
         console.log(taskToUpdate)
-        updateTask(boardId , groupId , taskToUpdate)
+        updateTask(boardId, groupId, taskToUpdate)
     }
 
     function handleDescChange(ev) {
@@ -35,25 +40,35 @@ export function TaskDescription({ boardId, groupId, task }) {
         textRef.current.focus()
     }
 
+    function adjustTextareaHeight() {
+        const textarea = textRef.current;
+        if (textarea) {
+          textarea.style.height = 'auto';
+          textarea.style.height = `${textarea.scrollHeight}px`;
+        }
+      }
+
     if (!task) return ''
     return (
         <div className="description">
             <div className="description-title">
                 <Description className="task-content-icon" />
                 <h3>Description</h3>
-                {!isEditing && <button onClick={onOpenTextArea} className="edit-desc-btn">Edit</button>}
+                {(!task.description || !isEditing) && <button onClick={onOpenTextArea} className="edit-desc-btn">Edit</button>}
             </div>
-            {!task.description || isEditing && (
-                <div className='description-container'>
-                    <textarea
-                        ref={textRef}
-                        placeholder="Add a more detailed description.."
-                        value={description}
-                        onChange={handleDescChange}
-                        className="main-content-text-area"
-                    ></textarea>
-                </div>
-            )}
+            {(!task.description || isEditing) && <div className='description-container'>
+                <textarea
+                    ref={textRef}
+                    placeholder="Add a more detailed description.."
+                    value={description}
+                    onChange={handleDescChange}
+                    className="main-content-text-area"
+                    onFocus={(e) => {
+                        e.target.selectionStart = e.target.selectionEnd = e.target.value.length
+                        adjustTextareaHeight()
+                      }}
+                ></textarea>
+            </div>}
             {task.description && !isEditing && (
                 <p onClick={onOpenTextArea} className="description-content">{task.description}</p>
             )}

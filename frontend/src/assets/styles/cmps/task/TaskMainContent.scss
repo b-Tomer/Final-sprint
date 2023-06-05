@@ -33,7 +33,7 @@
                 border-radius: 3px;
                 background-color: $clr3;
                 width: 100%;
-                min-height: 160px;
+                min-height: 130px;
                 overflow: hidden;
                 font-size: 0.85rem;
                 padding:8px;
@@ -78,6 +78,7 @@
             margin-inline-start: 20px;
             font-size: 14px;
             color: $clr7;
+            cursor: pointer;
         }
     }
 }

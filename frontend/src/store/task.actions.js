@@ -25,7 +25,6 @@ export async function removeTask(boardId, groupId, taskId) {
 export async function addTask() { }
 
 export async function updateTask(boardId, groupId, task) {
-    console.log(boardId);
     try {
         const updatedBoard = await taskService.updateTask(boardId, groupId, task)
         store.dispatch(getActionSetBoard(updatedBoard))
