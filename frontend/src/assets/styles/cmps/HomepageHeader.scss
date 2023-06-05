@@ -1,6 +1,7 @@
 .homepage-header-container {
     display: flex;
     // justify-content: space-between;
+    padding-inline: 60px;
     align-content: center;
     align-items: center;
     width: 100%;
@@ -11,52 +12,67 @@
     color: $clrHTXT;
     z-index: 1;
     color: $clr7;
+
     .homepage-header-logo {
         line-height: 30px;
         padding: 16px;
         padding-block-start: 25px;
     }
+
     .homepage-header-nav {
         display: flex;
+
         .homepage-header-btn {
             display: flex;
             align-content: center;
             background-color: transparent;
             font-size: 1rem;
             color: $clr7;
+
             &:hover {
                 color: $clrBTN;
+
                 .homepage-header-icon {
                     path {
                         fill: $clrBTN;
                     }
                 }
             }
+
             .homepage-header-icon {
                 width: 15px;
                 height: 10px;
                 font-size: 1rem;
+
                 path {
                     fill: $clr7;
                 }
             }
         }
     }
+
     .homepage-header-actions {
         display: flex;
         justify-content: end;
         justify-items: end;
         flex-grow: 2;
+
         .homepage-header-btn {
             font-size: 19px;
             background-color: transparent;
             padding-inline: 24px;
             padding-block: 8px;
         }
+
         .try {
             background-color: $clrBTN;
             color: $clr1;
             padding-block: 19px;
         }
     }
+
+    .logo-title {
+       color: rgb(9, 30, 66);
+    }
+
 }

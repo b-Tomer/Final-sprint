@@ -14,7 +14,7 @@ export function HomePage() {
                 <div className="homepage-content">
                     <div className="content-left">
                         <h1>
-                            Trello brings all your tasks, teammates, and tools
+                            Trellax brings all your tasks, teammates, and tools
                             together
                         </h1>
                         <p>

@@ -51,6 +51,7 @@
         padding: 0 4px;
         margin: 0 4px;
         overflow: auto;
+        gap:3px
     }
 
     .group-footer {
@@ -80,13 +81,17 @@
     display: flex;
     // align-content: center ;
     align-items: center;
-    background-color: hsla(0, 0%, 80%, 0.391);
+    background-color: hsla(0, 2%, 92%, 0.771);
     min-width: $groupWidth;
     height: 48px;
     border-radius: $radius;
     padding: 8px;
     height: fit-content;
-
+    
+    &:hover{
+    cursor: pointer;
+    background-color: hsla(0, 0%, 95%, 0.887);
+    }
     .add-list-content-closed {
         cursor: pointer;
     }
