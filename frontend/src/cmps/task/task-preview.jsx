@@ -75,7 +75,11 @@ export function TaskPreview({
     }
 
     return (
-        <div className="task-container" ref={taskPreviewRef}>
+        <div
+            className="task-container"
+            ref={taskPreviewRef}
+            onClick={onOpenTaskDetails}
+        >
             <button
                 className="btn-task-show-details"
                 onClick={(ev) => {

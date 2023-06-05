@@ -10,12 +10,15 @@
     gap: 5px;
     align-items: center;
     z-index: 1;
-
+    .app-logo {
+        cursor: pointer;
+    }
     .cube-img,
     .logo-img {
         width: 1.2rem;
         height: 1.2rem;
         margin-left: 2px;
+        cursor: pointer;
     }
 
     .down-img {
