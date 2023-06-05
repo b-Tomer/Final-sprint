@@ -39,7 +39,7 @@ export function TaskAttachments({ task, boardId, groupId }) {
       updatedStyle.backgroundImage = null
     } else {
       updatedStyle.backgroundImage = attachment.url
-      // updatedStyle.bgColor = null
+      updatedStyle.bgColor = null
     }
     const updatedTask = { ...task, style: updatedStyle }
     setCurrTask(updatedTask)
