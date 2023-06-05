@@ -8,7 +8,6 @@ export function DatePreview({ task }) {
     const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
 
     if (!task || !task.dueDate) return
-    console.log('in date', task)
 
     const timestamp = task.dueDate
     const date = new Date(timestamp);

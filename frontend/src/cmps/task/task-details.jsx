@@ -75,6 +75,7 @@ export function TaskDetails({
         navigate(`/board/${boardId}`)
     }
 
+
     return (
         <div
             className="modal-overlay"
@@ -96,7 +97,7 @@ export function TaskDetails({
                             task={task}
                             groupId={groupId}
                         />
-                        <TaskMenu />
+                        <TaskMenu task={task} />
                     </div>
                 </section>
             </div>
