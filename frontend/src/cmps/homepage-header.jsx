@@ -1,11 +1,11 @@
-import { ReactComponent as Logo } from '../assets/img/hompageLogo.svg'
+
 import { ReactComponent as Down } from '../assets/img/icons/down.svg'
 
 export function HomepageHeader({ handleclick }) {
     return (
         <div className="homepage-header-container">
             <div className="homepage-header-logo">
-                <Logo />
+               <h1 className='logo-title'>Trellax</h1> 
             </div>
             <nav className="homepage-header-nav">
                 <button className="homepage-header-btn">

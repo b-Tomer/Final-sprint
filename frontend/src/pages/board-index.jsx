@@ -68,7 +68,8 @@ export function BoardIndex() {
         }
     }
 
-    function onExpandLabels() {
+    function onExpandLabels(ev) {
+        ev.stopPropagation()
         setIsLabelsExpand(!isLabelsExpand)
         if (isLabelsExpand) setLabelsFont('0.75rem')
         else setLabelsFont('0px')

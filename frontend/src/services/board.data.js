@@ -116,7 +116,7 @@ export const gBoards = [
             },
         ],
         "style": {
-            "backgroundImage": "https://images.unsplash.com/photo-1562577308-9e66f0c65ce5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
+            "backgroundImage": "https://images.unsplash.com/photo-1557821552-17105176677c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80"
         },
         "groups": [
             {

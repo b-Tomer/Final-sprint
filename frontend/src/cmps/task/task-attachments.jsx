@@ -14,9 +14,9 @@ export function TaskAttachments({ task, boardId, groupId }) {
   }, [task])
 
   async function onDeleteAttachment(attachment) {
-    const updatedStyle = { ...task.style };
-    if (updatedStyle?.backgroundImg === attachment.url) {
-      updatedStyle.backgroundImg = null;
+    const updatedStyle = { ...task.style }
+    if (updatedStyle?.backgroundImage === attachment.url) {
+      updatedStyle.backgroundImage = null
     }
 
     const updatedAttachments = task.attachments.filter(
@@ -34,17 +34,17 @@ export function TaskAttachments({ task, boardId, groupId }) {
   }
 
   function onToggleTaskCover(attachment) {
-    const updatedStyle = { ...task.style };
+    const updatedStyle = { ...task.style }
     if (updatedStyle?.backgroundImage === attachment.url) {
-      updatedStyle.backgroundImage = null;
+      updatedStyle.backgroundImage = null
     } else {
-      updatedStyle.backgroundImage = attachment.url;
-      // updatedStyle.bgColor = null;
+      updatedStyle.backgroundImage = attachment.url
+      updatedStyle.bgColor = null
     }
-    const updatedTask = { ...task, style: updatedStyle };
-    setCurrTask(updatedTask);
-    console.log("task from cpm: ", updatedTask);
-    updateTask(boardId, groupId, updatedTask);
+    const updatedTask = { ...task, style: updatedStyle }
+    setCurrTask(updatedTask)
+    console.log("task from cpm: ", updatedTask)
+    updateTask(boardId, groupId, updatedTask)
   }
 
 

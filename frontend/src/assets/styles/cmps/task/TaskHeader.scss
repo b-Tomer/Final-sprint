@@ -72,10 +72,12 @@
     height: 160px;
     padding: 0;
     overflow: hidden;
-    .task-cover-img {
-        height: 160px;
-        object-fit: cover;
-    }
+    background-position: top;
+    background-repeat: no-repeat;
+        // object-fit: cover;
+    // .task-cover-img {
+    //     height: 160px;
+    // }
     
 .task-details-close {
     position: absolute;
