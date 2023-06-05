@@ -2,17 +2,26 @@ import { ReactComponent as Checklist } from '../../assets/img/icons/checklist.sv
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { updateTask } from '../../store/task.actions'
-import { ReactComponent as X } from '../../assets/img/icons/x.svg'
+import { ReactComponent as Trash } from '../../assets/img/icons/trash.svg'
 import { utilService } from '../../services/util.service'
 
 export function TaskChecklist({ task }) {
     const [currentTask, setCurrentTask] = useState(task)
     const [editing, setEditing] = useState(false)
+    const [isHovered, setIsHovered] = useState(false)
     const { boardId } = useParams()
     const { groupId } = useParams()
     const [todoTitle, setTodoTitle] = useState('')
     let progress
     useEffect(() => {}, [progress])
+
+    const handleMouseEnter = (todoId) => {
+        setIsHovered(todoId)
+    }
+
+    const handleMouseLeave = () => {
+        setIsHovered(false)
+    }
 
     const handleCheckboxChange = async (checklistId, todoId) => {
         const updatedTask = { ...currentTask }
@@ -35,8 +44,6 @@ export function TaskChecklist({ task }) {
 
     async function onAddTodo(ev, checklist) {
         ev.preventDefault()
-        console.log(todoTitle)
-        console.log(checklist)
         checklist.todos.push({ id: utilService.makeId(), title: todoTitle })
         try {
             await updateTask(boardId, groupId, task)
@@ -44,6 +51,23 @@ export function TaskChecklist({ task }) {
             console.log(err)
         } finally {
             closeNewTodo()
+        }
+    }
+
+    async function onDeleteTodo(ev, checklist, todo) {
+        ev.preventDefault()
+        console.log(todo)
+        console.log(checklist)
+        const idx = checklist.todos.findIndex(
+            (currTodo) => currTodo.id === todo.id
+        )
+        console.log(idx)
+        checklist.todos.splice(idx, 1)
+        // checklist.todos.push({ id: utilService.makeId(), title: todoTitle })
+        try {
+            await updateTask(boardId, groupId, task)
+        } catch (err) {
+            console.log(err)
         }
     }
 
@@ -86,6 +110,10 @@ export function TaskChecklist({ task }) {
                         <div className="todos">
                             {checklist.todos.map((todo) => (
                                 <div
+                                    onMouseEnter={() =>
+                                        handleMouseEnter(todo.id)
+                                    }
+                                    onMouseLeave={handleMouseLeave}
                                     className={`todo ${
                                         todo.isDone ? 'completed' : ''
                                     }`}
@@ -104,6 +132,20 @@ export function TaskChecklist({ task }) {
                                         }
                                     />
                                     <h3>{todo.title}</h3>
+                                    {isHovered === todo.id && (
+                                        <button
+                                            onClick={(event) =>
+                                                onDeleteTodo(
+                                                    event,
+                                                    checklist,
+                                                    todo
+                                                )
+                                            }
+                                            className="delete-todo-btn"
+                                        >
+                                            <Trash className="delete-todo-icon" />
+                                        </button>
+                                    )}
                                 </div>
                             ))}
                         </div>
