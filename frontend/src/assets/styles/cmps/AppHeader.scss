@@ -25,10 +25,12 @@
     }
 
     .main-nav {
-        font-size: 0.8em;
+        font-size: 14px;
         display: flex;
         padding: 12px;
         color: $clr4;
+        align-items: center;
+        align-content: center;
 
         .link-section {
             a {
@@ -36,6 +38,17 @@
                 display: flex;
                 align-items: end;
                 padding-right: 24px;
+            }
+        }
+        button {
+            width: 64px;
+            height: 32px;
+            background-color: $clr3;
+            color: $clr4;
+            border-radius: 3px;
+            font-size: 14px;
+            &:hover {
+                background-color: $clrSCROLL;
             }
         }
     }
