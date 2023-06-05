@@ -4,13 +4,15 @@ import { addBoard } from '../store/board.actions.js'
 
 import { Link, NavLink, Navigate } from 'react-router-dom'
 import cube from '../assets/img/icons/cube.svg'
-import Logo from '../assets/img/icons/logo.svg'
+// import Logo from '../assets/img/icons/logo.svg'
 
 import { ReactComponent as Down } from '../assets/img/icons/down.svg'
 import { ReactComponent as Notifications } from '../assets/img/icons/notifications.svg'
 import { ReactComponent as Info } from '../assets/img/icons/info.svg'
 import { ReactComponent as Theme } from '../assets/img/icons/theme.svg'
 import { ReactComponent as Search } from '../assets/img/icons/search.svg'
+import { ReactComponent as Logo } from '../assets/img/icons/logo.svg'
+
 import { boardService } from '../services/board.service.local.js'
 
 // import {useSelector} from 'react-redux'
@@ -73,8 +75,8 @@ export function AppHeader({ onSetfilter }) {
 
     return (
         <header className="app-header">
-            <img className="cube-img" src={cube} alt="" />
-            <img className="logo-img" src={Logo} alt="Logo" onClick={goHome} />
+            {/* <img className="cube-img" src={cube} alt="" /> */}
+            <Logo className="logo-img" onClick={goHome} />
             <div className="app-logo" onClick={goHome}>
                 <h3>Trellax</h3>
             </div>
