@@ -10,12 +10,15 @@ import { useParams } from 'react-router-dom'
 import { updateTask } from '../../store/task.actions'
 import { CLOSE_DYN_ALL_MODALS } from '../../store/system.reducer'
 import { store } from '../../store/store'
+import BasicTimePicker from '../task/basic-time-keeper'
 
 export function DynCmpDates({ task }) {
     const [selectedDate, setSelectedDate] = useState(null)
+    const [hour, setHour] = useState(0)
+    const [minute, setMinute] = useState(0)
+
     const { boardId } = useParams()
     const { groupId } = useParams()
-    const dateRef = useRef(null)
 
     function handleDateChange(value) {
         setSelectedDate(value)
@@ -26,13 +29,14 @@ export function DynCmpDates({ task }) {
         const year = selectedDate.$y
         const month = selectedDate.$M
         const day = selectedDate.$D
-        const timestamp = utilService.getTimestamp(year, month, day)
-        if (!task?.dueDate) {
-            task.dueDate = timestamp
-        } else {
-            task.dueDate =
-                utilService.getTimeInMilliseconds(task.dueDate) + timestamp
-        }
+        const timestamp = utilService.getTimestamp(
+            year,
+            month,
+            day,
+            hour,
+            minute
+        )
+        task.dueDate = timestamp
         try {
             await updateTask(boardId, groupId, task)
             store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
@@ -56,11 +60,16 @@ export function DynCmpDates({ task }) {
         <div className="time-picker-container">
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <StaticDatePicker
-                    ref={dateRef}
                     value={selectedDate}
                     onChange={(newValue) => {
                         handleDateChange(newValue)
                     }}
+                />
+                <BasicTimePicker
+                    hour={hour}
+                    setHour={setHour}
+                    minute={minute}
+                    setMinute={setMinute}
                 />
             </LocalizationProvider>
             <div className="control-btns">

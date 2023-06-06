@@ -236,8 +236,8 @@ function getTimeValues(timestamp) {
     }
 }
 
-function getTimestamp(year, month, day) {
-    const date = new Date(year, month, day)
+function getTimestamp(year, month, day, hours, minutes) {
+    const date = new Date(year, month, day, hours, minutes)
     return date.getTime()
 }
 

@@ -46,6 +46,9 @@
             height: 200px;
             min-height: auto;
         }
+        h4 {
+            font-size: 1.5rem;
+        }
     }
     .control-btns {
         display: flex;
@@ -68,6 +71,18 @@
         }
         .remove {
             color: $clr7;
+        }
+    }
+    .time-picker-container {
+        .dials {
+            display: flex;
+            select {
+                margin-inline: 10px;
+            }
+            .hours {
+            }
+            .minutes {
+            }
         }
     }
 }
