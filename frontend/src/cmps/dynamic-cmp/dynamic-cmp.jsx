@@ -6,7 +6,10 @@ import { DynCmpChecklist } from './dyn-cmp-checklist'
 import { DynCmpDates } from './dyn-cmp-dates'
 import { DynCmpAttachment } from './dyn-cmp-attachment'
 import { DynCmpAttachmentEdit } from './dyn-cpm-attachment-edit'
-import { CLOSE_DYN_ALL_MODALS, SET_MODAL_TITLE } from '../../store/system.reducer'
+import {
+    CLOSE_DYN_ALL_MODALS,
+    SET_MODAL_TITLE,
+} from '../../store/system.reducer'
 import { useSelector } from 'react-redux'
 import { store } from '../../store/store'
 import { useParams } from 'react-router-dom'
@@ -20,7 +23,7 @@ export function DynamicCmp({ task, title, setEditing }) {
 
     function onCloseDynModal() {
         store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
-        store.dispatch({ type: SET_MODAL_TITLE, title:'' })
+        store.dispatch({ type: SET_MODAL_TITLE, title: '' })
     }
 
     if (!isModalOpen) return ''
@@ -33,13 +36,31 @@ export function DynamicCmp({ task, title, setEditing }) {
                 </button>
             </div>
             <hr></hr>
-            {modalTitle === 'Dates' && <DynCmpDates />}
+            {modalTitle === 'Dates' && <DynCmpDates task={task} />}
             {modalTitle === 'Labels' && <DynCmpLabels task={task} />}
             {modalTitle === 'Members' && <DynCmpMembers task={task} />}
             {modalTitle === 'Edit label' && <DynCmpEditLabel task={task} />}
-            {modalTitle === 'Checklist' && <DynCmpChecklist task={task} onCloseDynModal={onCloseDynModal} setEditing={setEditing} />}
-            {modalTitle === 'Attachment' && <DynCmpAttachment boardId={boardId} groupId={groupId} task={task} />}
-            {modalTitle === 'Edit attachment' && <DynCmpAttachmentEdit boardId={boardId} groupId={groupId} task={task} />}
+            {modalTitle === 'Checklist' && (
+                <DynCmpChecklist
+                    task={task}
+                    onCloseDynModal={onCloseDynModal}
+                    setEditing={setEditing}
+                />
+            )}
+            {modalTitle === 'Attachment' && (
+                <DynCmpAttachment
+                    boardId={boardId}
+                    groupId={groupId}
+                    task={task}
+                />
+            )}
+            {modalTitle === 'Edit attachment' && (
+                <DynCmpAttachmentEdit
+                    boardId={boardId}
+                    groupId={groupId}
+                    task={task}
+                />
+            )}
         </div>
     )
 }

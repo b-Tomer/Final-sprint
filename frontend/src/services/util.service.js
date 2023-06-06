@@ -13,6 +13,8 @@ export const utilService = {
     handleDragUpdate,
     handleDragStart,
     getTimeValues,
+    getTimestamp,
+    getTimeInMilliseconds,
 }
 
 function makeId(length = 6) {
@@ -232,4 +234,18 @@ function getTimeValues(timestamp) {
         hour,
         minute,
     }
+}
+
+function getTimestamp(year, month, day) {
+    const date = new Date(year, month, day)
+    return date.getTime()
+}
+
+function getTimeInMilliseconds(timestamp) {
+    const date = new Date(timestamp)
+    const hours = date.getHours()
+    const minutes = date.getMinutes()
+    const hoursInMilliseconds = hours * 60 * 60 * 1000
+    const minutesInMilliseconds = minutes * 60 * 1000
+    return hoursInMilliseconds + minutesInMilliseconds
 }

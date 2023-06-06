@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import dayjs from 'dayjs'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
@@ -8,41 +8,55 @@ import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker'
 import { utilService } from '../../services/util.service'
 import { useParams } from 'react-router-dom'
 import { updateTask } from '../../store/task.actions'
+import { CLOSE_DYN_ALL_MODALS } from '../../store/system.reducer'
+import { store } from '../../store/store'
 
 export function DynCmpDates({ task }) {
     const [selectedDate, setSelectedDate] = useState(null)
-    const [currTask, setCurrTask] = useState(task)
     const { boardId } = useParams()
     const { groupId } = useParams()
+    const dateRef = useRef(null)
 
     function handleDateChange(value) {
-        // console.log(value)
         setSelectedDate(value)
-        // console.log(task)
-        // console.log(task.dueDate)
-        // console.log(utilService.getTimeValues(task.dueDate))
     }
 
-    function saveDate() {}
+    async function saveDate() {
+        if (!selectedDate) return
+        const year = selectedDate.$y
+        const month = selectedDate.$M
+        const day = selectedDate.$D
+        const timestamp = utilService.getTimestamp(year, month, day)
+        if (!task?.dueDate) {
+            task.dueDate = timestamp
+        } else {
+            task.dueDate =
+                utilService.getTimeInMilliseconds(task.dueDate) + timestamp
+        }
+        try {
+            await updateTask(boardId, groupId, task)
+            store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
+        } catch (error) {
+            console.log('cant update task')
+        }
+    }
 
     async function removeDate() {
-        console.log(task)
         if (!task?.dueDate) return
-        console.log(task)
         task.dueDate = null
-        console.log(task)
-
-        // try {
-        //     await updateTask(boardId, groupId, task)
-        // } catch (error) {
-        //     console.log('cant update task')
-        // }
+        try {
+            await updateTask(boardId, groupId, task)
+            store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
+        } catch (error) {
+            console.log('cant update task')
+        }
     }
 
     return (
         <div className="time-picker-container">
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <StaticDatePicker
+                    ref={dateRef}
                     value={selectedDate}
                     onChange={(newValue) => {
                         handleDateChange(newValue)
