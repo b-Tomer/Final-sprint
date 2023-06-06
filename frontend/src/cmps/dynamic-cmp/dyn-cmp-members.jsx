@@ -1,8 +1,6 @@
 import { useSelector } from 'react-redux'
 import { updateTask } from '../../store/task.actions';
 
-
-
 export function DynCmpMembers({ task }) {
 
     const { board } = useSelector((storeState) => storeState.boardModule)

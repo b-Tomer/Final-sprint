@@ -4,15 +4,19 @@ import { useParams } from 'react-router-dom'
 import { updateTask } from '../../store/task.actions'
 import { ReactComponent as Trash } from '../../assets/img/icons/trash.svg'
 import { utilService } from '../../services/util.service'
+import { TodoEdit } from './checklists/todo-edit'
+import { TodoContent } from './checklists/todo-content'
 
 export function TaskChecklist({ task }) {
     const [currentTask, setCurrentTask] = useState(task)
     const [editing, setEditing] = useState(false)
     const [isHovered, setIsHovered] = useState(false)
+    const [todoToEdit, setTodoToEdit] = useState(null)
     const { boardId } = useParams()
     const { groupId } = useParams()
     const [todoTitle, setTodoTitle] = useState('')
     const textareaRef = useRef(null)
+    const todoRef = useRef(null)
     let progress
     useEffect(() => {}, [progress])
 
@@ -39,10 +43,10 @@ export function TaskChecklist({ task }) {
         setEditing(false)
         setTodoTitle('')
     }
+
     async function openNewTodo() {
         await setEditing(true)
-        // console.log(textareaRef)
-
+        setTodoToEdit(null)
         textareaRef.current.focus()
     }
 
@@ -54,7 +58,6 @@ export function TaskChecklist({ task }) {
         } catch (err) {
             console.log(err)
         } finally {
-            // closeNewTodo()
             setTodoTitle('')
             openNewTodo()
         }
@@ -81,6 +84,16 @@ export function TaskChecklist({ task }) {
         const { value } = ev.target
         setTodoTitle(value)
     }
+
+    function selectTodoToEdit(ev, todo) {
+        setTodoToEdit(todo.id)
+        setEditing(false)
+    }
+
+    // function selectCheclistToEdit(ev, checklist) {
+    //     setTodoToEdit(todo.id)
+    //     setEditing(false)
+    // }
 
     if (!task.checklists || !task.checklists.length) return null
     return (
@@ -114,49 +127,39 @@ export function TaskChecklist({ task }) {
                             </div>
                         </div>
                         <div className="todos">
-                            {checklist.todos.map((todo) => (
-                                <div
-                                    onMouseEnter={() =>
-                                        handleMouseEnter(todo.id)
-                                    }
-                                    onMouseLeave={handleMouseLeave}
-                                    className={`todo ${
-                                        todo.isDone ? 'completed' : ''
-                                    }`}
-                                    key={todo.id}
-                                >
-                                    <div className="todo-content">
-                                        <input
-                                            type="checkbox"
-                                            id="todo"
-                                            name="todo"
-                                            checked={todo.isDone}
-                                            onChange={() =>
-                                                handleCheckboxChange(
-                                                    checklist.id,
-                                                    todo.id
-                                                )
+                            {checklist.todos.map((todo) => {
+                                if (todoToEdit !== todo.id) {
+                                    return (
+                                        <TodoContent
+                                            todo={todo}
+                                            handleMouseEnter={handleMouseEnter}
+                                            handleMouseLeave={handleMouseLeave}
+                                            handleCheckboxChange={
+                                                handleCheckboxChange
                                             }
+                                            checklist={checklist}
+                                            isHovered={isHovered}
+                                            onDeleteTodo={onDeleteTodo}
+                                            Trash={Trash}
+                                            key={todo.id}
+                                            selectTodoToEdit={selectTodoToEdit}
                                         />
-                                        <h3>{todo.title}</h3>
-                                    </div>
-
-                                    {isHovered === todo.id && (
-                                        <button
-                                            onClick={(event) =>
-                                                onDeleteTodo(
-                                                    event,
-                                                    checklist,
-                                                    todo
-                                                )
-                                            }
-                                            className="delete-todo-btn"
-                                        >
-                                            <Trash className="delete-todo-icon" />
-                                        </button>
-                                    )}
-                                </div>
-                            ))}
+                                    )
+                                } else if (todoToEdit === todo.id) {
+                                    return (
+                                        <TodoEdit
+                                            todo={todo}
+                                            key={todo.id}
+                                            setTodoToEdit={setTodoToEdit}
+                                            boardId={boardId}
+                                            groupId={groupId}
+                                            task={task}
+                                            checklist={checklist}
+                                            setEditing={setEditing}
+                                        />
+                                    )
+                                }
+                            })}
                         </div>
                         {!editing && (
                             <button
