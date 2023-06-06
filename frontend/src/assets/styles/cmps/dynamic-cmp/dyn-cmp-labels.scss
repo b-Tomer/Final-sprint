@@ -1,0 +1,52 @@
+.dyn-cmp-labels-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+
+    h3 {
+        font-size: 0.75rem;
+        padding-left: 8px;
+    }
+
+    .dyn-cmp-label {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        height: 36px;
+        padding: 0px 0px 4px 4px;
+
+
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        .label-title {
+            display: flex;
+            width: 200px;
+            height: 32px;
+            padding: 0px 12px;
+            border-radius: 3px;
+            align-items: center;
+            font-weight: 500;
+            font-size: 0.875rem;
+            color: $clr5 ;
+            margin-left: 10px;
+
+        }
+
+        .edit-label-btn {
+            height: 100%;
+            background-color: transparent;
+            margin: auto;
+
+            .edit-label-img {
+                transform: translateY(2px);
+                width: 1rem;
+                height: 1rem;
+            }
+        }
+    }
+}

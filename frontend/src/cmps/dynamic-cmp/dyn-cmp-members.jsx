@@ -40,7 +40,6 @@ export function DynCmpMembers({ task }) {
 
 
     if (!task) return ''
-
     return (
         <div className='dyn-cmp-members-container'>
             <h3>Board members</h3>
@@ -58,7 +57,7 @@ export function DynCmpMembers({ task }) {
                                 type="checkbox"
                                 name="checkbox"
                                 checked={isMemberChecked}
-                                onClick={(ev) => onToggleCheckedMember(ev, member._id)}
+                                onChange={(ev) => onToggleCheckedMember(ev, member._id)}
                                 className="checkbox" />
                         </label>
                     )

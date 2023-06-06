@@ -31,7 +31,7 @@ export function DynamicCmp({ task, title }) {
             <hr></hr>
 
             {title === "Members" && <DynCmpMembers task={task} />}
-            {title === "Labels" && <DynCmpLabels />}
+            {title === "Labels" && <DynCmpLabels task={task} />}
             {title === "Checklist" && <DynCmpChecklist />}
             {title === "Dates" && <DynCmpDates />}
             {title === "Attachment" && <DynCmpAttachment />}

@@ -2,7 +2,6 @@ import { useState } from 'react';
 
 import { ReactComponent as Clock } from '../../assets/img/icons/clock.svg'
 import { ReactComponent as Member } from '../../assets/img/icons/member.svg'
-import { ReactComponent as Info } from '../../assets/img/icons/info.svg'
 import { ReactComponent as CustomFields } from '../../assets/img/icons/custom-fields.svg'
 import { ReactComponent as Label } from '../../assets/img/icons/label.svg'
 import { ReactComponent as CheckList } from '../../assets/img/icons/checklist.svg'
