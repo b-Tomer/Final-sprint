@@ -8,10 +8,11 @@ export function TaskMainDetails({
     boardId,
     setEditing,
     editing,
+    setDynamicCmpName,
 }) {
     return (
         <section className="task-main-details">
-            <TaskData task={task} />
+            <TaskData task={task} setDynamicCmpName={setDynamicCmpName} />
             <TaskMainContent
                 boardId={boardId}
                 groupId={groupId}

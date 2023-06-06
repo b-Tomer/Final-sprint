@@ -9,14 +9,23 @@ import { ReactComponent as Attachment } from '../../assets/img/icons/attachment.
 
 import { DynamicCmp } from '../dynamic-cmp/dynamic-cmp'
 import { store } from '../../store/store'
-import { OPEN_DYN_MODAL } from '../../store/system.reducer'
+import { CLOSE_DYN_EDIT_ATC, CLOSE_DYN_MENU_MODAL, OPEN_DYN_MENU_MODAL, OPEN_DYN_MODAL, SET_MODAL_TITLE } from '../../store/system.reducer'
+import { useSelector } from 'react-redux'
 
-export function TaskMenu({ task, setEditing }) {
-    const [dynamicCmpName, setDynamicCmpName] = useState(null)
+export function TaskMenu({
+    task,
+}) {
 
-    function openDynamicCmp(name) {
+    const { modalTitle } = useSelector((storeState) => storeState.systemModule)
+    const { isMenuModalOpen } = useSelector((storeState) => storeState.systemModule)
+
+    function openDynamicCmp(title) {
+        store.dispatch({ type: CLOSE_DYN_MENU_MODAL })
+        store.dispatch({ type: CLOSE_DYN_EDIT_ATC })
         store.dispatch({ type: OPEN_DYN_MODAL })
-        setDynamicCmpName(name)
+        store.dispatch({ type: OPEN_DYN_MENU_MODAL })
+        store.dispatch({ type: SET_MODAL_TITLE, title })
+        console.log(title);
     }
 
     return (
@@ -66,13 +75,9 @@ export function TaskMenu({ task, setEditing }) {
                     <span>Custom Fields</span>{' '}
                 </button>
             </div>
-            {dynamicCmpName && (
-                <DynamicCmp
-                    task={task}
-                    title={dynamicCmpName}
-                    setEditing={setEditing}
-                />
-            )}
+
+            {isMenuModalOpen && <DynamicCmp task={task} title={modalTitle} />}
+
         </div>
     )
 }
