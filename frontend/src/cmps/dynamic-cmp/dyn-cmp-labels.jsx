@@ -42,7 +42,7 @@ export function DynCmpLabels({ task }) {
 
     return (
         <div className='dyn-cmp-labels-container'>
-            {/* <h3>Board members</h3>
+            <h3>Board members</h3>
             <div className="labels-container" >
                 {board.labels.map(label => {
                     let isLabelChecked = task.labelIds ? task.labelIds.includes(label.id) : false;
@@ -62,7 +62,7 @@ export function DynCmpLabels({ task }) {
                         </label>
                     )
                 })}
-            </div> */}
+            </div>
             <DynCmpEditLabel />
         </div>
     )
