@@ -1,6 +1,5 @@
 export const utilService = {
     makeId,
-    makeLorem,
     getRandomIntInclusive,
     debounce,
     randomPastTime,
@@ -10,6 +9,9 @@ export const utilService = {
     getModalPositionOnTop,
     checkOutOfBoundY,
     checkOutOfBoundX,
+    handleDragEnd,
+    handleDragUpdate,
+    handleDragStart,
 }
 
 function makeId(length = 6) {
@@ -21,49 +23,6 @@ function makeId(length = 6) {
         txt += possible.charAt(Math.floor(Math.random() * possible.length))
     }
 
-    return txt
-}
-
-function makeLorem(size = 100) {
-    var words = [
-        'The sky',
-        'above',
-        'the port',
-        'was',
-        'the color of television',
-        'tuned',
-        'to',
-        'a dead channel',
-        '.',
-        'All',
-        'this happened',
-        'more or less',
-        '.',
-        'I',
-        'had',
-        'the story',
-        'bit by bit',
-        'from various people',
-        'and',
-        'as generally',
-        'happens',
-        'in such cases',
-        'each time',
-        'it',
-        'was',
-        'a different story',
-        '.',
-        'It',
-        'was',
-        'a pleasure',
-        'to',
-        'burn',
-    ]
-    var txt = ''
-    while (size > 0) {
-        size--
-        txt += words[Math.floor(Math.random() * words.length)] + ' '
-    }
     return txt
 }
 
@@ -128,4 +87,131 @@ function checkOutOfBoundX(windowPos, elePos) {
     if (windowPos.x - elePos.x < 0) {
         return true
     } else return false
+}
+
+function handleDragStart(event, draggedDOM) {
+    const { clientHeight, clientWidth } = draggedDOM
+    const sourceIndex = event.source.index
+    let clientX
+    let clientY
+
+    if (event.type === 'group') {
+        clientX =
+            parseFloat(
+                window.getComputedStyle(draggedDOM.parentNode).paddingLeft
+            ) +
+            [...draggedDOM.parentNode.children]
+                .slice(0, sourceIndex)
+                .reduce((total, curr) => {
+                    return (
+                        total +
+                        curr.clientWidth +
+                        parseFloat(getComputedStyle(curr).marginRight)
+                    )
+                }, 0) -
+            draggedDOM.parentNode.scrollLeft
+
+        clientY = parseFloat(window.getComputedStyle(draggedDOM.parentNode))
+    }
+
+    return {
+        clientHeight,
+        clientWidth,
+        clientX,
+        clientY,
+    }
+}
+
+function handleDragUpdate(event, draggedDOM) {
+    const { clientHeight, clientWidth } = draggedDOM
+    const destinationIndex = event.destination.index
+    const sourceIndex = event.source.index
+    let clientX = 0
+    let clientY = 0
+
+    const childrenArray = [...draggedDOM.parentNode.children]
+    const movedItem = childrenArray[sourceIndex]
+    childrenArray.splice(sourceIndex, 1)
+
+    let updatedArray = [
+        ...childrenArray.slice(0, destinationIndex),
+        movedItem,
+        ...childrenArray.slice(destinationIndex + 1),
+    ]
+
+    if (event.type === 'group') {
+        clientX =
+            parseFloat(
+                window.getComputedStyle(draggedDOM.parentNode).paddingLeft
+            ) +
+            updatedArray.slice(0, destinationIndex).reduce((total, curr) => {
+                return total + curr.clientWidth + 8
+            }, 0) -
+            draggedDOM.parentNode.scrollLeft
+        clientY = parseFloat(window.getComputedStyle(draggedDOM.parentNode))
+    }
+
+    return { clientHeight, clientWidth, clientX, clientY }
+}
+
+function handleDragEnd(newBoard, destination, source, type) {
+    const newBoardGroups = Array.from(newBoard.groups) // breaks pointer so we don't change the final object we send
+
+    // reorder groups in the group list
+    if (type === 'group') {
+        // relocating the group in the groups array and sends the new board with updated groups array
+        newBoardGroups.splice(source.index, 1)
+        newBoardGroups.splice(
+            destination.index,
+            0,
+            newBoard.groups[source.index]
+        )
+        newBoard.groups = newBoardGroups
+        return newBoard
+
+        // reorder tasks across the groups
+    } else if (type === 'task') {
+        const prevGroupIdx = newBoardGroups.findIndex(
+            (group) => group.id === source.droppableId
+        )
+        const newGroupIdx = newBoardGroups.findIndex(
+            (group) => group.id === destination.droppableId
+        )
+        const prevGroup = newBoardGroups[prevGroupIdx]
+        const newGroup = newBoardGroups[newGroupIdx]
+
+        // in case relocating task in the same group
+        if (prevGroupIdx === newGroupIdx) {
+            // in case the new task index is smaller
+            if (destination.index < source.index) {
+                newGroup.tasks.splice(
+                    destination.index,
+                    0,
+                    newBoard.groups[prevGroupIdx].tasks[source.index]
+                )
+                prevGroup.tasks.splice(source.index + 1, 1)
+
+                // in case the new task index is bigger
+            } else {
+                newGroup.tasks.splice(
+                    destination.index + 1,
+                    0,
+                    newBoard.groups[prevGroupIdx].tasks[source.index]
+                )
+                prevGroup.tasks.splice(source.index, 1)
+            }
+            // in case new task location is on different group
+        } else {
+            newGroup.tasks.splice(
+                destination.index,
+                0,
+                newBoard.groups[prevGroupIdx].tasks[source.index]
+            )
+            prevGroup.tasks.splice(source.index, 1)
+        }
+
+        newBoard.groups[newGroupIdx] = newGroup
+        newBoard.groups[prevGroupIdx] = prevGroup
+        return newBoard
+    }
 }

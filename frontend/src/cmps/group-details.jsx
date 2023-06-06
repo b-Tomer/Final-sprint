@@ -6,10 +6,7 @@ import { groupService } from '../services/group.service.local'
 import { ReactComponent as X } from '../assets/img/icons/x.svg'
 import { taskService } from '../services/task.service.local'
 import { removeTask, saveTask } from '../store/task.actions'
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
-import { updateBoard } from '../store/board.actions'
-import { useSelector } from 'react-redux'
-
+import { Draggable, Droppable } from 'react-beautiful-dnd'
 
 export function GroupDetails({
     group,
@@ -21,7 +18,9 @@ export function GroupDetails({
     taskEdit,
     onExpandLabels,
     isLabelsExpand,
-    labelsFont
+    labelsFont,
+    provided,
+    isDragging,
 }) {
     const [groupToUpdate, setGroupToUpdate] = useState(group)
     const [isAddTaskOpen, setIsAddTaskOpen] = useState(false)
@@ -54,7 +53,6 @@ export function GroupDetails({
             title: value,
         }))
     }
-
 
     async function onAddTask(ev) {
         ev.preventDefault()
@@ -89,11 +87,14 @@ export function GroupDetails({
 if(!group)
     return (
         <section
-            className="group-container"
+            className={`group-container ${isDragging ? 'dragging' : ''}`}
             style={{
                 display: 'grid',
                 gridTemplateRows: isAddTaskOpen ? '47px 1fr' : '47px 1fr 43px',
             }}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            ref={provided.innerRef}
         >
             <div className="group-header">
                 <input
@@ -103,75 +104,78 @@ if(!group)
                     onChange={onChangegroupTitle}
                 />
                 <button>
-                    <img onClick={() => onRemoveGroup(group)} src={dots} alt="more" />
+                    <img
+                        onClick={() => onRemoveGroup(group)}
+                        src={dots}
+                        alt="more"
+                    />
                 </button>
             </div>
-            <section className="group-content">
-                <DragDropContext onDragEnd={handleOnDraggEnd}>
-                    <Droppable droppableId="tasks">
-                        {(provided) => (
-                            <div className="group-draggable-list" {...provided.droppableProps} ref={provided.innerRef}>
-
-                                {group.tasks.map((task, index) => (
-                                    <Draggable key={task.id} draggableId={task.id} index={index}>
-                                        {(provided, snapshot) => (
-                                            <div
-                                                className={`task-card ${snapshot.isDragging ? 'dragging' : ''}`}
-                                                ref={provided.innerRef}
-                                                {...provided.draggableProps}
-                                                {...provided.dragHandleProps}
-                                            >
-                                                <TaskPreview
-                                                    labelsFont={labelsFont}
-                                                    isLabelsExpand={isLabelsExpand}
-                                                    onExpandLabels={onExpandLabels}
-                                                    onRemoveTask={onRemoveTask}
-                                                    task={task}
-                                                    key={task.id}
-                                                    boardId={boardId}
-                                                    groupId={group.id}
-                                                    setTaskEdit={setTaskEdit}
-                                                    taskEdit={taskEdit}
-                                                    setIsTaskDetailsOpen={setIsTaskDetailsOpen}
-                                                    isTaskDetailsOpen={isTaskDetailsOpen}
-                                                />
-                                            </div>
-                                        )}
-                                    </Draggable>
-                                ))}
-                                {provided.placeholder}
+            <Droppable droppableId={group.id} type="task">
+                {(provided) => (
+                    <section
+                        className={`group-content `}
+                        {...provided.droppableProps}
+                        ref={provided.innerRef}
+                    >
+                        {group.tasks.map((task, index) => (
+                            <Draggable
+                                draggableId={task.id}
+                                key={task.id}
+                                index={index}
+                            >
+                                {(provided, snapshot) => (
+                                    <TaskPreview
+                                        labelsFont={labelsFont}
+                                        isLabelsExpand={isLabelsExpand}
+                                        onExpandLabels={onExpandLabels}
+                                        onRemoveTask={onRemoveTask}
+                                        task={task}
+                                        key={task.id}
+                                        boardId={boardId}
+                                        groupId={group.id}
+                                        setTaskEdit={setTaskEdit}
+                                        taskEdit={taskEdit}
+                                        setIsTaskDetailsOpen={
+                                            setIsTaskDetailsOpen
+                                        }
+                                        isTaskDetailsOpen={isTaskDetailsOpen}
+                                        provided={provided}
+                                        isDragging={snapshot.isDragging}
+                                    />
+                                )}
+                            </Draggable>
+                        ))}
+                        {provided.placeholder}
+                        {isAddTaskOpen && (
+                            <div className="task-container">
+                                <form onSubmit={onAddTask}>
+                                    <input
+                                        placeholder="Enter a title for this card..."
+                                        className="add-list-input"
+                                        value={taskTitle}
+                                        onChange={handleTaskTitle}
+                                    />
+                                    <div className="add-btns">
+                                        <button
+                                            onClick={onAddTask}
+                                            className="add-item-btn"
+                                        >
+                                            Add card
+                                        </button>
+                                        <button
+                                            onClick={onAddClose}
+                                            className="svg-holder"
+                                        >
+                                            <X className="list-icon icon-big" />
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                         )}
-                    </Droppable>
-                </DragDropContext>
-
-                {isAddTaskOpen && (
-                    <div className="task-container">
-                        <form onSubmit={onAddTask}>
-                            <input
-                                placeholder="Enter a title for this card..."
-                                className="add-list-input"
-                                value={taskTitle}
-                                onChange={handleTaskTitle}
-                            />
-                            <div className="add-btns">
-                                <button
-                                    onClick={onAddTask}
-                                    className="add-item-btn"
-                                >
-                                    Add card
-                                </button>
-                                <button
-                                    onClick={onAddClose}
-                                    className="svg-holder"
-                                >
-                                    <X className="list-icon icon-big" />
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+                    </section>
                 )}
-            </section>
+            </Droppable>
             <div className="group-footer">
                 {!isAddTaskOpen && (
                     <button onClick={onOpenAddTask}>

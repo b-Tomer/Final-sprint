@@ -6,15 +6,16 @@ import { ReactComponent as Trash } from '../../assets/img/icons/trash.svg'
 import { utilService } from '../../services/util.service'
 import { TodoEdit } from './checklists/todo-edit'
 import { TodoContent } from './checklists/todo-content'
+import { TodoNew } from './checklists/todo-new'
 
-export function TaskChecklist({ task }) {
+export function TaskChecklist({ task, setEditing, editing }) {
     const [currentTask, setCurrentTask] = useState(task)
-    const [editing, setEditing] = useState(false)
     const [isHovered, setIsHovered] = useState(false)
     const [todoToEdit, setTodoToEdit] = useState(null)
     const { boardId } = useParams()
     const { groupId } = useParams()
     const [todoTitle, setTodoTitle] = useState('')
+    const [checklistToEdit, setChecklistToEdit] = useState(null)
     const textareaRef = useRef(null)
     const todoRef = useRef(null)
     let progress
@@ -44,9 +45,11 @@ export function TaskChecklist({ task }) {
         setTodoTitle('')
     }
 
-    async function openNewTodo() {
+    async function openNewTodo(checklist) {
         await setEditing(true)
+        await setChecklistToEdit(checklist.id)
         setTodoToEdit(null)
+        console.log(textareaRef.current)
         textareaRef.current.focus()
     }
 
@@ -59,7 +62,7 @@ export function TaskChecklist({ task }) {
             console.log(err)
         } finally {
             setTodoTitle('')
-            openNewTodo()
+            openNewTodo(checklist)
         }
     }
 
@@ -72,7 +75,18 @@ export function TaskChecklist({ task }) {
         )
         console.log(idx)
         checklist.todos.splice(idx, 1)
-        // checklist.todos.push({ id: utilService.makeId(), title: todoTitle })
+        try {
+            await updateTask(boardId, groupId, task)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    async function deleteChecklist(checklist) {
+        const idx = task.checklists.findIndex(
+            (currChecklist) => currChecklist.id === checklist.id
+        )
+        task.checklists.splice(idx, 1)
         try {
             await updateTask(boardId, groupId, task)
         } catch (err) {
@@ -90,18 +104,15 @@ export function TaskChecklist({ task }) {
         setEditing(false)
     }
 
-    // function selectCheclistToEdit(ev, checklist) {
-    //     setTodoToEdit(todo.id)
-    //     setEditing(false)
-    // }
-
     if (!task.checklists || !task.checklists.length) return null
     return (
         <div className="checklists-container">
             {task.checklists.map((checklist) => {
                 const doneTodos = checklist.todos.filter((todo) => todo.isDone)
-                const progress =
-                    (doneTodos.length / checklist.todos.length) * 100
+                let progress = (doneTodos.length / checklist.todos.length) * 100
+                if (!checklist.todos.length) {
+                    progress = 0
+                }
                 const isCompleted = progress === 100
 
                 return (
@@ -109,7 +120,9 @@ export function TaskChecklist({ task }) {
                         <div className="checklist-title">
                             <Checklist className="task-content-icon" />
                             <h3>{checklist.title}</h3>
-                            <button>Delete</button>
+                            <button onClick={() => deleteChecklist(checklist)}>
+                                Delete
+                            </button>
                         </div>
                         <div className="progress-bar">
                             <span>{progress.toFixed(0)}%</span>
@@ -161,41 +174,17 @@ export function TaskChecklist({ task }) {
                                 }
                             })}
                         </div>
-                        {!editing && (
-                            <button
-                                onClick={openNewTodo}
-                                className="new-checklist-btn"
-                            >
-                                Add an item
-                            </button>
-                        )}
-                        {editing && (
-                            <div className="new-checklist-menu">
-                                <form
-                                    onSubmit={(event) =>
-                                        onAddTodo(event, checklist)
-                                    }
-                                >
-                                    <textarea
-                                        ref={textareaRef}
-                                        placeholder="Add an item"
-                                        onChange={handleTodoTitle}
-                                        value={todoTitle}
-                                    />
-                                    <div className="todo-btns">
-                                        <button className="add-item-btn">
-                                            Add
-                                        </button>
-                                        <button
-                                            className="cancel-btn"
-                                            onClick={closeNewTodo}
-                                        >
-                                            Cancel
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        )}
+                        <TodoNew
+                            checklist={checklist}
+                            editing={editing}
+                            openNewTodo={openNewTodo}
+                            checklistToEdit={checklistToEdit}
+                            onAddTodo={onAddTodo}
+                            textareaRef={textareaRef}
+                            handleTodoTitle={handleTodoTitle}
+                            todoTitle={todoTitle}
+                            closeNewTodo={closeNewTodo}
+                        />
                     </div>
                 )
             })}
