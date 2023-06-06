@@ -1,0 +1,13 @@
+.colors-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+
+    .color {
+        position: relative;
+        box-sizing: border-box;
+        border-radius: 3px;
+        height: 32px
+    }
+
+}

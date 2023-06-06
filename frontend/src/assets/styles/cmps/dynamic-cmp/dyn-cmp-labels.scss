@@ -35,6 +35,14 @@
             color: $clr5 ;
             margin-left: 10px;
 
+            &:hover {
+                filter: brightness(80%);
+            }
+
+            &::marker {
+                border: 2px solid black;
+            }
+
         }
 
         .edit-label-btn {
