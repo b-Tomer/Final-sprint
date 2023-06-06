@@ -6,7 +6,6 @@ import { DynCmpChecklist } from './dyn-cmp-checklist'
 import { DynCmpDates } from './dyn-cmp-dates'
 import { DynCmpAttachment } from './dyn-cmp-attachment'
 import { DynCmpAttachmentEdit } from './dyn-cpm-attachment-edit'
-import { useEffect, useState } from 'react'
 import { CLOSE_DYN_MODAL } from '../../store/system.reducer'
 import { useSelector } from 'react-redux'
 import { store } from '../../store/store'
@@ -28,8 +27,8 @@ export function DynamicCmp({ task, title }) {
                 <div className="dynamic-cmp-header-title">{title}</div>
                 <button
                     className="dynamic-cmp-close"
-                    onClick={onCloseDynModal}
-                > <X className="task-icon-img" />
+                    onClick={onCloseDynModal}>
+                    <X className="task-icon-img" />
                 </button>
             </div>
             <hr></hr>
@@ -38,7 +37,7 @@ export function DynamicCmp({ task, title }) {
             {title === "Labels" && <DynCmpLabels task={task} />}
             {title === "Checklist" && <DynCmpChecklist />}
             {title === "Dates" && <DynCmpDates />}
-            {title === "Attachment" && <DynCmpAttachment />}
+            {title === "Attachment" && <DynCmpAttachment task={task} />}
             {title === "Edit attachment" && <DynCmpAttachmentEdit task={task} />}
         </div>
     )

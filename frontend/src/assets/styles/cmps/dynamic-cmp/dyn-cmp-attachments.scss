@@ -1,0 +1,54 @@
+.dyn-cmp-attachments-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+
+    h3 {
+        font-size: 0.75rem;
+        padding-left: 8px;
+    }
+
+    hr {
+        margin: 10px 0;
+        border-color: $clr1;
+    }
+
+    .upload-btn {
+        display: none;
+    }
+
+    .upload-label {
+        @include task-ligth-btn();
+        border-radius: 3px;
+        width: 100%;
+        display: inline-block;
+    }
+
+    .atc-link-input {
+        margin: 4px 0 12px;
+        width: 100%;
+        background-color: #fafbfc;
+        border: none;
+        border-radius: 3px;
+        box-shadow: inset 0 0 0 2px #091E4224;
+        box-sizing: border-box;
+        display: block;
+        line-height: 20px;
+        padding: 8px 12px;
+        transition-duration: 85ms;
+        transition-property: background-color, border-color, box-shadow;
+        transition-timing-function: ease;
+
+        &:focus {
+            background-color: $clr1;
+            box-shadow: rgb(56, 139, 255) 0px 0px 0px 2px inset;
+        }
+    }
+
+    .attach-btn {
+        padding: 6px 12px;
+        text-align: center;
+        line-height: 20px;
+        font-size: 0.875rem;
+    }
+}

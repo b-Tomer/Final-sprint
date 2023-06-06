@@ -1,3 +1,15 @@
+@mixin task-ligth-btn() {
+    margin-left: auto;
+    padding: 7px 7px;
+    color: $clr7;
+    margin-right: 10px;
+    border-radius: 5px;
+    background-color: $clrTodoBg;
+    &:hover {
+        background-color: $clrH;
+    }
+}
+
 // /* Breakpoint mixins */
 
 // @mixin for-mobile-layout {

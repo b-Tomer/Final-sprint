@@ -2,18 +2,31 @@
 import { useSelector } from 'react-redux'
 import { ReactComponent as Edit } from '../../assets/img/icons/edit.svg'
 import React, { useState } from 'react';
+import { updateTask } from '../../store/task.actions';
 
 export function DynCmpLabels({ task }) {
     const { board } = useSelector((storeState) => storeState.boardModule)
 
+    function findGroupIdByTaskId(board, taskId) {
+        if (!Array.isArray(board.groups)) {
+            return null
+        }
+        for (const group of board.groups) {
+            if (!Array.isArray(group.tasks)) {
+                continue
+            }
+            const foundTask = group.tasks.find(task => task.id === taskId)
+            if (foundTask) {
+                return group.id
+            }
+        }
+        return null
+    }
 
     function onToggleCheckedLabel(ev, labelId) {
         const checked = ev.target.checked;
 
-        console.log(checked)
-        console.log(labelId)
-
-
+        console.log(task.labelIds)
         if (!task.labelIds) {
             task.labelIds = [labelId]
         }
@@ -23,18 +36,15 @@ export function DynCmpLabels({ task }) {
                 task.labelIds.splice(labelIndex, 1);
             } else task.labelIds.push(labelId)
         }
-        // updateTask(board._id, findGroupIdByTaskId(board, task.id), task)
+        updateTask(board._id, findGroupIdByTaskId(board, task.id), task)
     }
-
-
-
 
     return (
         <div className='dyn-cmp-labels-container'>
             <h3>Board members</h3>
             <div className="labels-container" >
                 {board.labels.map(label => {
-                    const isLabelChecked = task.labelIds ? task.labelIds.includes(label.id) : false;
+                    let isLabelChecked = task.labelIds ? task.labelIds.includes(label.id) : false;
                     return (
                         <label key={label.id} className="dyn-cmp-label">
                             <input
@@ -42,9 +52,7 @@ export function DynCmpLabels({ task }) {
                                 type="checkbox"
                                 name="checkbox"
                                 checked={isLabelChecked}
-                                onChange={(ev) => {
-                                    onToggleCheckedLabel(ev, label.id)
-                                }}
+                                onChange={(ev) => onToggleCheckedLabel(ev, label.id)}
                                 className="checkbox" />
                             <div className="label-title" style={{ backgroundColor: label.color }}>{label.title}</div>
                             <button className='edit-label-btn'>
