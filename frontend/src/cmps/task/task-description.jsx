@@ -10,13 +10,13 @@ export function TaskDescription({ boardId, groupId, task }) {
     const [description, setDescription] = useState(task.description || '')
     const textRef = useRef(null)
     const menuRef = useRef(null)
-    useClickOutside(menuRef, onCancelEditing)
+    useClickOutside(menuRef, onClickOutside)
 
     useEffect(() => {
         if (textRef.current) {
-          textRef.current.selectionStart = textRef.current.selectionEnd = textRef.current.value.length;
+            textRef.current.selectionStart = textRef.current.selectionEnd = textRef.current.value.length;
         }
-      }, [])
+    }, [])
 
     function onSaveDescription() {
         setIsEditing(false)
@@ -30,8 +30,14 @@ export function TaskDescription({ boardId, groupId, task }) {
         setDescription(value)
     }
 
+    function onClickOutside(){
+        if (textRef.current && textRef.current !== document.activeElement) {
+            setIsEditing(false)
+          }
+    }
+
     function onCancelEditing() {
-        setIsEditing(false);
+        setIsEditing(false)
         setDescription(task.description || '')
     }
 
@@ -43,14 +49,15 @@ export function TaskDescription({ boardId, groupId, task }) {
     function adjustTextareaHeight() {
         const textarea = textRef.current;
         if (textarea) {
-          textarea.style.height = 'auto';
-          textarea.style.height = `${textarea.scrollHeight}px`;
+            textarea.style.height = 'auto';
+            textarea.style.height = `${textarea.scrollHeight}px`;
         }
-      }
+    }
 
     if (!task) return ''
     return (
         <div className="description">
+
             <div className="description-title">
                 <Description className="task-content-icon" />
                 <h3>Description</h3>
@@ -67,7 +74,7 @@ export function TaskDescription({ boardId, groupId, task }) {
                         e.target.selectionStart = e.target.selectionEnd = e.target.value.length
                         adjustTextareaHeight()
                         setIsEditing(true)
-                      }}
+                    }}
                 ></textarea>
             </div>}
             {task.description && !isEditing && (
@@ -83,6 +90,8 @@ export function TaskDescription({ boardId, groupId, task }) {
                 </button>
             </div>}
 
+            <div ref={menuRef} className='desc-overlay'>
+            </div>
         </div>
     )
 }
