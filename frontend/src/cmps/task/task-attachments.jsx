@@ -3,7 +3,7 @@ import { ReactComponent as Attachments } from '../../assets/img/icons/attachment
 import { updateTask } from '../../store/task.actions'
 import { DynamicCmp } from '../dynamic-cmp/dynamic-cmp'
 import { store } from '../../store/store'
-import { CLOSE_DYN_MENU_MODAL, OPEN_DYN_EDIT_ATC, OPEN_DYN_MODAL, SET_MODAL_TITLE } from '../../store/system.reducer'
+import { CLOSE_DYN_ALL_MODALS, OPEN_DYN_EDIT_ATC, OPEN_DYN_MODAL, SET_MODAL_TITLE } from '../../store/system.reducer'
 import { useSelector } from 'react-redux'
 
 export function TaskAttachments({ task, boardId, groupId }) {
@@ -50,7 +50,7 @@ export function TaskAttachments({ task, boardId, groupId }) {
   }
 
   function onEditAttachment(title, atc) {
-    store.dispatch({ type: CLOSE_DYN_MENU_MODAL })
+    store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
     store.dispatch({ type: SET_MODAL_TITLE, title })
     store.dispatch({ type: OPEN_DYN_MODAL })
     store.dispatch({ type: OPEN_DYN_EDIT_ATC })
@@ -85,8 +85,7 @@ export function TaskAttachments({ task, boardId, groupId }) {
         </div>
       </div>
       ))}
-      {isOpenEditAtc && <DynamicCmp task={task} title='Edit attachment'/>
-       } 
+      {isOpenEditAtc && <DynamicCmp task={task} title='Edit attachment'/>} 
     </section>
   )
 }

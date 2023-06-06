@@ -6,12 +6,11 @@ import { DynCmpChecklist } from './dyn-cmp-checklist'
 import { DynCmpDates } from './dyn-cmp-dates'
 import { DynCmpAttachment } from './dyn-cmp-attachment'
 import { DynCmpAttachmentEdit } from './dyn-cpm-attachment-edit'
-import { CLOSE_DYN_MODAL, SET_MODAL_TITLE } from '../../store/system.reducer'
+import { CLOSE_DYN_ALL_MODALS, SET_MODAL_TITLE } from '../../store/system.reducer'
 import { useSelector } from 'react-redux'
 import { store } from '../../store/store'
 import { useParams } from 'react-router-dom'
 import { DynCmpEditLabel } from './dyn-cmp-edit-label'
-import { useEffect } from 'react'
 
 export function DynamicCmp({ task, title, setEditing }) {
     const { isModalOpen } = useSelector((storeState) => storeState.systemModule)
@@ -20,13 +19,9 @@ export function DynamicCmp({ task, title, setEditing }) {
     const { groupId } = useParams()
 
     function onCloseDynModal() {
-        store.dispatch({ type: CLOSE_DYN_MODAL })
+        store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
         store.dispatch({ type: SET_MODAL_TITLE, title:'' })
     }
-
-    useEffect(()=>{
-
-    },[isModalOpen])
 
     if (!isModalOpen) return ''
     return (
