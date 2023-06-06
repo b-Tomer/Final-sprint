@@ -16,8 +16,8 @@ export function TaskMenu({ task }) {
 
     const [dynamicCmpName, setDynamicCmpName] = useState(null)
 
-    function openDynamicCmp(name){
-        store.dispatch({type:OPEN_DYN_MODAL})
+    function openDynamicCmp(name) {
+        store.dispatch({ type: OPEN_DYN_MODAL })
         setDynamicCmpName(name)
     }
 
@@ -40,11 +40,11 @@ export function TaskMenu({ task }) {
                 <button className="button-link" onClick={() => openDynamicCmp('Dates')} >
                     <Clock className="sidebar-icon" />
                     <span>Dates</span> </button>
-                <button className="button-link" >
-                    <Attachment className="sidebar-icon" onClick={() => openDynamicCmp('Attachment')} />
+                <button className="button-link" onClick={() => openDynamicCmp('Attachment')}  >
+                    <Attachment className="sidebar-icon" />
                     <span>Attachment</span> </button>
-                <button className="button-link" >
-                    <CustomFields className="sidebar-icon" onClick={() => openDynamicCmp('Custom Fields')} />
+                <button className="button-link" onClick={() => openDynamicCmp('Custom Fields')} >
+                    <CustomFields className="sidebar-icon" />
                     <span>Custom Fields</span> </button>
             </div>
             {dynamicCmpName && <DynamicCmp task={task} title={dynamicCmpName} />}

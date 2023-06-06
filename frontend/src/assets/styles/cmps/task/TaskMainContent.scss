@@ -78,13 +78,7 @@
             }
         }
         .edit-desc-btn{
-            color: $clr7;
-            border-radius: 3px;
-            padding-inline: 12px;
-            padding-block: 6px;
-            background-color: $clrTodoBg;
-            margin-inline-start: 25px;
-            margin-block: 8px;
+            @include task-ligth-btn();
         }
 
         .description-content {
