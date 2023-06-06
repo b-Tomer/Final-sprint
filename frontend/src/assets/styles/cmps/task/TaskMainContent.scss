@@ -23,16 +23,17 @@
 
     .description {
         .desc-overlay{
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
+            width:768px;
             height: 100vh;
             background-color: rgba(255, 255, 255, 0);
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: -2;        
+            z-index: -2;   
+            overflow-y: auto;     
         }
 
         .description-container {
