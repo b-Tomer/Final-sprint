@@ -1,5 +1,5 @@
 
-export function DynCmpEditLabel({ task }) {
+export function DynCmpEditLabel({ task, label }) {
 
     const colors = [
         { color: 'baf3db' }, { color: 'f8e6a0' }, { color: 'ffe2bd' }, { color: 'ffd2cc' }, { color: 'dfd8fd' },
@@ -14,19 +14,31 @@ export function DynCmpEditLabel({ task }) {
 
 
     return (
-
-        <div className="colors-container">
-            {colors.map(color => {
-                let isLabelChecked = task.labelIds ? task.labelIds.includes(label.id) : false;
-                return (
-                    <div className="color" style={{ backgroundColor: color.color }}> </div>
+        <div className="edit-labels-container">
+            {/* <div className="label-title" style={{ backgroundColor: label.color }}>{label.title}</div> */}
+            <div className="label-title" ></div>
 
 
-
-                )
-            })}
-
-
+            <h3>Title</h3>
+            <div>
+                <input className="edit-input" type="text" value={label}
+                ></input>
+            </div>
+            <h3>Select a color</h3>
+            <div className="colors-container">
+                {colors.map(color => {
+                    return (
+                        <div key={color.color}
+                            className="color"
+                            style={{ backgroundColor: `#${color.color}` }}> </div>
+                    )
+                })}
+            </div>
+            <hr></hr>
+            <div className="buttons-section">
+                <button className="save-btn">Save</button>
+                <button className="delete-btn">Delete</button>
+            </div>
 
         </div>
 

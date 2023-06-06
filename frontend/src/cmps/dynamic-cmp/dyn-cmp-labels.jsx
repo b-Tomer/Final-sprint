@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { ReactComponent as Edit } from '../../assets/img/icons/edit.svg'
 import React, { useState } from 'react';
 import { updateTask } from '../../store/task.actions';
+import { DynCmpEditLabel } from './dyn-cmp-edit-label';
 
 export function DynCmpLabels({ task }) {
     const { board } = useSelector((storeState) => storeState.boardModule)
@@ -41,7 +42,7 @@ export function DynCmpLabels({ task }) {
 
     return (
         <div className='dyn-cmp-labels-container'>
-            <h3>Board members</h3>
+            {/* <h3>Board members</h3>
             <div className="labels-container" >
                 {board.labels.map(label => {
                     let isLabelChecked = task.labelIds ? task.labelIds.includes(label.id) : false;
@@ -61,7 +62,8 @@ export function DynCmpLabels({ task }) {
                         </label>
                     )
                 })}
-            </div>
+            </div> */}
+            <DynCmpEditLabel />
         </div>
     )
 }
