@@ -1,13 +1,100 @@
-.colors-container {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 4px;
+.edit-labels-container {
+    // position: fixed;
+    // height: 500px;
+    // width: 500px;
+    // left: 200px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding-left: 3px;
 
-    .color {
-        position: relative;
-        box-sizing: border-box;
+    .label-title {
+        display: flex;
+        width: 200px;
+        height: 32px;
+        padding: 0px 12px;
         border-radius: 3px;
-        height: 32px
+        align-items: center;
+        font-weight: 500;
+        font-size: 0.875rem;
+        color: $clr5 ;
+        margin-left: 10px;
+        background-color: #ad726a;
+        margin: 25px auto;
     }
 
+    .edit-input {
+        box-sizing: border-box;
+        width: 100%;
+        border: 2px solid $clr3;
+        border-radius: 3px;
+        height: 2rem;
+        font-weight: 400;
+
+
+    }
+
+    .edit-input:focus {
+        border: 2px solid blue;
+        outline: none;
+    }
+
+    h3 {
+        padding-left: 0px;
+
+    }
+
+
+    .colors-container {
+        margin: 15px 0px 10px 0px; ///////////////////////////////////////////
+
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 6px;
+
+        .color {
+            position: relative;
+            box-sizing: border-box;
+            border-radius: 3px;
+            height: 32px
+        }
+
+    }
+
+    hr {
+        margin: 0px
+    }
+
+    .buttons-section {
+        margin-top: 20px;
+        display: flex;
+
+        button {
+            height: 2rem;
+            border-radius: 3px;
+            padding: 6px 12px;
+            font-size: 0.875rem;
+            box-sizing: border-box;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 400;
+        }
+
+        .save-btn {
+            margin-right: auto;
+            background-color: #0c66e4;
+            color: #ffffff;
+
+        }
+
+        .delete-btn {
+            margin-left: auto;
+            background-color: #ca3521;
+            color: #ffffff;
+        }
+
+
+
+    }
 }

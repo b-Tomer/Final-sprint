@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { ReactComponent as Edit } from '../../assets/img/icons/edit.svg'
 import React, { useState } from 'react';
 import { updateTask } from '../../store/task.actions';
+import { DynCmpEditLabel } from './dyn-cmp-edit-label';
 
 export function DynCmpLabels({ task }) {
     const { board } = useSelector((storeState) => storeState.boardModule)
@@ -62,6 +63,7 @@ export function DynCmpLabels({ task }) {
                     )
                 })}
             </div>
+            <DynCmpEditLabel />
         </div>
     )
 }

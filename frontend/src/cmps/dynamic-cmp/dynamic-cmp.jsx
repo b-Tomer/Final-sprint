@@ -39,6 +39,9 @@ export function DynamicCmp({ task, title }) {
             {title === "Dates" && <DynCmpDates />}
             {title === "Attachment" && <DynCmpAttachment task={task} />}
             {title === "Edit attachment" && <DynCmpAttachmentEdit task={task} />}
+
+            {title === "Edit label" && <DynCmpAttachmentEdit task={task} />}
+
         </div>
     )
 }
