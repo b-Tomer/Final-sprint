@@ -198,6 +198,7 @@ export function BoardIndex() {
                                                             isDragging={
                                                                 snapshot.isDragging
                                                             }
+                                                        
                                                         />
                                                     )}
                                                 </Draggable>
@@ -215,7 +216,8 @@ export function BoardIndex() {
                                                         width: placeholderProps.clientWidth,
                                                         backgroundColor:
                                                             '#00000023',
-                                                        borderRadius: '3px',
+                                                        borderRadius: '12px',
+                                                        marginLeft:'14px'
                                                     }}
                                                 />
                                             )}

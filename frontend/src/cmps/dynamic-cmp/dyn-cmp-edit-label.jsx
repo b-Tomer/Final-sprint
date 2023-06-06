@@ -3,7 +3,7 @@ import { useState } from "react";
 
 
 export function DynCmpEditLabel({ task, label }) {
-    const [labelState, setLabelState] = useState(label);
+    const [labelToEdit, setLabelToEdit] = useState(label)
 
     const colors = [
         { color: 'baf3db' }, { color: 'f8e6a0' }, { color: 'ffe2bd' }, { color: 'ffd2cc' }, { color: 'dfd8fd' },
@@ -15,15 +15,17 @@ export function DynCmpEditLabel({ task, label }) {
     ]
 
 
-    const handleChange = (event) => {
-        setLabelState({ ...labelState, title: event.target.value });
-    };
+    function handleChange(event){
+        setLabelToEdit({ ...labelToEdit, title: event.target.value });
+    }
+    
+    if(!label) return ''
     return (
         <div className="edit-labels-container">
             <div className="label-title" style={{ backgroundColor: label.color }}>{label.title}</div>
             <h3>Title</h3>
             <div>
-                <input className="edit-input" type="text" value={labelState.title} onChange={handleChange}
+                <input className="edit-input" type="text" value={labelToEdit.title} onChange={handleChange}
                 ></input>
             </div>
             <h3>Select a color</h3>
