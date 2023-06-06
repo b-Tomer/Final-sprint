@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { loadBoards, loadBoard, updateBoard, setFilterBy } from '../store/board.actions.js'
+import {
+    loadBoards,
+    loadBoard,
+    updateBoard,
+    setFilterBy,
+} from '../store/board.actions.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { useParams } from 'react-router-dom'
 import { GroupDetails } from '../cmps/group-details.jsx'
@@ -10,6 +15,9 @@ import { AddGroup } from '../cmps/add-group.jsx'
 import { removeGroup, saveGroup } from '../store/group.actions.js'
 import { TaskEditor } from '../cmps/task/task-editor.jsx'
 import { TaskDetails } from '../cmps/task/task-details.jsx'
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
+import { utilService } from '../services/util.service.js'
+import { isEmpty } from 'lodash'
 
 export function BoardIndex() {
     const { boardId } = useParams()
@@ -17,10 +25,14 @@ export function BoardIndex() {
     const { groupId } = useParams()
     const { taskId } = useParams()
     const [taskEdit, setTaskEdit] = useState(null)
+    const [placeholderProps, setPlaceholderProps] = useState({})
     const [isTaskDetailsOpen, setIsTaskDetailsOpen] = useState(false)
     const [isLabelsExpand, setIsLabelsExpand] = useState(false)
     const [labelsFont, setLabelsFont] = useState('0px')
     const { filterBy } = useSelector((storeState) => storeState.boardModule)
+    const queryAttr = 'data-rbd-drag-handle-draggable-id'
+
+    const dispatch = useDispatch()
 
     useEffect(() => {
         loadBoards()
@@ -65,6 +77,52 @@ export function BoardIndex() {
         setFilterBy(filterByToUpdate)
     }
 
+    const getDraggedDom = (draggableId) => {
+        const domQuery = `[${queryAttr}='${draggableId}']`
+        const draggedDOM = document.querySelector(domQuery)
+
+        return draggedDOM
+    }
+
+    // Calculates the position of the dragged element placeholder
+    const onDragStart = (event) => {
+        const draggedDOM = getDraggedDom(event.draggableId)
+        if (!draggedDOM) return
+        const placeholderProps = utilService.handleDragStart(event, draggedDOM)
+        setPlaceholderProps(placeholderProps)
+    }
+
+    // Calculates the updated position of the dragged element placeholder
+    const onDragUpdate = (event) => {
+        if (!event.destination) return
+        const draggedDOM = getDraggedDom(event.draggableId)
+        if (!draggedDOM) return
+        const placeholderProps = utilService.handleDragUpdate(event, draggedDOM)
+        setPlaceholderProps(placeholderProps)
+    }
+
+    //prettier-ignore
+    const onDragEnd = (result) => {
+        const { destination, source, type } = result
+
+        if (!destination) return
+        setPlaceholderProps({})
+
+        // if position is same as before return
+        if (destination.droppableId === source.droppableId &&
+            destination.index === source.index) return
+
+        const newBoard = { ...board }
+        let updatedBoard = utilService.handleDragEnd(newBoard, destination, source, type)
+        if (type === 'task' && (destination.droppableId !== source.droppableId)) {
+            const sourceGroup = updatedBoard.groups.find(group => group.id === source.droppableId)
+            const destinationGroup = updatedBoard.groups.find(group => group.id === destination.droppableId)
+            const task = destinationGroup.tasks[destination.index]
+            // updatedBoard = activityService.addActivity(`moved ${task.title} from ${sourceGroup.title} to ${destinationGroup.title}`, task, updatedBoard)
+        }
+        updateBoard(updatedBoard)
+    }
+
     if (!board) return
     return (
         <>
@@ -76,26 +134,89 @@ export function BoardIndex() {
                         backgroundImage: `url(${board.style?.backgroundImage})`,
                     }}
                 >
-                    <BoardHeader />
-                    <main className="board-content">
-                        {board?.groups &&
-                            board.groups.map((group) => (
-                                <GroupDetails
-                                    labelsFont={labelsFont}
-                                    isLabelsExpand={isLabelsExpand}
-                                    onExpandLabels={onExpandLabels}
-                                    boardId={boardId}
-                                    onRemoveGroup={onRemoveGroup}
-                                    group={group}
-                                    key={group.id}
-                                    setTaskEdit={setTaskEdit}
-                                    taskEdit={taskEdit}
-                                    setIsTaskDetailsOpen={setIsTaskDetailsOpen}
-                                    isTaskDetailsOpen={isTaskDetailsOpen}
-                                />
-                            ))}
-                        <AddGroup addGroup={addGroup} />
-                    </main>
+                    <DragDropContext
+                        onDragStart={onDragStart}
+                        onDragUpdate={onDragUpdate}
+                        onDragEnd={onDragEnd}
+                    >
+                        <BoardHeader />
+                        <main className="board-content">
+                            <Droppable
+                                droppableId={board._id}
+                                direction="horizontal"
+                                type="group"
+                            >
+                                {(provided, snapshot) => (
+                                    <section
+                                        className="group-list"
+                                        {...provided.droppableProps}
+                                        ref={provided.innerRef}
+                                    >
+                                        {board?.groups &&
+                                            board.groups.map((group, index) => (
+                                                <Draggable
+                                                    draggableId={group.id}
+                                                    key={group.id}
+                                                    index={index}
+                                                >
+                                                    {(provided, snapshot) => (
+                                                        <GroupDetails
+                                                            labelsFont={
+                                                                labelsFont
+                                                            }
+                                                            isLabelsExpand={
+                                                                isLabelsExpand
+                                                            }
+                                                            onExpandLabels={
+                                                                onExpandLabels
+                                                            }
+                                                            boardId={boardId}
+                                                            onRemoveGroup={
+                                                                onRemoveGroup
+                                                            }
+                                                            group={group}
+                                                            key={group.id}
+                                                            setTaskEdit={
+                                                                setTaskEdit
+                                                            }
+                                                            taskEdit={taskEdit}
+                                                            setIsTaskDetailsOpen={
+                                                                setIsTaskDetailsOpen
+                                                            }
+                                                            isTaskDetailsOpen={
+                                                                isTaskDetailsOpen
+                                                            }
+                                                            provided={provided}
+                                                            isDragging={
+                                                                snapshot.isDragging
+                                                            }
+                                                        />
+                                                    )}
+                                                </Draggable>
+                                            ))}{' '}
+                                        {provided.placeholder}
+                                        {!isEmpty(placeholderProps) &&
+                                            snapshot.isDraggingOver && (
+                                                <div
+                                                    className="placeholder"
+                                                    style={{
+                                                        position: 'absolute',
+                                                        top: placeholderProps.clientY,
+                                                        left: placeholderProps.clientX,
+                                                        height: placeholderProps.clientHeight,
+                                                        width: placeholderProps.clientWidth,
+                                                        backgroundColor:
+                                                            '#00000023',
+                                                        borderRadius: '3px',
+                                                    }}
+                                                />
+                                            )}
+                                        <AddGroup addGroup={addGroup} />
+                                    </section>
+                                )}
+                            </Droppable>
+                        </main>
+                    </DragDropContext>
                 </section>
             </div>
             {taskEdit && (

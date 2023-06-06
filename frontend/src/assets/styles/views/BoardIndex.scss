@@ -49,6 +49,10 @@
     margin-block-start: 118px;
     margin-block-end: 8px;
     margin-inline-start: 15px;
+    .group-list {
+        display: flex;
+        gap: 10px;
+    }
 
     ::-webkit-scrollbar {
         width: 8px;

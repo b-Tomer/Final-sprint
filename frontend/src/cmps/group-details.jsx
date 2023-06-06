@@ -17,7 +17,9 @@ export function GroupDetails({
     taskEdit,
     onExpandLabels,
     isLabelsExpand,
-    labelsFont
+    labelsFont,
+    provided,
+    isDragging,
 }) {
     const [groupToUpdate, setGroupToUpdate] = useState(group)
     const [isAddTaskOpen, setIsAddTaskOpen] = useState(false)
@@ -50,7 +52,6 @@ export function GroupDetails({
         }))
     }
 
-
     async function onAddTask(ev) {
         ev.preventDefault()
         try {
@@ -74,11 +75,14 @@ export function GroupDetails({
 
     return (
         <section
-            className="group-container"
+            className={`group-container ${isDragging ? 'dragging' : ''}`}
             style={{
                 display: 'grid',
                 gridTemplateRows: isAddTaskOpen ? '47px 1fr' : '47px 1fr 43px',
             }}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            ref={provided.innerRef}
         >
             <div className="group-header">
                 <input
@@ -88,7 +92,11 @@ export function GroupDetails({
                     onChange={onChangegroupTitle}
                 />
                 <button>
-                    <img onClick={()=>onRemoveGroup(group)} src={dots} alt="more" />
+                    <img
+                        onClick={() => onRemoveGroup(group)}
+                        src={dots}
+                        alt="more"
+                    />
                 </button>
             </div>
             <section className="group-content">
