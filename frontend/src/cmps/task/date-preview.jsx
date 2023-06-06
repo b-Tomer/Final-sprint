@@ -1,15 +1,21 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { ReactComponent as Down } from '../../assets/img/icons/down.svg'
+import { CLOSE_DYN_MODAL, OPEN_DYN_MODAL } from '../../store/system.reducer'
+import { useSelector } from 'react-redux'
+import { store } from '../../store/store'
 
 import { ResponsiveDatePickers } from '../date-picker'
 import { updateTask } from '../../store/task.actions'
 
-export function DatePreview({ task }) {
+export function DatePreview({ task, setDynamicCmpName }) {
     const [isDatePickerOpen, setIsDatePickerOpen] = useState(false)
     const [currTask, setCurrTask] = useState(task)
+    const [localModalOpen, setLocalModalOpen] = useState(false)
+
     const { boardId } = useParams()
     const { groupId } = useParams()
+    const { isModalOpen } = useSelector((storeState) => storeState.systemModule)
 
     if (!task || !task.dueDate) return
 
@@ -22,6 +28,18 @@ export function DatePreview({ task }) {
         minute: 'numeric',
         hour12: true,
     })
+
+    function onCloseDynModal() {
+        store.dispatch({ type: CLOSE_DYN_MODAL })
+        setDynamicCmpName('')
+        setLocalModalOpen(false)
+    }
+
+    function onOpenDynModal() {
+        store.dispatch({ type: OPEN_DYN_MODAL })
+        setDynamicCmpName('Dates')
+        setLocalModalOpen(true)
+    }
 
     function getDateClass(task) {
         if (task?.isDone) {
@@ -43,7 +61,11 @@ export function DatePreview({ task }) {
     }
 
     const handleToggleDatePicker = () => {
-        setIsDatePickerOpen((prevIsOpen) => !prevIsOpen)
+        if (localModalOpen) {
+            onCloseDynModal()
+        } else {
+            onOpenDynModal()
+        }
     }
 
     async function onCheckDate(ev) {
@@ -69,7 +91,7 @@ export function DatePreview({ task }) {
                     checked={task.isDone}
                     onChange={onCheckDate}
                 />
-                <div className="full-date">
+                <div className="full-date" onClick={handleToggleDatePicker}>
                     <span className="time">{formattedDate}</span>
                     {getDateClass(task) && (
                         <span className={`badge  ${getDateClass(task)}`}>
