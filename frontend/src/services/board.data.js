@@ -489,7 +489,8 @@ export const gBoards = [
                                 "todos": [
                                     {
                                         "id": "todo2028",
-                                        "title": "Segment email list"
+                                        "title": "Segment email list",
+                                        "isDone": "true"
                                     },
                                     {
                                         "id": "todo2029",

@@ -75,7 +75,6 @@ export function TaskDetails({
         navigate(`/board/${boardId}`)
     }
 
-
     return (
         <div
             className="modal-overlay"

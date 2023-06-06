@@ -12,12 +12,13 @@
     z-index: 1;
     .app-logo {
         cursor: pointer;
+        padding-block-end: 3px;
     }
-    .cube-img,
     .logo-img {
-        width: 1.2rem;
-        height: 1.2rem;
-        margin-left: 2px;
+        width: 1.4rem;
+        height: 1.4rem;
+        margin-left: 16px;
+        padding-block-end: 2px;
         cursor: pointer;
     }
 

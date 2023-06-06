@@ -4,12 +4,13 @@ import { TaskAttachments } from './task-attachments.jsx'
 import { TaskDescription } from './task-description'
 
 export function TaskMainContent({ task, boardId, groupId }) {
+    
     if (!task) return
 
     return (
         <section className="task-main-content">
 
-            <TaskDescription task={task} />
+            <TaskDescription boardId={boardId} groupId={groupId} task={task} />
 
             {task.attachments && (
                 <TaskAttachments
@@ -21,7 +22,7 @@ export function TaskMainContent({ task, boardId, groupId }) {
 
             {task.checklists && (
                 <div className="checklist">
-                    <TaskChecklist task={task} />
+                    <TaskChecklist boardId={boardId} groupId={groupId} task={task} />
                 </div>
             )}
 
