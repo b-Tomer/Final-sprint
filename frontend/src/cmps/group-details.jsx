@@ -26,7 +26,6 @@ export function GroupDetails({
     const [isAddTaskOpen, setIsAddTaskOpen] = useState(false)
     const [task, setTask] = useState(null)
     const [taskTitle, setTaskTitle] = useState('')
-    const { board } = useSelector((storeState) => storeState.boardModule)
 
     useEffect(() => {
         setTask(taskService.getDefaultTask())
@@ -75,16 +74,6 @@ export function GroupDetails({
         setIsAddTaskOpen(false)
     }
 
-    function handleOnDraggEnd(result) {
-        if (!result.destination) return
-        const updatedTasks = Array.from(group)
-        const [reorderedGroup] = updatedTasks.splice(result.source.index, 1)
-        updatedTasks.splice(result.destination.index, 0, reorderedGroup)
-        const updatedBoard = { ...board, groups: updatedTasks }
-        console.log(updatedBoard)
-        // updateBoard(updatedBoard)
-    }
-if(!group)
     return (
         <section
             className={`group-container ${isDragging ? 'dragging' : ''}`}
