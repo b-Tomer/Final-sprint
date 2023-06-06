@@ -12,6 +12,7 @@ export const utilService = {
     handleDragEnd,
     handleDragUpdate,
     handleDragStart,
+    getTimeValues,
 }
 
 function makeId(length = 6) {
@@ -213,5 +214,22 @@ function handleDragEnd(newBoard, destination, source, type) {
         newBoard.groups[newGroupIdx] = newGroup
         newBoard.groups[prevGroupIdx] = prevGroup
         return newBoard
+    }
+}
+function getTimeValues(timestamp) {
+    const date = new Date(timestamp)
+
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1
+    const day = date.getDate()
+    const hour = date.getHours()
+    const minute = date.getMinutes()
+
+    return {
+        year,
+        month,
+        day,
+        hour,
+        minute,
     }
 }
