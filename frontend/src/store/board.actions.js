@@ -92,17 +92,13 @@ export async function addBoard(board) {
     }
 }
 
-export function updateBoard(board) {
-    return boardService
-        .save(board)
-        .then((savedBoard) => {
-            store.dispatch(getActionSetBoard(savedBoard))
-            return savedBoard
-        })
-        .catch((err) => {
-            console.log('Cannot save board', err)
-            throw err
-        })
+export async function updateBoard(boardToUpdate) {
+    try {
+        const board = await boardService.save(boardToUpdate)
+        store.dispatch(getActionSetBoard(board))
+    } catch (err) {
+        console.log('Cannot save board', err)
+    }
 }
 
 export function setFilterBy(filterBy) {
