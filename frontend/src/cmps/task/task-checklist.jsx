@@ -6,6 +6,7 @@ import { ReactComponent as Trash } from '../../assets/img/icons/trash.svg'
 import { utilService } from '../../services/util.service'
 import { TodoEdit } from './checklists/todo-edit'
 import { TodoContent } from './checklists/todo-content'
+import { TodoNew } from './checklists/todo-new'
 
 export function TaskChecklist({ task }) {
     const [currentTask, setCurrentTask] = useState(task)
@@ -15,6 +16,7 @@ export function TaskChecklist({ task }) {
     const { boardId } = useParams()
     const { groupId } = useParams()
     const [todoTitle, setTodoTitle] = useState('')
+    const [checklistToEdit, setChecklistToEdit] = useState(null)
     const textareaRef = useRef(null)
     const todoRef = useRef(null)
     let progress
@@ -44,9 +46,11 @@ export function TaskChecklist({ task }) {
         setTodoTitle('')
     }
 
-    async function openNewTodo() {
+    async function openNewTodo(checklist) {
         await setEditing(true)
+        await setChecklistToEdit(checklist.id)
         setTodoToEdit(null)
+        console.log(textareaRef.current)
         textareaRef.current.focus()
     }
 
@@ -59,7 +63,7 @@ export function TaskChecklist({ task }) {
             console.log(err)
         } finally {
             setTodoTitle('')
-            openNewTodo()
+            openNewTodo(checklist)
         }
     }
 
@@ -72,7 +76,6 @@ export function TaskChecklist({ task }) {
         )
         console.log(idx)
         checklist.todos.splice(idx, 1)
-        // checklist.todos.push({ id: utilService.makeId(), title: todoTitle })
         try {
             await updateTask(boardId, groupId, task)
         } catch (err) {
@@ -89,11 +92,6 @@ export function TaskChecklist({ task }) {
         setTodoToEdit(todo.id)
         setEditing(false)
     }
-
-    // function selectCheclistToEdit(ev, checklist) {
-    //     setTodoToEdit(todo.id)
-    //     setEditing(false)
-    // }
 
     if (!task.checklists || !task.checklists.length) return null
     return (
@@ -161,41 +159,17 @@ export function TaskChecklist({ task }) {
                                 }
                             })}
                         </div>
-                        {!editing && (
-                            <button
-                                onClick={openNewTodo}
-                                className="new-checklist-btn"
-                            >
-                                Add an item
-                            </button>
-                        )}
-                        {editing && (
-                            <div className="new-checklist-menu">
-                                <form
-                                    onSubmit={(event) =>
-                                        onAddTodo(event, checklist)
-                                    }
-                                >
-                                    <textarea
-                                        ref={textareaRef}
-                                        placeholder="Add an item"
-                                        onChange={handleTodoTitle}
-                                        value={todoTitle}
-                                    />
-                                    <div className="todo-btns">
-                                        <button className="add-item-btn">
-                                            Add
-                                        </button>
-                                        <button
-                                            className="cancel-btn"
-                                            onClick={closeNewTodo}
-                                        >
-                                            Cancel
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        )}
+                        <TodoNew
+                            checklist={checklist}
+                            editing={editing}
+                            openNewTodo={openNewTodo}
+                            checklistToEdit={checklistToEdit}
+                            onAddTodo={onAddTodo}
+                            textareaRef={textareaRef}
+                            handleTodoTitle={handleTodoTitle}
+                            todoTitle={todoTitle}
+                            closeNewTodo={closeNewTodo}
+                        />
                     </div>
                 )
             })}
