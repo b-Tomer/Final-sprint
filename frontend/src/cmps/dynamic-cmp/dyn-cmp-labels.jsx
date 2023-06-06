@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { ReactComponent as Edit } from '../../assets/img/icons/edit.svg'
 import React, { useState } from 'react';
 import { updateTask } from '../../store/task.actions';
-import { CLOSE_DYN_MODAL, OPEN_DYN_MODAL } from '../../store/system.reducer';
+import { CLOSE_DYN_MODAL, OPEN_DYN_MODAL, SET_MODAL_TITLE } from '../../store/system.reducer';
 import { store } from '../../store/store'
 import { DynamicCmp } from './dynamic-cmp';
 
@@ -11,7 +11,7 @@ import { DynamicCmp } from './dynamic-cmp';
 
 export function DynCmpLabels({ task }) {
     const { board } = useSelector((storeState) => storeState.boardModule)
-    const [label, setLabel] = useState(null);
+    const [labelToEdit, setLabelToEdit] = useState(null);
     const [isEditLabelOpen, setIsEditLabelOpen] = useState(false);
 
     const { isModalOpen } = useSelector((storeState) => storeState.systemModule)
@@ -22,18 +22,15 @@ export function DynCmpLabels({ task }) {
     }
 
 
-    function onOpenDynModal() {
+    function handleEditButtonClick(title, label) {
+        setLabelToEdit(label)
         store.dispatch({ type: OPEN_DYN_MODAL })
-    }
-
-
-    const handleEditButtonClick = (label) => {
-        onCloseDynModal()
-        setLabel(label)
+        store.dispatch({ type: OPEN_DYN_MODAL })
+        store.dispatch({ type: OPEN_DYN_MODAL })
+        store.dispatch({ type: SET_MODAL_TITLE, title })
+        console.log(title, label);
         setIsEditLabelOpen(true)
-        onOpenDynModal()
-
-    };
+    }
 
     function findGroupIdByTaskId(board, taskId) {
         if (!Array.isArray(board.groups)) {
@@ -84,7 +81,7 @@ export function DynCmpLabels({ task }) {
                                     onChange={(ev) => onToggleCheckedLabel(ev, label.id)}
                                     className="checkbox" />
                                 <div className="label-title" style={{ backgroundColor: label.color }}>{label.title}</div>
-                                <button className='edit-label-btn' onClick={() => handleEditButtonClick(label)}>
+                                <button className='edit-label-btn' onClick={() => handleEditButtonClick('Edit label', label)}>
                                     <Edit className="edit-label-img" />
                                 </button>
                             </label>
@@ -94,7 +91,7 @@ export function DynCmpLabels({ task }) {
             </div>}
             <div  >
 
-                {isEditLabelOpen && <DynamicCmp task={task} title={'Edit-label'} label={label} />}
+                {isEditLabelOpen && <DynamicCmp task={task} label={labelToEdit} />}
             </div>
         </>
     )

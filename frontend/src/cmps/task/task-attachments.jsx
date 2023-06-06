@@ -3,14 +3,13 @@ import { ReactComponent as Attachments } from '../../assets/img/icons/attachment
 import { updateTask } from '../../store/task.actions'
 import { DynamicCmp } from '../dynamic-cmp/dynamic-cmp'
 import { store } from '../../store/store'
-import { OPEN_DYN_MODAL } from '../../store/system.reducer'
+import { CLOSE_DYN_MENU_MODAL, OPEN_DYN_EDIT_ATC, OPEN_DYN_MODAL, SET_MODAL_TITLE } from '../../store/system.reducer'
+import { useSelector } from 'react-redux'
 
 export function TaskAttachments({ task, boardId, groupId }) {
 
+  const { isOpenEditAtc } = useSelector((storeState) => storeState.systemModule)
   const [currTask, setCurrTask] = useState(task)
-  const [dynamicCmpName, setDynamicCmpName] = useState(null)
-
-
 
   useEffect(() => {
     setCurrTask(task)
@@ -50,16 +49,12 @@ export function TaskAttachments({ task, boardId, groupId }) {
     updateTask(boardId, groupId, updatedTask)
   }
 
-
-  // function onEditAttachment(atc) {
-  //   store.dispatch({type: OPEN_DYN_MODAL})
-  //   setIsEditOpen(true)
-  // }
-
-  function onEditAttachment(name,atc) {
-    setDynamicCmpName(name)
+  function onEditAttachment(title, atc) {
+    store.dispatch({ type: CLOSE_DYN_MENU_MODAL })
+    store.dispatch({ type: SET_MODAL_TITLE, title })
     store.dispatch({ type: OPEN_DYN_MODAL })
-}
+    store.dispatch({ type: OPEN_DYN_EDIT_ATC })
+  }
 
 
   if (!task.attachments) return ''
@@ -79,7 +74,7 @@ export function TaskAttachments({ task, boardId, groupId }) {
           <span>Added at {atc.createdAt}</span>
           <span className='small-dots'>&#x2022;</span><span className='attachment-btns'>Comment</span>
           <span className='small-dots'>&#x2022;</span><span onClick={() => onDeleteAttachment(atc)} className='attachment-btns'>Delete</span>
-          <span className='small-dots'>&#x2022;</span><span onClick={() => onEditAttachment('Edit attachment',atc)} className='attachment-btns'>Edit</span>
+          <span className='small-dots'>&#x2022;</span><span onClick={() => onEditAttachment('Edit attachment', atc)} className='attachment-btns'>Edit</span>
           <span className="attachment-btns">
             <span onClick={() => onToggleTaskCover(atc)} className="toggle-attachment-cover">
               {task.style?.backgroundImg === atc.url
@@ -90,13 +85,8 @@ export function TaskAttachments({ task, boardId, groupId }) {
         </div>
       </div>
       ))}
-          {dynamicCmpName && (
-                <DynamicCmp
-                    task={task}
-                    title={dynamicCmpName}
-                  
-                />
-            )}
+      {isOpenEditAtc && <DynamicCmp task={task} title='Edit attachment'/>
+       } 
     </section>
   )
 }
