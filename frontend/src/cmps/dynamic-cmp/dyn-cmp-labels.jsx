@@ -28,7 +28,7 @@ export function DynCmpLabels({ task }) {
         store.dispatch({ type: OPEN_DYN_MODAL })
         store.dispatch({ type: OPEN_DYN_MODAL })
         store.dispatch({ type: SET_MODAL_TITLE, title })
-        console.log(title, label);
+        console.log(title, label)
         setIsEditLabelOpen(true)
     }
 
