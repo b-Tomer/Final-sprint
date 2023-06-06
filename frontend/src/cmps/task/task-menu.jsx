@@ -8,13 +8,16 @@ import { ReactComponent as CheckList } from '../../assets/img/icons/checklist.sv
 import { ReactComponent as Attachment } from '../../assets/img/icons/attachment.svg'
 
 import { DynamicCmp } from '../dynamic-cmp/dynamic-cmp'
+import { store } from '../../store/store';
+import { OPEN_DYN_MODAL } from '../../store/system.reducer';
 
 
 export function TaskMenu({ task }) {
 
     const [dynamicCmpName, setDynamicCmpName] = useState(null)
 
-    const openDynamicCmp = (name) => {
+    function openDynamicCmp(name){
+        store.dispatch({type:OPEN_DYN_MODAL})
         setDynamicCmpName(name)
     }
 

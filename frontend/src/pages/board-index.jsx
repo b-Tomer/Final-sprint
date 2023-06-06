@@ -1,24 +1,12 @@
-import { Fragment, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useRef } from 'react'
-
-import {
-    loadBoards,
-    addBoard,
-    removeBoard,
-    loadBoard,
-    updateBoard,
-    setFilterBy,
-} from '../store/board.actions.js'
-
+import { loadBoards, loadBoard, updateBoard, setFilterBy } from '../store/board.actions.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { useParams } from 'react-router-dom'
 import { GroupDetails } from '../cmps/group-details.jsx'
 import { BoardHeader } from '../cmps/board-header.jsx'
 import { AppHeader } from '../cmps/app-header.jsx'
 import { AddGroup } from '../cmps/add-group.jsx'
-import { groupService } from '../services/group.service.local.js'
-import { SET_BOARD } from '../store/board.reducer.js'
 import { removeGroup, saveGroup } from '../store/group.actions.js'
 import { TaskEditor } from '../cmps/task/task-editor.jsx'
 import { TaskDetails } from '../cmps/task/task-details.jsx'
@@ -28,11 +16,9 @@ export function BoardIndex() {
     const { board } = useSelector((storeState) => storeState.boardModule)
     const { groupId } = useParams()
     const { taskId } = useParams()
-    const dispatch = useDispatch()
     const [taskEdit, setTaskEdit] = useState(null)
     const [isTaskDetailsOpen, setIsTaskDetailsOpen] = useState(false)
     const [isLabelsExpand, setIsLabelsExpand] = useState(false)
-    const [isLoaded, setIsLoaded] = useState(false)
     const [labelsFont, setLabelsFont] = useState('0px')
     const { filterBy } = useSelector((storeState) => storeState.boardModule)
 

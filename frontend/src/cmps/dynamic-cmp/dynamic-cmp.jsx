@@ -7,14 +7,18 @@ import { DynCmpDates } from './dyn-cmp-dates'
 import { DynCmpAttachment } from './dyn-cmp-attachment'
 import { DynCmpAttachmentEdit } from './dyn-cpm-attachment-edit'
 import { useEffect, useState } from 'react'
+import { CLOSE_DYN_MODAL } from '../../store/system.reducer'
+import { useSelector } from 'react-redux'
+import { store } from '../../store/store'
 
 
 export function DynamicCmp({ task, title }) {
 
-    const [isModalOpen, setIsModalOpen] = useState(true)
+    const { isModalOpen } = useSelector((storeState) => storeState.systemModule)
+
 
     function onCloseDynModal() {
-        setIsModalOpen(false)
+        store.dispatch({ type: CLOSE_DYN_MODAL })
     }
 
     if (!isModalOpen) return ''
