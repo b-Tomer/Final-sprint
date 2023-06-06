@@ -9,12 +9,11 @@ import { DynCmpAttachmentEdit } from './dyn-cpm-attachment-edit'
 import { CLOSE_DYN_MODAL } from '../../store/system.reducer'
 import { useSelector } from 'react-redux'
 import { store } from '../../store/store'
+import { DynCmpEditLabel } from './dyn-cmp-edit-label'
 
 
-export function DynamicCmp({ task, title }) {
-
+export function DynamicCmp({ task, title, label }) {
     const { isModalOpen } = useSelector((storeState) => storeState.systemModule)
-
 
     function onCloseDynModal() {
         store.dispatch({ type: CLOSE_DYN_MODAL })
@@ -39,9 +38,7 @@ export function DynamicCmp({ task, title }) {
             {title === "Dates" && <DynCmpDates />}
             {title === "Attachment" && <DynCmpAttachment task={task} />}
             {title === "Edit attachment" && <DynCmpAttachmentEdit task={task} />}
-
-            {title === "Edit label" && <DynCmpAttachmentEdit task={task} />}
-
+            {title === "Edit-label" && <DynCmpEditLabel task={task} label={label} />}
         </div>
     )
 }
