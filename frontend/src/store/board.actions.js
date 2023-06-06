@@ -23,6 +23,7 @@ export function getActionAddBoard(board) {
         board,
     }
 }
+
 export function getActionUpdateBoard(board) {
     return {
         type: UPDATE_BOARD,
@@ -42,9 +43,9 @@ export async function loadBoard(boardId, filterBy = {}) {
         const board = await boardService.getById(boardId)
         if (filterBy.txt) {
             const regex = new RegExp(filterBy.txt, 'i')
-           let groupsToShow = board.groups.filter(group => regex.test( group.title)) 
-        //    || board.groups.filter(group => group.tasks.forEach(task=> regex.test(task.title)))
-           board.groups = groupsToShow
+            let groupsToShow = board.groups.filter(group => regex.test(group.title))
+            //    || board.groups.filter(group => group.tasks.forEach(task=> regex.test(task.title)))
+            board.groups = groupsToShow
         }
         store.dispatch({
             type: SET_BOARD,
@@ -90,17 +91,13 @@ export async function addBoard(board) {
     }
 }
 
-export function updateBoard(board) {
-    return boardService
-        .save(board)
-        .then((savedBoard) => {
-            store.dispatch(getActionUpdateBoard(savedBoard))
-            return savedBoard
-        })
-        .catch((err) => {
-            console.log('Cannot save board', err)
-            throw err
-        })
+export async function updateBoard(boardToUpdate) {
+    try {
+        const board = await boardService.save(boardToUpdate)
+        store.dispatch(getActionSetBoard(board))
+    } catch (err) {
+        console.log('Cannot save board', err)
+    }
 }
 
 export function setFilterBy(filterBy) {

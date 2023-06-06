@@ -6,6 +6,10 @@ import { groupService } from '../services/group.service.local'
 import { ReactComponent as X } from '../assets/img/icons/x.svg'
 import { taskService } from '../services/task.service.local'
 import { removeTask, saveTask } from '../store/task.actions'
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import { updateBoard } from '../store/board.actions'
+import { useSelector } from 'react-redux'
+
 
 export function GroupDetails({
     group,
@@ -23,6 +27,7 @@ export function GroupDetails({
     const [isAddTaskOpen, setIsAddTaskOpen] = useState(false)
     const [task, setTask] = useState(null)
     const [taskTitle, setTaskTitle] = useState('')
+    const { board } = useSelector((storeState) => storeState.boardModule)
 
     useEffect(() => {
         setTask(taskService.getDefaultTask())
@@ -72,6 +77,16 @@ export function GroupDetails({
         setIsAddTaskOpen(false)
     }
 
+    function handleOnDraggEnd(result) {
+        if (!result.destination) return
+        const updatedTasks = Array.from(group)
+        const [reorderedGroup] = updatedTasks.splice(result.source.index, 1)
+        updatedTasks.splice(result.destination.index, 0, reorderedGroup)
+        const updatedBoard = { ...board, groups: updatedTasks }
+        console.log(updatedBoard)
+        // updateBoard(updatedBoard)
+    }
+if(!group)
     return (
         <section
             className="group-container"
@@ -88,26 +103,48 @@ export function GroupDetails({
                     onChange={onChangegroupTitle}
                 />
                 <button>
-                    <img onClick={()=>onRemoveGroup(group)} src={dots} alt="more" />
+                    <img onClick={() => onRemoveGroup(group)} src={dots} alt="more" />
                 </button>
             </div>
             <section className="group-content">
-                {group.tasks.map((task) => (
-                    <TaskPreview
-                        labelsFont={labelsFont}
-                        isLabelsExpand={isLabelsExpand}
-                        onExpandLabels={onExpandLabels}
-                        onRemoveTask={onRemoveTask}
-                        task={task}
-                        key={task.id}
-                        boardId={boardId}
-                        groupId={group.id}
-                        setTaskEdit={setTaskEdit}
-                        taskEdit={taskEdit}
-                        setIsTaskDetailsOpen={setIsTaskDetailsOpen}
-                        isTaskDetailsOpen={isTaskDetailsOpen}
-                    />
-                ))}
+                <DragDropContext onDragEnd={handleOnDraggEnd}>
+                    <Droppable droppableId="tasks">
+                        {(provided) => (
+                            <div className="group-draggable-list" {...provided.droppableProps} ref={provided.innerRef}>
+
+                                {group.tasks.map((task, index) => (
+                                    <Draggable key={task.id} draggableId={task.id} index={index}>
+                                        {(provided, snapshot) => (
+                                            <div
+                                                className={`task-card ${snapshot.isDragging ? 'dragging' : ''}`}
+                                                ref={provided.innerRef}
+                                                {...provided.draggableProps}
+                                                {...provided.dragHandleProps}
+                                            >
+                                                <TaskPreview
+                                                    labelsFont={labelsFont}
+                                                    isLabelsExpand={isLabelsExpand}
+                                                    onExpandLabels={onExpandLabels}
+                                                    onRemoveTask={onRemoveTask}
+                                                    task={task}
+                                                    key={task.id}
+                                                    boardId={boardId}
+                                                    groupId={group.id}
+                                                    setTaskEdit={setTaskEdit}
+                                                    taskEdit={taskEdit}
+                                                    setIsTaskDetailsOpen={setIsTaskDetailsOpen}
+                                                    isTaskDetailsOpen={isTaskDetailsOpen}
+                                                />
+                                            </div>
+                                        )}
+                                    </Draggable>
+                                ))}
+                                {provided.placeholder}
+                            </div>
+                        )}
+                    </Droppable>
+                </DragDropContext>
+
                 {isAddTaskOpen && (
                     <div className="task-container">
                         <form onSubmit={onAddTask}>
