@@ -83,6 +83,18 @@ export function TaskChecklist({ task }) {
         }
     }
 
+    async function deleteChecklist(checklist) {
+        const idx = task.checklists.findIndex(
+            (currChecklist) => currChecklist.id === checklist.id
+        )
+        task.checklists.splice(idx, 1)
+        try {
+            await updateTask(boardId, groupId, task)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
     function handleTodoTitle(ev) {
         const { value } = ev.target
         setTodoTitle(value)
@@ -107,7 +119,9 @@ export function TaskChecklist({ task }) {
                         <div className="checklist-title">
                             <Checklist className="task-content-icon" />
                             <h3>{checklist.title}</h3>
-                            <button>Delete</button>
+                            <button onClick={() => deleteChecklist(checklist)}>
+                                Delete
+                            </button>
                         </div>
                         <div className="progress-bar">
                             <span>{progress.toFixed(0)}%</span>
