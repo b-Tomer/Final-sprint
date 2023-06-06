@@ -1,12 +1,10 @@
 .edit-labels-container {
-    // position: fixed;
-    // height: 500px;
-    // width: 500px;
-    // left: 200px;
+
     display: flex;
     flex-direction: column;
     background-color: white;
-    padding-left: 3px;
+    padding: 10px;
+
 
     .label-title {
         display: flex;
@@ -41,6 +39,8 @@
 
     h3 {
         padding-left: 0px;
+        font-size: 0.75rem;
+        font-weight: 600;
 
     }
 

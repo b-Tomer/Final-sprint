@@ -11,9 +11,12 @@ import { DynamicCmp } from '../dynamic-cmp/dynamic-cmp'
 import { store } from '../../store/store'
 import { OPEN_DYN_MODAL } from '../../store/system.reducer'
 
-export function TaskMenu({ task, setEditing }) {
-    const [dynamicCmpName, setDynamicCmpName] = useState(null)
-
+export function TaskMenu({
+    task,
+    setEditing,
+    dynamicCmpName,
+    setDynamicCmpName,
+}) {
     function openDynamicCmp(name) {
         store.dispatch({ type: OPEN_DYN_MODAL })
         setDynamicCmpName(name)

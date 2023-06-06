@@ -19,6 +19,8 @@ export function TaskDetails({
     const [task, setTask] = useState(null)
     const [group, setGroup] = useState(null)
     const [editing, setEditing] = useState(false)
+    const [dynamicCmpName, setDynamicCmpName] = useState(null)
+
     const taskOverlayRef = useRef()
     const groupIdx = board?.groups.findIndex((group) => group.id === groupId)
     const currTask = board.groups[groupIdx].tasks.find(
@@ -98,8 +100,14 @@ export function TaskDetails({
                             groupId={groupId}
                             setEditing={setEditing}
                             editing={editing}
+                            setDynamicCmpName={setDynamicCmpName}
                         />
-                        <TaskMenu task={task} setEditing={setEditing} />
+                        <TaskMenu
+                            task={task}
+                            setEditing={setEditing}
+                            dynamicCmpName={dynamicCmpName}
+                            setDynamicCmpName={setDynamicCmpName}
+                        />
                     </div>
                 </section>
             </div>

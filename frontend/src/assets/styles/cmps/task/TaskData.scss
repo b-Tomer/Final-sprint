@@ -4,7 +4,6 @@
     flex-direction: row;
 
     .data-item {
-
         .member-data {
             margin-left: 20px;
             display: flex;
@@ -37,17 +36,12 @@
                     justify-content: center;
                     align-items: center;
 
-
                     .plus-icon {
                         height: 1em;
-                        width: 1em
+                        width: 1em;
                     }
-
                 }
-
-
             }
-
         }
 
         .label-data {
@@ -76,7 +70,7 @@
 
                     .plus-icon {
                         height: 1em;
-                        width: 1em
+                        width: 1em;
                     }
                 }
 
@@ -88,10 +82,8 @@
                     margin: 2px;
                     color: $clr7;
                     font-size: 0.75rem;
-
                 }
             }
-
         }
 
         .date-data {
@@ -109,10 +101,17 @@
                 display: flex;
 
                 .full-date {
-                    background-color: $clr2;
+                    background-color: $clrTaskPrvHvr;
                     height: 2rem;
-                    padding-top: 5px;
-                    padding-left: 5px;
+                    display: flex;
+                    align-items: center;
+                    align-content: center;
+                    justify-content: center;
+                    justify-items: center;
+                    border-radius: 3px;
+                    padding-inline: 5px;
+                    margin-inline-start: 2px;
+                    cursor: pointer;
 
                     .date-picker {
                         border: 4px solid gray;
@@ -127,13 +126,11 @@
                     }
 
                     .time {
-                        font-size: 0.875rem;
+                        font-size: 14px;
                         color: $clr6;
-                        font-weight: 500;
+                        font-weight: 400;
                     }
                 }
-
-
 
                 .down-img {
                     width: 1em;
@@ -142,19 +139,30 @@
                     transform: translateY(20%);
 
                     path {
-                        fill: $clr7
+                        fill: $clr7;
                     }
-
                 }
 
+                .badge {
+                    font-size: 12px;
+                    border-radius: 2px;
+                    margin-inline-start: 8px;
+                    padding-inline: 4px;
+                    // background-color: green;
+                    color: $clr1;
+                }
+                .completed {
+                    background-color: green;
+                }
+                .overdue {
+                    background-color: #ffedeb;
+                    color: #ae2a19;
+                }
+                .duesoon {
+                    background-color: $clrSOON;
+                    color: $clr7;
+                }
             }
-
         }
-
     }
-
-
-
-
-
 }

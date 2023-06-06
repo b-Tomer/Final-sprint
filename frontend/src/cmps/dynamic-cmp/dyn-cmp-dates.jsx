@@ -1,10 +1,9 @@
-
+import { StaticDatePicker } from '@mui/x-date-pickers'
 
 export function DynCmpDates() {
-
-
-
     return (
-        <h3>dates</h3>
+        <div>
+            {/* <StaticDatePicker defaultValue={dayjs('2022-04-17')} /> */}
+        </div>
     )
 }
