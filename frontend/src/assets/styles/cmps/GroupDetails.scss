@@ -9,7 +9,11 @@
     max-height: 98%;
     height: fit-content;
     overflow: hidden;
-    margin-inline:7px ;
+    margin-inline:7px;
+
+    &.dragging{
+        rotate: 5deg;
+    }
 
     ::-webkit-scrollbar-track {
         margin: 0.5em;

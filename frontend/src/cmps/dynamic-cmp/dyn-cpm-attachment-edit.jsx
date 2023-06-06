@@ -4,7 +4,11 @@ import { ReactComponent as X } from '../../assets/img/icons/x.svg'
 export function DynCmpAttachmentEdit(task) {
 
 
+    function updateAttachment(atc){
+    
+    }
 
+if(!task) return ''
     return (
         <div className="edit-attachment">
 

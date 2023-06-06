@@ -2,11 +2,14 @@ import { useEffect, useState } from 'react'
 import { ReactComponent as Attachments } from '../../assets/img/icons/attachment.svg'
 import { updateTask } from '../../store/task.actions'
 import { DynamicCmp } from '../dynamic-cmp/dynamic-cmp'
+import { store } from '../../store/store'
+import { OPEN_DYN_MODAL } from '../../store/system.reducer'
 
 export function TaskAttachments({ task, boardId, groupId }) {
 
   const [currTask, setCurrTask] = useState(task)
-  const [isEditOpen, setIsEditOpen] = useState(false)
+  const [dynamicCmpName, setDynamicCmpName] = useState(null)
+
 
 
   useEffect(() => {
@@ -48,10 +51,16 @@ export function TaskAttachments({ task, boardId, groupId }) {
   }
 
 
-  function onEditAttachment(atc) {
-    console.log(atc)
-    setIsEditOpen(true)
-  }
+  // function onEditAttachment(atc) {
+  //   store.dispatch({type: OPEN_DYN_MODAL})
+  //   setIsEditOpen(true)
+  // }
+
+  function onEditAttachment(name,atc) {
+    setDynamicCmpName(name)
+    store.dispatch({ type: OPEN_DYN_MODAL })
+}
+
 
   if (!task.attachments) return ''
 
@@ -65,13 +74,12 @@ export function TaskAttachments({ task, boardId, groupId }) {
         <div className='attachment-image'>
           <img src={atc.url} />
         </div>
-
         <div className='attachment-content'>
           <span className='attachment-title'>{atc.url?.split('/').pop()}</span>
           <span>Added at {atc.createdAt}</span>
           <span className='small-dots'>&#x2022;</span><span className='attachment-btns'>Comment</span>
           <span className='small-dots'>&#x2022;</span><span onClick={() => onDeleteAttachment(atc)} className='attachment-btns'>Delete</span>
-          <span className='small-dots'>&#x2022;</span><span onClick={() => onEditAttachment(atc)} className='attachment-btns'>Edit</span>
+          <span className='small-dots'>&#x2022;</span><span onClick={() => onEditAttachment('Edit attachment',atc)} className='attachment-btns'>Edit</span>
           <span className="attachment-btns">
             <span onClick={() => onToggleTaskCover(atc)} className="toggle-attachment-cover">
               {task.style?.backgroundImg === atc.url
@@ -82,50 +90,16 @@ export function TaskAttachments({ task, boardId, groupId }) {
         </div>
       </div>
       ))}
-      {isEditOpen && <DynamicCmp  task={task} title={"Edit attachment"} />}
+          {dynamicCmpName && (
+                <DynamicCmp
+                    task={task}
+                    title={dynamicCmpName}
+                  
+                />
+            )}
     </section>
   )
 }
 
 
 
-// return (
-//   <section className="attachment-preview">
-//     <a
-//       className="attachment-preview-img"
-//       style={{ backgroundImage: `url(${attachment.url})` }}
-//       href={attachment.url}
-//       target={'_blank'}
-//       rel="noreferrer"
-//     >
-//       {' '}
-//     </a>
-//     <section className="attachment-details">
-//       <section className="attachment-name-and-options">
-//         <span className="attachment-name">{attachment.name}</span>
-//         <span>Added {utilService.timeSince(attachment.createdAt)}</span>
-//         <span> - </span>
-//         <span onClick={onDeleteAttachment} className="delete-attachment">
-//           Delete
-//         </span>
-//       </section>
-//       <span className="attachment-options">
-        // <span onClick={onToggleTaskCover} className="make-attachment-cover">
-        //   <section className="svg-holder">
-        //     <BsSquareHalf
-        //       className="icon"
-        //       style={{
-        //         transform:
-        //           'rotate(0.75turn) translateY(-20%) translateX(22%)',
-        //       }}
-        //     />
-        //     {task.style?.backgroundImg === attachment.url
-        //       ? 'Remove cover'
-        //       : 'Make cover'}
-//           </section>
-//         </span>
-//       </span>
-//     </section>
-//   </section>
-// )
-// }

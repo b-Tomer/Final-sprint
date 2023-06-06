@@ -37,13 +37,8 @@ export function BoardIndex() {
     useEffect(() => {
         loadBoards()
         onLoadBoard(filterBy)
+        console.log(board)
     }, [filterBy, boardId])
-
-    useEffect(() => {
-        if (board) {
-            updateDraggableGroups(board.groups);
-        }
-    }, [board])
 
     async function onLoadBoard(filterBy) {
         await loadBoard(boardId, filterBy)
@@ -90,7 +85,6 @@ export function BoardIndex() {
         return draggedDOM
     }
 
-    // Calculates the position of the dragged element placeholder
     const onDragStart = (event) => {
         const draggedDOM = getDraggedDom(event.draggableId)
         if (!draggedDOM) return
@@ -98,7 +92,6 @@ export function BoardIndex() {
         setPlaceholderProps(placeholderProps)
     }
 
-    // Calculates the updated position of the dragged element placeholder
     const onDragUpdate = (event) => {
         if (!event.destination) return
         const draggedDOM = getDraggedDom(event.draggableId)
@@ -107,24 +100,33 @@ export function BoardIndex() {
         setPlaceholderProps(placeholderProps)
     }
 
-    //prettier-ignore
     const onDragEnd = (result) => {
         const { destination, source, type } = result
 
         if (!destination) return
         setPlaceholderProps({})
 
-        // if position is same as before return
-        if (destination.droppableId === source.droppableId &&
-            destination.index === source.index) return
+        if (
+            destination.droppableId === source.droppableId &&
+            destination.index === source.index
+        )
+            return
 
         const newBoard = { ...board }
-        let updatedBoard = utilService.handleDragEnd(newBoard, destination, source, type)
-        if (type === 'task' && (destination.droppableId !== source.droppableId)) {
-            const sourceGroup = updatedBoard.groups.find(group => group.id === source.droppableId)
-            const destinationGroup = updatedBoard.groups.find(group => group.id === destination.droppableId)
+        let updatedBoard = utilService.handleDragEnd(
+            newBoard,
+            destination,
+            source,
+            type
+        )
+        if (type === 'task' && destination.droppableId !== source.droppableId) {
+            const sourceGroup = updatedBoard.groups.find(
+                (group) => group.id === source.droppableId
+            )
+            const destinationGroup = updatedBoard.groups.find(
+                (group) => group.id === destination.droppableId
+            )
             const task = destinationGroup.tasks[destination.index]
-            // updatedBoard = activityService.addActivity(`moved ${task.title} from ${sourceGroup.title} to ${destinationGroup.title}`, task, updatedBoard)
         }
         updateBoard(updatedBoard)
     }
@@ -196,10 +198,11 @@ export function BoardIndex() {
                                                             isDragging={
                                                                 snapshot.isDragging
                                                             }
+                                                        
                                                         />
                                                     )}
                                                 </Draggable>
-                                            ))}{' '}
+                                            ))}
                                         {provided.placeholder}
                                         {!isEmpty(placeholderProps) &&
                                             snapshot.isDraggingOver && (
@@ -213,7 +216,8 @@ export function BoardIndex() {
                                                         width: placeholderProps.clientWidth,
                                                         backgroundColor:
                                                             '#00000023',
-                                                        borderRadius: '3px',
+                                                        borderRadius: '12px',
+                                                        marginLeft:'14px'
                                                     }}
                                                 />
                                             )}

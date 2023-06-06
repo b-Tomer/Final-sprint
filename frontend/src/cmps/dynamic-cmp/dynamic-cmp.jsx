@@ -9,10 +9,13 @@ import { DynCmpAttachmentEdit } from './dyn-cpm-attachment-edit'
 import { CLOSE_DYN_MODAL } from '../../store/system.reducer'
 import { useSelector } from 'react-redux'
 import { store } from '../../store/store'
+import { useParams } from 'react-router-dom'
+import { DynCmpEditLabel } from './dyn-cmp-edit-label'
 
 export function DynamicCmp({ task, title, setEditing }) {
     const { isModalOpen } = useSelector((storeState) => storeState.systemModule)
-
+    const { boardId } = useParams()
+    const { groupId } = useParams()
     function onCloseDynModal() {
         store.dispatch({ type: CLOSE_DYN_MODAL })
     }
@@ -27,23 +30,13 @@ export function DynamicCmp({ task, title, setEditing }) {
                 </button>
             </div>
             <hr></hr>
-
-            {title === 'Members' && <DynCmpMembers task={task} />}
-            {title === 'Labels' && <DynCmpLabels task={task} />}
-            {title === 'Checklist' && (
-                <DynCmpChecklist
-                    task={task}
-                    onCloseDynModal={onCloseDynModal}
-                    setEditing={setEditing}
-                />
-            )}
             {title === 'Dates' && <DynCmpDates />}
-            {title === 'Attachment' && <DynCmpAttachment task={task} />}
-            {title === 'Edit attachment' && (
-                <DynCmpAttachmentEdit task={task} />
-            )}
-
-            {title === 'Edit label' && <DynCmpAttachmentEdit task={task} />}
+            {title === 'Labels' && <DynCmpLabels task={task} />}
+            {title === 'Members' && <DynCmpMembers task={task} />}
+            {title === 'Edit label' && <DynCmpEditLabel task={task} />}
+            {title === 'Checklist' && <DynCmpChecklist task={task} onCloseDynModal={onCloseDynModal} setEditing={setEditing} />}
+            {title === 'Attachment' && <DynCmpAttachment boardId={boardId} groupId={groupId} task={task} />}
+            {title === 'Edit attachment' && <DynCmpAttachmentEdit boardId={boardId} groupId={groupId} task={task} />}
         </div>
     )
 }
