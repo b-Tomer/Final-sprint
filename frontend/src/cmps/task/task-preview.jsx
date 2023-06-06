@@ -21,6 +21,8 @@ export function TaskPreview({
     onExpandLabels,
     isLabelsExpand,
     labelsFont,
+    provided,
+    isDragging,
 }) {
     const navigate = useNavigate()
     const { board } = useSelector((storeState) => storeState.boardModule)
@@ -77,63 +79,77 @@ export function TaskPreview({
 
     return (
         <div
-            className="task-container"
-            ref={taskPreviewRef}
-            onClick={onOpenTaskDetails}
+            className={`task-draggable-wrapper ${
+                isDragging ? 'dragging' : ''
+            } `}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            ref={provided.innerRef}
         >
-            <button
-                className="btn-task-show-details"
-                onClick={(ev) => {
-                    toggleEditModal(ev, taskPreviewRef)
-                }}
+            <div
+                className="task-container"
+                ref={taskPreviewRef}
+                onClick={onOpenTaskDetails}
             >
-                <Stylus className="edit-icon" />
-            </button>
-            {/* {isMenuOpen && (
-                <TaskEditor setIsTaskDetailsOpen={setIsTaskDetailsOpen} taskId={task.id} onRemoveTask={onRemoveTask} />
-            )} */}
-            {(task.style?.bgColor || task.style?.backgroundImage) && (
-                <div
-                    className="task-header"
-                    style={
-                        !task.style?.backgroundImage
-                            ? {
-                                  backgroundColor: task.style.bgColor,
-                              }
-                            : { backgroundColor: '' }
-                    }
+                <button
+                    className="btn-task-show-details"
+                    onClick={(ev) => {
+                        toggleEditModal(ev, taskPreviewRef)
+                    }}
                 >
-                    <img
-                        className="task-header-cover-img"
-                        src={task.style.backgroundImage}
-                        alt=""
+                    <Stylus className="edit-icon" />
+                </button>
+                {/* {isMenuOpen && (
+            <TaskEditor setIsTaskDetailsOpen={setIsTaskDetailsOpen} taskId={task.id} onRemoveTask={onRemoveTask} />
+        )} */}
+                {(task.style?.bgColor || task.style?.backgroundImage) && (
+                    <div
+                        className="task-header"
+                        style={
+                            !task.style?.backgroundImage
+                                ? {
+                                      backgroundColor: task.style.bgColor,
+                                  }
+                                : { backgroundColor: '' }
+                        }
+                    >
+                        <img
+                            className="task-header-cover-img"
+                            src={task.style.backgroundImage}
+                            alt=""
+                        />
+                    </div>
+                )}
+                <div className="task-content">
+                    {task?.labelIds && (
+                        <span className="task-labels">
+                            {task.labelIds.map((labelId) => (
+                                <button
+                                    onClick={(ev) => {
+                                        toggleLabelExpantion(ev, labelId)
+                                    }}
+                                    key={labelId}
+                                    style={{
+                                        backgroundColor:
+                                            getLabelBgColor(labelId),
+                                        fontSize: labelsFont,
+                                    }}
+                                    className="task-labels-btn"
+                                >
+                                    {getLabelTitle(labelId)}
+                                </button>
+                            ))}
+                        </span>
+                    )}
+                    <span className="task-title" onClick={onOpenTaskDetails}>
+                        {task.title}
+                    </span>
+                    <TaskIcons
+                        task={task}
+                        groupId={groupId}
+                        boardId={boardId}
                     />
                 </div>
-            )}
-            <div className="task-content">
-                {task?.labelIds && (
-                    <span className="task-labels">
-                        {task.labelIds.map((labelId) => (
-                            <button
-                                onClick={(ev) => {
-                                    toggleLabelExpantion(ev, labelId)
-                                }}
-                                key={labelId}
-                                style={{
-                                    backgroundColor: getLabelBgColor(labelId),
-                                    fontSize: labelsFont,
-                                }}
-                                className="task-labels-btn"
-                            >
-                                {getLabelTitle(labelId)}
-                            </button>
-                        ))}
-                    </span>
-                )}
-                <span className="task-title" onClick={onOpenTaskDetails}>
-                    {task.title}
-                </span>
-                <TaskIcons task={task} groupId={groupId} boardId={boardId} />
             </div>
         </div>
     )
