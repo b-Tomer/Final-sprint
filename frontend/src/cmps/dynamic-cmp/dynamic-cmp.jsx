@@ -9,6 +9,7 @@ import { DynCmpAttachmentEdit } from './dyn-cpm-attachment-edit'
 import { CLOSE_DYN_MODAL } from '../../store/system.reducer'
 import { useSelector } from 'react-redux'
 import { store } from '../../store/store'
+import { DynCmpEditLabel } from './dyn-cmp-edit-label'
 
 export function DynamicCmp({ task, title, setEditing }) {
     const { isModalOpen } = useSelector((storeState) => storeState.systemModule)
