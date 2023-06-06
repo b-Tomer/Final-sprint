@@ -8,9 +8,8 @@ import { TodoEdit } from './checklists/todo-edit'
 import { TodoContent } from './checklists/todo-content'
 import { TodoNew } from './checklists/todo-new'
 
-export function TaskChecklist({ task }) {
+export function TaskChecklist({ task, setEditing, editing }) {
     const [currentTask, setCurrentTask] = useState(task)
-    const [editing, setEditing] = useState(false)
     const [isHovered, setIsHovered] = useState(false)
     const [todoToEdit, setTodoToEdit] = useState(null)
     const { boardId } = useParams()
@@ -110,8 +109,10 @@ export function TaskChecklist({ task }) {
         <div className="checklists-container">
             {task.checklists.map((checklist) => {
                 const doneTodos = checklist.todos.filter((todo) => todo.isDone)
-                const progress =
-                    (doneTodos.length / checklist.todos.length) * 100
+                let progress = (doneTodos.length / checklist.todos.length) * 100
+                if (!checklist.todos.length) {
+                    progress = 0
+                }
                 const isCompleted = progress === 100
 
                 return (

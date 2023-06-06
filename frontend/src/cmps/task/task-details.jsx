@@ -18,6 +18,7 @@ export function TaskDetails({
     const { board } = useSelector((storeState) => storeState.boardModule)
     const [task, setTask] = useState(null)
     const [group, setGroup] = useState(null)
+    const [editing, setEditing] = useState(false)
     const taskOverlayRef = useRef()
     const groupIdx = board?.groups.findIndex((group) => group.id === groupId)
     const currTask = board.groups[groupIdx].tasks.find(
@@ -95,8 +96,10 @@ export function TaskDetails({
                             boardId={boardId}
                             task={task}
                             groupId={groupId}
+                            setEditing={setEditing}
+                            editing={editing}
                         />
-                        <TaskMenu task={task} />
+                        <TaskMenu task={task} setEditing={setEditing} />
                     </div>
                 </section>
             </div>

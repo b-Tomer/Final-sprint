@@ -14,7 +14,7 @@ export function TodoNew({
 }) {
     return (
         <>
-            {!editing && (
+            {(!editing || checklistToEdit !== checklist.id) && (
                 <button
                     onClick={() => openNewTodo(checklist)}
                     className="new-checklist-btn"
