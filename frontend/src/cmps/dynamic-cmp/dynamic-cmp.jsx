@@ -11,8 +11,7 @@ import { useSelector } from 'react-redux'
 import { store } from '../../store/store'
 import { DynCmpEditLabel } from './dyn-cmp-edit-label'
 
-
-export function DynamicCmp({ task, title, label }) {
+export function DynamicCmp({ task, title, setEditing }) {
     const { isModalOpen } = useSelector((storeState) => storeState.systemModule)
 
     function onCloseDynModal() {
@@ -24,21 +23,28 @@ export function DynamicCmp({ task, title, label }) {
         <div className="dynamic-cmp">
             <div className="dynamic-cmp-header">
                 <div className="dynamic-cmp-header-title">{title}</div>
-                <button
-                    className="dynamic-cmp-close"
-                    onClick={onCloseDynModal}>
+                <button className="dynamic-cmp-close" onClick={onCloseDynModal}>
                     <X className="task-icon-img" />
                 </button>
             </div>
             <hr></hr>
 
-            {title === "Members" && <DynCmpMembers task={task} />}
-            {title === "Labels" && <DynCmpLabels task={task} />}
-            {title === "Checklist" && <DynCmpChecklist />}
-            {title === "Dates" && <DynCmpDates />}
-            {title === "Attachment" && <DynCmpAttachment task={task} />}
-            {title === "Edit attachment" && <DynCmpAttachmentEdit task={task} />}
-            {title === "Edit-label" && <DynCmpEditLabel task={task} label={label} />}
+            {title === 'Members' && <DynCmpMembers task={task} />}
+            {title === 'Labels' && <DynCmpLabels task={task} />}
+            {title === 'Checklist' && (
+                <DynCmpChecklist
+                    task={task}
+                    onCloseDynModal={onCloseDynModal}
+                    setEditing={setEditing}
+                />
+            )}
+            {title === 'Dates' && <DynCmpDates />}
+            {title === 'Attachment' && <DynCmpAttachment task={task} />}
+            {title === 'Edit attachment' && (
+                <DynCmpAttachmentEdit task={task} />
+            )}
+
+            {title === 'Edit label' && <DynCmpAttachmentEdit task={task} />}
         </div>
     )
 }

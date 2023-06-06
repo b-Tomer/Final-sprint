@@ -6,6 +6,7 @@ import { groupService } from '../services/group.service.local'
 import { ReactComponent as X } from '../assets/img/icons/x.svg'
 import { taskService } from '../services/task.service.local'
 import { removeTask, saveTask } from '../store/task.actions'
+import { Draggable, Droppable } from 'react-beautiful-dnd'
 
 export function GroupDetails({
     group,
@@ -17,12 +18,15 @@ export function GroupDetails({
     taskEdit,
     onExpandLabels,
     isLabelsExpand,
-    labelsFont
+    labelsFont,
+    provided,
+    isDragging,
 }) {
     const [groupToUpdate, setGroupToUpdate] = useState(group)
     const [isAddTaskOpen, setIsAddTaskOpen] = useState(false)
     const [task, setTask] = useState(null)
     const [taskTitle, setTaskTitle] = useState('')
+    const { board } = useSelector((storeState) => storeState.boardModule)
 
     useEffect(() => {
         setTask(taskService.getDefaultTask())
@@ -50,7 +54,6 @@ export function GroupDetails({
         }))
     }
 
-
     async function onAddTask(ev) {
         ev.preventDefault()
         try {
@@ -72,13 +75,26 @@ export function GroupDetails({
         setIsAddTaskOpen(false)
     }
 
+    function handleOnDraggEnd(result) {
+        if (!result.destination) return
+        const updatedTasks = Array.from(group)
+        const [reorderedGroup] = updatedTasks.splice(result.source.index, 1)
+        updatedTasks.splice(result.destination.index, 0, reorderedGroup)
+        const updatedBoard = { ...board, groups: updatedTasks }
+        console.log(updatedBoard)
+        // updateBoard(updatedBoard)
+    }
+if(!group)
     return (
         <section
-            className="group-container"
+            className={`group-container ${isDragging ? 'dragging' : ''}`}
             style={{
                 display: 'grid',
                 gridTemplateRows: isAddTaskOpen ? '47px 1fr' : '47px 1fr 43px',
             }}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            ref={provided.innerRef}
         >
             <div className="group-header">
                 <input
@@ -88,53 +104,78 @@ export function GroupDetails({
                     onChange={onChangegroupTitle}
                 />
                 <button>
-                    <img onClick={()=>onRemoveGroup(group)} src={dots} alt="more" />
+                    <img
+                        onClick={() => onRemoveGroup(group)}
+                        src={dots}
+                        alt="more"
+                    />
                 </button>
             </div>
-            <section className="group-content">
-                {group.tasks.map((task) => (
-                    <TaskPreview
-                        labelsFont={labelsFont}
-                        isLabelsExpand={isLabelsExpand}
-                        onExpandLabels={onExpandLabels}
-                        onRemoveTask={onRemoveTask}
-                        task={task}
-                        key={task.id}
-                        boardId={boardId}
-                        groupId={group.id}
-                        setTaskEdit={setTaskEdit}
-                        taskEdit={taskEdit}
-                        setIsTaskDetailsOpen={setIsTaskDetailsOpen}
-                        isTaskDetailsOpen={isTaskDetailsOpen}
-                    />
-                ))}
-                {isAddTaskOpen && (
-                    <div className="task-container">
-                        <form onSubmit={onAddTask}>
-                            <input
-                                placeholder="Enter a title for this card..."
-                                className="add-list-input"
-                                value={taskTitle}
-                                onChange={handleTaskTitle}
-                            />
-                            <div className="add-btns">
-                                <button
-                                    onClick={onAddTask}
-                                    className="add-item-btn"
-                                >
-                                    Add card
-                                </button>
-                                <button
-                                    onClick={onAddClose}
-                                    className="svg-holder"
-                                >
-                                    <X className="list-icon icon-big" />
-                                </button>
+            <Droppable droppableId={group.id} type="task">
+                {(provided) => (
+                    <section
+                        className={`group-content `}
+                        {...provided.droppableProps}
+                        ref={provided.innerRef}
+                    >
+                        {group.tasks.map((task, index) => (
+                            <Draggable
+                                draggableId={task.id}
+                                key={task.id}
+                                index={index}
+                            >
+                                {(provided, snapshot) => (
+                                    <TaskPreview
+                                        labelsFont={labelsFont}
+                                        isLabelsExpand={isLabelsExpand}
+                                        onExpandLabels={onExpandLabels}
+                                        onRemoveTask={onRemoveTask}
+                                        task={task}
+                                        key={task.id}
+                                        boardId={boardId}
+                                        groupId={group.id}
+                                        setTaskEdit={setTaskEdit}
+                                        taskEdit={taskEdit}
+                                        setIsTaskDetailsOpen={
+                                            setIsTaskDetailsOpen
+                                        }
+                                        isTaskDetailsOpen={isTaskDetailsOpen}
+                                        provided={provided}
+                                        isDragging={snapshot.isDragging}
+                                    />
+                                )}
+                            </Draggable>
+                        ))}
+                        {provided.placeholder}
+                        {isAddTaskOpen && (
+                            <div className="task-container">
+                                <form onSubmit={onAddTask}>
+                                    <input
+                                        placeholder="Enter a title for this card..."
+                                        className="add-list-input"
+                                        value={taskTitle}
+                                        onChange={handleTaskTitle}
+                                    />
+                                    <div className="add-btns">
+                                        <button
+                                            onClick={onAddTask}
+                                            className="add-item-btn"
+                                        >
+                                            Add card
+                                        </button>
+                                        <button
+                                            onClick={onAddClose}
+                                            className="svg-holder"
+                                        >
+                                            <X className="list-icon icon-big" />
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
-                        </form>
-                    </div>
+                        )}
+                    </section>
                 )}
-            </section>
+            </Droppable>
             <div className="group-footer">
                 {!isAddTaskOpen && (
                     <button onClick={onOpenAddTask}>

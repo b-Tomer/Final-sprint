@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from 'react'
 
 import { ReactComponent as Clock } from '../../assets/img/icons/clock.svg'
 import { ReactComponent as Member } from '../../assets/img/icons/member.svg'
@@ -8,12 +8,10 @@ import { ReactComponent as CheckList } from '../../assets/img/icons/checklist.sv
 import { ReactComponent as Attachment } from '../../assets/img/icons/attachment.svg'
 
 import { DynamicCmp } from '../dynamic-cmp/dynamic-cmp'
-import { store } from '../../store/store';
-import { OPEN_DYN_MODAL } from '../../store/system.reducer';
+import { store } from '../../store/store'
+import { OPEN_DYN_MODAL } from '../../store/system.reducer'
 
-
-export function TaskMenu({ task }) {
-
+export function TaskMenu({ task, setEditing }) {
     const [dynamicCmpName, setDynamicCmpName] = useState(null)
 
     function openDynamicCmp(name) {
@@ -21,38 +19,60 @@ export function TaskMenu({ task }) {
         setDynamicCmpName(name)
     }
 
-
-
     return (
         <div className="window-sidebar">
             <h3 className="card-menu-title">Add to card</h3>
             <div className="add-to-card-menu">
-                <button className="button-link" onClick={() => openDynamicCmp('Members')}>
+                <button
+                    className="button-link"
+                    onClick={() => openDynamicCmp('Members')}
+                >
                     <Member className="sidebar-icon" />
                     <span>Members</span>
                 </button>
-                <button className="button-link" onClick={() => openDynamicCmp('Labels')}  >
+                <button
+                    className="button-link"
+                    onClick={() => openDynamicCmp('Labels')}
+                >
                     <Label className="sidebar-icon" />
-                    <span>Labels</span> </button>
-                <button className="button-link" onClick={() => openDynamicCmp('Checklist')} >
+                    <span>Labels</span>{' '}
+                </button>
+                <button
+                    className="button-link"
+                    onClick={() => openDynamicCmp('Checklist')}
+                >
                     <CheckList className="sidebar-icon" />
-                    <span>Checklist</span> </button>
-                <button className="button-link" onClick={() => openDynamicCmp('Dates')} >
+                    <span>Checklist</span>{' '}
+                </button>
+                <button
+                    className="button-link"
+                    onClick={() => openDynamicCmp('Dates')}
+                >
                     <Clock className="sidebar-icon" />
-                    <span>Dates</span> </button>
-                <button className="button-link" onClick={() => openDynamicCmp('Attachment')}  >
+                    <span>Dates</span>{' '}
+                </button>
+                <button
+                    className="button-link"
+                    onClick={() => openDynamicCmp('Attachment')}
+                >
                     <Attachment className="sidebar-icon" />
-                    <span>Attachment</span> </button>
-                <button className="button-link" onClick={() => openDynamicCmp('Custom Fields')} >
+                    <span>Attachment</span>{' '}
+                </button>
+                <button
+                    className="button-link"
+                    onClick={() => openDynamicCmp('Custom Fields')}
+                >
                     <CustomFields className="sidebar-icon" />
-                    <span>Custom Fields</span> </button>
+                    <span>Custom Fields</span>{' '}
+                </button>
             </div>
-            {dynamicCmpName && <DynamicCmp task={task} title={dynamicCmpName} />}
+            {dynamicCmpName && (
+                <DynamicCmp
+                    task={task}
+                    title={dynamicCmpName}
+                    setEditing={setEditing}
+                />
+            )}
         </div>
-
     )
 }
-
-
-
-

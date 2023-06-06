@@ -1,0 +1,45 @@
+.dyn-cmp-checklist-container {
+    padding: 10px;
+
+    h3 {
+        font-size: 12px;
+    }
+    input {
+        margin: 4px 0 12px;
+        width: 100%;
+        background-color: #fafbfc;
+        border: none;
+        border-radius: 3px;
+        box-shadow: inset 0 0 0 2px #091e4224;
+        box-sizing: border-box;
+        display: block;
+        line-height: 20px;
+        padding: 8px 12px;
+        transition-duration: 85ms;
+        transition-property: background-color, border-color, box-shadow;
+        transition-timing-function: ease;
+
+        &:focus {
+            background-color: $clr1;
+            box-shadow: rgb(56, 139, 255) 0px 0px 0px 2px inset;
+        }
+    }
+    button {
+        margin-top: 4px;
+        height: 2rem;
+        background-color: $clrBTN;
+        color: $clr1;
+        border-radius: 3px;
+        padding-inline: 24px;
+        padding-block: 6px;
+        font-size: 14px;
+        font-weight: 400px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+            Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+            sans-serif;
+
+        &:hover {
+            filter: brightness(0.9);
+        }
+    }
+}

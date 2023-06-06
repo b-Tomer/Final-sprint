@@ -7,7 +7,7 @@ import {
     SET_BOARDS,
     UPDATE_BOARD,
     SET_BOARD,
-    FILTER_BY
+    FILTER_BY,
 } from './board.reducer.js'
 
 // Action Creators:
@@ -23,6 +23,7 @@ export function getActionAddBoard(board) {
         board,
     }
 }
+
 export function getActionUpdateBoard(board) {
     return {
         type: UPDATE_BOARD,
@@ -42,9 +43,11 @@ export async function loadBoard(boardId, filterBy = {}) {
         const board = await boardService.getById(boardId)
         if (filterBy.txt) {
             const regex = new RegExp(filterBy.txt, 'i')
-           let groupsToShow = board.groups.filter(group => regex.test( group.title)) 
-        //    || board.groups.filter(group => group.tasks.forEach(task=> regex.test(task.title)))
-           board.groups = groupsToShow
+            let groupsToShow = board.groups.filter((group) =>
+                regex.test(group.title)
+            )
+            //    || board.groups.filter(group => group.tasks.forEach(task=> regex.test(task.title)))
+            board.groups = groupsToShow
         }
         store.dispatch({
             type: SET_BOARD,
@@ -53,7 +56,6 @@ export async function loadBoard(boardId, filterBy = {}) {
     } catch (err) {
         console.log('Cannot load board', err)
     }
-
 }
 
 export async function loadBoards(filterBy) {
@@ -94,7 +96,7 @@ export function updateBoard(board) {
     return boardService
         .save(board)
         .then((savedBoard) => {
-            store.dispatch(getActionUpdateBoard(savedBoard))
+            store.dispatch(getActionSetBoard(savedBoard))
             return savedBoard
         })
         .catch((err) => {
@@ -109,4 +111,3 @@ export function setFilterBy(filterBy) {
         filterBy,
     })
 }
-

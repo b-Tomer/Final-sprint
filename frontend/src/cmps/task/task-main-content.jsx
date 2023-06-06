@@ -3,13 +3,17 @@ import { TaskChecklist } from '../../cmps/task/task-checklist.jsx'
 import { TaskAttachments } from './task-attachments.jsx'
 import { TaskDescription } from './task-description'
 
-export function TaskMainContent({ task, boardId, groupId }) {
-    
+export function TaskMainContent({
+    task,
+    boardId,
+    groupId,
+    setEditing,
+    editing,
+}) {
     if (!task) return
 
     return (
         <section className="task-main-content">
-
             <TaskDescription boardId={boardId} groupId={groupId} task={task} />
 
             {task.attachments && (
@@ -22,7 +26,13 @@ export function TaskMainContent({ task, boardId, groupId }) {
 
             {task.checklists && (
                 <div className="checklist">
-                    <TaskChecklist boardId={boardId} groupId={groupId} task={task} />
+                    <TaskChecklist
+                        boardId={boardId}
+                        groupId={groupId}
+                        task={task}
+                        setEditing={setEditing}
+                        editing={editing}
+                    />
                 </div>
             )}
 

@@ -43,7 +43,7 @@ export function TodoEdit({
             <form onSubmit={(event) => onFinishEditing(event)}>
                 <textarea onChange={onEditTodo} value={todoToUpdate.title} />
                 <div className="todo-btns">
-                    <button className="add-item-btn">Add</button>
+                    <button className="add-item-btn">Save</button>
                     <button className="cancel-btn" onClick={closeNewTodo}>
                         Cancel
                     </button>
