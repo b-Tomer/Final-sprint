@@ -11,6 +11,13 @@ import { removeTask } from '../../store/task.actions'
 import { TaskPreview } from './task-preview'
 import { useNavigate } from 'react-router-dom'
 import { utilService } from '../../services/util.service'
+import {
+    CLOSE_DYN_ALL_MODALS,
+    OPEN_DYN_LABEL_MODAL,
+    OPEN_DYN_MODAL,
+    SET_MODAL_TITLE,
+} from '../../store/system.reducer'
+import { store } from '../../store/store'
 
 export function TaskEditor({
     pos,
@@ -95,6 +102,15 @@ export function TaskEditor({
         setIsTaskDetailsOpen(true)
         navigate(`/board/${boardId}/${groupId}/${task.id}`)
     }
+
+    function onEditLabels() {
+        const title = 'Labels'
+        store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
+        store.dispatch({ type: SET_MODAL_TITLE, title })
+        store.dispatch({ type: OPEN_DYN_MODAL })
+        store.dispatch({ type: OPEN_DYN_LABEL_MODAL })
+    }
+
     return (
         <section
             className="card-editor-background"
@@ -119,7 +135,10 @@ export function TaskEditor({
                             Open card
                         </span>
                     </button>
-                    <button className="quick-card-editor-buttons-item js-edit-labels">
+                    <button
+                        onClick={onEditLabels}
+                        className="quick-card-editor-buttons-item js-edit-labels"
+                    >
                         <Labels className="card-editor-icon" />
                         <span className="quick-card-editor-buttons-item-text">
                             Edit labels
