@@ -1,6 +1,6 @@
 import { ReactComponent as Plus } from '../assets/img/icons/plus.svg'
 import { ReactComponent as X } from '../assets/img/icons/x.svg'
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 
 
@@ -9,6 +9,8 @@ export function AddGroup({ addGroup }) {
     const [isAddOpen, setIsAddOpen] = useState(false)
     const [currStyle, setCurrStyle] = useState({})
     const [groupTitle, setGroupTitle] = useState('')
+    const inputRef = useRef();
+
 
 
     function onOpenAddContainer() {
@@ -31,17 +33,25 @@ export function AddGroup({ addGroup }) {
         addGroup(groupTitle)
         setGroupTitle('')
         onAddClose()
+        onOpenAddContainer()
+
     }
 
 
     return (
         <section style={currStyle} className="add-group-container">
-            {!isAddOpen && <div onClick={onOpenAddContainer} className="add-list-content-closed">
+            {!isAddOpen && <div ref={inputRef} onClick={onOpenAddContainer} className="add-list-content-closed">
                 <Plus className="list-icon" />  Add another list
             </div>}
             {isAddOpen && <div className="add-list-content-opened">
                 <form onSubmit={onAddGroup} >
-                    <input value={groupTitle} onChange={handleChange} type="text" placeholder="Enter list title..." className="add-list-input" />
+                    <input
+                        ref={inputRef}
+                        value={groupTitle}
+                        onChange={handleChange}
+                        type="text"
+                        placeholder="Enter list title..."
+                        className="add-list-input" />
                     <div className="add-btns">
                         <button onClick={onAddGroup} className="add-item-btn">Add list</button>
                         <button onClick={onAddClose} className="svg-holder">

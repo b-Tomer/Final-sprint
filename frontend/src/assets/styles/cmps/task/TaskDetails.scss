@@ -28,6 +28,14 @@
             position: relative;
             overflow-y: auto;
 
+            .task-header {
+                grid-column: 1/3;
+            }
+
+            .window-sidebar {
+                grid-column: 2;
+            }
+
             .task-details-secondry-container {
                 padding: 10px 10px;
                 z-index: 3;
@@ -44,13 +52,6 @@
                 }
             }
 
-            .task-header {
-                grid-column: 1/3;
-            }
-
-            .window-sidebar {
-                grid-column: 2;
-            }
         }
 
         .task-details-modal {
@@ -82,7 +83,8 @@
         .window-sidebar {
             grid-column: 2;
             max-height: 700px;
-            .card-menu-title{
+
+            .card-menu-title {
                 font-size: 12px;
             }
         }

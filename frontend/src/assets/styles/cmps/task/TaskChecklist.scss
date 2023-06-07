@@ -8,10 +8,10 @@
                 margin-left: auto;
                 padding: 7px 7px;
                 color: $clr7;
-                margin-right: 10px;
                 border-radius: 5px;
                 background-color: $clrTodoBg;
                 color: $clr7;
+
                 &:hover {
                     background-color: $clrH;
                 }
@@ -60,6 +60,7 @@
             border-radius: 3px;
             cursor: pointer;
             width: 100%;
+
             .todo-content {
                 display: flex;
 
@@ -126,6 +127,7 @@
 
         .new-checklist-menu {
             margin-inline-start: 25px;
+
             textarea {
                 border: 0;
                 padding-block: 10px;
@@ -133,6 +135,7 @@
                 border-radius: 3px;
                 width: 100%;
                 resize: vertical;
+
                 &:focus {
                     border: 0;
                     outline: 0;
