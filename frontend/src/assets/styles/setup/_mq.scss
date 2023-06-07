@@ -1,7 +1,38 @@
 @media (max-width: 760px) {
+    .main-nav {
+        display: flex;
+        flex-direction: column;
+
+        position: absolute;
+        background: white;
+        width: 200px;
+        top: 75px;
+        left: 25%;
+        // transform: translateY(-200%);
+        z-index: -1;
+        transition: 0.6s;
+
+        .link-section {
+            display: flex;
+            flex-direction: row;
+
+            .links.left-align {
+                text-align: left;
+            }
 
 
-    
+        }
+
+
+    }
+
+
+
+
+
+
+
+
 }
 
 @media (min-width: 760px) {}

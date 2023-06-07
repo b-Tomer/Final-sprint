@@ -103,7 +103,6 @@ export function AppHeader({ onSetfilter }) {
                     Create
                 </button>
             </nav>
-            {/* <button>Create</button> */}
             <div className="header-actions">
                 <div className="search-bar">
                     <span>
