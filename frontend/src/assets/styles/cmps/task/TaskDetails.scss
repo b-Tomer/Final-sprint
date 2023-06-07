@@ -37,11 +37,11 @@
             }
 
             .task-details-secondry-container {
+                display: grid;
+                grid-template-columns: 1fr 150px;
                 padding: 10px 10px;
                 z-index: 3;
                 background-color: $clr2;
-                display: grid;
-                grid-template-columns: 1fr 150px;
                 align-self: center;
                 justify-self: center;
                 border-bottom-left-radius: 0;
