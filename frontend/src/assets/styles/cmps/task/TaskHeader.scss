@@ -1,6 +1,4 @@
 .task-header {
-
-
     .task-header-title {
         align-items: center;
         margin: 0px;
@@ -18,7 +16,8 @@
             font-size: 1.25rem;
             border: none;
             outline: none;
-            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+                Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
             width: 100%;
             background-color: $clr2;
             padding: 0px;
@@ -29,7 +28,7 @@
             width: 13px;
             height: 13px;
             margin-right: 8px;
-            transform: translateY(-2.5px)
+            transform: translateY(-2.5px);
         }
     }
 
@@ -55,26 +54,18 @@
             path {
                 fill: $clr4;
             }
-
-
         }
-
     }
 
     .task-header-title {
         display: flex;
     }
-
-
-
 }
 
 .data-item {
-
     .data-preview-title {
         font-size: 12px;
     }
-
 }
 
 .task-cover {
@@ -83,6 +74,9 @@
     overflow: hidden;
     background-position: top;
     background-repeat: no-repeat;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+
     // object-fit: cover;
     // .task-cover-img {
     //     height: 160px;
@@ -102,5 +96,4 @@
             width: 1.5em;
         }
     }
-
 }

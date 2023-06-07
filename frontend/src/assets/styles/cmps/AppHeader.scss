@@ -24,7 +24,6 @@
         cursor: pointer;
     }
 
-
     .main-nav {
         display: flex;
         flex-direction: column;
@@ -52,7 +51,6 @@
 
             @include for-normal-layout {
                 text-align: center;
-
             }
             a {
                 color: $clr4;
@@ -86,6 +84,7 @@
     .header-search {
         height: 2rem;
         width: 100%;
+        border-radius: 8px;
     }
 
     .header-actions {
