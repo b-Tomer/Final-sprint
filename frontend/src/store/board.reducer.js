@@ -12,6 +12,7 @@ const initialState = {
         txt: '',
     },
     board: null,
+    lastUpdatedBoard: null
 }
 
 export function boardReducer(state = initialState, action) {
@@ -20,7 +21,7 @@ export function boardReducer(state = initialState, action) {
     var currBoard
     switch (action.type) {
         case SET_BOARD:
-            // console.log('action.board: ', action.board )
+            console.log('action.board: ', action.board )
             newState = { ...state, board: action.board }
             break
         case SET_BOARDS:

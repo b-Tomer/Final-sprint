@@ -13,7 +13,7 @@ import { useParams } from 'react-router-dom'
 import { DynCmpEditLabel } from './dyn-cmp-edit-label'
 
 
-export function DynamicCmp({ task, title, setEditing, modalPos }) {
+export function DynamicCmp({ task, title, setEditing, modalPos, atc }) {
     const { isModalOpen } = useSelector((storeState) => storeState.systemModule)
     const { modalTitle } = useSelector((storeState) => storeState.systemModule)
     const { boardId } = useParams()
@@ -104,6 +104,7 @@ export function DynamicCmp({ task, title, setEditing, modalPos }) {
                     boardId={boardId}
                     groupId={groupId}
                     task={task}
+                    atc={atc}
                 />
             )}
         </div>

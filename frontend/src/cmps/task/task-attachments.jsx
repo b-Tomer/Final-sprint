@@ -10,7 +10,7 @@ export function TaskAttachments({ task, boardId, groupId }) {
 
   const { isOpenEditAtc } = useSelector((storeState) => storeState.systemModule)
   const [currTask, setCurrTask] = useState(task)
-  const [currAtc, setCurrAtc] = useState(task)
+  const [currAtc, setCurrAtc] = useState({})
 
   useEffect(() => {
     setCurrTask(task)

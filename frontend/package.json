@@ -16,6 +16,7 @@
         "dayjs": "^1.11.8",
         "fast-average-color": "9.3.0",
         "fast-average-color-node": "^2.6.0",
+        "formik": "^2.4.1",
         "get-contrast": "^3.0.0",
         "lodash": "^4.17.21",
         "os-browserify": "^0.3.0",

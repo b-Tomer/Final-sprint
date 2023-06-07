@@ -32,13 +32,38 @@ export function BoardIndex() {
     const { filterBy } = useSelector((storeState) => storeState.boardModule)
     const queryAttr = 'data-rbd-drag-handle-draggable-id'
 
-    const dispatch = useDispatch()
-
+    useEffect(()=>{
+        console.log('taskedit');
+    },[taskEdit])
+    
+    useEffect(()=>{
+        console.log('lablesfont');
+        
+    },[labelsFont])
+    
+    useEffect(()=>{
+        console.log('isLabel');
+    },[isLabelsExpand])
+    
+    useEffect(()=>{
+        console.log('isTaskDetailsOpen');
+        
+    },[isTaskDetailsOpen])
+    
+    useEffect(()=>{
+        
+        console.log('isLabel');
+    },[placeholderProps])
     useEffect(() => {
         loadBoards()
         onLoadBoard(filterBy)
-        console.log(board)
+        console.log('from use effect', board)
     }, [filterBy, boardId])
+
+
+    // useEffect(() => {
+    //     console.log('hettttttttt')
+    // }, [board])
 
     async function onLoadBoard(filterBy) {
         await loadBoard(boardId, filterBy)
@@ -104,7 +129,7 @@ export function BoardIndex() {
         const { destination, source, type } = result
 
         if (!destination) return
-        setPlaceholderProps({})
+        // setPlaceholderProps({})
 
         if (
             destination.droppableId === source.droppableId &&
@@ -112,7 +137,7 @@ export function BoardIndex() {
         )
             return
 
-        const newBoard = { ...board }
+        const newBoard = structuredClone(board)
         let updatedBoard = utilService.handleDragEnd(
             newBoard,
             destination,
@@ -131,6 +156,7 @@ export function BoardIndex() {
         updateBoard(updatedBoard)
     }
 
+    console.log(JSON.parse(JSON.stringify(board)))
     if (!board) return
     return (
         <>
@@ -198,7 +224,7 @@ export function BoardIndex() {
                                                             isDragging={
                                                                 snapshot.isDragging
                                                             }
-                                                        
+
                                                         />
                                                     )}
                                                 </Draggable>
@@ -217,7 +243,7 @@ export function BoardIndex() {
                                                         backgroundColor:
                                                             '#00000023',
                                                         borderRadius: '12px',
-                                                        marginLeft:'14px'
+                                                        marginLeft: '14px'
                                                     }}
                                                 />
                                             )}

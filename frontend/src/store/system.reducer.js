@@ -47,10 +47,7 @@ export function systemReducer(state = initialState, action = {}) {
             return { ...state, isOpenEditorModal: true }
         case CLOSE_DYN_ALL_MODALS:
             return {
-                ...state, isModalOpen: false, isMenuModalOpen: false,
-                isOpenEditAtc: false, isOpenDateModal: false,
-                isOpenLabelModal: false, isOpenMemberModal: false,
-                isOpenEditorModal: false
+                ...state, ...initialState
             }
         case SET_MODAL_TITLE:
             console.log('action.title: ', action.title)
