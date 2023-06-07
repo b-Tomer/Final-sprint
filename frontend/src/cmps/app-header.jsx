@@ -164,7 +164,7 @@ export function AppHeader({ onSetfilter }) {
                 </div>
                 <div className="link-section">
                     <NavLink
-                        to="/bookApp"
+                        to="/"
                         style={
                             bgColor
                                 ? txtColor

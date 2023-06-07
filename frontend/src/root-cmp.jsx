@@ -1,7 +1,6 @@
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import routes from './routes'
-import { UserDetails } from './pages/user-details'
 import { Provider } from 'react-redux'
 import { store } from './store/store'
 import { NotFound } from './pages/not-found'
@@ -27,7 +26,6 @@ export function RootCmp() {
                                 element={route.component}
                             />
                         ))}
-                        <Route path="user/:id" element={<UserDetails />} />
                         <Route path="*" element={<NotFoundOrRedirect />} />
                     </Routes>
                 </main>
