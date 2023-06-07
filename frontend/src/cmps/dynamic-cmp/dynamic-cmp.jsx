@@ -11,7 +11,7 @@ import { useSelector } from 'react-redux'
 import { store } from '../../store/store'
 import { useParams } from 'react-router-dom'
 import { DynCmpEditLabel } from './dyn-cmp-edit-label'
-import { utilService } from '../../services/util.service'
+
 
 export function DynamicCmp({ task, title, setEditing, modalPos }) {
     const { isModalOpen } = useSelector((storeState) => storeState.systemModule)
@@ -105,7 +105,6 @@ export function DynamicCmp({ task, title, setEditing, modalPos }) {
                     boardId={boardId}
                     groupId={groupId}
                     task={task}
-                    atc={atc}
                 />
             )}
         </div>

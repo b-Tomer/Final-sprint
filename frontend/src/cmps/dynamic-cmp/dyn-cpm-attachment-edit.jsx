@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { ReactComponent as X } from '../../assets/img/icons/x.svg'
 
 
-export function DynCmpAttachmentEdit(task, atc) {
+export function DynCmpAttachmentEdit(task) {
 
     const [newTitle, setNewTitle] = useState('')
 
@@ -13,7 +13,7 @@ export function DynCmpAttachmentEdit(task, atc) {
     }
     
     function updateAttachment() {
-        console.log(atc)
+    
 
     }
 
