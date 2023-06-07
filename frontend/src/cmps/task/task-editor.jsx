@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import { useClickOutside } from '../../customHooks/useClickOutside'
 import { ReactComponent as Open } from '../../assets/img/icons/window.svg'
 import { ReactComponent as Labels } from '../../assets/img/icons/label.svg'
 import { ReactComponent as Members } from '../../assets/img/icons/member.svg'
@@ -8,16 +7,17 @@ import { ReactComponent as Move } from '../../assets/img/icons/arrow_right.svg'
 import { ReactComponent as Archive } from '../../assets/img/icons/archive.svg'
 import { ReactComponent as Cover } from '../../assets/img/icons/cover.svg'
 import { removeTask } from '../../store/task.actions'
-import { TaskPreview } from './task-preview'
 import { useNavigate } from 'react-router-dom'
 import { utilService } from '../../services/util.service'
 import {
     CLOSE_DYN_ALL_MODALS,
-    OPEN_DYN_LABEL_MODAL,
+    OPEN_DYN_EDITOR_MODAL,
     OPEN_DYN_MODAL,
     SET_MODAL_TITLE,
 } from '../../store/system.reducer'
 import { store } from '../../store/store'
+import { useSelector } from 'react-redux'
+import { DynamicCmp } from '../dynamic-cmp/dynamic-cmp'
 
 export function TaskEditor({
     pos,
@@ -27,7 +27,6 @@ export function TaskEditor({
     boardId,
     setIsTaskDetailsOpen,
 }) {
-    const menuRef = useRef(null)
     const taskPreviewRef = useRef()
     const container = useRef()
     const navigate = useNavigate()
@@ -35,6 +34,9 @@ export function TaskEditor({
     windowPos.x = window.innerWidth
     windowPos.y = window.innerHeight
     const [modalStyle, setModalStyle] = useState({})
+    const [currTitle, setCurrTitle] = useState('')
+    const { isOpenEditorModal } = useSelector((storeState) => storeState.systemModule)
+
 
     useEffect(() => {
         calcModalStyle()
@@ -53,8 +55,6 @@ export function TaskEditor({
         }
     }, [])
 
-    useClickOutside(menuRef, toggleEditModal)
-
     function calcModalStyle() {
         if (container.current) {
             const elePos = {
@@ -71,15 +71,15 @@ export function TaskEditor({
             )
             let newModalStyle = isOutOfBoundX
                 ? {
-                      left: pos.left - 248 + 'px',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'flex-end',
-                  }
+                    left: pos.left - 248 + 'px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'flex-end',
+                }
                 : {
-                      left: 259 + pos.left + 'px',
-                      justifyContent: 'start',
-                  }
+                    left: 259 + pos.left + 'px',
+                    justifyContent: 'start',
+                }
             if (isOutOfBoundY) {
                 newModalStyle.top = pos.top - 210 + 'px'
             } else {
@@ -89,37 +89,37 @@ export function TaskEditor({
         }
     }
 
-    function toggleEditModal() {
+    function onCloseEditor() {
         setTaskEdit(false)
+        store.dispatch({ type: SET_MODAL_TITLE, title: '' })
+        store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
     }
 
     async function onRemoveTask(taskId) {
-        // console.log(boardId + ' ' + groupId + ' ' + task.id)
         removeTask(boardId, groupId, task.id)
     }
 
     function onOpenCard() {
+        console.log('heyyy');
         setIsTaskDetailsOpen(true)
         navigate(`/board/${boardId}/${groupId}/${task.id}`)
     }
 
-    function onEditLabels() {
-        const title = 'Labels'
-        store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
+    function onOpenEditorModal(title, ev) {
+        ev.stopPropagation()
+        setCurrTitle(title)
         store.dispatch({ type: SET_MODAL_TITLE, title })
+        store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
         store.dispatch({ type: OPEN_DYN_MODAL })
-        store.dispatch({ type: OPEN_DYN_LABEL_MODAL })
+        store.dispatch({ type: OPEN_DYN_EDITOR_MODAL })
     }
 
     return (
         <section
             className="card-editor-background"
             ref={taskPreviewRef}
-            onClick={(ev) => {
-                toggleEditModal(ev, taskPreviewRef)
-            }}
+            onClick={onCloseEditor}
         >
-            {/* <TaskPreview task={task} /> */}
             <section className="card-editor-container">
                 <div
                     className="card-editor-buttons"
@@ -136,7 +136,7 @@ export function TaskEditor({
                         </span>
                     </button>
                     <button
-                        onClick={onEditLabels}
+                        onClick={(ev) => onOpenEditorModal("Labels", ev)}
                         className="quick-card-editor-buttons-item js-edit-labels"
                     >
                         <Labels className="card-editor-icon" />
@@ -144,7 +144,9 @@ export function TaskEditor({
                             Edit labels
                         </span>
                     </button>
-                    <button className="quick-card-editor-buttons-item js-edit-members">
+                    <button className="quick-card-editor-buttons-item js-edit-members"
+                        onClick={(ev) => onOpenEditorModal("Members", ev)}
+                    >
                         <Members className="card-editor-icon" />
                         <span className="quick-card-editor-buttons-item-text">
                             Change members
@@ -168,16 +170,16 @@ export function TaskEditor({
                             Copy
                         </span>
                     </button>
-                    <button className="quick-card-editor-buttons-item js-edit-due-date">
+                    <button className="quick-card-editor-buttons-item js-edit-due-date"
+                        onClick={(ev) => onOpenEditorModal("Dates", ev)}
+                        >
                         <Date className="card-editor-icon" />
                         <span className="quick-card-editor-buttons-item-text">
                             Edit dates
                         </span>
                     </button>
                     <button
-                        onClick={() => {
-                            onRemoveTask(task.id)
-                        }}
+                        onClick={() => { onRemoveTask(task.id) }}
                         className="quick-card-editor-buttons-item js-archive"
                     >
                         <Archive className="card-editor-icon" />
@@ -185,6 +187,7 @@ export function TaskEditor({
                             Archive
                         </span>
                     </button>
+                    {isOpenEditorModal && <DynamicCmp task={task} title={currTitle} />}
                 </div>
             </section>
         </section>

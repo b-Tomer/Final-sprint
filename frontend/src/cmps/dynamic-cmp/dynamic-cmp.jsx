@@ -21,7 +21,8 @@ export function DynamicCmp({ task, title, setEditing }) {
     const { boardId } = useParams()
     const { groupId } = useParams()
 
-    function onCloseDynModal() {
+    function onCloseDynModal(ev) {
+        ev.stopPropagation()
         store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
         store.dispatch({ type: SET_MODAL_TITLE, title: '' })
     }

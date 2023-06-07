@@ -25,8 +25,6 @@ export function DynCmpLabels({ task }) {
     function handleEditButtonClick(title, label) {
         setLabelToEdit(label)
         store.dispatch({ type: OPEN_DYN_MODAL })
-        store.dispatch({ type: OPEN_DYN_MODAL })
-        store.dispatch({ type: OPEN_DYN_MODAL })
         store.dispatch({ type: SET_MODAL_TITLE, title })
         console.log(title, label)
         setIsEditLabelOpen(true)
@@ -47,11 +45,11 @@ export function DynCmpLabels({ task }) {
         }
         return null
     }
+    function onCheckClick(ev) {
+        ev.stopPropagation()
+    }
 
     function onToggleCheckedLabel(ev, labelId) {
-        const checked = ev.target.checked;
-
-        console.log(task.labelIds)
         if (!task.labelIds) {
             task.labelIds = [labelId]
         }
@@ -72,12 +70,13 @@ export function DynCmpLabels({ task }) {
                     {board.labels.map(label => {
                         let isLabelChecked = task.labelIds ? task.labelIds.includes(label.id) : false;
                         return (
-                            <label key={label.id} className="dyn-cmp-label">
+                            <label key={label.id} onClick={onCheckClick} className="dyn-cmp-label">
                                 <input
                                     id={`checkbox-${label.id}`}
                                     type="checkbox"
                                     name="checkbox"
                                     checked={isLabelChecked}
+                                    onClick={onCheckClick}
                                     onChange={(ev) => onToggleCheckedLabel(ev, label.id)}
                                     className="checkbox" />
                                 <div className="label-title" style={{ backgroundColor: label.color }}>{label.title}</div>

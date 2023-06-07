@@ -9,6 +9,7 @@ export const OPEN_DYN_DATE_MODAL = 'OPEN_DYN_DATE_MODAL'
 export const OPEN_DYN_LABEL_MODAL = 'OPEN_DYN_LABEL_MODAL'
 export const OPEN_DYN_MEMBER_MODAL = 'OPEN_DYN_MEMBER_MODAL'
 export const CLOSE_DYN_ALL_MODALS = 'CLOSE_DYN_ALL_MODALS'
+export const OPEN_DYN_EDITOR_MODAL = 'OPEN_DYN_EDITOR_MODAL'
 
 const initialState = {
     isLoading: false,
@@ -18,6 +19,7 @@ const initialState = {
     isOpenDateModal: false,
     isOpenMemberModal: false,
     isOpenLabelModal: false,
+    isOpenEditorModal: false,
     modalTitle: '',
 }
 
@@ -41,11 +43,14 @@ export function systemReducer(state = initialState, action = {}) {
             return { ...state, isOpenDateModal: true }
         case OPEN_DYN_LABEL_MODAL:
             return { ...state, isOpenLabelModal: true }
+        case OPEN_DYN_EDITOR_MODAL:
+            return { ...state, isOpenEditorModal: true }
         case CLOSE_DYN_ALL_MODALS:
             return {
                 ...state, isModalOpen: false, isMenuModalOpen: false,
                 isOpenEditAtc: false, isOpenDateModal: false,
-                isOpenLabelModal: false, isOpenMemberModal: false
+                isOpenLabelModal: false, isOpenMemberModal: false,
+                isOpenEditorModal: false
             }
         case SET_MODAL_TITLE:
             console.log('action.title: ', action.title)
