@@ -26,60 +26,142 @@
 
 
     .main-nav {
-        display: flex;
-        flex-direction: column;
-        font-size: 14px;
-        padding: 12px;
-        color: $clr4;
-        align-items: center;
-        align-content: center;
-        top: 75px;
-        left: 25%;
-        width: 200px;
-        background: white;
-        position: absolute;
-        transition: 0.6s;
 
-        .down-img {
-            width: 0.9rem;
-            height: 0.9rem;
-            margin-left: 5px;
+        @include for-normal-layout {
+            display: flex;
+            align-items: center;
         }
 
-        .link-section {
+        .links-section {
             display: flex;
-            text-align: left;
+            flex-direction: column;
+            font-size: 14px;
+            padding: 12px;
+            color: $clr4;
+            align-items: center;
+            align-content: center;
+            top: 48px;
+            left: calc(50% - 100px);
+            width: 200px;
+            background: $clr1;
+            position: absolute;
+            transition: 0.6s;
+            transform: translateY(-200px);
+
 
             @include for-normal-layout {
-                text-align: center;
-
-            }
-            a {
+                margin-bottom: 2px;
+                transform: translateY(0px);
+                flex-direction: row;
+                font-size: 14px;
                 color: $clr4;
+                background: none;
+                position: static;
+                width: fit-content;
+                height: 100%;
+            }
+
+            .link-section {
+                margin: 8px;
+                width: 100%;
                 display: flex;
-                align-items: end;
-                padding-right: 24px;
+                text-align: left;
+
+                .down-img {
+                    width: 0.9rem;
+                    height: 0.9rem;
+                    margin: 0px;
+                    margin-left: auto;
+                }
+
+                @include for-normal-layout {
+                    .down-img {
+                        margin: 0px 16px 0px 5px;
+                        transform: translateY(4px);
+                    }
+                }
+
+                a {
+                    color: $clr4;
+                    display: flex;
+                    align-items: end;
+                    margin-left: 5px;
+                }
+            }
+
+            @include for-normal-layout {
+                flex-direction: row;
             }
         }
 
-        button {
-            width: 64px;
-            height: 32px;
-            background-color: rgba(215, 215, 215, 0.507);
-            color: $clr4;
-            border-radius: 3px;
-            font-size: 14px;
-
-            &:hover {
-                background-color: $clrSCROLL;
-            }
+        .mobile-open {
+            transform: translateY(0);
         }
 
         @include for-normal-layout {
+            background: none;
             flex-direction: row;
             z-index: -1;
             position: static;
         }
+
+        .nav-btns {
+            display: flex;
+
+            .more {
+                display: block;
+                align-items: center;
+                background-color: transparent;
+                display: flex;
+                font-size: 0.875rem;
+                font-weight: 500;
+
+                .down-img {
+                    width: 1rem;
+                    margin-left: 3px;
+                }
+
+                @include for-normal-layout {
+                    display: none;
+                }
+            }
+
+            .new-board {
+                width: 32px;
+                height: 32px;
+                background-color: rgba(215, 215, 215, 0.507);
+                color: $clr4;
+                border-radius: 3px;
+                margin: 0px 5px 0px 8px;
+
+                &:hover {
+                    background-color: $clrSCROLL;
+                }
+
+                .plus-icon {
+                    font-size: 1.5rem;
+                }
+
+                .create {
+                    font-size: 0px;
+                }
+
+
+                @include for-normal-layout {
+                    width: max-content;
+                    height: 32px;
+
+                    .plus-icon {
+                        font-size: 1.0px;
+                    }
+
+                    .create {
+                        font-size: 0.875rem;
+                    }
+                }
+            }
+        }
+
     }
 
     .header-search {
@@ -108,33 +190,66 @@
         }
 
         .search-bar {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            background-color: $clr3;
-            min-width: 170px;
-            height: 1.85rem;
-            border-radius: 6px;
+            width: max-content;
+
+            span {
+
+                .search-img {
+                    width: 1.25rem;
+                    height: 1.25rem;
+                    margin-left: 8px;
+                    margin-right: 8px;
+
+                }
+            }
+
+            @include for-normal-layout {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                background-color: $clr3;
+                min-width: 170px;
+                height: 1.85rem;
+                border-radius: 6px;
+
+                span {
+                    .search-img {
+                        width: 1rem;
+                        height: 1rem;
+                        transform: translateY(2px);
+
+                    }
+                }
+            }
 
             input {
-                font-size: 0.75rem;
+                display: none;
+                border-radius: 6px;
+                font-size: 0.875em;
                 height: 1.85rem;
                 width: 100%;
                 border: none;
                 background-color: $clr3;
                 max-width: 500px;
                 transition: width 0.2s ease;
+
+                @include for-normal-layout {
+                    display: block;
+                    text-align: left;
+                }
             }
 
             input:focus {
                 width: 400px;
             }
+        }
 
-            .search-img {
-                width: 0.8rem;
-                height: 0.8rem;
-                margin-left: 8px;
-                margin-right: 8px;
+        .header-icons {
+
+            display: flex;
+
+            @include for-normal-layout {
+                display: flex;
             }
         }
     }
