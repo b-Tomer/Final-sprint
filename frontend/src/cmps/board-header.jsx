@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { boardService } from '../services/board.service.local.js'
 import { useParams } from 'react-router-dom'
+import { useState } from 'react'
 import { loadBoard } from '../store/board.actions.js'
 import { ReactComponent as Star } from '../assets/img/icons/star.svg'
 import { ReactComponent as Visability } from '../assets/img/icons/members.svg'
@@ -16,6 +17,7 @@ import { ReactComponent as More } from '../assets/img/icons/dots.svg'
 export function BoardHeader() {
     const { boardId } = useParams()
     const { board } = useSelector((storeState) => storeState.boardModule)
+
     useEffect(() => {
         loadBoard(boardId)
     }, [])
