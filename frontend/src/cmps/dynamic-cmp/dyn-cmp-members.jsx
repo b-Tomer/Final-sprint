@@ -22,8 +22,7 @@ export function DynCmpMembers({ task }) {
     }
 
     function onToggleCheckedMember(ev, memberId) {
-        const checked = ev.target.checked;
-
+        ev.stopPropagation()
         if (!task.members) {
             task.members = [memberId]
         }
@@ -36,6 +35,9 @@ export function DynCmpMembers({ task }) {
         updateTask(board._id, findGroupIdByTaskId(board, task.id), task)
     }
 
+    function onCheckClick(ev) {
+        ev.stopPropagation()
+    }
 
     if (!task) return ''
     return (
@@ -45,7 +47,7 @@ export function DynCmpMembers({ task }) {
                 {board.members.map(member => {
                     const isMemberChecked = task.members ? task.members.includes(member._id) : false;
                     return (
-                        < label key={member._id} className='dyn-cmp-member' htmlror="checkbox" >
+                        <label key={member._id} onClick={onCheckClick} className='dyn-cmp-member' htmlror="checkbox" >
                             <div>
                                 <img src={member.imgUrl} alt="Image" className='member-img' />
                             </div>
@@ -54,6 +56,7 @@ export function DynCmpMembers({ task }) {
                                 id={`checkbox-${member._id}`}
                                 type="checkbox"
                                 name="checkbox"
+                                onClick={onCheckClick}
                                 checked={isMemberChecked}
                                 onChange={(ev) => onToggleCheckedMember(ev, member._id)}
                                 className="checkbox" />

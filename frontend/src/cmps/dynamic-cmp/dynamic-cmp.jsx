@@ -65,7 +65,8 @@ export function DynamicCmp({ task, title, setEditing, modalPos }) {
         }
     }
 
-    function onCloseDynModal() {
+    function onCloseDynModal(ev) {
+        ev.stopPropagation()
         store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
         store.dispatch({ type: SET_MODAL_TITLE, title: '' })
     }

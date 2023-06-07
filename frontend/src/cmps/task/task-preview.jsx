@@ -27,10 +27,10 @@ export function TaskPreview({
     const navigate = useNavigate()
     const { board } = useSelector((storeState) => storeState.boardModule)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-    const menuRef = useRef(null)
+    // const menuRef = useRef(null)
     const taskPreviewRef = useRef()
 
-    useClickOutside(menuRef, toggleEditModal)
+    // useClickOutside(menuRef, toggleEditModal)
 
     // function onOpenMenu() {
     //     setIsMenuOpen(!isMenuOpen)
@@ -49,7 +49,7 @@ export function TaskPreview({
     function toggleEditModal(ev, ref) {
         if (taskEdit) return setTaskEdit(null)
         ev.stopPropagation()
-        ev.preventDefault()
+        // ev.preventDefault()
         const pos = utilService.getModalPositionOnTop(ref)
         setTaskEdit({ pos, task, groupId })
     }
@@ -99,9 +99,7 @@ export function TaskPreview({
                 >
                     <Stylus className="edit-icon" />
                 </button>
-                {/* {isMenuOpen && (
-            <TaskEditor setIsTaskDetailsOpen={setIsTaskDetailsOpen} taskId={task.id} onRemoveTask={onRemoveTask} />
-        )} */}
+
                 {(task.style?.bgColor || task.style?.backgroundImage) && (
                     <div
                         className="task-header"
