@@ -27,6 +27,13 @@ import { boardService } from '../services/board.service.local.js'
 
 export function AppHeader({ onSetfilter }) {
     const { board } = useSelector((storeState) => storeState.boardModule)
+    const [isMobileOpen, setIsMobileOpen] = useState(false);
+
+    const toggleMobileOpen = () => {
+        setIsMobileOpen(!isMobileOpen);
+        console.log(isMobileOpen)
+    };
+
 
     const navigate = useNavigate()
     const [bgColor, setBgColor] = useState(null)
@@ -37,6 +44,7 @@ export function AppHeader({ onSetfilter }) {
     useEffect(() => {
         printAverageColor()
     }, [board])
+
     // const user = useSelector(storeState => storeState.userModule.user)
 
     // async function onLogin(credentials) {
@@ -84,7 +92,6 @@ export function AppHeader({ onSetfilter }) {
                 },
             })
             const textColor = cc.contrastColor()
-            // console.log(cc)
             console.log(textColor)
             setTxtColor(textColor)
         })
@@ -131,61 +138,76 @@ export function AppHeader({ onSetfilter }) {
                 <h3>Trellax</h3>
             </div>
             <nav className="main-nav">
-                <div className="link-section">
-                    <NavLink
-                        className="links"
-                        to="/"
+                <div className={`links-section ${isMobileOpen ? 'mobile-open' : ''}`} >
+                    <div className="link-section">
+                        <div className="links">
+                            <NavLink
+                                to="/"
+                                style={
+                                    bgColor
+                                        ? txtColor
+                                            ? { color: txtColor }
+                                            : null
+                                        : null
+                                }
+                            >
+                                Workspaces
+                            </NavLink>
+                        </div>
+                        <Down className="down-img" src={Down} alt="" />
+                    </div>
+                    <div className="link-section">
+                        <div className="links">
+                            <NavLink
+                                to="/about"
+                                style={
+                                    bgColor
+                                        ? txtColor
+                                            ? { color: txtColor }
+                                            : null
+                                        : null
+                                }
+                            >
+                                Recent
+                            </NavLink>
+                        </div>
+                        <Down className="down-img" src={Down} alt="" />
+                    </div>
+                    <div className="link-section">
+                        <div className="links">
+                            <NavLink
+                                to="/bookApp"
+                                style={
+                                    bgColor
+                                        ? txtColor
+                                            ? { color: txtColor }
+                                            : null
+                                        : null
+                                }
+                            >
+                                Starred
+                            </NavLink>
+                        </div>
+                        <Down className="down-img" src={Down} alt="" />
+                    </div>
+                </div >
+                <div className='nav-btns'>
+                    <button
+                        onClick={toggleMobileOpen}
+                        className="more"
                         style={
-                            bgColor
-                                ? txtColor
-                                    ? { color: txtColor }
-                                    : null
-                                : null
+                            bgColor ? (txtColor ? { color: txtColor } : null) : null
+                        } >More <Down className="down-img" src={Down} alt="" /></button>
+                    <button
+                        className="new-board"
+                        onClick={onNewBoard}
+                        style={
+                            bgColor ? (txtColor ? { color: txtColor } : null) : null
                         }
                     >
-                        Workspaces
-                        <Down className="down-img" src={Down} alt="" />
-                    </NavLink>
+                        <span className='plus-icon'>+</span><span className='create'>Create</span>
+                    </button>
                 </div>
-                <div className="link-section">
-                    <NavLink
-                        to="/about"
-                        style={
-                            bgColor
-                                ? txtColor
-                                    ? { color: txtColor }
-                                    : null
-                                : null
-                        }
-                    >
-                        Recent
-                        <Down className="down-img" src={Down} alt="" />
-                    </NavLink>
-                </div>
-                <div className="link-section">
-                    <NavLink
-                        to="/"
-                        style={
-                            bgColor
-                                ? txtColor
-                                    ? { color: txtColor }
-                                    : null
-                                : null
-                        }
-                    >
-                        Starred
-                        <Down className="down-img" src={Down} alt="" />
-                    </NavLink>
-                </div>
-                <button
-                    className="new-board"
-                    onClick={onNewBoard}
-                    style={
-                        bgColor ? (txtColor ? { color: txtColor } : null) : null
-                    }
-                >
-                    Create
-                </button>
             </nav>
             <div className="header-actions">
                 <div className="search-bar">
@@ -199,8 +221,7 @@ export function AppHeader({ onSetfilter }) {
                         placeholder="Search"
                     />
                 </div>
-
-                <ul>
+                <ul className='header-icons'>
                     <li>
                         <Notifications
                             className="app-header-icon"

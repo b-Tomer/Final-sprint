@@ -72,12 +72,11 @@
     height: 160px;
     padding: 0;
     overflow: hidden;
-    background-position: top;
+    background-position: center;
     background-repeat: no-repeat;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-
-    // object-fit: cover;
+    background-size: cover;
     // .task-cover-img {
     //     height: 160px;
     // }
