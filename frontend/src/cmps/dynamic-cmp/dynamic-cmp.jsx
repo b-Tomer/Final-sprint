@@ -1,5 +1,5 @@
 import { ReactComponent as X } from '../../assets/img/icons/x.svg'
-
+import { useEffect, useRef, useState } from 'react'
 import { DynCmpMembers } from './dyn-cmp-members'
 import { DynCmpLabels } from './dyn-cmp-labels'
 import { DynCmpChecklist } from './dyn-cmp-checklist'
@@ -14,12 +14,56 @@ import { useSelector } from 'react-redux'
 import { store } from '../../store/store'
 import { useParams } from 'react-router-dom'
 import { DynCmpEditLabel } from './dyn-cmp-edit-label'
+import { utilService } from '../../services/util.service'
 
-export function DynamicCmp({ task, title, setEditing }) {
+export function DynamicCmp({ task, title, setEditing, modalPos }) {
     const { isModalOpen } = useSelector((storeState) => storeState.systemModule)
     const { modalTitle } = useSelector((storeState) => storeState.systemModule)
     const { boardId } = useParams()
     const { groupId } = useParams()
+    const [modalStyle, setModalStyle] = useState({})
+    const container = useRef()
+
+    let windowPos = {}
+
+    useEffect(() => {
+        if (!modalPos) {
+            setModalStyle({})
+        } else
+            setModalStyle({
+                top: modalPos.top + modalPos.height + 5,
+                left: modalPos.left,
+            })
+        calcModalPos()
+    }, [container, modalPos])
+
+    // calcModalPos()
+
+    function calcModalPos() {
+        if (!modalPos) {
+            setModalStyle({})
+            return
+        } else
+            setModalStyle({
+                top: modalPos.top + modalPos.height + 5,
+                left: modalPos.left,
+            })
+        windowPos.x = window.innerWidth
+        windowPos.y = window.innerHeight
+        if (!container.current) return
+        const height = container.current.getBoundingClientRect().height
+        if (windowPos.y - modalPos.top - height > 5) {
+            setModalStyle({
+                top: modalPos.top + modalPos.height + 5,
+                left: modalPos.left,
+            })
+        } else {
+            setModalStyle({
+                top: modalPos.top - height - 5,
+                left: modalPos.left,
+            })
+        }
+    }
 
     function onCloseDynModal() {
         store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
@@ -28,7 +72,11 @@ export function DynamicCmp({ task, title, setEditing }) {
 
     if (!isModalOpen) return ''
     return (
-        <div className="dynamic-cmp">
+        <div
+            className="dynamic-cmp"
+            ref={container}
+            style={modalStyle ? modalStyle : null}
+        >
             <div className="dynamic-cmp-header">
                 <div className="dynamic-cmp-header-title">{title}</div>
                 <button className="dynamic-cmp-close" onClick={onCloseDynModal}>
