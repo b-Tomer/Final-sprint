@@ -6,6 +6,7 @@ import { updateTask } from '../../store/task.actions';
 import { CLOSE_DYN_MODAL, OPEN_DYN_MODAL, SET_MODAL_TITLE } from '../../store/system.reducer';
 import { store } from '../../store/store'
 import { DynamicCmp } from './dynamic-cmp';
+import { SET_LABEL_TO_EDIT } from '../../store/board.reducer';
 
 
 
@@ -23,7 +24,7 @@ export function DynCmpLabels({ task }) {
 
 
     function handleEditButtonClick(title, label) {
-        setLabelToEdit(label)
+        store.dispatch({ type: SET_LABEL_TO_EDIT, label})
         store.dispatch({ type: OPEN_DYN_MODAL })
         store.dispatch({ type: SET_MODAL_TITLE, title })
         console.log(title, label)
@@ -88,9 +89,9 @@ export function DynCmpLabels({ task }) {
                     })}
                 </div>
             </div>}
-            <div  >
+            <div>
 
-                {isEditLabelOpen && <DynamicCmp task={task} label={labelToEdit} />}
+                {isEditLabelOpen && <DynamicCmp task={task} />}
             </div>
         </>
     )
