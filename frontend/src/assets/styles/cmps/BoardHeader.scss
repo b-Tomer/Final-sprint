@@ -58,10 +58,10 @@
         transform: translateY(4px);
         display: flex;
         justify-content: space-between;
+        padding-inline-start: 17px;
 
         @include for-normal-layout {
             transform: translateY(0px);
-            ;
         }
 
         .btn-board-select {
@@ -104,17 +104,12 @@
             font-size: 0px;
         }
 
-
         @include for-normal-layout {
             justify-content: space-between;
-
 
             *span {
                 font-size: 0.857rem;
             }
-
         }
-
-
     }
 }

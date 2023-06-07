@@ -1,20 +1,22 @@
 import { gBoards } from './board.data'
 
-const user = {
-    _id: 'u101',
-    fullname: 'Abi Abambi',
-    username: 'abi@ababmi.com',
-    password: 'aBambi123',
-    imgUrl: 'http://some-img.jpg',
-    mentions: [
-        {
-            //optional
-            id: 'm101',
-            boardId: 'm101',
-            taskId: 't101',
-        },
-    ],
-}
+const gUsers = [
+    {
+        _id: 'u101',
+        fullname: 'Abi Abambi',
+        username: 'abi@ababmi.com',
+        password: 'aBambi123',
+        imgUrl: 'http://some-img.jpg',
+        mentions: [
+            {
+                //optional
+                id: 'm101',
+                boardId: 'm101',
+                taskId: 't101',
+            },
+        ],
+    },
+]
 
 export const storageService = {
     query,
@@ -25,7 +27,12 @@ export const storageService = {
 }
 
 function query(entityType, delay = 100) {
-    var entities = JSON.parse(localStorage.getItem(entityType)) || gBoards
+    if (entityType === 'board_db') {
+        var entities = JSON.parse(localStorage.getItem(entityType)) || gBoards
+    }
+    if (entityType === 'user') {
+        var entities = JSON.parse(localStorage.getItem(entityType)) || gUsers
+    }
     return new Promise((resolve) => setTimeout(() => resolve(entities), delay))
 }
 
@@ -42,6 +49,7 @@ function get(entityType, entityId) {
 
 function post(entityType, newEntity) {
     newEntity = JSON.parse(JSON.stringify(newEntity))
+    console.log(newEntity)
     newEntity._id = _makeId()
     return query(entityType).then((entities) => {
         entities.push(newEntity)

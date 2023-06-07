@@ -80,15 +80,13 @@
     // .task-cover-img {
     //     height: 160px;
     // }
-
     .task-details-close {
         position: absolute;
         height: 2em;
         width: 2em;
         top: 10px;
         right: 10px;
-        background-color: inherit;
-        color: $clr7;
+        background-color: transparent;
 
         .task-icon-img {
             height: 1.5em;
