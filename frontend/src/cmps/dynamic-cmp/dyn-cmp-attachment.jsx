@@ -10,21 +10,12 @@ import { showErrorMsg } from "../../services/event-bus.service"
 
 
 
-export function DynCmpAttachment({boardId, groupId, task }) {
+export function DynCmpAttachment({ boardId, groupId, task }) {
 
     const inputClass = 'upload-btn'
     const labelClass = 'upload-label'
     const [isUploading, setIsUploading] = useState(false)
-    const [imgUrl, setImgUrl] = useState('')
-
-
-    // const onAttachLink = () => {
-    //     const url = attachedLink
-    //     if (!url) return
-
-    //     const isImageUrl = utilService.isImage(url)
-    //     if (isImageUrl) onAddImg(url)
-    // }
+    const [userSrc, setUserSrc] = useState('')
 
     function onAddAttachment(src) {
         if (!src) return
@@ -45,17 +36,23 @@ export function DynCmpAttachment({boardId, groupId, task }) {
 
     async function uploadImg(ev) {
         setIsUploading(true)
-       try{
-           const { secure_url } = await uploadService.uploadImg(ev)
-           setImgUrl(secure_url)
-           onAddAttachment(secure_url)
-           store.dispatch({ type: CLOSE_DYN_MODAL })
-           setIsUploading(false)
-        }catch(err){
+        try {
+            const { secure_url } = await uploadService.uploadImg(ev)
+            onAddAttachment(secure_url)
+            store.dispatch({ type: CLOSE_DYN_MODAL })
+            setIsUploading(false)
+        } catch (err) {
             showErrorMsg('Cannot upload try again')
             console.log(err);
         }
     }
+
+    function onSrcChange(ev) {
+        const { value } = ev.target
+        setUserSrc(value)
+        console.log(userSrc)
+    }
+
 
     return (
         <div className='dyn-cmp-attachments-container'>
@@ -67,9 +64,11 @@ export function DynCmpAttachment({boardId, groupId, task }) {
             <hr />
             <div className="atc-link-container">
                 <h3>Attach a link</h3>
-                <input className="atc-link-input" type="text"
+                <input
+                    onChange={onSrcChange}
+                    className="atc-link-input" type="text"
                     placeholder="Past any link here..." />
-                <button onClick={onAddAttachment(imgUrl)} className="attach-btn" >Attach</button>
+                <button onClick={()=>onAddAttachment(userSrc)} className="attach-btn" >Attach</button>
             </div>
             <hr />
             <div className="atc-footer" >

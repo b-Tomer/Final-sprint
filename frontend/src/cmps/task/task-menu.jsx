@@ -83,7 +83,6 @@ export function TaskMenu({ task }) {
                     <span>Custom Fields</span>{' '}
                 </button>
             </div>
-
             {isMenuModalOpen && (
                 <DynamicCmp
                     task={task}
