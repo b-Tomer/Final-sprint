@@ -89,7 +89,6 @@ export function DynamicCmp({ task, title, setEditing, modalPos }) {
             {modalTitle === 'Checklist' && (
                 <DynCmpChecklist
                     task={task}
-                    onCloseDynModal={onCloseDynModal}
                     setEditing={setEditing}
                 />
             )}
