@@ -4,6 +4,7 @@ export const ADD_BOARD = 'ADD_BOARD'
 export const UPDATE_BOARD = 'UPDATE_BOARD'
 export const SET_IS_LOADING = 'SET_IS_LOADING'
 export const SET_BOARD = 'SET_BOARD'
+export const SET_LABEL_TO_EDIT = 'SET_LABEL_TO_EDIT'
 export const FILTER_BY = 'FILTER_BY'
 
 const initialState = {
@@ -12,7 +13,8 @@ const initialState = {
         txt: '',
     },
     board: null,
-    lastUpdatedBoard: null
+    lastUpdatedBoard: null,
+    label:null
 }
 
 export function boardReducer(state = initialState, action) {
@@ -47,6 +49,9 @@ export function boardReducer(state = initialState, action) {
             break
         case SET_IS_LOADING:
             newState = { ...state, isLoading: action.isLoading }
+            break
+        case SET_LABEL_TO_EDIT:
+            newState = { ...state, label: action.label }
             break
         default:
         // return newState
