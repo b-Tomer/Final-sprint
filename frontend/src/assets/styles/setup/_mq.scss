@@ -1,8 +1,41 @@
 @media (max-width: 760px) {
+  
+    .modal-overlay {
+        .task-details-parent {
+            .task-details-container {
+                width: 99vw;
+            top: 20%;
+                .task-details-secondry-container {
+                    grid-template-columns: 1fr;
 
+                    .task-main-content{
+                        width: 100%;
+                    }
 
-    
+                    .task-header {
+                        grid-column: 1;
+                        grid-row:1;
+                    }
+                    .task-main-details{
+                        grid-column: 1;
+                        grid-row:2;
+
+                    }
+                    
+                    .window-sidebar {
+                        grid-column: 1;
+                        grid-row:3;
+                    }
+                }
+            }
+
+            .app-header {
+                background-color: #eb4949;
+            }
+        }
+    }
 }
+
 
 @media (min-width: 760px) {}
 
