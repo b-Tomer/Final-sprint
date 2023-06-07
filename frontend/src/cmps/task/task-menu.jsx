@@ -9,7 +9,7 @@ import { ReactComponent as Attachment } from '../../assets/img/icons/attachment.
 
 import { DynamicCmp } from '../dynamic-cmp/dynamic-cmp'
 import { store } from '../../store/store'
-import { CLOSE_DYN_EDIT_ATC, CLOSE_DYN_MENU_MODAL, OPEN_DYN_MENU_MODAL, OPEN_DYN_MODAL, SET_MODAL_TITLE } from '../../store/system.reducer'
+import { CLOSE_DYN_ALL_MODALS, OPEN_DYN_MENU_MODAL, OPEN_DYN_MODAL, SET_MODAL_TITLE } from '../../store/system.reducer'
 import { useSelector } from 'react-redux'
 
 export function TaskMenu({
@@ -20,12 +20,11 @@ export function TaskMenu({
     const { isMenuModalOpen } = useSelector((storeState) => storeState.systemModule)
 
     function openDynamicCmp(title) {
-        store.dispatch({ type: CLOSE_DYN_MENU_MODAL })
-        store.dispatch({ type: CLOSE_DYN_EDIT_ATC })
+
+        store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
         store.dispatch({ type: OPEN_DYN_MODAL })
         store.dispatch({ type: OPEN_DYN_MENU_MODAL })
         store.dispatch({ type: SET_MODAL_TITLE, title })
-        console.log(title);
     }
 
     return (

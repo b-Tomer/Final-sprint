@@ -18,15 +18,15 @@ export function DynCmpEditLabel({ task, label }) {
     function handleChange(event){
         setLabelToEdit({ ...labelToEdit, title: event.target.value });
     }
-    
-    if(!label) return ''
+
+    // if(!label) return ''
     return (
         <div className="edit-labels-container">
-            <div className="label-title" style={{ backgroundColor: label.color }}>{label.title}</div>
+            {/* <div className="label-title" style={{ backgroundColor: label.color }}>{label.title}</div> */}
             <h3>Title</h3>
             <div>
-                <input className="edit-input" type="text" value={labelToEdit.title} onChange={handleChange}
-                ></input>
+                {/* <input className="edit-input" type="text" value={labelToEdit.title} onChange={handleChange}
+                ></input> */}
             </div>
             <h3>Select a color</h3>
             <div className="colors-container">

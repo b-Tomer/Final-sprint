@@ -4,6 +4,9 @@
     box-sizing: border-box;
     justify-content: center;
     justify-items: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
     .MuiPickersLayout-root {
         width: 90%;
         min-width: auto;
@@ -34,9 +37,52 @@
             padding: 0;
             align-content: start;
             align-items: start;
+            display: none;
         }
         .css-1lkpf4l-MuiYearCalendar-root {
             width: 100%;
+        }
+        .css-1cafy48-MuiPickersSlideTransition-root-MuiDayCalendar-slideTransition {
+            height: 200px;
+            min-height: auto;
+        }
+        h4 {
+            font-size: 1.5rem;
+        }
+    }
+    .control-btns {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        margin-block-end: 10px;
+        font-size: 14px;
+        button {
+            width: 100%;
+            margin-block-end: 10px;
+            height: 2rem;
+            border-radius: 3px;
+            &:hover {
+                filter: brightness(0.9);
+            }
+        }
+        .save {
+            color: $clr1;
+            background-color: $clrBTN;
+        }
+        .remove {
+            color: $clr7;
+        }
+    }
+    .time-picker-container {
+        .dials {
+            display: flex;
+            select {
+                margin-inline: 10px;
+            }
+            .hours {
+            }
+            .minutes {
+            }
         }
     }
 }

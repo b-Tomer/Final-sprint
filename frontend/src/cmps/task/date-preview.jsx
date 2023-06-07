@@ -1,21 +1,20 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { ReactComponent as Down } from '../../assets/img/icons/down.svg'
-import { CLOSE_DYN_MODAL, OPEN_DYN_MODAL } from '../../store/system.reducer'
+import { CLOSE_DYN_ALL_MODALS, CLOSE_DYN_MODAL, OPEN_DYN_DATE_MODAL, OPEN_DYN_MODAL, SET_MODAL_TITLE } from '../../store/system.reducer'
 import { useSelector } from 'react-redux'
 import { store } from '../../store/store'
-
-import { ResponsiveDatePickers } from '../date-picker'
 import { updateTask } from '../../store/task.actions'
+import { DynamicCmp } from '../dynamic-cmp/dynamic-cmp'
 
 export function DatePreview({ task, setDynamicCmpName }) {
-    const [isDatePickerOpen, setIsDatePickerOpen] = useState(false)
     const [currTask, setCurrTask] = useState(task)
     const [localModalOpen, setLocalModalOpen] = useState(false)
 
     const { boardId } = useParams()
     const { groupId } = useParams()
-    const { isModalOpen } = useSelector((storeState) => storeState.systemModule)
+    // const { isModalOpen } = useSelector((storeState) => storeState.systemModule)
+    const { isOpenDateModal } = useSelector((storeState) => storeState.systemModule)
 
     if (!task || !task.dueDate) return
 
@@ -60,12 +59,11 @@ export function DatePreview({ task, setDynamicCmpName }) {
         return null
     }
 
-    const handleToggleDatePicker = () => {
-        if (localModalOpen) {
-            onCloseDynModal()
-        } else {
-            onOpenDynModal()
-        }
+    function handleToggleDatePicker() {
+        store.dispatch({ type: SET_MODAL_TITLE ,title: 'Dates' })
+        store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
+        store.dispatch({ type: OPEN_DYN_MODAL })
+        store.dispatch({ type: OPEN_DYN_DATE_MODAL })
     }
 
     async function onCheckDate(ev) {
@@ -102,6 +100,7 @@ export function DatePreview({ task, setDynamicCmpName }) {
                     {/* {isDatePickerOpen && <ResponsiveDatePickers className='date-picker' />} */}
                 </div>
             </div>
+            {isOpenDateModal && <DynamicCmp task={task} title='Edit attachment' />}
         </div>
     )
 }
