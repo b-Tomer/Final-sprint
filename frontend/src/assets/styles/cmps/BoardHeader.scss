@@ -1,21 +1,25 @@
 .board-header-container {
     display: flex;
+    flex-direction: column;
     position: fixed;
-    width: 100vw;
+    width: 100%;
     justify-content: space-between;
     background-color: $clrBH;
     backdrop-filter: blur(4px);
     line-height: 20px;
-    padding-block-end: 12px;
-    padding-inline-start: 16px;
-    padding-inline-end: 10px;
-    padding-block-start: 12px;
-    height: 56px;
+    height: 65px;
     margin: 0;
+    padding: 0;
     margin-block-start: 48px;
     align-content: center;
     align-items: center;
     color: $clr7;
+
+    @include for-normal-layout {
+        flex-direction: row;
+        height: 56px;
+    }
+
     button {
         display: flex;
         align-content: center;
@@ -26,10 +30,12 @@
         background-color: transparent;
         padding: 6px;
         border-radius: 3px;
+
         &:hover {
             background-color: $clrH;
         }
     }
+
     .separator {
         width: 0.5px;
         height: 18px;
@@ -42,13 +48,21 @@
     .board-header-icon {
         width: 16px;
         height: 16px;
+
         path {
             fill: $clr7;
         }
     }
+
     .board-header-left {
+        transform: translateY(4px);
         display: flex;
         justify-content: space-between;
+
+        @include for-normal-layout {
+            transform: translateY(0px);
+            ;
+        }
 
         .btn-board-select {
             width: 112.5px;
@@ -60,22 +74,47 @@
 
         .board-title {
             margin: 0;
-            font-size: 1.125rem;
+            font-size: 1rem;
             line-height: 2rem;
             font-weight: 700;
             padding-inline: 10px;
+
+            @include for-normal-layout {
+                font-size: 1.125rem;
+                line-height: 2rem;
+                font-weight: 700;
+                padding-inline: 10px;
+            }
         }
     }
 
     .board-header-right {
         display: flex;
-        justify-content: space-between;
+
         .btn-board-right {
             display: flex;
             width: auto;
         }
+
         .board-header-icon {
             margin-inline-end: 5px;
         }
+
+        *span {
+            font-size: 0px;
+        }
+
+
+        @include for-normal-layout {
+            justify-content: space-between;
+
+
+            *span {
+                font-size: 0.857rem;
+            }
+
+        }
+
+
     }
 }
