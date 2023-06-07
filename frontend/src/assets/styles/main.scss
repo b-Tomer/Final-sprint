@@ -3,6 +3,7 @@
 @import 'setup/functions';
 @import 'setup/mixins';
 @import 'setup/typography';
+@import 'setup/mq';
 
 // Basics
 @import 'basics/helpers';
@@ -47,5 +48,3 @@
 @import 'cmps/dynamic-cmp/dyn-cmp-attachments.scss';
 @import 'cmps/dynamic-cmp/dyn-cmp-checklists.scss';
 @import 'cmps/dynamic-cmp/dyn-cmp-dates.scss';
-
-@import 'setup/mq';

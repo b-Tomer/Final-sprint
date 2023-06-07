@@ -43,8 +43,9 @@
     margin-inline-start: 15px;
     .group-list {
         display: flex;
+        padding-right: 100px;
     }
-
+    
     .group-draggable-list {
         // display: flex;
         // flex-wrap: nowrap;
@@ -70,7 +71,7 @@
         width: 8px;
         border-radius: 8px;
     }
-
+    
     ::-webkit-scrollbar-thumb {
         background-color: $clrSCROLL;
         border-radius: 8px;
@@ -79,7 +80,7 @@
     ::-webkit-scrollbar-thumb:hover {
         background-color: $clrSCROLL;
     }
-
+    
     ::-webkit-scrollbar-track {
         background-color: $clrRAIL;
         border-radius: 8px;

@@ -26,12 +26,19 @@
 
 
     .main-nav {
-        font-size: 14px;
         display: flex;
+        flex-direction: column;
+        font-size: 14px;
         padding: 12px;
         color: $clr4;
         align-items: center;
         align-content: center;
+        top: 75px;
+        left: 25%;
+        width: 200px;
+        background: white;
+        position: absolute;
+        transition: 0.6s;
 
         .down-img {
             width: 0.9rem;
@@ -41,6 +48,13 @@
 
         .link-section {
             display: flex;
+            text-align: left;
+
+            @include for-normal-layout {
+                text-align: center;
+
+            }
+
 
             a {
                 color: $clr4;
@@ -48,6 +62,8 @@
                 align-items: end;
                 padding-right: 24px;
             }
+
+
         }
 
         button {
@@ -61,6 +77,12 @@
             &:hover {
                 background-color: $clrSCROLL;
             }
+        }
+
+        @include for-normal-layout {
+            flex-direction: row;
+            z-index: -1;
+            position: static;
         }
     }
 
