@@ -1,62 +1,40 @@
 @media (max-width: 760px) {
 
-    .main-nav {
-        display: flex;
-        flex-direction: column;
-
-        position: absolute;
-        background: white;
-        width: 200px;
-        top: 75px;
-        left: 25%;
-        transform: translateY(-200%);
-        z-index: -1;
-        transition: 0.6s;
-
-        .link-section {
-            display: flex;
-            flex-direction: row;
-
-            .links.left-align {
-                text-align: left;
-            }
-        }
-    }
 
     .modal-overlay {
-        .task-details-parent {
-            .task-details-container {
-                width: 99vw;
-                top: 20%;
 
-                .task-details-secondry-container {
-                    grid-template-columns: 1fr;
+        .task-details-container {
+            width: 99vw;
+            top: 20%;
+
+            .task-details-secondry-container {
+                grid-template-columns: 1fr;
 
 
-                    .task-main-content {
-                        width: 100%;
-                    }
+                .task-main-content {
+                    width: 100%;
+                }
 
-                    .task-header {
-                        grid-column: 1;
-                        grid-row: 1;
-                    }
+                .task-header {
+                    grid-column: 1;
+                    grid-row: 1;
+                }
 
-                    .task-main-details {
-                        grid-column: 1;
-                        grid-row: 2;
+                .task-main-details {
+                    grid-column: 1;
+                    grid-row: 2;
 
-                    }
+                }
 
-                    .window-sidebar {
-                        grid-column: 1;
-                        grid-row: 3;
-                    }
+                .window-sidebar {
+                    grid-column: 1;
+                    grid-row: 3;
                 }
             }
-
         }
+
     }
+
 }
 
 
