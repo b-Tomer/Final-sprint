@@ -1,10 +1,9 @@
 .edit-labels-container {
-
     display: flex;
     flex-direction: column;
     background-color: white;
     padding: 10px;
-
+    border-radius: 3px;
 
     .label-title {
         display: flex;
@@ -15,7 +14,7 @@
         align-items: center;
         font-weight: 500;
         font-size: 0.875rem;
-        color: $clr5 ;
+        color: $clr5;
         margin-left: 10px;
         background-color: #ad726a;
         margin: 25px auto;
@@ -28,8 +27,6 @@
         border-radius: 3px;
         height: 2rem;
         font-weight: 400;
-
-
     }
 
     .edit-input:focus {
@@ -41,9 +38,7 @@
         padding-left: 0px;
         font-size: 0.75rem;
         font-weight: 600;
-
     }
-
 
     .colors-container {
         margin: 15px 0px 10px 0px; ///////////////////////////////////////////
@@ -56,13 +51,12 @@
             position: relative;
             box-sizing: border-box;
             border-radius: 3px;
-            height: 32px
+            height: 32px;
         }
-
     }
 
     hr {
-        margin: 0px
+        margin: 0px;
     }
 
     .buttons-section {
@@ -85,7 +79,6 @@
             margin-right: auto;
             background-color: #0c66e4;
             color: #ffffff;
-
         }
 
         .delete-btn {
@@ -93,8 +86,5 @@
             background-color: #ca3521;
             color: #ffffff;
         }
-
-
-
     }
 }
