@@ -20,7 +20,7 @@ export function TaskMenu({
     const { isMenuModalOpen } = useSelector((storeState) => storeState.systemModule)
 
     function openDynamicCmp(title) {
-        
+
         store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
         store.dispatch({ type: OPEN_DYN_MODAL })
         store.dispatch({ type: OPEN_DYN_MENU_MODAL })
@@ -75,7 +75,7 @@ export function TaskMenu({
                 </button>
             </div>
 
-            {isMenuModalOpen && <DynamicCmp task={task} title={modalTitle} />}
+            {isMenuModalOpen && <DynamicCmp  task={task} title={modalTitle} />}
 
         </div>
     )

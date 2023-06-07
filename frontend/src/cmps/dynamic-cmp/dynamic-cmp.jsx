@@ -6,16 +6,13 @@ import { DynCmpChecklist } from './dyn-cmp-checklist'
 import { DynCmpDates } from './dyn-cmp-dates'
 import { DynCmpAttachment } from './dyn-cmp-attachment'
 import { DynCmpAttachmentEdit } from './dyn-cpm-attachment-edit'
-import {
-    CLOSE_DYN_ALL_MODALS,
-    SET_MODAL_TITLE,
-} from '../../store/system.reducer'
+import { CLOSE_DYN_ALL_MODALS, SET_MODAL_TITLE } from '../../store/system.reducer'
 import { useSelector } from 'react-redux'
 import { store } from '../../store/store'
 import { useParams } from 'react-router-dom'
 import { DynCmpEditLabel } from './dyn-cmp-edit-label'
 
-export function DynamicCmp({ task, title, setEditing }) {
+export function DynamicCmp({ task, title, setEditing, atc }) {
     const { isModalOpen } = useSelector((storeState) => storeState.systemModule)
     const { modalTitle } = useSelector((storeState) => storeState.systemModule)
     const { boardId } = useParams()
@@ -60,6 +57,7 @@ export function DynamicCmp({ task, title, setEditing }) {
                     boardId={boardId}
                     groupId={groupId}
                     task={task}
+                    atc={atc}
                 />
             )}
         </div>

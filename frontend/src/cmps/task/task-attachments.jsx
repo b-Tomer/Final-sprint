@@ -10,6 +10,7 @@ export function TaskAttachments({ task, boardId, groupId }) {
 
   const { isOpenEditAtc } = useSelector((storeState) => storeState.systemModule)
   const [currTask, setCurrTask] = useState(task)
+  const [currAtc, setCurrAtc] = useState(task)
 
   useEffect(() => {
     setCurrTask(task)
@@ -50,6 +51,7 @@ export function TaskAttachments({ task, boardId, groupId }) {
   }
 
   function onEditAttachment(title, atc) {
+    setCurrAtc(atc)
     store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
     store.dispatch({ type: SET_MODAL_TITLE, title })
     store.dispatch({ type: OPEN_DYN_MODAL })
@@ -70,7 +72,7 @@ export function TaskAttachments({ task, boardId, groupId }) {
           <img src={atc.url} />
         </div>
         <div className='attachment-content'>
-          <span className='attachment-title'>{atc.url?.split('/').pop()}</span>
+          <span className='attachment-title'>{atc.url?.split('/').pop().slice(0,26)}</span>
           <span>Added at {atc.createdAt}</span>
           <span className='small-dots'>&#x2022;</span><span className='attachment-btns'>Comment</span>
           <span className='small-dots'>&#x2022;</span><span onClick={() => onDeleteAttachment(atc)} className='attachment-btns'>Delete</span>
@@ -85,7 +87,7 @@ export function TaskAttachments({ task, boardId, groupId }) {
         </div>
       </div>
       ))}
-      {isOpenEditAtc && <DynamicCmp task={task} title='Edit attachment'/>} 
+      {isOpenEditAtc && <DynamicCmp task={task} atc={currAtc} title='Edit attachment'/>} 
     </section>
   )
 }
