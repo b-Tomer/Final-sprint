@@ -1,7 +1,6 @@
 .add-to-card-menu {
     display: flex;
     flex-direction: column;
-
 }
 
 .button-link {
@@ -28,12 +27,13 @@
         width: 16px;
         height: 16px;
         line-height: 20px;
+        pointer-events: none;
 
         path: {
             fill: $clr3;
         }
-
     }
-
-
+    span {
+        pointer-events: none;
+    }
 }
