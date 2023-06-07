@@ -6,9 +6,16 @@ function BasicTimePicker({ hour, setHour, minute, setMinute }) {
         // setSelectedTime((prevState) => ({ ...prevState, hour }))
     }
 
-    const handleMinuteChange = (event) => {
+    function handleMinuteChange(event) {
         setMinute(parseInt(event.target.value))
         // setSelectedTime((prevState) => ({ ...prevState, minute }))
+    }
+
+    function formatTime(hours, minutes) {
+        const formattedHours = hours < 10 ? `0${hours}` : hours.toString()
+        const formattedMinutes =
+            minutes < 10 ? `0${minutes}` : minutes.toString()
+        return `${formattedHours}:${formattedMinutes}`
     }
 
     return (
@@ -41,10 +48,7 @@ function BasicTimePicker({ hour, setHour, minute, setMinute }) {
                 </select>
             </div>
 
-            <p>
-                Selected time:{' '}
-                {hour !== '' && minute !== '' ? `${hour}:${minute}` : 'None'}
-            </p>
+            <p>Selected time: {formatTime(hour, minute)}</p>
         </div>
     )
 }
