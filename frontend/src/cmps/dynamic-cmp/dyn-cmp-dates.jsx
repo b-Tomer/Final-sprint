@@ -1,9 +1,7 @@
 import * as React from 'react'
 import { useState, useRef } from 'react'
-import dayjs from 'dayjs'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
-import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker'
 import { utilService } from '../../services/util.service'
 import { useParams } from 'react-router-dom'
@@ -24,7 +22,8 @@ export function DynCmpDates({ task }) {
         setSelectedDate(value)
     }
 
-    async function saveDate() {
+    async function saveDate(ev) {
+        ev.stopPropagation()
         if (!selectedDate) return
         const year = selectedDate.$y
         const month = selectedDate.$M
@@ -35,17 +34,18 @@ export function DynCmpDates({ task }) {
             day,
             hour,
             minute
-        )
-        task.dueDate = timestamp
-        try {
-            await updateTask(boardId, groupId, task)
+            )
+            task.dueDate = timestamp
+            try {
+                await updateTask(boardId, groupId, task)
             store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
         } catch (error) {
             console.log('cant update task')
         }
     }
-
-    async function removeDate() {
+    
+    async function removeDate(ev) {
+        ev.stopPropagation()
         if (!task?.dueDate) return
         task.dueDate = null
         try {
@@ -55,9 +55,13 @@ export function DynCmpDates({ task }) {
             console.log('cant update task')
         }
     }
-
+    
+    function stopPropagation(ev){
+        ev.stopPropagation()
+    }
+    
     return (
-        <div className="time-picker-container">
+        <div className="time-picker-container" onClick={stopPropagation}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <StaticDatePicker
                     value={selectedDate}

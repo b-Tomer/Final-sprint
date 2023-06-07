@@ -3,6 +3,7 @@ import { BoardIndex } from './pages/board-index.jsx'
 import { Workspace } from './pages/workspace.jsx'
 import { TaskDetails } from './cmps/task/task-details.jsx'
 import { NotFound } from './pages/not-found.jsx'
+import { LoginSignup } from './pages/login-signup.jsx'
 
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
@@ -17,16 +18,16 @@ const routes = [
         label: 'Workspace',
     },
     {
+        path: '/login',
+        component: <LoginSignup />,
+        label: 'Login',
+    },
+    {
         path: 'board/:boardId',
         component: <BoardIndex />,
         label: 'Board',
     },
     {
-        // path: '/modal/:itemId',
-        // component: <TaskDetails />,
-        // label: 'Task details',
-
-
         path: 'board/:boardId/:groupId/:taskId',
         component: <BoardIndex />,
         label: 'Task details',

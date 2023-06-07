@@ -24,7 +24,6 @@
         cursor: pointer;
     }
 
-
     .main-nav {
 
         @include for-normal-layout {
@@ -103,6 +102,7 @@
             flex-direction: row;
             z-index: -1;
             position: static;
+            background: none;
         }
 
         .nav-btns {
@@ -167,6 +167,7 @@
     .header-search {
         height: 2rem;
         width: 100%;
+        border-radius: 8px;
     }
 
     .header-actions {

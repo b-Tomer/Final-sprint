@@ -1,11 +1,16 @@
-
 import { ReactComponent as Down } from '../assets/img/icons/down.svg'
+import { useNavigate } from 'react-router-dom'
 
 export function HomepageHeader({ handleclick }) {
+    const navigate = useNavigate()
+    function goToLogin() {
+        navigate('/login')
+    }
+
     return (
         <div className="homepage-header-container">
             <div className="homepage-header-logo">
-               <h1 className='logo-title'>Trellax</h1> 
+                <h1 className="logo-title">Trellax</h1>
             </div>
             <nav className="homepage-header-nav">
                 <button className="homepage-header-btn">
@@ -30,7 +35,9 @@ export function HomepageHeader({ handleclick }) {
                 </button>
             </nav>
             <nav className="homepage-header-actions">
-                <button className="homepage-header-btn">Log in</button>
+                <button onClick={goToLogin} className="homepage-header-btn">
+                    Log in
+                </button>
                 <button
                     onClick={handleclick}
                     className="homepage-header-btn try"

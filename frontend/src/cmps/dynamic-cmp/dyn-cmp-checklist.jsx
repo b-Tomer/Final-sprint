@@ -2,13 +2,15 @@ import { useRef } from 'react'
 import { utilService } from '../../services/util.service'
 import { useParams } from 'react-router-dom'
 import { updateTask } from '../../store/task.actions'
+import { store } from '../../store/store'
+import { CLOSE_DYN_ALL_MODALS } from '../../store/system.reducer'
 
-export function DynCmpChecklist({ task, onCloseDynModal, setEditing }) {
+export function DynCmpChecklist({ task, setEditing }) {
     const { boardId } = useParams()
     const { groupId } = useParams()
     const inputRef = useRef(null)
 
-    async function addChecklist() {
+    async function addChecklist(ev) {
         const checklist = {
             id: utilService.makeId(),
             todos: [],
@@ -21,7 +23,9 @@ export function DynCmpChecklist({ task, onCloseDynModal, setEditing }) {
             console.log('cant add checklist')
             console.log(err)
         }
-        onCloseDynModal()
+        finally{
+            store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
+        }
     }
 
     return (
