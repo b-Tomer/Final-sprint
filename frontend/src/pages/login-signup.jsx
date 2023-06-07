@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
 import { userService } from '../services/user.service'
 import { ImgUploader } from '../cmps/img-uploader'
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
+import { login, logout, signup } from '../store/user.actions.js'
 
-export function LoginSignup(props) {
+export function LoginSignup() {
     const [credentials, setCredentials] = useState({
         username: '',
         password: '',
@@ -13,6 +15,7 @@ export function LoginSignup(props) {
 
     useEffect(() => {
         loadUsers()
+        console.log(users)
     }, [])
 
     async function loadUsers() {
@@ -34,7 +37,7 @@ export function LoginSignup(props) {
     function onLogin(ev = null) {
         if (ev) ev.preventDefault()
         if (!credentials.username) return
-        props.onLogin(credentials)
+        handleLogin(credentials)
         clearState()
     }
 
@@ -46,8 +49,26 @@ export function LoginSignup(props) {
             !credentials.fullname
         )
             return
-        props.onSignup(credentials)
+        handleSignup(credentials)
         clearState()
+    }
+
+    async function handleSignup(credentials) {
+        try {
+            const user = await signup(credentials)
+            showSuccessMsg(`Welcome new user: ${user.fullname}`)
+        } catch (err) {
+            showErrorMsg('Cannot signup')
+        }
+    }
+
+    async function handleLogin() {
+        try {
+            const user = await login(credentials)
+            showSuccessMsg(`Welcome: ${user.fullname}`)
+        } catch (err) {
+            showErrorMsg('Cannot login')
+        }
     }
 
     function toggleSignup() {
@@ -74,11 +95,12 @@ export function LoginSignup(props) {
                         onChange={handleChange}
                     >
                         <option value="">Select User</option>
-                        {users.map((user) => (
-                            <option key={user._id} value={user.username}>
-                                {user.fullname}
-                            </option>
-                        ))}
+                        {users.length &&
+                            users.map((user) => (
+                                <option key={user._id} value={user.username}>
+                                    {user.fullname}
+                                </option>
+                            ))}
                     </select>
                     {/* <input
                         type="text"

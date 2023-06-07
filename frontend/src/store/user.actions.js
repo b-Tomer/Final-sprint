@@ -1,10 +1,15 @@
-import { userService } from "../services/user.service.js";
-import { socketService } from "../services/socket.service.js";
+import { userService } from '../services/user.service.js'
+import { socketService } from '../services/socket.service.js'
 import { store } from '../store/store.js'
 
 import { showErrorMsg } from '../services/event-bus.service.js'
-import { LOADING_DONE, LOADING_START } from "./system.reducer.js";
-import { REMOVE_USER, SET_USER, SET_USERS, SET_WATCHED_USER } from "./user.reducer.js";
+import { LOADING_DONE, LOADING_START } from './system.reducer.js'
+import {
+    REMOVE_USER,
+    SET_USER,
+    SET_USERS,
+    SET_WATCHED_USER,
+} from './user.reducer.js'
 
 export async function loadUsers() {
     try {
@@ -32,7 +37,7 @@ export async function login(credentials) {
         const user = await userService.login(credentials)
         store.dispatch({
             type: SET_USER,
-            user
+            user,
         })
         socketService.login(user)
         return user
@@ -43,11 +48,12 @@ export async function login(credentials) {
 }
 
 export async function signup(credentials) {
+    console.log(credentials)
     try {
         const user = await userService.signup(credentials)
         store.dispatch({
             type: SET_USER,
-            user
+            user,
         })
         socketService.login(user)
         return user
@@ -62,7 +68,7 @@ export async function logout() {
         await userService.logout()
         store.dispatch({
             type: SET_USER,
-            user: null
+            user: null,
         })
         socketService.logout()
     } catch (err) {
@@ -73,7 +79,7 @@ export async function logout() {
 
 export async function loadUser(userId) {
     try {
-        const user = await userService.getById(userId);
+        const user = await userService.getById(userId)
         store.dispatch({ type: SET_WATCHED_USER, user })
     } catch (err) {
         showErrorMsg('Cannot load user')
