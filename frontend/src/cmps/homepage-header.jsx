@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 export function HomepageHeader({ handleclick }) {
     const navigate = useNavigate()
     function goToLogin() {
-        navigate('/login')
+        navigate('/loginSignup')
     }
 
     return (

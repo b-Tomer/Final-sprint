@@ -18,7 +18,7 @@ const routes = [
         label: 'Workspace',
     },
     {
-        path: '/login',
+        path: '/loginSignup',
         component: <LoginSignup />,
         label: 'Login',
     },
