@@ -57,7 +57,6 @@ export function GroupDetails({
 
     async function onAddTask(ev) {
         ev.preventDefault()
-        console.log('11111')
         try {
             await saveTask(task, boardId, group.id)
         } catch (err) {
@@ -66,7 +65,6 @@ export function GroupDetails({
             setTask(taskService.getDefaultTask())
             setTaskTitle('')
             onAddClose()
-
             onOpenAddTask()
         }
     }
