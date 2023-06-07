@@ -2,19 +2,19 @@ import { useState } from 'react'
 import { ReactComponent as X } from '../../assets/img/icons/x.svg'
 
 
-export function DynCmpAttachmentEdit(task) {
+export function DynCmpAttachmentEdit(task, atc) {
 
     const [newTitle, setNewTitle] = useState('')
 
-   
+
     function onChaneAtcTitle(ev) {
         const { value } = ev.target
         setNewTitle(value)
     }
-    
-    function updateAttachment() {
-    
 
+    function updateAttachment() {
+
+        console.log(atc);
     }
 
     if (!task) return ''
