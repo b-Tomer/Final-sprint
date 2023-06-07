@@ -25,18 +25,18 @@
     }
 
     .description {
-        .desc-overlay{
+        .desc-overlay {
             position: fixed;
             top: 0;
             left: 0;
-            width:768px;
+            width: 768px;
             height: 100vh;
             background-color: rgba(255, 255, 255, 0);
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: -2;   
-            overflow-y: auto;     
+            z-index: -2;
+            overflow-y: auto;
         }
 
         .description-container {
@@ -53,34 +53,40 @@
                 min-height: 130px;
                 overflow: hidden;
                 font-size: 0.85rem;
-                padding:8px;
+                padding: 8px;
                 padding-left: 16px;
                 line-height: 2rem;
                 outline: none;
                 font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
                     Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
-                    &:focus {
-                        background-color: $clr1;
-                        box-shadow: rgb(56, 139, 255) 0px 0px 0px 2px inset;
-                    }
+
+                &:focus {
+                    background-color: $clr1;
+                    box-shadow: rgb(56, 139, 255) 0px 0px 0px 2px inset;
+                }
             }
         }
-        .edit-desc-btns{
-            margin-top: 3px;
-            margin-left: 20.5px;
-        }
 
-        .cancel-edit-btn{
+
+        .cancel-edit-btn {
             color: $clr7;
             height: 2rem;
             font-size: 14px;
             height: 32px;
             padding: 6px 12px;
-            &:hover{
+
+            &:hover {
                 background: $clrH;
             }
         }
-        .edit-desc-btn{
+
+        .edit-desc-btns {
+            margin-top: 3px;
+            margin-left: auto;
+
+        }
+
+        .edit-desc-btn {
             @include task-ligth-btn();
         }
 

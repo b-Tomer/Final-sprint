@@ -1,6 +1,10 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { addBoard } from '../store/board.actions.js'
+import { useState, useEffect } from 'react'
+import { FastAverageColor } from 'fast-average-color'
+import ContrastColor from 'contrast-color'
+import { useSelector } from 'react-redux'
 
 import { Link, NavLink, Navigate } from 'react-router-dom'
 import cube from '../assets/img/icons/cube.svg'
@@ -22,7 +26,17 @@ import { boardService } from '../services/board.service.local.js'
 // import { LoginSignup } from './login-signup.jsx'
 
 export function AppHeader({ onSetfilter }) {
+    const { board } = useSelector((storeState) => storeState.boardModule)
+
     const navigate = useNavigate()
+    const [bgColor, setBgColor] = useState(null)
+    const [txtColor, setTxtColor] = useState(null)
+
+    const fac = new FastAverageColor()
+
+    useEffect(() => {
+        printAverageColor()
+    }, [board])
     // const user = useSelector(storeState => storeState.userModule.user)
 
     // async function onLogin(credentials) {
@@ -50,6 +64,32 @@ export function AppHeader({ onSetfilter }) {
     //     }
     // }
 
+    function printAverageColor() {
+        const img = document.createElement('img')
+        img.crossOrigin = 'anonymous'
+        if (!board) return
+        if (!board.style) return
+        if (!board.style.backgroundImage) return
+        img.src = board.style.backgroundImage
+        img.addEventListener('load', () => {
+            const averageColor = fac.getColor(img).hex
+            setBgColor(averageColor)
+            const cc = new ContrastColor({
+                bgColor: averageColor,
+                fgDarkColor: 'dark',
+                fgLightColor: 'light',
+                customNamedColors: {
+                    dark: '#172b4d',
+                    light: '#f1f2f4',
+                },
+            })
+            const textColor = cc.contrastColor()
+            // console.log(cc)
+            console.log(textColor)
+            setTxtColor(textColor)
+        })
+    }
+
     function onHandleSearch(ev) {
         const { value } = ev.target
         onSetfilter({ txt: value })
@@ -74,36 +114,79 @@ export function AppHeader({ onSetfilter }) {
     }
 
     return (
-        <header className="app-header">
+        <header
+            className="app-header"
+            style={
+                bgColor
+                    ? txtColor
+                        ? { backgroundColor: bgColor, color: txtColor }
+                        : { backgroundColor: bgColor }
+                    : null
+            }
+        >
             {/* <img className="cube-img" src={cube} alt="" /> */}
+
             <Logo className="logo-img" onClick={goHome} />
             <div className="app-logo" onClick={goHome}>
                 <h3>Trellax</h3>
             </div>
             <nav className="main-nav">
                 <div className="link-section">
-                    <NavLink className="links" to="/">
+                    <NavLink
+                        className="links"
+                        to="/"
+                        style={
+                            bgColor
+                                ? txtColor
+                                    ? { color: txtColor }
+                                    : null
+                                : null
+                        }
+                    >
                         Workspaces
                         <Down className="down-img" src={Down} alt="" />
                     </NavLink>
                 </div>
                 <div className="link-section">
-                    <NavLink to="/about">
+                    <NavLink
+                        to="/about"
+                        style={
+                            bgColor
+                                ? txtColor
+                                    ? { color: txtColor }
+                                    : null
+                                : null
+                        }
+                    >
                         Recent
                         <Down className="down-img" src={Down} alt="" />
                     </NavLink>
                 </div>
                 <div className="link-section">
-                    <NavLink to="/bookApp">
+                    <NavLink
+                        to="/bookApp"
+                        style={
+                            bgColor
+                                ? txtColor
+                                    ? { color: txtColor }
+                                    : null
+                                : null
+                        }
+                    >
                         Starred
                         <Down className="down-img" src={Down} alt="" />
                     </NavLink>
                 </div>
-                <button className="new-board" onClick={onNewBoard}>
+                <button
+                    className="new-board"
+                    onClick={onNewBoard}
+                    style={
+                        bgColor ? (txtColor ? { color: txtColor } : null) : null
+                    }
+                >
                     Create
                 </button>
             </nav>
-            {/* <button>Create</button> */}
             <div className="header-actions">
                 <div className="search-bar">
                     <span>

@@ -1,7 +1,7 @@
 import { TaskPreview } from './task/task-preview'
 import dots from '../assets/img/icons/dots.svg'
 import { ReactComponent as Plus } from '../assets/img/icons/plus.svg'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { groupService } from '../services/group.service.local'
 import { ReactComponent as X } from '../assets/img/icons/x.svg'
 import { taskService } from '../services/task.service.local'
@@ -26,6 +26,8 @@ export function GroupDetails({
     const [isAddTaskOpen, setIsAddTaskOpen] = useState(false)
     const [task, setTask] = useState(null)
     const [taskTitle, setTaskTitle] = useState('')
+    const inputRef = useRef();
+
 
     useEffect(() => {
         setTask(taskService.getDefaultTask())
@@ -41,7 +43,7 @@ export function GroupDetails({
     }
 
     function onOpenAddTask() {
-        setIsAddTaskOpen(!isAddTaskOpen)
+        setIsAddTaskOpen(true)
     }
 
     function handleTaskTitle(ev) {
@@ -55,6 +57,7 @@ export function GroupDetails({
 
     async function onAddTask(ev) {
         ev.preventDefault()
+        console.log('11111')
         try {
             await saveTask(task, boardId, group.id)
         } catch (err) {
@@ -63,6 +66,8 @@ export function GroupDetails({
             setTask(taskService.getDefaultTask())
             setTaskTitle('')
             onAddClose()
+
+            onOpenAddTask()
         }
     }
 
@@ -137,9 +142,11 @@ export function GroupDetails({
                         ))}
                         {provided.placeholder}
                         {isAddTaskOpen && (
+                            // (currGroupId=== group.id) &&
                             <div className="task-container">
                                 <form onSubmit={onAddTask}>
                                     <input
+                                        ref={inputRef}
                                         placeholder="Enter a title for this card..."
                                         className="add-list-input"
                                         value={taskTitle}
@@ -167,7 +174,7 @@ export function GroupDetails({
             </Droppable>
             <div className="group-footer">
                 {!isAddTaskOpen && (
-                    <button onClick={onOpenAddTask}>
+                    <button ref={inputRef} onClick={onOpenAddTask}>
                         <Plus className="list-icon" /> Add a card
                     </button>
                 )}

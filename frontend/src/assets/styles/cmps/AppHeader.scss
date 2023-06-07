@@ -10,10 +10,12 @@
     gap: 5px;
     align-items: center;
     z-index: 1;
+
     .app-logo {
         cursor: pointer;
         padding-block-end: 3px;
     }
+
     .logo-img {
         width: 1.4rem;
         height: 1.4rem;
@@ -22,11 +24,6 @@
         cursor: pointer;
     }
 
-    .down-img {
-        width: 0.9rem;
-        height: 0.9rem;
-        margin-left: 5px;
-    }
 
     .main-nav {
         font-size: 14px;
@@ -36,7 +33,15 @@
         align-items: center;
         align-content: center;
 
+        .down-img {
+            width: 0.9rem;
+            height: 0.9rem;
+            margin-left: 5px;
+        }
+
         .link-section {
+            display: flex;
+
             a {
                 color: $clr4;
                 display: flex;
@@ -44,13 +49,15 @@
                 padding-right: 24px;
             }
         }
+
         button {
             width: 64px;
             height: 32px;
-            background-color: $clr3;
+            background-color: rgba(215, 215, 215, 0.507);
             color: $clr4;
             border-radius: 3px;
             font-size: 14px;
+
             &:hover {
                 background-color: $clrSCROLL;
             }

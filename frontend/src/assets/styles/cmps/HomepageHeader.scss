@@ -1,7 +1,7 @@
 .homepage-header-container {
     display: flex;
     // justify-content: space-between;
-    padding-inline: 60px;
+    padding-inline: 120px;
     align-content: center;
     align-items: center;
     width: 100%;
@@ -15,8 +15,15 @@
 
     .homepage-header-logo {
         line-height: 30px;
-        padding: 16px;
-        padding-block-start: 25px;
+        // padding: 16px;
+        // padding-block-start: 20px;
+        padding-block-start: 10px;
+        padding-inline-end: 16px;
+        align-self: flex-start;
+        color: $clr7;
+        h1 {
+            margin: 0;
+        }
     }
 
     .homepage-header-nav {
@@ -30,11 +37,11 @@
             color: $clr7;
 
             &:hover {
-                color: $clrBTN;
+                color: $hompageBTN;
 
                 .homepage-header-icon {
                     path {
-                        fill: $clrBTN;
+                        fill: $hompageBTN;
                     }
                 }
             }
@@ -65,14 +72,13 @@
         }
 
         .try {
-            background-color: $clrBTN;
+            background-color: $hompageBTN;
             color: $clr1;
             padding-block: 19px;
         }
     }
 
     .logo-title {
-       color: rgb(9, 30, 66);
+        color: rgb(9, 30, 66);
     }
-
 }
