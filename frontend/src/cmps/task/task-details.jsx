@@ -86,31 +86,29 @@ export function TaskDetails({
                 closeModal(ev, taskOverlayRef)
             }}
         >
-            <div className="task-details-parent">
-                <section className="task-details-container" ref={elementRef}>
-                    <TaskCover
-                        simpleCloseModal={simpleCloseModal}
+            <section className="task-details-container" ref={elementRef}>
+                <TaskCover
+                    simpleCloseModal={simpleCloseModal}
+                    task={task}
+                />
+                <div className="task-details-secondry-container">
+                    <TaskHeader task={task} group={group} />
+                    <TaskMainDetails
+                        boardId={boardId}
                         task={task}
+                        groupId={groupId}
+                        setEditing={setEditing}
+                        editing={editing}
+                        setDynamicCmpName={setDynamicCmpName}
                     />
-                    <div className="task-details-secondry-container">
-                        <TaskHeader task={task} group={group} />
-                        <TaskMainDetails
-                            boardId={boardId}
-                            task={task}
-                            groupId={groupId}
-                            setEditing={setEditing}
-                            editing={editing}
-                            setDynamicCmpName={setDynamicCmpName}
-                        />
-                        <TaskMenu
-                            task={task}
-                            setEditing={setEditing}
-                            dynamicCmpName={dynamicCmpName}
-                            setDynamicCmpName={setDynamicCmpName}
-                        />
-                    </div>
-                </section>
-            </div>
+                    <TaskMenu
+                        task={task}
+                        setEditing={setEditing}
+                        dynamicCmpName={dynamicCmpName}
+                        setDynamicCmpName={setDynamicCmpName}
+                    />
+                </div>
+            </section>
         </div>
     )
 }
