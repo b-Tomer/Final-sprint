@@ -1,6 +1,5 @@
 import { ReactComponent as X } from '../../assets/img/icons/x.svg'
 
-
 export function TaskCover({ task, simpleCloseModal }) {
 
     if (!task) return null
@@ -18,10 +17,9 @@ export function TaskCover({ task, simpleCloseModal }) {
                     className="task-cover"
                     style={{
                         backgroundColor: task.style.bgColor,
-                        backgroundImage: `url(${task.style.backgroundImage})`
-                    }}>
-
-                </div>
+                        backgroundImage: `url(${task.style.backgroundImage})`,
+                    }}
+                ></div>
                 // <div
                 //     className="task-header"
                 //     style={
@@ -39,7 +37,6 @@ export function TaskCover({ task, simpleCloseModal }) {
                 //     />}
                 // </div>
             )}
-
         </section>
     )
 }

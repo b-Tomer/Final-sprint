@@ -26,6 +26,7 @@ export function BoardIndex() {
     const { taskId } = useParams()
     const boardRef = useRef()
     const [taskEdit, setTaskEdit] = useState(null)
+    const [selectedTaskId, setSelectedTaskId] = useState(null)
     const [placeholderProps, setPlaceholderProps] = useState({})
     const [isTaskDetailsOpen, setIsTaskDetailsOpen] = useState(false)
     const [isLabelsExpand, setIsLabelsExpand] = useState(false)
@@ -198,7 +199,12 @@ export function BoardIndex() {
                                                             isDragging={
                                                                 snapshot.isDragging
                                                             }
-
+                                                            selectedTaskId={
+                                                                selectedTaskId
+                                                            }
+                                                            setSelectedTaskId={
+                                                                setSelectedTaskId
+                                                            }
                                                         />
                                                     )}
                                                 </Draggable>
@@ -217,7 +223,7 @@ export function BoardIndex() {
                                                         backgroundColor:
                                                             '#00000023',
                                                         borderRadius: '12px',
-                                                        marginLeft: '14px'
+                                                        marginLeft: '14px',
                                                     }}
                                                 />
                                             )}
@@ -237,6 +243,8 @@ export function BoardIndex() {
                     groupId={taskEdit.groupId}
                     setTaskEdit={setTaskEdit}
                     boardId={boardId}
+                    selectedTaskId={selectedTaskId}
+                    setSelectedTaskId={setSelectedTaskId}
                 />
             )}
             {isTaskDetailsOpen && (
