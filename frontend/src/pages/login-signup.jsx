@@ -12,8 +12,6 @@ import { ReactComponent as GoogleLogo } from '../assets/img/icons/google-logo.sv
 import { ReactComponent as SlackLogo } from '../assets/img/icons/slack-logo.svg'
 import { ReactComponent as AppleLogo } from '../assets/img/icons/apple-logo.svg'
 
-
-
 export function LoginSignup() {
     const navigate = useNavigate()
 
@@ -25,10 +23,8 @@ export function LoginSignup() {
     const [isSignup, setIsSignup] = useState(true)
     const [users, setUsers] = useState([])
 
-
     useEffect(() => {
         loadUsers()
-        console.log(users)
     }, [])
 
     async function loadUsers() {
@@ -44,7 +40,6 @@ export function LoginSignup() {
     function handleChange(ev) {
         const field = ev.target.name
         const value = ev.target.value
-        console.log(field, value)
         setCredentials({ ...credentials, [field]: value })
     }
 
@@ -54,8 +49,11 @@ export function LoginSignup() {
         handleLogin(credentials)
         clearState()
         console.log(userService.getLoggedinUser())
-        // if(sessionStorage.)
-        // navigate('/workspace')
+        if (userService.getLoggedinUser()) {
+            navigate('/workspace')
+        } else {
+            console.log('not logged in')
+        }
     }
 
     function onSignup(ev = null) {
@@ -70,8 +68,11 @@ export function LoginSignup() {
             return
         handleSignup(credentials)
         clearState()
-        navigate('/workspace')
-
+        if (userService.getLoggedinUser()) {
+            navigate('/workspace')
+        } else {
+            console.log('not logged in')
+        }
     }
 
     async function handleSignup(credentials) {
@@ -102,13 +103,11 @@ export function LoginSignup() {
 
     return (
         <div className="login-page">
-            <div className='login-page-header'>
-            </div>
+            <div className="login-page-header"></div>
             <h3>Trellax</h3>
-            <div className='login-signin-container'>
-
+            <div className="login-signin-container">
                 {!isSignup && (
-                    <div className='login-container'>
+                    <div className="login-container">
                         <h3>Log in to Trellax</h3>
                         <form>
                             <input
@@ -129,7 +128,7 @@ export function LoginSignup() {
                                 required
                                 autoFocus
                             />
-                            <button onClick={onLogin} className='login-btn'>
+                            <button onClick={onLogin} className="login-btn">
                                 Log in to Trellax
                             </button>
                         </form>
@@ -138,13 +137,12 @@ export function LoginSignup() {
                 )}
 
                 {isSignup && (
-                    <div className='signin-container'>
+                    <div className="signin-container">
                         <h3>Sign up for your account</h3>
-                        <form onSubmit={onSignup} >
+                        <form onSubmit={onSignup}>
                             <input
                                 type="text"
                                 name="fullname"
-                                // value={'hi'}
                                 placeholder=" Enter full name"
                                 onChange={handleChange}
                                 required
@@ -153,7 +151,6 @@ export function LoginSignup() {
                             <input
                                 type="text"
                                 name="username"
-                                // value={'hi'}
                                 placeholder=" Enter username"
                                 onChange={handleChange}
                                 required
@@ -162,36 +159,43 @@ export function LoginSignup() {
                             <input
                                 type="password"
                                 name="password"
-                                // value={'hi'}
                                 placeholder="Enter password"
                                 onChange={handleChange}
                                 required
                                 autoFocus
                             />
-                            <button className='login-btn'>
+                            <button className="login-btn">
                                 Sign up for your account
                             </button>
                         </form>
                         <h3>OR</h3>
                     </div>
                 )}
-                <button className='login-with-btn'>
-                    <GoogleLogo className='btn-logo' />
-                    Continue with Google</button>
-                <button className='login-with-btn'>
-                    <MicrosoftLogo className='btn-logo' />
-                    Continue with Microsoft</button>
-                <button className='login-with-btn'>
-                    <AppleLogo className='btn-logo' />
-                    Continue with Apple</button>
-                <button className='login-with-btn'>
-                    <SlackLogo className='btn-logo' />
-                    Continue with Slack</button>
+                <button className="login-with-btn">
+                    <GoogleLogo className="btn-logo" />
+                    Continue with Google
+                </button>
+                <button className="login-with-btn">
+                    <MicrosoftLogo className="btn-logo" />
+                    Continue with Microsoft
+                </button>
+                <button className="login-with-btn">
+                    <AppleLogo className="btn-logo" />
+                    Continue with Apple
+                </button>
+                <button className="login-with-btn">
+                    <SlackLogo className="btn-logo" />
+                    Continue with Slack
+                </button>
                 <hr></hr>
                 {!isSignup && (
-                    <h4 onClick={toggleSignup}  >Sign up for an account</h4>)}
+                    <h4 onClick={toggleSignup}>Sign up for an account</h4>
+                )}
                 {isSignup && (
-                    <h4 onClick={toggleSignup} >Already have an account? Log in</h4>)}
+                    <h4 onClick={toggleSignup}>
+                        Already have an account? Log in
+                    </h4>
+                )}
             </div>
             <LeftImg className="left-img" />
             <RightImg className="right-img" />
