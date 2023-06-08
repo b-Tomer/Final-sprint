@@ -5,6 +5,7 @@ import { TaskIcons } from './task-icons'
 import { utilService } from '../../services/util.service'
 import { useSelector } from 'react-redux'
 import { updateTask } from '../../store/task.actions'
+import { boardService } from 'services/board.service.local'
 
 export function TaskPreview({
     task,
@@ -125,7 +126,9 @@ export function TaskPreview({
         await setTaskTitle(event.target.value)
         task.title = event.target.value
         try {
-            await updateTask(boardId, groupId, task)
+            const activity = boardService.getEmptyActivity()
+            activity.title = `changed title to: ${task.title}`
+            await updateTask(boardId, groupId, task, activity)
         } catch (error) {
             console.log('cant update task')
         }

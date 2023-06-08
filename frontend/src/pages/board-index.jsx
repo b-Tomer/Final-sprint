@@ -150,7 +150,7 @@ export function BoardIndex() {
                         onDragUpdate={onDragUpdate}
                         onDragEnd={onDragEnd}
                     >
-                        <BoardHeader />
+                        <BoardHeader board={board} />
                         <main ref={boardRef} className="board-content">
                             <Droppable
                                 droppableId={board._id}
