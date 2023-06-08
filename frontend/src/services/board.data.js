@@ -264,12 +264,12 @@ export const gBoards = [
                                     {
                                         "id": "todo2013",
                                         "title": "Research relevant topics",
-                                        "isDone": "true"
+                                        "isDone": true
                                     },
                                     {
                                         "id": "todo2014",
                                         "title": "Outline article structure",
-                                        "isDone": "true"
+                                        "isDone": true
                                     },
                                     {
                                         "id": "todo2015",
@@ -341,12 +341,12 @@ export const gBoards = [
                                     {
                                         "id": "todo2020",
                                         "title": "Scriptwriting and storyboarding",
-                                        "isDone": "true"
+                                        "isDone": true
                                     },
                                     {
                                         "id": "todo2021",
                                         "title": "Shoot and edit video footage",
-                                        "isDone": "true"
+                                        "isDone": true
                                     }
                                 ]
                             }
@@ -446,25 +446,25 @@ export const gBoards = [
                                     {
                                         "id": "todo20j1",
                                         "title": "Research relevant influencers",
-                                        "isDone": "true"
+                                        "isDone": true
 
                                     },
                                     {
                                         "id": "todo2032",
                                         "title": "Reach out and negotiate partnerships",
-                                        "isDone": "true"
+                                        "isDone": true
 
                                     },
                                     {
                                         "id": "todo2033",
                                         "title": "Monitor influencer activities",
-                                        "isDone": "true"
+                                        "isDone": true
 
                                     },
                                     {
                                         "id": "todo2031",
                                         "title": "Research relevant influencers",
-                                        "isDone": "true"
+                                        "isDone": true
 
                                     }
                                 ]
@@ -490,7 +490,7 @@ export const gBoards = [
                                     {
                                         "id": "todo2028",
                                         "title": "Segment email list",
-                                        "isDone": "true"
+                                        "isDone": true
                                     },
                                     {
                                         "id": "todo2029",
@@ -544,7 +544,7 @@ export const gBoards = [
                                     {
                                         "id": "todo2034",
                                         "title": "Install tracking codes",
-                                        "isDone": "true"
+                                        "isDone": true
 
                                     },
                                     {
@@ -613,19 +613,19 @@ export const gBoards = [
                                     {
                                         "id": "todo2040",
                                         "title": "Compile data and metrics",
-                                        "isDone": "true"
+                                        "isDone": true
 
                                     },
                                     {
                                         "id": "todo2041",
                                         "title": "Create visual representations",
-                                        "isDone": "true"
+                                        "isDone": true
 
                                     },
                                     {
                                         "id": "todo2042",
                                         "title": "Summarize key findings",
-                                        "isDone": "true"
+                                        "isDone": true
 
                                     }
                                 ]
@@ -656,7 +656,7 @@ export const gBoards = [
                                     {
                                         "id": "todo2043",
                                         "title": "Identify underperforming channels",
-                                        "isDone": "true"
+                                        "isDone": true
                                     }
                                 ]
                             }
@@ -715,12 +715,12 @@ export const gBoards = [
                                     {
                                         "id": "todo2050",
                                         "title": "Optimize email subject lines",
-                                        "isDone": "true"
+                                        "isDone": true
                                     },
                                     {
                                         "id": "todo2051",
                                         "title": "A/B test email content variations",
-                                        "isDone": "true"
+                                        "isDone": true
                                     }
                                 ]
                             }
