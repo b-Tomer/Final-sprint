@@ -18,7 +18,7 @@ export const boardService = {
 window.cs = boardService
 
 
-async function query(filterBy = { txt: '', price: 0 }) {
+async function query(filterBy = { txt: '' }) {
     return httpService.get(STORAGE_KEY, filterBy)
 }
 

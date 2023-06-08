@@ -10,7 +10,7 @@ const PAGE_SIZE = 3
 async function query(filterBy={txt:''}) {
     try {
         const criteria = {
-            vendor: { $regex: filterBy.txt, $options: 'i' }
+            title: { $regex: filterBy.txt, $options: 'i' }
         }
         const collection = await dbService.getCollection('board')
         var boardCursor = await collection.find(criteria)
@@ -62,10 +62,8 @@ async function add(board) {
 
 async function update(board) {
     try {
-        const boardToSave = {
-            vendor: board.vendor,
-            price: board.price
-        }
+    /************************ maybe****************** */
+        const boardToSave = {...board }
         const collection = await dbService.getCollection('board')
         await collection.updateOne({ _id: ObjectId(board._id) }, { $set: boardToSave })
         return board

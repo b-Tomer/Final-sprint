@@ -16,7 +16,7 @@ const initialState = {
     board: null,
     lastUpdatedBoard: null,
     label: null,
-    atc:'heyyy'
+    atc:null
 }
 
 export function boardReducer(state = initialState, action) {

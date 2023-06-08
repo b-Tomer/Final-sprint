@@ -6,7 +6,6 @@ export async function getBoards(req, res) {
     logger.debug('Getting Boards:', req.query)
     const filterBy = {
       txt: req.query.txt || '',
-      pageIdx: req.query.pageIdx
     }
     const boards = await boardService.query(filterBy)
     res.json(boards)

@@ -15,7 +15,7 @@ router.put('/:id', requireAuth, updateBoard)
 router.delete('/:id', requireAuth, removeBoard)
 // router.delete('/:id', requireAuth, requireAdmin, removeBoard)
 
-router.post('/:id/msg', requireAuth, addBoardMsg)
-router.delete('/:id/msg/:msgId', requireAuth, removeBoardMsg)
+// router.post('/:id/msg', requireAuth, addBoardMsg)
+// router.delete('/:id/msg/:msgId', requireAuth, removeBoardMsg)
 
 export const boardRoutes = router
