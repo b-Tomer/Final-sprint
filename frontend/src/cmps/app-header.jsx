@@ -17,6 +17,9 @@ import { boardService } from '../services/board.service.js'
 export function AppHeader({ onSetfilter }) {
     const { board } = useSelector((storeState) => storeState.boardModule)
     const [isMobileOpen, setIsMobileOpen] = useState(false)
+    const [loginUser, setloginUser] = useState(null)
+    // const [isUserInfoOpen, setisUserInfoOpen] = useState(false)
+
 
     const toggleMobileOpen = () => {
         setIsMobileOpen(!isMobileOpen)
@@ -30,6 +33,8 @@ export function AppHeader({ onSetfilter }) {
 
     useEffect(() => {
         printAverageColor()
+        setloginUser(userService.getLoggedinUser())
+        console.log(loginUser)
     }, [board])
 
     function printAverageColor() {
@@ -96,9 +101,8 @@ export function AppHeader({ onSetfilter }) {
             </div>
             <nav className="main-nav">
                 <div
-                    className={`links-section ${
-                        isMobileOpen ? 'mobile-open' : ''
-                    }`}
+                    className={`links-section ${isMobileOpen ? 'mobile-open' : ''
+                        }`}
                 >
                     <div className="link-section">
                         <div className="links">
@@ -195,6 +199,12 @@ export function AppHeader({ onSetfilter }) {
                     />
                 </div>
                 <ul className="header-icons">
+                    {loginUser && (
+                        // <li className='user-photo' onClick={setUserInfo} >
+                        <li className='user-photo' >
+                            <img id="image" src={`${loginUser.imgUrl}`} alt="Image" />
+                        </li>
+                    )}
                     <li>
                         <Notifications
                             className="app-header-icon"

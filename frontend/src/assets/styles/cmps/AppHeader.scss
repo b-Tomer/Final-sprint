@@ -245,6 +245,12 @@
         .header-icons {
             display: flex;
 
+            .user-photo {
+                width: 1.5rem;
+                height: 1.5rem;
+                margin-left: 5px;
+            }
+
             @include for-normal-layout {
                 display: flex;
             }
