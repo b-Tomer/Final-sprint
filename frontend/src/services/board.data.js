@@ -444,7 +444,7 @@ export const gBoards = [
                                 "labelIds": ["l103", "l102", "l105"],
                                 "todos": [
                                     {
-                                        "id": "todo2031",
+                                        "id": "todo20j1",
                                         "title": "Research relevant influencers",
                                         "isDone": "true"
 

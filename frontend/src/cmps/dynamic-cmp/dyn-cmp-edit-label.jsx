@@ -5,19 +5,19 @@ import { boardService } from "../../services/board.service.local";
 import { store } from "../../store/store";
 import { CLOSE_DYN_ALL_MODALS, SET_MODAL_TITLE } from "../../store/system.reducer";
 
+const colors = [
+    { color: 'baf3db' }, { color: 'f8e6a0' }, { color: 'ffe2bd' }, { color: 'ffd2cc' }, { color: 'dfd8fd' },
+    { color: '4bce97' }, { color: 'e2b203' }, { color: 'faa53d' }, { color: 'f87462' }, { color: '9f8fef' },
+    { color: '1f845a' }, { color: '946f00' }, { color: 'b65c02' }, { color: 'ca3521' }, { color: '6e5dc6' },
+    { color: 'cce0ff' }, { color: 'c1f0f5' }, { color: 'd3f1a7' }, { color: 'fdd0ec' }, { color: 'dcdfe4' },
+    { color: '579dff' }, { color: '60c6d2' }, { color: '94c748' }, { color: 'e774bb' }, { color: '8590a2' },
+    { color: '0c66e4' }, { color: '1d7f8c' }, { color: '5b7f24' }, { color: 'ae4787' }, { color: '626f86' },
+]
 
-export function DynCmpEditLabel({ task }) {
+export function DynCmpEditLabel() {
     const { label } = useSelector((storeState) => storeState.boardModule)
     const { board } = useSelector((storeState) => storeState.boardModule)
     const [labelToEdit, setLabelToEdit] = useState(label)
-    const colors = [
-        { color: 'baf3db' }, { color: 'f8e6a0' }, { color: 'ffe2bd' }, { color: 'ffd2cc' }, { color: 'dfd8fd' },
-        { color: '4bce97' }, { color: 'e2b203' }, { color: 'faa53d' }, { color: 'f87462' }, { color: '9f8fef' },
-        { color: '1f845a' }, { color: '946f00' }, { color: 'b65c02' }, { color: 'ca3521' }, { color: '6e5dc6' },
-        { color: 'cce0ff' }, { color: 'c1f0f5' }, { color: 'd3f1a7' }, { color: 'fdd0ec' }, { color: 'dcdfe4' },
-        { color: '579dff' }, { color: '60c6d2' }, { color: '94c748' }, { color: 'e774bb' }, { color: '8590a2' },
-        { color: '0c66e4' }, { color: '1d7f8c' }, { color: '5b7f24' }, { color: 'ae4787' }, { color: '626f86' },
-    ]
 
     function handleChange(event) {
         setLabelToEdit({ ...labelToEdit, title: event.target.value })

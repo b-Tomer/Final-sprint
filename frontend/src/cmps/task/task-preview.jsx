@@ -30,12 +30,7 @@ export function TaskPreview({
     // const menuRef = useRef(null)
     const taskPreviewRef = useRef()
 
-    // useClickOutside(menuRef, toggleEditModal)
 
-    // function onOpenMenu() {
-    //     setIsMenuOpen(!isMenuOpen)
-    //     console.log(isMenuOpen)
-    // }
 
     function onOpenTaskDetails() {
         setIsTaskDetailsOpen(true)

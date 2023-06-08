@@ -49,6 +49,9 @@
         }
         .task-labels {
             display: flex;
+            flex-wrap: wrap;
+            max-width: 100%;
+            gap: 7px;
             .task-labels-btn {
                 margin-inline-end: 5px;
                 border-radius: 3px;
