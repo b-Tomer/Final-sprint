@@ -62,8 +62,7 @@ async function add(board) {
 
 async function update(board) {
     try {
-    /************************ maybe****************** */
-        const boardToSave = {...board }
+        const {_id , ...boardToSave} = board
         const collection = await dbService.getCollection('board')
         await collection.updateOne({ _id: ObjectId(board._id) }, { $set: boardToSave })
         return board

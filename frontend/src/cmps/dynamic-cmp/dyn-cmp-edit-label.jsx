@@ -1,14 +1,13 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { boardService } from "../../services/board.service.local";
+import { boardService } from "../../services/board.service.js";
 import { store } from "../../store/store";
 import { CLOSE_DYN_ALL_MODALS, SET_MODAL_TITLE } from "../../store/system.reducer";
-
+import { updateBoard } from "store/board.actions.js";
 
 
 export function DynCmpEditLabel() {
-
     const colors = [
         { color: 'baf3db' }, { color: 'f8e6a0' }, { color: 'ffe2bd' }, { color: 'ffd2cc' }, { color: 'dfd8fd' },
         { color: '4bce97' }, { color: 'e2b203' }, { color: 'faa53d' }, { color: 'f87462' }, { color: '9f8fef' },
@@ -23,9 +22,14 @@ export function DynCmpEditLabel() {
     // const { label } = useSelector((storeState) => storeState.boardModule)
 
 
-    const [labelToEdit, setLabelToEdit] = useState(label)
+    // const [labelToEdit, setLabelToEdit] = useState(label)
 
-    console.log('aaaaaaa', labelToEdit)
+    const [labelToEdit, setLabelToEdit] = useState('')
+
+    useEffect(() => {
+        console.log("label", label)
+        setLabelToEdit(label)
+    }, [])
 
     function handleChange(event) {
         setLabelToEdit({ ...labelToEdit, title: event.target.value })
@@ -35,7 +39,7 @@ export function DynCmpEditLabel() {
         const labelIdx = board.labels.findIndex(l => l.id === label.id)
         board.labels[labelIdx] = labelToEdit
         try {
-            await boardService.save(board)
+            await updateBoard(board)
         } catch (err) {
             console.log('Can not update label')
         } finally {
@@ -58,9 +62,7 @@ export function DynCmpEditLabel() {
     }
 
     function onChangeColor(newColor) {
-
         setLabelToEdit({ ...labelToEdit, color: ` #${newColor}` })
-        console.log(labelToEdit);
     }
 
 

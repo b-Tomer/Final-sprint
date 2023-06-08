@@ -8,6 +8,7 @@ export const OPEN_DYN_EDIT_ATC = 'OPEN_DYN_EDIT_ATC'
 export const OPEN_DYN_DATE_MODAL = 'OPEN_DYN_DATE_MODAL'
 export const OPEN_DYN_LABEL_MODAL = 'OPEN_DYN_LABEL_MODAL'
 export const OPEN_DYN_MEMBER_MODAL = 'OPEN_DYN_MEMBER_MODAL'
+export const OPEN_DYN_ACTIVITIES_MODAL = 'OPEN_DYN_ACTIVITIES_MODAL'
 export const CLOSE_DYN_ALL_MODALS = 'CLOSE_DYN_ALL_MODALS'
 export const OPEN_DYN_EDITOR_MODAL = 'OPEN_DYN_EDITOR_MODAL'
 
@@ -20,6 +21,7 @@ const initialState = {
     isOpenMemberModal: false,
     isOpenLabelModal: false,
     isOpenEditorModal: false,
+    isOpenActivitiesModal: false,
     modalTitle: '',
 }
 
@@ -43,6 +45,9 @@ export function systemReducer(state = initialState, action = {}) {
             return { ...state, isOpenDateModal: true }
         case OPEN_DYN_LABEL_MODAL:
             return { ...state, isOpenLabelModal: true }
+        case OPEN_DYN_ACTIVITIES_MODAL:
+            console.log('hi')
+            return { ...state, isOpenActivitiesModal: true }
         case OPEN_DYN_EDITOR_MODAL:
             return { ...state, isOpenEditorModal: true }
         case CLOSE_DYN_ALL_MODALS:
@@ -53,6 +58,7 @@ export function systemReducer(state = initialState, action = {}) {
                 isOpenEditAtc: false,
                 isOpenDateModal: false,
                 isOpenLabelModal: false,
+                isOpenActivitiesModal: false,
                 isOpenMemberModal: false,
                 isOpenEditorModal: false,
             }

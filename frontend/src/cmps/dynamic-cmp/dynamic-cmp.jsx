@@ -6,14 +6,17 @@ import { DynCmpChecklist } from './dyn-cmp-checklist'
 import { DynCmpDates } from './dyn-cmp-dates'
 import { DynCmpAttachment } from './dyn-cmp-attachment'
 import { DynCmpAttachmentEdit } from './dyn-cpm-attachment-edit'
-import { CLOSE_DYN_ALL_MODALS, SET_MODAL_TITLE } from '../../store/system.reducer'
+import {
+    CLOSE_DYN_ALL_MODALS,
+    SET_MODAL_TITLE,
+} from '../../store/system.reducer'
 import { useSelector } from 'react-redux'
 import { store } from '../../store/store'
 import { useParams } from 'react-router-dom'
 import { DynCmpEditLabel } from './dyn-cmp-edit-label'
+import { DynCmpActivities } from './dyn-cmp-activity'
 
-
-export function DynamicCmp({ task, title, setEditing, modalPos }) {
+export function DynamicCmp({ task, title, setEditing, modalPos, board }) {
     const { isModalOpen } = useSelector((storeState) => storeState.systemModule)
     const { modalTitle } = useSelector((storeState) => storeState.systemModule)
     const { boardId } = useParams()
@@ -85,10 +88,7 @@ export function DynamicCmp({ task, title, setEditing, modalPos }) {
             {modalTitle === 'Members' && <DynCmpMembers task={task} />}
             {modalTitle === 'Edit label' && <DynCmpEditLabel task={task} />}
             {modalTitle === 'Checklist' && (
-                <DynCmpChecklist
-                    task={task}
-                    setEditing={setEditing}
-                />
+                <DynCmpChecklist task={task} setEditing={setEditing} />
             )}
             {modalTitle === 'Attachment' && (
                 <DynCmpAttachment
@@ -104,6 +104,7 @@ export function DynamicCmp({ task, title, setEditing, modalPos }) {
                     task={task}
                 />
             )}
+            {modalTitle === 'Activities' && <DynCmpActivities board={board} />}
         </div>
     )
 }
