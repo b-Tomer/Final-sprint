@@ -5,35 +5,22 @@ import { useState, useEffect } from 'react'
 import { FastAverageColor } from 'fast-average-color'
 import ContrastColor from 'contrast-color'
 import { useSelector } from 'react-redux'
-
 import { Link, NavLink, Navigate } from 'react-router-dom'
-import cube from '../assets/img/icons/cube.svg'
-// import Logo from '../assets/img/icons/logo.svg'
-
 import { ReactComponent as Down } from '../assets/img/icons/down.svg'
 import { ReactComponent as Notifications } from '../assets/img/icons/notifications.svg'
 import { ReactComponent as Info } from '../assets/img/icons/info.svg'
 import { ReactComponent as Theme } from '../assets/img/icons/theme.svg'
 import { ReactComponent as Search } from '../assets/img/icons/search.svg'
 import { ReactComponent as Logo } from '../assets/img/icons/logo.svg'
-
 import { boardService } from '../services/board.service.local.js'
-
-// import {useSelector} from 'react-redux'
-// import routes from '../routes'
-// import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
-// import { login, logout, signup } from '../store/user.actions.js'
-// import { LoginSignup } from './login-signup.jsx'
 
 export function AppHeader({ onSetfilter }) {
     const { board } = useSelector((storeState) => storeState.boardModule)
-    const [isMobileOpen, setIsMobileOpen] = useState(false);
+    const [isMobileOpen, setIsMobileOpen] = useState(false)
 
     const toggleMobileOpen = () => {
-        setIsMobileOpen(!isMobileOpen);
-        console.log(isMobileOpen)
-    };
-
+        setIsMobileOpen(!isMobileOpen)
+    }
 
     const navigate = useNavigate()
     const [bgColor, setBgColor] = useState(null)
@@ -44,33 +31,6 @@ export function AppHeader({ onSetfilter }) {
     useEffect(() => {
         printAverageColor()
     }, [board])
-
-    // const user = useSelector(storeState => storeState.userModule.user)
-
-    // async function onLogin(credentials) {
-    //     try {
-    //         const user = await login(credentials)
-    //         showSuccessMsg(`Welcome: ${user.fullname}`)
-    //     } catch(err) {
-    //         showErrorMsg('Cannot login')
-    //     }
-    // }
-    // async function onSignup(credentials) {
-    //     try {
-    //         const user = await signup(credentials)
-    //         showSuccessMsg(`Welcome new user: ${user.fullname}`)
-    //     } catch(err) {
-    //         showErrorMsg('Cannot signup')
-    //     }
-    // }
-    // async function onLogout() {
-    //     try {
-    //         await logout()
-    //         showSuccessMsg(`Bye now`)
-    //     } catch(err) {
-    //         showErrorMsg('Cannot logout')
-    //     }
-    // }
 
     function printAverageColor() {
         const img = document.createElement('img')
@@ -92,7 +52,6 @@ export function AppHeader({ onSetfilter }) {
                 },
             })
             const textColor = cc.contrastColor()
-            console.log(textColor)
             setTxtColor(textColor)
         })
     }
@@ -131,14 +90,16 @@ export function AppHeader({ onSetfilter }) {
                     : null
             }
         >
-            {/* <img className="cube-img" src={cube} alt="" /> */}
-
             <Logo className="logo-img" onClick={goHome} />
             <div className="app-logo" onClick={goHome}>
                 <h3>Trellax</h3>
             </div>
             <nav className="main-nav">
-                <div className={`links-section ${isMobileOpen ? 'mobile-open' : ''}`} >
+                <div
+                    className={`links-section ${
+                        isMobileOpen ? 'mobile-open' : ''
+                    }`}
+                >
                     <div className="link-section">
                         <div className="links">
                             <NavLink
@@ -190,22 +151,34 @@ export function AppHeader({ onSetfilter }) {
                         </div>
                         <Down className="down-img" src={Down} alt="" />
                     </div>
-                </div >
-                <div className='nav-btns'>
+                </div>
+                <div className="nav-btns">
                     <button
                         onClick={toggleMobileOpen}
                         className="more"
                         style={
-                            bgColor ? (txtColor ? { color: txtColor } : null) : null
-                        } >More <Down className="down-img" src={Down} alt="" /></button>
+                            bgColor
+                                ? txtColor
+                                    ? { color: txtColor }
+                                    : null
+                                : null
+                        }
+                    >
+                        More <Down className="down-img" src={Down} alt="" />
+                    </button>
                     <button
                         className="new-board"
                         onClick={onNewBoard}
                         style={
-                            bgColor ? (txtColor ? { color: txtColor } : null) : null
+                            bgColor
+                                ? txtColor
+                                    ? { color: txtColor }
+                                    : null
+                                : null
                         }
                     >
-                        <span className='plus-icon'>+</span><span className='create'>Create</span>
+                        <span className="plus-icon">+</span>
+                        <span className="create">Create</span>
                     </button>
                 </div>
             </nav>
@@ -221,7 +194,7 @@ export function AppHeader({ onSetfilter }) {
                         placeholder="Search"
                     />
                 </div>
-                <ul className='header-icons'>
+                <ul className="header-icons">
                     <li>
                         <Notifications
                             className="app-header-icon"
