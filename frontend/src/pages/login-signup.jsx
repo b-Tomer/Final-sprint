@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react'
 import { userService } from '../services/user.service'
-import { ImgUploader } from '../cmps/img-uploader'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { login, logout, signup } from '../store/user.actions.js'
 import { useNavigate } from 'react-router-dom'
-
 import { ReactComponent as LeftImg } from '../assets/img/icons/trello-pic-left.svg'
 import { ReactComponent as RightImg } from '../assets/img/icons/trello-pic-right.svg'
 import { ReactComponent as MicrosoftLogo } from '../assets/img/icons/microsoft-logo.svg'
@@ -43,29 +41,28 @@ export function LoginSignup() {
         setCredentials({ ...credentials, [field]: value })
     }
 
-    function onLogin(ev = null) {
+   async function onLogin(ev = null) {
         if (ev) ev.preventDefault()
         if (!credentials.username) return
-        handleLogin(credentials)
-        clearState()
-        console.log(userService.getLoggedinUser())
-        if (userService.getLoggedinUser()) {
-            navigate('/workspace')
-        } else {
-            console.log('not logged in')
+        try{
+            await handleLogin(credentials)
+            clearState()
+            if (userService.getLoggedinUser()) {
+                navigate('/workspace')
+            } else {
+                console.log('not logged in')
+            }
+        }catch(err){
+            console.log("user not found " ,err);
         }
     }
 
     function onSignup(ev = null) {
-        // console.log(ev)
-        console.log(credentials)
         if (ev) ev.preventDefault()
-        if (
-            !credentials.username ||
+        if (!credentials.username ||
             !credentials.password ||
             !credentials.fullname
-        )
-            return
+        ) return
         handleSignup(credentials)
         clearState()
         if (userService.getLoggedinUser()) {
@@ -113,16 +110,14 @@ export function LoginSignup() {
                             <input
                                 type="text"
                                 name="username"
-                                // value={'hi'}
                                 placeholder=" Enter username"
                                 onChange={handleChange}
                                 required
                                 autoFocus
                             />
                             <input
-                                type="text"
-                                name="username"
-                                // value={'hi'}
+                                type="password"
+                                name="password"
                                 placeholder="Enter password"
                                 onChange={handleChange}
                                 required

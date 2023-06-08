@@ -9,14 +9,14 @@ export function UserInfo({ closeUserInfo }) {
     function upperCase(word) {
         return word.charAt(0).toUpperCase() + word.slice(1);
     }
-
+if(!user) return null
     return (
         <div >
             <div className='account'>Account</div>
             <hr></hr>
             <div className="user-info-header">
                 <div className='user-photo' >
-                    <img id="image" src={`${user.imgUrl}`} alt="Image" className='user-photo' />
+                    {user.imgUrl && <img id="image" src={`${user.imgUrl}`} alt="Image" className='user-photo' />}
                 </div>
 
                 <div className="user-info-name">{upperCase(user.fullname)}</div>
