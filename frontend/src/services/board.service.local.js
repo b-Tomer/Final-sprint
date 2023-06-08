@@ -30,7 +30,6 @@ function getById(boardId) {
 }
 
 async function remove(boardId) {
-    // throw new Error('Nope')
     await storageService.remove(STORAGE_KEY, boardId)
 }
 
@@ -39,14 +38,12 @@ async function save(board) {
     if (board._id) {
         savedBoard = await storageService.put(STORAGE_KEY, board)
     } else {
-        // Later, owner is set by the backend
         savedBoard = await storageService.post(STORAGE_KEY, board)
     }
     return savedBoard
 }
 
 async function addBoardMsg(boardId, txt) {
-    // Later, this is all done by the backend
     const board = await getById(boardId)
     if (!board.msgs) board.msgs = []
 

@@ -4,7 +4,7 @@ import { ReactComponent as Plus } from '../assets/img/icons/plus.svg'
 import { useEffect, useState, useRef } from 'react'
 import { groupService } from '../services/group.service.local'
 import { ReactComponent as X } from '../assets/img/icons/x.svg'
-import { taskService } from '../services/task.service.local'
+import { taskService } from '../services/task.service'
 import { removeTask, saveTask } from '../store/task.actions'
 import { Draggable, Droppable } from 'react-beautiful-dnd'
 
