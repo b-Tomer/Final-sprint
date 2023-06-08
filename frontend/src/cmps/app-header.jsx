@@ -19,7 +19,7 @@ export function AppHeader({ onSetfilter }) {
     const { board } = useSelector((storeState) => storeState.boardModule)
     const [isMobileOpen, setIsMobileOpen] = useState(false)
     const [loginUser, setloginUser] = useState(null)
-    const [isUserInfoOpen, setisUserInfoOpen] = useState(false)
+    // const [isUserInfoOpen, setisUserInfoOpen] = useState(false)
 
 
     const toggleMobileOpen = () => {
@@ -201,7 +201,8 @@ export function AppHeader({ onSetfilter }) {
                 </div>
                 <ul className="header-icons">
                     {loginUser && (
-                        <li className='user-photo' onClick={setUserInfo} >
+                        // <li className='user-photo' onClick={setUserInfo} >
+                        <li className='user-photo' >
                             <img id="image" src={`${loginUser.imgUrl}`} alt="Image" />
                         </li>
                     )}
