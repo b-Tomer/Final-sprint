@@ -25,6 +25,7 @@ export function BoardIndex() {
     const { groupId } = useParams()
     const { taskId } = useParams()
     const [taskEdit, setTaskEdit] = useState(null)
+    const [selectedTaskId, setSelectedTaskId] = useState(null)
     const [placeholderProps, setPlaceholderProps] = useState({})
     const [isTaskDetailsOpen, setIsTaskDetailsOpen] = useState(false)
     const [isLabelsExpand, setIsLabelsExpand] = useState(false)
@@ -32,34 +33,30 @@ export function BoardIndex() {
     const { filterBy } = useSelector((storeState) => storeState.boardModule)
     const queryAttr = 'data-rbd-drag-handle-draggable-id'
 
-    useEffect(()=>{
-        console.log('taskedit');
-    },[taskEdit])
-    
-    useEffect(()=>{
-        console.log('lablesfont');
-        
-    },[labelsFont])
-    
-    useEffect(()=>{
-        console.log('isLabel');
-    },[isLabelsExpand])
-    
-    useEffect(()=>{
-        console.log('isTaskDetailsOpen');
-        
-    },[isTaskDetailsOpen])
-    
-    useEffect(()=>{
-        
-        console.log('isLabel');
-    },[placeholderProps])
+    useEffect(() => {
+        console.log('taskedit')
+    }, [taskEdit])
+
+    useEffect(() => {
+        console.log('lablesfont')
+    }, [labelsFont])
+
+    useEffect(() => {
+        console.log('isLabel')
+    }, [isLabelsExpand])
+
+    useEffect(() => {
+        console.log('isTaskDetailsOpen')
+    }, [isTaskDetailsOpen])
+
+    useEffect(() => {
+        console.log('isLabel')
+    }, [placeholderProps])
     useEffect(() => {
         loadBoards()
         onLoadBoard(filterBy)
         console.log('from use effect', board)
     }, [filterBy, boardId])
-
 
     // useEffect(() => {
     //     console.log('hettttttttt')
@@ -224,7 +221,12 @@ export function BoardIndex() {
                                                             isDragging={
                                                                 snapshot.isDragging
                                                             }
-
+                                                            selectedTaskId={
+                                                                selectedTaskId
+                                                            }
+                                                            setSelectedTaskId={
+                                                                setSelectedTaskId
+                                                            }
                                                         />
                                                     )}
                                                 </Draggable>
@@ -243,7 +245,7 @@ export function BoardIndex() {
                                                         backgroundColor:
                                                             '#00000023',
                                                         borderRadius: '12px',
-                                                        marginLeft: '14px'
+                                                        marginLeft: '14px',
                                                     }}
                                                 />
                                             )}
@@ -263,6 +265,8 @@ export function BoardIndex() {
                     groupId={taskEdit.groupId}
                     setTaskEdit={setTaskEdit}
                     boardId={boardId}
+                    selectedTaskId={selectedTaskId}
+                    setSelectedTaskId={setSelectedTaskId}
                 />
             )}
             {isTaskDetailsOpen && (

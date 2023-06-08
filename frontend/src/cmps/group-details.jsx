@@ -21,13 +21,14 @@ export function GroupDetails({
     labelsFont,
     provided,
     isDragging,
+    selectedTaskId,
+    setSelectedTaskId,
 }) {
     const [groupToUpdate, setGroupToUpdate] = useState(group)
     const [isAddTaskOpen, setIsAddTaskOpen] = useState(false)
     const [task, setTask] = useState(null)
     const [taskTitle, setTaskTitle] = useState('')
-    const inputRef = useRef();
-
+    const inputRef = useRef()
 
     useEffect(() => {
         setTask(taskService.getDefaultTask())
@@ -134,6 +135,8 @@ export function GroupDetails({
                                         isTaskDetailsOpen={isTaskDetailsOpen}
                                         provided={provided}
                                         isDragging={snapshot.isDragging}
+                                        selectedTaskId={selectedTaskId}
+                                        setSelectedTaskId={setSelectedTaskId}
                                     />
                                 )}
                             </Draggable>

@@ -42,10 +42,16 @@
         padding-inline-end: 8px;
         padding-block-start: 8px;
         .task-title {
+            display: inline-block;
             font-size: 14px;
             line-height: 20px;
             margin-block-end: 4px;
             color: $clr7;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 240px;
+            max-width: 240px;
         }
         .task-labels {
             display: flex;
@@ -74,4 +80,3 @@
         }
     }
 }
-

@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ReactComponent as Stylus } from '../../assets/img/icons/stylus.svg'
 import { TaskEditor } from './task-editor'
@@ -8,6 +8,7 @@ import { utilService } from '../../services/util.service'
 import { TaskDetails } from './task-details'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import { updateTask } from '../../store/task.actions'
 
 export function TaskPreview({
     task,
@@ -23,13 +24,15 @@ export function TaskPreview({
     labelsFont,
     provided,
     isDragging,
+    selectedTaskId,
+    setSelectedTaskId,
 }) {
     const navigate = useNavigate()
     const { board } = useSelector((storeState) => storeState.boardModule)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-    // const menuRef = useRef(null)
+    const [taskTitle, setTaskTitle] = useState(task.title)
     const taskPreviewRef = useRef()
-
+    let elTask
     // useClickOutside(menuRef, toggleEditModal)
 
     // function onOpenMenu() {
@@ -37,7 +40,30 @@ export function TaskPreview({
     //     console.log(isMenuOpen)
     // }
 
+    // useEffect(() => {
+    //     console.log(elTask?.current)
+    //     console.log(taskPreviewRef?.current)
+    // }, [elTask, taskPreviewRef])
+
+    const taskPopStyle = {
+        zIndex: 10,
+    }
+
+    const txtAreaStyle = {
+        overflow: 'hidden',
+        overflowWrap: 'break-word',
+        resize: 'none',
+        height: '90px',
+        paddingLeft: '10px',
+        border: 'none',
+        boxShadow: 'none',
+        outline: 'none',
+        fontFamily: 'inherit',
+        color: '#172b4d',
+    }
+
     function onOpenTaskDetails() {
+        if (taskEdit) return
         setIsTaskDetailsOpen(true)
         navigate(`/board/${boardId}/${groupId}/${task.id}`)
     }
@@ -47,9 +73,9 @@ export function TaskPreview({
     }
 
     function toggleEditModal(ev, ref) {
+        applyEditingChanges(ev)
         if (taskEdit) return setTaskEdit(null)
         ev.stopPropagation()
-        // ev.preventDefault()
         const pos = utilService.getModalPositionOnTop(ref)
         setTaskEdit({ pos, task, groupId })
     }
@@ -74,6 +100,54 @@ export function TaskPreview({
             ev.target.innerText = getLabelTitle(id)
         } else {
             ev.target.innerText = ''
+        }
+    }
+    function applyEditingChanges(ev) {
+        elTask = ev.target.parentNode.parentNode
+        console.log(elTask)
+        if (elTask.classList.contains('task-draggable-wrapper')) {
+            const firstDirectDescendant = elTask.firstElementChild
+            if (firstDirectDescendant) {
+                elTask = firstDirectDescendant
+            }
+        }
+        if (elTask.classList.contains('btn-task-show-details')) {
+            const parent = elTask.parentNode
+            if (parent) {
+                elTask = parent
+            }
+        }
+        utilService.applyStyles(elTask, taskPopStyle)
+        const el = elTask.querySelector('.task-title')
+        if (el) {
+            el.style.display = 'none'
+            const textarea = document.createElement('textarea')
+            utilService.applyStyles(textarea, txtAreaStyle)
+            textarea.classList.add('task-txt-area')
+            textarea.value = taskTitle
+            textarea.addEventListener('change', handleInputChange)
+            elTask.appendChild(textarea)
+        }
+        setSelectedTaskId(elTask)
+    }
+
+    async function handleInputChange(event) {
+        console.log('chang')
+        await setTaskTitle(event.target.value)
+        task.title = event.target.value
+        try {
+            await updateTask(boardId, groupId, task)
+        } catch (error) {
+            console.log('cant update task')
+        }
+    }
+
+    async function onSave(event) {
+        task.title = taskTitle
+        try {
+            await updateTask(boardId, groupId, task)
+        } catch (error) {
+            console.log('cant update task')
         }
     }
 
@@ -139,6 +213,7 @@ export function TaskPreview({
                             ))}
                         </span>
                     )}
+
                     <span className="task-title" onClick={onOpenTaskDetails}>
                         {task.title}
                     </span>

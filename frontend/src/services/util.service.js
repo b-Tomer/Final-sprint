@@ -15,6 +15,8 @@ export const utilService = {
     getTimeValues,
     getTimestamp,
     getTimeInMilliseconds,
+    applyStyles,
+    removeStyles,
 }
 
 function makeId(length = 6) {
@@ -248,4 +250,14 @@ function getTimeInMilliseconds(timestamp) {
     const hoursInMilliseconds = hours * 60 * 60 * 1000
     const minutesInMilliseconds = minutes * 60 * 1000
     return hoursInMilliseconds + minutesInMilliseconds
+}
+
+function applyStyles(element, styles) {
+    Object.assign(element.style, styles)
+}
+
+function removeStyles(element, styles) {
+    for (const style in styles) {
+        element.style.removeProperty(style)
+    }
 }
