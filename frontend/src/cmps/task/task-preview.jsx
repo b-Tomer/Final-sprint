@@ -1,40 +1,32 @@
 import { useRef, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ReactComponent as Stylus } from '../../assets/img/icons/stylus.svg'
-import { TaskEditor } from './task-editor'
-import { useClickOutside } from '../../customHooks/useClickOutside'
 import { TaskIcons } from './task-icons'
 import { utilService } from '../../services/util.service'
-import { TaskDetails } from './task-details'
-import { useParams } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { updateTask } from '../../store/task.actions'
 
 export function TaskPreview({
     task,
-    onRemoveTask,
     boardId,
     groupId,
     taskEdit,
     setTaskEdit,
     setIsTaskDetailsOpen,
-    isTaskDetailsOpen,
     onExpandLabels,
     isLabelsExpand,
     labelsFont,
     provided,
     isDragging,
-    selectedTaskId,
+
     setSelectedTaskId,
 }) {
     const navigate = useNavigate()
     const { board } = useSelector((storeState) => storeState.boardModule)
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [taskTitle, setTaskTitle] = useState(task.title)
     const taskPreviewRef = useRef()
     const editRef = useRef()
     let elTask
-
 
     const taskPopStyle = {
         zIndex: 10,
@@ -54,7 +46,7 @@ export function TaskPreview({
     }
 
     useEffect(() => {
-        editRef.current.addEventListener("contextmenu", (ev) => {
+        editRef.current.addEventListener('contextmenu', (ev) => {
             ev.preventDefault()
             toggleEditModal(ev, taskPreviewRef)
         })
@@ -103,7 +95,6 @@ export function TaskPreview({
     }
     function applyEditingChanges(ev) {
         elTask = ev.target.parentNode.parentNode
-        console.log(elTask)
         if (elTask.classList.contains('task-draggable-wrapper')) {
             const firstDirectDescendant = elTask.firstElementChild
             if (firstDirectDescendant) {
@@ -131,7 +122,6 @@ export function TaskPreview({
     }
 
     async function handleInputChange(event) {
-        console.log('chang')
         await setTaskTitle(event.target.value)
         task.title = event.target.value
         try {
@@ -153,8 +143,9 @@ export function TaskPreview({
     return (
         <div ref={editRef}>
             <div
-                className={`task-draggable-wrapper ${isDragging ? 'dragging' : ''
-                    } `}
+                className={`task-draggable-wrapper ${
+                    isDragging ? 'dragging' : ''
+                } `}
                 {...provided.draggableProps}
                 {...provided.dragHandleProps}
                 ref={provided.innerRef}
@@ -178,7 +169,11 @@ export function TaskPreview({
                     {(task.style?.bgColor || task.style?.backgroundImage) && (
                         <div
                             className="task-header"
-                            style={{ backgroundColor: task.style?.backgroundImage ? '' : task.style.bgColor }}
+                            style={{
+                                backgroundColor: task.style?.backgroundImage
+                                    ? ''
+                                    : task.style.bgColor,
+                            }}
                         >
                             <img
                                 className="task-header-cover-img"
@@ -209,7 +204,10 @@ export function TaskPreview({
                             </span>
                         )}
 
-                        <span className="task-title" onClick={onOpenTaskDetails}>
+                        <span
+                            className="task-title"
+                            onClick={onOpenTaskDetails}
+                        >
                             {task.title}
                         </span>
                         <TaskIcons
