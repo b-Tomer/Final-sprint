@@ -25,7 +25,7 @@ export function TaskPreview({
     const { board } = useSelector((storeState) => storeState.boardModule)
     const [taskTitle, setTaskTitle] = useState(task.title)
     const taskPreviewRef = useRef()
-    const editRef = useRef()
+    // const editRef = useRef()
     let elTask
 
     const taskPopStyle = {
@@ -45,12 +45,12 @@ export function TaskPreview({
         color: '#172b4d',
     }
 
-    useEffect(() => {
-        editRef.current.addEventListener('contextmenu', (ev) => {
-            ev.preventDefault()
-            toggleEditModal(ev, taskPreviewRef)
-        })
-    }, [])
+    // useEffect(() => {
+    //     taskPreviewRef.current.addEventListener('contextmenu', (ev) => {
+    //         ev.preventDefault()
+    //         toggleEditModal(ev, taskPreviewRef)
+    //     })
+    // }, [])
 
     function onOpenTaskDetails() {
         if (taskEdit) return
@@ -141,83 +141,80 @@ export function TaskPreview({
     }
 
     return (
-        <div ref={editRef}>
+        // <div ref={editRef}>
+        <div
+            className={`task-draggable-wrapper ${
+                isDragging ? 'dragging' : ''
+            } `}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            ref={provided.innerRef}
+        >
             <div
-                className={`task-draggable-wrapper ${
-                    isDragging ? 'dragging' : ''
-                } `}
-                {...provided.draggableProps}
-                {...provided.dragHandleProps}
-                ref={provided.innerRef}
+                className="task-container"
+                ref={taskPreviewRef}
+                onClick={onOpenTaskDetails}
             >
-                <div
-                    className="task-container"
-                    ref={taskPreviewRef}
-                    onClick={onOpenTaskDetails}
-                >
-                    {!taskEdit && (
-                        <button
-                            className="btn-task-show-details"
-                            onClick={(ev) => {
-                                toggleEditModal(ev, taskPreviewRef)
-                            }}
-                        >
-                            <Stylus className="edit-icon" />
-                        </button>
-                    )}
+                {!taskEdit && (
+                    <button
+                        className="btn-task-show-details"
+                        onClick={(ev) => {
+                            toggleEditModal(ev, taskPreviewRef)
+                        }}
+                    >
+                        <Stylus className="edit-icon" />
+                    </button>
+                )}
 
-                    {(task.style?.bgColor || task.style?.backgroundImage) && (
-                        <div
-                            className="task-header"
-                            style={{
-                                backgroundColor: task.style?.backgroundImage
-                                    ? ''
-                                    : task.style.bgColor,
-                            }}
-                        >
-                            <img
-                                className="task-header-cover-img"
-                                src={task.style.backgroundImage}
-                                alt=""
-                            />
-                        </div>
-                    )}
-                    <div className="task-content">
-                        {task?.labelIds && (
-                            <span className="task-labels">
-                                {task.labelIds.map((labelId) => (
-                                    <button
-                                        onClick={(ev) => {
-                                            toggleLabelExpantion(ev, labelId)
-                                        }}
-                                        key={labelId}
-                                        style={{
-                                            backgroundColor:
-                                                getLabelBgColor(labelId),
-                                            fontSize: labelsFont,
-                                        }}
-                                        className="task-labels-btn"
-                                    >
-                                        {getLabelTitle(labelId)}
-                                    </button>
-                                ))}
-                            </span>
-                        )}
-
-                        <span
-                            className="task-title"
-                            onClick={onOpenTaskDetails}
-                        >
-                            {task.title}
-                        </span>
-                        <TaskIcons
-                            task={task}
-                            groupId={groupId}
-                            boardId={boardId}
+                {(task.style?.bgColor || task.style?.backgroundImage) && (
+                    <div
+                        className="task-header"
+                        style={{
+                            backgroundColor: task.style?.backgroundImage
+                                ? ''
+                                : task.style.bgColor,
+                        }}
+                    >
+                        <img
+                            className="task-header-cover-img"
+                            src={task.style.backgroundImage}
+                            alt=""
                         />
                     </div>
+                )}
+                <div className="task-content">
+                    {task?.labelIds && (
+                        <span className="task-labels">
+                            {task.labelIds.map((labelId) => (
+                                <button
+                                    onClick={(ev) => {
+                                        toggleLabelExpantion(ev, labelId)
+                                    }}
+                                    key={labelId}
+                                    style={{
+                                        backgroundColor:
+                                            getLabelBgColor(labelId),
+                                        fontSize: labelsFont,
+                                    }}
+                                    className="task-labels-btn"
+                                >
+                                    {getLabelTitle(labelId)}
+                                </button>
+                            ))}
+                        </span>
+                    )}
+
+                    <span className="task-title" onClick={onOpenTaskDetails}>
+                        {task.title}
+                    </span>
+                    <TaskIcons
+                        task={task}
+                        groupId={groupId}
+                        boardId={boardId}
+                    />
                 </div>
             </div>
         </div>
+        // </div>
     )
 }

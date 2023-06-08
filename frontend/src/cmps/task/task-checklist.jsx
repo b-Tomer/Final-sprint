@@ -17,8 +17,8 @@ export function TaskChecklist({ task, setEditing, editing }) {
     const [todoTitle, setTodoTitle] = useState('')
     const [checklistToEdit, setChecklistToEdit] = useState(null)
     const textareaRef = useRef(null)
-    const todoRef = useRef(null)
     let progress
+    
     useEffect(() => {}, [progress])
 
     const handleMouseEnter = (todoId) => {
@@ -49,7 +49,6 @@ export function TaskChecklist({ task, setEditing, editing }) {
         await setEditing(true)
         await setChecklistToEdit(checklist.id)
         setTodoToEdit(null)
-        console.log(textareaRef.current)
         textareaRef.current.focus()
     }
 
@@ -68,12 +67,9 @@ export function TaskChecklist({ task, setEditing, editing }) {
 
     async function onDeleteTodo(ev, checklist, todo) {
         ev.preventDefault()
-        console.log(todo)
-        console.log(checklist)
         const idx = checklist.todos.findIndex(
             (currTodo) => currTodo.id === todo.id
         )
-        console.log(idx)
         checklist.todos.splice(idx, 1)
         try {
             await updateTask(boardId, groupId, task)

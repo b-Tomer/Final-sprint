@@ -96,10 +96,9 @@ export function TaskEditor({
     }
 
     function onCloseEditor() {
-        console.log(selectedTaskId)
         const el = selectedTaskId.querySelector('.task-title')
         if (el) {
-            el.style.display = 'inline'
+            el.style.display = 'inline-block'
         }
         utilService.applyStyles(selectedTaskId, customStyles)
         const txtArea = selectedTaskId.querySelector('.task-txt-area')
@@ -116,7 +115,6 @@ export function TaskEditor({
     }
 
     function onOpenCard() {
-        console.log('heyyy')
         setIsTaskDetailsOpen(true)
         navigate(`/board/${boardId}/${groupId}/${task.id}`)
     }

@@ -39,7 +39,7 @@ export function DynCmpMembers({ task }) {
         ev.stopPropagation()
     }
 
-    if (!task) return ''
+    if (!task) return null
     return (
         <div className='dyn-cmp-members-container'>
             <h3>Board members</h3>

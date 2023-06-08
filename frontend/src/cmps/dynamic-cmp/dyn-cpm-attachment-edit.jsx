@@ -1,15 +1,18 @@
 import { useEffect, useRef, useState } from 'react'
 import { ReactComponent as X } from '../../assets/img/icons/x.svg'
+import { useSelector } from 'react-redux'
+import { updateTask } from '../../store/task.actions'
+import { CLOSE_DYN_ALL_MODALS } from '../../store/system.reducer'
+import { store } from '../../store/store'
 
 
-export function DynCmpAttachmentEdit(task, atc) {
+export function DynCmpAttachmentEdit({ task, boardId, groupId }) {
 
-    const [newTitle, setNewTitle] = useState(atc.title || atc.url?.split('/').pop().slice(0, 26))
-    const [taskToUpdate, setTaskToUpdate] = useState({})
-    const inputRef= useRef()
+    const [newTitle, setNewTitle] = useState('')
+    const inputRef = useRef()
+    const { atc } = useSelector((storeState) => storeState.boardModule)
     useEffect(() => {
-        setNewTitle(atc.title)
-        setTaskToUpdate(task)
+        setNewTitle(atc.title || atc.url?.split('/').pop().slice(0, 26))
         inputRef.current.focus()
     }, [])
 
@@ -19,9 +22,10 @@ export function DynCmpAttachmentEdit(task, atc) {
     }
 
     function updateAttachment() {
-       const atcIdx = task.attachments?.findIndex(a => a.id === atc.id)
-        task.atc[atcIdx].title = newTitle
-        console.log(task)
+        const atcIdx = task.attachments?.findIndex(a => a.id === atc.id)
+        task.attachments[atcIdx].title = newTitle
+        updateTask(boardId, groupId, task)
+        store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
     }
 
     if (!task) return null
@@ -29,7 +33,7 @@ export function DynCmpAttachmentEdit(task, atc) {
         <div className="edit-attachment">
 
             <h5>Link name</h5>
-            <input ref={inputRef} className="edit-attachment-input" value={newTitle} onChange={onChaneAtcTitle} type="text" />
+            <input ref={inputRef} className="edit-attachment-input" value={newTitle} onFocus={e => e.target.select()} onChange={onChaneAtcTitle} type="text" />
             <div className="add-btns edit-attachment-btns">
                 <button onClick={updateAttachment} className="add-item-btn">Update</button>
                 <button className="svg-holder">

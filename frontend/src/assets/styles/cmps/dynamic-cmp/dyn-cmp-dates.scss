@@ -78,7 +78,17 @@
             display: flex;
             select {
                 margin-inline: 10px;
+                box-shadow: inset 0 0 0 2px $clrTodobtn;
+                border: 0;
+                border-radius: 3px;
+                padding-block: 5px;
+                width: 100px;
+                padding-inline-start: 10px;
+                &:focus {
+                    border: 0;
+                }
             }
+
             .hours {
             }
             .minutes {

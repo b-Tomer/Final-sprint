@@ -9,6 +9,8 @@ export function TodoContent({
     Trash,
     selectTodoToEdit,
 }) {
+
+    // console.log(todo.isDone)
     return (
         <div
             onMouseEnter={() => handleMouseEnter(todo.id)}
