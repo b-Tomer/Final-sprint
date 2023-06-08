@@ -42,13 +42,22 @@
         padding-inline-end: 8px;
         padding-block-start: 8px;
         .task-title {
+            display: inline-block;
             font-size: 14px;
             line-height: 20px;
             margin-block-end: 4px;
             color: $clr7;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 240px;
+            max-width: 240px;
         }
         .task-labels {
             display: flex;
+            flex-wrap: wrap;
+            max-width: 100%;
+            gap: 7px;
             .task-labels-btn {
                 margin-inline-end: 5px;
                 border-radius: 3px;
@@ -74,4 +83,3 @@
         }
     }
 }
-

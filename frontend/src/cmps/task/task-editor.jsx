@@ -26,6 +26,8 @@ export function TaskEditor({
     setTaskEdit,
     boardId,
     setIsTaskDetailsOpen,
+    selectedTaskId,
+    setSelectedTaskId,
 }) {
     const taskPreviewRef = useRef()
     const container = useRef()
@@ -35,8 +37,12 @@ export function TaskEditor({
     windowPos.y = window.innerHeight
     const [modalStyle, setModalStyle] = useState({})
     const [currTitle, setCurrTitle] = useState('')
-    const { isOpenEditorModal } = useSelector((storeState) => storeState.systemModule)
-
+    const { isOpenEditorModal } = useSelector(
+        (storeState) => storeState.systemModule
+    )
+    const customStyles = {
+        zIndex: 0,
+    }
 
     useEffect(() => {
         calcModalStyle()
@@ -71,15 +77,15 @@ export function TaskEditor({
             )
             let newModalStyle = isOutOfBoundX
                 ? {
-                    left: pos.left - 248 + 'px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'flex-end',
-                }
+                      left: pos.left - 248 + 'px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'flex-end',
+                  }
                 : {
-                    left: 259 + pos.left + 'px',
-                    justifyContent: 'start',
-                }
+                      left: 259 + pos.left + 'px',
+                      justifyContent: 'start',
+                  }
             if (isOutOfBoundY) {
                 newModalStyle.top = pos.top - 210 + 'px'
             } else {
@@ -90,6 +96,16 @@ export function TaskEditor({
     }
 
     function onCloseEditor() {
+        console.log(selectedTaskId)
+        const el = selectedTaskId.querySelector('.task-title')
+        if (el) {
+            el.style.display = 'inline'
+        }
+        utilService.applyStyles(selectedTaskId, customStyles)
+        const txtArea = selectedTaskId.querySelector('.task-txt-area')
+        if (txtArea) {
+            txtArea.remove()
+        }
         setTaskEdit(false)
         store.dispatch({ type: SET_MODAL_TITLE, title: '' })
         store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
@@ -100,7 +116,7 @@ export function TaskEditor({
     }
 
     function onOpenCard() {
-        console.log('heyyy');
+        console.log('heyyy')
         setIsTaskDetailsOpen(true)
         navigate(`/board/${boardId}/${groupId}/${task.id}`)
     }
@@ -136,7 +152,7 @@ export function TaskEditor({
                         </span>
                     </button>
                     <button
-                        onClick={(ev) => onOpenEditorModal("Labels", ev)}
+                        onClick={(ev) => onOpenEditorModal('Labels', ev)}
                         className="quick-card-editor-buttons-item js-edit-labels"
                     >
                         <Labels className="card-editor-icon" />
@@ -144,8 +160,9 @@ export function TaskEditor({
                             Edit labels
                         </span>
                     </button>
-                    <button className="quick-card-editor-buttons-item js-edit-members"
-                        onClick={(ev) => onOpenEditorModal("Members", ev)}
+                    <button
+                        className="quick-card-editor-buttons-item js-edit-members"
+                        onClick={(ev) => onOpenEditorModal('Members', ev)}
                     >
                         <Members className="card-editor-icon" />
                         <span className="quick-card-editor-buttons-item-text">
@@ -170,16 +187,19 @@ export function TaskEditor({
                             Copy
                         </span>
                     </button>
-                    <button className="quick-card-editor-buttons-item js-edit-due-date"
-                        onClick={(ev) => onOpenEditorModal("Dates", ev)}
-                        >
+                    <button
+                        className="quick-card-editor-buttons-item js-edit-due-date"
+                        onClick={(ev) => onOpenEditorModal('Dates', ev)}
+                    >
                         <Date className="card-editor-icon" />
                         <span className="quick-card-editor-buttons-item-text">
                             Edit dates
                         </span>
                     </button>
                     <button
-                        onClick={() => { onRemoveTask(task.id) }}
+                        onClick={() => {
+                            onRemoveTask(task.id)
+                        }}
                         className="quick-card-editor-buttons-item js-archive"
                     >
                         <Archive className="card-editor-icon" />
@@ -187,7 +207,9 @@ export function TaskEditor({
                             Archive
                         </span>
                     </button>
-                    {isOpenEditorModal && <DynamicCmp task={task} title={currTitle} />}
+                    {isOpenEditorModal && (
+                        <DynamicCmp task={task} title={currTitle} />
+                    )}
                 </div>
             </section>
         </section>

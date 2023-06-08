@@ -91,7 +91,7 @@ export function TaskAttachments({ task, boardId, groupId }) {
                     </div>
                     <div className="attachment-content">
                         <span className="attachment-title">
-                            {atc.url?.split('/').pop().slice(0, 26)}
+                            {atc.title || atc.url?.split('/').pop().slice(0, 26)}
                         </span>
                         <span>Added at {formatTimestamp(atc.createdAt)} </span>
                         <span className="small-dots">&#x2022;</span>

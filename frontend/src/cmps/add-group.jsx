@@ -35,9 +35,6 @@ export function AddGroup({ addGroup }) {
         onAddClose()
         onOpenAddContainer()
 
-
-
-
     }
 
 

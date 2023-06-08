@@ -4,7 +4,7 @@ import { ReactComponent as X } from '../../assets/img/icons/x.svg'
 
 export function DynCmpAttachmentEdit(task, atc) {
 
-    const [newTitle, setNewTitle] = useState(atc.title)
+    const [newTitle, setNewTitle] = useState(atc.title || atc.url?.split('/').pop().slice(0, 26))
     const [taskToUpdate, setTaskToUpdate] = useState({})
     const inputRef= useRef()
     useEffect(() => {
@@ -19,12 +19,12 @@ export function DynCmpAttachmentEdit(task, atc) {
     }
 
     function updateAttachment() {
-    //    const atcIdx = task.attachments?.findIndex(a => a.id === atc.id)
-        // task.atc[atcIdx].title = newTitle
-        console.log(task);
+       const atcIdx = task.attachments?.findIndex(a => a.id === atc.id)
+        task.atc[atcIdx].title = newTitle
+        console.log(task)
     }
 
-    if (!task) return ''
+    if (!task) return null
     return (
         <div className="edit-attachment">
 

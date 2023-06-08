@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
     loadBoards,
@@ -24,7 +24,9 @@ export function BoardIndex() {
     const { board } = useSelector((storeState) => storeState.boardModule)
     const { groupId } = useParams()
     const { taskId } = useParams()
+    const boardRef = useRef()
     const [taskEdit, setTaskEdit] = useState(null)
+    const [selectedTaskId, setSelectedTaskId] = useState(null)
     const [placeholderProps, setPlaceholderProps] = useState({})
     const [isTaskDetailsOpen, setIsTaskDetailsOpen] = useState(false)
     const [isLabelsExpand, setIsLabelsExpand] = useState(false)
@@ -32,38 +34,10 @@ export function BoardIndex() {
     const { filterBy } = useSelector((storeState) => storeState.boardModule)
     const queryAttr = 'data-rbd-drag-handle-draggable-id'
 
-    useEffect(()=>{
-        console.log('taskedit');
-    },[taskEdit])
-    
-    useEffect(()=>{
-        console.log('lablesfont');
-        
-    },[labelsFont])
-    
-    useEffect(()=>{
-        console.log('isLabel');
-    },[isLabelsExpand])
-    
-    useEffect(()=>{
-        console.log('isTaskDetailsOpen');
-        
-    },[isTaskDetailsOpen])
-    
-    useEffect(()=>{
-        
-        console.log('isLabel');
-    },[placeholderProps])
     useEffect(() => {
         loadBoards()
         onLoadBoard(filterBy)
-        console.log('from use effect', board)
     }, [filterBy, boardId])
-
-
-    // useEffect(() => {
-    //     console.log('hettttttttt')
-    // }, [board])
 
     async function onLoadBoard(filterBy) {
         await loadBoard(boardId, filterBy)
@@ -81,6 +55,7 @@ export function BoardIndex() {
         } finally {
             loadBoards()
             loadBoard(boardId)
+            boardRef.current.scrollTo({ left: 90000, top: 0, behavior: 'smooth' })
         }
     }
 
@@ -174,7 +149,7 @@ export function BoardIndex() {
                         onDragEnd={onDragEnd}
                     >
                         <BoardHeader />
-                        <main className="board-content">
+                        <main ref={boardRef} className="board-content">
                             <Droppable
                                 droppableId={board._id}
                                 direction="horizontal"
@@ -224,7 +199,12 @@ export function BoardIndex() {
                                                             isDragging={
                                                                 snapshot.isDragging
                                                             }
-
+                                                            selectedTaskId={
+                                                                selectedTaskId
+                                                            }
+                                                            setSelectedTaskId={
+                                                                setSelectedTaskId
+                                                            }
                                                         />
                                                     )}
                                                 </Draggable>
@@ -243,7 +223,7 @@ export function BoardIndex() {
                                                         backgroundColor:
                                                             '#00000023',
                                                         borderRadius: '12px',
-                                                        marginLeft: '14px'
+                                                        marginLeft: '14px',
                                                     }}
                                                 />
                                             )}
@@ -263,6 +243,8 @@ export function BoardIndex() {
                     groupId={taskEdit.groupId}
                     setTaskEdit={setTaskEdit}
                     boardId={boardId}
+                    selectedTaskId={selectedTaskId}
+                    setSelectedTaskId={setSelectedTaskId}
                 />
             )}
             {isTaskDetailsOpen && (
