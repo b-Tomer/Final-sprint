@@ -16,14 +16,21 @@ export function DynCmpEditLabel() {
         { color: '579dff' }, { color: '60c6d2' }, { color: '94c748' }, { color: 'e774bb' }, { color: '8590a2' },
         { color: '0c66e4' }, { color: '1d7f8c' }, { color: '5b7f24' }, { color: 'ae4787' }, { color: '626f86' },
     ]
-    const { label } = useSelector((storeState) => storeState.boardModule)
+
     const { board } = useSelector((storeState) => storeState.boardModule)
+    const { label } = useSelector((storeState) => storeState.boardModule)
+    // const { label } = useSelector((storeState) => storeState.boardModule)
+
+
+    // const [labelToEdit, setLabelToEdit] = useState(label)
+
     const [labelToEdit, setLabelToEdit] = useState('')
 
     useEffect(() => {
         console.log("label", label)
         setLabelToEdit(label)
     }, [])
+
     function handleChange(event) {
         setLabelToEdit({ ...labelToEdit, title: event.target.value })
     }
@@ -85,10 +92,7 @@ export function DynCmpEditLabel() {
                 <button onClick={onSaveLabel} className="save-btn">Save</button>
                 <button onClick={onDeleteLabel} className="delete-btn">Delete</button>
             </div>
-
         </div>
-
-
     )
 
 }
