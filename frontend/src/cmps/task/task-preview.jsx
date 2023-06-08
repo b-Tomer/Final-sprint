@@ -35,7 +35,6 @@ export function TaskPreview({
     let elTask
     // useClickOutside(menuRef, toggleEditModal)
 
-
     // useEffect(() => {
     //     console.log(elTask?.current)
     //     console.log(taskPreviewRef?.current)
@@ -69,6 +68,7 @@ export function TaskPreview({
     }
 
     function toggleEditModal(ev, ref) {
+        if (taskEdit) return
         applyEditingChanges(ev)
         if (taskEdit) return setTaskEdit(null)
         ev.stopPropagation()
@@ -161,14 +161,16 @@ export function TaskPreview({
                 ref={taskPreviewRef}
                 onClick={onOpenTaskDetails}
             >
-                <button
-                    className="btn-task-show-details"
-                    onClick={(ev) => {
-                        toggleEditModal(ev, taskPreviewRef)
-                    }}
-                >
-                    <Stylus className="edit-icon" />
-                </button>
+                {!taskEdit && (
+                    <button
+                        className="btn-task-show-details"
+                        onClick={(ev) => {
+                            toggleEditModal(ev, taskPreviewRef)
+                        }}
+                    >
+                        <Stylus className="edit-icon" />
+                    </button>
+                )}
 
                 {(task.style?.bgColor || task.style?.backgroundImage) && (
                     <div
