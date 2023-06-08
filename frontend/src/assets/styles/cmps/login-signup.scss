@@ -1,0 +1,126 @@
+.login-page {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+
+
+    h3 {
+        text-align: center;
+        font-size: 3rem;
+        color: $clr5;
+    }
+
+
+
+
+    .login-signin-container {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        box-sizing: border-box;
+        border-radius: 5px;
+        max-width: 400px;
+        width: 100%;
+        height: 525px;
+        padding: 25px 40px;
+        box-shadow: rgba(0, 0, 0, 0.3) 0 0 8px;
+        margin: 0px auto;
+        align-items: center;
+
+        h3:first-of-type {
+            font-size: 1rem;
+            margin: 10px 0px 25px;
+        }
+
+        input,
+        button {
+            padding: 7px;
+            margin: 0px 0px 16px;
+            border: 2px solid $clr3;
+            border-radius: 5px;
+            height: 40px;
+            width: 100%;
+            font-weight: 400;
+        }
+
+        .login-btn {
+            background-color: $clrBtnH;
+            border: none;
+            color: $clr1;
+            font-weight: 700;
+            font-size: 0.875rem;
+            margin: 0px;
+        }
+
+        h3:nth-of-type(2) {
+            font-size: .875em;
+            font-weight: 300;
+            margin: 16px;
+        }
+
+        .login-with-btn {
+            background-color: $clr1;
+            font-size: 0.875rem;
+            padding: 3px;
+            color: $clr4;
+            font-weight: 600;
+            box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.05);
+
+            .btn-logo {
+                width: 1rem;
+                height: 1rem;
+                margin-right: 5px;
+            }
+        }
+
+
+
+
+
+
+
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.footer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: auto;
+
+
+    .left-img,
+    .right-img {
+        width: 300px;
+        height: 300px;
+    }
+
+    .right-img {
+        align-self: flex-end;
+    }
+
+
+    .left-img {
+        align-self: flex-start;
+
+    }
+}
