@@ -13,6 +13,7 @@ import { ReactComponent as Theme } from '../assets/img/icons/theme.svg'
 import { ReactComponent as Search } from '../assets/img/icons/search.svg'
 import { ReactComponent as Logo } from '../assets/img/icons/logo.svg'
 import { boardService } from '../services/board.service.js'
+import { userService } from 'services/user.service.js'
 
 export function AppHeader({ onSetfilter }) {
     const { board } = useSelector((storeState) => storeState.boardModule)
