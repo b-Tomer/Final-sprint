@@ -3,6 +3,7 @@ import { userService } from '../services/user.service'
 import { ImgUploader } from '../cmps/img-uploader'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { login, logout, signup } from '../store/user.actions.js'
+import { useNavigate } from 'react-router-dom'
 
 import { ReactComponent as LeftImg } from '../assets/img/icons/trello-pic-left.svg'
 import { ReactComponent as RightImg } from '../assets/img/icons/trello-pic-right.svg'
@@ -12,10 +13,9 @@ import { ReactComponent as SlackLogo } from '../assets/img/icons/slack-logo.svg'
 import { ReactComponent as AppleLogo } from '../assets/img/icons/apple-logo.svg'
 
 
+
 export function LoginSignup() {
-
-
-
+    const navigate = useNavigate()
 
     const [credentials, setCredentials] = useState({
         username: '',
@@ -24,6 +24,7 @@ export function LoginSignup() {
     })
     const [isSignup, setIsSignup] = useState(true)
     const [users, setUsers] = useState([])
+
 
     useEffect(() => {
         loadUsers()
@@ -36,13 +37,14 @@ export function LoginSignup() {
     }
 
     function clearState() {
-        setCredentials({ username: '', password: '', fullname: '', imgUrl: '' })
+        setCredentials({ fullname: '', username: '', password: '', imgUrl: '' })
         setIsSignup(false)
     }
 
     function handleChange(ev) {
         const field = ev.target.name
         const value = ev.target.value
+        console.log(field, value)
         setCredentials({ ...credentials, [field]: value })
     }
 
@@ -51,9 +53,14 @@ export function LoginSignup() {
         if (!credentials.username) return
         handleLogin(credentials)
         clearState()
+        console.log(userService.getLoggedinUser())
+        // if(sessionStorage.)
+        // navigate('/workspace')
     }
 
     function onSignup(ev = null) {
+        // console.log(ev)
+        console.log(credentials)
         if (ev) ev.preventDefault()
         if (
             !credentials.username ||
@@ -63,6 +70,8 @@ export function LoginSignup() {
             return
         handleSignup(credentials)
         clearState()
+        navigate('/workspace')
+
     }
 
     async function handleSignup(credentials) {
@@ -120,7 +129,7 @@ export function LoginSignup() {
                                 required
                                 autoFocus
                             />
-                            <button className='login-btn'>
+                            <button onClick={onLogin} className='login-btn'>
                                 Log in to Trellax
                             </button>
                         </form>
@@ -131,10 +140,10 @@ export function LoginSignup() {
                 {isSignup && (
                     <div className='signin-container'>
                         <h3>Sign up for your account</h3>
-                        <form>
+                        <form onSubmit={onSignup} >
                             <input
                                 type="text"
-                                name="username"
+                                name="fullname"
                                 // value={'hi'}
                                 placeholder=" Enter full name"
                                 onChange={handleChange}
@@ -151,8 +160,8 @@ export function LoginSignup() {
                                 autoFocus
                             />
                             <input
-                                type="text"
-                                name="username"
+                                type="password"
+                                name="password"
                                 // value={'hi'}
                                 placeholder="Enter password"
                                 onChange={handleChange}
@@ -162,15 +171,10 @@ export function LoginSignup() {
                             <button className='login-btn'>
                                 Sign up for your account
                             </button>
-
                         </form>
                         <h3>OR</h3>
                     </div>
                 )}
-
-
-
-
                 <button className='login-with-btn'>
                     <GoogleLogo className='btn-logo' />
                     Continue with Google</button>
@@ -183,91 +187,12 @@ export function LoginSignup() {
                 <button className='login-with-btn'>
                     <SlackLogo className='btn-logo' />
                     Continue with Slack</button>
-
-
-
-
-                {/* <img src="" alt="" className="logo" />
-            <p>
-                <button className="btn-link" onClick={toggleSignup}>
-                    {!isSignup ? 'Signup' : 'Login'}
-                </button>
-            </p> */}
-                {/* {!isSignup && (
-                <form className="login-form" onSubmit={onLogin}>
-                    <select
-                        name="username"
-                        value={credentials.username}
-                        onChange={handleChange}
-                    >
-                        <option value="">Select User</option>
-                        {users.length &&
-                            users.map((user) => (
-                                <option key={user._id} value={user.username}>
-                                    {user.fullname}
-                                </option>
-                            ))}
-                    </select> }
-                    { <input
-                        type="text"
-                        name="username"
-                        value={username}
-                        placeholder="Username"
-                        onChange={handleChange}
-                        required
-                        autoFocus
-                    />
-                    <input
-                        type="password"
-                        name="password"
-                        value={password}
-                        placeholder="Password"
-                        onChange={handleChange}
-                        required
-                    />
-                    <button>Login!</button>
-                </form>
-            )} */}
-                {/* <div className="signup-section">
-                {isSignup && (
-                    <form className="signup-form" onSubmit={onSignup}>
-                        <input
-                            type="text"
-                            name="fullname"
-                            value={credentials.fullname}
-                            placeholder="Fullname"
-                            onChange={handleChange}
-                            required
-                        />
-                        <input
-                            type="text"
-                            name="username"
-                            value={credentials.username}
-                            placeholder="Username"
-                            onChange={handleChange}
-                            required
-                        />
-                        <input
-                            type="password"
-                            name="password"
-                            value={credentials.password}
-                            placeholder="Password"
-                            onChange={handleChange}
-                            required
-                        />
-                        <ImgUploader onUploaded={onUploaded} />
-                        <button>Signup!</button>
-                    </form>
-                )}
-            </div> */}
-
                 <hr></hr>
                 {!isSignup && (
-                    <h4>Sign up for an account</h4>)}
+                    <h4 onClick={toggleSignup}  >Sign up for an account</h4>)}
                 {isSignup && (
-                    <h4>Already have an account? Log in</h4>)}
+                    <h4 onClick={toggleSignup} >Already have an account? Log in</h4>)}
             </div>
-
             <LeftImg className="left-img" />
             <RightImg className="right-img" />
         </div>
