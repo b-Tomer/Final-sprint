@@ -29,6 +29,9 @@ export function GroupDetails({
     const [task, setTask] = useState(null)
     const [taskTitle, setTaskTitle] = useState('')
     const inputRef = useRef()
+    const groupRef = useRef(null)
+
+
 
     useEffect(() => {
         setTask(taskService.getDefaultTask())
@@ -67,6 +70,7 @@ export function GroupDetails({
             setTaskTitle('')
             onAddClose()
             onOpenAddTask()
+            groupRef.current.scrollTo({ left: 0, top: 90000, behavior: 'smooth' })
         }
     }
 
@@ -77,6 +81,8 @@ export function GroupDetails({
     function onAddClose() {
         setIsAddTaskOpen(false)
     }
+
+
 
     return (
         <section
@@ -109,7 +115,10 @@ export function GroupDetails({
                     <section
                         className={`group-content `}
                         {...provided.droppableProps}
-                        ref={provided.innerRef}
+                        ref={(el) => {
+                            provided.innerRef(el);
+                            groupRef.current = el;
+                        }}
                     >
                         {group.tasks.map((task, index) => (
                             <Draggable
@@ -143,7 +152,6 @@ export function GroupDetails({
                         ))}
                         {provided.placeholder}
                         {isAddTaskOpen && (
-                            // (currGroupId=== group.id) &&
                             <div className="task-container">
                                 <form onSubmit={onAddTask}>
                                     <input
@@ -171,8 +179,9 @@ export function GroupDetails({
                             </div>
                         )}
                     </section>
-                )}
-            </Droppable>
+                )
+                }
+            </Droppable >
             <div className="group-footer">
                 {!isAddTaskOpen && (
                     <button ref={inputRef} onClick={onOpenAddTask}>
@@ -180,8 +189,7 @@ export function GroupDetails({
                     </button>
                 )}
             </div>
-        </section>
+        </section >
     )
 }
 
-// .list-icon
