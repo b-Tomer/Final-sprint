@@ -1,4 +1,4 @@
-export const gBoards = [
+[
     {
     "_id": "b2001",
     "title": "Marketing Campaign",
