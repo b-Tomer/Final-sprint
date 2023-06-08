@@ -13,10 +13,14 @@ import { ReactComponent as Theme } from '../assets/img/icons/theme.svg'
 import { ReactComponent as Search } from '../assets/img/icons/search.svg'
 import { ReactComponent as Logo } from '../assets/img/icons/logo.svg'
 import { boardService } from '../services/board.service.local.js'
+import { userService } from 'services/user.service.js'
 
 export function AppHeader({ onSetfilter }) {
     const { board } = useSelector((storeState) => storeState.boardModule)
     const [isMobileOpen, setIsMobileOpen] = useState(false)
+    const [loginUser, setloginUser] = useState(null)
+    const [isUserInfoOpen, setisUserInfoOpen] = useState(false)
+
 
     const toggleMobileOpen = () => {
         setIsMobileOpen(!isMobileOpen)
@@ -30,6 +34,8 @@ export function AppHeader({ onSetfilter }) {
 
     useEffect(() => {
         printAverageColor()
+        setloginUser(userService.getLoggedinUser())
+        console.log(loginUser)
     }, [board])
 
     function printAverageColor() {
@@ -96,9 +102,8 @@ export function AppHeader({ onSetfilter }) {
             </div>
             <nav className="main-nav">
                 <div
-                    className={`links-section ${
-                        isMobileOpen ? 'mobile-open' : ''
-                    }`}
+                    className={`links-section ${isMobileOpen ? 'mobile-open' : ''
+                        }`}
                 >
                     <div className="link-section">
                         <div className="links">
@@ -195,6 +200,11 @@ export function AppHeader({ onSetfilter }) {
                     />
                 </div>
                 <ul className="header-icons">
+                    {loginUser && (
+                        <li className='user-photo' onClick={setUserInfo} >
+                            <img id="image" src={`${loginUser.imgUrl}`} alt="Image" />
+                        </li>
+                    )}
                     <li>
                         <Notifications
                             className="app-header-icon"
