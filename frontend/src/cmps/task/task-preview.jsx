@@ -149,9 +149,8 @@ export function TaskPreview({
 
     return (
         <div
-            className={`task-draggable-wrapper ${
-                isDragging ? 'dragging' : ''
-            } `}
+            className={`task-draggable-wrapper ${isDragging ? 'dragging' : ''
+                } `}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             ref={provided.innerRef}
@@ -173,13 +172,7 @@ export function TaskPreview({
                 {(task.style?.bgColor || task.style?.backgroundImage) && (
                     <div
                         className="task-header"
-                        style={
-                            !task.style?.backgroundImage
-                                ? {
-                                      backgroundColor: task.style.bgColor,
-                                  }
-                                : { backgroundColor: '' }
-                        }
+                        style={{ backgroundColor: task.style?.backgroundImage ? '' : task.style.bgColor }}
                     >
                         <img
                             className="task-header-cover-img"
