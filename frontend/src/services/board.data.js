@@ -2090,23 +2090,23 @@ export const gBoards = [
     //                             },
     //                         },
     //                     ],
-    //                     "attachments": [
-    //                         {
-    //                             "id": "a101",
-    //                             "createdAt": 159099981743,
-    //                             "url": "https://www.splashlearn.com/math-vocabulary/wp-content/uploads/2022/05/graphs-9-01-1.png",
-    //                         },
-    //                         {
-    //                             "id": "a102",
-    //                             "createdAt": 1590999817436,
-    //                             "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGp_q_OUhD19oRE-0xnBVgBrDcBq4vc69sMA&usqp=CAU",
-    //                         },
-    //                         {
-    //                             "id": "a103",
-    //                             "createdAt": 1590999817439,
-    //                             "url": "https://apexcharts.com/wp-content/uploads/2018/05/dashboard-modern.png",
-    //                         },
-    //                     ],
+    // "attachments": [
+    //     {
+    //         "id": "a101",
+    //         "createdAt": 159099981743,
+    //         "url": "https://www.splashlearn.com/math-vocabulary/wp-content/uploads/2022/05/graphs-9-01-1.png",
+    //     },
+    //     {
+    //         "id": "a102",
+    //         "createdAt": 1590999817436,
+    //         "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGp_q_OUhD19oRE-0xnBVgBrDcBq4vc69sMA&usqp=CAU",
+    //     },
+    //     {
+    //         "id": "a103",
+    //         "createdAt": 1590999817439,
+    //         "url": "https://apexcharts.com/wp-content/uploads/2018/05/dashboard-modern.png",
+    //     },
+    // ],
     //                     checklists: [
     //                         {
     //                             id: 'YEhmF',
@@ -2269,7 +2269,6 @@ export const gBoards = [
                         "id": "t4002",
                         "title": "Create marketing collateral",
                         "description": "This task involves designing and creating marketing collateral such as brochures, product sheets, and presentation decks.",
-                        "attachments": ["https://example.com/attachment1.pdf"],
                         "members": ["u102"],
                         "checklists": [
                             {
@@ -2313,6 +2312,23 @@ export const gBoards = [
                     {
                         "id": "t4003",
                         "title": "Prepare launch event",
+                        "attachments": [
+                            {
+                                "id": "a101",
+                                "createdAt": 159099981743,
+                                "url": "https://www.splashlearn.com/math-vocabulary/wp-content/uploads/2022/05/graphs-9-01-1.png",
+                            },
+                            {
+                                "id": "a102",
+                                "createdAt": 1590999817436,
+                                "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGp_q_OUhD19oRE-0xnBVgBrDcBq4vc69sMA&usqp=CAU",
+                            },
+                            {
+                                "id": "a103",
+                                "createdAt": 1590999817439,
+                                "url": "https://apexcharts.com/wp-content/uploads/2018/05/dashboard-modern.png",
+                            },
+                        ],
                         "checklists": [
                             {
                                 "id": "cl4005",
@@ -2503,7 +2519,13 @@ export const gBoards = [
                         "id": "t4007",
                         "title": "Email marketing",
                         "members": ["u101", "u102"],
-                        "attachments": ["https://example.com/attachment2.pdf"],
+                        "attachments": [
+                            {
+                                "id": "a101",
+                                "createdAt": 159099981743,
+                                "url": "https://www.splashlearn.com/math-vocabulary/wp-content/uploads/2022/05/graphs-9-01-1.png",
+                            }
+                        ],
                         "checklists": [
                             {
                                 "id": "cl4010",
@@ -2593,6 +2615,18 @@ export const gBoards = [
                         "id": "t4009",
                         "title": "Lead generation",
                         "description": "This task involves designing and creating marketing ",
+                        "attachments": [
+                            {
+                                "id": "a101",
+                                "createdAt": 159099981743,
+                                "url": "https://www.splashlearn.com/math-vocabulary/wp-content/uploads/2022/05/graphs-9-01-1.png",
+                            },
+                            {
+                                "id": "a102",
+                                "createdAt": 1590999817436,
+                                "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGp_q_OUhD19oRE-0xnBVgBrDcBq4vc69sMA&usqp=CAU",
+                            },
+                        ],
                         "checklists": [
                             {
                                 "id": "cl4013",
@@ -2725,7 +2759,6 @@ export const gBoards = [
                         "id": "t4013",
                         "title": "Implement product enhancements",
                         "description": "Based on user feedback, the development team will implement improvements and new features to enhance the product.",
-                        "attachments": ["https://example.com/attachment3.pdf"],
                         "checklists": [
                             {
                                 "id": "cl4017",
@@ -2758,28 +2791,22 @@ export const gBoards = [
                         "id": "t4014",
                         "title": "Quality assurance",
                         "labelIds": ["l101", "l104", "l106"],
-                        "checklists": [
+                        "attachments": [
                             {
-                                "id": "cl4018",
-                                "title": "Checklist 1",
-                                "todos": [
-                                    {
-                                        "id": "todo4046",
-                                        "title": "Create test cases",
-                                        "isDone": true
-                                    },
-                                    {
-                                        "id": "todo4047",
-                                        "title": "Perform system testing",
-                                        "isDone": true
-                                    },
-                                    {
-                                        "id": "todo4048",
-                                        "title": "Identify and fix bugs",
-                                        "isDone": false
-                                    }
-                                ]
-                            }
+                                "id": "a101",
+                                "createdAt": 159099981743,
+                                "url": "https://www.splashlearn.com/math-vocabulary/wp-content/uploads/2022/05/graphs-9-01-1.png",
+                            },
+                            {
+                                "id": "a102",
+                                "createdAt": 1590999817436,
+                                "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGp_q_OUhD19oRE-0xnBVgBrDcBq4vc69sMA&usqp=CAU",
+                            },
+                            {
+                                "id": "a103",
+                                "createdAt": 1590999817439,
+                                "url": "https://apexcharts.com/wp-content/uploads/2018/05/dashboard-modern.png",
+                            },
                         ],
                         "style": {
                             "bgColor": ""

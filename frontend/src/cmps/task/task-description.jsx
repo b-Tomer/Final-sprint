@@ -54,7 +54,7 @@ export function TaskDescription({ boardId, groupId, task }) {
         }
     }
 
-    if (!task) return ''
+    if (!task) return null
     return (
         <div className="description">
 

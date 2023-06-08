@@ -6,6 +6,7 @@
     // display: flex;
     margin-block-end: 5px;
     cursor: pointer;
+
     .btn-task-show-details {
         position: absolute;
         right: 2px;
@@ -16,31 +17,37 @@
         background-color: $clr2;
         opacity: 0.8;
         border-radius: 8px;
+
         .edit-icon {
             position: relative;
 
             width: 100%;
+
             path {
                 fill: $clr6;
             }
         }
     }
+
     .task-header {
         min-height: 2rem;
         border-radius: 8px;
         border-bottom-right-radius: 0;
         border-bottom-left-radius: 0;
         overflow: hidden;
+
         .task-header-cover-img {
             width: 100%;
             object-fit: cover;
         }
     }
+
     .task-content {
         padding-block-end: 4px;
         padding-inline-start: 12px;
         padding-inline-end: 8px;
         padding-block-start: 8px;
+
         .task-title {
             display: inline-block;
             font-size: 14px;
@@ -53,13 +60,14 @@
             width: 220px;
             max-width: 220px;
         }
+
         .task-labels {
             display: flex;
             flex-wrap: wrap;
             max-width: 100%;
-            gap: 7px;
+            gap: 5px;
+
             .task-labels-btn {
-                margin-inline-end: 5px;
                 border-radius: 3px;
                 padding-inline: 8px;
                 color: $clr7;
@@ -71,12 +79,14 @@
             }
         }
     }
+
     &:hover {
         .btn-task-show-details {
             display: flex;
             align-content: center;
             align-items: center;
             justify-content: center;
+
             &:hover {
                 background-color: $clr3;
             }

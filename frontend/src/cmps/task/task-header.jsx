@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import { ReactComponent as Window } from '../../assets/img/icons/window.svg'
 
 export function TaskHeader({ task, group, boardId }) {
-    if (!task) return ''
+    if (!task) return null
     return (
         <section className="task-header">
             <div className="task-header-title">

@@ -10,6 +10,7 @@ import {
     SET_MODAL_TITLE,
 } from '../../store/system.reducer'
 import { useSelector } from 'react-redux'
+import { SET_ATC_TO_EDIT } from '../../store/board.reducer'
 
 export function TaskAttachments({ task, boardId, groupId }) {
     const { isOpenEditAtc } = useSelector(
@@ -56,8 +57,8 @@ export function TaskAttachments({ task, boardId, groupId }) {
         updateTask(boardId, groupId, updatedTask)
     }
 
-    function onEditAttachment(title, atc) {
-        setCurrAtc(atc)
+    function onEditAttachment(title, currAtc) {
+        store.dispatch({ type: SET_ATC_TO_EDIT, atc:currAtc })
         store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
         store.dispatch({ type: SET_MODAL_TITLE, title })
         store.dispatch({ type: OPEN_DYN_MODAL })
@@ -76,7 +77,7 @@ export function TaskAttachments({ task, boardId, groupId }) {
         return `${formattedDay}/${formattedMonth}/${year}`
     }
 
-    if (!task.attachments) return ''
+    if (!task.attachments) return null
 
     return (
         <section className="attachments">
@@ -126,7 +127,7 @@ export function TaskAttachments({ task, boardId, groupId }) {
                 </div>
             ))}
             {isOpenEditAtc && (
-                <DynamicCmp task={task} atc={currAtc} title="Edit attachment" />
+                <DynamicCmp task={task} title="Edit attachment" />
             )}
         </section>
     )
