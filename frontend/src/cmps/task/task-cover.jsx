@@ -20,22 +20,6 @@ export function TaskCover({ task, simpleCloseModal }) {
                         backgroundImage: `url(${task.style.backgroundImage})`,
                     }}
                 ></div>
-                // <div
-                //     className="task-header"
-                //     style={
-                //         !task.style?.backgroundImage
-                //             ? {
-                //                 backgroundColor: task.style.bgColor,
-                //             }
-                //             : { backgroundColor: '' }
-                //     }
-                // >
-                //     {task.style?.backgroundImage && <img
-                //         className="task-cover-img"
-                //         src={task.style.backgroundImage}
-                //         alt=""
-                //     />}
-                // </div>
             )}
         </section>
     )

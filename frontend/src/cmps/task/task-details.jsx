@@ -1,11 +1,9 @@
-import { useParams } from 'react-router-dom'
 import { TaskMenu } from './task-menu.jsx'
 import { TaskMainDetails } from './task-main-details.jsx'
 import { TaskHeader } from './task-header.jsx'
 import { useEffect, useState, useRef, useLayoutEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { ReactComponent as X } from '../../assets/img/icons/x.svg'
 import { TaskCover } from './task-cover.jsx'
 
 export function TaskDetails({
@@ -38,7 +36,6 @@ export function TaskDetails({
     const measureHeight = () => {
         if (elementRef.current) {
             const height = elementRef.current.clientHeight
-            console.log('Element height:', height)
         }
     }
 
@@ -54,14 +51,6 @@ export function TaskDetails({
             window.removeEventListener('resize', handleResize)
         }
     }, [])
-
-    // useLayoutEffect(() => {
-    //     if (elementRef.current) {
-    //         // const height = elementRef.current.clientHeight
-    //         // console.log('Element height:', height)
-    //         console.log(elementRef.current.getBoundingClientRect())
-    //     }
-    // }, [])
 
     function closeModal(ev, ref) {
         if (ref.current !== ev.target) {
@@ -87,10 +76,7 @@ export function TaskDetails({
             }}
         >
             <section className="task-details-container" ref={elementRef}>
-                <TaskCover
-                    simpleCloseModal={simpleCloseModal}
-                    task={task}
-                />
+                <TaskCover simpleCloseModal={simpleCloseModal} task={task} />
                 <div className="task-details-secondry-container">
                     <TaskHeader task={task} group={group} />
                     <TaskMainDetails

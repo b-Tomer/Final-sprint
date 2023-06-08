@@ -42,7 +42,6 @@ export function BoardIndex() {
     async function onLoadBoard(filterBy) {
         await loadBoard(boardId, filterBy)
         if (taskId) setIsTaskDetailsOpen(true)
-        console.log(boardId)
     }
 
     async function addGroup(group) {
@@ -55,7 +54,11 @@ export function BoardIndex() {
         } finally {
             loadBoards()
             loadBoard(boardId)
-            boardRef.current.scrollTo({ left: 90000, top: 0, behavior: 'smooth' })
+            boardRef.current.scrollTo({
+                left: 90000,
+                top: 0,
+                behavior: 'smooth',
+            })
         }
     }
 
@@ -131,7 +134,6 @@ export function BoardIndex() {
         updateBoard(updatedBoard)
     }
 
-    console.log(JSON.parse(JSON.stringify(board)))
     if (!board) return
     return (
         <>

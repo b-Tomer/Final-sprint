@@ -14,7 +14,7 @@ const initialState = {
     },
     board: null,
     lastUpdatedBoard: null,
-    label:null
+    label: null,
 }
 
 export function boardReducer(state = initialState, action) {
@@ -23,12 +23,10 @@ export function boardReducer(state = initialState, action) {
     var currBoard
     switch (action.type) {
         case SET_BOARD:
-            console.log('action.board: ', action.board )
             newState = { ...state, board: action.board }
             break
         case SET_BOARDS:
             newState = { ...state, boards: action.boards }
-            // console.log(newState)
             break
         case REMOVE_BOARD:
             boards = state.boards.filter((c) => c._id !== action.boardId)
@@ -45,7 +43,6 @@ export function boardReducer(state = initialState, action) {
             break
         case FILTER_BY:
             newState = { ...state, filterBy: action.filterBy }
-            console.log('newState: ', newState )
             break
         case SET_IS_LOADING:
             newState = { ...state, isLoading: action.isLoading }
