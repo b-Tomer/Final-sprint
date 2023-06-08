@@ -1,9 +1,9 @@
-// import Pencil from '../../assets/img/edit-task.png';
+
 import { useSelector } from 'react-redux'
 import { ReactComponent as Edit } from '../../assets/img/icons/edit.svg'
 import React, { useState } from 'react';
 import { updateTask } from '../../store/task.actions';
-import { CLOSE_DYN_MODAL, OPEN_DYN_MODAL, SET_MODAL_TITLE } from '../../store/system.reducer';
+import {  OPEN_DYN_MODAL, SET_MODAL_TITLE } from '../../store/system.reducer';
 import { store } from '../../store/store'
 import { DynamicCmp } from './dynamic-cmp';
 import { SET_LABEL_TO_EDIT } from '../../store/board.reducer';
@@ -14,14 +14,6 @@ export function DynCmpLabels({ task }) {
     const { board } = useSelector((storeState) => storeState.boardModule)
     const [labelToEdit, setLabelToEdit] = useState(null);
     const [isEditLabelOpen, setIsEditLabelOpen] = useState(false);
-
-    const { isModalOpen } = useSelector((storeState) => storeState.systemModule)
-
-
-    function onCloseDynModal() {
-        store.dispatch({ type: CLOSE_DYN_MODAL })
-    }
-
 
     function handleEditButtonClick(title, label) {
         store.dispatch({ type: SET_LABEL_TO_EDIT, label})
@@ -91,7 +83,7 @@ export function DynCmpLabels({ task }) {
             </div>}
             <div>
 
-                {isEditLabelOpen && <DynamicCmp task={task} />}
+                {isEditLabelOpen && <DynamicCmp title={'Edit label'} task={task} />}
             </div>
         </>
     )

@@ -1,5 +1,5 @@
-import { boardService } from '../services/board.service.local'
-import { taskService } from '../services/task.service.local'
+import { boardService } from '../services/board.service'
+import { taskService } from '../services/task.service'
 import { getActionSetBoard, getActionUpdateBoard } from './board.actions'
 import { store } from './store'
 

@@ -1,6 +1,5 @@
 import {dbService} from '../../services/db.service.mjs'
 import {logger} from '../../services/logger.service.mjs'
-import {reviewService} from '../review/review.service.mjs'
 import mongodb from 'mongodb'
 const {ObjectId} = mongodb
 
@@ -39,7 +38,6 @@ async function getById(userId) {
         const user = await collection.findOne({ _id: ObjectId(userId) })
         delete user.password
 
-        user.givenReviews = await reviewService.query({ byUserId: ObjectId(user._id) })
         user.givenReviews = user.givenReviews.map(review => {
             delete review.byUser
             return review

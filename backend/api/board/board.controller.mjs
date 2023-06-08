@@ -8,6 +8,7 @@ export async function getBoards(req, res) {
       txt: req.query.txt || '',
     }
     const boards = await boardService.query(filterBy)
+    console.log('boards: ', boards )
     res.json(boards)
   } catch (err) {
     logger.error('Failed to get boards', err)
@@ -31,7 +32,6 @@ export async function addBoard(req, res) {
 
   try {
     const board = req.body
-    board.owner = loggedinUser
     const addedBoard = await boardService.add(board)
     res.json(addedBoard)
   } catch (err) {

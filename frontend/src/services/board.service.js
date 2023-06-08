@@ -13,7 +13,6 @@ export const boardService = {
     save,
     remove,
     getEmptyBoard,
-    addBoardMsg
 }
 window.cs = boardService
 
@@ -40,15 +39,42 @@ async function save(board) {
     return savedBoard
 }
 
-async function addBoardMsg(boardId, txt) {
-    const savedMsg = await httpService.post(`board/${boardId}/msg`, {txt})
-    return savedMsg
-}
-
-
 function getEmptyBoard() {
     return {
-        title: ''
+        "title": '',
+        "members": [],
+        "labels": [
+            {
+                "id": "l101",
+                "title": "Marketing",
+                "color": "#4bce97"
+            },
+            {
+                "id": "l102",
+                "title": "Frontend",
+                "color": "#e2b203"
+            },
+            {
+                "id": "l103",
+                "title": "Backend",
+                "color": "#faa53d"
+            },
+            {
+                "id": "l104",
+                "title": "Finance",
+                "color": "#f87462"
+            },
+            {
+                "id": "l105",
+                "title": "Operations",
+                "color": "#9f8fef"
+            },
+            {
+                "id": "l106",
+                "title": "Manufacturing",
+                "color": "#579dff"
+            }
+        ]
     }
 }
 
