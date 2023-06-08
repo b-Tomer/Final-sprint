@@ -34,11 +34,15 @@ export function AddGroup({ addGroup }) {
         setGroupTitle('')
         onAddClose()
         onOpenAddContainer()
+
+
+
+
     }
 
 
     return (
-        <section ref={scrollRef} style={currStyle} className="add-group-container">
+        <section style={currStyle} className="add-group-container">
             {!isAddOpen && <div onClick={onOpenAddContainer} className="add-list-content-closed">
                 <Plus className="list-icon" />  Add another list
             </div>}
