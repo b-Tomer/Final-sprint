@@ -249,6 +249,11 @@
                 width: 1.5rem;
                 height: 1.5rem;
                 margin-left: 5px;
+
+                .photo {
+                    border-radius: 50%;
+
+                }
             }
 
             @include for-normal-layout {

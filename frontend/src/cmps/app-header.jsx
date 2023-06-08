@@ -14,12 +14,15 @@ import { ReactComponent as Search } from '../assets/img/icons/search.svg'
 import { ReactComponent as Logo } from '../assets/img/icons/logo.svg'
 import { boardService } from '../services/board.service.local.js'
 import { userService } from 'services/user.service.js'
+import { UserInfo } from './user-info.jsx'
 
 export function AppHeader({ onSetfilter }) {
     const { board } = useSelector((storeState) => storeState.boardModule)
     const [isMobileOpen, setIsMobileOpen] = useState(false)
     const [loginUser, setloginUser] = useState(null)
-    // const [isUserInfoOpen, setisUserInfoOpen] = useState(false)
+    const [isUserInfoOpen, setIsUserInfoOpen] = useState(false)
+
+    console.log('userInfo', isUserInfoOpen)
 
 
     const toggleMobileOpen = () => {
@@ -84,6 +87,12 @@ export function AppHeader({ onSetfilter }) {
     function goHome() {
         navigate(`/`)
     }
+
+    function closeUserInfo() {
+        setIsUserInfoOpen(!isUserInfoOpen)
+    }
+
+
 
     return (
         <header
@@ -201,9 +210,10 @@ export function AppHeader({ onSetfilter }) {
                 </div>
                 <ul className="header-icons">
                     {loginUser && (
-                        // <li className='user-photo' onClick={setUserInfo} >
-                        <li className='user-photo' >
-                            <img id="image" src={`${loginUser.imgUrl}`} alt="Image" />
+                        <li className='user-photo' onClick={() => setIsUserInfoOpen(!isUserInfoOpen)}>
+                            <div  >
+                                <img id="image" src={`${loginUser.imgUrl}`} alt="Image" className='photo' />
+                            </div>
                         </li>
                     )}
                     <li>
@@ -219,6 +229,10 @@ export function AppHeader({ onSetfilter }) {
                         <Theme className="app-header-icon" src={Theme} />
                     </li>
                 </ul>
+                <div className={`user-modal ${isUserInfoOpen ? 'open' : ''
+                    }`}>
+                    <UserInfo closeUserInfo={closeUserInfo} />
+                </div>
             </div>
         </header>
     )

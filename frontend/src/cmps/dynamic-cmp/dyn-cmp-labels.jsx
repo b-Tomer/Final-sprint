@@ -24,10 +24,10 @@ export function DynCmpLabels({ task }) {
 
 
     function handleEditButtonClick(title, label) {
-        store.dispatch({ type: SET_LABEL_TO_EDIT, label})
+        store.dispatch({ type: SET_LABEL_TO_EDIT, label })
         store.dispatch({ type: OPEN_DYN_MODAL })
         store.dispatch({ type: SET_MODAL_TITLE, title })
-        console.log(title, label)
+        console.log('ttttttttttt', title, label)
         setIsEditLabelOpen(true)
     }
 

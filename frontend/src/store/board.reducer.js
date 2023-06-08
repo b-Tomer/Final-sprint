@@ -16,7 +16,7 @@ const initialState = {
     board: null,
     lastUpdatedBoard: null,
     label: null,
-    atc:null
+    atc: null
 }
 
 export function boardReducer(state = initialState, action) {
@@ -51,6 +51,7 @@ export function boardReducer(state = initialState, action) {
             break
         case SET_LABEL_TO_EDIT:
             newState = { ...state, label: action.label }
+            break
         case SET_ATC_TO_EDIT:
             newState = { ...state, atc: action.atc }
             break
