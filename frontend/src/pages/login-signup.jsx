@@ -13,12 +13,16 @@ import { ReactComponent as AppleLogo } from '../assets/img/icons/apple-logo.svg'
 
 
 export function LoginSignup() {
+
+
+
+
     const [credentials, setCredentials] = useState({
         username: '',
         password: '',
         fullname: '',
     })
-    const [isSignup, setIsSignup] = useState(false)
+    const [isSignup, setIsSignup] = useState(true)
     const [users, setUsers] = useState([])
 
     useEffect(() => {
@@ -90,33 +94,83 @@ export function LoginSignup() {
     return (
         <div className="login-page">
             <div className='login-page-header'>
-                <h3>Trellax</h3>
             </div>
+            <h3>Trellax</h3>
             <div className='login-signin-container'>
 
-                <h3>Log in to Trellax</h3>
-                <input
-                    type="text"
-                    name="username"
-                    // value={'hi'}
-                    placeholder=" Enter username"
-                    onChange={handleChange}
-                    required
-                    autoFocus
-                />
-                <input
-                    type="text"
-                    name="username"
-                    // value={'hi'}
-                    placeholder="Enter password"
-                    onChange={handleChange}
-                    required
-                    autoFocus
-                />
-                <button className='login-btn'>
-                    Log in to Trellax
-                </button>
-                <h3>OR</h3>
+                {!isSignup && (
+                    <div className='login-container'>
+                        <h3>Log in to Trellax</h3>
+                        <form>
+                            <input
+                                type="text"
+                                name="username"
+                                // value={'hi'}
+                                placeholder=" Enter username"
+                                onChange={handleChange}
+                                required
+                                autoFocus
+                            />
+                            <input
+                                type="text"
+                                name="username"
+                                // value={'hi'}
+                                placeholder="Enter password"
+                                onChange={handleChange}
+                                required
+                                autoFocus
+                            />
+                            <button className='login-btn'>
+                                Log in to Trellax
+                            </button>
+                        </form>
+                        <h3>OR</h3>
+                    </div>
+                )}
+
+                {isSignup && (
+                    <div className='signin-container'>
+                        <h3>Sign up for your account</h3>
+                        <form>
+                            <input
+                                type="text"
+                                name="username"
+                                // value={'hi'}
+                                placeholder=" Enter full name"
+                                onChange={handleChange}
+                                required
+                                autoFocus
+                            />
+                            <input
+                                type="text"
+                                name="username"
+                                // value={'hi'}
+                                placeholder=" Enter username"
+                                onChange={handleChange}
+                                required
+                                autoFocus
+                            />
+                            <input
+                                type="text"
+                                name="username"
+                                // value={'hi'}
+                                placeholder="Enter password"
+                                onChange={handleChange}
+                                required
+                                autoFocus
+                            />
+                            <button className='login-btn'>
+                                Sign up for your account
+                            </button>
+
+                        </form>
+                        <h3>OR</h3>
+                    </div>
+                )}
+
+
+
+
                 <button className='login-with-btn'>
                     <GoogleLogo className='btn-logo' />
                     Continue with Google</button>
@@ -129,6 +183,7 @@ export function LoginSignup() {
                 <button className='login-with-btn'>
                     <SlackLogo className='btn-logo' />
                     Continue with Slack</button>
+
 
 
 
@@ -206,16 +261,15 @@ export function LoginSignup() {
                 )}
             </div> */}
 
-
+                <hr></hr>
+                {!isSignup && (
+                    <h4>Sign up for an account</h4>)}
+                {isSignup && (
+                    <h4>Already have an account? Log in</h4>)}
             </div>
 
-
-
-
-            <div className='footer'>
-                <LeftImg className="left-img" />
-                <RightImg className="right-img" />
-            </div>
+            <LeftImg className="left-img" />
+            <RightImg className="right-img" />
         </div>
     )
 }
