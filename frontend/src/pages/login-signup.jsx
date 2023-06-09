@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react'
 import { userService } from '../services/user.service'
-import { ImgUploader } from '../cmps/img-uploader'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { login, logout, signup } from '../store/user.actions.js'
 import { useNavigate } from 'react-router-dom'
-
 import { ReactComponent as LeftImg } from '../assets/img/icons/trello-pic-left.svg'
 import { ReactComponent as RightImg } from '../assets/img/icons/trello-pic-right.svg'
 import { ReactComponent as MicrosoftLogo } from '../assets/img/icons/microsoft-logo.svg'
@@ -43,29 +41,28 @@ export function LoginSignup() {
         setCredentials({ ...credentials, [field]: value })
     }
 
-    function onLogin(ev = null) {
+    async function onLogin(ev = null) {
         if (ev) ev.preventDefault()
         if (!credentials.username) return
-        handleLogin(credentials)
-        clearState()
-        console.log(userService.getLoggedinUser())
-        if (userService.getLoggedinUser()) {
-            navigate('/workspace')
-        } else {
-            console.log('not logged in')
+        try {
+            await handleLogin(credentials)
+            clearState()
+            if (userService.getLoggedinUser()) {
+                navigate('/workspace')
+            } else {
+                console.log('not logged in')
+            }
+        } catch (err) {
+            console.log("user not found ", err);
         }
     }
 
     function onSignup(ev = null) {
-        // console.log(ev)
-        console.log(credentials)
         if (ev) ev.preventDefault()
-        if (
-            !credentials.username ||
+        if (!credentials.username ||
             !credentials.password ||
             !credentials.fullname
-        )
-            return
+        ) return
         handleSignup(credentials)
         clearState()
         if (userService.getLoggedinUser()) {
@@ -74,10 +71,11 @@ export function LoginSignup() {
             console.log('not logged in')
         }
     }
-
+    
     async function handleSignup(credentials) {
         try {
             const user = await signup(credentials)
+            navigate('/workspace')
             showSuccessMsg(`Welcome new user: ${user.fullname}`)
         } catch (err) {
             showErrorMsg('Cannot signup')
@@ -101,10 +99,14 @@ export function LoginSignup() {
         setCredentials({ ...credentials, imgUrl })
     }
 
+    function onGoHome() {
+        navigate('/')
+    }
+
     return (
         <div className="login-page">
             <div className="login-page-header"></div>
-            <h3>Trellax</h3>
+            <h3 onClick={onGoHome}>Trellax</h3>
             <div className="login-signin-container">
                 {!isSignup && (
                     <div className="login-container">
@@ -113,20 +115,17 @@ export function LoginSignup() {
                             <input
                                 type="text"
                                 name="username"
-                                // value={'hi'}
                                 placeholder=" Enter username"
                                 onChange={handleChange}
                                 required
                                 autoFocus
                             />
                             <input
-                                type="text"
-                                name="username"
-                                // value={'hi'}
+                                type="password"
+                                name="password"
                                 placeholder="Enter password"
                                 onChange={handleChange}
                                 required
-                                autoFocus
                             />
                             <button onClick={onLogin} className="login-btn">
                                 Log in to Trellax
@@ -154,7 +153,6 @@ export function LoginSignup() {
                                 placeholder=" Enter username"
                                 onChange={handleChange}
                                 required
-                                autoFocus
                             />
                             <input
                                 type="password"
@@ -162,7 +160,6 @@ export function LoginSignup() {
                                 placeholder="Enter password"
                                 onChange={handleChange}
                                 required
-                                autoFocus
                             />
                             <button className="login-btn">
                                 Sign up for your account

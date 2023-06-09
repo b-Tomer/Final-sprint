@@ -9,6 +9,8 @@ import { updateTask } from '../../store/task.actions'
 import { CLOSE_DYN_ALL_MODALS } from '../../store/system.reducer'
 import { store } from '../../store/store'
 import BasicTimePicker from '../task/basic-time-keeper'
+import { boardService } from 'services/board.service.local'
+import { userService } from 'services/user.service'
 
 export function DynCmpDates({ task }) {
     const [selectedDate, setSelectedDate] = useState(null)
@@ -34,32 +36,46 @@ export function DynCmpDates({ task }) {
             day,
             hour,
             minute
-            )
-            task.dueDate = timestamp
-            try {
-                await updateTask(boardId, groupId, task)
+        )
+        task.dueDate = timestamp
+        try {
+            const activity = boardService.getEmptyActivity()
+            activity.title = `Added due date at: ${utilService.dueDateFormat(
+                task.dueDate
+            )} to: ${task.title}`
+            activity.taskId = task.id
+            activity.by = userService.getLoggedinUser()?.fullname
+                ? userService.getLoggedinUser().fullname
+                : 'Guest'
+            await updateTask(boardId, groupId, task, activity)
             store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
         } catch (error) {
             console.log('cant update task')
         }
     }
-    
+
     async function removeDate(ev) {
         ev.stopPropagation()
         if (!task?.dueDate) return
         task.dueDate = null
         try {
-            await updateTask(boardId, groupId, task)
+            const activity = boardService.getEmptyActivity()
+            activity.title = `Removed due date from: ${task.title}`
+            activity.taskId = task.id
+            activity.by = userService.getLoggedinUser()?.fullname
+                ? userService.getLoggedinUser().fullname
+                : 'Guest'
+            await updateTask(boardId, groupId, task, activity)
             store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
         } catch (error) {
             console.log('cant update task')
         }
     }
-    
-    function stopPropagation(ev){
+
+    function stopPropagation(ev) {
         ev.stopPropagation()
     }
-    
+
     return (
         <div className="time-picker-container" onClick={stopPropagation}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>

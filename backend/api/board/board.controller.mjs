@@ -3,7 +3,9 @@ import { logger } from '../../services/logger.service.mjs'
 
 export async function getBoards(req, res) {
   try {
+    
     logger.debug('Getting Boards:', req.query)
+    console.log('req.query: ', req.query )
     const filterBy = {
       txt: req.query.txt || '',
     }

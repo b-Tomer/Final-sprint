@@ -13,9 +13,9 @@ export async function saveGroup(groupTitle, boardId, groupId) {
     }
 }
 
-export async function removeGroup(groupId, boardId) {
+export async function removeGroup(groupId, boardId, activity) {
     try {
-        const board = await groupService.removeGroup(groupId, boardId)
+        const board = await groupService.removeGroup(groupId, boardId, activity)
         store.dispatch(getActionSetBoard(board))
     } catch (err) {
         console.log('Cannot remove g', err)

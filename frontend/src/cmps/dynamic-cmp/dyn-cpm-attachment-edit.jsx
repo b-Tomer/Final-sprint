@@ -4,10 +4,10 @@ import { useSelector } from 'react-redux'
 import { updateTask } from '../../store/task.actions'
 import { CLOSE_DYN_ALL_MODALS } from '../../store/system.reducer'
 import { store } from '../../store/store'
-
+import { userService } from 'services/user.service'
+import { boardService } from 'services/board.service.local'
 
 export function DynCmpAttachmentEdit({ task, boardId, groupId }) {
-
     const [newTitle, setNewTitle] = useState('')
     const inputRef = useRef()
     const { atc } = useSelector((storeState) => storeState.boardModule)
@@ -22,20 +22,35 @@ export function DynCmpAttachmentEdit({ task, boardId, groupId }) {
     }
 
     function updateAttachment() {
-        const atcIdx = task.attachments?.findIndex(a => a.id === atc.id)
+        const activity = boardService.getEmptyActivity()
+        activity.taskId = null
+        activity.by = userService.getLoggedinUser()?.fullname
+            ? userService.getLoggedinUser().fullname
+            : 'Guest'
+        activity.title = `Changed attachment title to "${newTitle}" at task: ${task.title}`
+        // currBoard.activities.push(activity)
+        const atcIdx = task.attachments?.findIndex((a) => a.id === atc.id)
         task.attachments[atcIdx].title = newTitle
-        updateTask(boardId, groupId, task)
+        updateTask(boardId, groupId, task, activity)
         store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
     }
 
     if (!task) return null
     return (
         <div className="edit-attachment">
-
             <h5>Link name</h5>
-            <input ref={inputRef} className="edit-attachment-input" value={newTitle} onFocus={e => e.target.select()} onChange={onChaneAtcTitle} type="text" />
+            <input
+                ref={inputRef}
+                className="edit-attachment-input"
+                value={newTitle}
+                onFocus={(e) => e.target.select()}
+                onChange={onChaneAtcTitle}
+                type="text"
+            />
             <div className="add-btns edit-attachment-btns">
-                <button onClick={updateAttachment} className="add-item-btn">Update</button>
+                <button onClick={updateAttachment} className="add-item-btn">
+                    Update
+                </button>
                 <button className="svg-holder">
                     <X className="list-icon icon-big" />
                 </button>

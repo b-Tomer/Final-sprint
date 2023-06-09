@@ -71,6 +71,7 @@ export function AppHeader({ onSetfilter }) {
         ev.preventDefault()
         try {
             const title = prompt('Enter board title')
+            if (!title) return
             const newBoard = boardService.getEmptyBoard()
             newBoard.title = title
             const currBoard = await addBoard(newBoard)
@@ -210,7 +211,7 @@ export function AppHeader({ onSetfilter }) {
                     {loginUser && (
                         <li className='user-photo' onClick={() => setIsUserInfoOpen(!isUserInfoOpen)}>
                             <div  >
-                                <img id="image" src={`${loginUser.imgUrl}`} alt="Image" className='photo' />
+                                {loginUser.imgUrl && <img id="image" src={`${loginUser.imgUrl}`} alt="Image" className='photo' />}
                             </div>
                         </li>
                     )}

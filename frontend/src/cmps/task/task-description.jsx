@@ -3,6 +3,7 @@ import { ReactComponent as Description } from '../../assets/img/icons/descriptio
 import { useClickOutside } from '../../customHooks/useClickOutside'
 import { updateTask } from '../../store/task.actions'
 import { boardService } from 'services/board.service.local'
+import { userService } from 'services/user.service'
 
 export function TaskDescription({ boardId, groupId, task }) {
     const [isEditing, setIsEditing] = useState(false)
@@ -22,7 +23,11 @@ export function TaskDescription({ boardId, groupId, task }) {
         setIsEditing(false)
         const taskToUpdate = { ...task, description }
         const activity = boardService.getEmptyActivity()
-        activity.title = `changed description to: ${taskToUpdate.title}`
+        activity.title = `Changed description to: ${taskToUpdate.description}`
+        activity.taskId = taskToUpdate.id
+        activity.by = userService.getLoggedinUser()?.fullname
+            ? userService.getLoggedinUser().fullname
+            : 'Guest'
         updateTask(boardId, groupId, taskToUpdate, activity)
     }
 

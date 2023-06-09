@@ -9,6 +9,8 @@ import { ReactComponent as Due } from '../../assets/img/icons/clock.svg'
 import { ReactComponent as DueCheck } from '../../assets/img/icons/CheckBox.svg'
 import { ReactComponent as Checklists } from '../../assets/img/icons/checklist.svg'
 import { ReactComponent as Description } from '../../assets/img/icons/description.svg'
+import { boardService } from 'services/board.service.local'
+import { userService } from 'services/user.service'
 
 export function TaskIcons({ task, groupId, boardId }) {
     const { board } = useSelector((storeState) => storeState.boardModule)
@@ -19,10 +21,28 @@ export function TaskIcons({ task, groupId, boardId }) {
         setCurrTask(task)
     }, [task])
 
-    function onToggleIsDone(ev, task) {
+    async function onToggleIsDone(ev, task) {
         ev.stopPropagation()
-        task.isDone = !task.isDone
-        updateTask(boardId, groupId, task)
+        try {
+            const activity = boardService.getEmptyActivity()
+            activity.taskId = task.id
+            task.isDone = !task.isDone
+            activity.by = userService.getLoggedinUser()?.fullname
+                ? userService.getLoggedinUser().fullname
+                : 'Guest'
+            activity.title = `Marked task ${task.title} as: ${getIsDone(
+                task.isDone
+            )}`
+            await updateTask(boardId, groupId, task, activity)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    function getIsDone(flag) {
+        if (flag) {
+            return 'Done'
+        } else return 'Ongoing'
     }
 
     function onOpenMemberPreview(ev, memberId) {
