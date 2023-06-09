@@ -23,13 +23,15 @@ function getDefaultTask() {
 
 async function saveTask(task, boardId, groupId, activity) {
     const board = await boardService.getById(boardId)
+    if (activity) {
+        board.activities?.push(activity)
+    }
     if (task.id) {
         const groupIdx = board.groups.findIndex((group) => groupId === group.id)
         const taskIdx = board.groups[groupIdx].tasks.findIndex(
             (currTask) => currTask.id === task.id
         )
         board.groups[groupIdx].tasks[taskIdx] = task
-        board.activities?.push(activity)
         board = await boardService.save(board)
         return board
     } else {
@@ -47,7 +49,9 @@ async function updateTask(boardId, groupId, task, activity) {
     const taskIdx = board.groups[groupIdx].tasks.findIndex(
         (currTask) => currTask.id === task.id
     )
-    board.activities?.push(activity)
+    if (activity) {
+        board.activities?.push(activity)
+    }
     board.groups[groupIdx].tasks.splice(taskIdx, 1, task)
     await boardService.save(board)
     return board

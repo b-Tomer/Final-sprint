@@ -5,6 +5,7 @@ import { updateTask } from '../../store/task.actions'
 import { store } from '../../store/store'
 import { CLOSE_DYN_ALL_MODALS } from '../../store/system.reducer'
 import { boardService } from 'services/board.service.local'
+import { userService } from 'services/user.service'
 
 export function DynCmpChecklist({ task, setEditing }) {
     const { boardId } = useParams()
@@ -22,6 +23,9 @@ export function DynCmpChecklist({ task, setEditing }) {
             const activity = boardService.getEmptyActivity()
             activity.title = `Added "${inputRef.current.value}" checklist to: ${task.title}`
             activity.taskId = task.id
+            activity.by = userService.getLoggedinUser()?.fullname
+                ? userService.getLoggedinUser().fullname
+                : 'Guest'
             await updateTask(boardId, groupId, task, activity)
         } catch (err) {
             console.log('cant add checklist')

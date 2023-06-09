@@ -7,6 +7,8 @@ import { ReactComponent as X } from '../assets/img/icons/x.svg'
 import { taskService } from '../services/task.service'
 import { removeTask, saveTask } from '../store/task.actions'
 import { Draggable, Droppable } from 'react-beautiful-dnd'
+import { boardService } from 'services/board.service.local'
+import { userService } from 'services/user.service'
 
 export function GroupDetails({
     group,
@@ -30,8 +32,6 @@ export function GroupDetails({
     const [taskTitle, setTaskTitle] = useState('')
     const inputRef = useRef()
     const groupRef = useRef(null)
-
-
 
     useEffect(() => {
         setTask(taskService.getDefaultTask())
@@ -62,7 +62,14 @@ export function GroupDetails({
     async function onAddTask(ev) {
         ev.preventDefault()
         try {
-            await saveTask(task, boardId, group.id)
+            const activity = boardService.getEmptyActivity()
+            activity.taskId = task.id
+            task.isDone = !task.isDone
+            activity.by = userService.getLoggedinUser()?.fullname
+                ? userService.getLoggedinUser().fullname
+                : 'Guest'
+            activity.title = `Added task: "${task.title}" to group: "${group.title}"`
+            await saveTask(task, boardId, group.id, activity)
         } catch (err) {
             console.log(err)
         } finally {
@@ -70,7 +77,11 @@ export function GroupDetails({
             setTaskTitle('')
             onAddClose()
             onOpenAddTask()
-            groupRef.current.scrollTo({ left: 0, top: 90000, behavior: 'smooth' })
+            groupRef.current.scrollTo({
+                left: 0,
+                top: 90000,
+                behavior: 'smooth',
+            })
         }
     }
 
@@ -81,8 +92,6 @@ export function GroupDetails({
     function onAddClose() {
         setIsAddTaskOpen(false)
     }
-
-
 
     return (
         <section
@@ -116,8 +125,8 @@ export function GroupDetails({
                         className={`group-content `}
                         {...provided.droppableProps}
                         ref={(el) => {
-                            provided.innerRef(el);
-                            groupRef.current = el;
+                            provided.innerRef(el)
+                            groupRef.current = el
                         }}
                     >
                         {group.tasks.map((task, index) => (
@@ -179,9 +188,8 @@ export function GroupDetails({
                             </div>
                         )}
                     </section>
-                )
-                }
-            </Droppable >
+                )}
+            </Droppable>
             <div className="group-footer">
                 {!isAddTaskOpen && (
                     <button ref={inputRef} onClick={onOpenAddTask}>
@@ -189,7 +197,6 @@ export function GroupDetails({
                     </button>
                 )}
             </div>
-        </section >
+        </section>
     )
 }
-

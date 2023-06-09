@@ -18,6 +18,8 @@ import { TaskDetails } from '../cmps/task/task-details.jsx'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import { utilService } from '../services/util.service.js'
 import { isEmpty } from 'lodash'
+import { boardService } from 'services/board.service.local.js'
+import { userService } from 'services/user.service.js'
 
 export function BoardIndex() {
     const { boardId } = useParams()
@@ -47,7 +49,14 @@ export function BoardIndex() {
     async function addGroup(group) {
         try {
             const currBoard = await saveGroup(group, boardId)
-            updateBoard(currBoard)
+            const activity = boardService.getEmptyActivity()
+            activity.taskId = null
+            activity.by = userService.getLoggedinUser()?.fullname
+                ? userService.getLoggedinUser().fullname
+                : 'Guest'
+            activity.title = `Added group to board`
+            currBoard.activities.push(activity)
+            await updateBoard(currBoard)
         } catch (err) {
             console.log(err)
             showErrorMsg('Can not add a group')
@@ -64,7 +73,14 @@ export function BoardIndex() {
 
     async function onRemoveGroup(group) {
         try {
-            await removeGroup(group.id, boardId)
+            const activity = boardService.getEmptyActivity()
+            activity.taskId = null
+            activity.by = userService.getLoggedinUser()?.fullname
+                ? userService.getLoggedinUser().fullname
+                : 'Guest'
+            activity.title = `Removed group from board`
+            console.log(activity)
+            await removeGroup(group.id, boardId, activity)
         } catch (err) {
             console.log(err)
         }

@@ -10,6 +10,7 @@ import { CLOSE_DYN_ALL_MODALS } from '../../store/system.reducer'
 import { store } from '../../store/store'
 import BasicTimePicker from '../task/basic-time-keeper'
 import { boardService } from 'services/board.service.local'
+import { userService } from 'services/user.service'
 
 export function DynCmpDates({ task }) {
     const [selectedDate, setSelectedDate] = useState(null)
@@ -43,6 +44,9 @@ export function DynCmpDates({ task }) {
                 task.dueDate
             )} to: ${task.title}`
             activity.taskId = task.id
+            activity.by = userService.getLoggedinUser()?.fullname
+                ? userService.getLoggedinUser().fullname
+                : 'Guest'
             await updateTask(boardId, groupId, task, activity)
             store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
         } catch (error) {
@@ -58,6 +62,9 @@ export function DynCmpDates({ task }) {
             const activity = boardService.getEmptyActivity()
             activity.title = `Removed due date from: ${task.title}`
             activity.taskId = task.id
+            activity.by = userService.getLoggedinUser()?.fullname
+                ? userService.getLoggedinUser().fullname
+                : 'Guest'
             await updateTask(boardId, groupId, task, activity)
             store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
         } catch (error) {
