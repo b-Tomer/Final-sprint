@@ -1,5 +1,5 @@
-import {boardService} from './board.service.mjs'
-import {logger} from '../../services/logger.service.mjs'
+import { boardService } from './board.service.mjs'
+import { logger } from '../../services/logger.service.mjs'
 
 export async function getBoards(req, res) {
   try {
@@ -8,7 +8,7 @@ export async function getBoards(req, res) {
       txt: req.query.txt || '',
     }
     const boards = await boardService.query(filterBy)
-    console.log('boards: ', boards )
+    console.log('boards: ', boards)
     res.json(boards)
   } catch (err) {
     logger.error('Failed to get boards', err)
@@ -28,7 +28,7 @@ export async function getBoardById(req, res) {
 }
 
 export async function addBoard(req, res) {
-  const {loggedinUser} = req
+  const { loggedinUser } = req
 
   try {
     const board = req.body
@@ -65,7 +65,7 @@ export async function removeBoard(req, res) {
 }
 
 export async function addBoardMsg(req, res) {
-  const {loggedinUser} = req
+  const { loggedinUser } = req
   try {
     const boardId = req.params.id
     const msg = {
@@ -82,10 +82,10 @@ export async function addBoardMsg(req, res) {
 }
 
 export async function removeBoardMsg(req, res) {
-  const {loggedinUser} = req
+  const { loggedinUser } = req
   try {
     const boardId = req.params.id
-    const {msgId} = req.params
+    const { msgId } = req.params
 
     const removedId = await boardService.removeBoardMsg(boardId, msgId)
     res.send(removedId)

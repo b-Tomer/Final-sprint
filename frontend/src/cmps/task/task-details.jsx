@@ -78,7 +78,7 @@ export function TaskDetails({
             <section className="task-details-container" ref={elementRef}>
                 <TaskCover simpleCloseModal={simpleCloseModal} task={task} />
                 <div className="task-details-secondry-container">
-                    <TaskHeader task={task} group={group} />
+                    <TaskHeader task={task} group={group} boardId={boardId} />
                     <TaskMainDetails
                         boardId={boardId}
                         task={task}

@@ -5,11 +5,11 @@ import { ReactComponent as X } from '../assets/img/icons/x.svg'
 export function UserInfo({ closeUserInfo }) {
     const user = userService.getLoggedinUser()
 
-
     function upperCase(word) {
         return word.charAt(0).toUpperCase() + word.slice(1);
     }
 
+    if (!user) return
     return (
         <div >
             <div className='account'>Account</div>

@@ -15,15 +15,13 @@ import { ReactComponent as Logo } from '../assets/img/icons/logo.svg'
 import { boardService } from '../services/board.service.js'
 import { userService } from 'services/user.service.js'
 import { UserInfo } from './user-info.jsx'
+import { CreteBoard } from './create-board.jsx'
 
 export function AppHeader({ onSetfilter }) {
     const { board } = useSelector((storeState) => storeState.boardModule)
     const [isMobileOpen, setIsMobileOpen] = useState(false)
     const [loginUser, setloginUser] = useState(null)
     const [isUserInfoOpen, setIsUserInfoOpen] = useState(false)
-
-    console.log('userInfo', isUserInfoOpen)
-
 
     const toggleMobileOpen = () => {
         setIsMobileOpen(!isMobileOpen)
@@ -38,7 +36,6 @@ export function AppHeader({ onSetfilter }) {
     useEffect(() => {
         printAverageColor()
         setloginUser(userService.getLoggedinUser())
-        console.log(loginUser)
     }, [board])
 
     function printAverageColor() {
@@ -194,6 +191,7 @@ export function AppHeader({ onSetfilter }) {
                         <span className="plus-icon">+</span>
                         <span className="create">Create</span>
                     </button>
+                    <CreteBoard />
                 </div>
             </nav>
             <div className="header-actions">

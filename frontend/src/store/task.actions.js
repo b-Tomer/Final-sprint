@@ -32,7 +32,7 @@ export async function removeTask(boardId, groupId, taskId, activity) {
     }
 }
 
-export async function addTask() {}
+export async function addTask() { }
 
 export async function updateTask(boardId, groupId, task, activity) {
     try {

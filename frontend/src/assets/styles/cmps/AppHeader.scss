@@ -47,6 +47,7 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
             transform: translateY(-200px);
             border-radius: 3px;
+            z-index: 4;
 
             @include for-normal-layout {
                 margin-bottom: 2px;
