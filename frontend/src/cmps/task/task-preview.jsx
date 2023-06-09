@@ -76,6 +76,7 @@ export function TaskPreview({
     function getLabelBgColor(id) {
         if (!board.labels) return
         const matchedLabel = board.labels.find((label) => label.id === id)
+        console.log('matchlabels', matchedLabel)
         return matchedLabel.color
     }
 
