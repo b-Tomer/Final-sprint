@@ -4,6 +4,7 @@ import { TaskActivity } from './task-activity'
 import { TaskAttachments } from './task-attachments.jsx'
 import { TaskDescription } from './task-description'
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
 
 export function TaskMainContent({
     task,
@@ -12,6 +13,7 @@ export function TaskMainContent({
     setEditing,
     editing,
 }) {
+    const { board } = useSelector((storeState) => storeState.boardModule)
     const [isShowAll, setIsShowAll] = useState(false)
 
     function toggleShowAll() {
@@ -48,9 +50,15 @@ export function TaskMainContent({
                 <div className="activities-title">
                     <Activity className="task-content-icon" />
                     <h3>Activity</h3>
-                    <button onClick={toggleShowAll} className="show-all">
-                        {!isShowAll ? 'Hide activities' : 'Show all activities'}
-                    </button>
+                    {board.activities.filter(
+                        (activity) => activity.taskId === task.id
+                    ).length > 5 && (
+                        <button onClick={toggleShowAll} className="show-all">
+                            {!isShowAll
+                                ? 'Hide activities'
+                                : 'Show all activities'}
+                        </button>
+                    )}
                 </div>
                 <TaskActivity
                     taskId={task.id}

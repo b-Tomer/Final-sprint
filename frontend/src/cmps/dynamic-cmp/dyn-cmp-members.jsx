@@ -73,39 +73,43 @@ export function DynCmpMembers({ task }) {
         <div className="dyn-cmp-members-container">
             <h3>Board members</h3>
             <div>
-                {board.members.map((member) => {
-                    const isMemberChecked = task.members
-                        ? task.members.includes(member._id)
-                        : false
-                    return (
-                        <label
-                            key={member._id}
-                            onClick={onCheckClick}
-                            className="dyn-cmp-member"
-                            htmlror="checkbox"
-                        >
-                            <div>
-                                <img
-                                    src={member.imgUrl}
-                                    alt="Image"
-                                    className="member-img"
-                                />
-                            </div>
-                            <span>{member.fullname}</span>
-                            <input
-                                id={`checkbox-${member._id}`}
-                                type="checkbox"
-                                name="checkbox"
+                {board.members &&
+                    board.members.length > 0 &&
+                    task.members &&
+                    task.members.length > 0 &&
+                    board.members.map((member) => {
+                        const isMemberChecked = task.members
+                            ? task.members.includes(member._id)
+                            : false
+                        return (
+                            <label
+                                key={member._id}
                                 onClick={onCheckClick}
-                                checked={isMemberChecked}
-                                onChange={(ev) =>
-                                    onToggleCheckedMember(ev, member._id)
-                                }
-                                className="checkbox"
-                            />
-                        </label>
-                    )
-                })}
+                                className="dyn-cmp-member"
+                                htmlror="checkbox"
+                            >
+                                <div>
+                                    <img
+                                        src={member.imgUrl}
+                                        alt="Image"
+                                        className="member-img"
+                                    />
+                                </div>
+                                <span>{member.fullname}</span>
+                                <input
+                                    id={`checkbox-${member._id}`}
+                                    type="checkbox"
+                                    name="checkbox"
+                                    onClick={onCheckClick}
+                                    checked={isMemberChecked}
+                                    onChange={(ev) =>
+                                        onToggleCheckedMember(ev, member._id)
+                                    }
+                                    className="checkbox"
+                                />
+                            </label>
+                        )
+                    })}
             </div>
         </div>
     )
