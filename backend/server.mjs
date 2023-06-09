@@ -16,7 +16,10 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.resolve('public')))
 } else {
     const corsOptions = {
-        origin: ['http://127.0.0.1:3001',
+        origin: [
+            'http://127.0.0.1:3000',
+            'http://localhost:3000',
+            'http://127.0.0.1:3001',
             'http://localhost:3001',
             'http://127.0.0.1:5173',
             'http://localhost:5173'
