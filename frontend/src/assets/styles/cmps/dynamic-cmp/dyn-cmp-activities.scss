@@ -5,11 +5,14 @@
     padding-inline: 10px;
     overflow-y: auto;
     max-height: 75vh;
+    max-width: 290px;
     .activity-container {
         color: $clr7;
         font-size: 14px;
         display: flex;
         flex-direction: column;
+        word-wrap: break-word;
+        white-space: normal;
         .by {
             font-weight: 700;
         }

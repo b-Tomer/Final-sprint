@@ -1,6 +1,12 @@
 .add-to-card-menu {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-items: center;
+    @include for-normal-layout {
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
 }
 
 .button-link {
@@ -10,12 +16,24 @@
     color: $clr4;
     display: flex;
     height: 32px;
-    margin-top: 8px;
-    max-width: 300px;
+    margin-block-start: 8px;
+    margin-inline-end: 8px;
+    // max-width: 300px;
+    width: 48%;
     overflow: hidden;
     padding: 6px 12px;
     position: relative;
     align-items: center;
+
+    @include for-normal-layout {
+        max-width: 300px;
+        width: auto;
+        margin-inline-end: 0;
+    }
+
+    @media (max-width: 440px) {
+        width: 100%;
+    }
 
     &:hover {
         cursor: pointer;

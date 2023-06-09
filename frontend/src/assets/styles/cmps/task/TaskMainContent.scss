@@ -65,7 +65,6 @@
             }
         }
 
-
         .cancel-edit-btn {
             color: $clr7;
             height: 2rem;
@@ -81,7 +80,6 @@
         .edit-desc-btns {
             margin-top: 3px;
             margin-left: auto;
-
         }
 
         .edit-desc-btn {
@@ -94,6 +92,44 @@
             font-size: 14px;
             color: $clr7;
             cursor: pointer;
+            word-wrap: break-word;
+        }
+    }
+
+    .task-activities-container {
+        padding-inline-start: 20px;
+        font-size: 14px;
+        width: 100%;
+
+        @include for-normal-layout {
+            width: 550px;
+        }
+
+        .activity-content {
+            display: flex;
+            align-content: center;
+            align-items: center;
+            width: 100%;
+            .title {
+                display: inline-block;
+                width: 100%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .by {
+                font-weight: 700;
+                margin-inline-end: 5px;
+                width: fit-content;
+                white-space: nowrap;
+            }
+        }
+
+        .created-at {
+            font-size: 12px;
+        }
+        hr {
+            max-width: 100%;
         }
     }
 }
