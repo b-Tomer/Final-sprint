@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { utilService } from 'services/util.service'
 
-export function TaskActivity({ taskId }) {
+export function TaskActivity({ taskId, setIsShowAll, isShowAll }) {
     const { board } = useSelector((storeState) => storeState.boardModule)
 
     function capitalizeKeywords(str) {
@@ -22,6 +22,7 @@ export function TaskActivity({ taskId }) {
                 board.activities
                     .filter((activity) => activity.taskId === taskId)
                     .sort((a, b) => b.createdAt - a.createdAt)
+                    .slice(0, isShowAll ? 5 : board.activities.length - 1)
                     .map(
                         (activity) =>
                             activity && (

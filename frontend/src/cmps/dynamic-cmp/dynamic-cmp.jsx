@@ -31,46 +31,34 @@ export function DynamicCmp({ task, title, setEditing, modalPos, board }) {
         return () => {
             window.removeEventListener('resize', calcModalPos)
         }
-    }, [modalPos])
+    }, [modalPos, modalTitle])
 
     function calcModalPos() {
         if (!modalPos) return
-
         const containerRect = containerRef.current.getBoundingClientRect()
         const height = containerRect.height
         const width = containerRect.width
-
         const top = modalPos.top
         const left = modalPos.left
-
         const windowPos = {
             x: window.innerWidth,
             y: window.innerHeight,
         }
-
         const scrollPos = {
             x: window.scrollX || window.pageXOffset,
             y: window.scrollY || window.pageYOffset,
         }
-
         let modalTop
         let modalLeft
-
         if (top - scrollPos.y + 48 + height > windowPos.y) {
-            // Modal above the button with at least 48px space for header
             modalTop = Math.max(scrollPos.y + windowPos.y - height - 48, 48)
         } else {
-            // Modal below the button
             modalTop = top + modalPos.height + 5
         }
-
         modalLeft = left - 5
-
         if (modalLeft + width > windowPos.x) {
-            // Modal goes out of bounds to the right
             modalLeft = windowPos.x - width - 10
         }
-
         setModalStyle({
             top: modalTop,
             left: modalLeft,

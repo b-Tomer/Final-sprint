@@ -12,6 +12,18 @@
             font-weight: 500;
             color: $clr5;
         }
+        .show-all {
+            margin-left: auto;
+            padding: 7px 7px;
+            color: $clr7;
+            border-radius: 5px;
+            background-color: $clrTodoBg;
+            color: $clr7;
+
+            &:hover {
+                background-color: $clrH;
+            }
+        }
     }
 
     .task-content-icon {

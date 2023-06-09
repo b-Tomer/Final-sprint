@@ -4,9 +4,9 @@ import { ReactComponent as Lists } from '../../assets/img/icons/lists.svg'
 // import Colors from '../../assets/img/backgrounds/colors.jpg'
 // import GreenBalls from '../../assets/img/backgrounds/green-balls.jpg'
 import Bg1 from '../../assets/img/background1.jpg'
-import Bg2 from '../../assets/img/background2.jpg'
+import Bg2 from '../../assets/img/background6.jpg'
 import Bg3 from '../../assets/img/background4.jpg'
-import Bg4 from '../../assets/img/background5.jpg'
+import Bg4 from '../../assets/img/background7.jpg'
 
 import Blue from '../../assets/img/backgrounds/blue.svg'
 import DarkBlue from '../../assets/img/backgrounds/dark-blue.svg'
@@ -28,10 +28,17 @@ export function DynCmpNewBoard() {
     const imgRef = useRef()
     const titleRef = useRef()
     const navigate = useNavigate()
-    async function onAddBoard() {
+
+    async function onAddBoard(ev) {
+        ev.preventDefault()
         const user = userService.getLoggedinUser()
         const board = boardService.getEmptyBoard()
         board.title = titleRef.current.value
+        if (!board.title) {
+            console.log('no title chosen')
+            store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
+            return
+        }
         console.log(user)
         board.members = [user?._id] || []
         board.style = { backgroundImage: imgRef.current.src }
@@ -116,10 +123,10 @@ export function DynCmpNewBoard() {
                 />
             </div>
             <h3>Board title</h3>
-            <input ref={titleRef} placeholder="Required"></input>
-            <button onClick={onAddBoard} className="create-btn">
-                Create
-            </button>
+            <form onSubmit={onAddBoard}>
+                <input ref={titleRef} placeholder="Required" required></input>
+                <button className="create-btn">Create</button>
+            </form>
         </section>
     )
 }
