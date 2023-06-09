@@ -1,10 +1,19 @@
 import { userService } from 'services/user.service'
 import { ReactComponent as X } from '../assets/img/icons/x.svg'
+import { logout } from 'store/user.actions';
+import { useNavigate } from 'react-router-dom';
+
 
 
 export function UserInfo({ closeUserInfo }) {
     const user = userService.getLoggedinUser()
+    const navigate = useNavigate()
 
+    function onLogout(){
+        logout()
+        closeUserInfo()
+        navigate('/')
+    }
 
     function upperCase(word) {
         return word.charAt(0).toUpperCase() + word.slice(1);
@@ -24,9 +33,9 @@ if(!user) return null
                     <X className="task-icon-img" />
                 </button>
             </div>
-            <div className='user-mail'>user email</div>
+            <div className='user-mail'>{user.mail}</div>
             <hr></hr>
-            <div className='log-out'>Log out</div>
+            <div onClick={onLogout} className='log-out'>Log out</div>
         </div>
 
     )

@@ -41,10 +41,10 @@ export function LoginSignup() {
         setCredentials({ ...credentials, [field]: value })
     }
 
-   async function onLogin(ev = null) {
+    async function onLogin(ev = null) {
         if (ev) ev.preventDefault()
         if (!credentials.username) return
-        try{
+        try {
             await handleLogin(credentials)
             clearState()
             if (userService.getLoggedinUser()) {
@@ -52,8 +52,8 @@ export function LoginSignup() {
             } else {
                 console.log('not logged in')
             }
-        }catch(err){
-            console.log("user not found " ,err);
+        } catch (err) {
+            console.log("user not found ", err);
         }
     }
 
@@ -98,10 +98,14 @@ export function LoginSignup() {
         setCredentials({ ...credentials, imgUrl })
     }
 
+    function onGoHome() {
+        navigate('/')
+    }
+
     return (
         <div className="login-page">
             <div className="login-page-header"></div>
-            <h3>Trellax</h3>
+            <h3 onClick={onGoHome}>Trellax</h3>
             <div className="login-signin-container">
                 {!isSignup && (
                     <div className="login-container">
@@ -121,7 +125,6 @@ export function LoginSignup() {
                                 placeholder="Enter password"
                                 onChange={handleChange}
                                 required
-                                autoFocus
                             />
                             <button onClick={onLogin} className="login-btn">
                                 Log in to Trellax
@@ -149,7 +152,6 @@ export function LoginSignup() {
                                 placeholder=" Enter username"
                                 onChange={handleChange}
                                 required
-                                autoFocus
                             />
                             <input
                                 type="password"
@@ -157,7 +159,6 @@ export function LoginSignup() {
                                 placeholder="Enter password"
                                 onChange={handleChange}
                                 required
-                                autoFocus
                             />
                             <button className="login-btn">
                                 Sign up for your account

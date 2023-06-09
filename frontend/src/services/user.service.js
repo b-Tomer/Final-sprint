@@ -62,7 +62,7 @@ async function signup(userCred) {
     return saveLocalUser(user)
 }
 async function logout() {
-    // sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+    sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
     return await httpService.post('auth/logout')
 }
 
@@ -71,6 +71,7 @@ function saveLocalUser(user) {
         _id: user._id,
         fullname: user.fullname,
         imgUrl: user.imgUrl,
+        mail: user.mail,
     }
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user

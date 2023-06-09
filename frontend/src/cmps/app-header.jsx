@@ -15,6 +15,7 @@ import { ReactComponent as Logo } from '../assets/img/icons/logo.svg'
 import { boardService } from '../services/board.service.js'
 import { userService } from 'services/user.service.js'
 import { UserInfo } from './user-info.jsx'
+import { logout } from 'store/user.actions.js'
 
 export function AppHeader({ onSetfilter }) {
     const { board } = useSelector((storeState) => storeState.boardModule)

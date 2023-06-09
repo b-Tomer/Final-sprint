@@ -41,14 +41,14 @@ export function getActionSetBoard(board) {
 export async function loadBoard(boardId, filterBy = {}) {
     try {
         const board = await boardService.getById(boardId)
-        if (filterBy.txt) {
-            const regex = new RegExp(filterBy.txt, 'i')
-            let groupsToShow = board.groups.filter((group) =>
-                regex.test(group.title)
-            )
-            //    || board.groups.filter(group => group.tasks.forEach(task=> regex.test(task.title)))
-            board.groups = groupsToShow
-        }
+        // if (filterBy.txt) {
+        //     const regex = new RegExp(filterBy.txt, 'i')
+        //     let groupsToShow = board.groups.filter((group) =>
+        //         regex.test(group.title)
+        //     )
+        //     //    || board.groups.filter(group => group.tasks.forEach(task=> regex.test(task.title)))
+        //     board.groups = groupsToShow
+        // }
         store.dispatch({
             type: SET_BOARD,
             board,

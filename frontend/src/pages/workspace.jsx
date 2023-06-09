@@ -2,33 +2,38 @@ import { useDispatch, useSelector } from 'react-redux'
 import { BoardPreview } from '../cmps/board-preview'
 import { AppHeader } from '../cmps/app-header'
 import {
+    addBoard,
     loadBoards, setFilterBy, updateBoard,
 } from '../store/board.actions.js'
 import { useEffect } from 'react'
 import { ReactComponent as Starred } from '../assets/img/icons/starred.svg'
 import { ReactComponent as Clock } from '../assets/img/icons/clock.svg'
-// import { SET_BOARD } from '../store/board.reducer'
+import { useState } from 'react'
+import { boardService } from 'services/board.service'
+import { showErrorMsg, showSuccessMsg } from 'services/event-bus.service'
+
 
 
 
 export function Workspace() {
     const boards = useSelector((storeState) => storeState.boardModule.boards)
     const { filterBy } = useSelector((storeState) => storeState.boardModule)
-
+    const [newBoard, setNewBoard] = useState(null)
     useEffect(() => {
         onLoadBoards(filterBy)
+        setNewBoard(boardService.getEmptyBoard())
     }, [filterBy])
 
 
-    // async function onAddBoard() {
-    //     const board = boardService.getEmptyBoard()
-    //     try {
-    //         const savedBoard = await addBoard(board)
-    //         showSuccessMsg(`Board added (id: ${savedBoard._id})`)
-    //     } catch (err) {
-    //         showErrorMsg('Cannot add board')
-    //     }
-    // }
+    async function onAddBoard() {
+        setNewBoard((prevBoard) => ({ ...prevBoard, title: "New board" }))
+        try {
+            const savedBoard = await addBoard(newBoard)
+            showSuccessMsg(`Board added (id: ${savedBoard._id})`)
+        } catch (err) {
+            showErrorMsg('Cannot add board')
+        }
+    }
 
     // async function onRemoveBoard(boardId) {
     //     try {
@@ -50,7 +55,7 @@ export function Workspace() {
             .then(console.log)
     }
 
-    function onSetfilter(filterByToUpdate){
+    function onSetfilter(filterByToUpdate) {
         setFilterBy(filterByToUpdate)
     }
 
@@ -78,6 +83,9 @@ export function Workspace() {
                         <span>Recently viewed</span>
                     </div>
                     <div className='recently-viewed-container'>
+                    <div className="board-preview new-board-box">
+                            <span>Create new board</span>
+                        </div>
                         {boards
                             .map((board) => <BoardPreview board={board} key={board._id} toggleStarredStatus={toggleStarredStatus} />)
                         }
