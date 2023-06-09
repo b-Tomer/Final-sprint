@@ -18,6 +18,7 @@ export function TaskAttachments({ task, boardId, groupId }) {
     )
     const [currTask, setCurrTask] = useState(task)
     const [currAtc, setCurrAtc] = useState(task)
+    const [modalPos, setModalPos] = useState(null)
 
     useEffect(() => {
         setCurrTask(task)
@@ -57,8 +58,10 @@ export function TaskAttachments({ task, boardId, groupId }) {
         updateTask(boardId, groupId, updatedTask)
     }
 
-    function onEditAttachment(title, currAtc) {
-        store.dispatch({ type: SET_ATC_TO_EDIT, atc:currAtc })
+    function onEditAttachment(ev, title, currAtc) {
+        const { top, left, height } = ev.target.getBoundingClientRect()
+        setModalPos({ top, left, height })
+        store.dispatch({ type: SET_ATC_TO_EDIT, atc: currAtc })
         store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
         store.dispatch({ type: SET_MODAL_TITLE, title })
         store.dispatch({ type: OPEN_DYN_MODAL })
@@ -92,7 +95,8 @@ export function TaskAttachments({ task, boardId, groupId }) {
                     </div>
                     <div className="attachment-content">
                         <span className="attachment-title">
-                            {atc.title || atc.url?.split('/').pop().slice(0, 26)}
+                            {atc.title ||
+                                atc.url?.split('/').pop().slice(0, 26)}
                         </span>
                         <span>Added at {formatTimestamp(atc.createdAt)} </span>
                         <span className="small-dots">&#x2022;</span>
@@ -127,7 +131,11 @@ export function TaskAttachments({ task, boardId, groupId }) {
                 </div>
             ))}
             {isOpenEditAtc && (
-                <DynamicCmp task={task} title="Edit attachment" />
+                <DynamicCmp
+                    task={task}
+                    modalPos={modalPos}
+                    title="Edit attachment"
+                />
             )}
         </section>
     )

@@ -1,10 +1,12 @@
 .dyn-cmp-checklist-container {
     padding: 10px;
 
-    h3 {
-        font-size: 12px;
+    .checklist-title {
+        margin: 0;
+        margin-block-start: 5px;
+        margin-block-end: 10px;
     }
-    input {
+    .checklist-npt {
         margin: 4px 0 12px;
         width: 100%;
         background-color: #fafbfc;
