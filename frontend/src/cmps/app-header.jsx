@@ -1,6 +1,5 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { addBoard } from '../store/board.actions.js'
 import { useState, useEffect } from 'react'
 import { FastAverageColor } from 'fast-average-color'
 import ContrastColor from 'contrast-color'
@@ -12,16 +11,18 @@ import { ReactComponent as Info } from '../assets/img/icons/info.svg'
 import { ReactComponent as Theme } from '../assets/img/icons/theme.svg'
 import { ReactComponent as Search } from '../assets/img/icons/search.svg'
 import { ReactComponent as Logo } from '../assets/img/icons/logo.svg'
-import { boardService } from '../services/board.service.js'
 import { userService } from 'services/user.service.js'
 import { UserInfo } from './user-info.jsx'
-import { CreteBoard } from './create-board.jsx'
+import { DynamicCmp } from './dynamic-cmp/dynamic-cmp.jsx'
+import { CLOSE_DYN_ALL_MODALS, OPEN_DYN_MODAL, OPEN_DYN_NEW_BOARD_TOP_MODAL, SET_MODAL_TITLE } from 'store/system.reducer.js'
+import { store } from 'store/store.js'
 
 export function AppHeader({ onSetfilter }) {
     const { board } = useSelector((storeState) => storeState.boardModule)
     const [isMobileOpen, setIsMobileOpen] = useState(false)
     const [loginUser, setloginUser] = useState(null)
     const [isUserInfoOpen, setIsUserInfoOpen] = useState(false)
+    const { isOpenNewBoardTopModal } = useSelector((storeState) => storeState.systemModule)
 
     const toggleMobileOpen = () => {
         setIsMobileOpen(!isMobileOpen)
@@ -36,6 +37,9 @@ export function AppHeader({ onSetfilter }) {
     useEffect(() => {
         printAverageColor()
         setloginUser(userService.getLoggedinUser())
+        console.log(board);
+        console.log(bgColor);
+        console.log(txtColor);
     }, [board])
 
     function printAverageColor() {
@@ -67,22 +71,16 @@ export function AppHeader({ onSetfilter }) {
         onSetfilter({ txt: value })
     }
 
-    async function onNewBoard(ev) {
-        ev.preventDefault()
-        try {
-            const title = prompt('Enter board title')
-            if (!title) return
-            const newBoard = boardService.getEmptyBoard()
-            newBoard.title = title
-            const currBoard = await addBoard(newBoard)
-            navigate(`/board/${currBoard._id}`)
-        } catch (error) {
-            console.log('cannot add new board')
-            console.log(error)
-        }
+    async function onOpenNewBoard() {
+        store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
+        store.dispatch({ type: SET_MODAL_TITLE, title: 'New board' })
+        store.dispatch({ type: OPEN_DYN_NEW_BOARD_TOP_MODAL })
+        store.dispatch({ type: OPEN_DYN_MODAL })
     }
 
     function goHome() {
+        setBgColor(null)
+        setTxtColor(null)
         navigate(`/`)
     }
 
@@ -115,14 +113,9 @@ export function AppHeader({ onSetfilter }) {
                     <div className="link-section">
                         <div className="links">
                             <NavLink
-                                to="/"
+                                to="/workspace"
                                 style={
-                                    bgColor
-                                        ? txtColor
-                                            ? { color: txtColor }
-                                            : null
-                                        : null
-                                }
+                                    bgColor ? txtColor ? { color: txtColor } : null : null}
                             >
                                 Workspaces
                             </NavLink>
@@ -180,7 +173,7 @@ export function AppHeader({ onSetfilter }) {
                     </button>
                     <button
                         className="new-board"
-                        onClick={onNewBoard}
+                        onClick={onOpenNewBoard}
                         style={
                             bgColor
                                 ? txtColor
@@ -192,7 +185,7 @@ export function AppHeader({ onSetfilter }) {
                         <span className="plus-icon">+</span>
                         <span className="create">Create</span>
                     </button>
-                    <CreteBoard />
+                    {isOpenNewBoardTopModal && <DynamicCmp title={'Create board'} />}
                 </div>
             </nav>
             <div className="header-actions">

@@ -11,6 +11,8 @@ export const OPEN_DYN_MEMBER_MODAL = 'OPEN_DYN_MEMBER_MODAL'
 export const OPEN_DYN_ACTIVITIES_MODAL = 'OPEN_DYN_ACTIVITIES_MODAL'
 export const CLOSE_DYN_ALL_MODALS = 'CLOSE_DYN_ALL_MODALS'
 export const OPEN_DYN_EDITOR_MODAL = 'OPEN_DYN_EDITOR_MODAL'
+export const OPEN_DYN_NEW_BOARD_MODAL = 'OPEN_DYN_NEW_BOARD_MODAL'
+export const OPEN_DYN_NEW_BOARD_TOP_MODAL = 'OPEN_DYN_NEW_BOARD_TOP_MODAL'
 
 const initialState = {
     isLoading: false,
@@ -22,6 +24,8 @@ const initialState = {
     isOpenLabelModal: false,
     isOpenEditorModal: false,
     isOpenActivitiesModal: false,
+    isOpenNewBoardModal: false,
+    isOpenNewBoardTopModal: false,
     modalTitle: '',
 }
 
@@ -50,6 +54,10 @@ export function systemReducer(state = initialState, action = {}) {
             return { ...state, isOpenActivitiesModal: true }
         case OPEN_DYN_EDITOR_MODAL:
             return { ...state, isOpenEditorModal: true }
+        case OPEN_DYN_NEW_BOARD_MODAL:
+            return { ...state, isOpenNewBoardModal: true }
+        case OPEN_DYN_NEW_BOARD_TOP_MODAL:
+            return { ...state, isOpenNewBoardTopModal: true }
         case CLOSE_DYN_ALL_MODALS:
             return {
                 ...state,
@@ -61,6 +69,8 @@ export function systemReducer(state = initialState, action = {}) {
                 isOpenActivitiesModal: false,
                 isOpenMemberModal: false,
                 isOpenEditorModal: false,
+                isOpenNewBoardModal: false,
+                isOpenNewBoardTopModal: false,
             }
         case SET_MODAL_TITLE:
             return { ...state, modalTitle: action.title }
