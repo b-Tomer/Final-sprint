@@ -21,6 +21,8 @@ export function DatePreview({ task, setDynamicCmpName }) {
 
     const { boardId } = useParams()
     const { groupId } = useParams()
+    const [modalPos, setModalPos] = useState(null)
+
     // const { isModalOpen } = useSelector((storeState) => storeState.systemModule)
     const { isOpenDateModal } = useSelector(
         (storeState) => storeState.systemModule
@@ -69,7 +71,9 @@ export function DatePreview({ task, setDynamicCmpName }) {
         return null
     }
 
-    function handleToggleDatePicker() {
+    function handleToggleDatePicker(ev) {
+        let { top, left, height } = ev.target.getBoundingClientRect()
+        setModalPos({ top, left, height })
         store.dispatch({ type: SET_MODAL_TITLE, title: 'Dates' })
         store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
         store.dispatch({ type: OPEN_DYN_MODAL })
@@ -126,7 +130,11 @@ export function DatePreview({ task, setDynamicCmpName }) {
                 </div>
             </div>
             {isOpenDateModal && (
-                <DynamicCmp task={task} title="Edit attachment" />
+                <DynamicCmp
+                    task={task}
+                    modalPos={modalPos}
+                    title="Edit attachment"
+                />
             )}
         </div>
     )

@@ -6,7 +6,10 @@ import { DynCmpChecklist } from './dyn-cmp-checklist'
 import { DynCmpDates } from './dyn-cmp-dates'
 import { DynCmpAttachment } from './dyn-cmp-attachment'
 import { DynCmpAttachmentEdit } from './dyn-cpm-attachment-edit'
-import { CLOSE_DYN_ALL_MODALS, SET_MODAL_TITLE } from '../../store/system.reducer'
+import {
+    CLOSE_DYN_ALL_MODALS,
+    SET_MODAL_TITLE,
+} from '../../store/system.reducer'
 import { useSelector } from 'react-redux'
 import { store } from '../../store/store'
 import { useParams } from 'react-router-dom'
@@ -19,54 +22,60 @@ export function DynamicCmp({ task, title, setEditing, modalPos, board }) {
     const { modalTitle } = useSelector((storeState) => storeState.systemModule)
     const { boardId } = useParams()
     const { groupId } = useParams()
-    const [modalStyle, setModalStyle] = useState({})
-    const container = useRef()
-
-    let windowPos = {}
+    const [modalStyle, setModalStyle] = useState({ visibility: 'hidden' })
+    const containerRef = useRef(null)
 
     useEffect(() => {
-        if (!modalPos) {
-            setModalStyle({})
-        } else
-            setModalStyle({
-                top: modalPos.top + modalPos.height + 5,
-                left: modalPos.left,
-            })
         calcModalPos()
-    }, [container, modalPos])
+        window.addEventListener('resize', calcModalPos)
+        return () => {
+            window.removeEventListener('resize', calcModalPos)
+        }
+    }, [modalPos])
 
     function calcModalPos() {
-        if (!modalPos) {
-            setModalStyle({})
-            return
-        } else
-            setModalStyle({
-                top: modalPos.top + modalPos.height + 5,
-                left: modalPos.left,
-            })
-        windowPos.x = window.innerWidth
-        windowPos.y = window.innerHeight
-        if (!container.current) return
-        const height = container.current.getBoundingClientRect().height
-        if (windowPos.y - modalPos.top - height > 5) {
-            setModalStyle({
-                top: modalPos.top + modalPos.height + 5,
-                left: modalPos.left,
-            })
-        } else {
-            setModalStyle({
-                top: modalPos.top - height - 5,
-                left: modalPos.left,
-            })
+        if (!modalPos) return
+
+        const containerRect = containerRef.current.getBoundingClientRect()
+        const height = containerRect.height
+        const width = containerRect.width
+
+        const top = modalPos.top
+        const left = modalPos.left
+
+        const windowPos = {
+            x: window.innerWidth,
+            y: window.innerHeight,
         }
-        // if (modalPos.top - height < 5) {
-        //     setModalStyle({
-        //         top: modalPos.top - height / 2 - 50,
-        //         left:
-        //             modalPos.left -
-        //             container.current.getBoundingClientRect().width,
-        //     })
-        // }
+
+        const scrollPos = {
+            x: window.scrollX || window.pageXOffset,
+            y: window.scrollY || window.pageYOffset,
+        }
+
+        let modalTop
+        let modalLeft
+
+        if (top - scrollPos.y + 48 + height > windowPos.y) {
+            // Modal above the button with at least 48px space for header
+            modalTop = Math.max(scrollPos.y + windowPos.y - height - 48, 48)
+        } else {
+            // Modal below the button
+            modalTop = top + modalPos.height + 5
+        }
+
+        modalLeft = left - 5
+
+        if (modalLeft + width > windowPos.x) {
+            // Modal goes out of bounds to the right
+            modalLeft = windowPos.x - width - 10
+        }
+
+        setModalStyle({
+            top: modalTop,
+            left: modalLeft,
+            visibility: 'visible',
+        })
     }
 
     function onCloseDynModal(ev) {
@@ -76,12 +85,9 @@ export function DynamicCmp({ task, title, setEditing, modalPos, board }) {
     }
 
     if (!isModalOpen) return null
+
     return (
-        <div
-            className="dynamic-cmp"
-            ref={container}
-            style={modalStyle ? modalStyle : null}
-        >
+        <div className="dynamic-cmp" ref={containerRef} style={modalStyle}>
             <div className="dynamic-cmp-header">
                 <div className="dynamic-cmp-header-title">{title}</div>
                 <button className="dynamic-cmp-close" onClick={onCloseDynModal}>

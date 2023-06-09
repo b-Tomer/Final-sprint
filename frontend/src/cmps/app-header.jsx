@@ -14,7 +14,12 @@ import { ReactComponent as Logo } from '../assets/img/icons/logo.svg'
 import { userService } from 'services/user.service.js'
 import { UserInfo } from './user-info.jsx'
 import { DynamicCmp } from './dynamic-cmp/dynamic-cmp.jsx'
-import { CLOSE_DYN_ALL_MODALS, OPEN_DYN_MODAL, OPEN_DYN_NEW_BOARD_TOP_MODAL, SET_MODAL_TITLE } from 'store/system.reducer.js'
+import {
+    CLOSE_DYN_ALL_MODALS,
+    OPEN_DYN_MODAL,
+    OPEN_DYN_NEW_BOARD_TOP_MODAL,
+    SET_MODAL_TITLE,
+} from 'store/system.reducer.js'
 import { store } from 'store/store.js'
 
 export function AppHeader({ onSetfilter }) {
@@ -22,7 +27,9 @@ export function AppHeader({ onSetfilter }) {
     const [isMobileOpen, setIsMobileOpen] = useState(false)
     const [loginUser, setloginUser] = useState(null)
     const [isUserInfoOpen, setIsUserInfoOpen] = useState(false)
-    const { isOpenNewBoardTopModal } = useSelector((storeState) => storeState.systemModule)
+    const { isOpenNewBoardTopModal } = useSelector(
+        (storeState) => storeState.systemModule
+    )
 
     const toggleMobileOpen = () => {
         setIsMobileOpen(!isMobileOpen)
@@ -31,15 +38,16 @@ export function AppHeader({ onSetfilter }) {
     const navigate = useNavigate()
     const [bgColor, setBgColor] = useState(null)
     const [txtColor, setTxtColor] = useState(null)
+    const [modalPos, setModalPos] = useState(null)
 
     const fac = new FastAverageColor()
 
     useEffect(() => {
         printAverageColor()
         setloginUser(userService.getLoggedinUser())
-        console.log(board);
-        console.log(bgColor);
-        console.log(txtColor);
+        console.log(board)
+        console.log(bgColor)
+        console.log(txtColor)
     }, [board])
 
     function printAverageColor() {
@@ -71,7 +79,9 @@ export function AppHeader({ onSetfilter }) {
         onSetfilter({ txt: value })
     }
 
-    async function onOpenNewBoard() {
+    async function onOpenNewBoard(ev) {
+        let { top, left, height } = ev.target.getBoundingClientRect()
+        setModalPos({ top, left, height })
         store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
         store.dispatch({ type: SET_MODAL_TITLE, title: 'New board' })
         store.dispatch({ type: OPEN_DYN_NEW_BOARD_TOP_MODAL })
@@ -87,8 +97,6 @@ export function AppHeader({ onSetfilter }) {
     function closeUserInfo() {
         setIsUserInfoOpen(!isUserInfoOpen)
     }
-
-
 
     return (
         <header
@@ -107,15 +115,21 @@ export function AppHeader({ onSetfilter }) {
             </div>
             <nav className="main-nav">
                 <div
-                    className={`links-section ${isMobileOpen ? 'mobile-open' : ''
-                        }`}
+                    className={`links-section ${
+                        isMobileOpen ? 'mobile-open' : ''
+                    }`}
                 >
                     <div className="link-section">
                         <div className="links">
                             <NavLink
                                 to="/workspace"
                                 style={
-                                    bgColor ? txtColor ? { color: txtColor } : null : null}
+                                    bgColor
+                                        ? txtColor
+                                            ? { color: txtColor }
+                                            : null
+                                        : null
+                                }
                             >
                                 Workspaces
                             </NavLink>
@@ -185,7 +199,12 @@ export function AppHeader({ onSetfilter }) {
                         <span className="plus-icon">+</span>
                         <span className="create">Create</span>
                     </button>
-                    {isOpenNewBoardTopModal && <DynamicCmp title={'Create board'} />}
+                    {isOpenNewBoardTopModal && (
+                        <DynamicCmp
+                            title={'Create board'}
+                            modalPos={modalPos}
+                        />
+                    )}
                 </div>
             </nav>
             <div className="header-actions">
@@ -202,9 +221,19 @@ export function AppHeader({ onSetfilter }) {
                 </div>
                 <ul className="header-icons">
                     {loginUser && (
-                        <li className='user-photo' onClick={() => setIsUserInfoOpen(!isUserInfoOpen)}>
-                            <div  >
-                                {loginUser.imgUrl && <img id="image" src={`${loginUser.imgUrl}`} alt="Image" className='photo' />}
+                        <li
+                            className="user-photo"
+                            onClick={() => setIsUserInfoOpen(!isUserInfoOpen)}
+                        >
+                            <div>
+                                {loginUser.imgUrl && (
+                                    <img
+                                        id="image"
+                                        src={`${loginUser.imgUrl}`}
+                                        alt="Image"
+                                        className="photo"
+                                    />
+                                )}
                             </div>
                         </li>
                     )}
@@ -221,8 +250,7 @@ export function AppHeader({ onSetfilter }) {
                         <Theme className="app-header-icon" src={Theme} />
                     </li>
                 </ul>
-                <div className={`user-modal ${isUserInfoOpen ? 'open' : ''
-                    }`}>
+                <div className={`user-modal ${isUserInfoOpen ? 'open' : ''}`}>
                     <UserInfo closeUserInfo={closeUserInfo} />
                 </div>
             </div>

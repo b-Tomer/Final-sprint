@@ -36,6 +36,7 @@ export function TaskEditor({
     windowPos.x = window.innerWidth
     windowPos.y = window.innerHeight
     const [modalStyle, setModalStyle] = useState({})
+    const [modalPos, setModalPos] = useState(null)
     const [currTitle, setCurrTitle] = useState('')
     const { isOpenEditorModal } = useSelector(
         (storeState) => storeState.systemModule
@@ -122,6 +123,8 @@ export function TaskEditor({
     function onOpenEditorModal(title, ev) {
         ev.stopPropagation()
         setCurrTitle(title)
+        const { top, left, height } = ev.target.getBoundingClientRect()
+        setModalPos({ top, left, height })
         store.dispatch({ type: SET_MODAL_TITLE, title })
         store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
         store.dispatch({ type: OPEN_DYN_MODAL })
@@ -206,7 +209,11 @@ export function TaskEditor({
                         </span>
                     </button>
                     {isOpenEditorModal && (
-                        <DynamicCmp task={task} title={currTitle} />
+                        <DynamicCmp
+                            task={task}
+                            title={currTitle}
+                            modalPos={modalPos}
+                        />
                     )}
                 </div>
             </section>
