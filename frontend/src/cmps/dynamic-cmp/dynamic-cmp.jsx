@@ -59,6 +59,14 @@ export function DynamicCmp({ task, title, setEditing, modalPos, board }) {
                 left: modalPos.left,
             })
         }
+        if (modalPos.top - height < 5) {
+            setModalStyle({
+                top: modalPos.top - height / 2 - 50,
+                left:
+                    modalPos.left -
+                    container.current.getBoundingClientRect().width,
+            })
+        }
     }
 
     function onCloseDynModal(ev) {
