@@ -41,17 +41,15 @@
     }
 
     .colors-container {
-        margin: 15px 0px 10px 0px; ///////////////////////////////////////////
-
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        flex-wrap: wrap;
         gap: 6px;
 
         .color {
             position: relative;
             box-sizing: border-box;
             border-radius: 3px;
-            height: 32px;
+            height: 28px;
+            width: 47px;
         }
     }
 

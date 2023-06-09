@@ -106,6 +106,7 @@
     }
 
     input {
+        width: 280px;
         height: 35px;
         margin: 0px 10px;
         border-radius: 4px;
@@ -118,7 +119,8 @@
         align-self: center;
         padding: 10px;
         font-size: 1rem;
-        margin: 15px;
+        margin: 15px 115px;
+        justify-self: center;
         background-color: $clr8;
         border-radius: 8px;
         color: $clr1;
