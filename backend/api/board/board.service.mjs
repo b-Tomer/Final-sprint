@@ -4,8 +4,6 @@ import {utilService} from '../../services/util.service.mjs'
 import mongodb from 'mongodb'
 const {ObjectId} = mongodb
 
-const PAGE_SIZE = 3
-
 
 async function query(filterBy={txt:''}) {
     try {
@@ -14,10 +12,6 @@ async function query(filterBy={txt:''}) {
         }
         const collection = await dbService.getCollection('board')
         var boardCursor = await collection.find(criteria)
-
-        if (filterBy.pageIdx !== undefined) {
-            boardCursor.skip(filterBy.pageIdx * PAGE_SIZE).limit(PAGE_SIZE)     
-        }
 
         const boards = boardCursor.toArray()
         return boards
