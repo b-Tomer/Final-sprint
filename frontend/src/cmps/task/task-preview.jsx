@@ -74,7 +74,6 @@ export function TaskPreview({
     }
 
     function getLabelBgColor(id) {
-        console.log('ttttttttttttttttt', id)
         if (!board.labels) return
         const matchedLabel = board.labels.find((label) => label.id === id)
         return matchedLabel.color
@@ -152,8 +151,9 @@ export function TaskPreview({
     return (
         // <div ref={editRef}>
         <div
-            className={`task-draggable-wrapper ${isDragging ? 'dragging' : ''
-                } `}
+            className={`task-draggable-wrapper ${
+                isDragging ? 'dragging' : ''
+            } `}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             ref={provided.innerRef}
