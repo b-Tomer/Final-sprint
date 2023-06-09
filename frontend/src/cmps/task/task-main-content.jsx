@@ -1,5 +1,6 @@
 import { ReactComponent as Activity } from '../../assets/img/icons/activity.svg'
 import { TaskChecklist } from '../../cmps/task/task-checklist.jsx'
+import { TaskActivity } from './task-activity'
 import { TaskAttachments } from './task-attachments.jsx'
 import { TaskDescription } from './task-description'
 
@@ -41,6 +42,7 @@ export function TaskMainContent({
                     <Activity className="task-content-icon" />
                     <h3>Activity</h3>
                 </div>
+                <TaskActivity taskId={task.id} />
             </div>
         </section>
     )

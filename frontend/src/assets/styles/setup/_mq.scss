@@ -1,8 +1,5 @@
 @media (max-width: 760px) {
-
-
     .modal-overlay {
-
         .task-details-container {
             width: 99vw;
             top: 20%;
@@ -22,7 +19,6 @@
                 .task-main-details {
                     grid-column: 1;
                     grid-row: 2;
-
                 }
 
                 .window-sidebar {
@@ -31,14 +27,14 @@
                 }
             }
         }
-
     }
-
 }
 
+@media (min-width: 760px) {
+}
 
-@media (min-width: 760px) {}
+@media (min-width: 980px) {
+}
 
-@media (min-width: 980px) {}
-
-@media (min-width: 1260px) {}
+@media (min-width: 1260px) {
+}

@@ -37,8 +37,13 @@ export function DynCmpChecklist({ task, setEditing }) {
 
     return (
         <div className="dyn-cmp-checklist-container">
-            <h3>Title</h3>
-            <input type="text" placeholder="Checklist" ref={inputRef} />
+            <h3 className="checklist-title">Title</h3>
+            <input
+                className="checklist-npt"
+                type="text"
+                placeholder="Checklist"
+                ref={inputRef}
+            />
             <button onClick={addChecklist}>Add</button>
         </div>
     )
