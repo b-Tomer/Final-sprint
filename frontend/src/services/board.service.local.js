@@ -72,6 +72,7 @@ function getEmptyBoard() {
 
 function getEmptyActivity() {
     return {
+        taskId: '',
         id: utilService.makeId(),
         title: '',
         createdAt: Date.now(),

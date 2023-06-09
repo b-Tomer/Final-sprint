@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import { updateTask } from '../../store/task.actions'
 import { store } from '../../store/store'
 import { CLOSE_DYN_ALL_MODALS } from '../../store/system.reducer'
+import { boardService } from 'services/board.service.local'
 
 export function DynCmpChecklist({ task, setEditing }) {
     const { boardId } = useParams()
@@ -18,12 +19,14 @@ export function DynCmpChecklist({ task, setEditing }) {
         }
         task.checklists.push(checklist)
         try {
-            await updateTask(boardId, groupId, task)
+            const activity = boardService.getEmptyActivity()
+            activity.title = `Added "${inputRef.current.value}" checklist to: ${task.title}`
+            activity.taskId = task.id
+            await updateTask(boardId, groupId, task, activity)
         } catch (err) {
             console.log('cant add checklist')
             console.log(err)
-        }
-        finally{
+        } finally {
             store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
         }
     }

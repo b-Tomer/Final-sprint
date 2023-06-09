@@ -1,17 +1,14 @@
-
-import { useState } from "react"
-import { utilService } from "../../services/util.service"
-import { updateTask } from "../../store/task.actions"
-import { ImgUploader } from "../img-uploader"
-import { uploadService } from "../../services/upload.service"
-import { CLOSE_DYN_MODAL } from "../../store/system.reducer"
-import { store } from "../../store/store"
-import { showErrorMsg } from "../../services/event-bus.service"
-
-
+import { useState } from 'react'
+import { utilService } from '../../services/util.service'
+import { updateTask } from '../../store/task.actions'
+import { ImgUploader } from '../img-uploader'
+import { uploadService } from '../../services/upload.service'
+import { CLOSE_DYN_MODAL } from '../../store/system.reducer'
+import { store } from '../../store/store'
+import { showErrorMsg } from '../../services/event-bus.service'
+import { boardService } from 'services/board.service.local'
 
 export function DynCmpAttachment({ boardId, groupId, task }) {
-
     const inputClass = 'upload-btn'
     const labelClass = 'upload-label'
     const [isUploading, setIsUploading] = useState(false)
@@ -20,9 +17,9 @@ export function DynCmpAttachment({ boardId, groupId, task }) {
     function onAddAttachment(src) {
         if (!src) return
         const newAtc = {
-            "id": utilService.makeId(),
-            "createdAt": Date.now(),
-            "url": src
+            id: utilService.makeId(),
+            createdAt: Date.now(),
+            url: src,
         }
         const updatedAttachments = task.attachments
             ? [...task.attachments, newAtc]
@@ -31,7 +28,15 @@ export function DynCmpAttachment({ boardId, groupId, task }) {
             ...task,
             attachments: updatedAttachments,
         }
-        updateTask(boardId, groupId, updatedTask)
+
+        try {
+            const activity = boardService.getEmptyActivity()
+            activity.title = `Added attachment: ${task.title}`
+            activity.taskId = task.id
+            updateTask(boardId, groupId, updatedTask, activity)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     async function uploadImg(ev) {
@@ -43,7 +48,7 @@ export function DynCmpAttachment({ boardId, groupId, task }) {
             setIsUploading(false)
         } catch (err) {
             showErrorMsg('Cannot upload try again')
-            console.log(err);
+            console.log(err)
         }
     }
 
@@ -53,26 +58,43 @@ export function DynCmpAttachment({ boardId, groupId, task }) {
         console.log(userSrc)
     }
 
-
     return (
-        <div className='dyn-cmp-attachments-container'>
+        <div className="dyn-cmp-attachments-container">
             <div>
                 <h3>Upload from</h3>
-                <label className={labelClass} htmlFor="imgUpload">{isUploading ? 'Uploading...' : 'Computer'}</label>
-                <input className={inputClass} type="file" onChange={uploadImg} accept="img/*" id="imgUpload" />
+                <label className={labelClass} htmlFor="imgUpload">
+                    {isUploading ? 'Uploading...' : 'Computer'}
+                </label>
+                <input
+                    className={inputClass}
+                    type="file"
+                    onChange={uploadImg}
+                    accept="img/*"
+                    id="imgUpload"
+                />
             </div>
             <hr />
             <div className="atc-link-container">
                 <h3>Attach a link</h3>
                 <input
                     onChange={onSrcChange}
-                    className="atc-link-input" type="text"
-                    placeholder="Past any link here..." />
-                <button onClick={()=>onAddAttachment(userSrc)} className="attach-btn" >Attach</button>
+                    className="atc-link-input"
+                    type="text"
+                    placeholder="Past any link here..."
+                />
+                <button
+                    onClick={() => onAddAttachment(userSrc)}
+                    className="attach-btn"
+                >
+                    Attach
+                </button>
             </div>
             <hr />
-            <div className="atc-footer" >
-                <p>Tip: You can drag and drop files and links onto cards to upload them.</p>
+            <div className="atc-footer">
+                <p>
+                    Tip: You can drag and drop files and links onto cards to
+                    upload them.
+                </p>
             </div>
         </div>
     )

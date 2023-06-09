@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux'
-import { updateTask } from '../../store/task.actions';
+import { updateTask } from '../../store/task.actions'
+import { boardService } from 'services/board.service.local'
 
 export function DynCmpMembers({ task }) {
-
     const { board } = useSelector((storeState) => storeState.boardModule)
 
     function findGroupIdByTaskId(board, taskId) {
@@ -13,7 +13,7 @@ export function DynCmpMembers({ task }) {
             if (!Array.isArray(group.tasks)) {
                 continue
             }
-            const foundTask = group.tasks.find(task => task.id === taskId)
+            const foundTask = group.tasks.find((task) => task.id === taskId)
             if (foundTask) {
                 return group.id
             }
@@ -23,16 +23,42 @@ export function DynCmpMembers({ task }) {
 
     function onToggleCheckedMember(ev, memberId) {
         ev.stopPropagation()
+        const activity = boardService.getEmptyActivity()
+        activity.taskId = task.id
+
         if (!task.members) {
             task.members = [memberId]
-        }
-        else {
+        } else {
             if (task.members.includes(memberId)) {
-                const memberIndex = task.members.indexOf(memberId);
-                task.members.splice(memberIndex, 1);
-            } else task.members.push(memberId)
+                const memberIndex = task.members.indexOf(memberId)
+                task.members.splice(memberIndex, 1)
+                activity.title = `Removed member: "${getMemberName(
+                    memberId
+                )}" from task: ${task.title}`
+            } else {
+                task.members.push(memberId)
+                activity.title = `Added member: "${getMemberName(
+                    memberId
+                )}" to task: ${task.title}`
+            }
         }
-        updateTask(board._id, findGroupIdByTaskId(board, task.id), task)
+        try {
+            updateTask(
+                board._id,
+                findGroupIdByTaskId(board, task.id),
+                task,
+                activity
+            )
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    function getMemberName(memberId) {
+        const member = board.members.find(
+            (currMember) => currMember._id === memberId
+        )
+        return member.fullname
     }
 
     function onCheckClick(ev) {
@@ -41,15 +67,26 @@ export function DynCmpMembers({ task }) {
 
     if (!task) return null
     return (
-        <div className='dyn-cmp-members-container'>
+        <div className="dyn-cmp-members-container">
             <h3>Board members</h3>
-            <div  >
-                {board.members.map(member => {
-                    const isMemberChecked = task.members ? task.members.includes(member._id) : false;
+            <div>
+                {board.members.map((member) => {
+                    const isMemberChecked = task.members
+                        ? task.members.includes(member._id)
+                        : false
                     return (
-                        <label key={member._id} onClick={onCheckClick} className='dyn-cmp-member' htmlror="checkbox" >
+                        <label
+                            key={member._id}
+                            onClick={onCheckClick}
+                            className="dyn-cmp-member"
+                            htmlror="checkbox"
+                        >
                             <div>
-                                <img src={member.imgUrl} alt="Image" className='member-img' />
+                                <img
+                                    src={member.imgUrl}
+                                    alt="Image"
+                                    className="member-img"
+                                />
                             </div>
                             <span>{member.fullname}</span>
                             <input
@@ -58,29 +95,15 @@ export function DynCmpMembers({ task }) {
                                 name="checkbox"
                                 onClick={onCheckClick}
                                 checked={isMemberChecked}
-                                onChange={(ev) => onToggleCheckedMember(ev, member._id)}
-                                className="checkbox" />
+                                onChange={(ev) =>
+                                    onToggleCheckedMember(ev, member._id)
+                                }
+                                className="checkbox"
+                            />
                         </label>
                     )
                 })}
             </div>
         </div>
     )
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

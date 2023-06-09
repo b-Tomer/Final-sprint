@@ -127,7 +127,8 @@ export function TaskPreview({
         task.title = event.target.value
         try {
             const activity = boardService.getEmptyActivity()
-            activity.title = `changed title to: ${task.title}`
+            activity.title = `Changed title to: ${task.title}`
+            activity.taskId = task.id
             await updateTask(boardId, groupId, task, activity)
         } catch (error) {
             console.log('cant update task')

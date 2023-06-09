@@ -22,7 +22,8 @@ export function TaskDescription({ boardId, groupId, task }) {
         setIsEditing(false)
         const taskToUpdate = { ...task, description }
         const activity = boardService.getEmptyActivity()
-        activity.title = `changed description to: ${taskToUpdate.description}`
+        activity.title = `Changed description to: ${taskToUpdate.description}`
+        activity.taskId = taskToUpdate.id
         updateTask(boardId, groupId, taskToUpdate, activity)
     }
 
