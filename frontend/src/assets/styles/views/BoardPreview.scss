@@ -77,6 +77,19 @@
     flex-wrap: wrap;
     width: 100%;
     
+    .new-board-box{
+        cursor: pointer;
+        background-color: $clr2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        span{
+            color:$clr4;
+        }
+        &:hover{
+            background-color: $clr3;
+        }
+    }
 }
 
 .starred-boards {
