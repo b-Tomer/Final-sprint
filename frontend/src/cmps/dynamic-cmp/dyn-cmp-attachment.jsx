@@ -7,6 +7,7 @@ import { CLOSE_DYN_MODAL } from '../../store/system.reducer'
 import { store } from '../../store/store'
 import { showErrorMsg } from '../../services/event-bus.service'
 import { boardService } from 'services/board.service.local'
+import { userService } from 'services/user.service'
 
 export function DynCmpAttachment({ boardId, groupId, task }) {
     const inputClass = 'upload-btn'
@@ -33,6 +34,9 @@ export function DynCmpAttachment({ boardId, groupId, task }) {
             const activity = boardService.getEmptyActivity()
             activity.title = `Added attachment: ${task.title}`
             activity.taskId = task.id
+            activity.by = userService.getLoggedinUser().fullname
+                ? userService.getLoggedinUser().fullname
+                : 'Guest'
             updateTask(boardId, groupId, updatedTask, activity)
         } catch (error) {
             console.log(error)

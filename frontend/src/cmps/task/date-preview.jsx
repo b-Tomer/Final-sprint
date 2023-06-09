@@ -1,11 +1,19 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { ReactComponent as Down } from '../../assets/img/icons/down.svg'
-import { CLOSE_DYN_ALL_MODALS, CLOSE_DYN_MODAL, OPEN_DYN_DATE_MODAL, OPEN_DYN_MODAL, SET_MODAL_TITLE } from '../../store/system.reducer'
+import {
+    CLOSE_DYN_ALL_MODALS,
+    CLOSE_DYN_MODAL,
+    OPEN_DYN_DATE_MODAL,
+    OPEN_DYN_MODAL,
+    SET_MODAL_TITLE,
+} from '../../store/system.reducer'
 import { useSelector } from 'react-redux'
 import { store } from '../../store/store'
 import { updateTask } from '../../store/task.actions'
 import { DynamicCmp } from '../dynamic-cmp/dynamic-cmp'
+import { boardService } from 'services/board.service.local'
+import { userService } from 'services/user.service'
 
 export function DatePreview({ task, setDynamicCmpName }) {
     const [currTask, setCurrTask] = useState(task)
@@ -14,7 +22,9 @@ export function DatePreview({ task, setDynamicCmpName }) {
     const { boardId } = useParams()
     const { groupId } = useParams()
     // const { isModalOpen } = useSelector((storeState) => storeState.systemModule)
-    const { isOpenDateModal } = useSelector((storeState) => storeState.systemModule)
+    const { isOpenDateModal } = useSelector(
+        (storeState) => storeState.systemModule
+    )
 
     if (!task || !task.dueDate) return
 
@@ -60,7 +70,7 @@ export function DatePreview({ task, setDynamicCmpName }) {
     }
 
     function handleToggleDatePicker() {
-        store.dispatch({ type: SET_MODAL_TITLE ,title: 'Dates' })
+        store.dispatch({ type: SET_MODAL_TITLE, title: 'Dates' })
         store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
         store.dispatch({ type: OPEN_DYN_MODAL })
         store.dispatch({ type: OPEN_DYN_DATE_MODAL })
@@ -74,10 +84,25 @@ export function DatePreview({ task, setDynamicCmpName }) {
         }))
         task.isDone = value
         try {
-            await updateTask(boardId, groupId, task)
+            const activity = boardService.getEmptyActivity()
+            activity.title = `Changed title to: ${task.title}`
+            activity.taskId = task.id
+            activity.title = `Marked task ${task.title} as: ${getIsDone(
+                task.isDone
+            )}`
+            activity.by = userService.getLoggedinUser()?.fullname
+                ? userService.getLoggedinUser().fullname
+                : 'Guest'
+            await updateTask(boardId, groupId, task, activity)
         } catch (error) {
             console.log('cant update task')
         }
+    }
+
+    function getIsDone(flag) {
+        if (flag) {
+            return 'Done'
+        } else return 'Ongoing'
     }
 
     return (
@@ -100,7 +125,9 @@ export function DatePreview({ task, setDynamicCmpName }) {
                     {/* {isDatePickerOpen && <ResponsiveDatePickers className='date-picker' />} */}
                 </div>
             </div>
-            {isOpenDateModal && <DynamicCmp task={task} title='Edit attachment' />}
+            {isOpenDateModal && (
+                <DynamicCmp task={task} title="Edit attachment" />
+            )}
         </div>
     )
 }

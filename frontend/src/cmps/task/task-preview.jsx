@@ -6,6 +6,7 @@ import { utilService } from '../../services/util.service'
 import { useSelector } from 'react-redux'
 import { updateTask } from '../../store/task.actions'
 import { boardService } from 'services/board.service.local'
+import { userService } from 'services/user.service'
 
 export function TaskPreview({
     task,
@@ -129,6 +130,9 @@ export function TaskPreview({
             const activity = boardService.getEmptyActivity()
             activity.title = `Changed title to: ${task.title}`
             activity.taskId = task.id
+            activity.by = userService.getLoggedinUser()?.fullname
+                ? userService.getLoggedinUser().fullname
+                : 'Guest'
             await updateTask(boardId, groupId, task, activity)
         } catch (error) {
             console.log('cant update task')

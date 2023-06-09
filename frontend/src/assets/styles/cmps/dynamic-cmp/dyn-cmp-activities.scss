@@ -10,5 +10,12 @@
         font-size: 14px;
         display: flex;
         flex-direction: column;
+        .by {
+            font-weight: 700;
+        }
+        .created-at {
+            font-size: 12px;
+            margin-block-end: 10px;
+        }
     }
 }

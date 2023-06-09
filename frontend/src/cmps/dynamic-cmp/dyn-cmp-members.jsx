@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux'
 import { updateTask } from '../../store/task.actions'
 import { boardService } from 'services/board.service.local'
+import { userService } from 'services/user.service'
 
 export function DynCmpMembers({ task }) {
     const { board } = useSelector((storeState) => storeState.boardModule)
@@ -25,7 +26,9 @@ export function DynCmpMembers({ task }) {
         ev.stopPropagation()
         const activity = boardService.getEmptyActivity()
         activity.taskId = task.id
-
+        activity.by = userService.getLoggedinUser()?.fullname
+            ? userService.getLoggedinUser().fullname
+            : 'Guest'
         if (!task.members) {
             task.members = [memberId]
         } else {

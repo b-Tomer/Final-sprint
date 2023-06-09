@@ -7,6 +7,7 @@ import { store } from '../../store/store'
 import { DynamicCmp } from './dynamic-cmp'
 import { SET_LABEL_TO_EDIT } from '../../store/board.reducer'
 import { boardService } from 'services/board.service.local'
+import { userService } from 'services/user.service'
 
 export function DynCmpLabels({ task }) {
     const { board } = useSelector((storeState) => storeState.boardModule)
@@ -47,7 +48,9 @@ export function DynCmpLabels({ task }) {
     function onToggleCheckedLabel(ev, labelId) {
         const activity = boardService.getEmptyActivity()
         activity.taskId = task.id
-
+        activity.by = userService.getLoggedinUser()?.fullname
+            ? userService.getLoggedinUser().fullname
+            : 'Guest'
         if (!task.labelIds) {
             task.labelIds = [labelId]
         } else {
