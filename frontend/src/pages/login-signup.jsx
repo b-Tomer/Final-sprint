@@ -71,10 +71,11 @@ export function LoginSignup() {
             console.log('not logged in')
         }
     }
-
+    
     async function handleSignup(credentials) {
         try {
             const user = await signup(credentials)
+            navigate('/workspace')
             showSuccessMsg(`Welcome new user: ${user.fullname}`)
         } catch (err) {
             showErrorMsg('Cannot signup')
