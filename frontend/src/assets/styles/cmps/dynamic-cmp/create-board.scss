@@ -3,12 +3,11 @@
     flex-direction: column;
     position: fixed;
     width: 300px;
-    // height: 500px;
     background-color: $clr1;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     border-radius: 5px;
     top: 50px;
-    z-index: 3;
+    z-index: 5;
     transform: translateX(8px);
 
     .dynamic-cmp-header {
