@@ -6,6 +6,7 @@ import { DynCmpChecklist } from './dyn-cmp-checklist'
 import { DynCmpDates } from './dyn-cmp-dates'
 import { DynCmpAttachment } from './dyn-cmp-attachment'
 import { DynCmpAttachmentEdit } from './dyn-cpm-attachment-edit'
+import { Filter } from '../filter'
 import {
     CLOSE_DYN_ALL_MODALS,
     SET_MODAL_TITLE,
@@ -106,6 +107,7 @@ export function DynamicCmp({ task, title, setEditing, modalPos, board }) {
                 />
             )}
             {modalTitle === 'Activities' && <DynCmpActivities board={board} />}
+            {modalTitle === 'Filter' && <Filter board={board} />}
         </div>
     )
 }

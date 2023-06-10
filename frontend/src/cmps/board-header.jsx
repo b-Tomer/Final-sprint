@@ -3,6 +3,7 @@ import { boardService } from '../services/board.service.local.js'
 import {
     CLOSE_DYN_ALL_MODALS,
     OPEN_DYN_ACTIVITIES_MODAL,
+    OPEN_DYN_FILTER_MODAL,
     OPEN_DYN_MODAL,
     SET_MODAL_TITLE,
 } from '../store/system.reducer'
@@ -30,6 +31,10 @@ export function BoardHeader({ board }) {
         (storeState) => storeState.systemModule
     )
 
+    useEffect(() => {
+        loadBoard(boardId)
+    }, [])
+
     function onOpenEditorModal(title, ev) {
         ev.stopPropagation()
         let { top, left, height } = ev.target.getBoundingClientRect()
@@ -43,9 +48,17 @@ export function BoardHeader({ board }) {
         store.dispatch({ type: OPEN_DYN_ACTIVITIES_MODAL })
     }
 
-    useEffect(() => {
-        loadBoard(boardId)
-    }, [])
+
+
+
+    // async function onOpenFilter(ev) {
+    //     let { top, left, height } = ev.target.getBoundingClientRect()
+    //     setModalPos({ top, left, height })
+    //     store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
+    //     store.dispatch({ type: SET_MODAL_TITLE, title: 'Filter' })
+    //     store.dispatch({ type: OPEN_DYN_FILTER_MODAL })
+    //     store.dispatch({ type: OPEN_DYN_MODAL })
+    // }
 
     return (
         <div className="board-header-container">
@@ -72,10 +85,14 @@ export function BoardHeader({ board }) {
                     <Automation className="board-header-icon" />
                     <span>Automation</span>
                 </button>
-                <button className="btn-board-right">
+                <button className="btn-board-right" >
                     <Filter className="board-header-icon" />
                     <span>Filter</span>
                 </button>
+                {/* <DynamicCmp
+                    title={'Filter'}
+                    modalPos={modalPos}
+                /> */}
                 <span className="separator"></span>
                 <button className="btn-board-right">
                     <Share className="board-header-icon" />

@@ -25,7 +25,7 @@ export function boardReducer(state = initialState, action) {
     var currBoard
     switch (action.type) {
         case SET_BOARD:
-            console.log('action.board: ', action.board )
+            console.log('action.board: ', action.board)
             newState = { ...state, board: action.board }
             break
         case SET_BOARDS:
@@ -51,7 +51,7 @@ export function boardReducer(state = initialState, action) {
             newState = { ...state, isLoading: action.isLoading }
             break
         case SET_LABEL_TO_EDIT:
-            console.log('action.label: ', action.label )
+            console.log('action.label: ', action.label)
             newState = { ...state, label: action.label }
             break
         case SET_ATC_TO_EDIT:

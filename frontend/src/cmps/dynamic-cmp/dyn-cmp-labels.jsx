@@ -89,6 +89,7 @@ export function DynCmpLabels({ task }) {
                             let isLabelChecked = task.labelIds
                                 ? task.labelIds.includes(label.id)
                                 : false
+
                             return (
                                 <label
                                     key={label.id}
