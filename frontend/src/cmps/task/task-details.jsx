@@ -5,6 +5,8 @@ import { useEffect, useState, useRef, useLayoutEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { TaskCover } from './task-cover.jsx'
+import { CLOSE_DYN_ALL_MODALS } from 'store/system.reducer.js'
+import { store } from 'store/store.js'
 
 export function TaskDetails({
     taskId,
@@ -59,6 +61,7 @@ export function TaskDetails({
         ev.stopPropagation()
         ev.preventDefault()
         setIsTaskDetailsOpen(false)
+        store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
         navigate(`/board/${boardId}`)
     }
 

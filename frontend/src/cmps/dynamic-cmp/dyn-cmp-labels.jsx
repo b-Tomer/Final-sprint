@@ -15,15 +15,6 @@ export function DynCmpLabels({ task }) {
     const { board } = useSelector((storeState) => storeState.boardModule)
     const [isEditLabelOpen, setIsEditLabelOpen] = useState(false)
 
-    useEffect(() => {
-        if (!task.labelIds) task.labelIds = []
-        console.log("task from labels: " ,task);
-        updateTask(board._id,
-            findGroupIdByTaskId(board, task.id, activity),
-            task)
-    }, [])
-
-
     function handleEditButtonClick(title, label) {
         store.dispatch({ type: SET_LABEL_TO_EDIT, label })
         store.dispatch({ type: OPEN_DYN_MODAL })
