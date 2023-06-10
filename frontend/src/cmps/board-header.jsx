@@ -29,6 +29,10 @@ export function BoardHeader({ board }) {
     const [currTitle, setCurrTitle] = useState('')
     const [currMember, setCurrMember] = useState(null)
     const [modalPos, setModalPos] = useState(null)
+    const { isOpenFilterModal } = useSelector(
+        (storeState) => storeState.systemModule
+    )
+
     const { isOpenActivitiesModal } = useSelector(
         (storeState) => storeState.systemModule
     )
@@ -69,14 +73,14 @@ export function BoardHeader({ board }) {
         loadBoard(boardId)
     }, [])
 
-    // async function onOpenFilter(ev) {
-    //     let { top, left, height } = ev.target.getBoundingClientRect()
-    //     setModalPos({ top, left, height })
-    //     store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
-    //     store.dispatch({ type: SET_MODAL_TITLE, title: 'Filter' })
-    //     store.dispatch({ type: OPEN_DYN_FILTER_MODAL })
-    //     store.dispatch({ type: OPEN_DYN_MODAL })
-    // }
+    async function onOpenFilter(ev) {
+        let { top, left, height } = ev.target.getBoundingClientRect()
+        setModalPos({ top, left, height })
+        store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
+        store.dispatch({ type: SET_MODAL_TITLE, title: 'Filter' })
+        store.dispatch({ type: OPEN_DYN_FILTER_MODAL })
+        store.dispatch({ type: OPEN_DYN_MODAL })
+    }
 
     // function getMemberImg(memberId) {
     //     if (!board.members) return
@@ -115,8 +119,8 @@ export function BoardHeader({ board }) {
                 </div>
                 {/* <button>
                     <Visability className="board-header-icon" />
-                </button> */}
-                {/* <button className="btn-board-select">
+                </button>
+                <button className="btn-board-select">
                     <EmptyLogo className="board-header-icon" />
                     <span>Board</span>
                     <Down className="board-header-icon" />
@@ -131,14 +135,16 @@ export function BoardHeader({ board }) {
                     <Automation className="board-header-icon" />
                     <span>Automation</span>
                 </button> */}
-                <button className="btn-board-right">
+                <button className="btn-board-right" >
+                </button>
+                <button className="btn-board-right" onClick={onOpenFilter}>
                     <Filter className="board-header-icon" />
                     <span>Filter</span>
                 </button>
-                {/* <DynamicCmp
+                {isOpenFilterModal && <DynamicCmp
                     title={'Filter'}
                     modalPos={modalPos}
-                /> */}
+                />}
                 <span className="separator"></span>
                 <button className="btn-board-right">
                     <Share className="board-header-icon" />
@@ -151,20 +157,24 @@ export function BoardHeader({ board }) {
                     <More className="board-header-icon" />
                 </button>
             </div>
-            {isOpenActivitiesModal && (
-                <DynamicCmp
-                    title={currTitle}
-                    modalPos={modalPos}
-                    board={board}
-                />
-            )}
-            {isOpenMemberPrevModal && (
-                <DynamicCmp
-                    title={currTitle}
-                    modalPos={modalPos}
-                    currMember={currMember}
-                />
-            )}
-        </div>
+            {
+                isOpenActivitiesModal && (
+                    <DynamicCmp
+                        title={currTitle}
+                        modalPos={modalPos}
+                        board={board}
+                    />
+                )
+            }
+            {
+                isOpenMemberPrevModal && (
+                    <DynamicCmp
+                        title={currTitle}
+                        modalPos={modalPos}
+                        currMember={currMember}
+                    />
+                )
+            }
+        </div >
     )
 }

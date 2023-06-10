@@ -7,75 +7,93 @@
     align-content: center;
     align-items: center;
     flex-direction: column;
+
     .MuiPickersLayout-root {
         width: 90%;
         min-width: auto;
         display: flex;
         flex-direction: column;
+
         .css-1hbyad5-MuiTypography-root {
             display: none;
         }
+
         .css-nk89i7-MuiPickersCalendarHeader-root {
             padding: 0;
         }
+
         .css-cwhad8-MuiDateCalendar-root {
             width: 100%;
         }
+
         .MuiPickersToolbar-root {
             text-align: center;
             padding: 0;
             margin-block-start: 10px;
         }
+
         .css-jhsfre-MuiGrid-root-MuiPickersToolbar-content {
             justify-content: center;
             justify-items: center;
         }
+
         .css-nk89i7-MuiPickersCalendarHeader-root {
             margin-block-start: 10px;
         }
+
         .css-hlj6pa-MuiDialogActions-root {
             padding: 0;
             align-content: start;
             align-items: start;
             display: none;
         }
+
         .css-1lkpf4l-MuiYearCalendar-root {
             width: 100%;
         }
+
         .css-1cafy48-MuiPickersSlideTransition-root-MuiDayCalendar-slideTransition {
             height: 200px;
             min-height: auto;
         }
+
         h4 {
             font-size: 1.5rem;
         }
     }
+
     .control-btns {
         display: flex;
         flex-direction: column;
         width: 90%;
         margin-block-end: 10px;
         font-size: 14px;
+
         button {
             width: 100%;
             margin-block-end: 10px;
             height: 2rem;
             border-radius: 3px;
+
             &:hover {
                 filter: brightness(0.9);
             }
         }
+
         .save {
             color: $clr1;
             background-color: $clrBTN;
         }
+
         .remove {
             color: $clr7;
         }
     }
+
     .time-picker-container {
         .dials {
             display: flex;
+
             select {
                 margin-inline: 10px;
                 box-shadow: inset 0 0 0 2px $clrTodobtn;
@@ -84,15 +102,15 @@
                 padding-block: 5px;
                 width: 100px;
                 padding-inline-start: 10px;
+
                 &:focus {
                     border: 0;
                 }
             }
 
-            .hours {
-            }
-            .minutes {
-            }
+            .hours {}
+
+            .minutes {}
         }
     }
 }
