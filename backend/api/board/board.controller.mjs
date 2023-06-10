@@ -1,11 +1,12 @@
 import { boardService } from './board.service.mjs'
 import { logger } from '../../services/logger.service.mjs'
+import { socketService } from '../../services/socket.service.mjs'
 
 export async function getBoards(req, res) {
   try {
-    
+
     logger.debug('Getting Boards:', req.query)
-    console.log('req.query: ', req.query )
+    console.log('req.query: ', req.query)
     const filterBy = {
       txt: req.query.txt || '',
     }
@@ -48,6 +49,7 @@ export async function updateBoard(req, res) {
     const board = req.body
     const updatedBoard = await boardService.update(board)
     res.json(updatedBoard)
+    socketService.broadcast({ type: "update-board", data: updatedBoard })
   } catch (err) {
     logger.error('Failed to update board', err)
     res.status(400).send({ err: 'Failed to update board' })

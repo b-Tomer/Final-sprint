@@ -1,0 +1,54 @@
+.add-members-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    max-height: 250px;
+    overflow: auto;
+    .search-members {
+        margin: 4px 0 12px;
+        width: 100%;
+        background-color: #fafbfc;
+        border: none;
+        border-radius: 3px;
+        box-shadow: inset 0 0 0 2px #091e4224;
+        box-sizing: border-box;
+        display: block;
+        line-height: 20px;
+        padding: 8px 12px;
+        transition-duration: 85ms;
+        transition-property: background-color, border-color, box-shadow;
+        transition-timing-function: ease;
+
+        &:focus {
+            background-color: $clr1;
+            box-shadow: rgb(56, 139, 255) 0px 0px 0px 2px inset;
+        }
+    }
+    .all-users {
+        padding: 0;
+        .user {
+            margin-block-end: 5px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            align-content: center;
+            img {
+                width: 2rem;
+                height: 2rem;
+                border-radius: 50%;
+            }
+            .user-checkbox {
+                margin-inline-start: auto;
+            }
+            .details {
+                display: flex;
+                flex-direction: column;
+                .fullname {
+                }
+                .mail {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}

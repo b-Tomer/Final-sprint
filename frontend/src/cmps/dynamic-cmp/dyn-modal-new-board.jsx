@@ -12,9 +12,7 @@ import LightPurple from '../../assets/img/backgrounds/light-purple.svg'
 import orange from '../../assets/img/backgrounds/orange.svg'
 import { showErrorMsg, showSuccessMsg } from 'services/event-bus.service'
 import { addBoard } from 'store/board.actions'
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useEffect } from 'react'
 import { boardService } from 'services/board.service'
 import { useRef } from 'react'
 import { userService } from 'services/user.service'
@@ -36,8 +34,7 @@ export function DynCmpNewBoard() {
             store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
             return
         }
-        console.log(user)
-        board.members = [user?._id] || []
+        if(user) board.members = [user]
         board.style = { backgroundImage: imgRef.current.src }
         try {
             const savedBoard = await addBoard(board)
