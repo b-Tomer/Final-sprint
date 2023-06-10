@@ -6,6 +6,7 @@ import { DynCmpChecklist } from './dyn-cmp-checklist'
 import { DynCmpDates } from './dyn-cmp-dates'
 import { DynCmpAttachment } from './dyn-cmp-attachment'
 import { DynCmpAttachmentEdit } from './dyn-cpm-attachment-edit'
+import { Filter } from '../filter'
 import {
     CLOSE_DYN_ALL_MODALS,
     SET_MODAL_TITLE,
@@ -16,8 +17,16 @@ import { useParams } from 'react-router-dom'
 import { DynCmpEditLabel } from './dyn-cmp-edit-label'
 import { DynCmpActivities } from './dyn-cmp-activity'
 import { DynCmpNewBoard } from './dyn-modal-new-board'
+import { DynCmpMemberPreview } from './dyn-cmp-memeber-preview'
 
-export function DynamicCmp({ task, title, setEditing, modalPos, board }) {
+export function DynamicCmp({
+    task,
+    title,
+    setEditing,
+    modalPos,
+    board,
+    currMember,
+}) {
     const { isModalOpen } = useSelector((storeState) => storeState.systemModule)
     const { modalTitle } = useSelector((storeState) => storeState.systemModule)
     const { boardId } = useParams()
@@ -26,6 +35,7 @@ export function DynamicCmp({ task, title, setEditing, modalPos, board }) {
     const containerRef = useRef(null)
 
     useEffect(() => {
+        console.log(modalTitle)
         calcModalPos()
         window.addEventListener('resize', calcModalPos)
         return () => {
@@ -71,7 +81,6 @@ export function DynamicCmp({ task, title, setEditing, modalPos, board }) {
         store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
         store.dispatch({ type: SET_MODAL_TITLE, title: '' })
     }
-
     if (!isModalOpen) return null
 
     return (
@@ -106,6 +115,10 @@ export function DynamicCmp({ task, title, setEditing, modalPos, board }) {
                 />
             )}
             {modalTitle === 'Activities' && <DynCmpActivities board={board} />}
+            {modalTitle === 'Member card' && (
+                <DynCmpMemberPreview board={board} currMember={currMember} />
+            )}
+            {modalTitle === 'Filter' && <Filter board={board} />}
         </div>
     )
 }
