@@ -87,6 +87,28 @@
                 padding-inline: 10px;
             }
         }
+
+        .board-members {
+            display: flex;
+            // width: 28px;
+            // height: 28px;
+            gap: 0;
+            button {
+                margin: 0;
+                padding: 0;
+                border-radius: 50%;
+                margin-inline-end: -8px;
+                img {
+                    padding: 0;
+                    width: 28px;
+                    height: 28px;
+                    border-radius: 50%;
+                    &:hover {
+                        filter: brightness(1.4);
+                    }
+                }
+            }
+        }
     }
 
     .board-header-right {

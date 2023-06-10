@@ -1,13 +1,13 @@
-import {authService} from './auth.service.mjs'
-import {logger} from '../../services/logger.service.mjs'
+import { authService } from './auth.service.mjs'
+import { logger } from '../../services/logger.service.mjs'
 
 export async function login(req, res) {
-    const { username, password } = req.body
+    const { mail, password } = req.body
     try {
-        const user = await authService.login(username, password)
+        const user = await authService.login(mail, password)
         const loginToken = authService.getLoginToken(user)
         logger.info('User login: ', user)
-        res.cookie('loginToken', loginToken, {sameSite: 'None', secure: true})
+        res.cookie('loginToken', loginToken, { sameSite: 'None', secure: true })
         res.json(user)
     } catch (err) {
         logger.error('Failed to Login ' + err)
@@ -17,15 +17,21 @@ export async function login(req, res) {
 
 export async function signup(req, res) {
     try {
+        console.log(req.body)
         const credentials = req.body
         // Never log passwords
         // logger.debug(credentials)
         const account = await authService.signup(credentials)
-        logger.debug(`auth.route - new account created: ` + JSON.stringify(account))
-        const user = await authService.login(credentials.username, credentials.password)
+        logger.debug(
+            `auth.route - new account created: ` + JSON.stringify(account)
+        )
+        const user = await authService.login(
+            credentials.mail,
+            credentials.password
+        )
         logger.info('User signup:', user)
         const loginToken = authService.getLoginToken(user)
-        res.cookie('loginToken', loginToken, {sameSite: 'None', secure: true})
+        res.cookie('loginToken', loginToken, { sameSite: 'None', secure: true })
         res.json(user)
     } catch (err) {
         logger.error('Failed to signup ' + err)
@@ -33,7 +39,7 @@ export async function signup(req, res) {
     }
 }
 
-export async function logout(req, res){
+export async function logout(req, res) {
     try {
         res.clearCookie('loginToken')
         res.send({ msg: 'Logged out successfully' })
@@ -41,4 +47,3 @@ export async function logout(req, res){
         res.status(400).send({ err: 'Failed to logout' })
     }
 }
-

@@ -79,7 +79,6 @@ export function BoardIndex() {
                 ? userService.getLoggedinUser().fullname
                 : 'Guest'
             activity.title = `Removed group from board`
-            console.log(activity)
             await removeGroup(group.id, boardId, activity)
         } catch (err) {
             console.log(err)

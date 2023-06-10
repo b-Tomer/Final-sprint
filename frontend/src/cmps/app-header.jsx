@@ -45,9 +45,6 @@ export function AppHeader({ onSetfilter }) {
     useEffect(() => {
         printAverageColor()
         setloginUser(userService.getLoggedinUser())
-        console.log(board)
-        console.log(bgColor)
-        console.log(txtColor)
     }, [board])
 
     function printAverageColor() {

@@ -1,38 +1,61 @@
 .homepage-container {
     .homepage-gradiant {
-        background: url(https://images.ctfassets.net/rz1oowkt5gyp/6bFuTiN5YQ78rFkHb3aJlo/b608362b08e14f5dec4c4aeea3a3ca72/white-wave-mobile.svg)
-                center bottom -0.5px / 100% 24% no-repeat scroll padding-box border-box,
-            linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% /
-                auto no-repeat scroll padding-box border-box rgb(82, 67, 170);
+        background: url(https://images.ctfassets.net/rz1oowkt5gyp/6bFuTiN5YQ78rFkHb3aJlo/b608362b08e14f5dec4c4aeea3a3ca72/white-wave-mobile.svg) center bottom -0.5px / 100% 24% no-repeat scroll padding-box border-box,
+            linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto no-repeat scroll padding-box border-box rgb(82, 67, 170);
         width: 100%;
         height: 800px;
-        // margin-block-start: 60px;
         padding-block-start: 60px;
     }
 
     .homepage-content {
-        display: grid;
-        grid-template-columns: 1fr 5fr 5fr 1fr;
+
+        grid-template-columns: 1fr;
+        padding-inline: 7px;
+        @include for-narrow-layout {
+            display: grid;
+            grid-template-columns: 1fr 5fr 5fr 1fr;
+        }
+
+
         .content-left {
-            grid-column: 2/3;
+            text-align: center;
+            padding-block: 50px;
+            
+            
+            @include for-narrow-layout {
+                text-align: start;
+                padding-block: 100px;
+                grid-column: 2/3;
+                padding-inline: 40px;
+            }
+
+            grid-column: 1;
+            // grid-row: 1;
             display: flex;
             flex-direction: column;
             color: $clr1;
-            padding-block: 100px;
-            padding-inline: 40px;
+
             h1 {
-                line-height: 60px;
-                font-size: 3rem;
+
+                font-size: 2rem;
                 font-weight: 500;
                 margin: 0;
                 margin-block-end: 8px;
+                @include for-narrow-layout {
+                    line-height: 60px;
+                    padding-inline: 0px;
+                    font-size: 3rem;
+                
+                }
             }
+
             p {
                 font-size: 20px;
                 line-height: 30px;
                 margin-block-end: 24px;
                 margin-block-start: 0px;
             }
+
             button {
                 background-color: $hompageBTN;
                 color: $clr1;
@@ -41,18 +64,32 @@
                 padding-inline-start: 16px;
                 padding-inline-end: 16px;
                 padding-block-start: 11.2px;
-                width: 25%;
+                width: 95%;
                 min-width: 110px;
                 font-size: 1rem;
+                align-self: center;
+                @include for-narrow-layout {
+                    width:auto;
+                    margin-inline: 0px;
+                }
             }
         }
+
         .content-right {
-            grid-column: 3/4;
-            padding-block: 70px;
-            padding-inline: 16px;
+            grid-column: 1;
+
+            @include for-narrow-layout {
+                grid-column: 3/4;
+                padding-block: 70px;
+                padding-inline: 16px;
+            }
+
             img {
                 width: 100%;
-                min-width: 640px;
+
+                @include for-narrow-layout {
+                    min-width: 640px;
+                }
             }
         }
     }

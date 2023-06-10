@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { utilService } from 'services/util.service'
 
-export function TaskActivity({ taskId, setIsShowAll, isShowAll }) {
+export function TaskActivity({ taskId, isShowAll }) {
     const { board } = useSelector((storeState) => storeState.boardModule)
 
     function capitalizeKeywords(str) {

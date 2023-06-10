@@ -15,7 +15,6 @@ export function TaskMainContent({
 }) {
     const { board } = useSelector((storeState) => storeState.boardModule)
     const [isShowAll, setIsShowAll] = useState(false)
-
     function toggleShowAll() {
         setIsShowAll(!isShowAll)
     }
@@ -46,7 +45,7 @@ export function TaskMainContent({
                 </div>
             )}
 
-            <div className="activities">
+            {board.activities && <div className="activities">
                 <div className="activities-title">
                     <Activity className="task-content-icon" />
                     <h3>Activity</h3>
@@ -60,12 +59,12 @@ export function TaskMainContent({
                         </button>
                     )}
                 </div>
-                <TaskActivity
+            <TaskActivity
                     taskId={task.id}
                     setIsShowAll={setIsShowAll}
                     isShowAll={isShowAll}
                 />
-            </div>
+            </div>}
         </section>
     )
 }

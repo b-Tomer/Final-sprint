@@ -76,7 +76,6 @@ export function TaskPreview({
     function getLabelBgColor(id) {
         if (!board.labels) return
         const matchedLabel = board.labels.find((label) => label.id === id)
-        console.log('matchlabels', matchedLabel)
         return matchedLabel.color
     }
 
@@ -140,14 +139,6 @@ export function TaskPreview({
         }
     }
 
-    async function onSave(event) {
-        task.title = taskTitle
-        try {
-            await updateTask(boardId, groupId, task)
-        } catch (error) {
-            console.log('cant update task')
-        }
-    }
 
     return (
         // <div ref={editRef}>

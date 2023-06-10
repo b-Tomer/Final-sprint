@@ -1,15 +1,15 @@
-import {dbService} from '../../services/db.service.mjs'
-import {logger} from '../../services/logger.service.mjs'
+import { dbService } from '../../services/db.service.mjs'
+import { logger } from '../../services/logger.service.mjs'
 import mongodb from 'mongodb'
-const {ObjectId} = mongodb
+const { ObjectId } = mongodb
 
 export const userService = {
     query,
     getById,
-    getByUsername,
+    getByMail,
     remove,
     update,
-    add
+    add,
 }
 
 async function query(filterBy = {}) {
@@ -17,7 +17,7 @@ async function query(filterBy = {}) {
     try {
         const collection = await dbService.getCollection('user')
         var users = await collection.find(criteria).toArray()
-        users = users.map(user => {
+        users = users.map((user) => {
             delete user.password
             user.createdAt = ObjectId(user._id).getTimestamp()
             // Returning fake fresh data
@@ -31,17 +31,15 @@ async function query(filterBy = {}) {
     }
 }
 
-
 async function getById(userId) {
     try {
         const collection = await dbService.getCollection('user')
         const user = await collection.findOne({ _id: ObjectId(userId) })
         delete user.password
-
-        user.givenReviews = user.givenReviews.map(review => {
-            delete review.byUser
-            return review
-        })
+        // user.givenReviews = user.givenReviews.map((review) => {
+        //     delete review.byUser
+        //     return review
+        // })
 
         return user
     } catch (err) {
@@ -49,13 +47,13 @@ async function getById(userId) {
         throw err
     }
 }
-async function getByUsername(username) {
+async function getByMail(mail) {
     try {
         const collection = await dbService.getCollection('user')
-        const user = await collection.findOne({ username })
+        const user = await collection.findOne({ mail })
         return user
     } catch (err) {
-        logger.error(`while finding user by username: ${username}`, err)
+        logger.error(`while finding user by mail: ${mail}`, err)
         throw err
     }
 }
@@ -78,7 +76,10 @@ async function update(user) {
             fullname: user.fullname,
         }
         const collection = await dbService.getCollection('user')
-        await collection.updateOne({ _id: userToSave._id }, { $set: userToSave })
+        await collection.updateOne(
+            { _id: userToSave._id },
+            { $set: userToSave }
+        )
         return userToSave
     } catch (err) {
         logger.error(`cannot update user ${user._id}`, err)
@@ -90,7 +91,7 @@ async function add(user) {
     try {
         // peek only updatable fields!
         const userToAdd = {
-            username: user.username,
+            mail: user.mail,
             password: user.password,
             fullname: user.fullname,
             imgUrl: user.imgUrl,
@@ -110,17 +111,13 @@ function _buildCriteria(filterBy) {
         const txtCriteria = { $regex: filterBy.txt, $options: 'i' }
         criteria.$or = [
             {
-                username: txtCriteria
+                mail: txtCriteria,
             },
             {
-                fullname: txtCriteria
-            }
+                fullname: txtCriteria,
+            },
         ]
     }
 
     return criteria
 }
-
-
-
-
