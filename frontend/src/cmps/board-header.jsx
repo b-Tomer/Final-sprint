@@ -19,6 +19,7 @@ import { ReactComponent as EmptyLogo } from '../assets/img/icons/emptyLogo.svg'
 import { ReactComponent as Down } from '../assets/img/icons/down.svg'
 import { ReactComponent as PowerUps } from '../assets/img/icons/rocket.svg'
 import { ReactComponent as Automation } from '../assets/img/icons/bolt.svg'
+import { ReactComponent as Plus } from '../assets/img/icons/plus.svg'
 import { ReactComponent as Filter } from '../assets/img/icons/filter.svg'
 import { ReactComponent as Share } from '../assets/img/icons/Share.svg'
 import { ReactComponent as More } from '../assets/img/icons/dots.svg'
@@ -101,10 +102,9 @@ export function BoardHeader({ board }) {
                 <button>
                     <Star className="board-header-icon" />
                 </button>
-                <div className="board-members">
-                    {board.members &&
-                        board.members.length > 0 &&
-                        board.members.map((member) => (
+                {board.members && board.members.length > 0 && (
+                    <div className="board-members">
+                        {board.members.map((member) => (
                             <button
                                 // onClick={(ev) => onOpenMemberPreview(ev, memberId)}
                                 key={member._id}
@@ -116,7 +116,11 @@ export function BoardHeader({ board }) {
                                 <img src={member.imgUrl} alt="" />
                             </button>
                         ))}
-                </div>
+                        <button className="add-member">
+                            <Plus />
+                        </button>
+                    </div>
+                )}
                 {/* <button>
                     <Visability className="board-header-icon" />
                 </button>
@@ -135,16 +139,14 @@ export function BoardHeader({ board }) {
                     <Automation className="board-header-icon" />
                     <span>Automation</span>
                 </button> */}
-                <button className="btn-board-right" >
-                </button>
+                <button className="btn-board-right"></button>
                 <button className="btn-board-right" onClick={onOpenFilter}>
                     <Filter className="board-header-icon" />
                     <span>Filter</span>
                 </button>
-                {isOpenFilterModal && <DynamicCmp
-                    title={'Filter'}
-                    modalPos={modalPos}
-                />}
+                {isOpenFilterModal && (
+                    <DynamicCmp title={'Filter'} modalPos={modalPos} />
+                )}
                 <span className="separator"></span>
                 <button className="btn-board-right">
                     <Share className="board-header-icon" />
@@ -157,24 +159,20 @@ export function BoardHeader({ board }) {
                     <More className="board-header-icon" />
                 </button>
             </div>
-            {
-                isOpenActivitiesModal && (
-                    <DynamicCmp
-                        title={currTitle}
-                        modalPos={modalPos}
-                        board={board}
-                    />
-                )
-            }
-            {
-                isOpenMemberPrevModal && (
-                    <DynamicCmp
-                        title={currTitle}
-                        modalPos={modalPos}
-                        currMember={currMember}
-                    />
-                )
-            }
-        </div >
+            {isOpenActivitiesModal && (
+                <DynamicCmp
+                    title={currTitle}
+                    modalPos={modalPos}
+                    board={board}
+                />
+            )}
+            {isOpenMemberPrevModal && (
+                <DynamicCmp
+                    title={currTitle}
+                    modalPos={modalPos}
+                    currMember={currMember}
+                />
+            )}
+        </div>
     )
 }

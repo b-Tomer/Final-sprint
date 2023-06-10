@@ -41,7 +41,7 @@ export function DynamicCmp({
         return () => {
             window.removeEventListener('resize', calcModalPos)
         }
-    }, [modalPos, modalTitle])
+    }, [modalPos])
 
     function calcModalPos() {
         if (!modalPos) return

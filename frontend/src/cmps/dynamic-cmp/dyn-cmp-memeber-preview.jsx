@@ -13,10 +13,6 @@ export function DynCmpMemberPreview({ currMember }) {
         }
     }, [currMember])
 
-    function upperCase(word) {
-        return word.charAt(0).toUpperCase() + word.slice(1)
-    }
-
     async function getMemberMail() {
         try {
             setMail('')
@@ -32,9 +28,7 @@ export function DynCmpMemberPreview({ currMember }) {
         <div className="member-prev-container">
             {currMember && (
                 <div className="user-info-header">
-                    <div className="user-info-name">
-                        {upperCase(currMember.fullname)}
-                    </div>
+                    <div className="user-info-name">{currMember.fullname}</div>
                     <div className="user-mail">{mail}</div>
                     {currMember.imgUrl && (
                         <img
