@@ -8,7 +8,6 @@ import { DynamicCmp } from './dynamic-cmp'
 import { SET_LABEL_TO_EDIT } from '../../store/board.reducer'
 import { boardService } from 'services/board.service.local'
 import { userService } from 'services/user.service'
-import { useEffect } from 'react'
 
 export function DynCmpLabels({ task }) {
 
