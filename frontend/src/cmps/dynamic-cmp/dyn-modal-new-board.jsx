@@ -33,7 +33,7 @@ export function DynCmpNewBoard() {
             store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
             return
         }
-        board.members = [user?._id] || []
+        if(user) board.members = [user]
         board.style = { backgroundImage: imgRef.current.src }
         try {
             const savedBoard = await addBoard(board)

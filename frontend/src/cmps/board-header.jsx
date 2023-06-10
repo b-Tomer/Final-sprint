@@ -93,7 +93,7 @@ export function BoardHeader({ board }) {
     //         return 'https://i.pinimg.com/564x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg'
     //     }
     // }
-
+console.log(board.members)
     return (
         <div className="board-header-container">
             <div className="board-header-left">
@@ -101,22 +101,20 @@ export function BoardHeader({ board }) {
                 <button>
                     <Star className="board-header-icon" />
                 </button>
-                <div className="board-members">
-                    {board.members &&
-                        board.members.length > 0 &&
-                        board.members.map((member) => (
+
+                {(board.members && board.members.length > 0) && (
+                    <div className="board-members">
+                        {board.members.map((member) => (
                             <button
-                                // onClick={(ev) => onOpenMemberPreview(ev, memberId)}
                                 key={member._id}
                                 className="board-member-btn"
-                                onClick={(ev) =>
-                                    onOpenMemberModal('Member card', ev, member)
-                                }
+                                onClick={(ev) => onOpenMemberModal('Member card', ev, member)}
                             >
-                                <img src={member.imgUrl} alt="" />
+                                {/* <img src={member.imgUrl} alt="" /> */}
                             </button>
                         ))}
-                </div>
+                    </div>
+                )}
                 {/* <button>
                     <Visability className="board-header-icon" />
                 </button>
