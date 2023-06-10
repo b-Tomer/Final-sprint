@@ -16,6 +16,7 @@ export async function loadUsers() {
         store.dispatch({ type: LOADING_START })
         const users = await userService.getUsers()
         store.dispatch({ type: SET_USERS, users })
+        return users
     } catch (err) {
         console.log('UserActions: err in loadUsers', err)
     } finally {

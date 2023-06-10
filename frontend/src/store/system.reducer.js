@@ -15,6 +15,7 @@ export const OPEN_DYN_EDITOR_MODAL = 'OPEN_DYN_EDITOR_MODAL'
 export const OPEN_DYN_NEW_BOARD_MODAL = 'OPEN_DYN_NEW_BOARD_MODAL'
 export const OPEN_DYN_NEW_BOARD_TOP_MODAL = 'OPEN_DYN_NEW_BOARD_TOP_MODAL'
 export const OPEN_DYN_FILTER_MODAL = 'OPEN_DYN_FILTER_MODAL'
+export const OPEN_DYN_ADD_MEMBER_MODAL = 'OPEN_DYN_ADD_MEMBER_MODAL'
 
 const initialState = {
     isLoading: false,
@@ -29,6 +30,7 @@ const initialState = {
     isOpenNewBoardModal: false,
     isOpenNewBoardTopModal: false,
     isOpenFilterModal: false,
+    isOpenAddMemberModal: false,
     modalTitle: '',
 }
 
@@ -46,6 +48,8 @@ export function systemReducer(state = initialState, action = {}) {
             return { ...state, isMenuModalOpen: true }
         case OPEN_DYN_EDIT_ATC:
             return { ...state, isOpenEditAtc: true }
+        case OPEN_DYN_ADD_MEMBER_MODAL:
+            return { ...state, isOpenAddMemberModal: true }
         case OPEN_DYN_MEMBER_MODAL:
             return { ...state, isOpenMemberModal: true }
         case OPEN_DYN_DATE_MODAL:
@@ -78,6 +82,7 @@ export function systemReducer(state = initialState, action = {}) {
                 isOpenNewBoardModal: false,
                 isOpenNewBoardTopModal: false,
                 isOpenFilterModal: false,
+                isOpenAddMemberModal: false,
             }
         case SET_MODAL_TITLE:
             return { ...state, modalTitle: action.title }

@@ -7,6 +7,7 @@ import {
     OPEN_DYN_FILTER_MODAL,
     OPEN_DYN_MODAL,
     SET_MODAL_TITLE,
+    OPEN_DYN_ADD_MEMBER_MODAL,
 } from '../store/system.reducer'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -38,6 +39,9 @@ export function BoardHeader({ board }) {
         (storeState) => storeState.systemModule
     )
     const { isOpenMemberPrevModal } = useSelector(
+        (storeState) => storeState.systemModule
+    )
+    const { isOpenAddMemberModal } = useSelector(
         (storeState) => storeState.systemModule
     )
 
@@ -74,12 +78,25 @@ export function BoardHeader({ board }) {
         loadBoard(boardId)
     }, [])
 
-    async function onOpenFilter(ev) {
+    async function onOpenFilter(ev, title) {
+        ev.stopPropagation()
         let { top, left, height } = ev.target.getBoundingClientRect()
         setModalPos({ top, left, height })
+        setCurrTitle(title)
         store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
-        store.dispatch({ type: SET_MODAL_TITLE, title: 'Filter' })
+        store.dispatch({ type: SET_MODAL_TITLE, title })
         store.dispatch({ type: OPEN_DYN_FILTER_MODAL })
+        store.dispatch({ type: OPEN_DYN_MODAL })
+    }
+
+    async function onAddMember(ev, title) {
+        ev.stopPropagation()
+        let { top, left, height } = ev.target.getBoundingClientRect()
+        setModalPos({ top, left, height })
+        setCurrTitle(title)
+        store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
+        store.dispatch({ type: SET_MODAL_TITLE, title })
+        store.dispatch({ type: OPEN_DYN_ADD_MEMBER_MODAL })
         store.dispatch({ type: OPEN_DYN_MODAL })
     }
 
@@ -94,7 +111,7 @@ export function BoardHeader({ board }) {
     //         return 'https://i.pinimg.com/564x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg'
     //     }
     // }
-    console.log(board.members)
+
     return (
         <div className="board-header-container">
             <div className="board-header-left">
@@ -102,7 +119,6 @@ export function BoardHeader({ board }) {
                 <button>
                     <Star className="board-header-icon" />
                 </button>
-
                 {board.members && board.members.length > 0 && (
                     <div className="board-members">
                         {board.members.map((member) => (
@@ -116,11 +132,14 @@ export function BoardHeader({ board }) {
                                 <img src={member.imgUrl} alt="" />
                             </button>
                         ))}
-                        <button className="add-member">
-                            <Plus />
-                        </button>
                     </div>
                 )}
+                <button
+                    onClick={(ev) => onAddMember(ev, 'Add members')}
+                    className="add-member"
+                >
+                    <Plus className="add-member-icon" />
+                </button>
                 {/* <button>
                     <Visability className="board-header-icon" />
                 </button>
@@ -140,7 +159,10 @@ export function BoardHeader({ board }) {
                     <span>Automation</span>
                 </button> */}
                 <button className="btn-board-right"></button>
-                <button className="btn-board-right" onClick={onOpenFilter}>
+                <button
+                    className="btn-board-right"
+                    onClick={(event) => onOpenFilter(event, 'Filter')}
+                >
                     <Filter className="board-header-icon" />
                     <span>Filter</span>
                 </button>
@@ -172,6 +194,9 @@ export function BoardHeader({ board }) {
                     modalPos={modalPos}
                     currMember={currMember}
                 />
+            )}
+            {isOpenAddMemberModal && (
+                <DynamicCmp title={currTitle} modalPos={modalPos} />
             )}
         </div>
     )

@@ -18,6 +18,7 @@ import { DynCmpEditLabel } from './dyn-cmp-edit-label'
 import { DynCmpActivities } from './dyn-cmp-activity'
 import { DynCmpNewBoard } from './dyn-modal-new-board'
 import { DynCmpMemberPreview } from './dyn-cmp-memeber-preview'
+import { DynCmpAddMember } from './dyn-cmp-add-member'
 
 export function DynamicCmp({
     task,
@@ -44,7 +45,7 @@ export function DynamicCmp({
     }, [modalPos])
 
     function calcModalPos() {
-        if (!modalPos) return
+        if (!modalPos || !isModalOpen) return
         const containerRect = containerRef.current.getBoundingClientRect()
         const height = containerRect.height
         const width = containerRect.width
@@ -119,6 +120,7 @@ export function DynamicCmp({
                 <DynCmpMemberPreview board={board} currMember={currMember} />
             )}
             {modalTitle === 'Filter' && <Filter board={board} />}
+            {modalTitle === 'Add members' && <DynCmpAddMember />}
         </div>
     )
 }
