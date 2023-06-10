@@ -2,11 +2,106 @@ import { useSelector } from 'react-redux'
 import { ReactComponent as Member } from '../assets/img/icons/member.svg'
 import { ReactComponent as Calander } from '../assets/img/icons/calander.svg'
 import { ReactComponent as Clock } from '../assets/img/icons/clock.svg'
+import { useRef, useState } from 'react'
+import { store } from 'store/store'
+import { SET_BOARD } from 'store/board.reducer'
 
 
 export function Filter() {
-    const { board } = useSelector((storeState) => storeState.boardModule)
-    console.log(board.members)
+    const { board } = useSelector((storeState) => storeState.boardModule);
+
+
+
+    const [filterBy, setFilterBy] = useState(
+        {
+            isMembers: false,
+            byMembers: [],
+            isDate: false,
+            isOverdue: false,
+            isDueSoon: false,
+            byLabels: []
+        }
+    )
+
+    console.log(filterBy)
+    const originalBoard = useRef(board)
+
+    function onNoMembers(ev) {
+        const isChecked = ev.target.checked;
+        setFilterBy(isChecked);
+        filterBoard(isChecked);
+    }
+
+    function onToggleLabel(ev, labelId) {
+        if (ev.target.checked) {
+            setFilterBy(prevFilterBy => ({
+                ...prevFilterBy,
+                byLabels: [...prevFilterBy.byLabels, labelId],
+            }));
+        }
+        else {
+            setFilterBy(prevFilterBy => ({
+                ...prevFilterBy,
+                byLabels: prevFilterBy.byLabels.filter(label => label !== labelId)
+            }));
+        }
+        filterBoard(filterBy);
+
+    }
+
+
+    function filterBoard(filterBy) {
+        if (filterBy) {
+            const filteredBoard = {
+                ...originalBoard.current,
+                groups: originalBoard.current.groups.map((group) => ({
+                    ...group,
+                    tasks: group.tasks.filter(
+                        (task) => task.members === undefined || task.members.length === 0
+                    ),
+                })),
+            };
+            store.dispatch({ type: SET_BOARD, board: filteredBoard });
+        } else {
+            store.dispatch({ type: SET_BOARD, board: originalBoard.current });
+        }
+    }
+
+
+
+    function filterBoard(filterBy) {
+        const { byLabels } = filterBy;
+
+        if (byLabels.length > 0) {
+            const filteredBoard = {
+                ...originalBoard.current,
+                groups: originalBoard.current.groups.map((group) => ({
+                    ...group,
+                    tasks: group.tasks.filter((task) => {
+                        // Check if the task has labels and if any of them match the filter
+                        return (
+                            task.labels &&
+                            task.labels.some((label) => byLabels.includes(label))
+                        );
+                    }),
+                })),
+            };
+
+            store.dispatch({ type: SET_BOARD, board: filteredBoard });
+        } else {
+            store.dispatch({ type: SET_BOARD, board: originalBoard.current });
+        }
+    }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -19,9 +114,6 @@ export function Filter() {
             <h3>Keyword</h3>
             <input type="text" id="search-input" placeholder="Enter a keyword" className='filter-search-bar'></input>
             <h4>Search cards, members, labels, and more.</h4>
-
-
-
             <h3>Members</h3>
             <div className="filter-members-section">
                 <label
@@ -34,9 +126,7 @@ export function Filter() {
                         name="checkbox"
                         // onClick={onCheckClick}
                         // checked={isMemberChecked}
-                        // onChange={(ev) =>
-                        //     onToggleCheckedMember(ev, member._id)
-                        // }
+                        onChange={onNoMembers}
                         className="checkbox"
                     />
                     <div className='filter-icon-frame'>
@@ -78,12 +168,9 @@ export function Filter() {
                         )
                     })}
             </div>
-
-
             <div className="filter-dates-section">
                 <h3>Due date</h3>
                 <label
-
                     className="filter-dates">
                     <input
                         type="checkbox"
@@ -160,9 +247,9 @@ export function Filter() {
                                 name="checkbox"
                                 // checked={isLabelChecked}
                                 // onClick={onCheckClick}
-                                // onChange={(ev) =>
-                                //     onToggleCheckedLabel(ev, label.id)
-                                // }
+                                onChange={(ev) =>
+                                    onToggleLabel(ev, label.id)
+                                }
                                 className="checkbox"
                             />
                             <div
@@ -175,18 +262,7 @@ export function Filter() {
                     )
                 })}
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
     )
+
 }
