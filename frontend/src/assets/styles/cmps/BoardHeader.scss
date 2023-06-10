@@ -109,6 +109,14 @@
                 }
             }
         }
+        .add-member {
+            margin-inline-start: 10px;
+            .add-member-icon {
+                path {
+                    fill: $clr7;
+                }
+            }
+        }
     }
 
     .board-header-right {
