@@ -1,8 +1,4 @@
 import { ReactComponent as Lists } from '../../assets/img/icons/lists.svg'
-// import Stones from '../../assets/img/backgrounds/stones.jpg'
-// import Flowers from '../../assets/img/backgrounds/flowers.jpg'
-// import Colors from '../../assets/img/backgrounds/colors.jpg'
-// import GreenBalls from '../../assets/img/backgrounds/green-balls.jpg'
 import Bg1 from '../../assets/img/background1.jpg'
 import Bg2 from '../../assets/img/background6.jpg'
 import Bg3 from '../../assets/img/background4.jpg'
@@ -124,7 +120,7 @@ export function DynCmpNewBoard() {
             </div>
             <h3>Board title</h3>
             <form onSubmit={onAddBoard}>
-                <input ref={titleRef} placeholder="Required" required></input>
+                <input ref={titleRef} placeholder="Required" required className='create-board-input'></input>
                 <button className="create-btn">Create</button>
             </form>
         </section>

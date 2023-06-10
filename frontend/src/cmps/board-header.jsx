@@ -27,6 +27,10 @@ export function BoardHeader({ board }) {
     const { boardId } = useParams()
     const [currTitle, setCurrTitle] = useState('')
     const [modalPos, setModalPos] = useState(null)
+    const { isOpenFilterModal } = useSelector(
+        (storeState) => storeState.systemModule
+    )
+
     const { isOpenActivitiesModal } = useSelector(
         (storeState) => storeState.systemModule
     )
@@ -51,14 +55,14 @@ export function BoardHeader({ board }) {
 
 
 
-    // async function onOpenFilter(ev) {
-    //     let { top, left, height } = ev.target.getBoundingClientRect()
-    //     setModalPos({ top, left, height })
-    //     store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
-    //     store.dispatch({ type: SET_MODAL_TITLE, title: 'Filter' })
-    //     store.dispatch({ type: OPEN_DYN_FILTER_MODAL })
-    //     store.dispatch({ type: OPEN_DYN_MODAL })
-    // }
+    async function onOpenFilter(ev) {
+        let { top, left, height } = ev.target.getBoundingClientRect()
+        setModalPos({ top, left, height })
+        store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
+        store.dispatch({ type: SET_MODAL_TITLE, title: 'Filter' })
+        store.dispatch({ type: OPEN_DYN_FILTER_MODAL })
+        store.dispatch({ type: OPEN_DYN_MODAL })
+    }
 
     return (
         <div className="board-header-container">
@@ -85,14 +89,14 @@ export function BoardHeader({ board }) {
                     <Automation className="board-header-icon" />
                     <span>Automation</span>
                 </button>
-                <button className="btn-board-right" >
+                <button className="btn-board-right" onClick={onOpenFilter} >
                     <Filter className="board-header-icon" />
                     <span>Filter</span>
                 </button>
-                {/* <DynamicCmp
+                {isOpenFilterModal && <DynamicCmp
                     title={'Filter'}
                     modalPos={modalPos}
-                /> */}
+                />}
                 <span className="separator"></span>
                 <button className="btn-board-right">
                     <Share className="board-header-icon" />
