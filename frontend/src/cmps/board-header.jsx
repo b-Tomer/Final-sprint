@@ -138,7 +138,7 @@ export function BoardHeader({ board }) {
                 <button className="btn-board-right" >
                 </button>
                 <button className="btn-board-right" onClick={onOpenFilter}>
-                    <Filter className="board-header-icon" />
+                    <Filter className="board-header-icon" board={board} />
                     <span>Filter</span>
                 </button>
                 {isOpenFilterModal && <DynamicCmp

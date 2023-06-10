@@ -35,7 +35,6 @@ export function DynamicCmp({
     const containerRef = useRef(null)
 
     useEffect(() => {
-        console.log(modalTitle)
         calcModalPos()
         window.addEventListener('resize', calcModalPos)
         return () => {

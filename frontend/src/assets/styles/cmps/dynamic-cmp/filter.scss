@@ -1,7 +1,28 @@
 .filter-container {
 
+    .filter-search-bar {
+        width: 280px;
+        margin-left: 10px;
+        margin-right: 20px;
+        height: 32px;
+        border-radius: 3px;
+        border: 1px solid $clr4 ;
+        padding-left: 5px;
+
+        &:focus {
+            border: 2px solid $clrBtnH ;
+            outline: none;
+        }
+    }
+
     h3 {
         font-weight: 500;
+    }
+
+    h4 {
+        font-size: 0.75rem;
+        font-weight: 400;
+        margin-left: 10px;
     }
 
     .filter-members-section {
@@ -10,8 +31,141 @@
         flex-direction: column;
 
         .filter-member {
+            display: flex;
             flex-direction: row;
             width: 100%;
+            margin-bottom: 10px;
+
+            .checkbox {
+                margin-left: 20px;
+
+            }
+
+            .filter-icon-frame {
+                margin-left: 10px;
+                width: 22px;
+                height: 22px;
+                background-color: $clr2;
+                border-radius: 50%;
+
+                .filter-icon {
+                    border-radius: 50%;
+                    width: 22px;
+                    height: 22px;
+                    transform: translatex(1.7px);
+
+                    path {
+                        fill: $clr4;
+                    }
+                }
+            }
+
+            .member-name {
+                margin-left: 10px;
+                font-size: 0.875rem;
+            }
+
+
+        }
+    }
+
+    .filter-dates-section {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .filter-dates {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            margin-bottom: 10px;
+
+            .checkbox {
+                margin-left: 20px;
+            }
+
+            .filter-icon-frame {
+                margin-left: 10px;
+                width: 24px;
+                height: 24px;
+                background-color: $clr2;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .filter-icon {
+                    border-radius: 50%;
+                    width: 18px;
+                    height: 18px;
+                    // padding: 1px;
+
+
+                    path {
+                        fill: $clr4;
+                    }
+                }
+            }
+
+            .red {
+                background-color: #ca3521;
+
+                .filter-icon {
+
+                    path {
+                        fill: $clr1;
+                    }
+                }
+            }
+
+            .yellow {
+                background-color: #e2b203;
+
+                .filter-icon {
+
+                    path {
+                        fill: $clr1;
+                    }
+                }
+            }
+
+            .member-name {
+                margin-left: 10px;
+                font-size: 0.875rem;
+            }
+
+
+        }
+    }
+
+    .filter-labels-section {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .filter-labels {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            margin-bottom: 10px;
+
+            .checkbox {
+                margin-left: 20px;
+            }
+
+            .filter-label-title {
+                width: 100%;
+                height: 32px;
+                border: 3px;
+                margin: 0 10px;
+                display: flex;
+                align-items: center;
+
+                span {
+                    margin-left: 10px;
+                    font-weight: 500;
+                }
+            }
         }
     }
 }
