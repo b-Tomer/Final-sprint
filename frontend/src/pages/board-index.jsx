@@ -20,6 +20,10 @@ import { utilService } from '../services/util.service.js'
 import { isEmpty } from 'lodash'
 import { boardService } from 'services/board.service.local.js'
 import { userService } from 'services/user.service.js'
+import { UPDATE_BOARD_LIVE, socketService } from 'services/socket.service.js'
+import { SET_BOARD } from 'store/board.reducer.js'
+import { store } from 'store/store.js'
+
 
 export function BoardIndex() {
     const { boardId } = useParams()
@@ -39,6 +43,14 @@ export function BoardIndex() {
     useEffect(() => {
         loadBoards()
         onLoadBoard(filterBy)
+
+        socketService.on(UPDATE_BOARD_LIVE, (board) => { 
+            store.dispatch({type:SET_BOARD, board})
+         })
+            return () => {
+                socketService.off(UPDATE_BOARD_LIVE)
+              }
+
     }, [filterBy, boardId])
 
     async function onLoadBoard(filterBy) {

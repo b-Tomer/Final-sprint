@@ -1,7 +1,6 @@
 .homepage-header-container {
     display: flex;
     // justify-content: space-between;
-    padding-inline: 120px;
     align-content: center;
     align-items: center;
     width: 100%;
@@ -12,7 +11,11 @@
     color: $clrHTXT;
     z-index: 1;
     color: $clr7;
+    padding-inline: 12px;
+    @include for-narrow-layout {
+        padding-inline: 5%;
 
+    }
     .homepage-header-logo {
         line-height: 30px;
         // padding: 16px;
@@ -29,7 +32,11 @@
 
     .homepage-header-nav {
         display: flex;
-
+       
+        @include for-narrow-layout {
+            // display: flex;
+    
+        }
         .homepage-header-btn {
             display: flex;
             align-content: center;
