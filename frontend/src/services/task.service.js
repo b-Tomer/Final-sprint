@@ -10,7 +10,6 @@ export const taskService = {
 
 function getDefaultTask() {
     const task = {}
-
     task.title = ''
     task.attachments = []
     task.labelIds = []

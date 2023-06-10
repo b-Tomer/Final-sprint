@@ -3,13 +3,13 @@ import { TaskMainDetails } from './task-main-details.jsx'
 import { TaskHeader } from './task-header.jsx'
 import { useEffect, useState, useRef, useLayoutEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { TaskCover } from './task-cover.jsx'
 import { CLOSE_DYN_ALL_MODALS } from 'store/system.reducer.js'
 import { store } from 'store/store.js'
 
 export function TaskDetails({
-    taskId,
+    // taskId,
     groupId,
     boardId,
     setIsTaskDetailsOpen,
@@ -20,7 +20,7 @@ export function TaskDetails({
     const [group, setGroup] = useState(null)
     const [editing, setEditing] = useState(false)
     const [dynamicCmpName, setDynamicCmpName] = useState(null)
-
+    const {taskId}= useParams()
     const taskOverlayRef = useRef()
     const groupIdx = board?.groups.findIndex((group) => group.id === groupId)
     const currTask = board.groups[groupIdx].tasks.find(
@@ -29,7 +29,6 @@ export function TaskDetails({
     const [layout, setLayout] = useState(undefined)
     const [scroll, setScroll] = useState(true)
     const elementRef = useRef(null)
-
     useEffect(() => {
         setTask(currTask)
         setGroup(board.groups[groupIdx])

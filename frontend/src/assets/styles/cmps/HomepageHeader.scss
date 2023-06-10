@@ -21,6 +21,7 @@
         padding-inline-end: 16px;
         align-self: flex-start;
         color: $clr7;
+
         h1 {
             margin: 0;
         }
@@ -65,16 +66,27 @@
         flex-grow: 2;
 
         .homepage-header-btn {
+
             font-size: 19px;
-            background-color: transparent;
-            padding-inline: 24px;
-            padding-block: 8px;
+            min-width: 116px;
+            @include for-narrow-layout {
+                background-color: transparent;
+                font-size: 19px;
+                min-width: 116px;
+                height: 60px;
+            }
+
         }
 
         .try {
+
             background-color: $hompageBTN;
             color: $clr1;
-            padding-block: 19px;
+            min-width: 130px;
+            @include for-narrow-layout {
+                min-width: 130px;
+                height: 60px;
+            }
         }
     }
 
