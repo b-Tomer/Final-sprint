@@ -9,10 +9,16 @@ import { userService } from 'services/user.service'
 export function DynCmpAddMember({}) {
     const [allUsers, setAllUsers] = useState([])
     const { board } = useSelector((storeState) => storeState.boardModule)
+    const [searchTerm, setSearchTerm] = useState('')
+    const [filteredUsers, setFilteredUsers] = useState([])
 
     useEffect(() => {
         onLoadUsers()
     }, [])
+
+    useEffect(() => {
+        filterUsers()
+    }, [searchTerm])
 
     async function onLoadUsers() {
         const usersFromdb = await loadUsers()
@@ -50,15 +56,21 @@ export function DynCmpAddMember({}) {
         }
     }
 
-    // function getMemberName(memberId) {
-    //     const member = board.members.find(
-    //         (currMember) => currMember._id === memberId
-    //     )
-    //     return member.fullname
-    // }
-
     function isBoardMember(member) {
         return board.members.some((currMember) => currMember._id === member._id)
+    }
+
+    function handleSearchChange(event) {
+        const { value } = event.target
+        setSearchTerm(value)
+    }
+
+    function filterUsers() {
+        const regex = new RegExp(searchTerm, 'i')
+        const filteredUsers = allUsers.filter(
+            (user) => regex.test(user.fullname) || regex.test(user.mail)
+        )
+        setFilteredUsers(filteredUsers)
     }
 
     return (
@@ -67,24 +79,62 @@ export function DynCmpAddMember({}) {
                 className="search-members"
                 type="text"
                 placeholder="search members"
+                value={searchTerm}
+                onChange={handleSearchChange}
             />
-            {allUsers.length > 0 && (
+            {allUsers.length === 0 ? (
+                <p>Loading users...</p>
+            ) : (
                 <ul className="all-users">
-                    {allUsers.map((user) => (
-                        <li key={user._id} className="user">
-                            <img src={user.imgUrl} alt="" />
-                            {user.fullname}
-                            <input
-                                type="checkbox"
-                                name="checkbox"
-                                checked={isBoardMember(user)}
-                                onChange={(ev) =>
-                                    onToggleCheckedMember(ev, user._id, user)
-                                }
-                                className="user-checkbox"
-                            />
-                        </li>
-                    ))}
+                    {filteredUsers.length > 0
+                        ? filteredUsers.map((user) => (
+                              <li key={user._id} className="user">
+                                  <img src={user.imgUrl} alt="" />
+                                  <div className="details">
+                                      <span className="fullname">
+                                          {user.fullname}
+                                      </span>
+                                      <span className="mail">{user.mail}</span>
+                                  </div>
+                                  <input
+                                      type="checkbox"
+                                      name="checkbox"
+                                      checked={isBoardMember(user)}
+                                      onChange={(ev) =>
+                                          onToggleCheckedMember(
+                                              ev,
+                                              user._id,
+                                              user
+                                          )
+                                      }
+                                      className="user-checkbox"
+                                  />
+                              </li>
+                          ))
+                        : allUsers.map((user) => (
+                              <li key={user._id} className="user">
+                                  <img src={user.imgUrl} alt="" />
+                                  <div className="details">
+                                      <span className="fullname">
+                                          {user.fullname}
+                                      </span>
+                                      <span className="mail">{user.mail}</span>
+                                  </div>
+                                  <input
+                                      type="checkbox"
+                                      name="checkbox"
+                                      checked={isBoardMember(user)}
+                                      onChange={(ev) =>
+                                          onToggleCheckedMember(
+                                              ev,
+                                              user._id,
+                                              user
+                                          )
+                                      }
+                                      className="user-checkbox"
+                                  />
+                              </li>
+                          ))}
                 </ul>
             )}
         </div>

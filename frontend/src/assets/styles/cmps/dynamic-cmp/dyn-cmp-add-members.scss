@@ -40,6 +40,15 @@
             .user-checkbox {
                 margin-inline-start: auto;
             }
+            .details {
+                display: flex;
+                flex-direction: column;
+                .fullname {
+                }
+                .mail {
+                    font-size: 12px;
+                }
+            }
         }
     }
 }
