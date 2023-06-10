@@ -10,8 +10,8 @@ import { boardService } from 'services/board.service.local'
 import { userService } from 'services/user.service'
 
 export function DynCmpLabels({ task }) {
+
     const { board } = useSelector((storeState) => storeState.boardModule)
-    const [labelToEdit, setLabelToEdit] = useState(null)
     const [isEditLabelOpen, setIsEditLabelOpen] = useState(false)
 
     function handleEditButtonClick(title, label) {
