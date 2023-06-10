@@ -75,8 +75,8 @@ export function DynCmpMembers({ task }) {
             <div>
                 {board.members &&
                     board.members.length > 0 &&
-                    task.members &&
-                    task.members.length > 0 &&
+                    // task.members &&
+                    // task.members.length > 0 &&
                     board.members.map((member) => {
                         const isMemberChecked = task.members
                             ? task.members.includes(member._id)
