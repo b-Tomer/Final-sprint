@@ -1,10 +1,10 @@
-import {userService} from './user.service.mjs'
-import {logger} from '../../services/logger.service.mjs'
-import {socketService} from '../../services/socket.service.mjs'
+import { userService } from './user.service.mjs'
+import { logger } from '../../services/logger.service.mjs'
+import { socketService } from '../../services/socket.service.mjs'
 
 export async function getUser(req, res) {
     try {
-        console.log('req.params.id: ', req.params.id )
+        console.log('req.params.id: ', req.params.id)
         const user = await userService.getById(req.params.id)
         res.send(user)
     } catch (err) {
@@ -17,7 +17,7 @@ export async function getUsers(req, res) {
     try {
         const filterBy = {
             txt: req.query?.txt || '',
-            minBalance: +req.query?.minBalance || 0
+            minBalance: +req.query?.minBalance || 0,
         }
         const users = await userService.query(filterBy)
         res.send(users)

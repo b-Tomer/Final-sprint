@@ -14,7 +14,7 @@ export function LoginSignup() {
     const navigate = useNavigate()
 
     const [credentials, setCredentials] = useState({
-        username: '',
+        mail: '',
         password: '',
         fullname: '',
     })
@@ -31,7 +31,7 @@ export function LoginSignup() {
     }
 
     function clearState() {
-        setCredentials({ fullname: '', username: '', password: '', imgUrl: '' })
+        setCredentials({ fullname: '', mail: '', password: '', imgUrl: '' })
         setIsSignup(false)
     }
 
@@ -43,7 +43,7 @@ export function LoginSignup() {
 
     async function onLogin(ev = null) {
         if (ev) ev.preventDefault()
-        if (!credentials.username) return
+        if (!credentials.mail) return
         try {
             await handleLogin(credentials)
             clearState()
@@ -53,16 +53,14 @@ export function LoginSignup() {
                 console.log('not logged in')
             }
         } catch (err) {
-            console.log("user not found ", err);
+            console.log('user not found ', err)
         }
     }
 
     function onSignup(ev = null) {
         if (ev) ev.preventDefault()
-        if (!credentials.username ||
-            !credentials.password ||
-            !credentials.fullname
-        ) return
+        if (!credentials.mail || !credentials.password || !credentials.fullname)
+            return
         handleSignup(credentials)
         clearState()
         if (userService.getLoggedinUser()) {
@@ -71,7 +69,7 @@ export function LoginSignup() {
             console.log('not logged in')
         }
     }
-    
+
     async function handleSignup(credentials) {
         try {
             const user = await signup(credentials)
@@ -113,9 +111,9 @@ export function LoginSignup() {
                         <h3>Log in to Trellax</h3>
                         <form>
                             <input
-                                type="text"
-                                name="username"
-                                placeholder=" Enter username"
+                                type="email"
+                                name="mail"
+                                placeholder=" Enter mail"
                                 onChange={handleChange}
                                 required
                                 autoFocus
@@ -149,8 +147,8 @@ export function LoginSignup() {
                             />
                             <input
                                 type="text"
-                                name="username"
-                                placeholder=" Enter username"
+                                name="mail"
+                                placeholder=" Enter mail"
                                 onChange={handleChange}
                                 required
                             />

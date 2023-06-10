@@ -35,7 +35,7 @@ export async function removeUser(userId) {
 export async function login(credentials) {
     try {
         const user = await userService.login(credentials)
-        console.log('user: ', user )
+        console.log('user: ', user)
         store.dispatch({
             type: SET_USER,
             user,
@@ -81,6 +81,7 @@ export async function loadUser(userId) {
     try {
         const user = await userService.getById(userId)
         store.dispatch({ type: SET_WATCHED_USER, user })
+        return user
     } catch (err) {
         showErrorMsg('Cannot load user')
         console.log('Cannot load user', err)

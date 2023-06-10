@@ -3,6 +3,7 @@ import { boardService } from '../services/board.service.local.js'
 import {
     CLOSE_DYN_ALL_MODALS,
     OPEN_DYN_ACTIVITIES_MODAL,
+    OPEN_DYN_MEMBER_PREV_MODAL,
     OPEN_DYN_MODAL,
     SET_MODAL_TITLE,
 } from '../store/system.reducer'
@@ -25,8 +26,12 @@ import { DynamicCmp } from './dynamic-cmp/dynamic-cmp.jsx'
 export function BoardHeader({ board }) {
     const { boardId } = useParams()
     const [currTitle, setCurrTitle] = useState('')
+    const [currMember, setCurrMember] = useState(null)
     const [modalPos, setModalPos] = useState(null)
     const { isOpenActivitiesModal } = useSelector(
+        (storeState) => storeState.systemModule
+    )
+    const { isOpenMemberPrevModal } = useSelector(
         (storeState) => storeState.systemModule
     )
 
@@ -43,9 +48,33 @@ export function BoardHeader({ board }) {
         store.dispatch({ type: OPEN_DYN_ACTIVITIES_MODAL })
     }
 
+    function onOpenMemberModal(title, ev, member) {
+        ev.stopPropagation()
+        let { top, left, height } = ev.target.getBoundingClientRect()
+        setModalPos({ top, left, height })
+        setCurrMember(member)
+        setCurrTitle(title)
+        store.dispatch({ type: SET_MODAL_TITLE, title })
+        store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
+        store.dispatch({ type: OPEN_DYN_MODAL })
+        store.dispatch({ type: OPEN_DYN_MEMBER_PREV_MODAL })
+    }
+
     useEffect(() => {
         loadBoard(boardId)
     }, [])
+
+    // function getMemberImg(memberId) {
+    //     if (!board.members) return
+    //     const currMember = board?.members.find(
+    //         (member) => member._id === memberId
+    //     )
+    //     if (currMember.imgUrl) {
+    //         return currMember.imgUrl
+    //     } else {
+    //         return 'https://i.pinimg.com/564x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg'
+    //     }
+    // }
 
     return (
         <div className="board-header-container">
@@ -54,24 +83,40 @@ export function BoardHeader({ board }) {
                 <button>
                     <Star className="board-header-icon" />
                 </button>
-                <button>
+                <div className="board-members">
+                    {board.members &&
+                        board.members.length > 0 &&
+                        board.members.map((member) => (
+                            <button
+                                // onClick={(ev) => onOpenMemberPreview(ev, memberId)}
+                                key={member._id}
+                                className="board-member-btn"
+                                onClick={(ev) =>
+                                    onOpenMemberModal('Member card', ev, member)
+                                }
+                            >
+                                <img src={member.imgUrl} alt="" />
+                            </button>
+                        ))}
+                </div>
+                {/* <button>
                     <Visability className="board-header-icon" />
-                </button>
-                <button className="btn-board-select">
+                </button> */}
+                {/* <button className="btn-board-select">
                     <EmptyLogo className="board-header-icon" />
                     <span>Board</span>
                     <Down className="board-header-icon" />
-                </button>
+                </button> */}
             </div>
             <div className="board-header-right">
-                <button className="btn-board-right">
+                {/* <button className="btn-board-right">
                     <PowerUps className="board-header-icon" />
                     <span>Power-Ups</span>
                 </button>
                 <button className="btn-board-right">
                     <Automation className="board-header-icon" />
                     <span>Automation</span>
-                </button>
+                </button> */}
                 <button className="btn-board-right">
                     <Filter className="board-header-icon" />
                     <span>Filter</span>
@@ -93,6 +138,13 @@ export function BoardHeader({ board }) {
                     title={currTitle}
                     modalPos={modalPos}
                     board={board}
+                />
+            )}
+            {isOpenMemberPrevModal && (
+                <DynamicCmp
+                    title={currTitle}
+                    modalPos={modalPos}
+                    currMember={currMember}
                 />
             )}
         </div>
