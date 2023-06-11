@@ -12,7 +12,7 @@ import {
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
-import { loadBoard } from '../store/board.actions.js'
+import { loadBoard, updateBoard } from '../store/board.actions.js'
 import { store } from '../store/store'
 import { ReactComponent as Star } from '../assets/img/icons/star.svg'
 import { ReactComponent as Visability } from '../assets/img/icons/members.svg'
@@ -25,6 +25,7 @@ import { ReactComponent as Filter } from '../assets/img/icons/filter.svg'
 import { ReactComponent as Share } from '../assets/img/icons/Share.svg'
 import { ReactComponent as More } from '../assets/img/icons/dots.svg'
 import { DynamicCmp } from './dynamic-cmp/dynamic-cmp.jsx'
+import { ReactComponent as StarredYellow } from '../assets/img/icons/starred-yellow.svg'
 
 export function BoardHeader({ board }) {
     const { boardId } = useParams()
@@ -48,6 +49,16 @@ export function BoardHeader({ board }) {
     useEffect(() => {
         loadBoard(boardId)
     }, [])
+
+    const buttonClassName = board.isStarred ? 'star starred' : 'star';
+
+    function onClickStarred(ev) {
+        ev.stopPropagation()
+        board.isStarred = !board.isStarred
+        updateBoard(board).then(console.log)
+    }
+
+
 
     function onOpenEditorModal(title, ev) {
         ev.stopPropagation()
@@ -116,9 +127,11 @@ export function BoardHeader({ board }) {
         <div className="board-header-container">
             <div className="board-header-left">
                 <h1 className="board-title">{board.title}</h1>
-                <button>
-                    <Star className="board-header-icon" />
+
+                <button className='starred-btn' onClick={onClickStarred}>
+                    {<StarredYellow className={buttonClassName} />}
                 </button>
+
                 {board.members && board.members.length > 0 && (
                     <div className="board-members">
                         {board.members.map((member) => (

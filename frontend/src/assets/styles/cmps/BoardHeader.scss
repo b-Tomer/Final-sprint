@@ -47,13 +47,45 @@
     }
 
     .board-header-icon {
-        width: 16px;
-        height: 16px;
+        width: 32px;
+        height: 32x;
 
         path {
             fill: $clr7;
         }
     }
+
+    .starred-btn {
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        background-color: transparent;
+        padding: 6px;
+        border-radius: 50%;
+
+        &:hover {
+            background-color: transparent;
+        }
+
+        .star {
+            width: 32px;
+            height: 32px;
+
+            path {
+                fill: $clr7;
+            }
+        }
+
+        .starred {
+            path {
+                fill: #e2b203;
+            }
+        }
+    }
+
 
     .board-header-left {
         transform: translateY(4px);
@@ -93,24 +125,29 @@
             // width: 28px;
             // height: 28px;
             gap: 0;
+
             button {
                 margin: 0;
                 padding: 0;
                 border-radius: 50%;
                 margin-inline-end: -8px;
+
                 img {
                     padding: 0;
                     width: 28px;
                     height: 28px;
                     border-radius: 50%;
+
                     &:hover {
                         filter: brightness(1.4);
                     }
                 }
             }
         }
+
         .add-member {
             margin-inline-start: 10px;
+
             .add-member-icon {
                 path {
                     fill: $clr7;
