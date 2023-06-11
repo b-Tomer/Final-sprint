@@ -89,9 +89,14 @@ export function DatePreview({ task, setDynamicCmpName }) {
         task.isDone = value
         try {
             const activity = boardService.getEmptyActivity()
-            activity.title = `Changed title to: ${task.title}`
+            activity.memberId = userService.getLoggedinUser()?._id
+                ? userService.getLoggedinUser()._id
+                : null
             activity.taskId = task.id
-            activity.title = `Marked task ${task.title} as: ${getIsDone(
+            activity.title = `Marked task ${task.title} as ${getIsDone(
+                task.isDone
+            )}`
+            activity.titleInTask = `Marked this task as ${getIsDone(
                 task.isDone
             )}`
             activity.by = userService.getLoggedinUser()?.fullname

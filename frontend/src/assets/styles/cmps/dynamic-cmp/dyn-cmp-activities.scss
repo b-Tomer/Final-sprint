@@ -1,24 +1,80 @@
-.activities-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding-inline: 10px;
-    overflow-y: auto;
-    max-height: 75vh;
-    max-width: 290px;
-    .activity-container {
-        color: $clr7;
+// .activities-container {
+//     display: flex;
+//     flex-direction: column;
+//     gap: 10px;
+//     padding-inline: 10px;
+//     overflow-y: auto;
+//     max-height: 75vh;
+//     max-width: 290px;
+//     .activity-container {
+//         color: $clr7;
+//         font-size: 14px;
+//         display: flex;
+//         flex-direction: column;
+// word-wrap: break-word;
+// white-space: normal;
+//         .by {
+//             font-weight: 700;
+//         }
+//         .created-at {
+//             font-size: 12px;
+//             margin-block-end: 10px;
+//         }
+//     }
+// }
+.dynamic-cmp {
+    .task-activities-container {
+        margin-block-start: 10px;
+        padding-inline: 10px;
         font-size: 14px;
-        display: flex;
-        flex-direction: column;
-        word-wrap: break-word;
-        white-space: normal;
-        .by {
-            font-weight: 700;
+        overflow-y: auto;
+        max-height: 75vh;
+        max-width: 290px;
+        color: $clr7;
+
+        @include for-normal-layout {
+            width: 550px;
         }
-        .created-at {
-            font-size: 12px;
-            margin-block-end: 10px;
+
+        .activity-container {
+            display: flex;
+            margin-block-end: 15px;
+
+            .activity-icon {
+                width: 2rem;
+                height: 2rem;
+                border-radius: 50%;
+                margin-inline-end: 10px;
+            }
+
+            // display: flex;
+            // align-content: center;
+            // align-items: center;
+            // width: 100%;
+
+            .title {
+                display: inline;
+                width: 100%;
+                word-break: break-word; /* Added property */
+                .by {
+                    display: inline;
+                    font-weight: 700;
+                    // margin-inline-end: 5px;
+                    // width: fit-content;
+                    // white-space: nowrap;
+                }
+            }
+
+            .created-at {
+                font-size: 12px;
+            }
+
+            hr {
+                max-width: 100%;
+            }
+            img {
+                margin-block-start: 3px;
+            }
         }
     }
 }

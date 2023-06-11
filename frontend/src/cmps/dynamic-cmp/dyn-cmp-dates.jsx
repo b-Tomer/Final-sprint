@@ -40,9 +40,15 @@ export function DynCmpDates({ task }) {
         task.dueDate = timestamp
         try {
             const activity = boardService.getEmptyActivity()
+            activity.memberId = userService.getLoggedinUser()?._id
+                ? userService.getLoggedinUser()._id
+                : null
             activity.title = `Added due date at: ${utilService.dueDateFormat(
                 task.dueDate
             )} to: ${task.title}`
+            activity.titleInTask = `Added due date at ${utilService.dueDateFormat(
+                task.dueDate
+            )}`
             activity.taskId = task.id
             activity.by = userService.getLoggedinUser()?.fullname
                 ? userService.getLoggedinUser().fullname
@@ -60,7 +66,11 @@ export function DynCmpDates({ task }) {
         task.dueDate = null
         try {
             const activity = boardService.getEmptyActivity()
-            activity.title = `Removed due date from: ${task.title}`
+            activity.memberId = userService.getLoggedinUser()?._id
+                ? userService.getLoggedinUser()._id
+                : null
+            activity.title = `Removed due date from ${task.title}`
+            activity.titleInTask = `Removed due date`
             activity.taskId = task.id
             activity.by = userService.getLoggedinUser()?.fullname
                 ? userService.getLoggedinUser().fullname

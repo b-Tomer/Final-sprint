@@ -24,7 +24,6 @@ import { UPDATE_BOARD_LIVE, socketService } from 'services/socket.service.js'
 import { SET_BOARD } from 'store/board.reducer.js'
 import { store } from 'store/store.js'
 
-
 export function BoardIndex() {
     const { boardId } = useParams()
     const { board } = useSelector((storeState) => storeState.boardModule)
@@ -44,13 +43,12 @@ export function BoardIndex() {
         loadBoards()
         onLoadBoard(filterBy)
 
-        socketService.on(UPDATE_BOARD_LIVE, (board) => { 
-            store.dispatch({type:SET_BOARD, board})
-         })
-            return () => {
-                socketService.off(UPDATE_BOARD_LIVE)
-              }
-
+        socketService.on(UPDATE_BOARD_LIVE, (board) => {
+            store.dispatch({ type: SET_BOARD, board })
+        })
+        return () => {
+            socketService.off(UPDATE_BOARD_LIVE)
+        }
     }, [filterBy, boardId])
 
     async function onLoadBoard(filterBy) {
@@ -62,6 +60,9 @@ export function BoardIndex() {
         try {
             const currBoard = await saveGroup(group, boardId)
             const activity = boardService.getEmptyActivity()
+            activity.memberId = userService.getLoggedinUser()?._id
+                ? userService.getLoggedinUser()._id
+                : null
             activity.taskId = null
             activity.by = userService.getLoggedinUser()?.fullname
                 ? userService.getLoggedinUser().fullname
@@ -86,6 +87,9 @@ export function BoardIndex() {
     async function onRemoveGroup(group) {
         try {
             const activity = boardService.getEmptyActivity()
+            activity.memberId = userService.getLoggedinUser()?._id
+                ? userService.getLoggedinUser()._id
+                : null
             activity.taskId = null
             activity.by = userService.getLoggedinUser()?.fullname
                 ? userService.getLoggedinUser().fullname
