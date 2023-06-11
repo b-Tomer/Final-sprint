@@ -13,15 +13,18 @@
     color: $clr7;
     padding-inline: 12px;
 
-    .menu-button {}
+    .menu-button {
+    }
 
     @include for-narrow-layout {
         justify-content: flex-start;
         padding-inline: 5%;
-
     }
 
     .homepage-header-logo {
+        display: flex;
+        align-items: center;
+        align-content: center;
         line-height: 30px;
         padding-block-start: 10px;
         padding-inline-end: 16px;
@@ -31,11 +34,18 @@
         h1 {
             margin: 0;
         }
+        .logo-icon {
+            width: 2rem;
+            height: 2rem;
+            margin-inline-end: 5px;
+            path {
+                fill: $clr7;
+            }
+        }
     }
 
     .homepage-header-nav {
         display: flex;
-        transition: 0.8s;
         left: 0;
         flex-direction: column;
         font-size: 2rem;
@@ -46,7 +56,6 @@
         height: 0px;
         background: $clr1;
         top: 10px;
-        transition: 0.6s;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         border-radius: 3px;
         z-index: 4;
@@ -59,7 +68,7 @@
         }
 
         &.open-homepage-menu {
-            height: 90vh;
+            height: 20vh;
             position: absolute;
             transform: translateY(49px);
 
@@ -83,7 +92,8 @@
             .btn-header-login {
                 width: 100%;
                 height: 60px;
-                background-color: inherit;
+                // background-color: inherit;
+                background-color: transparent;
                 border: 1px solid $clrBTN;
                 margin-bottom: 5px;
             }
@@ -110,20 +120,15 @@
                 transition: 0.8s;
 
                 .btn-header-actions {
-                    padding-block: 1.8rem;
                     width: 100%;
                     align-items: center;
                     height: 60px;
-
                 }
             }
-
         }
-
 
         @include for-narrow-layout {
             flex-direction: row;
-
         }
 
         .homepage-header-btn {
@@ -147,7 +152,6 @@
             @include for-narrow-layout {
                 justify-content: flex-start;
                 opacity: 1;
-
             }
 
             &:hover {
@@ -160,7 +164,6 @@
                 }
             }
 
-
             .homepage-header-icon {
                 width: 15px;
                 height: 10px;
@@ -172,8 +175,6 @@
             }
         }
     }
-
-
 
     .homepage-header-actions {
         display: none;
@@ -191,16 +192,23 @@
 
         .btn-header-login {
             min-width: 130px;
+            background-color: transparent;
+            font-size: 1.2rem;
+            color: $clr7;
+            font-family: charlie;
         }
 
         .try {
             background-color: $hompageBTN;
             color: $clr1;
             min-width: 130px;
+            font-size: 19.2px;
 
             @include for-narrow-layout {
                 min-width: 130px;
                 height: 60px;
+                font-size: 19.2px;
+                font-family: charlie;
             }
         }
     }
@@ -217,6 +225,4 @@
             display: none;
         }
     }
-
-
 }

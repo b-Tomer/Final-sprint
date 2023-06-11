@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { HomepageHeader } from '../cmps/homepage-header'
 import homepageImg from '../assets/img/homepageImg.png'
+import { HomeageCarousel } from 'cmps/homepage-carousel'
 
 export function HomePage() {
     const navigate = useNavigate()
@@ -27,6 +28,19 @@ export function HomePage() {
                         <img src={homepageImg} alt="" />
                     </div>
                 </div>
+            </section>
+            <section className="bottom">
+                <div className="TRELLAX-intro">
+                    <p className="TRELLAX-101">TRELLAX - 101</p>
+                    <h2 className="powerhouse">A productivity powerhouse</h2>
+                    <p className="TRELLAX-desc">
+                        Simple, flexible, and powerful. All it takes are boards,
+                        lists, and cards to get a clear view of who’s doing what
+                        and what needs to get done. Learn more in our guide for
+                        getting started.
+                    </p>
+                </div>
+                <HomeageCarousel />
             </section>
         </div>
     )
