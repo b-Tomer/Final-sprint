@@ -3,9 +3,10 @@
     background-color: $clr1;
     border-radius: 8px;
     box-shadow: $clrTaskSHDW 0px 1px 1px 0px, $clrTaskSHDW 0px 0px 1px 0px;
-    // display: flex;
     margin-block-end: 5px;
     cursor: pointer;
+    width: 100%;
+    padding: 0;
 
     .btn-task-show-details {
         position: absolute;

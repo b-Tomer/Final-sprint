@@ -48,6 +48,15 @@ export function GroupDetails({
 
     function onOpenAddTask() {
         setIsAddTaskOpen(true)
+        setTimeout(()=>{
+
+            groupRef.current.scrollTo({
+                left: 0,
+                top: 9000000,
+                behavior: 'smooth',
+            })
+            inputRef.current.focus()
+            },100)
     }
 
     function handleTaskTitle(ev) {
@@ -165,15 +174,16 @@ export function GroupDetails({
                         ))}
                         {provided.placeholder}
                         {isAddTaskOpen && (
-                            <div className="task-container">
-                                <form onSubmit={onAddTask}>
-                                    <input
+                            <form onSubmit={onAddTask}>
+                                <div className="task-container">
+                                    <textarea
                                         ref={inputRef}
                                         placeholder="Enter a title for this card..."
-                                        className="add-list-input"
+                                        className="add-list-box"
                                         value={taskTitle}
                                         onChange={handleTaskTitle}
                                     />
+                                </div>
                                     <div className="add-btns">
                                         <button
                                             onClick={onAddTask}
@@ -188,8 +198,7 @@ export function GroupDetails({
                                             <X className="list-icon icon-big" />
                                         </button>
                                     </div>
-                                </form>
-                            </div>
+                            </form>
                         )}
                     </section>
                 )}
