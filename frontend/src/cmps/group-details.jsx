@@ -48,14 +48,14 @@ export function GroupDetails({
 
     function onOpenAddTask() {
         setIsAddTaskOpen(true)
-        setTimeout(()=>{
-
+        setTimeout(() => {
             groupRef.current.scrollTo({
                 left: 0,
                 top: 9000000,
                 behavior: 'smooth',
             })
-            },200)
+            inputRef.current.focus()
+        }, 200)
     }
 
     function handleTaskTitle(ev) {
@@ -159,9 +159,7 @@ export function GroupDetails({
                                         groupId={group.id}
                                         setTaskEdit={setTaskEdit}
                                         taskEdit={taskEdit}
-                                        setIsTaskDetailsOpen={
-                                            setIsTaskDetailsOpen
-                                        }
+                                        setIsTaskDetailsOpen={setIsTaskDetailsOpen}
                                         isTaskDetailsOpen={isTaskDetailsOpen}
                                         provided={provided}
                                         isDragging={snapshot.isDragging}
@@ -183,20 +181,20 @@ export function GroupDetails({
                                         onChange={handleTaskTitle}
                                     />
                                 </div>
-                                    <div className="add-btns">
-                                        <button
-                                            onClick={onAddTask}
-                                            className="add-item-btn"
-                                        >
-                                            Add card
-                                        </button>
-                                        <button
-                                            onClick={onAddClose}
-                                            className="svg-holder"
-                                        >
-                                            <X className="list-icon icon-big" />
-                                        </button>
-                                    </div>
+                                <div className="add-btns">
+                                    <button
+                                        onClick={onAddTask}
+                                        className="add-item-btn"
+                                    >
+                                        Add card
+                                    </button>
+                                    <button
+                                        onClick={onAddClose}
+                                        className="svg-holder"
+                                    >
+                                        <X className="list-icon icon-big" />
+                                    </button>
+                                </div>
                             </form>
                         )}
                     </section>
