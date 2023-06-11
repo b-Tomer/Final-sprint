@@ -55,8 +55,7 @@ export function GroupDetails({
                 top: 9000000,
                 behavior: 'smooth',
             })
-            inputRef.current.focus()
-            },100)
+            },200)
     }
 
     function handleTaskTitle(ev) {
@@ -176,10 +175,10 @@ export function GroupDetails({
                         {isAddTaskOpen && (
                             <form onSubmit={onAddTask}>
                                 <div className="task-container">
-                                    <textarea
+                                    <input
                                         ref={inputRef}
                                         placeholder="Enter a title for this card..."
-                                        className="add-list-box"
+                                        className="add-list-input add-list-box"
                                         value={taskTitle}
                                         onChange={handleTaskTitle}
                                     />
