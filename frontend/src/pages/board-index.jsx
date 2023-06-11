@@ -24,7 +24,6 @@ import { UPDATE_BOARD_LIVE, socketService } from 'services/socket.service.js'
 import { SET_BOARD } from 'store/board.reducer.js'
 import { store } from 'store/store.js'
 
-
 export function BoardIndex() {
     const { boardId } = useParams()
     const { board } = useSelector((storeState) => storeState.boardModule)
@@ -44,13 +43,12 @@ export function BoardIndex() {
         loadBoards()
         onLoadBoard(filterBy)
 
-        socketService.on(UPDATE_BOARD_LIVE, (board) => { 
-            store.dispatch({type:SET_BOARD, board})
-         })
-            return () => {
-                socketService.off(UPDATE_BOARD_LIVE)
-              }
-
+        socketService.on(UPDATE_BOARD_LIVE, (board) => {
+            store.dispatch({ type: SET_BOARD, board })
+        })
+        return () => {
+            socketService.off(UPDATE_BOARD_LIVE)
+        }
     }, [filterBy, boardId])
 
     async function onLoadBoard(filterBy) {
@@ -62,6 +60,9 @@ export function BoardIndex() {
         try {
             const currBoard = await saveGroup(group, boardId)
             const activity = boardService.getEmptyActivity()
+            activity.memberId = userService.getLoggedinUser()?._id
+                ? userService.getLoggedinUser()._id
+                : null
             activity.taskId = null
             activity.by = userService.getLoggedinUser()?.fullname
                 ? userService.getLoggedinUser().fullname
@@ -86,6 +87,9 @@ export function BoardIndex() {
     async function onRemoveGroup(group) {
         try {
             const activity = boardService.getEmptyActivity()
+            activity.memberId = userService.getLoggedinUser()?._id
+                ? userService.getLoggedinUser()._id
+                : null
             activity.taskId = null
             activity.by = userService.getLoggedinUser()?.fullname
                 ? userService.getLoggedinUser().fullname
@@ -111,7 +115,6 @@ export function BoardIndex() {
     const getDraggedDom = (draggableId) => {
         const domQuery = `[${queryAttr}='${draggableId}']`
         const draggedDOM = document.querySelector(domQuery)
-
         return draggedDOM
     }
 
@@ -131,11 +134,9 @@ export function BoardIndex() {
     }
 
     const onDragEnd = (result) => {
+        console.log(result)
         const { destination, source, type } = result
-
         if (!destination) return
-        // setPlaceholderProps({})
-
         if (
             destination.droppableId === source.droppableId &&
             destination.index === source.index
@@ -157,6 +158,22 @@ export function BoardIndex() {
                 (group) => group.id === destination.droppableId
             )
             const task = destinationGroup.tasks[destination.index]
+
+            const activity = boardService.getEmptyActivity()
+            activity.taskId = destinationGroup.tasks[destination.index].id
+            activity.memberId = userService.getLoggedinUser()?._id
+                ? userService.getLoggedinUser()._id
+                : null
+            activity.by = userService.getLoggedinUser()?.fullname
+                ? userService.getLoggedinUser().fullname
+                : 'Guest'
+            activity.title = `moved task "${
+                destinationGroup.tasks[destination.index].title
+            }" from group "${sourceGroup.title}" to group "${
+                destinationGroup.title
+            }"`
+            activity.titleInTask = `moved this task from group "${sourceGroup.title}" to group "${destinationGroup.title}"`
+            updatedBoard.activities.push(activity)
         }
         updateBoard(updatedBoard)
     }

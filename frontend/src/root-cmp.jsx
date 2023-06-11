@@ -4,6 +4,7 @@ import routes from './routes'
 import { Provider } from 'react-redux'
 import { store } from './store/store'
 import { NotFound } from './pages/not-found'
+import { Spotify } from 'cmps/spotify'
 
 export function RootCmp() {
     const NotFoundOrRedirect = () => {
@@ -13,6 +14,8 @@ export function RootCmp() {
         }
         return <NotFound />
     }
+
+
 
     return (
         <div>
@@ -28,6 +31,7 @@ export function RootCmp() {
                         ))}
                         <Route path="*" element={<NotFoundOrRedirect />} />
                     </Routes>
+                    <Spotify />
                 </main>
             </Provider>
         </div>

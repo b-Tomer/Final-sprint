@@ -25,12 +25,18 @@ export function TaskIcons({ task, groupId, boardId }) {
         ev.stopPropagation()
         try {
             const activity = boardService.getEmptyActivity()
+            activity.memberId = userService.getLoggedinUser()?._id
+                ? userService.getLoggedinUser()._id
+                : null
             activity.taskId = task.id
             task.isDone = !task.isDone
             activity.by = userService.getLoggedinUser()?.fullname
                 ? userService.getLoggedinUser().fullname
                 : 'Guest'
             activity.title = `Marked task ${task.title} as: ${getIsDone(
+                task.isDone
+            )}`
+            activity.titleInTask = `Marked this task as ${getIsDone(
                 task.isDone
             )}`
             await updateTask(boardId, groupId, task, activity)
@@ -95,7 +101,6 @@ export function TaskIcons({ task, groupId, boardId }) {
             (member) => member._id === memberId
         )
         if (currMember?.imgUrl) {
-
             return currMember.imgUrl
         } else {
             return 'https://i.pinimg.com/564x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg'

@@ -10,7 +10,6 @@ import { boardService } from 'services/board.service.local'
 import { userService } from 'services/user.service'
 
 export function DynCmpLabels({ task }) {
-
     const { board } = useSelector((storeState) => storeState.boardModule)
     const [isEditLabelOpen, setIsEditLabelOpen] = useState(false)
 
@@ -47,6 +46,9 @@ export function DynCmpLabels({ task }) {
 
     function onToggleCheckedLabel(ev, labelId) {
         const activity = boardService.getEmptyActivity()
+        activity.memberId = userService.getLoggedinUser()?._id
+            ? userService.getLoggedinUser()._id
+            : null
         activity.taskId = task.id
         activity.by = userService.getLoggedinUser()?.fullname
             ? userService.getLoggedinUser().fullname
@@ -57,14 +59,18 @@ export function DynCmpLabels({ task }) {
             if (task.labelIds.includes(labelId)) {
                 const labelIndex = task.labelIds.indexOf(labelId)
                 task.labelIds.splice(labelIndex, 1)
-                activity.title = `Removed label: "${getLabelName(
+                activity.title = `Removed label "${getLabelName(
                     labelId
                 )}" from task: ${task.title}`
+                activity.titleInTask = `Removed label "${getLabelName(
+                    labelId
+                )}"`
             } else {
                 task.labelIds.push(labelId)
-                activity.title = `Added label: "${getLabelName(
+                activity.title = `Added label "${getLabelName(
                     labelId
                 )}" to task: ${task.title}`
+                activity.titleInTask = `Added label "${getLabelName(labelId)}" `
             }
         }
         try {
