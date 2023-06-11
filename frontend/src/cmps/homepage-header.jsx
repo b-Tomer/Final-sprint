@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { ReactComponent as Down } from '../assets/img/icons/down.svg'
 import { useNavigate } from 'react-router-dom'
+import { ReactComponent as Logo } from '../assets/img/icons/logo.svg'
 
 export function HomepageHeader({ handleclick }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -17,10 +18,15 @@ export function HomepageHeader({ handleclick }) {
     return (
         <div className="homepage-header-container">
             <div className="homepage-header-logo">
+                <Logo className="logo-icon" />
                 <h1 className="logo-title">Trellax</h1>
             </div>
-            <nav className={`homepage-header-nav ${isMenuOpen ? 'open-homepage-menu' : ''}`}>
-                <button className="homepage-header-btn">
+            <nav
+                className={`homepage-header-nav ${
+                    isMenuOpen ? 'open-homepage-menu' : ''
+                }`}
+            >
+                {/* <button className="homepage-header-btn">
                     <span>Features</span>
                     <div className='svg-homepage-arrow'>
                         <Down className="homepage-header-icon" />
@@ -43,7 +49,7 @@ export function HomepageHeader({ handleclick }) {
                     <div className='svg-homepage-arrow'>
                         <Down className="homepage-header-icon" />
                     </div>
-                </button>
+                </button> */}
                 <nav className="homepage-header-actions">
                     <button onClick={goToLogin} className="btn-header-login">
                         Log in
@@ -57,7 +63,7 @@ export function HomepageHeader({ handleclick }) {
                 </nav>
             </nav>
             <button className="menu-button" onClick={toggleMenu}>
-            <i className="fa-solid fa-bars"></i>
+                <i className="fa-solid fa-bars"></i>
             </button>
         </div>
     )
