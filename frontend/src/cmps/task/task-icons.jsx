@@ -94,7 +94,8 @@ export function TaskIcons({ task, groupId, boardId }) {
         const currMember = board?.members.find(
             (member) => member._id === memberId
         )
-        if (currMember.imgUrl) {
+        if (currMember?.imgUrl) {
+
             return currMember.imgUrl
         } else {
             return 'https://i.pinimg.com/564x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg'

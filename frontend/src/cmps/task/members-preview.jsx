@@ -43,11 +43,11 @@ export function MembersPreview({ task }) {
         <div className="member-data">
             <h3 className="data-preview-title">Members</h3>
             <div className="members">
-                {task.members.map((member) => (
-                    <div key={member._id}>
+                {task.members.map((memberId) => (
+                    <div key={memberId}>
                         <img
-                            key={member._id}
-                            src={getMemberImg(member)}
+                            key={memberId}
+                            src={getMemberImg(memberId)}
                             alt="Image"
                             className="member-img"
                         />
