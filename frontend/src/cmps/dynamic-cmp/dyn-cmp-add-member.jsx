@@ -29,6 +29,9 @@ export function DynCmpAddMember({}) {
     async function onToggleCheckedMember(ev, memberId, user) {
         ev.stopPropagation()
         const activity = boardService.getEmptyActivity()
+        activity.memberId = userService.getLoggedinUser()?._id
+            ? userService.getLoggedinUser()._id
+            : null
         activity.by = userService.getLoggedinUser()?.fullname
             ? userService.getLoggedinUser().fullname
             : 'Guest'

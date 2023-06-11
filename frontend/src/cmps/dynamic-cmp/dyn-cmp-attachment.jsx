@@ -34,6 +34,9 @@ export function DynCmpAttachment({ boardId, groupId, task }) {
             const activity = boardService.getEmptyActivity()
             activity.title = `Added attachment: ${task.title}`
             activity.taskId = task.id
+            activity.memberId = userService.getLoggedinUser()?._id
+                ? userService.getLoggedinUser()._id
+                : null
             activity.by = userService.getLoggedinUser()?.fullname
                 ? userService.getLoggedinUser().fullname
                 : 'Guest'

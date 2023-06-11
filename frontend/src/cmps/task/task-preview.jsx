@@ -128,6 +128,9 @@ export function TaskPreview({
         task.title = event.target.value
         try {
             const activity = boardService.getEmptyActivity()
+            activity.memberId = userService.getLoggedinUser()?._id
+                ? userService.getLoggedinUser()._id
+                : null
             activity.title = `Changed title to: ${task.title}`
             activity.taskId = task.id
             activity.by = userService.getLoggedinUser()?.fullname
@@ -138,7 +141,6 @@ export function TaskPreview({
             console.log('cant update task')
         }
     }
-
 
     return (
         // <div ref={editRef}>

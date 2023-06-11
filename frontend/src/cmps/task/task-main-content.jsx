@@ -50,18 +50,20 @@ export function TaskMainContent({
                     <div className="activities-title">
                         <Activity className="task-content-icon" />
                         <h3>Activity</h3>
-                        {board.activities.filter(
-                            (activity) => activity.taskId === task.id
-                        ).length > 5 && (
-                            <button
-                                onClick={toggleShowAll}
-                                className="show-all"
-                            >
-                                {!isShowAll
-                                    ? 'Hide activities'
-                                    : 'Show all activities'}
-                            </button>
-                        )}
+                        {board.activities &&
+                            board.activities.length > 0 &&
+                            board.activities.filter(
+                                (activity) => activity.taskId === task.id
+                            ).length > 5 && (
+                                <button
+                                    onClick={toggleShowAll}
+                                    className="show-all"
+                                >
+                                    {!isShowAll
+                                        ? 'Hide activities'
+                                        : 'Show all activities'}
+                                </button>
+                            )}
                     </div>
                     <TaskActivity
                         taskId={task.id}

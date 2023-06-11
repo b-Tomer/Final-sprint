@@ -176,11 +176,11 @@ export function Filter() {
                         type="checkbox"
                         name="checkbox"
                         className="checkbox"
-                        // onClick={onCheckClick}
-                        // checked={isMemberChecked}
-                        // onChange={(ev) =>
-                        //     onToggleCheckedMember(ev, member._id)
-                        // }
+                    // onClick={onCheckClick}
+                    // checked={isMemberChecked}
+                    // onChange={(ev) =>
+                    //     onToggleCheckedMember(ev, member._id)
+                    // }
                     />
                     <div className="filter-icon-frame red">
                         <Clock className="filter-icon" />
