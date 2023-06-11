@@ -5,6 +5,7 @@ import { updateTask } from '../../store/task.actions'
 import { boardService } from 'services/board.service.local'
 import { userService } from 'services/user.service'
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import { useEffectUpdate } from 'customHooks/useEffectUpdate'
 
 
 export function TaskDescription({ boardId, groupId, task }) {
@@ -22,6 +23,15 @@ export function TaskDescription({ boardId, groupId, task }) {
         }
     }, [])
 
+    useEffectUpdate(() => {
+
+        if (!listening) {
+           setTimeout(()=> onStopRecording() , 1000)
+           setTimeout(()=> onStopRecording() , 1200)
+        }
+
+    }, [listening])
+console.log(task.description)
     function onSaveDescription() {
         setIsEditing(false)
         const taskToUpdate = { ...task, description }
@@ -34,6 +44,7 @@ export function TaskDescription({ boardId, groupId, task }) {
         activity.by = userService.getLoggedinUser()?.fullname
             ? userService.getLoggedinUser().fullname
             : 'Guest'
+            console.log(taskToUpdate);
         updateTask(boardId, groupId, taskToUpdate, activity)
     }
 
@@ -66,20 +77,22 @@ export function TaskDescription({ boardId, groupId, task }) {
         }
     }
 
-    function onStartRecording(ev) {
-        ev.preventDefault()
-        setIsEditing(true)
-        SpeechRecognition.startListening()
-        setDescription(transcript)
+    function onStartRecording() {
+        if (!listening) {
+            SpeechRecognition.startListening()
+            setIsEditing(true)
+        } else {
+            onStopRecording()
+        }
     }
 
-    function onStopRecording(ev) {
-        ev.preventDefault()
+    function onStopRecording() {
+
         SpeechRecognition.stopListening()
         setDescription(transcript)
         onSaveDescription()
         resetTranscript()
-        setIsEditing(false)
+        setIsEditing(false)       
     }
 
 
