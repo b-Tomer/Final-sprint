@@ -94,23 +94,18 @@
         .dials {
             display: flex;
 
-            select {
-                margin-inline: 10px;
+            input {
+                text-align: center;
+                margin-inline: 5px;
                 box-shadow: inset 0 0 0 2px $clrTodobtn;
                 border: 0;
                 border-radius: 3px;
                 padding-block: 5px;
-                width: 100px;
-                padding-inline-start: 10px;
-
+                width: 50px;
                 &:focus {
                     border: 0;
                 }
             }
-
-            .hours {}
-
-            .minutes {}
         }
     }
 }

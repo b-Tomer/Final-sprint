@@ -80,7 +80,7 @@ export function DynCmpMembers({ task }) {
     if (!task) return null
     return (
         <div className="dyn-cmp-members-container">
-            <h3>Board members</h3>
+            <h3 className="members-title">Board members</h3>
             <div>
                 {board.members &&
                     board.members.length > 0 &&
