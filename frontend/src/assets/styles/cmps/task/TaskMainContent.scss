@@ -49,6 +49,15 @@
             overflow-y: auto;
         }
 
+        .record-btns{
+            display: flex;
+            padding-inline: 4px;
+            button{
+                font-size: 1rem;
+            }
+            
+        }
+
         .description-container {
             width: 100%;
             padding-left: 20px;

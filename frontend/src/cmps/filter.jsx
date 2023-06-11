@@ -16,15 +16,38 @@ export function Filter() {
         isDate: false,
         isOverdue: false,
         isDueSoon: false,
+        isCompleted: false,
     })
 
     const originalBoard = useRef(board)
-    // console.log(board)
 
+    function handleSearchInput(event) {
+        const searchText = event.target.value;
+        const filterBy = {
+            byLabels: [],
+            byMembers: [],
+            isOverdue: false,
+            isDueSoon: false,
+            isDate: false,
+            isMembers: false,
+            isCompleted: false,
+            searchText: searchText,
+        };
+        filterBoard(filterBy);
+    }
 
+    function onToggleCompleted(ev) {
+        console.log(board)
+        const isChecked = ev.target.checked;
+        setFilterBy((prevFilterBy) => ({
+            ...prevFilterBy,
+            isCompleted: isChecked,
+        }));
+
+        filterBoard({ ...filterBy, isCompleted: isChecked });
+    }
 
     function onToggleNoDate(ev) {
-        console.log(ev.target.checked);
 
         const isChecked = ev.target.checked;
         setFilterBy((prevFilterBy) => ({
@@ -109,11 +132,10 @@ export function Filter() {
         })
     }
 
-
     function filterBoard(filterBy) {
-        const { byLabels, byMembers, isOverdue, isDueSoon, isDate, isMembers } = filterBy;
+        const { byLabels, byMembers, isOverdue, isDueSoon, isDate, isMembers, isCompleted, searchText } = filterBy;
 
-        if (byLabels.length > 0 || byMembers.length > 0 || isOverdue || isDueSoon || isDate || isMembers) {
+        if (byLabels.length > 0 || byMembers.length > 0 || isOverdue || isDueSoon || isDate || isMembers || isCompleted || searchText) {
             const filteredBoard = {
                 ...originalBoard.current,
                 groups: originalBoard.current.groups.map((group) => ({
@@ -125,8 +147,14 @@ export function Filter() {
                         const isTaskOverdue = isOverdue ? task.dueDate < Date.now() : true;
                         const isTaskDueSoon = isDueSoon ? isTaskDueSoonWithinNext24Hours(task.dueDate) : true;
                         const hasNoMembers = isMembers ? !task.members || task.members.length === 0 : true;
+                        const isTaskCompleted = isCompleted ? task.isDone === true : true;
+                        const hasMatchingText =
+                            searchText &&
+                            (task.title?.toLowerCase().includes(searchText.toLowerCase()) ||
+                                task.description?.toLowerCase().includes(searchText.toLowerCase()));
 
-                        return hasMatchingLabels && hasMatchingMembers && hasDueDate && isTaskOverdue && isTaskDueSoon && hasNoMembers;
+
+                        return hasMatchingLabels && hasMatchingMembers && hasDueDate && isTaskOverdue && isTaskDueSoon && hasNoMembers && isTaskCompleted && hasMatchingText;
                     }),
                 })),
             };
@@ -152,6 +180,7 @@ export function Filter() {
                 id="search-input"
                 placeholder="Enter a keyword"
                 className="filter-search-bar"
+                onChange={handleSearchInput}
             ></input>
             <h4>Search cards, members, labels, and more.</h4>
             <h3>Members</h3>
@@ -217,8 +246,6 @@ export function Filter() {
                     <input
                         type="checkbox"
                         name="checkbox"
-                        // onClick={onCheckClick}
-                        // checked={isMemberChecked}
                         onChange={(ev) =>
                             onToggleNoDate(ev)
                         }
@@ -234,8 +261,6 @@ export function Filter() {
                         type="checkbox"
                         name="checkbox"
                         className="checkbox"
-                        // onClick={onCheckClick}
-                        // checked={isMemberChecked}
                         onChange={(ev) =>
                             onToggleOverdue(ev)
                         }
@@ -249,8 +274,6 @@ export function Filter() {
                     <input
                         type="checkbox"
                         name="checkbox"
-                        // onClick={onCheckClick}
-                        // checked={isMemberChecked}
                         onChange={(ev) =>
                             onToggleNextDay(ev)
                         }
@@ -260,6 +283,20 @@ export function Filter() {
                         <Clock className="filter-icon" />
                     </div>
                     <span className="member-name">Due in the next day</span>
+                </label>
+                <label className="filter-dates" htmlror="checkbox">
+                    <input
+                        type="checkbox"
+                        name="checkbox"
+                        onChange={(ev) =>
+                            onToggleCompleted(ev)
+                        }
+                        className="checkbox"
+                    />
+                    <div className="filter-icon-frame green">
+                        <Clock className="filter-icon" />
+                    </div>
+                    <span className="member-name">Completed</span>
                 </label>
             </div>
 
@@ -294,3 +331,4 @@ export function Filter() {
         </div>
     )
 }
+//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
