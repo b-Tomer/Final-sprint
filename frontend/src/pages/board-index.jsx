@@ -115,7 +115,6 @@ export function BoardIndex() {
     const getDraggedDom = (draggableId) => {
         const domQuery = `[${queryAttr}='${draggableId}']`
         const draggedDOM = document.querySelector(domQuery)
-
         return draggedDOM
     }
 
@@ -135,11 +134,9 @@ export function BoardIndex() {
     }
 
     const onDragEnd = (result) => {
+        console.log(result)
         const { destination, source, type } = result
-
         if (!destination) return
-        // setPlaceholderProps({})
-
         if (
             destination.droppableId === source.droppableId &&
             destination.index === source.index
@@ -161,6 +158,22 @@ export function BoardIndex() {
                 (group) => group.id === destination.droppableId
             )
             const task = destinationGroup.tasks[destination.index]
+
+            const activity = boardService.getEmptyActivity()
+            activity.taskId = destinationGroup.tasks[destination.index].id
+            activity.memberId = userService.getLoggedinUser()?._id
+                ? userService.getLoggedinUser()._id
+                : null
+            activity.by = userService.getLoggedinUser()?.fullname
+                ? userService.getLoggedinUser().fullname
+                : 'Guest'
+            activity.title = `moved task "${
+                destinationGroup.tasks[destination.index].title
+            }" from group "${sourceGroup.title}" to group "${
+                destinationGroup.title
+            }"`
+            activity.titleInTask = `moved this task from group "${sourceGroup.title}" to group "${destinationGroup.title}"`
+            updatedBoard.activities.push(activity)
         }
         updateBoard(updatedBoard)
     }
