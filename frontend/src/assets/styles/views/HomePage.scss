@@ -11,6 +11,7 @@
 
         grid-template-columns: 1fr;
         padding-inline: 7px;
+
         @include for-narrow-layout {
             display: grid;
             grid-template-columns: 1fr 5fr 5fr 1fr;
@@ -20,20 +21,20 @@
         .content-left {
             text-align: center;
             padding-block: 50px;
-            
-            
-            @include for-narrow-layout {
-                text-align: start;
-                padding-block: 100px;
-                grid-column: 2/3;
-                padding-inline: 40px;
-            }
-
             grid-column: 1;
             // grid-row: 1;
             display: flex;
             flex-direction: column;
             color: $clr1;
+
+
+            @include for-narrow-layout {
+                text-align: start;
+                padding-block: 100px;
+                grid-column: 2/3;
+                padding-inline: 40px;
+
+            }
 
             h1 {
 
@@ -41,11 +42,12 @@
                 font-weight: 500;
                 margin: 0;
                 margin-block-end: 8px;
+
                 @include for-narrow-layout {
                     line-height: 60px;
                     padding-inline: 0px;
                     font-size: 3rem;
-                
+
                 }
             }
 
@@ -68,8 +70,10 @@
                 min-width: 110px;
                 font-size: 1rem;
                 align-self: center;
+
                 @include for-narrow-layout {
-                    width:auto;
+                    align-self: flex-start;
+                    width: 90%;
                     margin-inline: 0px;
                 }
             }
