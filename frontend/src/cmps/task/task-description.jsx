@@ -4,8 +4,11 @@ import { useClickOutside } from '../../customHooks/useClickOutside'
 import { updateTask } from '../../store/task.actions'
 import { boardService } from 'services/board.service.local'
 import { userService } from 'services/user.service'
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+
 
 export function TaskDescription({ boardId, groupId, task }) {
+    const { transcript, listening, resetTranscript } = useSpeechRecognition()
     const [isEditing, setIsEditing] = useState(false)
     const [description, setDescription] = useState(task.description || '')
     const textRef = useRef(null)
@@ -63,12 +66,36 @@ export function TaskDescription({ boardId, groupId, task }) {
         }
     }
 
+    function onStartRecording(ev) {
+        ev.preventDefault()
+        setIsEditing(true)
+        SpeechRecognition.startListening()
+        setDescription(transcript)
+    }
+
+    function onStopRecording(ev) {
+        ev.preventDefault()
+        SpeechRecognition.stopListening()
+        setDescription(transcript)
+        onSaveDescription()
+        resetTranscript()
+        setIsEditing(false)
+    }
+
+
+
+    console.log(transcript);
+
     if (!task) return null
     return (
         <div className="description">
             <div className="description-title">
                 <Description className="task-content-icon" />
                 <h3>Description</h3>
+                <div className='record-btns'>
+                    <button onClick={onStartRecording} className='start-listen-btn'><i className={`fa-solid fa-microphone-lines ${listening ? 'fa-beat-fade' : ''}`} style={{ color: "#b0b0b0" }}></i></button>
+                    <button onClick={onStopRecording} className='stop-listen-btn'><i className="fa-regular fa-circle-stop" style={{ color: "#b0b0b0" }}></i></button>
+                </div>
                 {!task.description ||
                     (!isEditing && (
                         <button
@@ -123,3 +150,5 @@ export function TaskDescription({ boardId, groupId, task }) {
         </div>
     )
 }
+
+//  fa-beat-fade //////
