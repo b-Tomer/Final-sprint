@@ -14,12 +14,14 @@ import { showErrorMsg, showSuccessMsg } from 'services/event-bus.service'
 import { addBoard } from 'store/board.actions'
 import { useNavigate } from 'react-router-dom'
 import { boardService } from 'services/board.service'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { userService } from 'services/user.service'
 import { store } from 'store/store'
 import { CLOSE_DYN_ALL_MODALS } from 'store/system.reducer'
 
 export function DynCmpNewBoard() {
+    const [inputValue, setInputValue] = useState('');
+
     const imgRef = useRef()
     const titleRef = useRef()
     const navigate = useNavigate()
@@ -34,7 +36,7 @@ export function DynCmpNewBoard() {
             store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
             return
         }
-        if(user) board.members = [user]
+        if (user) board.members = [user]
         board.style = { backgroundImage: imgRef.current.src }
         try {
             const savedBoard = await addBoard(board)
@@ -46,6 +48,12 @@ export function DynCmpNewBoard() {
             store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
         }
     }
+
+    const handleInputChange = (event) => {
+        setInputValue(event.target.value);
+    };
+
+
 
     function onChosseBg(bg) {
         imgRef.current.src = bg
@@ -113,13 +121,15 @@ export function DynCmpNewBoard() {
                     onClick={() => onChosseBg(orange)}
                     src={orange}
                     alt=""
-                    className="bg-colors"
+                    className="bg-colors" s
                 />
             </div>
-            <h3>Board title</h3>
+            <h3>Board title <span>*</span> </h3>
             <form onSubmit={onAddBoard}>
-                <input ref={titleRef} placeholder="Required" required className='create-board-input'></input>
-                <button className="create-btn">Create</button>
+                <input value={inputValue} ref={titleRef} onChange={handleInputChange} required className='create-board-input'></input>
+                <h4>👋
+                    Board title is required</h4>
+                <button className={`create-btn ${inputValue.trim() !== '' ? 'blue' : ''}`}>Create</button>
             </form>
         </section>
     )

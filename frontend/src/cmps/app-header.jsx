@@ -128,10 +128,6 @@ export function AppHeader({ onSetfilter }) {
                         <div className="links">
                             <NavLink
                                 to="/workspace"
-                                // onClick={store.dispatch({
-                                //     type: SET_BOARD,
-                                //     board: null,
-                                // })}
                                 onClick={handleCleanBoard}
                                 style={
                                     bgColor

@@ -133,28 +133,41 @@ export function Filter() {
     }
 
     function filterBoard(filterBy) {
-        const { byLabels, byMembers, isOverdue, isDueSoon, isDate, isMembers, isCompleted, searchText } = filterBy;
+        const { byLabels,
+            byMembers,
+            isOverdue,
+            isDueSoon,
+            isDate,
+            isMembers,
+            isCompleted,
+            searchText }
+            = filterBy;
 
         if (byLabels.length > 0 || byMembers.length > 0 || isOverdue || isDueSoon || isDate || isMembers || isCompleted || searchText) {
+            const regex = searchText ? new RegExp(searchText, 'i') : null;
+
             const filteredBoard = {
                 ...originalBoard.current,
                 groups: originalBoard.current.groups.map((group) => ({
                     ...group,
                     tasks: group.tasks.filter((task) => {
-                        const hasMatchingLabels = byLabels.length === 0 || task.labelIds?.some((label) => byLabels.includes(label));
-                        const hasMatchingMembers = byMembers.length === 0 || task.members?.some((member) => byMembers.includes(member));
-                        const hasDueDate = isDate ? task.dueDate === '' || task.dueDate === null || !task.dueDate : true;
-                        const isTaskOverdue = isOverdue ? task.dueDate < Date.now() : true;
-                        const isTaskDueSoon = isDueSoon ? isTaskDueSoonWithinNext24Hours(task.dueDate) : true;
-                        const hasNoMembers = isMembers ? !task.members || task.members.length === 0 : true;
-                        const isTaskCompleted = isCompleted ? task.isDone === true : true;
-                        const hasMatchingText =
-                            searchText &&
-                            (task.title?.toLowerCase().includes(searchText.toLowerCase()) ||
-                                task.description?.toLowerCase().includes(searchText.toLowerCase()));
+                        const hasMatchingLabels = byLabels.length === 0 || task.labelIds?.some((label) => byLabels.includes(label))
+                        const hasMatchingMembers = byMembers.length === 0 || task.members?.some((member) => byMembers.includes(member))
+                        const hasDueDate = isDate ? task.dueDate === '' || task.dueDate === null || !task.dueDate : true
+                        const isTaskOverdue = isOverdue ? task.dueDate < Date.now() : true
+                        const isTaskDueSoon = isDueSoon ? isTaskDueSoonWithinNext24Hours(task.dueDate) : true
+                        const hasNoMembers = isMembers ? !task.members || task.members.length === 0 : true
+                        const isTaskCompleted = isCompleted ? task.isDone === true : true
+                        const hasMatchingText = regex ? regex.test(task.title) || regex.test(task.description) : true;
 
-
-                        return hasMatchingLabels && hasMatchingMembers && hasDueDate && isTaskOverdue && isTaskDueSoon && hasNoMembers && isTaskCompleted && hasMatchingText;
+                        return hasMatchingLabels &&
+                            hasMatchingMembers &&
+                            hasDueDate &&
+                            isTaskOverdue &&
+                            isTaskDueSoon &&
+                            hasNoMembers &&
+                            isTaskCompleted &&
+                            hasMatchingText;
                     }),
                 })),
             };

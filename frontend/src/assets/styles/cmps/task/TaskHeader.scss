@@ -101,6 +101,13 @@
         right: 10px;
         z-index: 1;
         background-color: transparent;
+        transform: translateY(50px);
+
+        @include for-normal-layout {
+            transform: translateY(0px);
+            display: grid;
+            grid-template-columns: 1fr 150px;
+        }
 
         .task-icon-img {
             height: 1.5em;

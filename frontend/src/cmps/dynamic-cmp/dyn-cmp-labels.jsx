@@ -89,7 +89,7 @@ export function DynCmpLabels({ task }) {
         <>
             {!isEditLabelOpen && (
                 <div className="dyn-cmp-labels-container">
-                    <h3>Labels</h3>
+                    <h3 className="labels-title">Labels</h3>
                     <div className="labels-container">
                         {board.labels.map((label) => {
                             let isLabelChecked = task.labelIds

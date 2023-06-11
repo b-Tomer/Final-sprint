@@ -45,7 +45,8 @@
 
     hr {
         margin: 0px 12px 0px 12px;
-        border-color: $clr1;
+        border-color: $clrH;
+        border-width: 0.8px;
     }
 
     .create-board-preview {
@@ -55,32 +56,31 @@
         position: relative;
 
         .img-bottom {
-
             width: 200px;
             height: 120px;
-            margin: 15px auto;
+            margin: 8px auto;
             object-fit: cover;
-
         }
 
         .svg-img {
             z-index: 2;
             position: absolute;
-            top: 15%;
+            top: 10%;
             left: 20%;
-            width: 170px
+            width: 170px;
         }
     }
 
-    .buttons-section{
-        padding-inline:11px ;
+    .buttons-section {
+        padding-inline: 11px;
         margin-top: 10px;
-        padding-bottom: 5px ;
+        padding-bottom: 5px;
     }
+
     h3 {
-        font-size: 0.875rem;
+        font-size: 0.75rem;
         font-weight: 700;
-        margin: 20px 10px 5px 10px;
+        margin: 15px 10px 5px 10px;
         color: $clr5;
     }
 
@@ -100,7 +100,7 @@
     .colors-container {
         display: flex;
         justify-content: space-between;
-        margin: 10px 10px;
+        margin: 8px 10px;
 
         .bg-colors {
             width: 47px;
@@ -112,23 +112,44 @@
 
     .create-board-input {
         width: 280px;
-        height: 35px;
+        height: 32px;
         margin: 0px 10px;
         border-radius: 4px;
         border: 1px solid $clr4;
         font-size: 1rem;
+        border: 2px solid $clr8;
+
+        &:hover {
+            border-color: red;
+        }
+    }
+
+    h3 {
+        span {
+            color: red;
+            font-weight: 700;
+        }
+    }
+
+    h4 {
+        margin-left: 10px;
+        font-size: 0.85rem;
+        font-weight: 400;
     }
 
     .create-btn {
-        width: fit-content;
+        width: 280px;
+        height: 32px;
         align-self: center;
-        padding: 10px;
-        font-size: 1rem;
-        margin: 15px 115px;
-        justify-self: center;
-        background-color: $clr8;
-        border-radius: 8px;
-        color: $clr1;
+        font-size: 0.875rem;
+        margin: 10px;
+        background-color: $clr2 ;
+        border-radius: 3px;
+        color: $clr3;
+    }
 
+    .blue {
+        background-color: $clrBtnH ;
+        color: $clr1;
     }
 }
