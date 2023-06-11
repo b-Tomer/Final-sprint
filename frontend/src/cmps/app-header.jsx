@@ -21,6 +21,7 @@ import {
     SET_MODAL_TITLE,
 } from 'store/system.reducer.js'
 import { store } from 'store/store.js'
+import { SET_BOARD } from 'store/board.reducer'
 
 export function AppHeader({ onSetfilter }) {
     const { board } = useSelector((storeState) => storeState.boardModule)
@@ -95,6 +96,13 @@ export function AppHeader({ onSetfilter }) {
         setIsUserInfoOpen(!isUserInfoOpen)
     }
 
+    function handleCleanBoard() {
+        store.dispatch({
+            type: SET_BOARD,
+            board: null,
+        })
+    }
+
     return (
         <header
             className="app-header"
@@ -120,6 +128,11 @@ export function AppHeader({ onSetfilter }) {
                         <div className="links">
                             <NavLink
                                 to="/workspace"
+                                // onClick={store.dispatch({
+                                //     type: SET_BOARD,
+                                //     board: null,
+                                // })}
+                                onClick={handleCleanBoard}
                                 style={
                                     bgColor
                                         ? txtColor
@@ -133,7 +146,7 @@ export function AppHeader({ onSetfilter }) {
                         </div>
                         <Down className="down-img" src={Down} alt="" />
                     </div>
-                    <div className="link-section">
+                    {/* <div className="link-section">
                         <div className="links">
                             <NavLink
                                 to="/about"
@@ -166,7 +179,7 @@ export function AppHeader({ onSetfilter }) {
                             </NavLink>
                         </div>
                         <Down className="down-img" src={Down} alt="" />
-                    </div>
+                    </div> */}
                 </div>
                 <div className="nav-btns">
                     <button
@@ -217,6 +230,18 @@ export function AppHeader({ onSetfilter }) {
                     />
                 </div>
                 <ul className="header-icons">
+                    <li>
+                        <Notifications
+                            className="app-header-icon"
+                            src={Notifications}
+                        />
+                    </li>
+                    {/* <li>
+                        <Info className="app-header-icon" src={Info} />
+                    </li>
+                    <li>
+                        <Theme className="app-header-icon" src={Theme} />
+                    </li> */}
                     {loginUser && (
                         <li
                             className="user-photo"
@@ -234,18 +259,6 @@ export function AppHeader({ onSetfilter }) {
                             </div>
                         </li>
                     )}
-                    <li>
-                        <Notifications
-                            className="app-header-icon"
-                            src={Notifications}
-                        />
-                    </li>
-                    <li>
-                        <Info className="app-header-icon" src={Info} />
-                    </li>
-                    <li>
-                        <Theme className="app-header-icon" src={Theme} />
-                    </li>
                 </ul>
                 <div className={`user-modal ${isUserInfoOpen ? 'open' : ''}`}>
                     <UserInfo closeUserInfo={closeUserInfo} />

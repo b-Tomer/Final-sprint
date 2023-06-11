@@ -123,47 +123,55 @@
         font-size: 14px;
         width: 100%;
         color: $clr7;
+        word-break: break-all; /* Updated property */
 
         @include for-normal-layout {
             width: 550px;
+            word-break: break-all; /* Updated property */
         }
 
         .activity-container {
+            width: 100%;
+
             display: flex;
             margin-block-end: 15px;
             justify-content: flex-start;
             justify-items: flex-start;
+
             .activity-icon {
                 width: 2rem;
                 height: 2rem;
                 border-radius: 50%;
                 margin-inline-end: 10px;
             }
-            .activity-content {
-                display: flex;
-                align-content: center;
-                align-items: center;
+            .activity-wrapper {
                 width: 100%;
-                .title {
-                    display: inline-block;
+                .activity-content {
+                    display: flex;
+                    align-content: flex-start;
+                    align-items: flex-start;
                     width: 100%;
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
+                    .title {
+                        display: inline-block;
+                        width: 100%;
+                        // white-space: nowrap;
+                        // overflow: hidden;
+                        // text-overflow: ellipsis;
+                    }
+                    .by {
+                        font-weight: 700;
+                        margin-inline-end: 5px;
+                        width: fit-content;
+                        white-space: nowrap;
+                    }
                 }
-                .by {
-                    font-weight: 700;
-                    margin-inline-end: 5px;
-                    width: fit-content;
-                    white-space: nowrap;
-                }
-            }
 
-            .created-at {
-                font-size: 12px;
-            }
-            hr {
-                max-width: 100%;
+                .created-at {
+                    font-size: 12px;
+                }
+                hr {
+                    max-width: 100%;
+                }
             }
         }
     }
