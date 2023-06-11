@@ -129,6 +129,17 @@
                 }
             }
 
+            .green {
+                background-color: #1f845a;
+
+                .filter-icon {
+
+                    path {
+                        fill: $clr1;
+                    }
+                }
+            }
+
             .member-name {
                 margin-left: 10px;
                 font-size: 0.875rem;
