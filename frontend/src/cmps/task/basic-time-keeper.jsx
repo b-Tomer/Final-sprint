@@ -29,7 +29,7 @@ function BasicTimePicker({ hour, setHour, minute, setMinute }) {
                         onChange={handleHourChange}
                     />
                 </label>
-
+                <span>:</span>
                 <label>
                     <input
                         className="minutes"

@@ -34,7 +34,7 @@ export function DynCmpNewBoard() {
             store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
             return
         }
-        if(user) board.members = [user]
+        if (user) board.members = [user]
         board.style = { backgroundImage: imgRef.current.src }
         try {
             const savedBoard = await addBoard(board)
@@ -118,7 +118,12 @@ export function DynCmpNewBoard() {
             </div>
             <h3>Board title</h3>
             <form onSubmit={onAddBoard}>
-                <input ref={titleRef} placeholder="Required" required className='create-board-input'></input>
+                <input
+                    ref={titleRef}
+                    placeholder="Required"
+                    required
+                    className="create-board-input"
+                ></input>
                 <button className="create-btn">Create</button>
             </form>
         </section>

@@ -68,7 +68,7 @@ export function DynCmpAttachment({ boardId, groupId, task }) {
     return (
         <div className="dyn-cmp-attachments-container">
             <div>
-                <h3>Upload from</h3>
+                <h3 className="labels-attachments">Upload from</h3>
                 <label className={labelClass} htmlFor="imgUpload">
                     {isUploading ? 'Uploading...' : 'Computer'}
                 </label>
@@ -80,9 +80,9 @@ export function DynCmpAttachment({ boardId, groupId, task }) {
                     id="imgUpload"
                 />
             </div>
-            <hr />
+            <hr className="attachments-hr" />
             <div className="atc-link-container">
-                <h3>Attach a link</h3>
+                <h3 className="labels-attachments">Attach a link</h3>
                 <input
                     onChange={onSrcChange}
                     className="atc-link-input"
@@ -96,7 +96,7 @@ export function DynCmpAttachment({ boardId, groupId, task }) {
                     Attach
                 </button>
             </div>
-            <hr />
+            <hr className="attachments-hr" />
             <div className="atc-footer">
                 <p>
                     Tip: You can drag and drop files and links onto cards to

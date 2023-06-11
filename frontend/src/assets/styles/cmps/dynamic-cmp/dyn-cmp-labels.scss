@@ -3,7 +3,10 @@
     flex-direction: column;
     padding: 10px;
 
-    h3 {
+    .labels-title {
+        margin: 0;
+        margin-block-start: 5px;
+        margin-block-end: 10px;
         font-size: 0.75rem;
         padding-left: 8px;
     }
@@ -17,12 +20,9 @@
         height: 36px;
         padding: 0px 0px 4px 4px;
 
-
-
         &:hover {
             cursor: pointer;
         }
-
 
         input {
             width: 20px;
@@ -37,7 +37,7 @@
             align-items: center;
             font-weight: 500;
             font-size: 0.875rem;
-            color: $clr5 ;
+            color: $clr5;
             margin-left: 10px;
 
             &:hover {
@@ -47,7 +47,6 @@
             &::marker {
                 border: 2px solid black;
             }
-
         }
 
         .edit-label-btn {
