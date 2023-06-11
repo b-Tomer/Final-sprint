@@ -67,7 +67,7 @@ export function DynamicCmp({
         }
         modalLeft = left - 5
         if (modalLeft + width > windowPos.x) {
-            modalLeft = windowPos.x - width - 10
+            modalLeft = windowPos.x - width - 15
         }
         setModalStyle({
             top: modalTop,
