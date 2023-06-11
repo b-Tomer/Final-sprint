@@ -78,7 +78,7 @@ export function DynCmpAddMember({}) {
             <input
                 className="search-members"
                 type="text"
-                placeholder="search members"
+                placeholder="Search members"
                 value={searchTerm}
                 onChange={handleSearchChange}
             />

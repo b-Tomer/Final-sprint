@@ -31,7 +31,7 @@ export function MembersPreview({ task }) {
         const matchedMmbr = board.members.find(
             (member) => member._id === memberId
         )
-        if (matchedMmbr.imgUrl) {
+        if (matchedMmbr?.imgUrl) {
             return matchedMmbr.imgUrl
         } else {
             return 'https://i.pinimg.com/564x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg'
