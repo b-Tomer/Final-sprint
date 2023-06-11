@@ -1,4 +1,8 @@
 .board-container {
+    scroll-snap-type: x mandatory;
+    @include for-narrow-layout{
+        scroll-snap-type: none;
+    }
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
@@ -31,6 +35,10 @@
 
 
 .board-content {
+    scroll-snap-type: x mandatory;
+    @include for-narrow-layout{
+        scroll-snap-type: none;
+    }
     // overflow: auto;
     overflow-x: auto;
     overflow-anchor: none;
@@ -44,6 +52,10 @@
     .group-list {
         display: flex;
         padding-right: 100px;
+        scroll-snap-type: x mandatory;
+        @include for-narrow-layout{
+            scroll-snap-type: none;
+        }
     }
     
     .group-draggable-list {

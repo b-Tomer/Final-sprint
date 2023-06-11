@@ -6,45 +6,45 @@ import { useRef, useState } from 'react'
 import { store } from 'store/store'
 import { SET_BOARD } from 'store/board.reducer'
 
-
 export function Filter() {
-    const { board } = useSelector((storeState) => storeState.boardModule);
+    const { board } = useSelector((storeState) => storeState.boardModule)
 
+    const [filterBy, setFilterBy] = useState({
+        isMembers: false,
+        byMembers: [],
+        isDate: false,
+        isOverdue: false,
+        isDueSoon: false,
+        byLabels: [],
+    })
 
-
-    const [filterBy, setFilterBy] = useState(
-
-        { byLabels: [] }
-
-    )
-
-    console.log(filterBy)
     const originalBoard = useRef(board)
 
     function onNoMembers(ev) {
-        const isChecked = ev.target.checked;
-        setFilterBy(isChecked);
-        filterBoard(isChecked);
+        const isChecked = ev.target.checked
+        setFilterBy(isChecked)
+        filterBoard(isChecked)
     }
 
     function onToggleLabel(ev, labelId) {
-        if (ev.target.checked) {
-            setFilterBy(prevFilterBy => ({
+        const isChecked = ev.target.checked
+        setFilterBy((prevFilterBy) => {
+            let updatedByLabels
+            if (isChecked) {
+                updatedByLabels = [...prevFilterBy.byLabels, labelId]
+            } else {
+                updatedByLabels = prevFilterBy.byLabels.filter(
+                    (label) => label !== labelId
+                )
+            }
+            const updatedFilterBy = {
                 ...prevFilterBy,
-                byLabels: [...prevFilterBy.byLabels, labelId],
-            }));
-        }
-        else {
-            setFilterBy(prevFilterBy => ({
-                ...prevFilterBy,
-                byLabels: prevFilterBy.byLabels.filter(label => label !== labelId)
-            }));
-        }
-        // filterBoard(filterBy);
-        console.log(filterBy)
-
+                byLabels: updatedByLabels,
+            }
+            filterBoard(updatedFilterBy)
+            return updatedFilterBy
+        })
     }
-
 
     // function filterBoard(filterBy) {
     //     if (filterBy) {
@@ -53,80 +53,50 @@ export function Filter() {
     //             groups: originalBoard.current.groups.map((group) => ({
     //                 ...group,
     //                 tasks: group.tasks.filter(
-    //                     (task) => task.members === undefined || task.members.length === 0
+    //                     (task) =>
+    //                         task.members === undefined ||
+    //                         task.members.length === 0
     //                 ),
     //             })),
-    //         };
-    //         store.dispatch({ type: SET_BOARD, board: filteredBoard });
+    //         }
+    //         store.dispatch({ type: SET_BOARD, board: filteredBoard })
     //     } else {
-    //         store.dispatch({ type: SET_BOARD, board: originalBoard.current });
+    //         store.dispatch({ type: SET_BOARD, board: originalBoard.current })
     //     }
     // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // function filterBoard(filterBy) {
-    //     const { byLabels } = filterBy;
-
-    //     if (byLabels.length > 0) {
-    //         const filteredBoard = {
-    //             ...originalBoard.current,
-    //             groups: originalBoard.current.groups.map((group) => {
-    //                 const filteredTasks = group.tasks.filter((task) =>
-    //                     task.labels?.some((label) => byLabels.includes(label))
-    //                 );
-
-    //                 return {
-    //                     ...group,
-    //                     tasks: filteredTasks,
-    //                 };
-    //             }),
-    //         };
-
-    //         const filteredGroups = filteredBoard.groups.filter(
-    //             (group) => group.tasks.length > 0
-    //         );
-
-    //         filteredBoard.groups = filteredGroups;
-
-    //         store.dispatch({ type: SET_BOARD, board: filteredBoard });
-    //     } else {
-
-    //         store.dispatch({ type: SET_BOARD, board: originalBoard.current });
-    //     }
-    // }
-
-
-
-
-
-
-
-
-
+    function filterBoard(filterBy) {
+        const { byLabels } = filterBy
+        if (byLabels.length > 0) {
+            const filteredBoard = {
+                ...originalBoard.current,
+                groups: originalBoard.current.groups.map((group) => ({
+                    ...group,
+                    tasks: group.tasks.filter((task) => {
+                        return (
+                            task.labelIds &&
+                            task.labelIds.some((label) =>
+                                byLabels.includes(label)
+                            )
+                        )
+                    }),
+                })),
+            }
+            store.dispatch({ type: SET_BOARD, board: filteredBoard })
+        } else {
+            store.dispatch({ type: SET_BOARD, board: originalBoard.current })
+        }
+    }
 
     return (
         <div className="filter-container">
             <h3>Keyword</h3>
-            <input type="text" id="search-input" placeholder="Enter a keyword" className='filter-search-bar'></input>
+            <input
+                type="text"
+                id="search-input"
+                placeholder="Enter a keyword"
+                className="filter-search-bar"
+            ></input>
             <h4>Search cards, members, labels, and more.</h4>
             <h3>Members</h3>
             <div className="filter-members-section">
@@ -143,11 +113,10 @@ export function Filter() {
                         onChange={onNoMembers}
                         className="checkbox"
                     />
-                    <div className='filter-icon-frame'>
-                        <Member className='filter-icon' />
-
+                    <div className="filter-icon-frame">
+                        <Member className="filter-icon" />
                     </div>
-                    <span className='member-name'>No members</span>
+                    <span className="member-name">No members</span>
                 </label>
 
                 {board.members &&
@@ -170,22 +139,23 @@ export function Filter() {
                                     // }
                                     className="checkbox"
                                 />
-                                <div className='filter-icon-frame'>
+                                <div className="filter-icon-frame">
                                     <img
                                         src={member.imgUrl}
                                         alt="Image"
-                                        className='filter-icon'
+                                        className="filter-icon"
                                     />
                                 </div>
-                                <span className='member-name'>{member.fullname}</span>
+                                <span className="member-name">
+                                    {member.fullname}
+                                </span>
                             </label>
                         )
                     })}
             </div>
             <div className="filter-dates-section">
                 <h3>Due date</h3>
-                <label
-                    className="filter-dates">
+                <label className="filter-dates">
                     <input
                         type="checkbox"
                         name="checkbox"
@@ -196,15 +166,12 @@ export function Filter() {
                         // }
                         className="checkbox"
                     />
-                    <div className='filter-icon-frame'>
-                        <Calander className='filter-icon' />
+                    <div className="filter-icon-frame">
+                        <Calander className="filter-icon" />
                     </div>
-                    <span className='member-name'>No dates</span>
+                    <span className="member-name">No dates</span>
                 </label>
-                <label
-                    className="filter-dates"
-                    htmlror="checkbox"
-                >
+                <label className="filter-dates" htmlror="checkbox">
                     <input
                         type="checkbox"
                         name="checkbox"
@@ -215,16 +182,12 @@ export function Filter() {
                     //     onToggleCheckedMember(ev, member._id)
                     // }
                     />
-                    <div className='filter-icon-frame red'>
-                        <Clock className='filter-icon' />
+                    <div className="filter-icon-frame red">
+                        <Clock className="filter-icon" />
                     </div>
-                    <span className='member-name'>Overdue</span>
+                    <span className="member-name">Overdue</span>
                 </label>
-                <label
-                    className="filter-dates"
-                    htmlror="checkbox"
-
-                >
+                <label className="filter-dates" htmlror="checkbox">
                     <input
                         type="checkbox"
                         name="checkbox"
@@ -235,15 +198,11 @@ export function Filter() {
                         // }
                         className="checkbox"
                     />
-                    <div className='filter-icon-frame yellow'>
-                        <Clock className='filter-icon' />
+                    <div className="filter-icon-frame yellow">
+                        <Clock className="filter-icon" />
                     </div>
-                    <span className='member-name'>Due in the next day</span>
+                    <span className="member-name">Due in the next day</span>
                 </label>
-
-
-
-
             </div>
 
             <div className="filter-labels-section">
@@ -261,9 +220,7 @@ export function Filter() {
                                 name="checkbox"
                                 // checked={isLabelChecked}
                                 // onClick={onCheckClick}
-                                onChange={(ev) =>
-                                    onToggleLabel(ev, label.id)
-                                }
+                                onChange={(ev) => onToggleLabel(ev, label.id)}
                                 className="checkbox"
                             />
                             <div
@@ -278,5 +235,4 @@ export function Filter() {
             </div>
         </div>
     )
-
 }
