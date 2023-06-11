@@ -9,6 +9,8 @@ import { updateTask } from '../../store/task.actions'
 import { CLOSE_DYN_ALL_MODALS } from '../../store/system.reducer'
 import { store } from '../../store/store'
 import BasicTimePicker from '../task/basic-time-keeper'
+import dayjs from 'dayjs'
+import { TimeField } from '@mui/x-date-pickers/TimeField'
 import { boardService } from 'services/board.service.local'
 import { userService } from 'services/user.service'
 
@@ -16,7 +18,7 @@ export function DynCmpDates({ task }) {
     const [selectedDate, setSelectedDate] = useState(null)
     const [hour, setHour] = useState(0)
     const [minute, setMinute] = useState(0)
-
+    const [value, setValue] = React.useState(dayjs('2022-04-17T15:30'))
     const { boardId } = useParams()
     const { groupId } = useParams()
 
@@ -95,6 +97,17 @@ export function DynCmpDates({ task }) {
                         handleDateChange(newValue)
                     }}
                 />
+                {/* <TimeField
+                    style={{
+                        marginBottom: '10px',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}
+                    value={value}
+                    onChange={(newValue) => setValue(newValue)}
+                    format="HH:mm"
+                    size="small"
+                /> */}
                 <BasicTimePicker
                     hour={hour}
                     setHour={setHour}

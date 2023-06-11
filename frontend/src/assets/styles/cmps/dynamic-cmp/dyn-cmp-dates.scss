@@ -94,7 +94,7 @@
         .dials {
             display: flex;
 
-            select {
+            input {
                 margin-inline: 10px;
                 box-shadow: inset 0 0 0 2px $clrTodobtn;
                 border: 0;
@@ -108,9 +108,11 @@
                 }
             }
 
-            .hours {}
+            .hours {
+            }
 
-            .minutes {}
+            .minutes {
+            }
         }
     }
 }

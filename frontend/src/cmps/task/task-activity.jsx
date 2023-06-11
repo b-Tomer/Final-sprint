@@ -62,11 +62,11 @@ export function TaskActivity({ taskId, isShowAll }) {
                             src={activity.memberImgUrl}
                             alt=""
                         />
-                        <div>
+                        <div className="activity-wrapper">
                             {' '}
                             <div className="activity-content">
-                                <span className="by">{activity.by} </span>
                                 <span className="title">
+                                    <span className="by">{activity.by} </span>
                                     {activity.titleInTask
                                         ? capitalizeKeywords(
                                               activity.titleInTask.toLowerCase()
