@@ -14,7 +14,7 @@ export function TaskMainContent({
     editing,
 }) {
     const { board } = useSelector((storeState) => storeState.boardModule)
-    const [isShowAll, setIsShowAll] = useState(false)
+    const [isShowAll, setIsShowAll] = useState(true)
     function toggleShowAll() {
         setIsShowAll(!isShowAll)
     }
@@ -45,26 +45,31 @@ export function TaskMainContent({
                 </div>
             )}
 
-            {board.activities && <div className="activities">
-                <div className="activities-title">
-                    <Activity className="task-content-icon" />
-                    <h3>Activity</h3>
-                    {board.activities.filter(
-                        (activity) => activity.taskId === task.id
-                    ).length > 5 && (
-                        <button onClick={toggleShowAll} className="show-all">
-                            {!isShowAll
-                                ? 'Hide activities'
-                                : 'Show all activities'}
-                        </button>
-                    )}
+            {board.activities && (
+                <div className="activities">
+                    <div className="activities-title">
+                        <Activity className="task-content-icon" />
+                        <h3>Activity</h3>
+                        {board.activities.filter(
+                            (activity) => activity.taskId === task.id
+                        ).length > 5 && (
+                            <button
+                                onClick={toggleShowAll}
+                                className="show-all"
+                            >
+                                {!isShowAll
+                                    ? 'Hide activities'
+                                    : 'Show all activities'}
+                            </button>
+                        )}
+                    </div>
+                    <TaskActivity
+                        taskId={task.id}
+                        setIsShowAll={setIsShowAll}
+                        isShowAll={isShowAll}
+                    />
                 </div>
-            <TaskActivity
-                    taskId={task.id}
-                    setIsShowAll={setIsShowAll}
-                    isShowAll={isShowAll}
-                />
-            </div>}
+            )}
         </section>
     )
 }
