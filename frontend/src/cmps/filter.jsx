@@ -13,14 +13,9 @@ export function Filter() {
 
 
     const [filterBy, setFilterBy] = useState(
-        {
-            isMembers: false,
-            byMembers: [],
-            isDate: false,
-            isOverdue: false,
-            isDueSoon: false,
-            byLabels: []
-        }
+
+        { byLabels: [] }
+
     )
 
     console.log(filterBy)
@@ -45,53 +40,28 @@ export function Filter() {
                 byLabels: prevFilterBy.byLabels.filter(label => label !== labelId)
             }));
         }
-        filterBoard(filterBy);
+        // filterBoard(filterBy);
+        console.log(filterBy)
 
     }
 
 
-    function filterBoard(filterBy) {
-        if (filterBy) {
-            const filteredBoard = {
-                ...originalBoard.current,
-                groups: originalBoard.current.groups.map((group) => ({
-                    ...group,
-                    tasks: group.tasks.filter(
-                        (task) => task.members === undefined || task.members.length === 0
-                    ),
-                })),
-            };
-            store.dispatch({ type: SET_BOARD, board: filteredBoard });
-        } else {
-            store.dispatch({ type: SET_BOARD, board: originalBoard.current });
-        }
-    }
-
-
-
-    function filterBoard(filterBy) {
-        const { byLabels } = filterBy;
-
-        if (byLabels.length > 0) {
-            const filteredBoard = {
-                ...originalBoard.current,
-                groups: originalBoard.current.groups.map((group) => ({
-                    ...group,
-                    tasks: group.tasks.filter((task) => {
-                        // Check if the task has labels and if any of them match the filter
-                        return (
-                            task.labels &&
-                            task.labels.some((label) => byLabels.includes(label))
-                        );
-                    }),
-                })),
-            };
-
-            store.dispatch({ type: SET_BOARD, board: filteredBoard });
-        } else {
-            store.dispatch({ type: SET_BOARD, board: originalBoard.current });
-        }
-    }
+    // function filterBoard(filterBy) {
+    //     if (filterBy) {
+    //         const filteredBoard = {
+    //             ...originalBoard.current,
+    //             groups: originalBoard.current.groups.map((group) => ({
+    //                 ...group,
+    //                 tasks: group.tasks.filter(
+    //                     (task) => task.members === undefined || task.members.length === 0
+    //                 ),
+    //             })),
+    //         };
+    //         store.dispatch({ type: SET_BOARD, board: filteredBoard });
+    //     } else {
+    //         store.dispatch({ type: SET_BOARD, board: originalBoard.current });
+    //     }
+    // }
 
 
 
@@ -99,6 +69,50 @@ export function Filter() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // function filterBoard(filterBy) {
+    //     const { byLabels } = filterBy;
+
+    //     if (byLabels.length > 0) {
+    //         const filteredBoard = {
+    //             ...originalBoard.current,
+    //             groups: originalBoard.current.groups.map((group) => {
+    //                 const filteredTasks = group.tasks.filter((task) =>
+    //                     task.labels?.some((label) => byLabels.includes(label))
+    //                 );
+
+    //                 return {
+    //                     ...group,
+    //                     tasks: filteredTasks,
+    //                 };
+    //             }),
+    //         };
+
+    //         const filteredGroups = filteredBoard.groups.filter(
+    //             (group) => group.tasks.length > 0
+    //         );
+
+    //         filteredBoard.groups = filteredGroups;
+
+    //         store.dispatch({ type: SET_BOARD, board: filteredBoard });
+    //     } else {
+
+    //         store.dispatch({ type: SET_BOARD, board: originalBoard.current });
+    //     }
+    // }
 
 
 
