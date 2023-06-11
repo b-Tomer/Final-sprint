@@ -24,12 +24,11 @@ export function TaskDescription({ boardId, groupId, task }) {
     }, [])
 
     useEffectUpdate(() => {
-
         if (!listening) {
+            console.log('heyyyyyyyy');
            setTimeout(()=> onStopRecording() , 1000)
-           setTimeout(()=> onStopRecording() , 1200)
+           setTimeout(()=> onStopRecording() , 1500)
         }
-
     }, [listening])
 console.log(task.description)
     function onSaveDescription() {
@@ -87,7 +86,6 @@ console.log(task.description)
     }
 
     function onStopRecording() {
-
         SpeechRecognition.stopListening()
         setDescription(transcript)
         onSaveDescription()

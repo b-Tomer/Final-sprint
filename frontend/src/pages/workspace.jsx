@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 import { ReactComponent as Starred } from '../assets/img/icons/starred.svg'
 import { ReactComponent as Clock } from '../assets/img/icons/clock.svg'
 import { useState } from 'react'
-import { boardService } from 'services/board.service'
+
 import {
     CLOSE_DYN_ALL_MODALS,
     OPEN_DYN_MODAL,
@@ -65,7 +65,7 @@ export function Workspace() {
     return (
         <section>
             <AppHeader onSetfilter={onSetfilter} />
-            <section className="muilty-boards-container">
+            <section className="multy-boards-container">
                 <div className="section-container">
                     <div className="starred-board-title">
                         <Starred className="boards-icon" />
@@ -89,12 +89,7 @@ export function Workspace() {
                         <span>Recently viewed</span>
                     </div>
                     <div className="recently-viewed-container">
-                        <div
-                            onClick={onOpenNewBoard}
-                            className="board-preview new-board-box"
-                        >
-                            <span>Create new board</span>
-                        </div>
+
                         {boards.map((board) => (
                             <BoardPreview
                                 board={board}
@@ -102,6 +97,12 @@ export function Workspace() {
                                 toggleStarredStatus={toggleStarredStatus}
                             />
                         ))}
+                    <div
+                        onClick={onOpenNewBoard}
+                        className="board-preview new-board-box"
+                    >
+                        <span>Create new board</span>
+                    </div>
                     </div>
                 </div>
             </section>
