@@ -28,16 +28,17 @@
 @import 'cmps/GroupDetails';
 @import 'cmps/TaskPreview';
 @import 'cmps/TaskEditor';
-@import 'cmps/BoardHeader';
-@import 'cmps/HomepageHeader';
-@import 'cmps/task/TaskDetails';
-@import 'cmps/task/TaskHeader';
-@import 'cmps/task/TaskMenu';
-@import 'cmps/task/TaskIcons';
-@import 'cmps/task/TaskData';
-@import 'cmps/task/TaskMainContent';
-@import 'cmps/task/TaskChecklist';
-@import 'cmps/task/TaskAttachment';
+@import 'cmps/BoardHeader.scss';
+@import 'cmps/HomepageHeader.scss';
+@import 'cmps/task/TaskDetails.scss';
+@import 'cmps/task/TaskHeader.scss';
+@import 'cmps/task/TaskMenu.scss';
+@import 'cmps/task/TaskIcons.scss';
+@import 'cmps/task/TaskData.scss';
+@import 'cmps/task/TaskMainContent.scss';
+@import 'cmps/task/TaskChecklist.scss';
+@import 'cmps/task/TaskAttachment.scss';
+@import 'cmps/task/TaskLoaction.scss';
 
 // dynamic-Ccmp
 @import 'cmps/dynamic-cmp/dynamic-cmp';
