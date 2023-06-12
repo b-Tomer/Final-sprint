@@ -23,6 +23,7 @@ import { userService } from 'services/user.service.js'
 import { UPDATE_BOARD_LIVE, socketService } from 'services/socket.service.js'
 import { SET_BOARD } from 'store/board.reducer.js'
 import { store } from 'store/store.js'
+import { CoverDynModal } from 'cmps/dynamic-cmp/dyn-modal-cover.jsx'
 
 export function BoardIndex() {
     const { boardId } = useParams()

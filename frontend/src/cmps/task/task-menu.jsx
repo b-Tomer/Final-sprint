@@ -75,13 +75,13 @@ export function TaskMenu({ task }) {
                     <Attachment className="sidebar-icon" />
                     <span>Attachment</span>{' '}
                 </button>
-                <button
+                {/* <button
                     className="button-link"
                     onClick={(evnet) => openDynamicCmp(evnet, 'Custom Fields')}
                 >
                     <CustomFields className="sidebar-icon" />
                     <span>Custom Fields</span>{' '}
-                </button>
+                </button> */}
             </div>
             {isMenuModalOpen && (
                 <DynamicCmp

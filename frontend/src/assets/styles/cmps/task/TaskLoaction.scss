@@ -1,0 +1,85 @@
+.location-container {
+    .show-all {
+        margin-left: auto;
+        padding: 7px 7px;
+        color: $clr7;
+        border-radius: 5px;
+        background-color: $clrTodoBg;
+        color: $clr7;
+
+        &:hover {
+            background-color: $clrH;
+        }
+    }
+    .description-title {
+        .task-loaction-icon {
+            margin-inline-end: 5px;
+            width: 1rem;
+            height: 1rem;
+            path {
+                fill: #626f86;
+            }
+        }
+    }
+    .loc-search {
+        margin-inline-start: 20px;
+        margin-block-end: 10px;
+        background-color: #fafbfc;
+        border: none;
+        border-radius: 3px;
+        box-shadow: inset 0 0 0 2px #091e4224;
+        box-sizing: border-box;
+        display: block;
+        line-height: 20px;
+        padding: 8px 12px;
+        transition-duration: 85ms;
+        transition-property: background-color, border-color, box-shadow;
+        transition-timing-function: ease;
+
+        &:focus {
+            background-color: $clr1;
+            box-shadow: rgb(56, 139, 255) 0px 0px 0px 2px inset;
+        }
+    }
+
+    .loc-title {
+        margin: 0;
+        margin-inline-start: 20px;
+        margin-block-end: 2px;
+        font-weight: 400;
+        font-size: 1rem;
+    }
+
+    .map {
+        margin-inline-start: 20px;
+        border-radius: 3px;
+        overflow: hidden;
+    }
+    .location-control {
+        margin-inline-start: 20px;
+        margin-block-start: 10px;
+        display: flex;
+        justify-content: flex-start;
+        justify-items: flex-start;
+        button {
+            height: 2rem;
+            border-radius: 3px;
+            padding: 6px 12px;
+            font-size: 0.875rem;
+            box-sizing: border-box;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 400;
+        }
+        .save {
+            background-color: #0c66e4;
+            color: #ffffff;
+        }
+        .delete {
+            margin-inline-start: 10px;
+            background-color: #ca3521;
+            color: #ffffff;
+        }
+    }
+}

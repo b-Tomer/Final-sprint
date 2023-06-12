@@ -54,7 +54,7 @@ export function Workspace() {
 
     function toggleStarredStatus(board) {
         board.isStarred = !board.isStarred
-        updateBoard(board).then(console.log)
+        updateBoard(board)
     }
 
     function onSetfilter(filterByToUpdate) {

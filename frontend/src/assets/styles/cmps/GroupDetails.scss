@@ -2,31 +2,44 @@
     scroll-snap-align: center;
     position: relative;
     flex-shrink: 0;
-    display: grid;
-    grid-template-rows: 47px 1fr 43px;
+    // display: grid;
+    // grid-template-rows: 47px 1fr 43px;
+    display: flex;
+    flex-direction: column;
     border-radius: $radius;
     background-color: $clr2;
     width: $groupWidth;
     max-height: 98%;
     height: fit-content;
     overflow: hidden;
-    margin-inline:7px;
+    margin-inline: 7px;
 
-  
+    form {
+        padding: 0px;
+        margin: 0px;
+        .add-btns {
+            margin: 0;
+            margin-top: 7px;
+            margin-block-end: 5px;
+        }
+    }
 
-    &.dragging{
+    &.dragging {
         rotate: 5deg;
     }
 
     ::-webkit-scrollbar-track {
         margin: 0.5em;
     }
-    
+
     .group-header {
-        padding: 14px 8px;
+        // padding: 10px 8px;
+        padding-inline: 10px;
+        padding-block-start: 8px;
+        padding-block-end: 2px;
         display: flex;
         justify-content: space-between;
-        
+
         input {
             height: fit-content;
             padding-block: 5px;
@@ -36,7 +49,7 @@
             font-size: 14px;
             font-weight: 600;
             padding-inline-start: 10px;
-            
+
             &:focus {
                 background-color: $clr1;
                 box-shadow: rgb(56, 139, 255) 0px 0px 0px 2px inset;
@@ -47,13 +60,13 @@
             width: 1rem;
             height: 1rem;
         }
-        
+
         button {
             width: 2rem;
             height: 2rem;
             padding: 6px;
             border-radius: 3px;
-            
+
             &:hover {
                 background-color: $clrH;
             }
@@ -64,18 +77,17 @@
         display: flex;
         overflow: auto;
         flex-direction: column;
-        padding: 0 4px;
+        padding: 4px;
         margin: 0 4px;
         gap: 3px;
-
     }
-    
+
     .group-footer {
         display: flex;
-        margin: 8px;
+        // margin: 8px;
         align-items: center;
         align-content: center;
-        
+
         button {
             color: $clr6;
             display: flex;
@@ -83,8 +95,10 @@
             align-content: end;
             width: 100%;
             border-radius: 8px;
-            padding: 10px;
-            margin-block-end: 5px;
+            // padding: 10px;
+            padding-block: 10px;
+            margin-inline: 10px;
+            margin-block-end: 7px;
 
             &:hover {
                 background: $clrH;
@@ -124,15 +138,18 @@
         sans-serif;
     background-color: #fff;
     border: none;
-    border-radius: 3px;
-    // box-shadow: 0 1px 0 rgba(9, 30, 66, 0.251);
-    height: 40px;
+    border-radius: 8px;
     margin-bottom: 8px;
     padding: 9px 8px;
     width: 100%;
+    min-height: 40px;
     padding-inline: 10px;
     font-size: 14px;
     color: $clr7;
+}
+.add-list-box {
+    width: 96%;
+    height: 60px;
 }
 
 .list-icon {

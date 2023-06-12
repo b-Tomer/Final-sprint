@@ -48,6 +48,14 @@ export function GroupDetails({
 
     function onOpenAddTask() {
         setIsAddTaskOpen(true)
+        setTimeout(() => {
+            groupRef.current.scrollTo({
+                left: 0,
+                top: 9000000,
+                behavior: 'smooth',
+            })
+            inputRef.current.focus()
+        }, 200)
     }
 
     function handleTaskTitle(ev) {
@@ -165,42 +173,42 @@ export function GroupDetails({
                         ))}
                         {provided.placeholder}
                         {isAddTaskOpen && (
-                            <div className="task-container">
-                                <form onSubmit={onAddTask}>
+                            <form onSubmit={onAddTask}>
+                                <div className="task-container">
                                     <input
                                         ref={inputRef}
                                         placeholder="Enter a title for this card..."
-                                        className="add-list-input"
+                                        className="add-list-input add-list-box"
                                         value={taskTitle}
                                         onChange={handleTaskTitle}
                                     />
-                                    <div className="add-btns">
-                                        <button
-                                            onClick={onAddTask}
-                                            className="add-item-btn"
-                                        >
-                                            Add card
-                                        </button>
-                                        <button
-                                            onClick={onAddClose}
-                                            className="svg-holder"
-                                        >
-                                            <X className="list-icon icon-big" />
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
+                                </div>
+                                <div className="add-btns">
+                                    <button
+                                        onClick={onAddTask}
+                                        className="add-item-btn"
+                                    >
+                                        Add card
+                                    </button>
+                                    <button
+                                        onClick={onAddClose}
+                                        className="svg-holder"
+                                    >
+                                        <X className="list-icon icon-big" />
+                                    </button>
+                                </div>
+                            </form>
                         )}
                     </section>
                 )}
             </Droppable>
-            <div className="group-footer">
-                {!isAddTaskOpen && (
+            {!isAddTaskOpen && (
+                <div className="group-footer">
                     <button ref={inputRef} onClick={onOpenAddTask}>
                         <Plus className="list-icon" /> Add a card
                     </button>
-                )}
-            </div>
+                </div>
+            )}
         </section>
     )
 }

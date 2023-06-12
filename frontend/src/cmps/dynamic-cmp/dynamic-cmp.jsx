@@ -19,6 +19,7 @@ import { DynCmpActivities } from './dyn-cmp-activity'
 import { DynCmpNewBoard } from './dyn-modal-new-board'
 import { DynCmpMemberPreview } from './dyn-cmp-memeber-preview'
 import { DynCmpAddMember } from './dyn-cmp-add-member'
+import { CoverDynModal } from './dyn-modal-cover'
 
 export function DynamicCmp({
     task,
@@ -67,7 +68,7 @@ export function DynamicCmp({
         }
         modalLeft = left - 5
         if (modalLeft + width > windowPos.x) {
-            modalLeft = windowPos.x - width - 10
+            modalLeft = windowPos.x - width - 15
         }
         setModalStyle({
             top: modalTop,
@@ -97,27 +98,12 @@ export function DynamicCmp({
             {modalTitle === 'Members' && <DynCmpMembers task={task} />}
             {modalTitle === 'Edit label' && <DynCmpEditLabel task={task} />}
             {modalTitle === 'New board' && <DynCmpNewBoard />}
-            {modalTitle === 'Checklist' && (
-                <DynCmpChecklist task={task} setEditing={setEditing} />
-            )}
-            {modalTitle === 'Attachment' && (
-                <DynCmpAttachment
-                    boardId={boardId}
-                    groupId={groupId}
-                    task={task}
-                />
-            )}
-            {modalTitle === 'Edit attachment' && (
-                <DynCmpAttachmentEdit
-                    boardId={boardId}
-                    groupId={groupId}
-                    task={task}
-                />
-            )}
+            {modalTitle === 'Cover' && <CoverDynModal task={task} />}
+            {modalTitle === 'Checklist' && <DynCmpChecklist task={task} setEditing={setEditing} />}
+            {modalTitle === 'Attachment' && <DynCmpAttachment boardId={boardId} groupId={groupId} task={task} />}
+            {modalTitle === 'Edit attachment' && <DynCmpAttachmentEdit boardId={boardId} groupId={groupId} task={task} />}
             {modalTitle === 'Activities' && <DynCmpActivities board={board} />}
-            {modalTitle === 'Member card' && (
-                <DynCmpMemberPreview board={board} currMember={currMember} />
-            )}
+            {modalTitle === 'Member card' && <DynCmpMemberPreview board={board} currMember={currMember} />}
             {modalTitle === 'Filter' && <Filter board={board} />}
             {modalTitle === 'Add members' && <DynCmpAddMember />}
         </div>

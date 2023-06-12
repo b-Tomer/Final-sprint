@@ -5,6 +5,7 @@ import { TaskAttachments } from './task-attachments.jsx'
 import { TaskDescription } from './task-description'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
+import { TaskLocation } from './task-location'
 
 export function TaskMainContent({
     task,
@@ -15,15 +16,27 @@ export function TaskMainContent({
 }) {
     const { board } = useSelector((storeState) => storeState.boardModule)
     const [isShowAll, setIsShowAll] = useState(true)
+    const [location, setLocation] = useState(null)
+    const [isLocOpen, setIsLocOpen] = useState(false)
+
     function toggleShowAll() {
         setIsShowAll(!isShowAll)
     }
 
     if (!task) return
-
     return (
         <section className="task-main-content">
             <TaskDescription boardId={boardId} groupId={groupId} task={task} />
+
+            <TaskLocation
+                boardId={boardId}
+                groupId={groupId}
+                task={task}
+                location={location}
+                setLocation={setLocation}
+                setIsLocOpen={setIsLocOpen}
+                isLocOpen={isLocOpen}
+            />
 
             {task.attachments && (
                 <TaskAttachments

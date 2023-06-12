@@ -4,15 +4,10 @@ import { useNavigate } from 'react-router-dom'
 import { ReactComponent as Logo } from '../assets/img/icons/logo.svg'
 
 export function HomepageHeader({ handleclick }) {
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
     const navigate = useNavigate()
 
     function goToLogin() {
         navigate('/loginSignup')
-    }
-
-    function toggleMenu() {
-        setIsMenuOpen(!isMenuOpen)
     }
 
     return (
@@ -21,11 +16,7 @@ export function HomepageHeader({ handleclick }) {
                 <Logo className="logo-icon" />
                 <h1 className="logo-title">Trellax</h1>
             </div>
-            <nav
-                className={`homepage-header-nav ${
-                    isMenuOpen ? 'open-homepage-menu' : ''
-                }`}
-            >
+            <nav className={'homepage-header-nav'}>
                 {/* <button className="homepage-header-btn">
                     <span>Features</span>
                     <div className='svg-homepage-arrow'>
@@ -53,8 +44,7 @@ export function HomepageHeader({ handleclick }) {
                 <nav className="homepage-header-actions">
                     <button onClick={goToLogin} className="btn-header-login">
                         Log in
-                    </button>
-                    <button
+                    </button>                    <button
                         onClick={handleclick}
                         className="btn-header-actions try"
                     >
@@ -62,9 +52,6 @@ export function HomepageHeader({ handleclick }) {
                     </button>
                 </nav>
             </nav>
-            <button className="menu-button" onClick={toggleMenu}>
-                <i className="fa-solid fa-bars"></i>
-            </button>
         </div>
     )
 }

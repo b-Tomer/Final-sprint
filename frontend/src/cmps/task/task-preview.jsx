@@ -185,7 +185,7 @@ export function TaskPreview({
                     </div>
                 )}
                 <div className="task-content">
-                    {task?.labelIds && (
+                    {task?.labelIds && task.labelIds.length > 0 && (
                         <span className="task-labels">
                             {task.labelIds.map((labelId) => (
                                 <button
@@ -209,6 +209,7 @@ export function TaskPreview({
                     <span className="task-title" onClick={onOpenTaskDetails}>
                         {task.title}
                     </span>
+
                     <TaskIcons
                         task={task}
                         groupId={groupId}
