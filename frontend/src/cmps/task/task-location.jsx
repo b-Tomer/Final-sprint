@@ -130,7 +130,7 @@ export function TaskLocation({
                 <Location className="task-loaction-icon" />
                 <h3>Location</h3>
                 <button onClick={toggleShowLoc} className="show-all">
-                    Show location
+                    {isLocOpen ? 'Hide location' : 'Show location'}
                 </button>
             </div>
             {isLocOpen && (
