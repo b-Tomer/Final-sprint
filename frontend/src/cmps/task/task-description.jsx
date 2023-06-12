@@ -4,9 +4,10 @@ import { useClickOutside } from '../../customHooks/useClickOutside'
 import { updateTask } from '../../store/task.actions'
 import { boardService } from 'services/board.service.local'
 import { userService } from 'services/user.service'
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import SpeechRecognition, {
+    useSpeechRecognition,
+} from 'react-speech-recognition'
 import { useEffectUpdate } from 'customHooks/useEffectUpdate'
-
 
 export function TaskDescription({ boardId, groupId, task }) {
     const { transcript, listening, resetTranscript } = useSpeechRecognition()
@@ -25,12 +26,10 @@ export function TaskDescription({ boardId, groupId, task }) {
 
     useEffectUpdate(() => {
         if (!listening) {
-            console.log('heyyyyyyyy');
-           setTimeout(()=> onStopRecording() , 1000)
-           setTimeout(()=> onStopRecording() , 1500)
+            setTimeout(() => onStopRecording(), 1000)
+            setTimeout(() => onStopRecording(), 1500)
         }
     }, [listening])
-console.log(task.description)
     function onSaveDescription() {
         setIsEditing(false)
         const taskToUpdate = { ...task, description }
@@ -43,7 +42,7 @@ console.log(task.description)
         activity.by = userService.getLoggedinUser()?.fullname
             ? userService.getLoggedinUser().fullname
             : 'Guest'
-            console.log(taskToUpdate);
+        console.log(taskToUpdate)
         updateTask(boardId, groupId, taskToUpdate, activity)
     }
 
@@ -90,12 +89,8 @@ console.log(task.description)
         setDescription(transcript)
         onSaveDescription()
         resetTranscript()
-        setIsEditing(false)       
+        setIsEditing(false)
     }
-
-
-
-    console.log(transcript);
 
     if (!task) return null
     return (
@@ -103,9 +98,27 @@ console.log(task.description)
             <div className="description-title">
                 <Description className="task-content-icon" />
                 <h3>Description</h3>
-                <div className='record-btns'>
-                    <button onClick={onStartRecording} className='start-listen-btn'><i className={`fa-solid fa-microphone-lines ${listening ? 'fa-beat-fade' : ''}`} style={{ color: "#b0b0b0" }}></i></button>
-                    <button onClick={onStopRecording} className='stop-listen-btn'><i className="fa-regular fa-circle-stop" style={{ color: "#b0b0b0" }}></i></button>
+                <div className="record-btns">
+                    <button
+                        onClick={onStartRecording}
+                        className="start-listen-btn"
+                    >
+                        <i
+                            className={`fa-solid fa-microphone-lines ${
+                                listening ? 'fa-beat-fade' : ''
+                            }`}
+                            style={{ color: '#b0b0b0' }}
+                        ></i>
+                    </button>
+                    <button
+                        onClick={onStopRecording}
+                        className="stop-listen-btn"
+                    >
+                        <i
+                            className="fa-regular fa-circle-stop"
+                            style={{ color: '#b0b0b0' }}
+                        ></i>
+                    </button>
                 </div>
                 {!task.description ||
                     (!isEditing && (
