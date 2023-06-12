@@ -22,7 +22,7 @@ export function TaskLocation({
     isLocOpen,
 }) {
     const [foundLocation, setFoundLocation] = useState(
-        task?.locationTitle || 'No location'
+        task?.locationTitle || 'No current location'
     )
     const [marker, setMarker] = useState(null)
 
@@ -78,7 +78,7 @@ export function TaskLocation({
             location: null,
             locationTitle: null,
         }
-        setFoundLocation('No location')
+        setFoundLocation('No current location')
         setLocation(null)
         try {
             await updateTask(boardId, groupId, updatedTask)
