@@ -2,6 +2,9 @@ import { Link } from "react-router-dom"
 import { ReactComponent as Window } from '../../assets/img/icons/window.svg'
 import { useState, useRef } from "react";
 import { updateTask } from "store/task.actions";
+import { OPEN_DYN_MODAL, SET_MODAL_TITLE } from "store/system.reducer";
+import { store } from "store/store";
+import { DynamicCmp } from "cmps/dynamic-cmp/dynamic-cmp";
 
 
 export function TaskHeader({ task, group, boardId }) {
@@ -53,6 +56,7 @@ export function TaskHeader({ task, group, boardId }) {
                     {group.title}
                 </Link>
             </p>
+         
         </section>
     )
 }

@@ -30,6 +30,7 @@ export function TaskDescription({ boardId, groupId, task }) {
             setTimeout(() => onStopRecording(), 1500)
         }
     }, [listening])
+
     function onSaveDescription() {
         setIsEditing(false)
         const taskToUpdate = { ...task, description }

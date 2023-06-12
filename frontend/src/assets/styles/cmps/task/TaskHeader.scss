@@ -93,6 +93,26 @@
     background-size: cover;
     position: relative;
 
+    .toggle-cover-btn {
+        position: absolute;
+        bottom: 8px;
+        right: 8px;
+        background-color: transparent;
+        width: 78px;
+        height: 2rem;
+        font-size: 0.875rem;
+        padding: 6px 12px ;
+        border-radius: 3px;
+        color: $clr7;
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        &:hover {
+            background-color: $clr3;
+        }
+
+    }
+
     .task-details-cover-close {
         position: absolute;
         height: 2em;
