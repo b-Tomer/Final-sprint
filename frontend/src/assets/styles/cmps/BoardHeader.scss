@@ -44,6 +44,7 @@
         opacity: 0.16;
         margin: 0;
         margin-block-start: 6px;
+        margin-right: 5px;
     }
 
     .board-header-icon {
@@ -73,6 +74,7 @@
         .star {
             width: 32px;
             height: 32px;
+            transform: translateY(2px);
 
             path {
                 fill: $clr7;
@@ -120,11 +122,49 @@
             }
         }
 
+
+    }
+
+    .board-header-right {
+        display: flex;
+
+        .btn-board-right {
+            display: flex;
+            width: auto;
+            // border: none;
+            // margin-right: 15px;
+        }
+
+        .filter-btn {
+            margin-right: 10px;
+        }
+
+        .board-header-icon {
+            margin-inline-end: 5px;
+        }
+
+        *span {
+            font-size: 0px;
+        }
+
+        .share {
+            width: 1.25rem;
+            height: 1.25rem;
+            transform: translateY(-1px);
+        }
+
+        @include for-normal-layout {
+            justify-content: space-between;
+
+            *span {
+                font-size: 0.857rem;
+            }
+        }
+
         .board-members {
             display: flex;
-            // width: 28px;
-            // height: 28px;
             gap: 0;
+            margin-right: 10px;
 
             button {
                 margin: 0;
@@ -145,39 +185,14 @@
             }
         }
 
-        .add-member {
-            margin-inline-start: 10px;
+        // .add-member {
+        //     margin-inline-start: 10px;
 
-            .add-member-icon {
-                path {
-                    fill: $clr7;
-                }
-            }
-        }
-    }
-
-    .board-header-right {
-        display: flex;
-
-        .btn-board-right {
-            display: flex;
-            width: auto;
-        }
-
-        .board-header-icon {
-            margin-inline-end: 5px;
-        }
-
-        *span {
-            font-size: 0px;
-        }
-
-        @include for-normal-layout {
-            justify-content: space-between;
-
-            *span {
-                font-size: 0.857rem;
-            }
-        }
+        //     .add-member-icon {
+        //         path {
+        //             fill: $clr7;
+        //         }
+        //     }
+        // }
     }
 }

@@ -4,19 +4,25 @@
         flex-direction: column;
         overflow: hidden;
         border-radius: 8px;
+
         .user-mail {
             text-align: center;
             margin-block-end: 10px;
         }
+
         .user-info-name {
             text-align: center;
             margin-block-start: 10px;
             margin-block-end: 5px;
             font-size: 20px;
         }
+
         .user-photo {
-            object-fit: cover;
-            width: 100%;
+            // object-fit: cover;
+            width: 200px;
+            height: 200px;
+            margin-inline: auto;
+            margin-bottom: 40px;
         }
     }
 }
