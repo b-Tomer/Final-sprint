@@ -2,8 +2,10 @@
     scroll-snap-align: center;
     position: relative;
     flex-shrink: 0;
-    display: grid;
-    grid-template-rows: 47px 1fr 43px;
+    // display: grid;
+    // grid-template-rows: 47px 1fr 43px;
+    display: flex;
+    flex-direction: column;
     border-radius: $radius;
     background-color: $clr2;
     width: $groupWidth;
@@ -12,15 +14,15 @@
     overflow: hidden;
     margin-inline: 7px;
 
-    
-   form{
-    padding: 0px;
-    margin: 0px;
-   .add-btns{
-    margin: 0;
-    margin-top:7px;
-   }
-   }
+    form {
+        padding: 0px;
+        margin: 0px;
+        .add-btns {
+            margin: 0;
+            margin-top: 7px;
+            margin-block-end: 5px;
+        }
+    }
 
     &.dragging {
         rotate: 5deg;
@@ -31,7 +33,10 @@
     }
 
     .group-header {
-        padding: 14px 8px;
+        // padding: 10px 8px;
+        padding-inline: 10px;
+        padding-block-start: 8px;
+        padding-block-end: 2px;
         display: flex;
         justify-content: space-between;
 
@@ -75,12 +80,11 @@
         padding: 4px;
         margin: 0 4px;
         gap: 3px;
-
     }
 
     .group-footer {
         display: flex;
-        margin: 8px;
+        // margin: 8px;
         align-items: center;
         align-content: center;
 
@@ -91,8 +95,10 @@
             align-content: end;
             width: 100%;
             border-radius: 8px;
-            padding: 10px;
-            margin-block-end: 5px;
+            // padding: 10px;
+            padding-block: 10px;
+            margin-inline: 10px;
+            margin-block-end: 7px;
 
             &:hover {
                 background: $clrH;

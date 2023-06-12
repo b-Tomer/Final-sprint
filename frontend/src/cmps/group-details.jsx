@@ -159,7 +159,9 @@ export function GroupDetails({
                                         groupId={group.id}
                                         setTaskEdit={setTaskEdit}
                                         taskEdit={taskEdit}
-                                        setIsTaskDetailsOpen={setIsTaskDetailsOpen}
+                                        setIsTaskDetailsOpen={
+                                            setIsTaskDetailsOpen
+                                        }
                                         isTaskDetailsOpen={isTaskDetailsOpen}
                                         provided={provided}
                                         isDragging={snapshot.isDragging}
@@ -200,13 +202,13 @@ export function GroupDetails({
                     </section>
                 )}
             </Droppable>
-            <div className="group-footer">
-                {!isAddTaskOpen && (
+            {!isAddTaskOpen && (
+                <div className="group-footer">
                     <button ref={inputRef} onClick={onOpenAddTask}>
                         <Plus className="list-icon" /> Add a card
                     </button>
-                )}
-            </div>
+                </div>
+            )}
         </section>
     )
 }
