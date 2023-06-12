@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { HomepageHeader } from '../cmps/homepage-header'
 import homepageImg from '../assets/img/homepageImg.png'
 import { HomeageCarousel } from 'cmps/homepage-carousel'
+import { MainFooter } from 'cmps/main-footer'
 
 export function HomePage() {
     const navigate = useNavigate()
@@ -42,6 +43,7 @@ export function HomePage() {
                 </div>
                 <HomeageCarousel />
             </section>
+            <MainFooter />
         </div>
     )
 }

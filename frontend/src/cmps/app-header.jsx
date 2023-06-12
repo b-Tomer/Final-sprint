@@ -120,9 +120,8 @@ export function AppHeader({ onSetfilter }) {
             </div>
             <nav className="main-nav">
                 <div
-                    className={`links-section ${
-                        isMobileOpen ? 'mobile-open' : ''
-                    }`}
+                    className={`links-section ${isMobileOpen ? 'mobile-open' : ''
+                        }`}
                 >
                     <div className="link-section">
                         <div className="links">

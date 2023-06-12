@@ -73,7 +73,7 @@ export function TaskMainContent({
                                     className="show-all"
                                 >
                                     {!isShowAll
-                                        ? 'Hide activities'
+                                        ? 'Show less activities'
                                         : 'Show all activities'}
                                 </button>
                             )}

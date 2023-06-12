@@ -18,7 +18,10 @@
 @import 'views/BoardIndex';
 @import 'views/NotFound';
 @import 'views/LoginSignup';
-@import 'cmps/side-spotify';
+
+//General
+@import 'cmps/general/SideSpotify';
+@import 'cmps/general/AppFooter.scss';
 
 // Components
 @import 'views/BoardPreview';
