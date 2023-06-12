@@ -106,7 +106,17 @@ export function TaskIcons({ task, groupId, boardId }) {
             return 'https://i.pinimg.com/564x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg'
         }
     }
-
+    if (
+        !task.dueDate &&
+        !task.description &&
+        // !task.attachments &&
+        !task.attachments?.length &&
+        // !task.checklists &&
+        !task.checklists?.length &&
+        // !task.members &&
+        !task.members?.length
+    )
+        return
     return (
         <section className="task-icons-container">
             <div className="task-icons-all">
