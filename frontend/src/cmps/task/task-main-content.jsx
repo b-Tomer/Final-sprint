@@ -38,7 +38,7 @@ export function TaskMainContent({
                 isLocOpen={isLocOpen}
             />
 
-            {task.attachments && (
+            {task.attachments && task.attachments.length > 0 && (
                 <TaskAttachments
                     groupId={groupId}
                     boardId={boardId}
