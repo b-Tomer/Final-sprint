@@ -19,6 +19,7 @@ import { DynCmpActivities } from './dyn-cmp-activity'
 import { DynCmpNewBoard } from './dyn-modal-new-board'
 import { DynCmpMemberPreview } from './dyn-cmp-memeber-preview'
 import { DynCmpAddMember } from './dyn-cmp-add-member'
+import { CoverDynModal } from './dyn-modal-cover'
 
 export function DynamicCmp({
     task,
@@ -34,6 +35,9 @@ export function DynamicCmp({
     const { groupId } = useParams()
     const [modalStyle, setModalStyle] = useState({ visibility: 'hidden' })
     const containerRef = useRef(null)
+
+    console.log(modalTitle)
+    console.log(title)
 
     useEffect(() => {
         calcModalPos()
@@ -97,6 +101,7 @@ export function DynamicCmp({
             {modalTitle === 'Members' && <DynCmpMembers task={task} />}
             {modalTitle === 'Edit label' && <DynCmpEditLabel task={task} />}
             {modalTitle === 'New board' && <DynCmpNewBoard />}
+            {modalTitle === 'Cover' && <CoverDynModal task={task} />}
             {modalTitle === 'Checklist' && (
                 <DynCmpChecklist task={task} setEditing={setEditing} />
             )}
