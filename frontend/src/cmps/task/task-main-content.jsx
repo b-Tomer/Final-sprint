@@ -17,7 +17,7 @@ export function TaskMainContent({
     const { board } = useSelector((storeState) => storeState.boardModule)
     const [isShowAll, setIsShowAll] = useState(true)
     const [location, setLocation] = useState(null)
-    const [isLocOpen, setIsLocOpen] = useState(true)
+    const [isLocOpen, setIsLocOpen] = useState(false)
 
     function toggleShowAll() {
         setIsShowAll(!isShowAll)
