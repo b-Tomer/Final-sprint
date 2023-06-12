@@ -132,27 +132,6 @@ export function BoardHeader({ board }) {
                     {<StarredYellow className={buttonClassName} />}
                 </button>
 
-                {board.members && board.members.length > 0 && (
-                    <div className="board-members">
-                        {board.members.map((member) => (
-                            <button
-                                key={member._id}
-                                className="board-member-btn"
-                                onClick={(ev) =>
-                                    onOpenMemberModal('Member card', ev, member)
-                                }
-                            >
-                                <img src={member.imgUrl} alt="" />
-                            </button>
-                        ))}
-                    </div>
-                )}
-                <button
-                    onClick={(ev) => onAddMember(ev, 'Add members')}
-                    className="add-member"
-                >
-                    <Plus className="add-member-icon" />
-                </button>
                 {/* <button>
                     <Visability className="board-header-icon" />
                 </button>
@@ -171,9 +150,9 @@ export function BoardHeader({ board }) {
                     <Automation className="board-header-icon" />
                     <span>Automation</span>
                 </button> */}
-                <button className="btn-board-right"></button>
+                {/* <button className="btn-board-right " ></button> */}
                 <button
-                    className="btn-board-right"
+                    className="btn-board-right filter-btn"
                     onClick={(event) => onOpenFilter(event, 'Filter')}
                 >
                     <Filter className="board-header-icon" />
@@ -183,10 +162,36 @@ export function BoardHeader({ board }) {
                     <DynamicCmp title={'Filter'} modalPos={modalPos} />
                 )}
                 <span className="separator"></span>
-                <button className="btn-board-right">
-                    <Share className="board-header-icon" />
+
+                {board.members && board.members.length > 0 && (
+                    <div className="board-members">
+                        {board.members.map((member) => (
+                            <button
+                                key={member._id}
+                                className="board-member-btn"
+                                onClick={(ev) =>
+                                    onOpenMemberModal('Member card', ev, member)
+                                }
+                            >
+                                <img src={member.imgUrl} alt="" />
+                            </button>
+                        ))}
+                    </div>
+                )}
+                {/* <button
+                    onClick={(ev) => onAddMember(ev, 'Add members')}
+                    className="add-member"
+                >
+                    <Plus className="add-member-icon" />
+                </button> */}
+
+                <button
+                    className="btn-board-right"
+                    onClick={(ev) => onAddMember(ev, 'Add members')}>
+                    <Share className="board-header-icon share" />
                     <span>Share</span>
                 </button>
+
                 <button
                     className="btn-board-right"
                     onClick={(ev) => onOpenEditorModal('Activities', ev)}
