@@ -3,7 +3,7 @@ import Bg1 from '../../assets/img/background1.jpg'
 import Bg2 from '../../assets/img/background6.jpg'
 import Bg3 from '../../assets/img/background4.jpg'
 import Bg4 from '../../assets/img/background7.jpg'
-import Thailand from '../../assets/img/backgrounds/Thailand.jpg'
+import Stones2 from '../../assets/img/backgrounds/stones2.jpg'
 
 import Blue from '../../assets/img/backgrounds/blue.svg'
 import DarkBlue from '../../assets/img/backgrounds/dark-blue.svg'
@@ -68,8 +68,8 @@ export function DynCmpNewBoard() {
             <h3>Backgrounds</h3>
             <div className="backgrounds-container">
                 <img
-                    onClick={() => onChosseBg(Thailand)}
-                    src={Thailand}
+                    onClick={() => onChosseBg(Stones2)}
+                    src={Stones2}
                     alt=""
                     className="bg-img"
                 />
