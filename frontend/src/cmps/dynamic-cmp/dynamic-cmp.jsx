@@ -7,10 +7,7 @@ import { DynCmpDates } from './dyn-cmp-dates'
 import { DynCmpAttachment } from './dyn-cmp-attachment'
 import { DynCmpAttachmentEdit } from './dyn-cpm-attachment-edit'
 import { Filter } from '../filter'
-import {
-    CLOSE_DYN_ALL_MODALS,
-    SET_MODAL_TITLE,
-} from '../../store/system.reducer'
+import { CLOSE_DYN_ALL_MODALS, SET_MODAL_TITLE } from '../../store/system.reducer'
 import { useSelector } from 'react-redux'
 import { store } from '../../store/store'
 import { useParams } from 'react-router-dom'
