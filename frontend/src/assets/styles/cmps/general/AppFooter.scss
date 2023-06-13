@@ -1,0 +1,30 @@
+.main-footer {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 20px;
+    padding-inline-end: 10px;
+    color: $clr7;
+
+
+    h4 {
+        grid-column: 2;
+        line-height: 1em;
+        margin-bottom: 20px;
+    }
+    
+    .copy-rights {
+        width: 200px;
+        grid-row: 2;
+        h5{
+            line-height: 1em;
+            margin: 0;
+        }
+    }
+    
+    i {
+        color: $clr6;
+    }
+    
+
+}

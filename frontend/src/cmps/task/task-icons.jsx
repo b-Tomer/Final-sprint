@@ -9,6 +9,7 @@ import { ReactComponent as Due } from '../../assets/img/icons/clock.svg'
 import { ReactComponent as DueCheck } from '../../assets/img/icons/CheckBox.svg'
 import { ReactComponent as Checklists } from '../../assets/img/icons/checklist.svg'
 import { ReactComponent as Description } from '../../assets/img/icons/description.svg'
+import { ReactComponent as Location } from '../../assets/img/icons/location.svg'
 import { boardService } from 'services/board.service.local'
 import { userService } from 'services/user.service'
 
@@ -133,6 +134,11 @@ export function TaskIcons({ task, groupId, boardId }) {
                 {task.description && (
                     <div className="task-icon task-checklists">
                         <Description className="task-icon-img" />
+                    </div>
+                )}
+                {task.location && (
+                    <div className="task-icon task-location">
+                        <Location className="task-icon-img task-icon-img-loc" />
                     </div>
                 )}
                 {task.attachments && task.attachments.length > 0 && (

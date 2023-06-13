@@ -139,6 +139,7 @@ export function TaskLocation({
                         className="loc-search"
                         type="text"
                         onChange={debouncedLoc}
+                        placeholder="Enter location"
                     />
                     <h4 className="loc-title">{foundLocation}</h4>
                     <div

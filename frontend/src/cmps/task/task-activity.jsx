@@ -21,7 +21,7 @@ export function TaskActivity({ taskId, isShowAll }) {
         async function fetchActivities() {
             if (board && board.activities && board.activities.length > 0) {
                 const filteredActivities = board.activities
-                    .filter((activity) => activity.taskId === taskId)
+                    .filter((activity) => activity?.taskId === taskId)
                     .sort((a, b) => b.createdAt - a.createdAt)
                     .slice(0, isShowAll ? 5 : board.activities.length - 1)
                 const updatedActivities = await Promise.all(
