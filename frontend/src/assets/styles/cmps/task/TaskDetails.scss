@@ -33,7 +33,7 @@
         .task-details-secondry-container {
             display: flex;
             flex-direction: column;
-            padding: 10px 10px;
+            padding: 10px 16px;
             z-index: 3;
             background-color: $clr2;
             align-self: center;
@@ -48,7 +48,7 @@
             }
 
             .task-main-details {
-                padding-right: 10px;
+                padding-right: 16px;
             }
         }
     }
