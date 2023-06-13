@@ -37,20 +37,20 @@ export function DynCmpMembers({ task }) {
             if (task.members.includes(memberId)) {
                 const memberIndex = task.members.indexOf(memberId)
                 task.members.splice(memberIndex, 1)
-                activity.title = `Removed member "${getMemberName(
+                activity.title = `Removed member ${getMemberName(
                     memberId
-                )}" from task ${task.title}`
-                activity.titleInTask = `Removed member "${getMemberName(
+                )} from task ${task.title}`
+                activity.titleInTask = `Removed member ${getMemberName(
                     memberId
-                )}"`
+                )}`
             } else {
                 task.members.push(memberId)
-                activity.title = `Added member "${getMemberName(
+                activity.title = `Added member ${getMemberName(
                     memberId
-                )}" to task ${task.title}`
-                activity.titleInTask = `Added member "${getMemberName(
+                )} to task ${task.title}`
+                activity.titleInTask = `Added member ${getMemberName(
                     memberId
-                )}"`
+                )}`
             }
         }
         try {

@@ -27,8 +27,11 @@ export function TaskLocation({
     const [marker, setMarker] = useState(null)
 
     const debouncedLoc = utilService.debounce(handleLocationChange)
+    console.log('location ', foundLocation)
+
 
     async function handleLocationChange(event) {
+        console.log('location ', foundLocation)
         const searchValue = event.target.value
         if (searchValue.trim() === '') {
             setLocation(defaultProps.center)
@@ -38,7 +41,7 @@ export function TaskLocation({
         const geocoder = new window.google.maps.Geocoder()
         try {
             await geocoder.geocode(
-                { address: searchValue },
+                { address: searchValue, language: 'en' },
                 (results, status) => {
                     if (status === 'OK' && results.length > 0) {
                         const { lat, lng } = results[0].geometry.location
@@ -128,7 +131,7 @@ export function TaskLocation({
         <div className="location-container">
             <div className="description-title">
                 <Location className="task-loaction-icon" />
-                <h3>Location</h3>
+                <h3>Location : <span>{foundLocation}</span></h3>
                 <button onClick={toggleShowLoc} className="show-all">
                     {isLocOpen ? 'Hide location' : 'Show location'}
                 </button>

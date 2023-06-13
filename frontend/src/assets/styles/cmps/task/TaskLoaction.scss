@@ -11,17 +11,27 @@
             background-color: $clrH;
         }
     }
+
     .description-title {
         .task-loaction-icon {
             margin-right: 5px;
             margin-left: 0;
             width: 18px;
             height: 18px;
+
             path {
                 fill: #626f86;
             }
         }
+
+        h3 {
+            span {
+                font-size: 0.875rem;
+                font-weight: 400;
+            }
+        }
     }
+
     .loc-search {
         margin-inline-start: 20px;
         margin-block-end: 10px;
@@ -56,12 +66,14 @@
         border-radius: 3px;
         overflow: hidden;
     }
+
     .location-control {
         margin-inline-start: 20px;
         margin-block-start: 10px;
         display: flex;
         justify-content: flex-start;
         justify-items: flex-start;
+
         button {
             height: 2rem;
             border-radius: 3px;
@@ -73,10 +85,12 @@
             justify-content: center;
             font-weight: 400;
         }
+
         .save {
             background-color: #0c66e4;
             color: #ffffff;
         }
+
         .delete {
             margin-inline-start: 10px;
             background-color: #ca3521;
