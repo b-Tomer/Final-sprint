@@ -76,12 +76,14 @@ export function TaskPreview({
     function getLabelBgColor(id) {
         if (!board.labels) return
         const matchedLabel = board.labels.find((label) => label.id === id)
+        if (!matchedLabel) return '#ffffff'
         return matchedLabel.color
     }
 
     function getLabelTitle(id) {
         if (!board.labels) return
         const matchedLabel = board.labels.find((label) => label.id === id)
+        if (!matchedLabel) return 'bla'
         return matchedLabel.title
     }
 

@@ -15,14 +15,6 @@ export function RootCmp() {
         return <NotFound />
     }
 
-    // useEffect(() => {
-    //     // global gooogle
-    //     google.accounts.id.initialize({
-    //         client_id:
-    //             '422196780794-5co0o1pid2bhfjgt0hcvfjvvlmpr2bet.apps.googleusercontent.com',
-    //     })
-    // }, [])
-
     return (
         <div>
             <Provider store={store}>
