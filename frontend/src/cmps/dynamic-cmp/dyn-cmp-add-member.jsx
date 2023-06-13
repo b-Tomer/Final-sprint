@@ -52,7 +52,7 @@ export function DynCmpAddMember({}) {
         }
         try {
             console.log(board.members)
-            board.activities.push(activity)
+            if (activity) board.activities.push(activity)
             await updateBoard(board)
         } catch (error) {
             console.log(error)
