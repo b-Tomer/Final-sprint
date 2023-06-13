@@ -2,6 +2,7 @@
     .task-header-title {
         align-items: center;
         margin: 0px;
+        padding-inline-start: 4px;
 
 
 
@@ -42,7 +43,9 @@
             width: 13px;
             height: 13px;
             margin-right: 8px;
-            // transform: translateY(-2.5px);
+            path{
+                fill:$clr6;
+            }
         }
     }
 
