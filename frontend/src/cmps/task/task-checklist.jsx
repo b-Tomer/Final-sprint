@@ -114,7 +114,7 @@ export function TaskChecklist({ task, setEditing, editing }) {
                 return (
                     <div className="checklist-container" key={checklist.id}>
                         <div className="checklist-title">
-                            <Checklist className="task-content-icon" />
+                            <Checklist className="task-content-icon icon-checklist" />
                             <h3>{checklist.title}</h3>
                             <button onClick={() => deleteChecklist(checklist)}>
                                 Delete
