@@ -18,11 +18,11 @@
         }
 
         .user-photo {
-            // object-fit: cover;
             width: 200px;
             height: 200px;
             margin-inline: auto;
             margin-bottom: 40px;
+            border-radius: 50%;
         }
     }
 }
