@@ -34,6 +34,7 @@ export function DynamicCmp({
     const containerRef = useRef(null)
 
     useEffect(() => {
+        if (!containerRef.current) return
         calcModalPos()
         window.addEventListener('resize', calcModalPos)
         return () => {
@@ -96,11 +97,27 @@ export function DynamicCmp({
             {modalTitle === 'Edit label' && <DynCmpEditLabel task={task} />}
             {modalTitle === 'New board' && <DynCmpNewBoard />}
             {modalTitle === 'Cover' && <CoverDynModal task={task} />}
-            {modalTitle === 'Checklist' && <DynCmpChecklist task={task} setEditing={setEditing} />}
-            {modalTitle === 'Attachment' && <DynCmpAttachment boardId={boardId} groupId={groupId} task={task} />}
-            {modalTitle === 'Edit attachment' && <DynCmpAttachmentEdit boardId={boardId} groupId={groupId} task={task} />}
+            {modalTitle === 'Checklist' && (
+                <DynCmpChecklist task={task} setEditing={setEditing} />
+            )}
+            {modalTitle === 'Attachment' && (
+                <DynCmpAttachment
+                    boardId={boardId}
+                    groupId={groupId}
+                    task={task}
+                />
+            )}
+            {modalTitle === 'Edit attachment' && (
+                <DynCmpAttachmentEdit
+                    boardId={boardId}
+                    groupId={groupId}
+                    task={task}
+                />
+            )}
             {modalTitle === 'Activities' && <DynCmpActivities board={board} />}
-            {modalTitle === 'Member card' && <DynCmpMemberPreview board={board} currMember={currMember} />}
+            {modalTitle === 'Member card' && (
+                <DynCmpMemberPreview board={board} currMember={currMember} />
+            )}
             {modalTitle === 'Filter' && <Filter board={board} />}
             {modalTitle === 'Add members' && <DynCmpAddMember />}
         </div>

@@ -72,7 +72,8 @@ function getEmptyBoard() {
 
 function getEmptyActivity() {
     return {
-        taskId: '',
+        taskId: null,
+        memberId: null,
         id: utilService.makeId(),
         title: '',
         createdAt: Date.now(),

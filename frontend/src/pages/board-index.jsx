@@ -69,7 +69,7 @@ export function BoardIndex() {
                 ? userService.getLoggedinUser().fullname
                 : 'Guest'
             activity.title = `Added group to board`
-            currBoard.activities.push(activity)
+            if (activity) currBoard.activities.push(activity)
             await updateBoard(currBoard)
         } catch (err) {
             console.log(err)
@@ -174,7 +174,7 @@ export function BoardIndex() {
                 destinationGroup.title
             }"`
             activity.titleInTask = `moved this task from group "${sourceGroup.title}" to group "${destinationGroup.title}"`
-            updatedBoard.activities.push(activity)
+            if (activity) updatedBoard.activities.push(activity)
         }
         updateBoard(updatedBoard)
     }
