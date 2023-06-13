@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import routes from './routes'
 import { Provider } from 'react-redux'
@@ -15,7 +15,13 @@ export function RootCmp() {
         return <NotFound />
     }
 
-
+    // useEffect(() => {
+    //     // global gooogle
+    //     google.accounts.id.initialize({
+    //         client_id:
+    //             '422196780794-5co0o1pid2bhfjgt0hcvfjvvlmpr2bet.apps.googleusercontent.com',
+    //     })
+    // }, [])
 
     return (
         <div>

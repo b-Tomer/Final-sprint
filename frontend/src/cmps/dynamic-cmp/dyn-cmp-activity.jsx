@@ -55,7 +55,7 @@ export function DynCmpActivities({ board }) {
                             <div className="activity-content">
                                 <span className="title">
                                     <span className="by">{activity.by} </span>
-                                    {activity.title.toLowerCase()}
+                                    {activity.title?.toLowerCase()}
                                 </span>
                             </div>
                             <span className="created-at">
