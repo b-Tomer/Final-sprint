@@ -41,7 +41,6 @@ export function getActionSetBoard(board) {
 export async function loadBoard(boardId, filterBy = {}) {
     try {
         const board = await boardService.getById(boardId)
-       
         store.dispatch({
             type: SET_BOARD,
             board,
@@ -90,10 +89,7 @@ export async function updateBoard(boardToUpdate) {
         try {
             store.dispatch(getActionSetBoard(boardToUpdate))
             const board = await boardService.save(boardToUpdate)
-        } catch (err) {
-            
-        }
-
+        } catch (err) {}
     } catch (err) {
         console.log('Cannot save board', err)
     }
