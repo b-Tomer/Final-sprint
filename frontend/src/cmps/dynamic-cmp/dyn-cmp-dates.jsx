@@ -77,6 +77,7 @@ export function DynCmpDates({ task }) {
             activity.by = userService.getLoggedinUser()?.fullname
                 ? userService.getLoggedinUser().fullname
                 : 'Guest'
+            task.isDone = false
             await updateTask(boardId, groupId, task, activity)
             store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
         } catch (error) {

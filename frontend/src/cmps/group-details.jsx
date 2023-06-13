@@ -72,7 +72,7 @@ export function GroupDetails({
         try {
             const activity = boardService.getEmptyActivity()
             activity.taskId = task.id
-            task.isDone = !task.isDone
+            // task.isDone = !task.isDone
             activity.memberId = userService.getLoggedinUser()?._id
                 ? userService.getLoggedinUser()._id
                 : null
