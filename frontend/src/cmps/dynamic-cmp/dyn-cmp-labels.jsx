@@ -44,7 +44,7 @@ export function DynCmpLabels({ task }) {
         return label.title
     }
 
-    function onToggleCheckedLabel(ev, labelId) {
+    function onToggleCheckedLabel(labelId) {
         const activity = boardService.getEmptyActivity()
         activity.memberId = userService.getLoggedinUser()?._id
             ? userService.getLoggedinUser()._id
@@ -76,7 +76,7 @@ export function DynCmpLabels({ task }) {
         try {
             updateTask(
                 board._id,
-                findGroupIdByTaskId(board, task.id, activity),
+                findGroupIdByTaskId(board, task.id),
                 task,
                 activity
             )
@@ -92,9 +92,8 @@ export function DynCmpLabels({ task }) {
                     <h3 className="labels-title">Labels</h3>
                     <div className="labels-container">
                         {board.labels.map((label) => {
-                            let isLabelChecked = task.labelIds
-                                ? task.labelIds.includes(label.id)
-                                : false
+                            let isLabelChecked = task.labelIds ? task.labelIds : []
+                            isLabelChecked = task.labelIds.includes(label.id)
 
                             return (
                                 <label
@@ -109,7 +108,7 @@ export function DynCmpLabels({ task }) {
                                         checked={isLabelChecked}
                                         onClick={onCheckClick}
                                         onChange={(ev) =>
-                                            onToggleCheckedLabel(ev, label.id)
+                                            onToggleCheckedLabel(label.id)
                                         }
                                         className="checkbox"
                                     />

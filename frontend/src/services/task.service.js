@@ -17,6 +17,7 @@ function getDefaultTask() {
     task.style = {}
     task.members = []
     task.createdAt = Date.now()
+    task.isDone = false
     return task
 }
 

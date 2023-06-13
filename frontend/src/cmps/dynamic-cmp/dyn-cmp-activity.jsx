@@ -4,7 +4,9 @@ import { utilService } from 'services/util.service'
 import Guest from '../../assets/img/guest.png'
 import { loadUser } from 'store/user.actions'
 
-export function DynCmpActivities({ board }) {
+export function DynCmpActivities({}) {
+    const { board } = useSelector((storeState) => storeState.boardModule)
+
     const [activityList, setActivityList] = useState([])
 
     useEffect(() => {
@@ -55,7 +57,7 @@ export function DynCmpActivities({ board }) {
                             <div className="activity-content">
                                 <span className="title">
                                     <span className="by">{activity.by} </span>
-                                    {activity.title?.toLowerCase()}
+                                    {activity.title.toLowerCase()}
                                 </span>
                             </div>
                             <span className="created-at">
