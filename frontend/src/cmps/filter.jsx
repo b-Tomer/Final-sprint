@@ -5,6 +5,7 @@ import { ReactComponent as Clock } from '../assets/img/icons/clock.svg'
 import { useRef, useState } from 'react'
 import { store } from 'store/store'
 import { SET_BOARD } from 'store/board.reducer'
+import { loadBoard } from 'store/board.actions'
 
 export function Filter() {
     const { board } = useSelector((storeState) => storeState.boardModule)
@@ -71,6 +72,7 @@ export function Filter() {
     }
 
     function onToggleOverdue(ev) {
+        console.log(ev.target.checked)
         const isChecked = ev.target.checked;
         setFilterBy((prevFilterBy) => ({
             ...prevFilterBy,
@@ -133,6 +135,9 @@ export function Filter() {
     }
 
     function filterBoard(filterBy) {
+        console.log('board', board)
+
+
         const { byLabels,
             byMembers,
             isOverdue,
@@ -174,7 +179,10 @@ export function Filter() {
 
             store.dispatch({ type: SET_BOARD, board: filteredBoard });
         } else {
-            store.dispatch({ type: SET_BOARD, board: originalBoard.current });
+            console.log('1')
+            loadBoard(board._id)
+            console.log('2')
+            // store.dispatch({ type: SET_BOARD, board: board.current });
         }
     }
 
