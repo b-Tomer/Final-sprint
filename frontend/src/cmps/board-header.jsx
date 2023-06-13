@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { boardService } from '../services/board.service.local.js'
 import {
     CLOSE_DYN_ALL_MODALS,
@@ -26,6 +26,8 @@ import { ReactComponent as Share } from '../assets/img/icons/Share.svg'
 import { ReactComponent as More } from '../assets/img/icons/dots.svg'
 import { DynamicCmp } from './dynamic-cmp/dynamic-cmp.jsx'
 import { ReactComponent as StarredYellow } from '../assets/img/icons/starred-yellow.svg'
+import { FastAverageColor } from 'fast-average-color'
+import ContrastColor from 'contrast-color'
 
 export function BoardHeader({ board }) {
     const { boardId } = useParams()
@@ -35,6 +37,11 @@ export function BoardHeader({ board }) {
     const { isOpenFilterModal } = useSelector(
         (storeState) => storeState.systemModule
     )
+    const [txtColor, setTxtColor] = useState(null)
+    const [bgColor, setBgColor] = useState(null)
+    const filterRef = useRef(null)
+    const shareRef = useRef(null)
+    const actRef = useRef(null)
 
     const { isOpenActivitiesModal } = useSelector(
         (storeState) => storeState.systemModule
@@ -45,20 +52,55 @@ export function BoardHeader({ board }) {
     const { isOpenAddMemberModal } = useSelector(
         (storeState) => storeState.systemModule
     )
+    const fac = new FastAverageColor()
 
     useEffect(() => {
-        loadBoard(boardId)
-    }, [])
+        printAverageColor()
+    }, [board])
 
-    const buttonClassName = board.isStarred ? 'star starred' : 'star';
+    function printAverageColor() {
+        const img = document.createElement('img')
+        img.crossOrigin = 'anonymous'
+        if (!board) return
+        if (!board.style) return
+        if (!board.style.backgroundImage) return
+        img.src = board.style.backgroundImage
+        img.addEventListener('load', () => {
+            const averageColor = fac.getColor(img).hex
+            setBgColor(averageColor)
+            const cc = new ContrastColor({
+                bgColor: averageColor,
+                fgDarkColor: 'dark',
+                fgLightColor: 'light',
+                customNamedColors: {
+                    dark: '#172b4d',
+                    light: '#f1f2f4',
+                },
+            })
+            const textColor = cc.contrastColor()
+            setTxtColor(textColor)
+            let children = filterRef.current.children
+            for (let i = 0; i < children.length; i++) {
+                children[i].style.fill = textColor
+            }
+            children = shareRef.current.children
+            for (let i = 0; i < children.length; i++) {
+                children[i].style.fill = textColor
+            }
+            children = actRef.current.children
+            for (let i = 0; i < children.length; i++) {
+                children[i].style.fill = textColor
+            }
+        })
+    }
+
+    const buttonClassName = board.isStarred ? 'star starred' : 'star'
 
     function onClickStarred(ev) {
         ev.stopPropagation()
         board.isStarred = !board.isStarred
         updateBoard(board).then(console.log)
     }
-
-
 
     function onOpenEditorModal(title, ev) {
         ev.stopPropagation()
@@ -124,11 +166,14 @@ export function BoardHeader({ board }) {
     // }
 
     return (
-        <div className="board-header-container">
+        <div
+            className="board-header-container"
+            style={bgColor ? (txtColor ? { color: txtColor } : {}) : null}
+        >
             <div className="board-header-left">
                 <h1 className="board-title">{board.title}</h1>
 
-                <button className='starred-btn' onClick={onClickStarred}>
+                <button className="starred-btn" onClick={onClickStarred}>
                     {<StarredYellow className={buttonClassName} />}
                 </button>
 
@@ -155,8 +200,18 @@ export function BoardHeader({ board }) {
                     className="btn-board-right filter-btn"
                     onClick={(event) => onOpenFilter(event, 'Filter')}
                 >
-                    <Filter className="board-header-icon" />
-                    <span>Filter</span>
+                    <Filter className="board-header-icon" ref={filterRef} />
+                    <span
+                        style={
+                            bgColor
+                                ? txtColor
+                                    ? { color: txtColor }
+                                    : null
+                                : null
+                        }
+                    >
+                        Filter
+                    </span>
                 </button>
                 {isOpenFilterModal && (
                     <DynamicCmp title={'Filter'} modalPos={modalPos} />
@@ -187,16 +242,27 @@ export function BoardHeader({ board }) {
 
                 <button
                     className="btn-board-right"
-                    onClick={(ev) => onAddMember(ev, 'Add members')}>
-                    <Share className="board-header-icon share" />
-                    <span>Share</span>
+                    onClick={(ev) => onAddMember(ev, 'Add members')}
+                >
+                    <Share className="board-header-icon share" ref={shareRef} />
+                    <span
+                        style={
+                            bgColor
+                                ? txtColor
+                                    ? { color: txtColor }
+                                    : null
+                                : null
+                        }
+                    >
+                        Share
+                    </span>
                 </button>
 
                 <button
                     className="btn-board-right"
                     onClick={(ev) => onOpenEditorModal('Activities', ev)}
                 >
-                    <More className="board-header-icon" />
+                    <More className="board-header-icon" ref={actRef} />
                 </button>
             </div>
             {isOpenActivitiesModal && (
