@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker'
@@ -9,8 +9,6 @@ import { updateTask } from '../../store/task.actions'
 import { CLOSE_DYN_ALL_MODALS } from '../../store/system.reducer'
 import { store } from '../../store/store'
 import BasicTimePicker from '../task/basic-time-keeper'
-import dayjs from 'dayjs'
-import { TimeField } from '@mui/x-date-pickers/TimeField'
 import { boardService } from 'services/board.service.local'
 import { userService } from 'services/user.service'
 import { useSelector } from 'react-redux'
@@ -98,17 +96,6 @@ export function DynCmpDates({ task }) {
                         handleDateChange(newValue)
                     }}
                 />
-                {/* <TimeField
-                    style={{
-                        marginBottom: '10px',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                    }}
-                    value={value}
-                    onChange={(newValue) => setValue(newValue)}
-                    format="HH:mm"
-                    size="small"
-                /> */}
                 <BasicTimePicker
                     hour={hour}
                     setHour={setHour}
