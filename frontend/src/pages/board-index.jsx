@@ -24,10 +24,12 @@ import { UPDATE_BOARD_LIVE, socketService } from 'services/socket.service.js'
 import { SET_BOARD } from 'store/board.reducer.js'
 import { store } from 'store/store.js'
 import { CoverDynModal } from 'cmps/dynamic-cmp/dyn-modal-cover.jsx'
+import { Loarder } from 'cmps/loader.jsx'
 
 export function BoardIndex() {
     const { boardId } = useParams()
     const { board } = useSelector((storeState) => storeState.boardModule)
+    const { isLoading } = useSelector((storeState) => storeState.boardModule)
     const { groupId } = useParams()
     const { taskId } = useParams()
     const boardRef = useRef()
@@ -41,9 +43,8 @@ export function BoardIndex() {
     const queryAttr = 'data-rbd-drag-handle-draggable-id'
 
     useEffect(() => {
-        loadBoards()
+        // loadBoards()
         onLoadBoard(filterBy)
-
         socketService.on(UPDATE_BOARD_LIVE, (board) => {
             store.dispatch({ type: SET_BOARD, board })
         })
@@ -57,6 +58,7 @@ export function BoardIndex() {
         if (taskId) setIsTaskDetailsOpen(true)
     }
 
+    console.log(isLoading)
     async function addGroup(group) {
         try {
             const currBoard = await saveGroup(group, boardId)
@@ -168,20 +170,23 @@ export function BoardIndex() {
             activity.by = userService.getLoggedinUser()?.fullname
                 ? userService.getLoggedinUser().fullname
                 : 'Guest'
-            activity.title = `moved task ${destinationGroup.tasks[destination.index].title
-                } from group ${sourceGroup.title} to group ${destinationGroup.title
-                }`
+            activity.title = `moved task ${
+                destinationGroup.tasks[destination.index].title
+            } from group ${sourceGroup.title} to group ${
+                destinationGroup.title
+            }`
             activity.titleInTask = `moved this task from group ${sourceGroup.title} to group ${destinationGroup.title}`
             if (activity) updatedBoard.activities.push(activity)
         }
         updateBoard(updatedBoard)
     }
 
-    if (!board) return
+    if (!board || isLoading) return <Loarder />
     return (
         <>
             <div>
                 <AppHeader onSetfilter={onSetfilter} />
+
                 <section
                     className="board-container"
                     style={{

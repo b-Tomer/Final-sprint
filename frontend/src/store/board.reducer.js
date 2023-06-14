@@ -10,6 +10,7 @@ export const FILTER_BY = 'FILTER_BY'
 export const SET_CURR_TASK = 'SET_CURR_TASK'
 
 const initialState = {
+    isLoading: true,
     boards: [],
     filterBy: {
         txt: '',
@@ -18,7 +19,7 @@ const initialState = {
     lastUpdatedBoard: null,
     label: null,
     atc: null,
-    currTask: null
+    currTask: null,
 }
 
 export function boardReducer(state = initialState, action) {
@@ -49,6 +50,7 @@ export function boardReducer(state = initialState, action) {
             newState = { ...state, filterBy: action.filterBy }
             break
         case SET_IS_LOADING:
+            console.log(action.isLoading)
             newState = { ...state, isLoading: action.isLoading }
             break
         case SET_LABEL_TO_EDIT:

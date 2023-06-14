@@ -36,10 +36,12 @@ const initialState = {
 
 export function systemReducer(state = initialState, action = {}) {
     switch (action.type) {
-        case LOADING_START:
-            return { ...state, isLoading: true }
-        case LOADING_DONE:
-            return { ...state, isLoading: false }
+        // case LOADING_START:
+        //     console.log(state.isLoading)
+        //     return { ...state, isLoading: true }
+        // case LOADING_DONE:
+        //     console.log(state.isLoading)
+        //     return { ...state, isLoading: false }
         case OPEN_DYN_MODAL:
             return { ...state, isModalOpen: true }
         case CLOSE_DYN_MODAL:

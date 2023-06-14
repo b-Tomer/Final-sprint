@@ -30,6 +30,7 @@ import { FastAverageColor } from 'fast-average-color'
 import ContrastColor from 'contrast-color'
 
 export function BoardHeader({ board }) {
+    // const { board } = useSelector((storeState) => storeState.boardModule)
     const { boardId } = useParams()
     const [currTitle, setCurrTitle] = useState('')
     const [currMember, setCurrMember] = useState(null)
@@ -127,9 +128,9 @@ export function BoardHeader({ board }) {
         store.dispatch({ type: OPEN_DYN_MEMBER_PREV_MODAL })
     }
 
-    useEffect(() => {
-        loadBoard(boardId)
-    }, [])
+    // useEffect(() => {
+    //     loadBoard(boardId)
+    // }, [])
 
     async function onOpenFilter(ev, title) {
         ev.stopPropagation()
