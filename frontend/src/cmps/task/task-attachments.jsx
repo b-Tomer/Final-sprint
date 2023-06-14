@@ -12,14 +12,11 @@ import {
 import { useSelector } from 'react-redux'
 import { SET_ATC_TO_EDIT } from '../../store/board.reducer'
 
-export function TaskAttachments({ task, boardId, groupId }) {
-    const { isOpenEditAtc } = useSelector(
-        (storeState) => storeState.systemModule
-    )
+export function TaskAttachments({ task, groupId }) {
+    const { isOpenEditAtc } = useSelector((storeState) => storeState.systemModule)
+    const { board } = useSelector((storeState) => storeState.boardModule)
     const [currTask, setCurrTask] = useState(task)
-    const [currAtc, setCurrAtc] = useState(task)
     const [modalPos, setModalPos] = useState(null)
-
     useEffect(() => {
         setCurrTask(task)
     }, [task])
@@ -41,7 +38,7 @@ export function TaskAttachments({ task, boardId, groupId }) {
         }
 
         setCurrTask(updatedTask)
-        await updateTask(boardId, groupId, updatedTask)
+        await updateTask(board, groupId, updatedTask)
     }
 
     function onToggleTaskCover(attachment) {
@@ -54,8 +51,7 @@ export function TaskAttachments({ task, boardId, groupId }) {
         }
         const updatedTask = { ...task, style: updatedStyle }
         setCurrTask(updatedTask)
-        console.log('task from cpm: ', updatedTask)
-        updateTask(boardId, groupId, updatedTask)
+        updateTask(board, groupId, updatedTask)
     }
 
     function onEditAttachment(ev, title, currAtc) {
@@ -71,7 +67,7 @@ export function TaskAttachments({ task, boardId, groupId }) {
     function formatTimestamp(timestamp) {
         const date = new Date(timestamp)
         const day = date.getDate()
-        const month = date.getMonth() + 1 
+        const month = date.getMonth() + 1
         const year = date.getFullYear()
 
         const formattedDay = day < 10 ? `0${day}` : day.toString()
@@ -110,8 +106,8 @@ export function TaskAttachments({ task, boardId, groupId }) {
                         </span>
                         <span className="small-dots">&#x2022;</span>
                         <span
-                            onClick={() =>
-                                onEditAttachment('Edit attachment', atc)
+                            onClick={(ev) =>
+                                onEditAttachment(ev, 'Edit attachment', atc)
                             }
                             className="attachment-btns"
                         >

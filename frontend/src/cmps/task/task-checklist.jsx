@@ -7,10 +7,10 @@ import { utilService } from '../../services/util.service'
 import { TodoEdit } from './checklists/todo-edit'
 import { TodoContent } from './checklists/todo-content'
 import { TodoNew } from './checklists/todo-new'
+import { useSelector } from 'react-redux'
 
 export function TaskChecklist({ task, setEditing, editing }) {
-    const [currentTask, setCurrentTask] = useState(task)
-    const [isHovered, setIsHovered] = useState(false)
+    const { board } = useSelector((storeState) => storeState.boardModule)
     const [todoToEdit, setTodoToEdit] = useState(null)
     const { boardId } = useParams()
     const { groupId } = useParams()
@@ -19,31 +19,22 @@ export function TaskChecklist({ task, setEditing, editing }) {
     const textareaRef = useRef(null)
 
     let progress
-    useEffect(() => { }, [progress])
+
+    useEffect(() => {
+    }, [progress])
 
 
-
-
-    console.log(task)
-
-
-    const handleMouseEnter = (todoId) => {
-        setIsHovered(todoId)
-    }
-
-    const handleMouseLeave = () => {
-        setIsHovered(false)
-    }
-
-    const handleCheckboxChange = async (checklistId, todoId) => {
+    async function handleCheckboxChange(checklistId, todoId) {
         const updatedTask = { ...task }
-        const checklist = updatedTask.checklists.find(
-            (checklist) => checklist.id === checklistId
-        )
+        const checklist = updatedTask.checklists.find((checklist) => checklist.id === checklistId)
         const todo = checklist.todos.find((todo) => todo.id === todoId)
         todo.isDone = !todo.isDone
-        setCurrentTask(updatedTask)
-        await updateTask(boardId, groupId, updatedTask)
+        try {
+            await updateTask(board, groupId, updatedTask)
+
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     function closeNewTodo() {
@@ -62,7 +53,7 @@ export function TaskChecklist({ task, setEditing, editing }) {
         ev.preventDefault()
         checklist.todos.push({ id: utilService.makeId(), title: todoTitle })
         try {
-            await updateTask(boardId, groupId, task)
+            await updateTask(board, groupId, task)
         } catch (err) {
             console.log(err)
         } finally {
@@ -78,7 +69,7 @@ export function TaskChecklist({ task, setEditing, editing }) {
         )
         checklist.todos.splice(idx, 1)
         try {
-            await updateTask(boardId, groupId, task)
+            await updateTask(board, groupId, task)
         } catch (err) {
             console.log(err)
         }
@@ -90,7 +81,7 @@ export function TaskChecklist({ task, setEditing, editing }) {
         )
         task.checklists.splice(idx, 1)
         try {
-            await updateTask(boardId, groupId, task)
+            await updateTask(board, groupId, task)
         } catch (err) {
             console.log(err)
         }
@@ -145,13 +136,8 @@ export function TaskChecklist({ task, setEditing, editing }) {
                                     return (
                                         <TodoContent
                                             todo={todo}
-                                            handleMouseEnter={handleMouseEnter}
-                                            handleMouseLeave={handleMouseLeave}
-                                            handleCheckboxChange={
-                                                handleCheckboxChange
-                                            }
+                                            handleCheckboxChange={handleCheckboxChange}
                                             checklist={checklist}
-                                            isHovered={isHovered}
                                             onDeleteTodo={onDeleteTodo}
                                             Trash={Trash}
                                             key={todo.id}

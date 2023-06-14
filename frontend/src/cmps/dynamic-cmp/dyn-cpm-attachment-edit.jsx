@@ -9,6 +9,7 @@ import { boardService } from 'services/board.service.local'
 
 export function DynCmpAttachmentEdit({ task, boardId, groupId }) {
     const [newTitle, setNewTitle] = useState('')
+    const { board } = useSelector((storeState) => storeState.boardModule)
     const inputRef = useRef()
     const { atc } = useSelector((storeState) => storeState.boardModule)
     useEffect(() => {
@@ -34,7 +35,7 @@ export function DynCmpAttachmentEdit({ task, boardId, groupId }) {
         activity.titleInTask = `Changed attachment title to ${newTitle}`
         const atcIdx = task.attachments?.findIndex((a) => a.id === atc.id)
         task.attachments[atcIdx].title = newTitle
-        updateTask(boardId, groupId, task, activity)
+        updateTask(board, groupId, task, activity)
         store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
     }
 

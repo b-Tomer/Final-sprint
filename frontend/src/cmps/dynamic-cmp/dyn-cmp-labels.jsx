@@ -77,7 +77,7 @@ export function DynCmpLabels({ task }) {
         }
         try {
             updateTask(
-                board._id,
+                board,
                 findGroupIdByTaskId(board, task.id),
                 task,
                 activity

@@ -38,7 +38,6 @@ export function Filter() {
     }
 
     function onToggleCompleted(ev) {
-        console.log(board)
         const isChecked = ev.target.checked;
         setFilterBy((prevFilterBy) => ({
             ...prevFilterBy,
@@ -67,12 +66,10 @@ export function Filter() {
             isDueSoon: isChecked,
         }));
 
-        console.log(filterBy);
         filterBoard({ ...filterBy, isDueSoon: isChecked });
     }
 
     function onToggleOverdue(ev) {
-        console.log(ev.target.checked)
         const isChecked = ev.target.checked;
         setFilterBy((prevFilterBy) => ({
             ...prevFilterBy,
@@ -135,7 +132,6 @@ export function Filter() {
     }
 
     function filterBoard(filterBy) {
-        console.log('board', board)
 
 
         const { byLabels,
@@ -179,9 +175,7 @@ export function Filter() {
 
             store.dispatch({ type: SET_BOARD, board: filteredBoard });
         } else {
-            console.log('1')
             loadBoard(board._id)
-            console.log('2')
             // store.dispatch({ type: SET_BOARD, board: board.current });
         }
     }

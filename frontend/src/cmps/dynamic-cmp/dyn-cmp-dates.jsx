@@ -13,13 +13,13 @@ import dayjs from 'dayjs'
 import { TimeField } from '@mui/x-date-pickers/TimeField'
 import { boardService } from 'services/board.service.local'
 import { userService } from 'services/user.service'
+import { useSelector } from 'react-redux'
 
 export function DynCmpDates({ task }) {
     const [selectedDate, setSelectedDate] = useState(null)
     const [hour, setHour] = useState(0)
     const [minute, setMinute] = useState(0)
-    const [value, setValue] = React.useState(dayjs('2022-04-17T15:30'))
-    const { boardId } = useParams()
+    const { board } = useSelector((storeState) => storeState.boardModule)
     const { groupId } = useParams()
 
     function handleDateChange(value) {
@@ -55,7 +55,7 @@ export function DynCmpDates({ task }) {
             activity.by = userService.getLoggedinUser()?.fullname
                 ? userService.getLoggedinUser().fullname
                 : 'Guest'
-            await updateTask(boardId, groupId, task, activity)
+            await updateTask(board, groupId, task, activity)
             store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
         } catch (error) {
             console.log('cant update task')
@@ -78,7 +78,7 @@ export function DynCmpDates({ task }) {
                 ? userService.getLoggedinUser().fullname
                 : 'Guest'
             task.isDone = false
-            await updateTask(boardId, groupId, task, activity)
+            await updateTask(board, groupId, task, activity)
             store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
         } catch (error) {
             console.log('cant update task')

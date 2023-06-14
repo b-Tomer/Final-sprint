@@ -7,6 +7,7 @@ export const SET_BOARD = 'SET_BOARD'
 export const SET_LABEL_TO_EDIT = 'SET_LABEL_TO_EDIT'
 export const SET_ATC_TO_EDIT = 'SET_ATC_TO_EDIT'
 export const FILTER_BY = 'FILTER_BY'
+export const SET_CURR_TASK = 'SET_CURR_TASK'
 
 const initialState = {
     boards: [],
@@ -16,7 +17,8 @@ const initialState = {
     board: null,
     lastUpdatedBoard: null,
     label: null,
-    atc: null
+    atc: null,
+    currTask: null
 }
 
 export function boardReducer(state = initialState, action) {
@@ -50,11 +52,13 @@ export function boardReducer(state = initialState, action) {
             newState = { ...state, isLoading: action.isLoading }
             break
         case SET_LABEL_TO_EDIT:
-            console.log('action.label: ', action.label)
             newState = { ...state, label: action.label }
             break
         case SET_ATC_TO_EDIT:
             newState = { ...state, atc: action.atc }
+            break
+        case SET_CURR_TASK:
+            newState = { ...state, currTask: action.currTask }
             break
         default:
         // return newState

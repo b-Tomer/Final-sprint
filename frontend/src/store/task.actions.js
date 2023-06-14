@@ -32,18 +32,20 @@ export async function removeTask(boardId, groupId, taskId, activity) {
     }
 }
 
-export async function addTask() { }
-
-export async function updateTask(boardId, groupId, task, activity) {
+export async function updateTask(board, groupId, task, activity) {
     try {
         const updatedBoard = await taskService.updateTask(
-            boardId,
+            board,
             groupId,
             task,
             activity
         )
+        
         store.dispatch(getActionSetBoard(updatedBoard))
+        await boardService.save(updatedBoard)
+        
     } catch (err) {
+        store.dispatch(getActionSetBoard(board))
         console.log('Cannot update task', err)
     }
 }

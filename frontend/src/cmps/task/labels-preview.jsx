@@ -1,21 +1,16 @@
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
 import { ReactComponent as Plus } from '../../assets/img/icons/plus.svg'
-import {
-    CLOSE_DYN_ALL_MODALS,
-    OPEN_DYN_LABEL_MODAL,
-    OPEN_DYN_MODAL,
-    SET_MODAL_TITLE,
-} from '../../store/system.reducer'
+import { CLOSE_DYN_ALL_MODALS, OPEN_DYN_LABEL_MODAL, OPEN_DYN_MODAL, SET_MODAL_TITLE } from '../../store/system.reducer'
 import { DynamicCmp } from '../dynamic-cmp/dynamic-cmp'
 import { store } from '../../store/store'
 
 export function LabelsPreview({ task }) {
     const [modalPos, setModalPos] = useState(null)
     const { board } = useSelector((storeState) => storeState.boardModule)
-    const { isOpenLabelModal } = useSelector(
-        (storeState) => storeState.systemModule
-    )
+    const { currTask } = useSelector((storeState) => storeState.boardModule)
+    const { isOpenLabelModal } = useSelector((storeState) => storeState.systemModule)
+
 
     function getLabel(labelId) {
         if (!board.labels) return
@@ -32,13 +27,13 @@ export function LabelsPreview({ task }) {
         store.dispatch({ type: OPEN_DYN_LABEL_MODAL })
     }
 
-    if (!task?.labelIds?.length) return null
+    if (!currTask?.labelIds?.length || !currTask) return null
     return (
         <div className="label-data">
             <h3 className="data-preview-title">Labels</h3>
 
             <div className="labels">
-                {task.labelIds.map((labelId) => {
+                {currTask.labelIds.map((labelId) => {
                     const label = getLabel(labelId)
                     if (!label) return null
                     return (
@@ -61,7 +56,7 @@ export function LabelsPreview({ task }) {
             </div>
             {isOpenLabelModal && (
                 <DynamicCmp
-                    task={task}
+                    task={currTask}
                     modalPos={modalPos}
                     title="Edit attachment"
                 />

@@ -6,10 +6,11 @@ import { store } from '../../store/store'
 import { CLOSE_DYN_ALL_MODALS } from '../../store/system.reducer'
 import { boardService } from 'services/board.service.local'
 import { userService } from 'services/user.service'
+import { useSelector } from 'react-redux'
 
-export function DynCmpChecklist({ task, setEditing }) {
-    const { boardId } = useParams()
+export function DynCmpChecklist({ task }) {
     const { groupId } = useParams()
+    const { board } = useSelector((storeState) => storeState.boardModule)
     const inputRef = useRef(null)
 
     async function addChecklist(ev) {
@@ -30,7 +31,7 @@ export function DynCmpChecklist({ task, setEditing }) {
             activity.by = userService.getLoggedinUser()?.fullname
                 ? userService.getLoggedinUser().fullname
                 : 'Guest'
-            await updateTask(boardId, groupId, task, activity)
+            await updateTask(board, groupId, task, activity)
         } catch (err) {
             console.log('cant add checklist')
             console.log(err)

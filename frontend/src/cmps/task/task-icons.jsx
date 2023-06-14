@@ -40,7 +40,7 @@ export function TaskIcons({ task, groupId, boardId }) {
             activity.titleInTask = `Marked this task as ${getIsDone(
                 task.isDone
             )}`
-            await updateTask(boardId, groupId, task, activity)
+            await updateTask(board, groupId, task, activity)
         } catch (error) {
             console.log(error)
         }
@@ -54,7 +54,6 @@ export function TaskIcons({ task, groupId, boardId }) {
 
     function onOpenMemberPreview(ev, memberId) {
         ev.stopPropagation()
-        console.log(memberId)
     }
 
     function getDateClass(task) {

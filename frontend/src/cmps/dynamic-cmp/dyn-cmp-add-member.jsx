@@ -23,7 +23,6 @@ export function DynCmpAddMember({ }) {
     async function onLoadUsers() {
         const usersFromdb = await loadUsers()
         setAllUsers(usersFromdb)
-        console.log(board)
     }
 
     async function onToggleCheckedMember(ev, memberId, user) {
@@ -43,14 +42,11 @@ export function DynCmpAddMember({ }) {
                 board.members.splice(memberIndex, 1)
                 activity.title = `Removed member ${user.fullname} from board ${board.title}`
             } else {
-                console.log('blo')
-
                 board.members.push(user)
                 activity.title = `Added member ${user.fullname} to board ${board.title}`
             }
         }
         try {
-            console.log(board.members)
             if (activity) board.activities.push(activity)
             await updateBoard(board)
         } catch (error) {
