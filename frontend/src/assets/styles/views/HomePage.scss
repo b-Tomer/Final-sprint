@@ -233,6 +233,9 @@
                 grid-column: 2;
                 width: 100%;
                 justify-self: end;
+                @include for-narrow-layout {
+                    max-width: 80%;
+                }
             }
         }
     }

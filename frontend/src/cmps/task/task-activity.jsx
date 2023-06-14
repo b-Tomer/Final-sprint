@@ -33,40 +33,8 @@ export function TaskActivity({ taskId, isShowAll }) {
 
         setActivityList(sortedActivities)
 
-
-
-        // async function fetchActivities() {
-        //     if (board && board.activities && board.activities.length > 0) {
-        //         const filteredActivities = board.activities
-        //             .filter((activity) => activity?.taskId === taskId)
-        //             .sort((a, b) => b.createdAt - a.createdAt)
-        //         const updatedActivities = await Promise.all(
-        //             filteredActivities.map(async (activity) => {
-        //                 const memberImgUrl = await getMemberImg(
-        //                     activity.memberId
-        //                 )
-        //                 return { ...activity, memberImgUrl }
-        //             })
-        //         )
-        //         setActivityList(updatedActivities)
-        //     }
-        // }
-
-        // fetchActivities()
     }, [board, taskId, isShowAll])
 
-    // async function getMemberImg(memberId) {
-    //     if (!memberId) {
-    //         return Guest
-    //     } else {
-    //         try {
-    //             const user = await loadUser(memberId)
-    //             return user.imgUrl
-    //         } catch (error) {
-    //             console.log(error)
-    //         }
-    //     }
-    // }
     function getMemberImgUrl(memberId) {
         const user = users.find(user => user._id === memberId)
         if (user) {
