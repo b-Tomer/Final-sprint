@@ -133,7 +133,7 @@ export function TaskPreview({
             activity.memberId = userService.getLoggedinUser()?._id
                 ? userService.getLoggedinUser()._id
                 : null
-            activity.title = `Changed title to: ${task.title}`
+            activity.title = `Changed title to ${task.title}`
             activity.taskId = task.id
             activity.by = userService.getLoggedinUser()?.fullname
                 ? userService.getLoggedinUser().fullname
@@ -147,9 +147,8 @@ export function TaskPreview({
     return (
         // <div ref={editRef}>
         <div
-            className={`task-draggable-wrapper ${
-                isDragging ? 'dragging' : ''
-            } `}
+            className={`task-draggable-wrapper ${isDragging ? 'dragging' : ''
+                } `}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             ref={provided.innerRef}

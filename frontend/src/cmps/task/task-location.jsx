@@ -27,11 +27,9 @@ export function TaskLocation({
     const [marker, setMarker] = useState(null)
 
     const debouncedLoc = utilService.debounce(handleLocationChange)
-    console.log('location ', foundLocation)
 
 
     async function handleLocationChange(event) {
-        console.log('location ', foundLocation)
         const searchValue = event.target.value
         if (searchValue.trim() === '') {
             setLocation(defaultProps.center)
@@ -147,7 +145,7 @@ export function TaskLocation({
                     <h4 className="loc-title">{foundLocation}</h4>
                     <div
                         className="map"
-                        style={{ height: '200px', width: '568px' }}
+                        style={{ height: '200px', width: '550px' }}
                     >
                         <GoogleMapReact
                             bootstrapURLKeys={{

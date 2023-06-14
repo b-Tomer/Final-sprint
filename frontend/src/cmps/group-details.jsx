@@ -79,8 +79,8 @@ export function GroupDetails({
             activity.by = userService.getLoggedinUser()?.fullname
                 ? userService.getLoggedinUser().fullname
                 : 'Guest'
-            activity.title = `Added task: "${task.title}" to group: "${group.title}"`
-            activity.titleInTask = `Added this task to group "${group.title}"`
+            activity.title = `Added task ${task.title} to group ${group.title}`
+            activity.titleInTask = `Added this task to group ${group.title}`
             await saveTask(task, boardId, group.id, activity)
         } catch (err) {
             console.log(err)

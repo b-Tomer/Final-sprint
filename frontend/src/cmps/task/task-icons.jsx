@@ -34,7 +34,7 @@ export function TaskIcons({ task, groupId, boardId }) {
             activity.by = userService.getLoggedinUser()?.fullname
                 ? userService.getLoggedinUser().fullname
                 : 'Guest'
-            activity.title = `Marked task ${task.title} as: ${getIsDone(
+            activity.title = `Marked task ${task.title} as ${getIsDone(
                 task.isDone
             )}`
             activity.titleInTask = `Marked this task as ${getIsDone(

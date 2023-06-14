@@ -75,7 +75,6 @@ export function DynCmpEditLabel() {
     async function onDeleteLabel() {
         const labelIdx = board.labels.findIndex((l) => l.id === label.id)
         removeLabelFromBoard(board, label.id)
-        console.log(board)
         board.labels.splice([labelIdx], 1)
         try {
             await boardService.save(board)

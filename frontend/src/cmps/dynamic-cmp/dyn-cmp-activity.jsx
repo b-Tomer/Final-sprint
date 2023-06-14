@@ -2,32 +2,37 @@ import { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { utilService } from 'services/util.service'
 import Guest from '../../assets/img/guest.png'
-import { loadUser } from 'store/user.actions'
+import { loadUser, loadUsers } from 'store/user.actions'
 
-export function DynCmpActivities({}) {
+export function DynCmpActivities({ }) {
     const { board } = useSelector((storeState) => storeState.boardModule)
 
     const [activityList, setActivityList] = useState([])
+    const [users, setUsers] = useState([])
+
+    async function hansleLoadUsers() {
+        const usersFromDb = await loadUsers()
+        setUsers(usersFromDb)
+    }
 
     useEffect(() => {
-        async function fetchActivities() {
-            if (board && board.activities && board.activities.length > 0) {
-                const updatedActivities = await Promise.all(
-                    board.activities.map(async (activity) => {
-                        const memberImgUrl = await getMemberImg(
-                            activity.memberId
-                        )
-                        return { ...activity, memberImgUrl }
-                    })
-                )
-                const sortedActivities = updatedActivities.sort(
-                    (a, b) => b.createdAt - a.createdAt
-                )
-                setActivityList(sortedActivities)
-            }
+        hansleLoadUsers()
+        const activities = board.activities
+        const sortedActivities = activities.sort(
+            (a, b) => b.createdAt - a.createdAt
+        )
+        setActivityList(sortedActivities)
+    }, [])
+
+    function getMemberImgUrl(memberId) {
+        const user = users.find(user => user._id === memberId)
+        if (user) {
+            return user.imgUrl;
         }
-        fetchActivities()
-    }, [board])
+        else return Guest
+
+    }
+
 
     async function getMemberImg(memberId) {
         if (!memberId) {
@@ -43,32 +48,34 @@ export function DynCmpActivities({}) {
     }
 
     return (
-        <div className="task-activities-container">
-            {activityList.map((activity) =>
-                activity ? (
-                    <div className="activity-container" key={activity.id}>
-                        <img
-                            className="activity-icon"
-                            src={activity.memberImgUrl}
-                            alt=""
-                        />
-                        <div>
-                            {' '}
-                            <div className="activity-content">
-                                <span className="title">
-                                    <span className="by">{activity.by} </span>
-                                    {activity.title.toLowerCase()}
+        <>
+            {users && users.length > 0 && <div className="task-activities-container">
+                {activityList.map((activity) =>
+                    activity ? (
+                        <div className="activity-container" key={activity.id}>
+                            <img
+                                className="activity-icon"
+                                src={getMemberImgUrl(activity.memberId)}
+                                alt=""
+                            />
+                            <div>
+                                {' '}
+                                <div className="activity-content">
+                                    <span className="title">
+                                        <span className="by">{activity.by} </span>
+                                        {activity.title.toLowerCase()}
+                                    </span>
+                                </div>
+                                <span className="created-at">
+                                    {utilService.formatTimestamp(
+                                        activity.createdAt
+                                    )}
                                 </span>
                             </div>
-                            <span className="created-at">
-                                {utilService.formatTimestamp(
-                                    activity.createdAt
-                                )}
-                            </span>
                         </div>
-                    </div>
-                ) : null
-            )}
-        </div>
+                    ) : null
+                )}
+            </div>}
+        </>
     )
 }

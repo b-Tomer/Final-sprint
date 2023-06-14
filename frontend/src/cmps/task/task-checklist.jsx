@@ -18,8 +18,14 @@ export function TaskChecklist({ task, setEditing, editing }) {
     const [checklistToEdit, setChecklistToEdit] = useState(null)
     const textareaRef = useRef(null)
     let progress
-    
-    useEffect(() => {}, [progress])
+
+    useEffect(() => { }, [progress])
+
+
+
+
+    console.log(task)
+
 
     const handleMouseEnter = (todoId) => {
         setIsHovered(todoId)
@@ -30,7 +36,7 @@ export function TaskChecklist({ task, setEditing, editing }) {
     }
 
     const handleCheckboxChange = async (checklistId, todoId) => {
-        const updatedTask = { ...currentTask }
+        const updatedTask = { ...task }
         const checklist = updatedTask.checklists.find(
             (checklist) => checklist.id === checklistId
         )
@@ -123,14 +129,12 @@ export function TaskChecklist({ task, setEditing, editing }) {
                         <div className="progress-bar">
                             <span>{progress.toFixed(0)}%</span>
                             <div
-                                className={`empty-bar ${
-                                    isCompleted ? 'completed' : ''
-                                }`}
+                                className={`empty-bar ${isCompleted ? 'completed' : ''
+                                    }`}
                             >
                                 <div
-                                    className={`fill-bar ${
-                                        progress === 100 ? 'completed' : ''
-                                    }`}
+                                    className={`fill-bar ${progress === 100 ? 'completed' : ''
+                                        }`}
                                     style={{ width: `${progress}%` }}
                                 ></div>
                             </div>

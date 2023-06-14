@@ -45,9 +45,9 @@ export function DynCmpDates({ task }) {
             activity.memberId = userService.getLoggedinUser()?._id
                 ? userService.getLoggedinUser()._id
                 : null
-            activity.title = `Added due date at: ${utilService.dueDateFormat(
+            activity.title = `Added due date at ${utilService.dueDateFormat(
                 task.dueDate
-            )} to: ${task.title}`
+            )} to ${task.title}`
             activity.titleInTask = `Added due date at ${utilService.dueDateFormat(
                 task.dueDate
             )}`
