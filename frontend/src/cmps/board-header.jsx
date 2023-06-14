@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react'
-import { boardService } from '../services/board.service.local.js'
 import {
     CLOSE_DYN_ALL_MODALS,
     OPEN_DYN_ACTIVITIES_MODAL,
@@ -9,18 +8,10 @@ import {
     SET_MODAL_TITLE,
     OPEN_DYN_ADD_MEMBER_MODAL,
 } from '../store/system.reducer'
-import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
-import { loadBoard, updateBoard } from '../store/board.actions.js'
+import { updateBoard } from '../store/board.actions.js'
 import { store } from '../store/store'
-import { ReactComponent as Star } from '../assets/img/icons/star.svg'
-import { ReactComponent as Visability } from '../assets/img/icons/members.svg'
-import { ReactComponent as EmptyLogo } from '../assets/img/icons/emptyLogo.svg'
-import { ReactComponent as Down } from '../assets/img/icons/down.svg'
-import { ReactComponent as PowerUps } from '../assets/img/icons/rocket.svg'
-import { ReactComponent as Automation } from '../assets/img/icons/bolt.svg'
-import { ReactComponent as Plus } from '../assets/img/icons/plus.svg'
 import { ReactComponent as Filter } from '../assets/img/icons/filter.svg'
 import { ReactComponent as Share } from '../assets/img/icons/Share.svg'
 import { ReactComponent as More } from '../assets/img/icons/dots.svg'
@@ -127,10 +118,6 @@ export function BoardHeader() {
         store.dispatch({ type: OPEN_DYN_MEMBER_PREV_MODAL })
     }
 
-    // useEffect(() => {
-    //     loadBoard(boardId)
-    // }, [])
-
     async function onOpenFilter(ev, title) {
         ev.stopPropagation()
         let { top, left, height } = ev.target.getBoundingClientRect()
@@ -153,17 +140,6 @@ export function BoardHeader() {
         store.dispatch({ type: OPEN_DYN_MODAL })
     }
 
-    // function getMemberImg(memberId) {
-    //     if (!board.members) return
-    //     const currMember = board?.members.find(
-    //         (member) => member._id === memberId
-    //     )
-    //     if (currMember.imgUrl) {
-    //         return currMember.imgUrl
-    //     } else {
-    //         return 'https://i.pinimg.com/564x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg'
-    //     }
-    // }
 
     return (
         <div
@@ -176,26 +152,8 @@ export function BoardHeader() {
                 <button className="starred-btn" onClick={onClickStarred}>
                     {<StarredYellow className={buttonClassName} />}
                 </button>
-
-                {/* <button>
-                    <Visability className="board-header-icon" />
-                </button>
-                <button className="btn-board-select">
-                    <EmptyLogo className="board-header-icon" />
-                    <span>Board</span>
-                    <Down className="board-header-icon" />
-                </button> */}
             </div>
             <div className="board-header-right">
-                {/* <button className="btn-board-right">
-                    <PowerUps className="board-header-icon" />
-                    <span>Power-Ups</span>
-                </button>
-                <button className="btn-board-right">
-                    <Automation className="board-header-icon" />
-                    <span>Automation</span>
-                </button> */}
-                {/* <button className="btn-board-right " ></button> */}
                 <button
                     className="btn-board-right filter-btn"
                     onClick={(event) => onOpenFilter(event, 'Filter')}
@@ -233,13 +191,6 @@ export function BoardHeader() {
                         ))}
                     </div>
                 )}
-                {/* <button
-                    onClick={(ev) => onAddMember(ev, 'Add members')}
-                    className="add-member"
-                >
-                    <Plus className="add-member-icon" />
-                </button> */}
-
                 <button
                     className="btn-board-right"
                     onClick={(ev) => onAddMember(ev, 'Add members')}
