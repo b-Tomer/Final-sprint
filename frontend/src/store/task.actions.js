@@ -40,10 +40,8 @@ export async function updateTask(board, groupId, task, activity) {
             task,
             activity
         )
-        
         store.dispatch(getActionSetBoard(updatedBoard))
         await boardService.save(updatedBoard)
-        
     } catch (err) {
         store.dispatch(getActionSetBoard(board))
         console.log('Cannot update task', err)

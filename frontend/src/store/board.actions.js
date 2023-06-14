@@ -8,7 +8,9 @@ import {
     UPDATE_BOARD,
     SET_BOARD,
     FILTER_BY,
+    SET_IS_LOADING,
 } from './board.reducer.js'
+import { LOADING_DONE, LOADING_START } from './system.reducer.js'
 
 // Action Creators:
 export function getActionRemoveBoard(boardId) {
@@ -40,6 +42,7 @@ export function getActionSetBoard(board) {
 
 export async function loadBoard(boardId, filterBy = {}) {
     try {
+        store.dispatch({ type: SET_IS_LOADING, isLoading: true })
         const board = await boardService.getById(boardId)
         store.dispatch({
             type: SET_BOARD,
@@ -47,6 +50,9 @@ export async function loadBoard(boardId, filterBy = {}) {
         })
     } catch (err) {
         console.log('Cannot load board', err)
+    } finally {
+        console.log('finally')
+        store.dispatch({ type: SET_IS_LOADING, isLoading: false })
     }
 }
 
