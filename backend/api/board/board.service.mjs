@@ -1,11 +1,11 @@
-import {dbService} from '../../services/db.service.mjs'
-import {logger} from '../../services/logger.service.mjs'
-import {utilService} from '../../services/util.service.mjs'
+import { dbService } from '../../services/db.service.mjs'
+import { logger } from '../../services/logger.service.mjs'
+import { utilService } from '../../services/util.service.mjs'
 import mongodb from 'mongodb'
-const {ObjectId} = mongodb
+const { ObjectId } = mongodb
 
 
-async function query(filterBy={txt:''}) {
+async function query(filterBy = { txt: '' }) {
     try {
         const criteria = {
             title: { $regex: filterBy.txt, $options: 'i' }
@@ -56,7 +56,7 @@ async function add(board) {
 
 async function update(board) {
     try {
-        const {_id , ...boardToSave} = board
+        const { _id, ...boardToSave } = board
         const collection = await dbService.getCollection('board')
         await collection.updateOne({ _id: ObjectId(board._id) }, { $set: boardToSave })
         return board
@@ -81,7 +81,7 @@ async function addBoardMsg(boardId, msg) {
 async function removeBoardMsg(boardId, msgId) {
     try {
         const collection = await dbService.getCollection('board')
-        await collection.updateOne({ _id: ObjectId(boardId) }, { $pull: { msgs: {id: msgId} } })
+        await collection.updateOne({ _id: ObjectId(boardId) }, { $pull: { msgs: { id: msgId } } })
         return msgId
     } catch (err) {
         logger.error(`cannot add board msg ${boardId}`, err)
