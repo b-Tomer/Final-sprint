@@ -53,7 +53,6 @@ async function updateTask(boardId, groupId, task, activity) {
         board.activities?.push(activity)
     }
     board.groups[groupIdx].tasks.splice(taskIdx, 1, task)
-    await boardService.save(board)
     return board
 }
 
