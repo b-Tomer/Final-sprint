@@ -14,15 +14,15 @@
         display: flex;
         flex-direction: column;
 
-        .css-1hbyad5-MuiTypography-root {
+        .MuiTypography-root {
             display: none;
         }
 
-        .css-nk89i7-MuiPickersCalendarHeader-root {
+        .MuiPickersCalendarHeader-root {
             padding: 0;
         }
 
-        .css-cwhad8-MuiDateCalendar-root {
+        .MuiDateCalendar-root {
             width: 100%;
         }
 
@@ -32,27 +32,27 @@
             margin-block-start: 10px;
         }
 
-        .css-jhsfre-MuiGrid-root-MuiPickersToolbar-content {
+        .MuiPickersToolbar-content {
             justify-content: center;
             justify-items: center;
         }
 
-        .css-nk89i7-MuiPickersCalendarHeader-root {
+        .MuiPickersCalendarHeader-root {
             margin-block-start: 10px;
         }
 
-        .css-hlj6pa-MuiDialogActions-root {
+        .MuiDialogActions-root {
             padding: 0;
             align-content: start;
             align-items: start;
             display: none;
         }
 
-        .css-1lkpf4l-MuiYearCalendar-root {
+        .MuiYearCalendar-root {
             width: 100%;
         }
 
-        .css-1cafy48-MuiPickersSlideTransition-root-MuiDayCalendar-slideTransition {
+        .MuiDayCalendar-slideTransition {
             height: 200px;
             min-height: auto;
         }
