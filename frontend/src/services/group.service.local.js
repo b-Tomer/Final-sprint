@@ -28,7 +28,10 @@ async function removeGroup(groupId, boardId, activity) {
     const idx = board.groups.findIndex((group) => group.id === groupId)
     board.groups.splice(idx, 1)
     if (activity) {
-        board.activities.push(activity)
+        board.activities?.push(activity)
+        if (board.activities.length > 99) {
+            board.activities?.shift()
+        }
     }
     board = await boardService.save(board)
     return board

@@ -25,6 +25,9 @@ async function saveTask(task, boardId, groupId, activity) {
     const board = await boardService.getById(boardId)
     if (activity) {
         board.activities?.push(activity)
+        if (board.activities.length > 99) {
+            board.activities?.shift()
+        }
     }
     if (task.id) {
         const groupIdx = board.groups.findIndex((group) => groupId === group.id)
@@ -50,6 +53,9 @@ async function updateTask(board, groupId, task, activity) {
     )
     if (activity) {
         board.activities?.push(activity)
+        if (board.activities.length > 99) {
+            board.activities?.shift()
+        }
     }
     board.groups[groupIdx].tasks.splice(taskIdx, 1, task)
     return board
