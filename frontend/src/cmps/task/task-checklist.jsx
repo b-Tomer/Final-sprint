@@ -10,9 +10,7 @@ import { TodoNew } from './checklists/todo-new'
 import { useSelector } from 'react-redux'
 
 export function TaskChecklist({ task, setEditing, editing }) {
-    const [currentTask, setCurrentTask] = useState(null)
     const { board } = useSelector((storeState) => storeState.boardModule)
-    const { currTask } = useSelector((storeState) => storeState.boardModule)
     const [todoToEdit, setTodoToEdit] = useState(null)
     const { boardId } = useParams()
     const { groupId } = useParams()
@@ -22,17 +20,14 @@ export function TaskChecklist({ task, setEditing, editing }) {
     let progress
 
     useEffect(() => {
-        console.log(currTask)
-        setCurrentTask(currTask)
     }, [progress])
 
 
     async function handleCheckboxChange(checklistId, todoId) {
-        const updatedTask = { ...currentTask }
+        const updatedTask = { ...task }
         const checklist = updatedTask.checklists.find((checklist) => checklist.id === checklistId)
         const todo = checklist.todos.find((todo) => todo.id === todoId)
         todo.isDone = !todo.isDone
-        setCurrentTask(updatedTask)
         try {
             await updateTask(board, groupId, updatedTask)
 

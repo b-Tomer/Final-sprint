@@ -41,7 +41,6 @@ export function systemReducer(state = initialState, action = {}) {
         case LOADING_DONE:
             return { ...state, isLoading: false }
         case OPEN_DYN_MODAL:
-            console.log('hello from reducer')
             return { ...state, isModalOpen: true }
         case CLOSE_DYN_MODAL:
             return { ...state, isModalOpen: false }
