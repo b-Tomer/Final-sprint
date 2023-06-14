@@ -29,17 +29,14 @@ export function TaskChecklist({ task, setEditing, editing }) {
 
     async function handleCheckboxChange(checklistId, todoId) {
         const updatedTask = { ...currentTask }
-        // console.log("from handle check box first: " ,updatedTask)
-        // console.log(currentTask)
         const checklist = updatedTask.checklists.find((checklist) => checklist.id === checklistId)
         const todo = checklist.todos.find((todo) => todo.id === todoId)
         todo.isDone = !todo.isDone
         setCurrentTask(updatedTask)
-        // console.log("from handle check box second: " ,updatedTask)
-        try{
+        try {
             await updateTask(board, groupId, updatedTask)
-            
-        }catch(err){
+
+        } catch (err) {
             console.log(err)
         }
     }
