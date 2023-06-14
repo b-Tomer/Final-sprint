@@ -28,6 +28,14 @@ export function TaskMainContent({
         <section className="task-main-content">
             <TaskDescription boardId={boardId} groupId={groupId} task={task} />
 
+
+            {task.attachments && task.attachments.length > 0 && (
+                <TaskAttachments
+                    groupId={groupId}
+                    boardId={boardId}
+                    task={task}
+                />
+            )}
             <TaskLocation
                 boardId={boardId}
                 groupId={groupId}
@@ -37,14 +45,6 @@ export function TaskMainContent({
                 setIsLocOpen={setIsLocOpen}
                 isLocOpen={isLocOpen}
             />
-
-            {task.attachments && task.attachments.length > 0 && (
-                <TaskAttachments
-                    groupId={groupId}
-                    boardId={boardId}
-                    task={task}
-                />
-            )}
 
             {task.checklists && (
                 <div className="checklist">
@@ -57,6 +57,9 @@ export function TaskMainContent({
                     />
                 </div>
             )}
+
+
+
 
             {board.activities && (
                 <div className="activities">
@@ -83,8 +86,9 @@ export function TaskMainContent({
                         setIsShowAll={setIsShowAll}
                         isShowAll={isShowAll}
                     />
-                </div>
-            )}
-        </section>
+                </div >
+            )
+            }
+        </section >
     )
 }

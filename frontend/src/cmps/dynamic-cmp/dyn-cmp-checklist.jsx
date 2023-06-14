@@ -22,11 +22,11 @@ export function DynCmpChecklist({ task }) {
         task.checklists.push(checklist)
         try {
             const activity = boardService.getEmptyActivity()
-            activity.title = `Added "${inputRef.current.value}" checklist to: ${task.title}`
+            activity.title = `Added ${inputRef.current.value} checklist to ${task.title}`
             activity.memberId = userService.getLoggedinUser()?._id
                 ? userService.getLoggedinUser()._id
                 : null
-            activity.titleInTask = `Added "${inputRef.current.value}" checklist`
+            activity.titleInTask = `Added ${inputRef.current.value} checklist`
             activity.taskId = task.id
             activity.by = userService.getLoggedinUser()?.fullname
                 ? userService.getLoggedinUser().fullname

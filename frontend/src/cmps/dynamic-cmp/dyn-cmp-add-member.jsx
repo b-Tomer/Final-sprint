@@ -6,7 +6,7 @@ import { updateBoard } from 'store/board.actions'
 import { boardService } from 'services/board.service.local'
 import { userService } from 'services/user.service'
 
-export function DynCmpAddMember({}) {
+export function DynCmpAddMember({ }) {
     const [allUsers, setAllUsers] = useState([])
     const { board } = useSelector((storeState) => storeState.boardModule)
     const [searchTerm, setSearchTerm] = useState('')
@@ -40,10 +40,10 @@ export function DynCmpAddMember({}) {
             if (isBoardMember(user)) {
                 const memberIndex = board.members.indexOf(memberId)
                 board.members.splice(memberIndex, 1)
-                activity.title = `Removed member: "${user.fullname}" from board: ${board.title}`
+                activity.title = `Removed member ${user.fullname} from board ${board.title}`
             } else {
                 board.members.push(user)
-                activity.title = `Added member: "${user.fullname}" to board: ${board.title}`
+                activity.title = `Added member ${user.fullname} to board ${board.title}`
             }
         }
         try {
@@ -86,53 +86,53 @@ export function DynCmpAddMember({}) {
                 <ul className="all-users">
                     {filteredUsers.length > 0
                         ? filteredUsers.map((user) => (
-                              <li key={user._id} className="user">
-                                  <img src={user.imgUrl} alt="" />
-                                  <div className="details">
-                                      <span className="fullname">
-                                          {user.fullname}
-                                      </span>
-                                      <span className="mail">{user.mail}</span>
-                                  </div>
-                                  <input
-                                      type="checkbox"
-                                      name="checkbox"
-                                      checked={isBoardMember(user)}
-                                      onChange={(ev) =>
-                                          onToggleCheckedMember(
-                                              ev,
-                                              user._id,
-                                              user
-                                          )
-                                      }
-                                      className="user-checkbox"
-                                  />
-                              </li>
-                          ))
+                            <li key={user._id} className="user">
+                                <img src={user.imgUrl} alt="" />
+                                <div className="details">
+                                    <span className="fullname">
+                                        {user.fullname}
+                                    </span>
+                                    <span className="mail">{user.mail}</span>
+                                </div>
+                                <input
+                                    type="checkbox"
+                                    name="checkbox"
+                                    checked={isBoardMember(user)}
+                                    onChange={(ev) =>
+                                        onToggleCheckedMember(
+                                            ev,
+                                            user._id,
+                                            user
+                                        )
+                                    }
+                                    className="user-checkbox"
+                                />
+                            </li>
+                        ))
                         : allUsers.map((user) => (
-                              <li key={user._id} className="user">
-                                  <img src={user.imgUrl} alt="" />
-                                  <div className="details">
-                                      <span className="fullname">
-                                          {user.fullname}
-                                      </span>
-                                      <span className="mail">{user.mail}</span>
-                                  </div>
-                                  <input
-                                      type="checkbox"
-                                      name="checkbox"
-                                      checked={isBoardMember(user)}
-                                      onChange={(ev) =>
-                                          onToggleCheckedMember(
-                                              ev,
-                                              user._id,
-                                              user
-                                          )
-                                      }
-                                      className="user-checkbox"
-                                  />
-                              </li>
-                          ))}
+                            <li key={user._id} className="user">
+                                <img src={user.imgUrl} alt="" />
+                                <div className="details">
+                                    <span className="fullname">
+                                        {user.fullname}
+                                    </span>
+                                    <span className="mail">{user.mail}</span>
+                                </div>
+                                <input
+                                    type="checkbox"
+                                    name="checkbox"
+                                    checked={isBoardMember(user)}
+                                    onChange={(ev) =>
+                                        onToggleCheckedMember(
+                                            ev,
+                                            user._id,
+                                            user
+                                        )
+                                    }
+                                    className="user-checkbox"
+                                />
+                            </li>
+                        ))}
                 </ul>
             )}
         </div>

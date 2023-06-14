@@ -144,7 +144,7 @@ export function TaskLocation({
                     <h4 className="loc-title">{foundLocation}</h4>
                     <div
                         className="map"
-                        style={{ height: '200px', width: '568px' }}
+                        style={{ height: '200px', width: '550px' }}
                     >
                         <GoogleMapReact
                             bootstrapURLKeys={{

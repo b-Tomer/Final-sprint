@@ -12,6 +12,7 @@
             font-weight: 500;
             color: $clr5;
         }
+
         .show-all {
             margin-left: auto;
             padding: 7px 7px;
@@ -50,13 +51,14 @@
             overflow-y: auto;
         }
 
-        .record-btns{
+        .record-btns {
             display: flex;
             padding-inline: 4px;
-            button{
+
+            button {
                 font-size: 1rem;
             }
-            
+
         }
 
         .description-container {
@@ -111,6 +113,7 @@
 
         .description-content {
             margin: 0;
+            margin-bottom: 20px;
             margin-inline-start: 20px;
             font-size: 14px;
             color: $clr7;
@@ -124,11 +127,13 @@
         font-size: 14px;
         width: 100%;
         color: $clr7;
-        word-break: break-all; /* Updated property */
+        word-break: break-all;
+        /* Updated property */
 
         @include for-normal-layout {
             width: 550px;
-            word-break: break-all; /* Updated property */
+            word-break: break-all;
+            /* Updated property */
         }
 
         .activity-container {
@@ -145,13 +150,16 @@
                 border-radius: 50%;
                 margin-inline-end: 10px;
             }
+
             .activity-wrapper {
                 width: 100%;
+
                 .activity-content {
                     display: flex;
                     align-content: flex-start;
                     align-items: flex-start;
                     width: 100%;
+
                     .title {
                         display: inline-block;
                         width: 100%;
@@ -159,6 +167,7 @@
                         // overflow: hidden;
                         // text-overflow: ellipsis;
                     }
+
                     .by {
                         font-weight: 700;
                         margin-inline-end: 5px;
@@ -170,6 +179,7 @@
                 .created-at {
                     font-size: 12px;
                 }
+
                 hr {
                     max-width: 100%;
                 }

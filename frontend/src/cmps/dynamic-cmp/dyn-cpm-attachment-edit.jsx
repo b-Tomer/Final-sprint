@@ -31,8 +31,8 @@ export function DynCmpAttachmentEdit({ task, boardId, groupId }) {
         activity.by = userService.getLoggedinUser()?.fullname
             ? userService.getLoggedinUser().fullname
             : 'Guest'
-        activity.title = `Changed attachment title to "${newTitle}" at task ${task.title}`
-        activity.titleInTask = `Changed attachment title to "${newTitle}"`
+        activity.title = `Changed attachment title to ${newTitle} at task ${task.title}`
+        activity.titleInTask = `Changed attachment title to ${newTitle}`
         const atcIdx = task.attachments?.findIndex((a) => a.id === atc.id)
         task.attachments[atcIdx].title = newTitle
         updateTask(board, groupId, task, activity)
