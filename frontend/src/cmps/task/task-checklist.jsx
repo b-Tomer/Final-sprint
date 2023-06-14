@@ -18,7 +18,7 @@ export function TaskChecklist({ task, setEditing, editing }) {
     const [checklistToEdit, setChecklistToEdit] = useState(null)
     const textareaRef = useRef(null)
     let progress
-    
+
     useEffect(() => {}, [progress])
 
     const handleMouseEnter = (todoId) => {
@@ -37,6 +37,7 @@ export function TaskChecklist({ task, setEditing, editing }) {
         const todo = checklist.todos.find((todo) => todo.id === todoId)
         todo.isDone = !todo.isDone
         setCurrentTask(updatedTask)
+        console.log(updatedTask)
         await updateTask(boardId, groupId, updatedTask)
     }
 
