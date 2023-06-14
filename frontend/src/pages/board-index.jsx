@@ -6,7 +6,7 @@ import {
     updateBoard,
     setFilterBy,
 } from '../store/board.actions.js'
-import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
+import { showErrorMsg } from '../services/event-bus.service.js'
 import { useParams } from 'react-router-dom'
 import { GroupDetails } from '../cmps/group-details.jsx'
 import { BoardHeader } from '../cmps/board-header.jsx'
@@ -23,7 +23,6 @@ import { userService } from 'services/user.service.js'
 import { UPDATE_BOARD_LIVE, socketService } from 'services/socket.service.js'
 import { SET_BOARD } from 'store/board.reducer.js'
 import { store } from 'store/store.js'
-import { CoverDynModal } from 'cmps/dynamic-cmp/dyn-modal-cover.jsx'
 import { Loarder } from 'cmps/loader.jsx'
 
 export function BoardIndex() {
@@ -43,7 +42,6 @@ export function BoardIndex() {
     const queryAttr = 'data-rbd-drag-handle-draggable-id'
 
     useEffect(() => {
-        // loadBoards()
         onLoadBoard(filterBy)
         socketService.on(UPDATE_BOARD_LIVE, (board) => {
             store.dispatch({ type: SET_BOARD, board })
@@ -58,7 +56,6 @@ export function BoardIndex() {
         if (taskId) setIsTaskDetailsOpen(true)
     }
 
-    console.log(isLoading)
     async function addGroup(group) {
         try {
             const currBoard = await saveGroup(group, boardId)

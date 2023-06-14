@@ -1,6 +1,5 @@
 import { boardService } from '../services/board.service.js'
 import { store } from './store.js'
-
 import {
     ADD_BOARD,
     REMOVE_BOARD,
@@ -10,7 +9,6 @@ import {
     FILTER_BY,
     SET_IS_LOADING,
 } from './board.reducer.js'
-import { LOADING_DONE, LOADING_START } from './system.reducer.js'
 
 // Action Creators:
 export function getActionRemoveBoard(boardId) {
@@ -51,7 +49,6 @@ export async function loadBoard(boardId, filterBy = {}) {
     } catch (err) {
         console.log('Cannot load board', err)
     } finally {
-        console.log('finally')
         store.dispatch({ type: SET_IS_LOADING, isLoading: false })
     }
 }
@@ -95,7 +92,7 @@ export async function updateBoard(boardToUpdate) {
         try {
             store.dispatch(getActionSetBoard(boardToUpdate))
             const board = await boardService.save(boardToUpdate)
-        } catch (err) {}
+        } catch (err) { }
     } catch (err) {
         console.log('Cannot save board', err)
     }

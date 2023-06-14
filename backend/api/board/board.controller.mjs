@@ -6,12 +6,10 @@ export async function getBoards(req, res) {
   try {
 
     logger.debug('Getting Boards:', req.query)
-    console.log('req.query: ', req.query)
     const filterBy = {
       txt: req.query.txt || '',
     }
     const boards = await boardService.query(filterBy)
-    console.log('boards: ', boards)
     res.json(boards)
   } catch (err) {
     logger.error('Failed to get boards', err)

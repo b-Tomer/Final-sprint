@@ -50,7 +50,6 @@ export function boardReducer(state = initialState, action) {
             newState = { ...state, filterBy: action.filterBy }
             break
         case SET_IS_LOADING:
-            console.log(action.isLoading)
             newState = { ...state, isLoading: action.isLoading }
             break
         case SET_LABEL_TO_EDIT:
