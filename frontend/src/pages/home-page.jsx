@@ -42,8 +42,8 @@ export function HomePage() {
                     </p>
                 </div>
                 <HomeageCarousel />
-            </section>
             <MainFooter />
+            </section>
         </div>
     )
 }

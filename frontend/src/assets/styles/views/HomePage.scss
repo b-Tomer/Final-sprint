@@ -100,12 +100,12 @@
 
     .bottom {
         font-family: charlie;
-        position: relative;
+        position: absolute;
+        top:715px;
         display: flex;
         flex-direction: column;
-        margin-block-start: 40px;
         color: $clr7;
-        top: -100px;
+        padding-inline: 25px;
         background-color: rgb(178, 212, 255);
         background-image: linear-gradient(0deg,
                 rgb(230, 252, 255),
@@ -113,8 +113,9 @@
 
         @include for-narrow-layout {
             display: grid;
+            padding-inline: 0px;
             grid-template-columns: 1fr 10fr 8fr 1fr;
-            grid-template-rows: 1fr 3fr;
+            grid-template-rows: 1fr 3fr 150px;
         }
 
         .TRELLAX-intro {
@@ -233,6 +234,7 @@
                 grid-column: 2;
                 width: 100%;
                 justify-self: end;
+
                 @include for-narrow-layout {
                     max-width: 80%;
                 }

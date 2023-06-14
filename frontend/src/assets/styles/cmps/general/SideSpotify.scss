@@ -25,7 +25,7 @@
     }
 
     .spotify-player {
-        opacity: 0.2;
+        opacity: 0.35;
     }
 
     .play-icon {
@@ -54,7 +54,7 @@
     &.open-spotify {
         transform: translateX(-45px);
         transition: all 0.8s;
-        opacity: 0.9;
+        opacity: 1;
 
         .open-spotify-btn {
             scale: 1.2;
@@ -63,7 +63,7 @@
         }
 
         .spotify-player {
-            opacity: 0.9;
+            opacity: 1;
         }
 
     .play-icon {
