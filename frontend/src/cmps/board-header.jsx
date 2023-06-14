@@ -29,9 +29,8 @@ import { ReactComponent as StarredYellow } from '../assets/img/icons/starred-yel
 import { FastAverageColor } from 'fast-average-color'
 import ContrastColor from 'contrast-color'
 
-export function BoardHeader({ board }) {
-    // const { board } = useSelector((storeState) => storeState.boardModule)
-    const { boardId } = useParams()
+export function BoardHeader() {
+    const { board } = useSelector((storeState) => storeState.boardModule)
     const [currTitle, setCurrTitle] = useState('')
     const [currMember, setCurrMember] = useState(null)
     const [modalPos, setModalPos] = useState(null)
