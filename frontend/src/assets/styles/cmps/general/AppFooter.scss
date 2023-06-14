@@ -1,10 +1,12 @@
 .main-footer {
     display: grid;
     justify-content: center;
+    justify-items: center;
     text-align: center;
     padding-bottom: 20px;
     padding-inline-end: 10px;
     color: $clr7;
+    width: 10%;
 
 
     h4 {
@@ -14,7 +16,8 @@
     }
     
     .copy-rights {
-        width: 200px;
+        max-width: 200px;
+        min-width: 60px;
         grid-row: 2;
         h5{
             line-height: 1em;
