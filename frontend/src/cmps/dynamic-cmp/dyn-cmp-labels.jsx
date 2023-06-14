@@ -86,7 +86,7 @@ export function DynCmpLabels({ task }) {
             console.log(error)
         }
     }
-
+if(!task.labelIds) return null
     return (
         <>
             {!isEditLabelOpen && (
@@ -94,16 +94,8 @@ export function DynCmpLabels({ task }) {
                     <h3 className="labels-title">Labels</h3>
                     <div className="labels-container">
                         {board.labels.map((label) => {
-                            // let isLabelChecked = task.labelIds ? task.labelIds : []
-                            // isLabelChecked = task.labelIds.includes(label.id)
-
-                            // let isLabelChecked = task.labelIds && task.labelIds.includes(label.id);
-                            // isLabelChecked = isLabelChecked || false;
-
-                            let isLabelChecked = task.labelIds ?? [];
-                            isLabelChecked = isLabelChecked.includes(label.id);
-
-
+                            let isLabelChecked = task.labelIds ? task.labelIds : []
+                            isLabelChecked = task.labelIds.includes(label.id)
                             return (
                                 <label
                                     key={label.id}
