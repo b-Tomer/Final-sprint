@@ -17,8 +17,8 @@ export function TaskChecklist({ task, setEditing, editing }) {
     const [todoTitle, setTodoTitle] = useState('')
     const [checklistToEdit, setChecklistToEdit] = useState(null)
     const textareaRef = useRef(null)
-    let progress
 
+    let progress
     useEffect(() => { }, [progress])
 
 
