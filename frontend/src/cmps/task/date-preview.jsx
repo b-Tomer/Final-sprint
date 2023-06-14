@@ -18,12 +18,10 @@ import { userService } from 'services/user.service'
 export function DatePreview({ task, setDynamicCmpName }) {
     const [currTask, setCurrTask] = useState(task)
     const [localModalOpen, setLocalModalOpen] = useState(false)
-
+    const { board } = useSelector((storeState) => storeState.boardModule)
     const { boardId } = useParams()
     const { groupId } = useParams()
     const [modalPos, setModalPos] = useState(null)
-
-    // const { isModalOpen } = useSelector((storeState) => storeState.systemModule)
     const { isOpenDateModal } = useSelector(
         (storeState) => storeState.systemModule
     )
@@ -102,7 +100,7 @@ export function DatePreview({ task, setDynamicCmpName }) {
             activity.by = userService.getLoggedinUser()?.fullname
                 ? userService.getLoggedinUser().fullname
                 : 'Guest'
-            await updateTask(boardId, groupId, task, activity)
+            await updateTask(board, groupId, task, activity)
         } catch (error) {
             console.log('cant update task')
         }

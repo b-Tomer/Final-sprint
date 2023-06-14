@@ -29,15 +29,10 @@ export function LoginSignup() {
         //         '422196780794-5co0o1pid2bhfjgt0hcvfjvvlmpr2bet.apps.googleusercontent.com',
         //     callback: handleGoogleResponse,
         // })
-        // // google.accounts.id.renderButton(
-
-        // // )
+ 
     }, [])
 
-    // function handleGoogleResponse(res) {
-    //     console.log(res.credentials)
-    // }
-
+ 
     async function loadUsers() {
         const users = await userService.getUsers()
         setUsers(users)

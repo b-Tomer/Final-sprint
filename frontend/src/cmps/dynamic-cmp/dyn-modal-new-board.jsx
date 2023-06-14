@@ -32,7 +32,6 @@ export function DynCmpNewBoard() {
         const board = boardService.getEmptyBoard()
         board.title = titleRef.current.value
         if (!board.title) {
-            console.log('no title chosen')
             store.dispatch({ type: CLOSE_DYN_ALL_MODALS })
             return
         }

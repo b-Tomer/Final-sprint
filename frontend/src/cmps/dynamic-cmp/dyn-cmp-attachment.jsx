@@ -8,11 +8,13 @@ import { store } from '../../store/store'
 import { showErrorMsg } from '../../services/event-bus.service'
 import { boardService } from 'services/board.service.local'
 import { userService } from 'services/user.service'
+import { useSelector } from 'react-redux'
 
 export function DynCmpAttachment({ boardId, groupId, task }) {
     const inputClass = 'upload-btn'
     const labelClass = 'upload-label'
     const [isUploading, setIsUploading] = useState(false)
+    const { board } = useSelector((storeState) => storeState.boardModule)
     const [userSrc, setUserSrc] = useState('')
 
     function onAddAttachment(src) {
@@ -40,7 +42,7 @@ export function DynCmpAttachment({ boardId, groupId, task }) {
             activity.by = userService.getLoggedinUser()?.fullname
                 ? userService.getLoggedinUser().fullname
                 : 'Guest'
-            updateTask(boardId, groupId, updatedTask, activity)
+            updateTask(board, groupId, updatedTask, activity)
         } catch (error) {
             console.log(error)
         }
@@ -62,7 +64,6 @@ export function DynCmpAttachment({ boardId, groupId, task }) {
     function onSrcChange(ev) {
         const { value } = ev.target
         setUserSrc(value)
-        console.log(userSrc)
     }
 
     return (

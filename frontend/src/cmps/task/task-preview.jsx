@@ -138,7 +138,7 @@ export function TaskPreview({
             activity.by = userService.getLoggedinUser()?.fullname
                 ? userService.getLoggedinUser().fullname
                 : 'Guest'
-            await updateTask(boardId, groupId, task, activity)
+            await updateTask(board, groupId, task, activity)
         } catch (error) {
             console.log('cant update task')
         }

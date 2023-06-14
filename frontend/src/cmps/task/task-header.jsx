@@ -2,14 +2,13 @@ import { Link } from "react-router-dom"
 import { ReactComponent as Window } from '../../assets/img/icons/window.svg'
 import { useState, useRef } from "react";
 import { updateTask } from "store/task.actions";
-import { OPEN_DYN_MODAL, SET_MODAL_TITLE } from "store/system.reducer";
-import { store } from "store/store";
-import { DynamicCmp } from "cmps/dynamic-cmp/dynamic-cmp";
+import { useSelector } from "react-redux";
 
 
 export function TaskHeader({ task, group, boardId }) {
     const [title, setTitle] = useState(task ? task.title : "")
-    const inputRef = useRef(null);
+    const inputRef = useRef(null)
+    const { board } = useSelector((storeState) => storeState.boardModule)
     if (!task || !boardId || !task.title) return null
 
 
@@ -18,7 +17,7 @@ export function TaskHeader({ task, group, boardId }) {
         e.preventDefault();
         const updatedTask = { ...task, title };
         try {
-            await updateTask(boardId, group.id, updatedTask);
+            await updateTask(board, group.id, updatedTask);
         } catch (error) {
             console.log(error);
         }

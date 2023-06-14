@@ -7,10 +7,12 @@ import { utilService } from '../../services/util.service'
 import { TodoEdit } from './checklists/todo-edit'
 import { TodoContent } from './checklists/todo-content'
 import { TodoNew } from './checklists/todo-new'
+import { useSelector } from 'react-redux'
 
 export function TaskChecklist({ task, setEditing, editing }) {
-    const [currentTask, setCurrentTask] = useState(task)
-    const [isHovered, setIsHovered] = useState(false)
+    const [currentTask, setCurrentTask] = useState(null)
+    const { board } = useSelector((storeState) => storeState.boardModule)
+    const { currTask } = useSelector((storeState) => storeState.boardModule)
     const [todoToEdit, setTodoToEdit] = useState(null)
     const { boardId } = useParams()
     const { groupId } = useParams()
@@ -18,26 +20,28 @@ export function TaskChecklist({ task, setEditing, editing }) {
     const [checklistToEdit, setChecklistToEdit] = useState(null)
     const textareaRef = useRef(null)
     let progress
-    
-    useEffect(() => {}, [progress])
 
-    const handleMouseEnter = (todoId) => {
-        setIsHovered(todoId)
-    }
+    useEffect(() => {
+        console.log(currTask)
+        setCurrentTask(currTask)
+    }, [progress])
 
-    const handleMouseLeave = () => {
-        setIsHovered(false)
-    }
 
-    const handleCheckboxChange = async (checklistId, todoId) => {
+    async function handleCheckboxChange(checklistId, todoId) {
         const updatedTask = { ...currentTask }
-        const checklist = updatedTask.checklists.find(
-            (checklist) => checklist.id === checklistId
-        )
+        // console.log("from handle check box first: " ,updatedTask)
+        // console.log(currentTask)
+        const checklist = updatedTask.checklists.find((checklist) => checklist.id === checklistId)
         const todo = checklist.todos.find((todo) => todo.id === todoId)
         todo.isDone = !todo.isDone
         setCurrentTask(updatedTask)
-        await updateTask(boardId, groupId, updatedTask)
+        // console.log("from handle check box second: " ,updatedTask)
+        try{
+            await updateTask(board, groupId, updatedTask)
+            
+        }catch(err){
+            console.log(err)
+        }
     }
 
     function closeNewTodo() {
@@ -56,7 +60,7 @@ export function TaskChecklist({ task, setEditing, editing }) {
         ev.preventDefault()
         checklist.todos.push({ id: utilService.makeId(), title: todoTitle })
         try {
-            await updateTask(boardId, groupId, task)
+            await updateTask(board, groupId, task)
         } catch (err) {
             console.log(err)
         } finally {
@@ -72,7 +76,7 @@ export function TaskChecklist({ task, setEditing, editing }) {
         )
         checklist.todos.splice(idx, 1)
         try {
-            await updateTask(boardId, groupId, task)
+            await updateTask(board, groupId, task)
         } catch (err) {
             console.log(err)
         }
@@ -84,7 +88,7 @@ export function TaskChecklist({ task, setEditing, editing }) {
         )
         task.checklists.splice(idx, 1)
         try {
-            await updateTask(boardId, groupId, task)
+            await updateTask(board, groupId, task)
         } catch (err) {
             console.log(err)
         }
@@ -123,14 +127,12 @@ export function TaskChecklist({ task, setEditing, editing }) {
                         <div className="progress-bar">
                             <span>{progress.toFixed(0)}%</span>
                             <div
-                                className={`empty-bar ${
-                                    isCompleted ? 'completed' : ''
-                                }`}
+                                className={`empty-bar ${isCompleted ? 'completed' : ''
+                                    }`}
                             >
                                 <div
-                                    className={`fill-bar ${
-                                        progress === 100 ? 'completed' : ''
-                                    }`}
+                                    className={`fill-bar ${progress === 100 ? 'completed' : ''
+                                        }`}
                                     style={{ width: `${progress}%` }}
                                 ></div>
                             </div>
@@ -141,13 +143,8 @@ export function TaskChecklist({ task, setEditing, editing }) {
                                     return (
                                         <TodoContent
                                             todo={todo}
-                                            handleMouseEnter={handleMouseEnter}
-                                            handleMouseLeave={handleMouseLeave}
-                                            handleCheckboxChange={
-                                                handleCheckboxChange
-                                            }
+                                            handleCheckboxChange={handleCheckboxChange}
                                             checklist={checklist}
-                                            isHovered={isHovered}
                                             onDeleteTodo={onDeleteTodo}
                                             Trash={Trash}
                                             key={todo.id}

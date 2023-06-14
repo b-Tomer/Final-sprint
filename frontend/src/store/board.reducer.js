@@ -52,7 +52,6 @@ export function boardReducer(state = initialState, action) {
             newState = { ...state, isLoading: action.isLoading }
             break
         case SET_LABEL_TO_EDIT:
-            console.log('action.label: ', action.label)
             newState = { ...state, label: action.label }
             break
         case SET_ATC_TO_EDIT:

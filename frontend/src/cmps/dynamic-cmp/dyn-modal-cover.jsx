@@ -40,7 +40,7 @@ export const CoverDynModal = ({ boardId, groupId, task }) => {
         else taskToUpdate.coverSize = size
         try {
             updateTask(
-                board._id,
+                board,
                 findGroupIdByTaskId(board, task.id),
                 taskToUpdate
             )

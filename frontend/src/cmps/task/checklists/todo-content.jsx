@@ -1,20 +1,15 @@
 export function TodoContent({
     todo,
-    handleMouseEnter,
-    handleMouseLeave,
     handleCheckboxChange,
     checklist,
-    isHovered,
     onDeleteTodo,
     Trash,
     selectTodoToEdit,
 }) {
 
-    // console.log(todo.isDone)
+    
     return (
         <div
-            onMouseEnter={() => handleMouseEnter(todo.id)}
-            onMouseLeave={handleMouseLeave}
             className={`todo ${todo.isDone ? 'completed' : ''}`}
             key={todo.id}
         >
@@ -31,14 +26,14 @@ export function TodoContent({
                 </h3>
             </div>
 
-            {isHovered === todo.id && (
+       
                 <button
                     onClick={(event) => onDeleteTodo(event, checklist, todo)}
                     className="delete-todo-btn"
                 >
                     <Trash className="delete-todo-icon" />
                 </button>
-            )}
+     
         </div>
     )
 }

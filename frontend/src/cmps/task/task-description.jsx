@@ -8,11 +8,13 @@ import SpeechRecognition, {
     useSpeechRecognition,
 } from 'react-speech-recognition'
 import { useEffectUpdate } from 'customHooks/useEffectUpdate'
+import { useSelector } from 'react-redux'
 
-export function TaskDescription({ boardId, groupId, task }) {
+export function TaskDescription({ groupId, task }) {
     const { transcript, listening, resetTranscript } = useSpeechRecognition()
     const [isEditing, setIsEditing] = useState(false)
     const [description, setDescription] = useState(task.description || '')
+    const { board } = useSelector((storeState) => storeState.boardModule)
     const textRef = useRef(null)
     const menuRef = useRef(null)
     useClickOutside(menuRef, onClickOutside)
@@ -43,8 +45,7 @@ export function TaskDescription({ boardId, groupId, task }) {
         activity.by = userService.getLoggedinUser()?.fullname
             ? userService.getLoggedinUser().fullname
             : 'Guest'
-        console.log(taskToUpdate)
-        updateTask(boardId, groupId, taskToUpdate, activity)
+        updateTask(board, groupId, taskToUpdate, activity)
     }
 
     function handleDescChange(ev) {

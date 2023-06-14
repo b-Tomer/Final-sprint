@@ -3,6 +3,7 @@ import { ReactComponent as Location } from '../../assets/img/icons/location.svg'
 import GoogleMapReact from 'google-map-react'
 import { utilService } from 'services/util.service'
 import { updateTask } from 'store/task.actions'
+import { useSelector } from 'react-redux'
 
 const defaultProps = {
     center: {
@@ -25,13 +26,11 @@ export function TaskLocation({
         task?.locationTitle || 'No current location'
     )
     const [marker, setMarker] = useState(null)
-
+    const { board } = useSelector((storeState) => storeState.boardModule)
     const debouncedLoc = utilService.debounce(handleLocationChange)
-    console.log('location ', foundLocation)
 
 
     async function handleLocationChange(event) {
-        console.log('location ', foundLocation)
         const searchValue = event.target.value
         if (searchValue.trim() === '') {
             setLocation(defaultProps.center)
@@ -64,8 +63,7 @@ export function TaskLocation({
             locationTitle: foundLocation,
         }
         try {
-            await updateTask(boardId, groupId, updatedTask)
-            console.log('Task updated:', updatedTask)
+            await updateTask(board, groupId, updatedTask)
             if (marker) {
                 marker.setPosition(location)
                 marker.getMap().panTo(location)
@@ -84,8 +82,7 @@ export function TaskLocation({
         setFoundLocation('No current location')
         setLocation(null)
         try {
-            await updateTask(boardId, groupId, updatedTask)
-            console.log('Task updated:', updatedTask)
+            await updateTask(board, groupId, updatedTask)
             if (marker) {
                 marker.setPosition(null)
             }

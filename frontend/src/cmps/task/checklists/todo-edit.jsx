@@ -1,16 +1,16 @@
 import { useState } from 'react'
 import { updateTask } from '../../../store/task.actions'
+import { useSelector } from 'react-redux'
 
 export function TodoEdit({
     todo,
     setTodoToEdit,
     groupId,
-    boardId,
     task,
     checklist,
-    setEditing,
 }) {
     const [todoToUpdate, setTodoToUpdate] = useState(todo)
+    const { board } = useSelector((storeState) => storeState.boardModule)
 
     function closeNewTodo() {
         setTodoToEdit(null)
@@ -23,7 +23,7 @@ export function TodoEdit({
         )
         checklist.todos[idx] = todoToUpdate
         try {
-            await updateTask(boardId, groupId, task)
+            await updateTask(board, groupId, task)
             closeNewTodo()
         } catch (error) {
             console.log('cant update task')

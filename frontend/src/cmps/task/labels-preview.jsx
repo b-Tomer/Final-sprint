@@ -10,8 +10,7 @@ export function LabelsPreview({ task }) {
     const { board } = useSelector((storeState) => storeState.boardModule)
     const { currTask } = useSelector((storeState) => storeState.boardModule)
     const { isOpenLabelModal } = useSelector((storeState) => storeState.systemModule)
-    console.log('task: ', task)
-    console.log('currTask: ', currTask)
+
 
     function getLabel(labelId) {
         if (!board.labels) return
