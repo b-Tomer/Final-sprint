@@ -51,13 +51,13 @@ export async function loadBoard(boardId, filterBy = {}) {
     } catch (err) {
         console.log('Cannot load board', err)
     } finally {
-        console.log('finally')
         store.dispatch({ type: SET_IS_LOADING, isLoading: false })
     }
 }
 
 export async function loadBoards(filterBy) {
     try {
+        store.dispatch({ type: SET_IS_LOADING, isLoading: true })
         const boards = await boardService.query(filterBy)
         store.dispatch({
             type: SET_BOARDS,
@@ -66,6 +66,8 @@ export async function loadBoards(filterBy) {
     } catch (err) {
         console.log('Cannot load boards', err)
         throw err
+    } finally {
+        store.dispatch({ type: SET_IS_LOADING, isLoading: false })
     }
 }
 

@@ -16,6 +16,7 @@ import {
 import { store } from 'store/store'
 import { DynamicCmp } from 'cmps/dynamic-cmp/dynamic-cmp'
 import { SET_BOARD } from 'store/board.reducer'
+import { Loarder } from 'cmps/loader'
 
 export function Workspace() {
     const [modalPos, setModalPos] = useState(null)
@@ -24,6 +25,7 @@ export function Workspace() {
     )
     const boards = useSelector((storeState) => storeState.boardModule.boards)
     const { filterBy } = useSelector((storeState) => storeState.boardModule)
+    const { isLoading } = useSelector((storeState) => storeState.boardModule)
 
     useEffect(() => {
         store.dispatch({ type: SET_BOARD, board: null })
@@ -61,6 +63,7 @@ export function Workspace() {
         setFilterBy(filterByToUpdate)
     }
 
+    if (isLoading) return <Loarder />
     if (!boards) return
     return (
         <section>
@@ -89,7 +92,6 @@ export function Workspace() {
                         <span>Recently viewed</span>
                     </div>
                     <div className="recently-viewed-container">
-
                         {boards.map((board) => (
                             <BoardPreview
                                 board={board}
@@ -97,12 +99,12 @@ export function Workspace() {
                                 toggleStarredStatus={toggleStarredStatus}
                             />
                         ))}
-                    <div
-                        onClick={onOpenNewBoard}
-                        className="board-preview new-board-box"
-                    >
-                        <span>Create new board</span>
-                    </div>
+                        <div
+                            onClick={onOpenNewBoard}
+                            className="board-preview new-board-box"
+                        >
+                            <span>Create new board</span>
+                        </div>
                     </div>
                 </div>
             </section>

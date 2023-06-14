@@ -140,14 +140,17 @@ export function BoardHeader() {
         store.dispatch({ type: OPEN_DYN_MODAL })
     }
 
-
     return (
-        <div
-            className="board-header-container"
-            style={bgColor ? (txtColor ? { color: txtColor } : {}) : null}
-        >
+        <div className="board-header-container">
             <div className="board-header-left">
-                <h1 className="board-title">{board.title}</h1>
+                <h1
+                    className="board-title"
+                    style={
+                        bgColor ? (txtColor ? { color: txtColor } : {}) : null
+                    }
+                >
+                    {board.title}
+                </h1>
 
                 <button className="starred-btn" onClick={onClickStarred}>
                     {<StarredYellow className={buttonClassName} />}

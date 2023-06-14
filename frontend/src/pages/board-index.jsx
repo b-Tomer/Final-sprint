@@ -58,7 +58,6 @@ export function BoardIndex() {
         if (taskId) setIsTaskDetailsOpen(true)
     }
 
-    console.log(isLoading)
     async function addGroup(group) {
         try {
             const currBoard = await saveGroup(group, boardId)
