@@ -168,12 +168,10 @@ export function BoardIndex() {
             activity.by = userService.getLoggedinUser()?.fullname
                 ? userService.getLoggedinUser().fullname
                 : 'Guest'
-            activity.title = `moved task "${
-                destinationGroup.tasks[destination.index].title
-            }" from group "${sourceGroup.title}" to group "${
-                destinationGroup.title
-            }"`
-            activity.titleInTask = `moved this task from group "${sourceGroup.title}" to group "${destinationGroup.title}"`
+            activity.title = `moved task ${destinationGroup.tasks[destination.index].title
+                } from group ${sourceGroup.title} to group ${destinationGroup.title
+                }`
+            activity.titleInTask = `moved this task from group ${sourceGroup.title} to group ${destinationGroup.title}`
             if (activity) updatedBoard.activities.push(activity)
         }
         updateBoard(updatedBoard)

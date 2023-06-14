@@ -41,10 +41,12 @@ export function DynCmpLabels({ task }) {
 
     function getLabelName(labelId) {
         const label = board.labels.find((currLabel) => currLabel.id === labelId)
-        return label.title
+        return label ? label.title : '';
     }
 
     function onToggleCheckedLabel(labelId) {
+        if (!task) return
+
         const activity = boardService.getEmptyActivity()
         activity.memberId = userService.getLoggedinUser()?._id
             ? userService.getLoggedinUser()._id
@@ -59,18 +61,18 @@ export function DynCmpLabels({ task }) {
             if (task.labelIds.includes(labelId)) {
                 const labelIndex = task.labelIds.indexOf(labelId)
                 task.labelIds.splice(labelIndex, 1)
-                activity.title = `Removed label "${getLabelName(
+                activity.title = `Removed label ${getLabelName(
                     labelId
-                )}" from task: ${task.title}`
-                activity.titleInTask = `Removed label "${getLabelName(
+                )} from task ${task.title}`
+                activity.titleInTask = `Removed label ${getLabelName(
                     labelId
-                )}"`
+                )}`
             } else {
                 task.labelIds.push(labelId)
-                activity.title = `Added label "${getLabelName(
+                activity.title = `Added label ${getLabelName(
                     labelId
-                )}" to task: ${task.title}`
-                activity.titleInTask = `Added label "${getLabelName(labelId)}" `
+                )} to task ${task.title}`
+                activity.titleInTask = `Added label ${getLabelName(labelId)} `
             }
         }
         try {
@@ -92,8 +94,15 @@ export function DynCmpLabels({ task }) {
                     <h3 className="labels-title">Labels</h3>
                     <div className="labels-container">
                         {board.labels.map((label) => {
-                            let isLabelChecked = task.labelIds ? task.labelIds : []
-                            isLabelChecked = task.labelIds.includes(label.id)
+                            // let isLabelChecked = task.labelIds ? task.labelIds : []
+                            // isLabelChecked = task.labelIds.includes(label.id)
+
+                            // let isLabelChecked = task.labelIds && task.labelIds.includes(label.id);
+                            // isLabelChecked = isLabelChecked || false;
+
+                            let isLabelChecked = task.labelIds ?? [];
+                            isLabelChecked = isLabelChecked.includes(label.id);
+
 
                             return (
                                 <label

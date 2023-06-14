@@ -272,5 +272,5 @@ function formatTimestamp(timestamp) {
     const month = String(date.getMonth() + 1).padStart(2, '0')
     const year = String(date.getFullYear())
 
-    return `${hours}:${minutes}, ${day}/${month}/${year}`
+    return `${hours}:${minutes} ${day}/${month}/${year}`
 }
