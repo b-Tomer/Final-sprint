@@ -43,6 +43,7 @@ export function BoardIndex() {
 
     useEffect(() => {
         onLoadBoard(filterBy)
+        socketService.emit('join-board', boardId)
         socketService.on(UPDATE_BOARD_LIVE, (board) => {
             store.dispatch({ type: SET_BOARD, board })
         })
