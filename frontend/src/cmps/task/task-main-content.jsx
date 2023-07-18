@@ -69,7 +69,7 @@ export function TaskMainContent({
                         {board.activities &&
                             board.activities.length > 0 &&
                             board.activities.filter(
-                                (activity) => activity.taskId === task.id
+                                (activity) => activity?.taskId === task.id
                             ).length > 5 && (
                                 <button
                                     onClick={toggleShowAll}
