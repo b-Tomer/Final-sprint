@@ -28,7 +28,6 @@ export function TaskMainContent({
         <section className="task-main-content">
             <TaskDescription boardId={boardId} groupId={groupId} task={task} />
 
-
             {task.attachments && task.attachments.length > 0 && (
                 <TaskAttachments
                     groupId={groupId}
@@ -58,9 +57,6 @@ export function TaskMainContent({
                 </div>
             )}
 
-
-
-
             {board.activities && (
                 <div className="activities">
                     <div className="activities-title">
@@ -69,7 +65,7 @@ export function TaskMainContent({
                         {board.activities &&
                             board.activities.length > 0 &&
                             board.activities.filter(
-                                (activity) => activity.taskId === task.id
+                                (activity) => activity?.taskId === task.id
                             ).length > 5 && (
                                 <button
                                     onClick={toggleShowAll}
@@ -86,9 +82,8 @@ export function TaskMainContent({
                         setIsShowAll={setIsShowAll}
                         isShowAll={isShowAll}
                     />
-                </div >
-            )
-            }
-        </section >
+                </div>
+            )}
+        </section>
     )
 }

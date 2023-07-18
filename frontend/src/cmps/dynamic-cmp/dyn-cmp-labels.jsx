@@ -12,6 +12,7 @@ import { userService } from 'services/user.service'
 export function DynCmpLabels({ task }) {
     const { board } = useSelector((storeState) => storeState.boardModule)
     const [isEditLabelOpen, setIsEditLabelOpen] = useState(false)
+    const boardLabels = board.labels.map((label) => label.id)
 
     function handleEditButtonClick(title, label) {
         store.dispatch({ type: SET_LABEL_TO_EDIT, label })
@@ -41,7 +42,7 @@ export function DynCmpLabels({ task }) {
 
     function getLabelName(labelId) {
         const label = board.labels.find((currLabel) => currLabel.id === labelId)
-        return label ? label.title : '';
+        return label ? label.title : ''
     }
 
     function onToggleCheckedLabel(labelId) {
@@ -64,9 +65,7 @@ export function DynCmpLabels({ task }) {
                 activity.title = `Removed label ${getLabelName(
                     labelId
                 )} from task ${task.title}`
-                activity.titleInTask = `Removed label ${getLabelName(
-                    labelId
-                )}`
+                activity.titleInTask = `Removed label ${getLabelName(labelId)}`
             } else {
                 task.labelIds.push(labelId)
                 activity.title = `Added label ${getLabelName(
@@ -86,7 +85,7 @@ export function DynCmpLabels({ task }) {
             console.log(error)
         }
     }
-if(!task.labelIds) return null
+    if (!task.labelIds) task.labelIds = []
     return (
         <>
             {!isEditLabelOpen && (
@@ -94,7 +93,9 @@ if(!task.labelIds) return null
                     <h3 className="labels-title">Labels</h3>
                     <div className="labels-container">
                         {board.labels.map((label) => {
-                            let isLabelChecked = task.labelIds ? task.labelIds : []
+                            let isLabelChecked = task.labelIds
+                                ? task.labelIds
+                                : []
                             isLabelChecked = task.labelIds.includes(label.id)
                             return (
                                 <label
