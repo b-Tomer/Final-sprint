@@ -8,20 +8,21 @@
     position: fixed;
     top: 0;
     height: 100%;
-    transform: translateX(-97%);
+    transform: translateX(-330px);
     z-index: 9;
     transition: all 0.8s;
-
+    
     &:hover .spotify-player {
         opacity: 0.7
     }
-
+    
     &:hover .play-icon {
         opacity: 0.7
     }
-
+    
     @include for-narrow-layout {
         width: 450px;
+        transform: translateX(-440px);
     }
 
     .spotify-player {
